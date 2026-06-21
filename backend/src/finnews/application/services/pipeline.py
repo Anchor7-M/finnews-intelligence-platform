@@ -83,9 +83,12 @@ class NewsPipeline:
                 if not title:
                     raise ValueError("title is required")
                 content_hash = deterministic_hash(title, summary, language)
+                source_article_id = record.article_id or deterministic_hash(
+                    source.source_key, url, title, published.isoformat()
+                )
                 raw = RawArticle(
                     source_id=source.id,
-                    source_article_id=record.article_id,
+                    source_article_id=source_article_id,
                     canonical_url=url,
                     source_title=title,
                     source_summary=summary,

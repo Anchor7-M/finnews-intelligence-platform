@@ -62,3 +62,15 @@ packages = ["finnews"]
 [[tool.mypy.overrides]]
 module = ["sklearn.*", "dateutil.*"]
 ignore_missing_imports = true
+
+[tool.coverage.run]
+branch = true
+source = ["src/finnews"]
+omit = [
+  "src/finnews/__init__.py",
+  "src/finnews/infrastructure/persistence/postgres/*",
+]
+
+[tool.coverage.report]
+fail_under = 80
+show_missing = true

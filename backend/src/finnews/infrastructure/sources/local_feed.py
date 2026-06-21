@@ -22,6 +22,11 @@ class LocalFeedSource:
 
         parser = ET.XMLParser()
         root = ET.parse(resolved, parser=parser).getroot()
+        if root.tag.endswith("feed"):
+            return self._read_atom(root, resolved)
+        return self._read_rss(root, resolved)
+
+    def _read_rss(self, root: ET.Element, resolved: Path) -> list[SourceRecord]:
         records: list[SourceRecord] = []
         channel = root.find("channel")
         items = channel.findall("item") if channel is not None else []
@@ -32,9 +37,7 @@ class LocalFeedSource:
             description = (item.findtext("description") or "").strip()
             pub_date = (item.findtext("pubDate") or "").strip()
             iso_date = parsedate_to_datetime(pub_date).isoformat()
-            language = (
-                "zh" if any("\u4e00" <= char <= "\u9fff" for char in title + description) else "en"
-            )
+            language = _detect_language(title + description)
             records.append(
                 SourceRecord(
                     source_key="synthetic-local-feed",
@@ -50,3 +53,52 @@ class LocalFeedSource:
                 )
             )
         return records
+
+    def _read_atom(self, root: ET.Element, resolved: Path) -> list[SourceRecord]:
+        namespace = {"atom": "http://www.w3.org/2005/Atom"}
+        entries = root.findall("atom:entry", namespace) or root.findall("entry")
+        records: list[SourceRecord] = []
+        for entry in entries:
+            title = (
+                entry.findtext("atom:title", default="", namespaces=namespace)
+                or entry.findtext("title")
+                or ""
+            ).strip()
+            summary = (
+                entry.findtext("atom:summary", default="", namespaces=namespace)
+                or entry.findtext("summary")
+                or ""
+            ).strip()
+            entry_id = (
+                entry.findtext("atom:id", default="", namespaces=namespace)
+                or entry.findtext("id")
+                or ""
+            ).strip()
+            updated = (
+                entry.findtext("atom:updated", default="", namespaces=namespace)
+                or entry.findtext("updated")
+                or ""
+            ).strip()
+            link_element = entry.find("atom:link", namespace)
+            if link_element is None:
+                link_element = entry.find("link")
+            link = link_element.attrib.get("href", "") if link_element is not None else entry_id
+            records.append(
+                SourceRecord(
+                    source_key="synthetic-local-atom",
+                    source_name="Synthetic Local Atom",
+                    source_type=SourceType.ATOM,
+                    article_id=entry_id,
+                    url=link,
+                    title=title,
+                    summary=summary,
+                    language=_detect_language(title + summary),
+                    published_at=updated,
+                    raw_metadata={"id": entry_id, "feed_path": str(resolved)},
+                )
+            )
+        return records
+
+
+def _detect_language(text: str) -> str:
+    return "zh" if any("\u4e00" <= char <= "\u9fff" for char in text) else "en"

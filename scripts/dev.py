@@ -37,17 +37,27 @@ def doctor(_: argparse.Namespace) -> None:
 def verify_lite(_: argparse.Namespace) -> None:
     backend = ROOT / "backend"
     frontend = ROOT / "frontend"
-    run([sys.executable, "-m", "pytest"], backend)
+    run([sys.executable, "-m", "pytest", "--cov=finnews", "--cov-report=term-missing", "--cov-fail-under=80"], backend)
     run([sys.executable, "-m", "ruff", "check", "."], backend)
     run([sys.executable, "-m", "ruff", "format", "--check", "."], backend)
     run([sys.executable, "-m", "mypy", "src", "tests"], backend)
     run(["npm", "run", "lint"], frontend)
+    run(["npm", "run", "format:check"], frontend)
     run(["npm", "run", "typecheck"], frontend)
     run(["npm", "run", "test:unit", "--", "--run"], frontend)
     run(["npm", "run", "build"], frontend)
     run([sys.executable, "-m", "finnews.interfaces.cli.app", "demo", "--profile", "memory"], backend)
+    validate_static_export()
     if shutil.which("git"):
         run(["git", "diff", "--check"], ROOT)
+
+
+def validate_static_export() -> None:
+    output = ROOT / "frontend" / "public" / "demo-data"
+    required = ["overview.json", "articles.json", "companies.json", "digests.json", "signals.json"]
+    missing = [name for name in required if not (output / name).is_file()]
+    if missing:
+        raise SystemExit(f"missing static demo files: {', '.join(missing)}")
 
 
 def db_up(_: argparse.Namespace) -> None:
@@ -75,10 +85,12 @@ def export_static(_: argparse.Namespace) -> None:
             "-m",
             "finnews.interfaces.cli.app",
             "export-static",
+            "--output",
             "../frontend/public/demo-data",
         ],
         ROOT / "backend",
     )
+    validate_static_export()
 
 
 def cleanup(args: argparse.Namespace) -> None:

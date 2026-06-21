@@ -11,6 +11,10 @@ cd ..
 python scripts/dev.py verify-lite
 ```
 
+`verify-lite` runs backend tests with coverage threshold, Ruff, mypy, frontend ESLint, Prettier, TypeScript, Vitest, production build, memory demo, static export validation, and `git diff --check`.
+
+Current audited evidence: 39 backend tests passed, 92.09% backend coverage, and 8 frontend tests passed.
+
 ## Optional PostgreSQL
 
 ```text

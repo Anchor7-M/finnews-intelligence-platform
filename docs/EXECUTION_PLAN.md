@@ -36,7 +36,15 @@
 - Run Ruff check, Ruff format check, and mypy.
 - Run frontend lint, type check, Vitest once, and production build.
 - Run `finnews demo --profile memory` through `scripts/dev.py verify-lite`.
+- Enforce backend coverage with `--cov-fail-under=80`.
+- Run frontend Prettier check in the lightweight verification path.
 - Run PostgreSQL checks only through `scripts/dev.py verify-postgres`, which starts and stops the optional container.
+
+## Compliance Audit Update
+
+- Dataset expanded to 68 raw observations, 12 companies, all event/sentiment categories, 4 malformed records, and deterministic fixture generation.
+- Non-Docker lightweight verification passes with 39 backend tests, 8 frontend tests, and 92.09% backend coverage.
+- PostgreSQL remains implemented at schema/model level but not verified in this task because Docker was not started.
 
 ## Resource Plan
 

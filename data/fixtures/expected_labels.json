@@ -1,11 +1,350 @@
 {
-  "jsonl-001": {"event": "earnings", "sentiment": "positive", "ticker": "ALP"},
-  "jsonl-002": {"event": "policy_regulation", "sentiment": "neutral", "ticker": "BRC"},
-  "jsonl-003": {"event": "financing_capital", "sentiment": "uncertain", "ticker": "HLS"},
-  "jsonl-004": {"event": "litigation_penalty", "sentiment": "negative", "ticker": "NVM"},
-  "jsonl-006": {"event": "operations_product", "sentiment": "negative", "ticker": "BRC"},
-  "jsonl-007": {"event": "earnings", "sentiment": "positive", "ticker": "ALP"},
-  "feed-001": {"event": "operations_product", "sentiment": "uncertain", "ticker": "ALP"},
-  "feed-002": {"event": "governance_personnel", "sentiment": "neutral", "ticker": "NVM"},
-  "feed-003": {"event": "merger_acquisition", "sentiment": "uncertain", "ticker": "HLS"}
+  "exact-001": {
+    "duplicate_kind": "exact",
+    "event": "earnings",
+    "sentiment": "positive",
+    "ticker": "ALP"
+  },
+  "exact-002": {
+    "duplicate_kind": "exact",
+    "event": "merger_acquisition",
+    "sentiment": "uncertain",
+    "ticker": "BRC"
+  },
+  "exact-003": {
+    "duplicate_kind": "exact",
+    "event": "policy_regulation",
+    "sentiment": "neutral",
+    "ticker": "HLS"
+  },
+  "exact-004": {
+    "duplicate_kind": "exact",
+    "event": "operations_product",
+    "sentiment": "positive",
+    "ticker": "NVM"
+  },
+  "exact-005": {
+    "duplicate_kind": "exact",
+    "event": "financing_capital",
+    "sentiment": "uncertain",
+    "ticker": "QNT"
+  },
+  "exact-006": {
+    "duplicate_kind": "exact",
+    "event": "litigation_penalty",
+    "sentiment": "negative",
+    "ticker": "ORC"
+  },
+  "exact-007": {
+    "duplicate_kind": "exact",
+    "event": "governance_personnel",
+    "sentiment": "neutral",
+    "ticker": "VTL"
+  },
+  "exact-008": {
+    "duplicate_kind": "exact",
+    "event": "macro_market",
+    "sentiment": "negative",
+    "ticker": "MTR"
+  },
+  "near-001": {
+    "duplicate_kind": "near",
+    "event": "other",
+    "sentiment": "neutral",
+    "ticker": "SKY"
+  },
+  "near-002": {
+    "duplicate_kind": "near",
+    "event": "earnings",
+    "sentiment": "positive",
+    "ticker": "LUM"
+  },
+  "near-003": {
+    "duplicate_kind": "near",
+    "event": "merger_acquisition",
+    "sentiment": "uncertain",
+    "ticker": "PRM"
+  },
+  "near-004": {
+    "duplicate_kind": "near",
+    "event": "policy_regulation",
+    "sentiment": "neutral",
+    "ticker": "ECO"
+  },
+  "near-005": {
+    "duplicate_kind": "near",
+    "event": "operations_product",
+    "sentiment": "positive",
+    "ticker": "ALP"
+  },
+  "near-006": {
+    "duplicate_kind": "near",
+    "event": "financing_capital",
+    "sentiment": "uncertain",
+    "ticker": "BRC"
+  },
+  "near-007": {
+    "duplicate_kind": "near",
+    "event": "litigation_penalty",
+    "sentiment": "negative",
+    "ticker": "HLS"
+  },
+  "near-008": {
+    "duplicate_kind": "near",
+    "event": "governance_personnel",
+    "sentiment": "neutral",
+    "ticker": "NVM"
+  },
+  "near-009": {
+    "duplicate_kind": "near",
+    "event": "macro_market",
+    "sentiment": "negative",
+    "ticker": "QNT"
+  },
+  "near-010": {
+    "duplicate_kind": "near",
+    "event": "other",
+    "sentiment": "neutral",
+    "ticker": "ORC"
+  },
+  "obs-001": {
+    "duplicate_kind": "unique",
+    "event": "earnings",
+    "sentiment": "positive",
+    "ticker": "ALP"
+  },
+  "obs-002": {
+    "duplicate_kind": "unique",
+    "event": "merger_acquisition",
+    "sentiment": "uncertain",
+    "ticker": "BRC"
+  },
+  "obs-003": {
+    "duplicate_kind": "unique",
+    "event": "policy_regulation",
+    "sentiment": "neutral",
+    "ticker": "HLS"
+  },
+  "obs-004": {
+    "duplicate_kind": "unique",
+    "event": "operations_product",
+    "sentiment": "positive",
+    "ticker": "NVM"
+  },
+  "obs-005": {
+    "duplicate_kind": "unique",
+    "event": "financing_capital",
+    "sentiment": "uncertain",
+    "ticker": "QNT"
+  },
+  "obs-006": {
+    "duplicate_kind": "unique",
+    "event": "litigation_penalty",
+    "sentiment": "negative",
+    "ticker": "ORC"
+  },
+  "obs-007": {
+    "duplicate_kind": "unique",
+    "event": "governance_personnel",
+    "sentiment": "neutral",
+    "ticker": "VTL"
+  },
+  "obs-008": {
+    "duplicate_kind": "unique",
+    "event": "macro_market",
+    "sentiment": "negative",
+    "ticker": "MTR"
+  },
+  "obs-009": {
+    "duplicate_kind": "unique",
+    "event": "other",
+    "sentiment": "neutral",
+    "ticker": "SKY"
+  },
+  "obs-010": {
+    "duplicate_kind": "unique",
+    "event": "earnings",
+    "sentiment": "positive",
+    "ticker": "LUM"
+  },
+  "obs-012": {
+    "duplicate_kind": "unique",
+    "event": "policy_regulation",
+    "sentiment": "neutral",
+    "ticker": "ECO"
+  },
+  "obs-013": {
+    "duplicate_kind": "unique",
+    "event": "operations_product",
+    "sentiment": "positive",
+    "ticker": "ALP"
+  },
+  "obs-014": {
+    "duplicate_kind": "unique",
+    "event": "financing_capital",
+    "sentiment": "uncertain",
+    "ticker": "BRC"
+  },
+  "obs-015": {
+    "duplicate_kind": "unique",
+    "event": "litigation_penalty",
+    "sentiment": "negative",
+    "ticker": "HLS"
+  },
+  "obs-016": {
+    "duplicate_kind": "unique",
+    "event": "governance_personnel",
+    "sentiment": "neutral",
+    "ticker": "NVM"
+  },
+  "obs-017": {
+    "duplicate_kind": "unique",
+    "event": "macro_market",
+    "sentiment": "negative",
+    "ticker": "QNT"
+  },
+  "obs-018": {
+    "duplicate_kind": "unique",
+    "event": "other",
+    "sentiment": "neutral",
+    "ticker": "ORC"
+  },
+  "obs-019": {
+    "duplicate_kind": "unique",
+    "event": "earnings",
+    "sentiment": "positive",
+    "ticker": "VTL"
+  },
+  "obs-020": {
+    "duplicate_kind": "unique",
+    "event": "merger_acquisition",
+    "sentiment": "uncertain",
+    "ticker": "MTR"
+  },
+  "obs-021": {
+    "duplicate_kind": "unique",
+    "event": "policy_regulation",
+    "sentiment": "neutral",
+    "ticker": "SKY"
+  },
+  "obs-022": {
+    "duplicate_kind": "unique",
+    "event": "operations_product",
+    "sentiment": "positive",
+    "ticker": "LUM"
+  },
+  "obs-023": {
+    "duplicate_kind": "unique",
+    "event": "financing_capital",
+    "sentiment": "uncertain",
+    "ticker": "PRM"
+  },
+  "obs-024": {
+    "duplicate_kind": "unique",
+    "event": "litigation_penalty",
+    "sentiment": "negative",
+    "ticker": "ECO"
+  },
+  "obs-025": {
+    "duplicate_kind": "unique",
+    "event": "governance_personnel",
+    "sentiment": "neutral",
+    "ticker": "ALP"
+  },
+  "obs-026": {
+    "duplicate_kind": "unique",
+    "event": "macro_market",
+    "sentiment": "negative",
+    "ticker": "BRC"
+  },
+  "obs-027": {
+    "duplicate_kind": "unique",
+    "event": "other",
+    "sentiment": "neutral",
+    "ticker": "HLS"
+  },
+  "obs-028": {
+    "duplicate_kind": "unique",
+    "event": "earnings",
+    "sentiment": "positive",
+    "ticker": "NVM"
+  },
+  "obs-029": {
+    "duplicate_kind": "unique",
+    "event": "merger_acquisition",
+    "sentiment": "uncertain",
+    "ticker": "QNT"
+  },
+  "obs-030": {
+    "duplicate_kind": "unique",
+    "event": "policy_regulation",
+    "sentiment": "neutral",
+    "ticker": "ORC"
+  },
+  "obs-031": {
+    "duplicate_kind": "unique",
+    "event": "operations_product",
+    "sentiment": "positive",
+    "ticker": "VTL"
+  },
+  "obs-032": {
+    "duplicate_kind": "unique",
+    "event": "financing_capital",
+    "sentiment": "uncertain",
+    "ticker": "MTR"
+  },
+  "obs-033": {
+    "duplicate_kind": "unique",
+    "event": "litigation_penalty",
+    "sentiment": "negative",
+    "ticker": "SKY"
+  },
+  "obs-034": {
+    "duplicate_kind": "unique",
+    "event": "governance_personnel",
+    "sentiment": "neutral",
+    "ticker": "LUM"
+  },
+  "obs-035": {
+    "duplicate_kind": "unique",
+    "event": "macro_market",
+    "sentiment": "negative",
+    "ticker": "PRM"
+  },
+  "obs-036": {
+    "duplicate_kind": "unique",
+    "event": "other",
+    "sentiment": "neutral",
+    "ticker": "ECO"
+  },
+  "obs-038": {
+    "duplicate_kind": "unique",
+    "event": "merger_acquisition",
+    "sentiment": "uncertain",
+    "ticker": "BRC"
+  },
+  "obs-039": {
+    "duplicate_kind": "unique",
+    "event": "policy_regulation",
+    "sentiment": "neutral",
+    "ticker": "HLS"
+  },
+  "obs-040": {
+    "duplicate_kind": "unique",
+    "event": "operations_product",
+    "sentiment": "positive",
+    "ticker": "NVM"
+  },
+  "obs-041": {
+    "duplicate_kind": "unique",
+    "event": "financing_capital",
+    "sentiment": "uncertain",
+    "ticker": "QNT"
+  },
+  "obs-042": {
+    "duplicate_kind": "unique",
+    "event": "litigation_penalty",
+    "sentiment": "negative",
+    "ticker": "ORC"
+  }
 }

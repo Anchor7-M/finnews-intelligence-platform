@@ -24,3 +24,4 @@
 - SQLAlchemy parameterization.
 - `.env` ignored and `.env.example` safe.
 - No full article bodies stored in Milestone 0.
+- Deterministic malformed fixture records verify invalid URL, language, timestamp, missing title, and malformed JSONL handling.

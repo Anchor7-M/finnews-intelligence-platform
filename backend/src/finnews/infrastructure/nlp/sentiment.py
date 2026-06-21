@@ -5,9 +5,21 @@ from finnews.domain.enums import SentimentLabel
 from finnews.infrastructure.normalization import comparison_text
 
 POSITIVE = ["higher", "improved", "support", "resolved", "提升", "改善", "增长"]
-NEGATIVE = ["risk", "pressure", "outage", "litigation", "interruption", "风险", "压力", "诉讼"]
+NEGATIVE = [
+    "risk",
+    "pressure",
+    "outage",
+    "litigation",
+    "interruption",
+    "风险",
+    "压力",
+    "诉讼",
+    "走弱",
+    "承压",
+]
 UNCERTAIN = ["may", "uncertain", "cautious", "non-binding", "可能", "不确定", "评估"]
 NEGATORS = ["not", "no", "暂无", "未"]
+INTENSIFIERS = ["strongly", "materially", "明显", "显著"]
 
 
 def analyze_sentiment(article: Article) -> ArticleSentiment:
@@ -26,6 +38,8 @@ def analyze_sentiment(article: Article) -> ArticleSentiment:
     evidence.extend(uncertain_hits)
     if any(word in text for word in NEGATORS) and score < 0:
         score += 0.15
+    if any(comparison_text(word) in text for word in INTENSIFIERS) and score != 0:
+        score *= 1.25
     score = max(-1.0, min(1.0, score))
     if uncertain_hits and abs(score) < 0.5:
         label = SentimentLabel.UNCERTAIN

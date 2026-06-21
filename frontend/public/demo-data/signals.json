@@ -1,39 +1,38 @@
 [
   {
-    "signal_date": "2026-06-21",
-    "ticker": "NVM",
-    "article_count": 2,
-    "unique_source_count": 2,
-    "weighted_sentiment_score": -0.551,
-    "negative_event_count": 1,
-    "event_distribution": {
-      "governance_personnel": 1,
-      "operations_product": 1
-    },
-    "novelty_score": 0.5,
-    "source_diversity_score": 0.667,
-    "schema_version": "demo-v1"
-  },
-  {
-    "signal_date": "2026-06-21",
-    "ticker": "HLS",
+    "signal_date": "2026-07-01",
+    "ticker": "QNT",
     "article_count": 1,
     "unique_source_count": 1,
     "weighted_sentiment_score": 0.0,
     "negative_event_count": 0,
     "event_distribution": {
-      "merger_acquisition": 1
+      "governance_personnel": 1
     },
     "novelty_score": 0.25,
     "source_diversity_score": 0.333,
     "schema_version": "demo-v1"
   },
   {
-    "signal_date": "2026-06-21",
-    "ticker": "BRC",
+    "signal_date": "2026-07-01",
+    "ticker": "PRM",
     "article_count": 1,
     "unique_source_count": 1,
-    "weighted_sentiment_score": -0.304,
+    "weighted_sentiment_score": -0.142,
+    "negative_event_count": 0,
+    "event_distribution": {
+      "macro_market": 1
+    },
+    "novelty_score": 0.25,
+    "source_diversity_score": 0.333,
+    "schema_version": "demo-v1"
+  },
+  {
+    "signal_date": "2026-07-01",
+    "ticker": "MTR",
+    "article_count": 1,
+    "unique_source_count": 1,
+    "weighted_sentiment_score": 0.0,
     "negative_event_count": 0,
     "event_distribution": {
       "operations_product": 1
@@ -43,11 +42,25 @@
     "schema_version": "demo-v1"
   },
   {
-    "signal_date": "2026-06-20",
-    "ticker": "HLS",
+    "signal_date": "2026-07-01",
+    "ticker": "ALP",
     "article_count": 1,
     "unique_source_count": 1,
-    "weighted_sentiment_score": 0.276,
+    "weighted_sentiment_score": 0.22,
+    "negative_event_count": 0,
+    "event_distribution": {
+      "operations_product": 1
+    },
+    "novelty_score": 0.25,
+    "source_diversity_score": 0.333,
+    "schema_version": "demo-v1"
+  },
+  {
+    "signal_date": "2026-06-23",
+    "ticker": "QNT",
+    "article_count": 1,
+    "unique_source_count": 1,
+    "weighted_sentiment_score": 0.0,
     "negative_event_count": 0,
     "event_distribution": {
       "financing_capital": 1
@@ -57,8 +70,50 @@
     "schema_version": "demo-v1"
   },
   {
-    "signal_date": "2026-06-20",
-    "ticker": "BRC",
+    "signal_date": "2026-06-23",
+    "ticker": "PRM",
+    "article_count": 1,
+    "unique_source_count": 1,
+    "weighted_sentiment_score": -0.553,
+    "negative_event_count": 1,
+    "event_distribution": {
+      "macro_market": 1
+    },
+    "novelty_score": 0.25,
+    "source_diversity_score": 0.333,
+    "schema_version": "demo-v1"
+  },
+  {
+    "signal_date": "2026-06-23",
+    "ticker": "ORC",
+    "article_count": 1,
+    "unique_source_count": 1,
+    "weighted_sentiment_score": -0.79,
+    "negative_event_count": 1,
+    "event_distribution": {
+      "litigation_penalty": 1
+    },
+    "novelty_score": 0.25,
+    "source_diversity_score": 0.333,
+    "schema_version": "demo-v1"
+  },
+  {
+    "signal_date": "2026-06-23",
+    "ticker": "NVM",
+    "article_count": 1,
+    "unique_source_count": 1,
+    "weighted_sentiment_score": 0.22,
+    "negative_event_count": 0,
+    "event_distribution": {
+      "operations_product": 1
+    },
+    "novelty_score": 0.25,
+    "source_diversity_score": 0.333,
+    "schema_version": "demo-v1"
+  },
+  {
+    "signal_date": "2026-06-23",
+    "ticker": "HLS",
     "article_count": 1,
     "unique_source_count": 1,
     "weighted_sentiment_score": 0.0,
@@ -71,18 +126,521 @@
     "schema_version": "demo-v1"
   },
   {
-    "signal_date": "2026-06-20",
-    "ticker": "ALP",
-    "article_count": 3,
-    "unique_source_count": 2,
-    "weighted_sentiment_score": 0.591,
+    "signal_date": "2026-06-23",
+    "ticker": "BRC",
+    "article_count": 1,
+    "unique_source_count": 1,
+    "weighted_sentiment_score": 0.0,
     "negative_event_count": 0,
     "event_distribution": {
-      "operations_product": 1,
+      "merger_acquisition": 1
+    },
+    "novelty_score": 0.25,
+    "source_diversity_score": 0.333,
+    "schema_version": "demo-v1"
+  },
+  {
+    "signal_date": "2026-06-23",
+    "ticker": "ALP",
+    "article_count": 1,
+    "unique_source_count": 1,
+    "weighted_sentiment_score": 0.621,
+    "negative_event_count": 0,
+    "event_distribution": {
+      "earnings": 1
+    },
+    "novelty_score": 0.25,
+    "source_diversity_score": 0.333,
+    "schema_version": "demo-v1"
+  },
+  {
+    "signal_date": "2026-06-22",
+    "ticker": "VTL",
+    "article_count": 1,
+    "unique_source_count": 1,
+    "weighted_sentiment_score": 0.22,
+    "negative_event_count": 0,
+    "event_distribution": {
+      "operations_product": 1
+    },
+    "novelty_score": 0.25,
+    "source_diversity_score": 0.333,
+    "schema_version": "demo-v1"
+  },
+  {
+    "signal_date": "2026-06-22",
+    "ticker": "SKY",
+    "article_count": 1,
+    "unique_source_count": 1,
+    "weighted_sentiment_score": -0.79,
+    "negative_event_count": 1,
+    "event_distribution": {
+      "litigation_penalty": 1
+    },
+    "novelty_score": 0.25,
+    "source_diversity_score": 0.333,
+    "schema_version": "demo-v1"
+  },
+  {
+    "signal_date": "2026-06-22",
+    "ticker": "QNT",
+    "article_count": 1,
+    "unique_source_count": 1,
+    "weighted_sentiment_score": 0.0,
+    "negative_event_count": 0,
+    "event_distribution": {
+      "merger_acquisition": 1
+    },
+    "novelty_score": 0.25,
+    "source_diversity_score": 0.333,
+    "schema_version": "demo-v1"
+  },
+  {
+    "signal_date": "2026-06-22",
+    "ticker": "ORC",
+    "article_count": 1,
+    "unique_source_count": 1,
+    "weighted_sentiment_score": 0.0,
+    "negative_event_count": 0,
+    "event_distribution": {
+      "policy_regulation": 1
+    },
+    "novelty_score": 0.25,
+    "source_diversity_score": 0.333,
+    "schema_version": "demo-v1"
+  },
+  {
+    "signal_date": "2026-06-22",
+    "ticker": "MTR",
+    "article_count": 1,
+    "unique_source_count": 1,
+    "weighted_sentiment_score": 0.0,
+    "negative_event_count": 0,
+    "event_distribution": {
+      "financing_capital": 1
+    },
+    "novelty_score": 0.25,
+    "source_diversity_score": 0.333,
+    "schema_version": "demo-v1"
+  },
+  {
+    "signal_date": "2026-06-22",
+    "ticker": "LUM",
+    "article_count": 1,
+    "unique_source_count": 1,
+    "weighted_sentiment_score": 0.0,
+    "negative_event_count": 0,
+    "event_distribution": {
+      "governance_personnel": 1
+    },
+    "novelty_score": 0.25,
+    "source_diversity_score": 0.333,
+    "schema_version": "demo-v1"
+  },
+  {
+    "signal_date": "2026-06-22",
+    "ticker": "HLS",
+    "article_count": 1,
+    "unique_source_count": 1,
+    "weighted_sentiment_score": 0.0,
+    "negative_event_count": 0,
+    "event_distribution": {
+      "other": 1
+    },
+    "novelty_score": 0.25,
+    "source_diversity_score": 0.333,
+    "schema_version": "demo-v1"
+  },
+  {
+    "signal_date": "2026-06-22",
+    "ticker": "ECO",
+    "article_count": 1,
+    "unique_source_count": 1,
+    "weighted_sentiment_score": 0.0,
+    "negative_event_count": 0,
+    "event_distribution": {
+      "other": 1
+    },
+    "novelty_score": 0.25,
+    "source_diversity_score": 0.333,
+    "schema_version": "demo-v1"
+  },
+  {
+    "signal_date": "2026-06-21",
+    "ticker": "VTL",
+    "article_count": 1,
+    "unique_source_count": 1,
+    "weighted_sentiment_score": 0.621,
+    "negative_event_count": 0,
+    "event_distribution": {
+      "earnings": 1
+    },
+    "novelty_score": 0.25,
+    "source_diversity_score": 0.333,
+    "schema_version": "demo-v1"
+  },
+  {
+    "signal_date": "2026-06-21",
+    "ticker": "SKY",
+    "article_count": 1,
+    "unique_source_count": 1,
+    "weighted_sentiment_score": 0.0,
+    "negative_event_count": 0,
+    "event_distribution": {
+      "policy_regulation": 1
+    },
+    "novelty_score": 0.25,
+    "source_diversity_score": 0.333,
+    "schema_version": "demo-v1"
+  },
+  {
+    "signal_date": "2026-06-21",
+    "ticker": "PRM",
+    "article_count": 1,
+    "unique_source_count": 1,
+    "weighted_sentiment_score": 0.0,
+    "negative_event_count": 0,
+    "event_distribution": {
+      "financing_capital": 1
+    },
+    "novelty_score": 0.25,
+    "source_diversity_score": 0.333,
+    "schema_version": "demo-v1"
+  },
+  {
+    "signal_date": "2026-06-21",
+    "ticker": "NVM",
+    "article_count": 1,
+    "unique_source_count": 1,
+    "weighted_sentiment_score": 0.621,
+    "negative_event_count": 0,
+    "event_distribution": {
+      "earnings": 1
+    },
+    "novelty_score": 0.25,
+    "source_diversity_score": 0.333,
+    "schema_version": "demo-v1"
+  },
+  {
+    "signal_date": "2026-06-21",
+    "ticker": "LUM",
+    "article_count": 1,
+    "unique_source_count": 1,
+    "weighted_sentiment_score": 0.22,
+    "negative_event_count": 0,
+    "event_distribution": {
+      "operations_product": 1
+    },
+    "novelty_score": 0.25,
+    "source_diversity_score": 0.333,
+    "schema_version": "demo-v1"
+  },
+  {
+    "signal_date": "2026-06-21",
+    "ticker": "ECO",
+    "article_count": 1,
+    "unique_source_count": 1,
+    "weighted_sentiment_score": -0.79,
+    "negative_event_count": 1,
+    "event_distribution": {
+      "litigation_penalty": 1
+    },
+    "novelty_score": 0.25,
+    "source_diversity_score": 0.333,
+    "schema_version": "demo-v1"
+  },
+  {
+    "signal_date": "2026-06-21",
+    "ticker": "BRC",
+    "article_count": 1,
+    "unique_source_count": 1,
+    "weighted_sentiment_score": -0.553,
+    "negative_event_count": 1,
+    "event_distribution": {
+      "macro_market": 1
+    },
+    "novelty_score": 0.25,
+    "source_diversity_score": 0.333,
+    "schema_version": "demo-v1"
+  },
+  {
+    "signal_date": "2026-06-21",
+    "ticker": "ALP",
+    "article_count": 1,
+    "unique_source_count": 1,
+    "weighted_sentiment_score": 0.0,
+    "negative_event_count": 0,
+    "event_distribution": {
+      "governance_personnel": 1
+    },
+    "novelty_score": 0.25,
+    "source_diversity_score": 0.333,
+    "schema_version": "demo-v1"
+  },
+  {
+    "signal_date": "2026-06-20",
+    "ticker": "QNT",
+    "article_count": 1,
+    "unique_source_count": 1,
+    "weighted_sentiment_score": -0.553,
+    "negative_event_count": 1,
+    "event_distribution": {
+      "macro_market": 1
+    },
+    "novelty_score": 0.25,
+    "source_diversity_score": 0.333,
+    "schema_version": "demo-v1"
+  },
+  {
+    "signal_date": "2026-06-20",
+    "ticker": "PRM",
+    "article_count": 1,
+    "unique_source_count": 1,
+    "weighted_sentiment_score": 0.0,
+    "negative_event_count": 0,
+    "event_distribution": {
+      "merger_acquisition": 1
+    },
+    "novelty_score": 0.25,
+    "source_diversity_score": 0.333,
+    "schema_version": "demo-v1"
+  },
+  {
+    "signal_date": "2026-06-20",
+    "ticker": "ORC",
+    "article_count": 1,
+    "unique_source_count": 1,
+    "weighted_sentiment_score": 0.0,
+    "negative_event_count": 0,
+    "event_distribution": {
+      "other": 1
+    },
+    "novelty_score": 0.25,
+    "source_diversity_score": 0.333,
+    "schema_version": "demo-v1"
+  },
+  {
+    "signal_date": "2026-06-20",
+    "ticker": "NVM",
+    "article_count": 1,
+    "unique_source_count": 1,
+    "weighted_sentiment_score": 0.0,
+    "negative_event_count": 0,
+    "event_distribution": {
+      "governance_personnel": 1
+    },
+    "novelty_score": 0.25,
+    "source_diversity_score": 0.333,
+    "schema_version": "demo-v1"
+  },
+  {
+    "signal_date": "2026-06-20",
+    "ticker": "MTR",
+    "article_count": 1,
+    "unique_source_count": 1,
+    "weighted_sentiment_score": 0.0,
+    "negative_event_count": 0,
+    "event_distribution": {
+      "merger_acquisition": 1
+    },
+    "novelty_score": 0.25,
+    "source_diversity_score": 0.333,
+    "schema_version": "demo-v1"
+  },
+  {
+    "signal_date": "2026-06-20",
+    "ticker": "HLS",
+    "article_count": 2,
+    "unique_source_count": 1,
+    "weighted_sentiment_score": -1.0,
+    "negative_event_count": 2,
+    "event_distribution": {
+      "litigation_penalty": 2
+    },
+    "novelty_score": 0.25,
+    "source_diversity_score": 0.333,
+    "schema_version": "demo-v1"
+  },
+  {
+    "signal_date": "2026-06-20",
+    "ticker": "BRC",
+    "article_count": 1,
+    "unique_source_count": 1,
+    "weighted_sentiment_score": 0.0,
+    "negative_event_count": 0,
+    "event_distribution": {
+      "financing_capital": 1
+    },
+    "novelty_score": 0.25,
+    "source_diversity_score": 0.333,
+    "schema_version": "demo-v1"
+  },
+  {
+    "signal_date": "2026-06-20",
+    "ticker": "ALP",
+    "article_count": 1,
+    "unique_source_count": 1,
+    "weighted_sentiment_score": 0.22,
+    "negative_event_count": 0,
+    "event_distribution": {
+      "operations_product": 1
+    },
+    "novelty_score": 0.25,
+    "source_diversity_score": 0.333,
+    "schema_version": "demo-v1"
+  },
+  {
+    "signal_date": "2026-06-19",
+    "ticker": "VTL",
+    "article_count": 1,
+    "unique_source_count": 1,
+    "weighted_sentiment_score": 0.0,
+    "negative_event_count": 0,
+    "event_distribution": {
+      "governance_personnel": 1
+    },
+    "novelty_score": 0.25,
+    "source_diversity_score": 0.333,
+    "schema_version": "demo-v1"
+  },
+  {
+    "signal_date": "2026-06-19",
+    "ticker": "SKY",
+    "article_count": 1,
+    "unique_source_count": 1,
+    "weighted_sentiment_score": 0.0,
+    "negative_event_count": 0,
+    "event_distribution": {
+      "other": 1
+    },
+    "novelty_score": 0.25,
+    "source_diversity_score": 0.333,
+    "schema_version": "demo-v1"
+  },
+  {
+    "signal_date": "2026-06-19",
+    "ticker": "QNT",
+    "article_count": 1,
+    "unique_source_count": 1,
+    "weighted_sentiment_score": 0.0,
+    "negative_event_count": 0,
+    "event_distribution": {
+      "financing_capital": 1
+    },
+    "novelty_score": 0.25,
+    "source_diversity_score": 0.333,
+    "schema_version": "demo-v1"
+  },
+  {
+    "signal_date": "2026-06-19",
+    "ticker": "ORC",
+    "article_count": 1,
+    "unique_source_count": 1,
+    "weighted_sentiment_score": -0.79,
+    "negative_event_count": 1,
+    "event_distribution": {
+      "litigation_penalty": 1
+    },
+    "novelty_score": 0.25,
+    "source_diversity_score": 0.333,
+    "schema_version": "demo-v1"
+  },
+  {
+    "signal_date": "2026-06-19",
+    "ticker": "MTR",
+    "article_count": 1,
+    "unique_source_count": 1,
+    "weighted_sentiment_score": -0.553,
+    "negative_event_count": 1,
+    "event_distribution": {
+      "macro_market": 1
+    },
+    "novelty_score": 0.25,
+    "source_diversity_score": 0.333,
+    "schema_version": "demo-v1"
+  },
+  {
+    "signal_date": "2026-06-19",
+    "ticker": "LUM",
+    "article_count": 2,
+    "unique_source_count": 1,
+    "weighted_sentiment_score": 0.875,
+    "negative_event_count": 0,
+    "event_distribution": {
       "earnings": 2
     },
-    "novelty_score": 0.5,
-    "source_diversity_score": 0.667,
+    "novelty_score": 0.25,
+    "source_diversity_score": 0.333,
+    "schema_version": "demo-v1"
+  },
+  {
+    "signal_date": "2026-06-19",
+    "ticker": "HLS",
+    "article_count": 1,
+    "unique_source_count": 1,
+    "weighted_sentiment_score": 0.0,
+    "negative_event_count": 0,
+    "event_distribution": {
+      "policy_regulation": 1
+    },
+    "novelty_score": 0.25,
+    "source_diversity_score": 0.333,
+    "schema_version": "demo-v1"
+  },
+  {
+    "signal_date": "2026-06-19",
+    "ticker": "ECO",
+    "article_count": 2,
+    "unique_source_count": 1,
+    "weighted_sentiment_score": 0.0,
+    "negative_event_count": 0,
+    "event_distribution": {
+      "policy_regulation": 2
+    },
+    "novelty_score": 0.25,
+    "source_diversity_score": 0.333,
+    "schema_version": "demo-v1"
+  },
+  {
+    "signal_date": "2026-06-18",
+    "ticker": "NVM",
+    "article_count": 1,
+    "unique_source_count": 1,
+    "weighted_sentiment_score": 0.22,
+    "negative_event_count": 0,
+    "event_distribution": {
+      "operations_product": 1
+    },
+    "novelty_score": 0.25,
+    "source_diversity_score": 0.333,
+    "schema_version": "demo-v1"
+  },
+  {
+    "signal_date": "2026-06-18",
+    "ticker": "BRC",
+    "article_count": 1,
+    "unique_source_count": 1,
+    "weighted_sentiment_score": 0.0,
+    "negative_event_count": 0,
+    "event_distribution": {
+      "merger_acquisition": 1
+    },
+    "novelty_score": 0.25,
+    "source_diversity_score": 0.333,
+    "schema_version": "demo-v1"
+  },
+  {
+    "signal_date": "2026-06-18",
+    "ticker": "ALP",
+    "article_count": 1,
+    "unique_source_count": 1,
+    "weighted_sentiment_score": 0.621,
+    "negative_event_count": 0,
+    "event_distribution": {
+      "earnings": 1
+    },
+    "novelty_score": 0.25,
+    "source_diversity_score": 0.333,
     "schema_version": "demo-v1"
   }
 ]

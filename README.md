@@ -30,6 +30,16 @@ flowchart LR
 - Vue 3 TypeScript dashboard with static-demo and API data modes.
 - Local verification script, docs, and future GitHub Actions/Page workflow files.
 
+## Verified Synthetic Dataset
+
+- 68 raw observations loaded in the memory demo.
+- 60 valid JSONL observations, 4 malformed JSONL validation records, and 4 RSS fixture records.
+- 12 clearly fictional companies across multiple fictional sectors.
+- 5 loaded synthetic sources.
+- Pipeline demo output: 49 stored article records, 15 exact duplicate observations, 21 near-duplicate observations, 4 rejected observations, 7 digests, and 46 daily company signals.
+- All 9 event categories and all 4 sentiment labels are represented.
+- `finnews evaluate-demo` currently reports `synthetic_demo_matches=58 synthetic_demo_total=58`.
+
 ## Quick Start
 
 ```text
@@ -58,6 +68,17 @@ python scripts/dev.py db-down
 ```
 
 The database is bound to `127.0.0.1:55432`, uses a local demo password, and is not suitable for production.
+
+PostgreSQL integration has not been verified in this local audit because Docker was not started.
+
+## Verification Evidence
+
+The latest lightweight verification passed:
+
+- Backend tests: 39 passed.
+- Backend coverage: 92.09%, threshold 80%.
+- Frontend tests: 8 passed.
+- Ruff, Ruff format, mypy, ESLint, Prettier, TypeScript, Vite build, memory demo, static export, and `git diff --check` passed.
 
 ## API Examples
 

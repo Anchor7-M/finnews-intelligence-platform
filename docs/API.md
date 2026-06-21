@@ -16,6 +16,8 @@ Routes are read-only and mounted under `/api/v1` except health checks.
 
 Article filters: `query`, `source`, `ticker`, `event_type`, `sentiment_label`, `language`, `published_from`, `published_to`, `limit`, and `offset`.
 
+Milestone 0 API contract tests verify all required endpoints, success responses, response shapes, filters, bounded pagination, request IDs, error envelopes, readiness behavior, and timezone-aware timestamps in the memory profile.
+
 Errors use:
 
 ```json

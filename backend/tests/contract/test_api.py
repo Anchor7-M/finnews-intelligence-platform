@@ -38,7 +38,7 @@ def test_article_detail_not_found_uses_error_envelope() -> None:
 def test_companies_digest_signals_and_overview() -> None:
     api = client()
     companies = api.get("/api/v1/companies").json()
-    assert len(companies) == 4
+    assert len(companies) == 12
     assert api.get("/api/v1/companies/ALP/articles").status_code == 200
     assert api.get("/api/v1/digests/2026-06-20").status_code == 200
     assert api.get("/api/v1/signals/daily").json()

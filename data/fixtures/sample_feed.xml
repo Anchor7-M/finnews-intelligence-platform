@@ -5,25 +5,32 @@
     <link>https://demo.local/feed</link>
     <description>Offline synthetic feed for Milestone 0 tests.</description>
     <item>
-      <guid>feed-001</guid>
-      <title>阿尔派机器人推出新一代维护平台</title>
-      <link>https://demo.local/feed/alp-product?utm_medium=rss</link>
-      <description>虚构公司阿尔派机器人发布维护平台，预计提升售后服务效率，但短期收入贡献仍不确定。</description>
-      <pubDate>Sat, 20 Jun 2026 15:15:00 +0800</pubDate>
+      <guid>obs-101</guid>
+      <title>阿尔派机器人推出区域客户维护平台</title>
+      <link>https://demo.local/synthetic-import-wire/alp-101?utm_source=fixture&amp;id=101</link>
+      <description>阿尔派机器人发布产品平台，预计提升服务效率。 演示编号 101.</description>
+      <pubDate>Wed, 01 Jul 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <guid>feed-002</guid>
-      <title>NovaMed appoints new chief operating officer</title>
-      <link>https://demo.local/feed/nvm-governance</link>
-      <description>The synthetic device maker NovaMed appointed a new operating chief after a planned leadership review.</description>
-      <pubDate>Sun, 21 Jun 2026 09:45:00 +0800</pubDate>
+      <guid>obs-102</guid>
+      <title>QuantHarbor appoints new chief operating officer</title>
+      <link>https://demo.local/synthetic-announcement-board/qnt-102?utm_source=fixture&amp;id=102</link>
+      <description>QuantHarbor appointed a new operating chief after a planned leadership review. Demo case 102.</description>
+      <pubDate>Wed, 01 Jul 2026 03:00:00 +0900</pubDate>
     </item>
     <item>
-      <guid>feed-003</guid>
-      <title>HelioStorage signs non-binding merger discussion memo</title>
-      <link>https://demo.local/feed/hls-ma</link>
-      <description>HelioStorage said early merger discussions are non-binding and may not result in a transaction.</description>
-      <pubDate>Sun, 21 Jun 2026 14:20:00 +0800</pubDate>
+      <guid>obs-103</guid>
+      <title>城籽食品发布例行投资者日程更新</title>
+      <link>https://demo.local/synthetic-evening-brief/mtr-103?utm_source=fixture&amp;id=103</link>
+      <description>城籽食品发布例行日程通知，经营信息没有变化。 演示编号 103.</description>
+      <pubDate>Wed, 01 Jul 2026 06:00:00 -0400</pubDate>
+    </item>
+    <item>
+      <guid>obs-104</guid>
+      <title>PrimeVale notes softer macro market orders</title>
+      <link>https://demo.local/synthetic-jsonl-desk/prm-104?utm_source=fixture&amp;id=104</link>
+      <description>PrimeVale said market demand weakened and orders may face pressure this quarter. Demo case 104.</description>
+      <pubDate>Wed, 01 Jul 2026 09:00:00 +0800</pubDate>
     </item>
   </channel>
 </rss>

@@ -25,16 +25,19 @@ class JsonlFixtureSource:
         _check_file(self.path, self.max_bytes)
         records: list[SourceRecord] = []
         with self.path.open("r", encoding="utf-8") as handle:
-            for line in handle:
+            for line_number, line in enumerate(handle, start=1):
                 if not line.strip():
                     continue
-                item: dict[str, Any] = json.loads(line)
+                try:
+                    item: dict[str, Any] = json.loads(line)
+                except json.JSONDecodeError as exc:
+                    raise ValueError(f"malformed JSONL at line {line_number}: {exc.msg}") from exc
                 records.append(
                     SourceRecord(
                         source_key=str(item["source_key"]),
                         source_name=str(item["source_name"]),
                         source_type=SourceType(str(item.get("source_type", "fixture"))),
-                        article_id=str(item["article_id"]),
+                        article_id=str(item.get("article_id") or ""),
                         url=str(item["url"]),
                         title=str(item["title"]),
                         summary=str(item["summary"]),
