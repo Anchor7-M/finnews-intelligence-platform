@@ -1,0 +1,145 @@
+[
+  {
+    "digest_date": "2026-06-21",
+    "timezone": "Asia/Shanghai",
+    "article_count": 4,
+    "company_count": 3,
+    "event_counts": {
+      "merger_acquisition": 1,
+      "operations_product": 2,
+      "governance_personnel": 1
+    },
+    "sentiment_counts": {
+      "uncertain": 2,
+      "neutral": 1,
+      "negative": 1
+    },
+    "payload": {
+      "synthetic": true,
+      "not_investment_advice": true,
+      "groups": [
+        {
+          "article_id": "cd8039af-c257-4006-a5d8-73c6388f8307",
+          "title": "HelioStorage signs non-binding merger discussion memo",
+          "source": "Synthetic Local Feed",
+          "url": "https://demo.local/feed/hls-ma",
+          "event": "merger_acquisition",
+          "sentiment": "uncertain",
+          "company_ids": [
+            "b92cc3d7-4e70-4810-afd8-38a8ff55285b"
+          ]
+        },
+        {
+          "article_id": "7a0c9a7c-61b5-43b0-b1ff-667b82d0b483",
+          "title": "BrightRiver Cloud says regional outage was resolved",
+          "source": "Synthetic JSONL Desk",
+          "url": "https://demo.local/news/brc-outage",
+          "event": "operations_product",
+          "sentiment": "uncertain",
+          "company_ids": [
+            "807c5b71-f431-47eb-9cab-dc53fcea3cce"
+          ]
+        },
+        {
+          "article_id": "30f20a24-8f4f-4cb4-85c6-0aaa80c94316",
+          "title": "NovaMed appoints new chief operating officer",
+          "source": "Synthetic Local Feed",
+          "url": "https://demo.local/feed/nvm-governance",
+          "event": "governance_personnel",
+          "sentiment": "neutral",
+          "company_ids": [
+            "0e1cbff2-fd57-4b9f-a42a-62446a3ce291"
+          ]
+        },
+        {
+          "article_id": "409b4039-bd33-4c3d-81ae-a65cfdc42309",
+          "title": "新维医疗提示海外诉讼风险",
+          "source": "Synthetic JSONL Desk",
+          "url": "https://demo.local/news/nvm-warning",
+          "event": "operations_product",
+          "sentiment": "negative",
+          "company_ids": [
+            "0e1cbff2-fd57-4b9f-a42a-62446a3ce291"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "digest_date": "2026-06-20",
+    "timezone": "Asia/Shanghai",
+    "article_count": 5,
+    "company_count": 3,
+    "event_counts": {
+      "operations_product": 1,
+      "financing_capital": 1,
+      "policy_regulation": 1,
+      "earnings": 2
+    },
+    "sentiment_counts": {
+      "uncertain": 3,
+      "positive": 2
+    },
+    "payload": {
+      "synthetic": true,
+      "not_investment_advice": true,
+      "groups": [
+        {
+          "article_id": "3b8421ee-0554-494e-b3ef-0215742a5a92",
+          "title": "阿尔派机器人推出新一代维护平台",
+          "source": "Synthetic Local Feed",
+          "url": "https://demo.local/feed/alp-product",
+          "event": "operations_product",
+          "sentiment": "uncertain",
+          "company_ids": [
+            "fd6ca6ca-8583-4636-84eb-0c36113e6aa2"
+          ]
+        },
+        {
+          "article_id": "c3b6e68f-095b-4c8f-aa37-39de2de08872",
+          "title": "HelioStorage announces financing plan for battery module line",
+          "source": "Synthetic JSONL Desk",
+          "url": "https://demo.local/news/hls-financing",
+          "event": "financing_capital",
+          "sentiment": "uncertain",
+          "company_ids": [
+            "b92cc3d7-4e70-4810-afd8-38a8ff55285b"
+          ]
+        },
+        {
+          "article_id": "c3a1d2f9-2283-4c33-a295-c6e8451943b1",
+          "title": "明河云回应新的数据中心能耗政策",
+          "source": "Synthetic JSONL Desk",
+          "url": "https://demo.local/news/brc-policy",
+          "event": "policy_regulation",
+          "sentiment": "uncertain",
+          "company_ids": [
+            "807c5b71-f431-47eb-9cab-dc53fcea3cce"
+          ]
+        },
+        {
+          "article_id": "b9290fee-d101-4535-8839-1c664b488be8",
+          "title": "Alpine Robotics reports higher quarterly earnings as service demand rises",
+          "source": "Synthetic JSONL Desk",
+          "url": "https://demo.local/news/alp-earnings-near",
+          "event": "earnings",
+          "sentiment": "positive",
+          "company_ids": [
+            "fd6ca6ca-8583-4636-84eb-0c36113e6aa2"
+          ]
+        },
+        {
+          "article_id": "06e91bab-9809-49d5-9288-7cf10fd827ad",
+          "title": "Alpine Robotics reports higher quarterly earnings on service demand",
+          "source": "Synthetic JSONL Desk",
+          "url": "https://demo.local/news/alp-earnings",
+          "event": "earnings",
+          "sentiment": "positive",
+          "company_ids": [
+            "fd6ca6ca-8583-4636-84eb-0c36113e6aa2"
+          ]
+        }
+      ]
+    }
+  }
+]

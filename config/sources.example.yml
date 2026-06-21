@@ -1,0 +1,25 @@
+sources:
+  - source_key: synthetic-jsonl
+    source_type: fixture
+    enabled: true
+    content_storage_policy: metadata_only
+    base_url: https://demo.local
+    terms_url: https://demo.local/terms
+    timeout_seconds: 5
+    max_response_bytes: 5000000
+    retries: 0
+    rate_limit: local_fixture_only
+    user_agent: finnews-intelligence-platform/0.1
+    provenance_required: true
+  - source_key: future-rss-example
+    source_type: rss
+    enabled: false
+    content_storage_policy: metadata_only
+    base_url: https://publisher.example/feed
+    terms_url: https://publisher.example/terms
+    timeout_seconds: 10
+    max_response_bytes: 5000000
+    retries: 2
+    rate_limit: conservative
+    user_agent: finnews-intelligence-platform/0.1
+    provenance_required: true

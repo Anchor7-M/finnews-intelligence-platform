@@ -1,0 +1,11 @@
+{
+  "jsonl-001": {"event": "earnings", "sentiment": "positive", "ticker": "ALP"},
+  "jsonl-002": {"event": "policy_regulation", "sentiment": "neutral", "ticker": "BRC"},
+  "jsonl-003": {"event": "financing_capital", "sentiment": "uncertain", "ticker": "HLS"},
+  "jsonl-004": {"event": "litigation_penalty", "sentiment": "negative", "ticker": "NVM"},
+  "jsonl-006": {"event": "operations_product", "sentiment": "negative", "ticker": "BRC"},
+  "jsonl-007": {"event": "earnings", "sentiment": "positive", "ticker": "ALP"},
+  "feed-001": {"event": "operations_product", "sentiment": "uncertain", "ticker": "ALP"},
+  "feed-002": {"event": "governance_personnel", "sentiment": "neutral", "ticker": "NVM"},
+  "feed-003": {"event": "merger_acquisition", "sentiment": "uncertain", "ticker": "HLS"}
+}

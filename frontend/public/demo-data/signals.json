@@ -1,0 +1,88 @@
+[
+  {
+    "signal_date": "2026-06-21",
+    "ticker": "NVM",
+    "article_count": 2,
+    "unique_source_count": 2,
+    "weighted_sentiment_score": -0.551,
+    "negative_event_count": 1,
+    "event_distribution": {
+      "governance_personnel": 1,
+      "operations_product": 1
+    },
+    "novelty_score": 0.5,
+    "source_diversity_score": 0.667,
+    "schema_version": "demo-v1"
+  },
+  {
+    "signal_date": "2026-06-21",
+    "ticker": "HLS",
+    "article_count": 1,
+    "unique_source_count": 1,
+    "weighted_sentiment_score": 0.0,
+    "negative_event_count": 0,
+    "event_distribution": {
+      "merger_acquisition": 1
+    },
+    "novelty_score": 0.25,
+    "source_diversity_score": 0.333,
+    "schema_version": "demo-v1"
+  },
+  {
+    "signal_date": "2026-06-21",
+    "ticker": "BRC",
+    "article_count": 1,
+    "unique_source_count": 1,
+    "weighted_sentiment_score": -0.304,
+    "negative_event_count": 0,
+    "event_distribution": {
+      "operations_product": 1
+    },
+    "novelty_score": 0.25,
+    "source_diversity_score": 0.333,
+    "schema_version": "demo-v1"
+  },
+  {
+    "signal_date": "2026-06-20",
+    "ticker": "HLS",
+    "article_count": 1,
+    "unique_source_count": 1,
+    "weighted_sentiment_score": 0.276,
+    "negative_event_count": 0,
+    "event_distribution": {
+      "financing_capital": 1
+    },
+    "novelty_score": 0.25,
+    "source_diversity_score": 0.333,
+    "schema_version": "demo-v1"
+  },
+  {
+    "signal_date": "2026-06-20",
+    "ticker": "BRC",
+    "article_count": 1,
+    "unique_source_count": 1,
+    "weighted_sentiment_score": 0.0,
+    "negative_event_count": 0,
+    "event_distribution": {
+      "policy_regulation": 1
+    },
+    "novelty_score": 0.25,
+    "source_diversity_score": 0.333,
+    "schema_version": "demo-v1"
+  },
+  {
+    "signal_date": "2026-06-20",
+    "ticker": "ALP",
+    "article_count": 3,
+    "unique_source_count": 2,
+    "weighted_sentiment_score": 0.591,
+    "negative_event_count": 0,
+    "event_distribution": {
+      "operations_product": 1,
+      "earnings": 2
+    },
+    "novelty_score": 0.5,
+    "source_diversity_score": 0.667,
+    "schema_version": "demo-v1"
+  }
+]

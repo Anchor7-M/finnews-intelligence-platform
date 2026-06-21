@@ -1,0 +1,38 @@
+[
+  {
+    "id": "fd6ca6ca-8583-4636-84eb-0c36113e6aa2",
+    "ticker": "ALP",
+    "exchange": "SYN",
+    "legal_name": "Alpine Robotics Holdings Ltd.",
+    "short_name": "Alpine Robotics",
+    "sector": "Industrial Automation",
+    "active": true
+  },
+  {
+    "id": "807c5b71-f431-47eb-9cab-dc53fcea3cce",
+    "ticker": "BRC",
+    "exchange": "SYN",
+    "legal_name": "BrightRiver Cloud Systems Inc.",
+    "short_name": "BrightRiver Cloud",
+    "sector": "Cloud Infrastructure",
+    "active": true
+  },
+  {
+    "id": "b92cc3d7-4e70-4810-afd8-38a8ff55285b",
+    "ticker": "HLS",
+    "exchange": "SYN",
+    "legal_name": "HelioStorage Energy Group",
+    "short_name": "HelioStorage",
+    "sector": "Energy Storage",
+    "active": true
+  },
+  {
+    "id": "0e1cbff2-fd57-4b9f-a42a-62446a3ce291",
+    "ticker": "NVM",
+    "exchange": "SYN",
+    "legal_name": "NovaMed Devices Co.",
+    "short_name": "NovaMed",
+    "sector": "Medical Devices",
+    "active": true
+  }
+]
