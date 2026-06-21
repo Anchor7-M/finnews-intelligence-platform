@@ -1,0 +1,27 @@
+{
+  "companies": 12,
+  "event_categories": [
+    "earnings",
+    "financing_capital",
+    "governance_personnel",
+    "litigation_penalty",
+    "macro_market",
+    "merger_acquisition",
+    "operations_product",
+    "other",
+    "policy_regulation"
+  ],
+  "exact_duplicate_observations": 8,
+  "jsonl_observations": 64,
+  "malformed_jsonl_observations": 4,
+  "near_duplicate_observations": 10,
+  "seed": 20260622,
+  "sentiment_categories": [
+    "negative",
+    "neutral",
+    "positive",
+    "uncertain"
+  ],
+  "sources": 4,
+  "valid_jsonl_observations": 60
+}

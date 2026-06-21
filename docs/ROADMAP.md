@@ -2,7 +2,9 @@
 
 ## Milestone 0
 
-Implemented: local synthetic data, modular backend, memory profile, PostgreSQL schema, FastAPI read API, Typer CLI, Vue static/API dashboard, tests, docs, resource-safe scripts.
+Implemented: deterministic local synthetic data, modular backend, memory profile, PostgreSQL schema and Alembic migration, FastAPI read API, Typer CLI, Vue static/API dashboard, tests, coverage gate, docs, resource-safe scripts.
+
+Not verified in the local compliance audit: PostgreSQL integration runtime, because Docker was not started.
 
 ## Milestone 1
 

@@ -5,7 +5,12 @@
     "legal_name": "Alpine Robotics Holdings Ltd.",
     "short_name": "Alpine Robotics",
     "sector": "Industrial Automation",
-    "aliases": ["Alpine Robotics", "ALP", "阿尔派机器人", "阿尔派"]
+    "aliases": [
+      "Alpine Robotics",
+      "ALP",
+      "阿尔派机器人",
+      "阿尔派"
+    ]
   },
   {
     "ticker": "BRC",
@@ -13,7 +18,12 @@
     "legal_name": "BrightRiver Cloud Systems Inc.",
     "short_name": "BrightRiver Cloud",
     "sector": "Cloud Infrastructure",
-    "aliases": ["BrightRiver Cloud", "BRC", "明河云", "明河"]
+    "aliases": [
+      "BrightRiver Cloud",
+      "BRC",
+      "明河云",
+      "明河"
+    ]
   },
   {
     "ticker": "HLS",
@@ -21,7 +31,12 @@
     "legal_name": "HelioStorage Energy Group",
     "short_name": "HelioStorage",
     "sector": "Energy Storage",
-    "aliases": ["HelioStorage", "HLS", "赫里奥储能", "赫里奥"]
+    "aliases": [
+      "HelioStorage",
+      "HLS",
+      "赫里奥储能",
+      "赫里奥"
+    ]
   },
   {
     "ticker": "NVM",
@@ -29,6 +44,123 @@
     "legal_name": "NovaMed Devices Co.",
     "short_name": "NovaMed",
     "sector": "Medical Devices",
-    "aliases": ["NovaMed", "NVM", "新维医疗", "新维"]
+    "aliases": [
+      "NovaMed",
+      "NVM",
+      "新维医疗",
+      "新维"
+    ]
+  },
+  {
+    "ticker": "QNT",
+    "exchange": "SYN",
+    "legal_name": "QuantHarbor Analytics PLC",
+    "short_name": "QuantHarbor",
+    "sector": "Research Software",
+    "aliases": [
+      "QuantHarbor Analytics",
+      "QuantHarbor",
+      "QNT",
+      "量港分析",
+      "量港"
+    ]
+  },
+  {
+    "ticker": "ORC",
+    "exchange": "SYN",
+    "legal_name": "Orchid Circuit Materials Ltd.",
+    "short_name": "Orchid Circuit",
+    "sector": "Electronic Materials",
+    "aliases": [
+      "Orchid Circuit Materials",
+      "Orchid Circuit",
+      "ORC",
+      "兰芯材料",
+      "兰芯"
+    ]
+  },
+  {
+    "ticker": "VTL",
+    "exchange": "SYN",
+    "legal_name": "VectorLoom Textiles Group",
+    "short_name": "VectorLoom",
+    "sector": "Advanced Textiles",
+    "aliases": [
+      "VectorLoom Textiles",
+      "VectorLoom",
+      "VTL",
+      "纬织科技",
+      "纬织"
+    ]
+  },
+  {
+    "ticker": "MTR",
+    "exchange": "SYN",
+    "legal_name": "MetroSeed Foods Inc.",
+    "short_name": "MetroSeed Foods",
+    "sector": "Consumer Staples",
+    "aliases": [
+      "MetroSeed Foods",
+      "MetroSeed",
+      "MTR",
+      "城籽食品",
+      "城籽"
+    ]
+  },
+  {
+    "ticker": "SKY",
+    "exchange": "SYN",
+    "legal_name": "SkyForge Components Co.",
+    "short_name": "SkyForge",
+    "sector": "Aerospace Components",
+    "aliases": [
+      "SkyForge Components",
+      "SkyForge",
+      "SKY",
+      "天锻部件",
+      "天锻"
+    ]
+  },
+  {
+    "ticker": "LUM",
+    "exchange": "SYN",
+    "legal_name": "LumenBridge Optics Ltd.",
+    "short_name": "LumenBridge",
+    "sector": "Optical Equipment",
+    "aliases": [
+      "LumenBridge Optics",
+      "LumenBridge",
+      "LUM",
+      "流明桥光学",
+      "流明桥"
+    ]
+  },
+  {
+    "ticker": "PRM",
+    "exchange": "SYN",
+    "legal_name": "PrimeVale Logistics SA",
+    "short_name": "PrimeVale",
+    "sector": "Logistics",
+    "aliases": [
+      "PrimeVale Logistics",
+      "PrimeVale",
+      "PRM",
+      "启谷物流",
+      "启谷"
+    ]
+  },
+  {
+    "ticker": "ECO",
+    "exchange": "SYN",
+    "legal_name": "EcoMosaic Water Systems",
+    "short_name": "EcoMosaic",
+    "sector": "Water Technology",
+    "aliases": [
+      "EcoMosaic Water",
+      "EcoMosaic",
+      "ECO",
+      "绿拼水务",
+      "绿拼"
+    ]
   }
 ]

@@ -13,7 +13,7 @@
 - Lightweight verification: `python scripts/dev.py verify-lite`
 - Backend tests: `cd backend && python -m pytest`
 - Backend lint/type checks: `cd backend && ruff check . && ruff format --check . && mypy src tests`
-- Frontend checks: `cd frontend && npm run lint && npm run typecheck && npm run test:unit -- --run && npm run build`
+- Frontend checks: `cd frontend && npm run lint && npm run format:check && npm run typecheck && npm run test:unit -- --run && npm run build`
 - Optional PostgreSQL: `python scripts/dev.py db-up`, then `python scripts/dev.py db-down`
 
 ## Rules
@@ -27,5 +27,6 @@
 ## Definition Of Done
 
 - Memory-profile demo runs end to end.
+- Backend coverage is at least 80% for core modules.
 - Backend and frontend checks pass or failures are reported precisely.
 - Implemented versus planned features are clearly separated.

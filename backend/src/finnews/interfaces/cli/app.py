@@ -7,7 +7,7 @@ from typing import Annotated
 
 import typer
 
-from finnews.application.services.export_static import build_static_payload, export_static
+from finnews.application.services.export_static import export_static
 from finnews.application.services.pipeline import NewsPipeline
 from finnews.bootstrap import FIXTURE_DIR, build_memory_repository, load_default_records
 from finnews.infrastructure.persistence.memory.repository import MemoryNewsRepository
@@ -37,7 +37,7 @@ def db_upgrade() -> None:
 
 
 @ingest_app.command("fixture")
-def ingest_fixture(path: Path) -> None:
+def ingest_fixture(path: Annotated[Path, typer.Option("--path")]) -> None:
     settings = get_settings()
     repo = MemoryNewsRepository()
     pipeline = NewsPipeline(repo, settings)
@@ -49,7 +49,7 @@ def ingest_fixture(path: Path) -> None:
 
 
 @ingest_app.command("local-feed")
-def ingest_local_feed(path: Path) -> None:
+def ingest_local_feed(path: Annotated[Path, typer.Option("--path")]) -> None:
     settings = get_settings()
     repo = MemoryNewsRepository()
     pipeline = NewsPipeline(repo, settings)
@@ -85,7 +85,7 @@ def signals(signal_date_text: Annotated[str, typer.Option("--date")]) -> None:
 
 
 @app.command("export-static")
-def export_static_command(output: Path) -> None:
+def export_static_command(output: Annotated[Path, typer.Option("--output")]) -> None:
     repo = build_memory_repository()
     export_static(repo, output)
     typer.echo(f"exported={output}")
@@ -94,21 +94,37 @@ def export_static_command(output: Path) -> None:
 @app.command("evaluate-demo")
 def evaluate_demo() -> None:
     repo = build_memory_repository()
-    expected = json.loads((FIXTURE_DIR / "expected_labels.json").read_text(encoding="utf-8"))
-    payload = build_static_payload(repo)
+    labels = json.loads((FIXTURE_DIR / "expected_labels.json").read_text(encoding="utf-8"))
+    event_by_article = {event.article_id: event for event in repo.list_events()}
+    sentiment_by_article = {sentiment.article_id: sentiment for sentiment in repo.list_sentiments()}
+    links_by_article = {link.article_id: link for link in repo.list_links()}
+    company_by_id = {company.id: company for company in repo.list_companies()}
     matched = 0
     total = 0
-    for row in payload["articles"]:
-        label = expected.get(str(row["id"])) or expected.get(str(row["url"]).rsplit("/", 1)[-1])
+    for raw in repo.raw_articles.values():
+        label = labels.get(raw.source_article_id)
         if not label:
             continue
+        article = repo.articles_by_hash.get(raw.normalized_content_hash)
+        if (
+            article is None
+            or article.id not in event_by_article
+            or article.id not in sentiment_by_article
+        ):
+            continue
+        link = links_by_article.get(article.id)
+        ticker = company_by_id[link.company_id].ticker if link else ""
         total += 1
-        matched += int(row["event"] == label["event"] and row["sentiment"] == label["sentiment"])
+        matched += int(
+            event_by_article[article.id].event_type.value == label["event"]
+            and sentiment_by_article[article.id].label.value == label["sentiment"]
+            and ticker == label["ticker"]
+        )
     typer.echo(f"synthetic_demo_matches={matched} synthetic_demo_total={total}")
 
 
 @app.command()
-def demo(profile: str = typer.Option("memory", "--profile")) -> None:
+def demo(profile: Annotated[str, typer.Option("--profile")] = "memory") -> None:
     if profile != "memory":
         typer.echo("Only memory demo is implemented for the default offline path.")
         raise typer.Exit(1)

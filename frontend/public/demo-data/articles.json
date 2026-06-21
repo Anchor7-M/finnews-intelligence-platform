@@ -1,49 +1,559 @@
 [
   {
-    "id": "cd8039af-c257-4006-a5d8-73c6388f8307",
-    "title": "HelioStorage signs non-binding merger discussion memo",
-    "summary": "HelioStorage said early merger discussions are non-binding and may not result in a transaction.",
-    "language": "en",
-    "published_at": "2026-06-21T06:20:00+00:00",
-    "market_date": "2026-06-21",
-    "url": "https://demo.local/feed/hls-ma",
+    "id": "782621e9-df3a-4967-ab2f-89100679cb82",
+    "title": "城籽食品发布例行投资者日程更新",
+    "summary": "城籽食品发布例行日程通知,经营信息没有变化。 演示编号 103.",
+    "language": "zh",
+    "published_at": "2026-07-01T10:00:00+00:00",
+    "market_date": "2026-07-01",
+    "url": "https://demo.local/synthetic-evening-brief/mtr-103?id=103",
     "source_key": "synthetic-local-feed",
     "source_name": "Synthetic Local Feed",
     "processing_state": "processed",
     "tickers": [
+      "MTR"
+    ],
+    "event": "operations_product",
+    "sentiment": "neutral"
+  },
+  {
+    "id": "1cf13c70-eb28-4d6a-8e94-184ee111aa8c",
+    "title": "PrimeVale notes softer macro market orders",
+    "summary": "PrimeVale said market demand weakened and orders may face pressure this quarter. Demo case 104.",
+    "language": "en",
+    "published_at": "2026-07-01T01:00:00+00:00",
+    "market_date": "2026-07-01",
+    "url": "https://demo.local/synthetic-jsonl-desk/prm-104?id=104",
+    "source_key": "synthetic-local-feed",
+    "source_name": "Synthetic Local Feed",
+    "processing_state": "processed",
+    "tickers": [
+      "PRM"
+    ],
+    "event": "macro_market",
+    "sentiment": "uncertain"
+  },
+  {
+    "id": "687357f9-97a0-4a50-99e5-a903da3fc832",
+    "title": "阿尔派机器人推出区域客户维护平台",
+    "summary": "阿尔派机器人发布产品平台,预计提升服务效率。 演示编号 101.",
+    "language": "zh",
+    "published_at": "2026-07-01T00:00:00+00:00",
+    "market_date": "2026-07-01",
+    "url": "https://demo.local/synthetic-import-wire/alp-101?id=101",
+    "source_key": "synthetic-local-feed",
+    "source_name": "Synthetic Local Feed",
+    "processing_state": "processed",
+    "tickers": [
+      "ALP"
+    ],
+    "event": "operations_product",
+    "sentiment": "positive"
+  },
+  {
+    "id": "9c446a2e-a06f-4c23-854d-3ca2a3992913",
+    "title": "QuantHarbor appoints new chief operating officer",
+    "summary": "QuantHarbor appointed a new operating chief after a planned leadership review. Demo case 102.",
+    "language": "en",
+    "published_at": "2026-06-30T18:00:00+00:00",
+    "market_date": "2026-07-01",
+    "url": "https://demo.local/synthetic-announcement-board/qnt-102?id=102",
+    "source_key": "synthetic-local-feed",
+    "source_name": "Synthetic Local Feed",
+    "processing_state": "processed",
+    "tickers": [
+      "QNT"
+    ],
+    "event": "governance_personnel",
+    "sentiment": "neutral"
+  },
+  {
+    "id": "6ce40fa4-90a7-4274-ae50-33a9709d0b7d",
+    "title": "量港分析披露扩产融资计划",
+    "summary": "量港分析称融资可能支持产能建设,但执行时间仍不确定。 演示编号 41.",
+    "language": "zh",
+    "published_at": "2026-06-23T12:00:00+00:00",
+    "market_date": "2026-06-23",
+    "url": "https://demo.local/synthetic-import-wire/qnt-041?id=41",
+    "source_key": "synthetic-import-wire",
+    "source_name": "Synthetic Import Wire",
+    "processing_state": "processed",
+    "tickers": [
+      "QNT"
+    ],
+    "event": "financing_capital",
+    "sentiment": "uncertain"
+  },
+  {
+    "id": "bfd05efe-6fe9-4c11-8293-55ca5249c030",
+    "title": "HelioStorage responds to new sector policy guidance",
+    "summary": "HelioStorage said the regulation changes are being evaluated with no material delivery change yet. Demo case 39.",
+    "language": "en",
+    "published_at": "2026-06-23T10:00:00+00:00",
+    "market_date": "2026-06-23",
+    "url": "https://demo.local/synthetic-evening-brief/hls-039?id=39",
+    "source_key": "synthetic-evening-brief",
+    "source_name": "Synthetic Evening Brief",
+    "processing_state": "duplicate",
+    "tickers": [
       "HLS"
+    ],
+    "event": "policy_regulation",
+    "sentiment": "neutral"
+  },
+  {
+    "id": "78265dff-dae9-4d85-a2e9-b9d74f9dc781",
+    "title": "AOrchid Circuit warns about overseas litigation expense pressure",
+    "summary": "Orchid Circuit said litigation risk could create cost pressure, although operations continue. Demo case 42. ORC",
+    "language": "en",
+    "published_at": "2026-06-23T06:00:00+00:00",
+    "market_date": "2026-06-23",
+    "url": "https://demo.local/synthetic-announcement-board/orc-042?id=42",
+    "source_key": "synthetic-announcement-board",
+    "source_name": "Synthetic Announcement Board",
+    "processing_state": "duplicate",
+    "tickers": [
+      "ORC"
+    ],
+    "event": "litigation_penalty",
+    "sentiment": "negative"
+  },
+  {
+    "id": "3f613751-b010-4dce-8ead-e5fbbf10a5be",
+    "title": "NovaMed launches maintenance platform for regional customers",
+    "summary": "NovaMed released a product platform expected to improve support efficiency. Demo case 40.",
+    "language": "en",
+    "published_at": "2026-06-23T01:00:00+00:00",
+    "market_date": "2026-06-23",
+    "url": "https://demo.local/synthetic-jsonl-desk/nvm-040?id=40",
+    "source_key": "synthetic-jsonl-desk",
+    "source_name": "Synthetic JSONL Desk",
+    "processing_state": "duplicate",
+    "tickers": [
+      "NVM"
+    ],
+    "event": "operations_product",
+    "sentiment": "positive"
+  },
+  {
+    "id": "7335a5b7-9f76-4b78-9030-5b601d8c9a58",
+    "title": "Alpine Robotics reports higher quarterly earnings after service demand improved",
+    "summary": "Alpine Robotics Holdings Ltd. said recurring service contracts strongly improved margins and revenue quality. Demo case 37.",
+    "language": "en",
+    "published_at": "2026-06-23T00:00:00+00:00",
+    "market_date": "2026-06-23",
+    "url": "https://demo.local/synthetic-import-wire/alp-037?id=37",
+    "source_key": "synthetic-import-wire",
+    "source_name": "Synthetic Import Wire",
+    "processing_state": "processed",
+    "tickers": [
+      "ALP"
+    ],
+    "event": "earnings",
+    "sentiment": "positive"
+  },
+  {
+    "id": "d2f76a17-bb97-4333-9673-40e94e8a305b",
+    "title": "A启谷物流提示宏观市场订单偏弱",
+    "summary": "启谷物流称市场需求走弱,本季度订单可能承压。 演示编号 35. PRM",
+    "language": "zh",
+    "published_at": "2026-06-22T22:00:00+00:00",
+    "market_date": "2026-06-23",
+    "url": "https://demo.local/synthetic-evening-brief/prm-035?id=35",
+    "source_key": "synthetic-evening-brief",
+    "source_name": "Synthetic Evening Brief",
+    "processing_state": "processed",
+    "tickers": [
+      "PRM"
+    ],
+    "event": "macro_market",
+    "sentiment": "negative"
+  },
+  {
+    "id": "935409a2-e4db-4f10-af55-a8ddc32a7cdb",
+    "title": "明河云签署非约束性并购讨论备忘录",
+    "summary": "明河云称并购讨论仍处早期,交易结果存在不确定性。 演示编号 38.",
+    "language": "zh",
+    "published_at": "2026-06-22T18:00:00+00:00",
+    "market_date": "2026-06-23",
+    "url": "https://demo.local/synthetic-announcement-board/brc-038?id=38",
+    "source_key": "synthetic-announcement-board",
+    "source_name": "Synthetic Announcement Board",
+    "processing_state": "processed",
+    "tickers": [
+      "BRC"
     ],
     "event": "merger_acquisition",
     "sentiment": "uncertain"
   },
   {
-    "id": "7a0c9a7c-61b5-43b0-b1ff-667b82d0b483",
-    "title": "BrightRiver Cloud says regional outage was resolved",
-    "summary": "BrightRiver Cloud reported that a regional interruption was resolved after network equipment replacement, but several customers may receive service credits.",
+    "id": "130ae697-cde8-4d93-b349-6a5ba8b6bd30",
+    "title": "EcoMosaic publishes routine investor calendar update",
+    "summary": "EcoMosaic published a routine calendar notice with no operational change. Demo case 36.",
     "language": "en",
-    "published_at": "2026-06-21T02:05:00+00:00",
-    "market_date": "2026-06-21",
-    "url": "https://demo.local/news/brc-outage",
-    "source_key": "synthetic-jsonl",
+    "published_at": "2026-06-22T13:00:00+00:00",
+    "market_date": "2026-06-22",
+    "url": "https://demo.local/synthetic-jsonl-desk/eco-036?id=36",
+    "source_key": "synthetic-jsonl-desk",
     "source_name": "Synthetic JSONL Desk",
+    "processing_state": "duplicate",
+    "tickers": [
+      "ECO"
+    ],
+    "event": "other",
+    "sentiment": "neutral"
+  },
+  {
+    "id": "f09ef09e-e001-452d-9059-0713945ee700",
+    "title": "SkyForge warns about overseas litigation expense pressure",
+    "summary": "SkyForge said litigation risk could create cost pressure, although operations continue. Demo case 33.",
+    "language": "en",
+    "published_at": "2026-06-22T12:00:00+00:00",
+    "market_date": "2026-06-22",
+    "url": "https://demo.local/synthetic-import-wire/sky-033?id=33",
+    "source_key": "synthetic-import-wire",
+    "source_name": "Synthetic Import Wire",
+    "processing_state": "duplicate",
+    "tickers": [
+      "SKY"
+    ],
+    "event": "litigation_penalty",
+    "sentiment": "negative"
+  },
+  {
+    "id": "2d9a9a60-875a-47a5-97a2-5f3882dc2d27",
+    "title": "VectorLoom launches maintenance platform for regional customers",
+    "summary": "VectorLoom released a product platform expected to improve support efficiency. Demo case 31.",
+    "language": "en",
+    "published_at": "2026-06-22T10:00:00+00:00",
+    "market_date": "2026-06-22",
+    "url": "https://demo.local/synthetic-evening-brief/vtl-031?id=31",
+    "source_key": "synthetic-evening-brief",
+    "source_name": "Synthetic Evening Brief",
+    "processing_state": "duplicate",
+    "tickers": [
+      "VTL"
+    ],
+    "event": "operations_product",
+    "sentiment": "positive"
+  },
+  {
+    "id": "0e3bf02a-c14c-4d3c-99aa-0ed54c9ea78c",
+    "title": "LumenBridge appoints new chief operating officer",
+    "summary": "LumenBridge appointed a new operating chief after a planned leadership review. Demo case 34.",
+    "language": "en",
+    "published_at": "2026-06-22T06:00:00+00:00",
+    "market_date": "2026-06-22",
+    "url": "https://demo.local/synthetic-announcement-board/lum-034?id=34",
+    "source_key": "synthetic-announcement-board",
+    "source_name": "Synthetic Announcement Board",
+    "processing_state": "duplicate",
+    "tickers": [
+      "LUM"
+    ],
+    "event": "governance_personnel",
+    "sentiment": "neutral"
+  },
+  {
+    "id": "e89f2c69-ed7b-4a80-b5a0-5beb93d054c5",
+    "title": "城籽食品披露扩产融资计划",
+    "summary": "城籽食品称融资可能支持产能建设,但执行时间仍不确定。 演示编号 32.",
+    "language": "zh",
+    "published_at": "2026-06-22T01:00:00+00:00",
+    "market_date": "2026-06-22",
+    "url": "https://demo.local/synthetic-jsonl-desk/mtr-032?id=32",
+    "source_key": "synthetic-jsonl-desk",
+    "source_name": "Synthetic JSONL Desk",
+    "processing_state": "processed",
+    "tickers": [
+      "MTR"
+    ],
+    "event": "financing_capital",
+    "sentiment": "uncertain"
+  },
+  {
+    "id": "0e4234d3-d0f2-4e40-a203-f70dbf692f74",
+    "title": "量港分析签署非约束性并购讨论备忘录",
+    "summary": "量港分析称并购讨论仍处早期,交易结果存在不确定性。 演示编号 29.",
+    "language": "zh",
+    "published_at": "2026-06-22T00:00:00+00:00",
+    "market_date": "2026-06-22",
+    "url": "https://demo.local/synthetic-import-wire/qnt-029?id=29",
+    "source_key": "synthetic-import-wire",
+    "source_name": "Synthetic Import Wire",
+    "processing_state": "processed",
+    "tickers": [
+      "QNT"
+    ],
+    "event": "merger_acquisition",
+    "sentiment": "uncertain"
+  },
+  {
+    "id": "26fe452b-b7f3-4ffd-bc3c-42da0b2853a5",
+    "title": "HelioStorage publishes routine investor calendar update",
+    "summary": "HelioStorage published a routine calendar notice with no operational change. Demo case 27.",
+    "language": "en",
+    "published_at": "2026-06-21T22:00:00+00:00",
+    "market_date": "2026-06-22",
+    "url": "https://demo.local/synthetic-evening-brief/hls-027?id=27",
+    "source_key": "synthetic-evening-brief",
+    "source_name": "Synthetic Evening Brief",
+    "processing_state": "duplicate",
+    "tickers": [
+      "HLS"
+    ],
+    "event": "other",
+    "sentiment": "neutral"
+  },
+  {
+    "id": "462b5d74-9b09-4b40-a59f-b3eb8bf5b921",
+    "title": "Orchid Circuit responds to new sector policy guidance",
+    "summary": "Orchid Circuit said the regulation changes are being evaluated with no material delivery change yet. Demo case 30.",
+    "language": "en",
+    "published_at": "2026-06-21T18:00:00+00:00",
+    "market_date": "2026-06-22",
+    "url": "https://demo.local/synthetic-announcement-board/orc-030?id=30",
+    "source_key": "synthetic-announcement-board",
+    "source_name": "Synthetic Announcement Board",
+    "processing_state": "duplicate",
+    "tickers": [
+      "ORC"
+    ],
+    "event": "policy_regulation",
+    "sentiment": "neutral"
+  },
+  {
+    "id": "3df91099-7239-4741-b4a4-8c5fff7d3392",
+    "title": "ANovaMed reports higher quarterly earnings after service demand improved",
+    "summary": "NovaMed Devices Co. said recurring service contracts strongly improved margins and revenue quality. Demo case 28. NVM",
+    "language": "en",
+    "published_at": "2026-06-21T13:00:00+00:00",
+    "market_date": "2026-06-21",
+    "url": "https://demo.local/synthetic-jsonl-desk/nvm-028?id=28",
+    "source_key": "synthetic-jsonl-desk",
+    "source_name": "Synthetic JSONL Desk",
+    "processing_state": "duplicate",
+    "tickers": [
+      "NVM"
+    ],
+    "event": "earnings",
+    "sentiment": "positive"
+  },
+  {
+    "id": "676906b2-67a3-4fd6-9b4b-9a8d6eba003f",
+    "title": "Alpine Robotics appoints new chief operating officer",
+    "summary": "Alpine Robotics appointed a new operating chief after a planned leadership review. Demo case 25.",
+    "language": "en",
+    "published_at": "2026-06-21T12:00:00+00:00",
+    "market_date": "2026-06-21",
+    "url": "https://demo.local/synthetic-import-wire/alp-025?id=25",
+    "source_key": "synthetic-import-wire",
+    "source_name": "Synthetic Import Wire",
+    "processing_state": "processed",
+    "tickers": [
+      "ALP"
+    ],
+    "event": "governance_personnel",
+    "sentiment": "neutral"
+  },
+  {
+    "id": "95b9896c-9b2b-4410-b531-8ffc2775922a",
+    "title": "启谷物流披露扩产融资计划",
+    "summary": "启谷物流称融资可能支持产能建设,但执行时间仍不确定。 演示编号 23.",
+    "language": "zh",
+    "published_at": "2026-06-21T10:00:00+00:00",
+    "market_date": "2026-06-21",
+    "url": "https://demo.local/synthetic-evening-brief/prm-023?id=23",
+    "source_key": "synthetic-evening-brief",
+    "source_name": "Synthetic Evening Brief",
+    "processing_state": "processed",
+    "tickers": [
+      "PRM"
+    ],
+    "event": "financing_capital",
+    "sentiment": "uncertain"
+  },
+  {
+    "id": "8b38916f-f928-4ff1-9467-2799cfae67cf",
+    "title": "明河云提示宏观市场订单偏弱",
+    "summary": "明河云称市场需求走弱,本季度订单可能承压。 演示编号 26.",
+    "language": "zh",
+    "published_at": "2026-06-21T06:00:00+00:00",
+    "market_date": "2026-06-21",
+    "url": "https://demo.local/synthetic-announcement-board/brc-026?id=26",
+    "source_key": "synthetic-announcement-board",
+    "source_name": "Synthetic Announcement Board",
     "processing_state": "processed",
     "tickers": [
       "BRC"
     ],
+    "event": "macro_market",
+    "sentiment": "negative"
+  },
+  {
+    "id": "128b9fc8-42f5-40de-baf9-aac7315a7447",
+    "title": "EcoMosaic warns about overseas litigation expense pressure",
+    "summary": "EcoMosaic said litigation risk could create cost pressure, although operations continue. Demo case 24.",
+    "language": "en",
+    "published_at": "2026-06-21T01:00:00+00:00",
+    "market_date": "2026-06-21",
+    "url": "https://demo.local/synthetic-jsonl-desk/eco-024?id=24",
+    "source_key": "synthetic-jsonl-desk",
+    "source_name": "Synthetic JSONL Desk",
+    "processing_state": "duplicate",
+    "tickers": [
+      "ECO"
+    ],
+    "event": "litigation_penalty",
+    "sentiment": "negative"
+  },
+  {
+    "id": "ae4b56cb-d8bc-49dd-bb85-7677a2ee4321",
+    "title": "ASkyForge responds to new sector policy guidance",
+    "summary": "SkyForge said the regulation changes are being evaluated with no material delivery change yet. Demo case 21. SKY",
+    "language": "en",
+    "published_at": "2026-06-21T00:00:00+00:00",
+    "market_date": "2026-06-21",
+    "url": "https://demo.local/synthetic-import-wire/sky-021?id=21",
+    "source_key": "synthetic-import-wire",
+    "source_name": "Synthetic Import Wire",
+    "processing_state": "duplicate",
+    "tickers": [
+      "SKY"
+    ],
+    "event": "policy_regulation",
+    "sentiment": "neutral"
+  },
+  {
+    "id": "4e2d2d3e-1af2-43e9-9e25-366fc8fc6881",
+    "title": "VectorLoom reports higher quarterly earnings after service demand improved",
+    "summary": "VectorLoom Textiles Group said recurring service contracts strongly improved margins and revenue quality. Demo case 19.",
+    "language": "en",
+    "published_at": "2026-06-20T22:00:00+00:00",
+    "market_date": "2026-06-21",
+    "url": "https://demo.local/synthetic-evening-brief/vtl-019?id=19",
+    "source_key": "synthetic-evening-brief",
+    "source_name": "Synthetic Evening Brief",
+    "processing_state": "duplicate",
+    "tickers": [
+      "VTL"
+    ],
+    "event": "earnings",
+    "sentiment": "positive"
+  },
+  {
+    "id": "364e220c-aa38-4849-8d43-82db22b2c9e6",
+    "title": "LumenBridge launches maintenance platform for regional customers",
+    "summary": "LumenBridge released a product platform expected to improve support efficiency. Demo case 22.",
+    "language": "en",
+    "published_at": "2026-06-20T18:00:00+00:00",
+    "market_date": "2026-06-21",
+    "url": "https://demo.local/synthetic-announcement-board/lum-022?id=22",
+    "source_key": "synthetic-announcement-board",
+    "source_name": "Synthetic Announcement Board",
+    "processing_state": "duplicate",
+    "tickers": [
+      "LUM"
+    ],
     "event": "operations_product",
+    "sentiment": "positive"
+  },
+  {
+    "id": "61c67d6d-8371-423b-9210-adc8cb6d6dab",
+    "title": "城籽食品签署非约束性并购讨论备忘录",
+    "summary": "城籽食品称并购讨论仍处早期,交易结果存在不确定性。 演示编号 20.",
+    "language": "zh",
+    "published_at": "2026-06-20T13:00:00+00:00",
+    "market_date": "2026-06-20",
+    "url": "https://demo.local/synthetic-jsonl-desk/mtr-020?id=20",
+    "source_key": "synthetic-jsonl-desk",
+    "source_name": "Synthetic JSONL Desk",
+    "processing_state": "processed",
+    "tickers": [
+      "MTR"
+    ],
+    "event": "merger_acquisition",
     "sentiment": "uncertain"
   },
   {
-    "id": "30f20a24-8f4f-4cb4-85c6-0aaa80c94316",
-    "title": "NovaMed appoints new chief operating officer",
-    "summary": "The synthetic device maker NovaMed appointed a new operating chief after a planned leadership review.",
-    "language": "en",
-    "published_at": "2026-06-21T01:45:00+00:00",
-    "market_date": "2026-06-21",
-    "url": "https://demo.local/feed/nvm-governance",
-    "source_key": "synthetic-local-feed",
-    "source_name": "Synthetic Local Feed",
+    "id": "15c35042-4517-4e0e-890a-349ed47e8137",
+    "title": "量港分析提示宏观市场订单偏弱",
+    "summary": "量港分析称市场需求走弱,本季度订单可能承压。 演示编号 17.",
+    "language": "zh",
+    "published_at": "2026-06-20T12:00:00+00:00",
+    "market_date": "2026-06-20",
+    "url": "https://demo.local/synthetic-import-wire/qnt-017?id=17",
+    "source_key": "synthetic-import-wire",
+    "source_name": "Synthetic Import Wire",
     "processing_state": "processed",
+    "tickers": [
+      "QNT"
+    ],
+    "event": "macro_market",
+    "sentiment": "negative"
+  },
+  {
+    "id": "e77e959d-e4f1-45aa-a54b-7fb8c432ece3",
+    "title": "HelioStorage warns about overseas litigation expense pressure",
+    "summary": "HelioStorage said litigation risk could create cost pressure, although operations continue. Demo case 15.",
+    "language": "en",
+    "published_at": "2026-06-20T10:00:00+00:00",
+    "market_date": "2026-06-20",
+    "url": "https://demo.local/synthetic-evening-brief/hls-015?id=15",
+    "source_key": "synthetic-evening-brief",
+    "source_name": "Synthetic Evening Brief",
+    "processing_state": "duplicate",
+    "tickers": [
+      "HLS"
+    ],
+    "event": "litigation_penalty",
+    "sentiment": "negative"
+  },
+  {
+    "id": "557edcfb-87a3-4271-9cb2-3adb79541231",
+    "title": "HelioStorage warns about overseas litigation expense pressure",
+    "summary": "HelioStorage said today litigation risk could create cost pressure, although operations continue. Demo case 15.",
+    "language": "en",
+    "published_at": "2026-06-20T10:00:00+00:00",
+    "market_date": "2026-06-20",
+    "url": "https://demo.local/near/007",
+    "source_key": "synthetic-evening-brief",
+    "source_name": "Synthetic Evening Brief",
+    "processing_state": "duplicate",
+    "tickers": [
+      "HLS"
+    ],
+    "event": "litigation_penalty",
+    "sentiment": "negative"
+  },
+  {
+    "id": "668845d2-5c27-4b80-a128-be79b48c99eb",
+    "title": "Orchid Circuit publishes routine investor calendar update",
+    "summary": "Orchid Circuit published a routine calendar notice with no operational change. Demo case 18.",
+    "language": "en",
+    "published_at": "2026-06-20T06:00:00+00:00",
+    "market_date": "2026-06-20",
+    "url": "https://demo.local/synthetic-announcement-board/orc-018?id=18",
+    "source_key": "synthetic-announcement-board",
+    "source_name": "Synthetic Announcement Board",
+    "processing_state": "processed",
+    "tickers": [
+      "ORC"
+    ],
+    "event": "other",
+    "sentiment": "neutral"
+  },
+  {
+    "id": "a0f2c41f-aae4-42ed-8c23-7b4599d205cf",
+    "title": "NovaMed appoints new chief operating officer",
+    "summary": "NovaMed appointed a new operating chief after a planned leadership review. Demo case 16.",
+    "language": "en",
+    "published_at": "2026-06-20T01:00:00+00:00",
+    "market_date": "2026-06-20",
+    "url": "https://demo.local/synthetic-jsonl-desk/nvm-016?id=16",
+    "source_key": "synthetic-jsonl-desk",
+    "source_name": "Synthetic JSONL Desk",
+    "processing_state": "duplicate",
     "tickers": [
       "NVM"
     ],
@@ -51,105 +561,275 @@
     "sentiment": "neutral"
   },
   {
-    "id": "409b4039-bd33-4c3d-81ae-a65cfdc42309",
-    "title": "新维医疗提示海外诉讼风险",
-    "summary": "虚构医疗器械企业新维医疗称,一项海外专利诉讼可能带来费用压力,但核心产品交付暂无重大变化。",
+    "id": "8080d337-a615-47ee-98fa-b4b22b27d4ba",
+    "title": "Alpine Robotics launches maintenance platform for regional customers",
+    "summary": "Alpine Robotics released a product platform expected to improve support efficiency. Demo case 13.",
+    "language": "en",
+    "published_at": "2026-06-20T00:00:00+00:00",
+    "market_date": "2026-06-20",
+    "url": "https://demo.local/synthetic-import-wire/alp-013?id=13",
+    "source_key": "synthetic-import-wire",
+    "source_name": "Synthetic Import Wire",
+    "processing_state": "duplicate",
+    "tickers": [
+      "ALP"
+    ],
+    "event": "operations_product",
+    "sentiment": "positive"
+  },
+  {
+    "id": "62ff6450-ff6a-4ba8-a0fd-c824a2f06a13",
+    "title": "启谷物流签署非约束性并购讨论备忘录",
+    "summary": "启谷物流称并购讨论仍处早期,交易结果存在不确定性。 演示编号 11.",
     "language": "zh",
-    "published_at": "2026-06-21T00:30:00+00:00",
-    "market_date": "2026-06-21",
-    "url": "https://demo.local/news/nvm-warning",
-    "source_key": "synthetic-jsonl",
+    "published_at": "2026-06-19T22:00:00+00:00",
+    "market_date": "2026-06-20",
+    "url": "https://demo.local/synthetic-evening-brief/prm-011?id=11",
+    "source_key": "synthetic-evening-brief",
+    "source_name": "Synthetic Evening Brief",
+    "processing_state": "processed",
+    "tickers": [
+      "PRM"
+    ],
+    "event": "merger_acquisition",
+    "sentiment": "uncertain"
+  },
+  {
+    "id": "ca1d7d51-9a8c-460e-8795-a4a7c0d62689",
+    "title": "A明河云披露扩产融资计划",
+    "summary": "明河云称融资可能支持产能建设,但执行时间仍不确定。 演示编号 14. BRC",
+    "language": "zh",
+    "published_at": "2026-06-19T18:00:00+00:00",
+    "market_date": "2026-06-20",
+    "url": "https://demo.local/synthetic-announcement-board/brc-014?id=14",
+    "source_key": "synthetic-announcement-board",
+    "source_name": "Synthetic Announcement Board",
+    "processing_state": "processed",
+    "tickers": [
+      "BRC"
+    ],
+    "event": "financing_capital",
+    "sentiment": "uncertain"
+  },
+  {
+    "id": "ed22c1b9-f195-4f0b-a1a2-34d42ca26303",
+    "title": "EcoMosaic responds to new sector policy guidance",
+    "summary": "EcoMosaic said the regulation changes are being evaluated with no material delivery change yet. Demo case 12.",
+    "language": "en",
+    "published_at": "2026-06-19T13:00:00+00:00",
+    "market_date": "2026-06-19",
+    "url": "https://demo.local/synthetic-jsonl-desk/eco-012?id=12",
+    "source_key": "synthetic-jsonl-desk",
+    "source_name": "Synthetic JSONL Desk",
+    "processing_state": "duplicate",
+    "tickers": [
+      "ECO"
+    ],
+    "event": "policy_regulation",
+    "sentiment": "neutral"
+  },
+  {
+    "id": "17829788-7d51-4330-b978-9546ad96b737",
+    "title": "EcoMosaic responds to new sector policy guidance",
+    "summary": "EcoMosaic said today the regulation changes are being evaluated with no material delivery change yet. Demo case 12.",
+    "language": "en",
+    "published_at": "2026-06-19T13:00:00+00:00",
+    "market_date": "2026-06-19",
+    "url": "https://demo.local/near/004",
+    "source_key": "synthetic-jsonl-desk",
+    "source_name": "Synthetic JSONL Desk",
+    "processing_state": "duplicate",
+    "tickers": [
+      "ECO"
+    ],
+    "event": "policy_regulation",
+    "sentiment": "neutral"
+  },
+  {
+    "id": "ef818cfa-0a2d-4333-94bf-51d481e73ea2",
+    "title": "SkyForge publishes routine investor calendar update",
+    "summary": "SkyForge published a routine calendar notice with no operational change. Demo case 9.",
+    "language": "en",
+    "published_at": "2026-06-19T12:00:00+00:00",
+    "market_date": "2026-06-19",
+    "url": "https://demo.local/synthetic-import-wire/sky-009?id=9",
+    "source_key": "synthetic-import-wire",
+    "source_name": "Synthetic Import Wire",
+    "processing_state": "processed",
+    "tickers": [
+      "SKY"
+    ],
+    "event": "other",
+    "sentiment": "neutral"
+  },
+  {
+    "id": "27e0afc2-f831-4171-a0e7-979eb2cd31ec",
+    "title": "AVectorLoom appoints new chief operating officer",
+    "summary": "VectorLoom appointed a new operating chief after a planned leadership review. Demo case 7. VTL",
+    "language": "en",
+    "published_at": "2026-06-19T10:00:00+00:00",
+    "market_date": "2026-06-19",
+    "url": "https://demo.local/synthetic-evening-brief/vtl-007?id=7",
+    "source_key": "synthetic-evening-brief",
+    "source_name": "Synthetic Evening Brief",
+    "processing_state": "processed",
+    "tickers": [
+      "VTL"
+    ],
+    "event": "governance_personnel",
+    "sentiment": "neutral"
+  },
+  {
+    "id": "c9661e62-2e31-4b56-9cc9-436dee6a6e60",
+    "title": "LumenBridge reports updated higher quarterly earnings after service demand improved",
+    "summary": "LumenBridge Optics Ltd. said today recurring service contracts strongly improved margins and revenue quality. Demo case 10.",
+    "language": "en",
+    "published_at": "2026-06-19T06:00:00+00:00",
+    "market_date": "2026-06-19",
+    "url": "https://demo.local/near/002",
+    "source_key": "synthetic-announcement-board",
+    "source_name": "Synthetic Announcement Board",
+    "processing_state": "duplicate",
+    "tickers": [
+      "LUM"
+    ],
+    "event": "earnings",
+    "sentiment": "positive"
+  },
+  {
+    "id": "43a8d273-654b-4c94-b3d5-088c81f87e04",
+    "title": "LumenBridge reports higher quarterly earnings after service demand improved",
+    "summary": "LumenBridge Optics Ltd. said recurring service contracts strongly improved margins and revenue quality. Demo case 10.",
+    "language": "en",
+    "published_at": "2026-06-19T06:00:00+00:00",
+    "market_date": "2026-06-19",
+    "url": "https://demo.local/synthetic-announcement-board/lum-010?id=10",
+    "source_key": "synthetic-announcement-board",
+    "source_name": "Synthetic Announcement Board",
+    "processing_state": "processed",
+    "tickers": [
+      "LUM"
+    ],
+    "event": "earnings",
+    "sentiment": "positive"
+  },
+  {
+    "id": "9e7259df-fc7c-481c-a258-420c0b6e0cef",
+    "title": "城籽食品提示宏观市场订单偏弱",
+    "summary": "城籽食品称市场需求走弱,本季度订单可能承压。 演示编号 8.",
+    "language": "zh",
+    "published_at": "2026-06-19T01:00:00+00:00",
+    "market_date": "2026-06-19",
+    "url": "https://demo.local/synthetic-jsonl-desk/mtr-008?id=8",
+    "source_key": "synthetic-jsonl-desk",
+    "source_name": "Synthetic JSONL Desk",
+    "processing_state": "processed",
+    "tickers": [
+      "MTR"
+    ],
+    "event": "macro_market",
+    "sentiment": "negative"
+  },
+  {
+    "id": "6cdab064-9c51-4d12-9cb7-4123f457eb1f",
+    "title": "量港分析披露扩产融资计划",
+    "summary": "量港分析称融资可能支持产能建设,但执行时间仍不确定。 演示编号 5.",
+    "language": "zh",
+    "published_at": "2026-06-19T00:00:00+00:00",
+    "market_date": "2026-06-19",
+    "url": "https://demo.local/synthetic-import-wire/qnt-005?id=5",
+    "source_key": "synthetic-import-wire",
+    "source_name": "Synthetic Import Wire",
+    "processing_state": "processed",
+    "tickers": [
+      "QNT"
+    ],
+    "event": "financing_capital",
+    "sentiment": "uncertain"
+  },
+  {
+    "id": "85e35c49-f1eb-46e3-b03b-eb54c46a9096",
+    "title": "HelioStorage responds to new sector policy guidance",
+    "summary": "HelioStorage said the regulation changes are being evaluated with no material delivery change yet. Demo case 3.",
+    "language": "en",
+    "published_at": "2026-06-18T22:00:00+00:00",
+    "market_date": "2026-06-19",
+    "url": "https://demo.local/synthetic-evening-brief/hls-003?id=3",
+    "source_key": "synthetic-evening-brief",
+    "source_name": "Synthetic Evening Brief",
+    "processing_state": "processed",
+    "tickers": [
+      "HLS"
+    ],
+    "event": "policy_regulation",
+    "sentiment": "neutral"
+  },
+  {
+    "id": "26685e40-9af1-4d3a-9ed7-f187cddb6d54",
+    "title": "Orchid Circuit warns about overseas litigation expense pressure",
+    "summary": "Orchid Circuit said litigation risk could create cost pressure, although operations continue. Demo case 6.",
+    "language": "en",
+    "published_at": "2026-06-18T18:00:00+00:00",
+    "market_date": "2026-06-19",
+    "url": "https://demo.local/synthetic-announcement-board/orc-006?id=6",
+    "source_key": "synthetic-announcement-board",
+    "source_name": "Synthetic Announcement Board",
+    "processing_state": "processed",
+    "tickers": [
+      "ORC"
+    ],
+    "event": "litigation_penalty",
+    "sentiment": "negative"
+  },
+  {
+    "id": "0667832f-4654-4fee-b899-9c76a7f3b30a",
+    "title": "NovaMed launches maintenance platform for regional customers",
+    "summary": "NovaMed released a product platform expected to improve support efficiency. Demo case 4.",
+    "language": "en",
+    "published_at": "2026-06-18T13:00:00+00:00",
+    "market_date": "2026-06-18",
+    "url": "https://demo.local/synthetic-jsonl-desk/nvm-004?id=4",
+    "source_key": "synthetic-jsonl-desk",
     "source_name": "Synthetic JSONL Desk",
     "processing_state": "processed",
     "tickers": [
       "NVM"
     ],
     "event": "operations_product",
-    "sentiment": "negative"
+    "sentiment": "positive"
   },
   {
-    "id": "3b8421ee-0554-494e-b3ef-0215742a5a92",
-    "title": "阿尔派机器人推出新一代维护平台",
-    "summary": "虚构公司阿尔派机器人发布维护平台,预计提升售后服务效率,但短期收入贡献仍不确定。",
-    "language": "zh",
-    "published_at": "2026-06-20T07:15:00+00:00",
-    "market_date": "2026-06-20",
-    "url": "https://demo.local/feed/alp-product",
-    "source_key": "synthetic-local-feed",
-    "source_name": "Synthetic Local Feed",
+    "id": "a3ff3925-0db7-4e07-a9e8-201cc5e73b40",
+    "title": "Alpine Robotics reports higher quarterly earnings after service demand improved",
+    "summary": "Alpine Robotics Holdings Ltd. said recurring service contracts strongly improved margins and revenue quality. Demo case 1.",
+    "language": "en",
+    "published_at": "2026-06-18T12:00:00+00:00",
+    "market_date": "2026-06-18",
+    "url": "https://demo.local/synthetic-import-wire/alp-001?id=1",
+    "source_key": "synthetic-import-wire",
+    "source_name": "Synthetic Import Wire",
     "processing_state": "processed",
     "tickers": [
       "ALP"
     ],
-    "event": "operations_product",
-    "sentiment": "uncertain"
+    "event": "earnings",
+    "sentiment": "positive"
   },
   {
-    "id": "c3b6e68f-095b-4c8f-aa37-39de2de08872",
-    "title": "HelioStorage announces financing plan for battery module line",
-    "summary": "The synthetic energy storage group said the financing may support a new module line, while execution timing remains uncertain.",
-    "language": "en",
-    "published_at": "2026-06-20T05:40:00+00:00",
-    "market_date": "2026-06-20",
-    "url": "https://demo.local/news/hls-financing",
-    "source_key": "synthetic-jsonl",
-    "source_name": "Synthetic JSONL Desk",
-    "processing_state": "processed",
-    "tickers": [
-      "HLS"
-    ],
-    "event": "financing_capital",
-    "sentiment": "uncertain"
-  },
-  {
-    "id": "c3a1d2f9-2283-4c33-a295-c6e8451943b1",
-    "title": "明河云回应新的数据中心能耗政策",
-    "summary": "这家虚构云基础设施公司表示,将调整扩容节奏,并继续评估监管规则对资本开支的影响。",
+    "id": "06ab0c7d-f7df-44a9-94df-792731b0161e",
+    "title": "明河云签署非约束性并购讨论备忘录",
+    "summary": "明河云称并购讨论仍处早期,交易结果存在不确定性。 演示编号 2.",
     "language": "zh",
-    "published_at": "2026-06-20T03:25:00+00:00",
-    "market_date": "2026-06-20",
-    "url": "https://demo.local/news/brc-policy",
-    "source_key": "synthetic-jsonl",
-    "source_name": "Synthetic JSONL Desk",
+    "published_at": "2026-06-18T06:00:00+00:00",
+    "market_date": "2026-06-18",
+    "url": "https://demo.local/synthetic-announcement-board/brc-002?id=2",
+    "source_key": "synthetic-announcement-board",
+    "source_name": "Synthetic Announcement Board",
     "processing_state": "processed",
     "tickers": [
       "BRC"
     ],
-    "event": "policy_regulation",
+    "event": "merger_acquisition",
     "sentiment": "uncertain"
-  },
-  {
-    "id": "b9290fee-d101-4535-8839-1c664b488be8",
-    "title": "Alpine Robotics reports higher quarterly earnings as service demand rises",
-    "summary": "The fictional automation company said recurring maintenance contracts improved margins while management stayed cautious about component costs.",
-    "language": "en",
-    "published_at": "2026-06-20T01:25:00+00:00",
-    "market_date": "2026-06-20",
-    "url": "https://demo.local/news/alp-earnings-near",
-    "source_key": "synthetic-jsonl",
-    "source_name": "Synthetic JSONL Desk",
-    "processing_state": "duplicate",
-    "tickers": [
-      "ALP"
-    ],
-    "event": "earnings",
-    "sentiment": "positive"
-  },
-  {
-    "id": "06e91bab-9809-49d5-9288-7cf10fd827ad",
-    "title": "Alpine Robotics reports higher quarterly earnings on service demand",
-    "summary": "The fictional automation company said recurring maintenance contracts improved margins and management remained cautious about component costs.",
-    "language": "en",
-    "published_at": "2026-06-20T01:10:00+00:00",
-    "market_date": "2026-06-20",
-    "url": "https://demo.local/news/alp-earnings",
-    "source_key": "synthetic-jsonl",
-    "source_name": "Synthetic JSONL Desk",
-    "processing_state": "processed",
-    "tickers": [
-      "ALP"
-    ],
-    "event": "earnings",
-    "sentiment": "positive"
   }
 ]

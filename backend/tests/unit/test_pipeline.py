@@ -25,14 +25,14 @@ def test_pipeline_rejects_malformed_record_and_is_idempotent() -> None:
     records = load_default_records(settings)
     first = pipeline.ingest_records(records)
     second = pipeline.ingest_records(records)
-    assert first["rejected"] == 1
+    assert first["rejected"] == 4
     assert second["exact_duplicate"] >= first["accepted"]
 
 
 def test_full_demo_generates_articles_links_events_sentiments_digest_and_signals() -> None:
     repo = build_repo()
-    assert len(repo.list_companies()) == 4
-    assert len(repo.list_articles()) >= 8
+    assert len(repo.list_companies()) == 12
+    assert len(repo.list_articles()) >= 49
     assert repo.list_links()
     assert repo.list_events()
     assert repo.list_sentiments()
