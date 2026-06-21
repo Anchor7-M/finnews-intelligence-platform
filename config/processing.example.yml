@@ -1,0 +1,6 @@
+market_timezone: Asia/Shanghai
+near_duplicate:
+  threshold: 0.86
+  window_hours: 72
+  max_candidates: 200
+storage_policy: metadata_only

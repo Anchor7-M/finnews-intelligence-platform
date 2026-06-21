@@ -1,1 +1,88 @@
-# finnews-intelligence-platform
+# Finnews Intelligence Platform
+
+Local-first financial-news intelligence platform for portfolio demonstration. Milestone 0 is an offline synthetic-data vertical slice: it ingests fictional Chinese and English financial-news metadata, normalizes and deduplicates it, links fictional companies, classifies events and sentiment with transparent baselines, generates daily digests and company signals, exposes a FastAPI read API, and renders a Vue 3 dashboard.
+
+This project is not investment advice and does not provide live market intelligence.
+
+## Architecture
+
+```mermaid
+flowchart LR
+  Fixtures[Synthetic fixtures] --> Pipeline[Validation, normalization, deduplication, linking, baselines]
+  Pipeline --> Memory[Memory profile]
+  Pipeline --> Postgres[Optional PostgreSQL adapter]
+  Memory --> API[FastAPI]
+  Memory --> Static[Static JSON]
+  API --> Vue[Vue dashboard]
+  Static --> Vue
+```
+
+## Implemented In Milestone 0
+
+- Modular monolith backend with domain, application, infrastructure, and interfaces layers.
+- Synthetic local JSONL and RSS fixture ingestion.
+- Unicode/text/URL/time normalization and malformed-record quarantine.
+- Exact duplicate detection and bounded TF-IDF near-duplicate checks.
+- Deterministic company/ticker linking, event classification, and sentiment scoring.
+- Memory repository for default offline runs.
+- PostgreSQL schema, SQLAlchemy models, and Alembic migration for optional integration.
+- FastAPI read API and Typer CLI.
+- Vue 3 TypeScript dashboard with static-demo and API data modes.
+- Local verification script, docs, and future GitHub Actions/Page workflow files.
+
+## Quick Start
+
+```text
+python -m venv .venv
+.venv\Scripts\python -m pip install -e backend[dev]
+cd frontend
+npm install
+cd ..
+python scripts/dev.py export-static
+python scripts/dev.py verify-lite
+```
+
+Run the memory demo directly:
+
+```text
+cd backend
+python -m finnews.interfaces.cli.app demo --profile memory
+```
+
+## Optional PostgreSQL Verification
+
+```text
+python scripts/dev.py db-up
+python scripts/dev.py verify-postgres
+python scripts/dev.py db-down
+```
+
+The database is bound to `127.0.0.1:55432`, uses a local demo password, and is not suitable for production.
+
+## API Examples
+
+```text
+GET /health/live
+GET /api/v1/articles?ticker=ALP&limit=20
+GET /api/v1/digests/2026-06-20
+GET /api/v1/signals/daily
+```
+
+## Frontend
+
+The Vue app can read generated JSON from `frontend/public/demo-data` for static hosting, or call FastAPI when `VITE_FINNEWS_DATA_MODE=api`.
+
+## Data And Copyright Policy
+
+Committed records are fully synthetic and fictional. The project stores metadata, source-provided snippets, URLs, provenance, hashes, and derived features only. It does not republish copied article bodies, bypass access controls, or require paid news/model APIs.
+
+## Roadmap
+
+Milestones 1-4 are documented in `docs/ROADMAP.md` and are not implemented yet.
+
+## Limitations
+
+- No live source adapters in Milestone 0.
+- Baselines are deterministic rules, not predictive models.
+- PostgreSQL repository behavior is production-shaped but optional for local verification.
+- GitHub Actions files are present for future manual push; no CI result is claimed locally.

@@ -216,3 +216,25 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Finnews project artifacts
+.env.*
+!.env.example
+backend/.coverage
+backend/coverage.xml
+backend/htmlcov/
+backend/.mypy_cache/
+backend/.pytest_cache/
+backend/.ruff_cache/
+backend/*.egg-info/
+frontend/node_modules/
+frontend/dist/
+frontend/coverage/
+frontend/.vite/
+data/generated/
+data/postgres/
+tmp/
+*.db
+*.sqlite
+*.sqlite3
+finnews_local_codex_master_prompt.md

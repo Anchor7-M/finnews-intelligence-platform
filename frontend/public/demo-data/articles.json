@@ -1,0 +1,155 @@
+[
+  {
+    "id": "cd8039af-c257-4006-a5d8-73c6388f8307",
+    "title": "HelioStorage signs non-binding merger discussion memo",
+    "summary": "HelioStorage said early merger discussions are non-binding and may not result in a transaction.",
+    "language": "en",
+    "published_at": "2026-06-21T06:20:00+00:00",
+    "market_date": "2026-06-21",
+    "url": "https://demo.local/feed/hls-ma",
+    "source_key": "synthetic-local-feed",
+    "source_name": "Synthetic Local Feed",
+    "processing_state": "processed",
+    "tickers": [
+      "HLS"
+    ],
+    "event": "merger_acquisition",
+    "sentiment": "uncertain"
+  },
+  {
+    "id": "7a0c9a7c-61b5-43b0-b1ff-667b82d0b483",
+    "title": "BrightRiver Cloud says regional outage was resolved",
+    "summary": "BrightRiver Cloud reported that a regional interruption was resolved after network equipment replacement, but several customers may receive service credits.",
+    "language": "en",
+    "published_at": "2026-06-21T02:05:00+00:00",
+    "market_date": "2026-06-21",
+    "url": "https://demo.local/news/brc-outage",
+    "source_key": "synthetic-jsonl",
+    "source_name": "Synthetic JSONL Desk",
+    "processing_state": "processed",
+    "tickers": [
+      "BRC"
+    ],
+    "event": "operations_product",
+    "sentiment": "uncertain"
+  },
+  {
+    "id": "30f20a24-8f4f-4cb4-85c6-0aaa80c94316",
+    "title": "NovaMed appoints new chief operating officer",
+    "summary": "The synthetic device maker NovaMed appointed a new operating chief after a planned leadership review.",
+    "language": "en",
+    "published_at": "2026-06-21T01:45:00+00:00",
+    "market_date": "2026-06-21",
+    "url": "https://demo.local/feed/nvm-governance",
+    "source_key": "synthetic-local-feed",
+    "source_name": "Synthetic Local Feed",
+    "processing_state": "processed",
+    "tickers": [
+      "NVM"
+    ],
+    "event": "governance_personnel",
+    "sentiment": "neutral"
+  },
+  {
+    "id": "409b4039-bd33-4c3d-81ae-a65cfdc42309",
+    "title": "新维医疗提示海外诉讼风险",
+    "summary": "虚构医疗器械企业新维医疗称,一项海外专利诉讼可能带来费用压力,但核心产品交付暂无重大变化。",
+    "language": "zh",
+    "published_at": "2026-06-21T00:30:00+00:00",
+    "market_date": "2026-06-21",
+    "url": "https://demo.local/news/nvm-warning",
+    "source_key": "synthetic-jsonl",
+    "source_name": "Synthetic JSONL Desk",
+    "processing_state": "processed",
+    "tickers": [
+      "NVM"
+    ],
+    "event": "operations_product",
+    "sentiment": "negative"
+  },
+  {
+    "id": "3b8421ee-0554-494e-b3ef-0215742a5a92",
+    "title": "阿尔派机器人推出新一代维护平台",
+    "summary": "虚构公司阿尔派机器人发布维护平台,预计提升售后服务效率,但短期收入贡献仍不确定。",
+    "language": "zh",
+    "published_at": "2026-06-20T07:15:00+00:00",
+    "market_date": "2026-06-20",
+    "url": "https://demo.local/feed/alp-product",
+    "source_key": "synthetic-local-feed",
+    "source_name": "Synthetic Local Feed",
+    "processing_state": "processed",
+    "tickers": [
+      "ALP"
+    ],
+    "event": "operations_product",
+    "sentiment": "uncertain"
+  },
+  {
+    "id": "c3b6e68f-095b-4c8f-aa37-39de2de08872",
+    "title": "HelioStorage announces financing plan for battery module line",
+    "summary": "The synthetic energy storage group said the financing may support a new module line, while execution timing remains uncertain.",
+    "language": "en",
+    "published_at": "2026-06-20T05:40:00+00:00",
+    "market_date": "2026-06-20",
+    "url": "https://demo.local/news/hls-financing",
+    "source_key": "synthetic-jsonl",
+    "source_name": "Synthetic JSONL Desk",
+    "processing_state": "processed",
+    "tickers": [
+      "HLS"
+    ],
+    "event": "financing_capital",
+    "sentiment": "uncertain"
+  },
+  {
+    "id": "c3a1d2f9-2283-4c33-a295-c6e8451943b1",
+    "title": "明河云回应新的数据中心能耗政策",
+    "summary": "这家虚构云基础设施公司表示,将调整扩容节奏,并继续评估监管规则对资本开支的影响。",
+    "language": "zh",
+    "published_at": "2026-06-20T03:25:00+00:00",
+    "market_date": "2026-06-20",
+    "url": "https://demo.local/news/brc-policy",
+    "source_key": "synthetic-jsonl",
+    "source_name": "Synthetic JSONL Desk",
+    "processing_state": "processed",
+    "tickers": [
+      "BRC"
+    ],
+    "event": "policy_regulation",
+    "sentiment": "uncertain"
+  },
+  {
+    "id": "b9290fee-d101-4535-8839-1c664b488be8",
+    "title": "Alpine Robotics reports higher quarterly earnings as service demand rises",
+    "summary": "The fictional automation company said recurring maintenance contracts improved margins while management stayed cautious about component costs.",
+    "language": "en",
+    "published_at": "2026-06-20T01:25:00+00:00",
+    "market_date": "2026-06-20",
+    "url": "https://demo.local/news/alp-earnings-near",
+    "source_key": "synthetic-jsonl",
+    "source_name": "Synthetic JSONL Desk",
+    "processing_state": "duplicate",
+    "tickers": [
+      "ALP"
+    ],
+    "event": "earnings",
+    "sentiment": "positive"
+  },
+  {
+    "id": "06e91bab-9809-49d5-9288-7cf10fd827ad",
+    "title": "Alpine Robotics reports higher quarterly earnings on service demand",
+    "summary": "The fictional automation company said recurring maintenance contracts improved margins and management remained cautious about component costs.",
+    "language": "en",
+    "published_at": "2026-06-20T01:10:00+00:00",
+    "market_date": "2026-06-20",
+    "url": "https://demo.local/news/alp-earnings",
+    "source_key": "synthetic-jsonl",
+    "source_name": "Synthetic JSONL Desk",
+    "processing_state": "processed",
+    "tickers": [
+      "ALP"
+    ],
+    "event": "earnings",
+    "sentiment": "positive"
+  }
+]

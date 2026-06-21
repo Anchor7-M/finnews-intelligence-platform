@@ -1,0 +1,34 @@
+[
+  {
+    "ticker": "ALP",
+    "exchange": "SYN",
+    "legal_name": "Alpine Robotics Holdings Ltd.",
+    "short_name": "Alpine Robotics",
+    "sector": "Industrial Automation",
+    "aliases": ["Alpine Robotics", "ALP", "阿尔派机器人", "阿尔派"]
+  },
+  {
+    "ticker": "BRC",
+    "exchange": "SYN",
+    "legal_name": "BrightRiver Cloud Systems Inc.",
+    "short_name": "BrightRiver Cloud",
+    "sector": "Cloud Infrastructure",
+    "aliases": ["BrightRiver Cloud", "BRC", "明河云", "明河"]
+  },
+  {
+    "ticker": "HLS",
+    "exchange": "SYN",
+    "legal_name": "HelioStorage Energy Group",
+    "short_name": "HelioStorage",
+    "sector": "Energy Storage",
+    "aliases": ["HelioStorage", "HLS", "赫里奥储能", "赫里奥"]
+  },
+  {
+    "ticker": "NVM",
+    "exchange": "SYN",
+    "legal_name": "NovaMed Devices Co.",
+    "short_name": "NovaMed",
+    "sector": "Medical Devices",
+    "aliases": ["NovaMed", "NVM", "新维医疗", "新维"]
+  }
+]

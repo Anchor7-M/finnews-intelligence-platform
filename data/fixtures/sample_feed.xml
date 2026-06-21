@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Synthetic Local Feed</title>
+    <link>https://demo.local/feed</link>
+    <description>Offline synthetic feed for Milestone 0 tests.</description>
+    <item>
+      <guid>feed-001</guid>
+      <title>阿尔派机器人推出新一代维护平台</title>
+      <link>https://demo.local/feed/alp-product?utm_medium=rss</link>
+      <description>虚构公司阿尔派机器人发布维护平台，预计提升售后服务效率，但短期收入贡献仍不确定。</description>
+      <pubDate>Sat, 20 Jun 2026 15:15:00 +0800</pubDate>
+    </item>
+    <item>
+      <guid>feed-002</guid>
+      <title>NovaMed appoints new chief operating officer</title>
+      <link>https://demo.local/feed/nvm-governance</link>
+      <description>The synthetic device maker NovaMed appointed a new operating chief after a planned leadership review.</description>
+      <pubDate>Sun, 21 Jun 2026 09:45:00 +0800</pubDate>
+    </item>
+    <item>
+      <guid>feed-003</guid>
+      <title>HelioStorage signs non-binding merger discussion memo</title>
+      <link>https://demo.local/feed/hls-ma</link>
+      <description>HelioStorage said early merger discussions are non-binding and may not result in a transaction.</description>
+      <pubDate>Sun, 21 Jun 2026 14:20:00 +0800</pubDate>
+    </item>
+  </channel>
+</rss>
