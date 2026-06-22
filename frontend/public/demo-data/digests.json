@@ -20,47 +20,47 @@
       "not_investment_advice": true,
       "groups": [
         {
-          "article_id": "03047894-477c-40c2-bbe3-5df7105c11ce",
+          "article_id": "7d4e793c-4c0d-4740-9990-d6314ee6a540",
           "title": "MetroSeed Foods publishes routine investor calendar update",
           "source": "Synthetic Local Feed",
           "url": "https://demo.local/synthetic-evening-brief/mtr-103?id=103",
           "event": "other",
           "sentiment": "neutral",
           "company_ids": [
-            "ce6fe592-0301-4857-a9f7-baaa14f3104a"
+            "84db2cfe-2641-4938-92b8-ac296bfd13d9"
           ]
         },
         {
-          "article_id": "8bedbf32-1172-4789-8f69-1c9945231634",
+          "article_id": "6610b160-8576-4e74-8c7f-0efe7ee0cf16",
           "title": "PrimeVale notes softer macro market orders",
           "source": "Synthetic Local Feed",
           "url": "https://demo.local/synthetic-jsonl-desk/prm-104?id=104",
           "event": "macro_market",
           "sentiment": "negative",
           "company_ids": [
-            "711b51ee-7ced-4000-8fd8-5b414c94ba43"
+            "9cfec93e-53bc-4eb5-beda-181b0119d522"
           ]
         },
         {
-          "article_id": "d8060521-b5c6-432a-af4a-a477aaad60fb",
+          "article_id": "ade111f7-365c-4f7a-a245-9cf7297accab",
           "title": "阿尔派机器人推出区域客户维护平台",
           "source": "Synthetic Local Feed",
           "url": "https://demo.local/synthetic-import-wire/alp-101?id=101",
           "event": "operations_product",
           "sentiment": "positive",
           "company_ids": [
-            "92ff5c41-9325-4c0d-8a59-d31816428f63"
+            "575f4353-6811-4a33-951d-5c82c6cc9a7d"
           ]
         },
         {
-          "article_id": "5008d599-f78f-4ab0-a2f2-5f670da0aa1a",
+          "article_id": "12bf5d17-2413-40a6-bc4f-6ff5dc0091e1",
           "title": "QuantHarbor appoints new chief operating officer",
           "source": "Synthetic Local Feed",
           "url": "https://demo.local/synthetic-announcement-board/qnt-102?id=102",
           "event": "governance_personnel",
           "sentiment": "neutral",
           "company_ids": [
-            "580c0712-bfbd-4648-b77d-ff94c2c10bb9"
+            "ab6f3a7d-ec5d-4b7d-855a-5fd967af928d"
           ]
         }
       ]
@@ -91,80 +91,80 @@
       "not_investment_advice": true,
       "groups": [
         {
-          "article_id": "08e6f02f-7a7d-4c3a-97f0-59177c4506ff",
+          "article_id": "197993b0-ac1b-409e-b7da-332819bca869",
           "title": "量港分析披露扩产融资计划",
           "source": "Synthetic Import Wire",
           "url": "https://demo.local/synthetic-import-wire/qnt-041?id=41",
           "event": "financing_capital",
           "sentiment": "uncertain",
           "company_ids": [
-            "580c0712-bfbd-4648-b77d-ff94c2c10bb9"
+            "ab6f3a7d-ec5d-4b7d-855a-5fd967af928d"
           ]
         },
         {
-          "article_id": "768d3c1e-53f1-4e67-ba0d-d9702408f264",
+          "article_id": "ad246060-62a3-4474-8ae5-14c52e476770",
           "title": "HelioStorage responds to new sector policy guidance",
           "source": "Synthetic Evening Brief",
           "url": "https://demo.local/synthetic-evening-brief/hls-039?id=39",
           "event": "policy_regulation",
           "sentiment": "neutral",
           "company_ids": [
-            "9cec562c-d156-4060-8312-743b8bd3e33f"
+            "721cd2b1-e124-46b8-aa4a-29af9dddf964"
           ]
         },
         {
-          "article_id": "243cb893-e2f5-473b-8c65-2a31855c34b4",
+          "article_id": "c1d76384-b19f-4286-acb9-49782401b1df",
           "title": "AOrchid Circuit warns about overseas litigation expense pressure",
           "source": "Synthetic Announcement Board",
           "url": "https://demo.local/synthetic-announcement-board/orc-042?id=42",
           "event": "litigation_penalty",
           "sentiment": "negative",
           "company_ids": [
-            "1e40ed36-943e-458d-8618-a7e0dcd3d1d1"
+            "1f8a5aa3-6ccd-4e80-9cfd-9144c23bc425"
           ]
         },
         {
-          "article_id": "6f22be7e-2da4-4ffc-bbc1-c6066cda9719",
+          "article_id": "c8756304-d7c8-4f7d-b643-c370fdedd59e",
           "title": "NovaMed launches maintenance platform for regional customers",
           "source": "Synthetic JSONL Desk",
           "url": "https://demo.local/synthetic-jsonl-desk/nvm-040?id=40",
           "event": "operations_product",
           "sentiment": "positive",
           "company_ids": [
-            "e5afe6da-01cc-430e-9d77-760cf1940fc6"
+            "b17d20c6-ddfa-4fc6-9ef5-82dcffdcc0d7"
           ]
         },
         {
-          "article_id": "a5ef5ee0-3a40-4ced-9feb-8b6598326ddb",
+          "article_id": "0c3df55a-1a7c-4402-8ec0-05ed765f073e",
           "title": "Alpine Robotics reports higher quarterly earnings after service demand improved",
           "source": "Synthetic Import Wire",
           "url": "https://demo.local/synthetic-import-wire/alp-037?id=37",
           "event": "earnings",
           "sentiment": "positive",
           "company_ids": [
-            "92ff5c41-9325-4c0d-8a59-d31816428f63"
+            "575f4353-6811-4a33-951d-5c82c6cc9a7d"
           ]
         },
         {
-          "article_id": "6ff7c4e1-5164-48af-9b23-d5afb5b07329",
+          "article_id": "29607cac-c216-4b3f-b396-9b5a6ad0e07f",
           "title": "A启谷物流提示宏观市场订单偏弱",
           "source": "Synthetic Evening Brief",
           "url": "https://demo.local/synthetic-evening-brief/prm-035?id=35",
           "event": "macro_market",
           "sentiment": "negative",
           "company_ids": [
-            "711b51ee-7ced-4000-8fd8-5b414c94ba43"
+            "9cfec93e-53bc-4eb5-beda-181b0119d522"
           ]
         },
         {
-          "article_id": "fba89a88-7596-4c73-9ed3-2c09296a2de0",
+          "article_id": "9cf34612-cdf7-4604-95aa-e9f9ce1e5617",
           "title": "明河云签署非约束性并购讨论备忘录",
           "source": "Synthetic Announcement Board",
           "url": "https://demo.local/synthetic-announcement-board/brc-038?id=38",
           "event": "merger_acquisition",
           "sentiment": "uncertain",
           "company_ids": [
-            "8aa42885-c947-4695-afaf-38e8775be1c8"
+            "18cd434c-8621-4f3d-b09c-da2461ab7147"
           ]
         }
       ]
@@ -195,91 +195,91 @@
       "not_investment_advice": true,
       "groups": [
         {
-          "article_id": "578decce-ecfa-4fc8-805d-2a3c53d2a348",
+          "article_id": "76d5efd9-a702-43f9-b089-f66ddcf0af6d",
           "title": "EcoMosaic publishes routine investor calendar update",
           "source": "Synthetic JSONL Desk",
           "url": "https://demo.local/synthetic-jsonl-desk/eco-036?id=36",
           "event": "other",
           "sentiment": "neutral",
           "company_ids": [
-            "284f7ca6-1b4d-4a45-8aae-0b71f90e2a1e"
+            "16cadd25-a70d-410e-9388-e223458387eb"
           ]
         },
         {
-          "article_id": "07add865-9c41-43f0-b65d-a860c391405b",
+          "article_id": "b07d449e-02f5-42ce-aa54-215cb1a06cef",
           "title": "SkyForge warns about overseas litigation expense pressure",
           "source": "Synthetic Import Wire",
           "url": "https://demo.local/synthetic-import-wire/sky-033?id=33",
           "event": "litigation_penalty",
           "sentiment": "negative",
           "company_ids": [
-            "4966bce3-2120-4f01-9dd5-bad9490d01bb"
+            "e69ea1c0-b50f-4028-a7a5-53c00d9f8119"
           ]
         },
         {
-          "article_id": "7929174c-935c-43a9-ae37-389c8f3b1e66",
+          "article_id": "351ebac5-a459-4f81-99a4-5bb38ef3a5dd",
           "title": "VectorLoom launches maintenance platform for regional customers",
           "source": "Synthetic Evening Brief",
           "url": "https://demo.local/synthetic-evening-brief/vtl-031?id=31",
           "event": "operations_product",
           "sentiment": "positive",
           "company_ids": [
-            "6bbaad9d-d481-4708-8951-e2a46737253e"
+            "4514c36b-042c-49a3-b9a8-af5eb9031cfe"
           ]
         },
         {
-          "article_id": "9844a135-6e70-4163-b587-942d6561eb29",
+          "article_id": "bd5a9958-df3c-4017-bf76-432660c9600c",
           "title": "LumenBridge appoints new chief operating officer",
           "source": "Synthetic Announcement Board",
           "url": "https://demo.local/synthetic-announcement-board/lum-034?id=34",
           "event": "governance_personnel",
           "sentiment": "neutral",
           "company_ids": [
-            "00df5df4-6429-4834-b9dc-be7606a8bdad"
+            "54c424a4-f3af-4635-b210-787e05ad7886"
           ]
         },
         {
-          "article_id": "16e2ed35-7de0-4f24-91f3-79ea1bec14c8",
+          "article_id": "075293a1-85e0-4b21-97b4-5a096cc69131",
           "title": "城籽食品披露扩产融资计划",
           "source": "Synthetic JSONL Desk",
           "url": "https://demo.local/synthetic-jsonl-desk/mtr-032?id=32",
           "event": "financing_capital",
           "sentiment": "uncertain",
           "company_ids": [
-            "ce6fe592-0301-4857-a9f7-baaa14f3104a"
+            "84db2cfe-2641-4938-92b8-ac296bfd13d9"
           ]
         },
         {
-          "article_id": "e837285e-5947-47ef-8640-0a12c07182b9",
+          "article_id": "2a6930c3-389c-42e9-9270-f401d0742ec3",
           "title": "量港分析签署非约束性并购讨论备忘录",
           "source": "Synthetic Import Wire",
           "url": "https://demo.local/synthetic-import-wire/qnt-029?id=29",
           "event": "merger_acquisition",
           "sentiment": "uncertain",
           "company_ids": [
-            "580c0712-bfbd-4648-b77d-ff94c2c10bb9"
+            "ab6f3a7d-ec5d-4b7d-855a-5fd967af928d"
           ]
         },
         {
-          "article_id": "c685c3a8-3852-4318-863a-86967a2b1715",
+          "article_id": "d935cd60-9105-4ad2-b223-f9aee808db55",
           "title": "HelioStorage publishes routine investor calendar update",
           "source": "Synthetic Evening Brief",
           "url": "https://demo.local/synthetic-evening-brief/hls-027?id=27",
           "event": "other",
           "sentiment": "neutral",
           "company_ids": [
-            "9cec562c-d156-4060-8312-743b8bd3e33f"
+            "721cd2b1-e124-46b8-aa4a-29af9dddf964"
           ]
         },
         {
-          "article_id": "99c3e60f-c8b0-46bd-9e06-f13bc867577c",
+          "article_id": "eedecdac-3bb4-49e7-b5d4-a5ae153e8898",
           "title": "Orchid Circuit responds to new sector policy guidance",
           "source": "Synthetic Announcement Board",
           "url": "https://demo.local/synthetic-announcement-board/orc-030?id=30",
           "event": "policy_regulation",
           "sentiment": "neutral",
           "company_ids": [
-            "1e40ed36-943e-458d-8618-a7e0dcd3d1d1"
+            "1f8a5aa3-6ccd-4e80-9cfd-9144c23bc425"
           ]
         }
       ]
@@ -310,91 +310,91 @@
       "not_investment_advice": true,
       "groups": [
         {
-          "article_id": "4034e219-b0b2-4076-adc9-7d6003df0f67",
+          "article_id": "258552bb-a9cf-4db7-99ff-4b6f009903de",
           "title": "ANovaMed reports higher quarterly earnings after service demand improved",
           "source": "Synthetic JSONL Desk",
           "url": "https://demo.local/synthetic-jsonl-desk/nvm-028?id=28",
           "event": "earnings",
           "sentiment": "positive",
           "company_ids": [
-            "e5afe6da-01cc-430e-9d77-760cf1940fc6"
+            "b17d20c6-ddfa-4fc6-9ef5-82dcffdcc0d7"
           ]
         },
         {
-          "article_id": "4ef1380e-8c19-4c85-b557-6cf5d1dc7293",
+          "article_id": "08264831-4182-437f-b9c0-5a5a22397fe9",
           "title": "Alpine Robotics appoints new chief operating officer",
           "source": "Synthetic Import Wire",
           "url": "https://demo.local/synthetic-import-wire/alp-025?id=25",
           "event": "governance_personnel",
           "sentiment": "neutral",
           "company_ids": [
-            "92ff5c41-9325-4c0d-8a59-d31816428f63"
+            "575f4353-6811-4a33-951d-5c82c6cc9a7d"
           ]
         },
         {
-          "article_id": "44f95c97-e933-4958-ad31-1a542c28e1d3",
+          "article_id": "47c036a9-6839-425d-902a-8556370c7694",
           "title": "启谷物流披露扩产融资计划",
           "source": "Synthetic Evening Brief",
           "url": "https://demo.local/synthetic-evening-brief/prm-023?id=23",
           "event": "financing_capital",
           "sentiment": "uncertain",
           "company_ids": [
-            "711b51ee-7ced-4000-8fd8-5b414c94ba43"
+            "9cfec93e-53bc-4eb5-beda-181b0119d522"
           ]
         },
         {
-          "article_id": "c6ac32eb-b271-4ae7-b2cd-32a3753c7fcc",
+          "article_id": "a1dff0db-6719-4119-9de7-984db31a6478",
           "title": "明河云提示宏观市场订单偏弱",
           "source": "Synthetic Announcement Board",
           "url": "https://demo.local/synthetic-announcement-board/brc-026?id=26",
           "event": "macro_market",
           "sentiment": "negative",
           "company_ids": [
-            "8aa42885-c947-4695-afaf-38e8775be1c8"
+            "18cd434c-8621-4f3d-b09c-da2461ab7147"
           ]
         },
         {
-          "article_id": "5f2e4712-8065-4023-ad6b-59f881b78254",
+          "article_id": "7dfa2ccd-1495-4bec-bf50-fae55a53b5a8",
           "title": "EcoMosaic warns about overseas litigation expense pressure",
           "source": "Synthetic JSONL Desk",
           "url": "https://demo.local/synthetic-jsonl-desk/eco-024?id=24",
           "event": "litigation_penalty",
           "sentiment": "negative",
           "company_ids": [
-            "284f7ca6-1b4d-4a45-8aae-0b71f90e2a1e"
+            "16cadd25-a70d-410e-9388-e223458387eb"
           ]
         },
         {
-          "article_id": "3d1fd5b9-6ef2-4a6d-bb6e-01b55eb4ecb2",
+          "article_id": "fafb5bc2-0cd3-466e-acda-5ce34d5f211d",
           "title": "ASkyForge responds to new sector policy guidance",
           "source": "Synthetic Import Wire",
           "url": "https://demo.local/synthetic-import-wire/sky-021?id=21",
           "event": "policy_regulation",
           "sentiment": "neutral",
           "company_ids": [
-            "4966bce3-2120-4f01-9dd5-bad9490d01bb"
+            "e69ea1c0-b50f-4028-a7a5-53c00d9f8119"
           ]
         },
         {
-          "article_id": "e568df94-e6c6-4dad-a2bf-665d2cc971e4",
+          "article_id": "93694634-6f01-4f1c-9888-7ccb7307e718",
           "title": "VectorLoom reports higher quarterly earnings after service demand improved",
           "source": "Synthetic Evening Brief",
           "url": "https://demo.local/synthetic-evening-brief/vtl-019?id=19",
           "event": "earnings",
           "sentiment": "positive",
           "company_ids": [
-            "6bbaad9d-d481-4708-8951-e2a46737253e"
+            "4514c36b-042c-49a3-b9a8-af5eb9031cfe"
           ]
         },
         {
-          "article_id": "a47a4438-bc1e-41ef-8c40-16de0c090269",
+          "article_id": "7d736077-df84-4291-9d53-4801a871aeb4",
           "title": "LumenBridge launches maintenance platform for regional customers",
           "source": "Synthetic Announcement Board",
           "url": "https://demo.local/synthetic-announcement-board/lum-022?id=22",
           "event": "operations_product",
           "sentiment": "positive",
           "company_ids": [
-            "00df5df4-6429-4834-b9dc-be7606a8bdad"
+            "54c424a4-f3af-4635-b210-787e05ad7886"
           ]
         }
       ]
@@ -425,91 +425,91 @@
       "not_investment_advice": true,
       "groups": [
         {
-          "article_id": "e0b8abbf-4e0e-4b8e-9d8e-aaac095a8fb4",
+          "article_id": "328491b7-5d55-4e47-8e0f-38485c354d6d",
           "title": "城籽食品签署非约束性并购讨论备忘录",
           "source": "Synthetic JSONL Desk",
           "url": "https://demo.local/synthetic-jsonl-desk/mtr-020?id=20",
           "event": "merger_acquisition",
           "sentiment": "uncertain",
           "company_ids": [
-            "ce6fe592-0301-4857-a9f7-baaa14f3104a"
+            "84db2cfe-2641-4938-92b8-ac296bfd13d9"
           ]
         },
         {
-          "article_id": "c13273cf-1b5f-4918-9666-ae380cdb2665",
+          "article_id": "bf550bc8-cd2d-4e90-aaaa-333cc440d1eb",
           "title": "量港分析提示宏观市场订单偏弱",
           "source": "Synthetic Import Wire",
           "url": "https://demo.local/synthetic-import-wire/qnt-017?id=17",
           "event": "macro_market",
           "sentiment": "negative",
           "company_ids": [
-            "580c0712-bfbd-4648-b77d-ff94c2c10bb9"
+            "ab6f3a7d-ec5d-4b7d-855a-5fd967af928d"
           ]
         },
         {
-          "article_id": "56eae367-6f55-473e-b487-e4e9babae64c",
+          "article_id": "51217690-8e91-47d7-86d9-871caf0c22fc",
           "title": "HelioStorage warns about overseas litigation expense pressure",
           "source": "Synthetic Evening Brief",
           "url": "https://demo.local/synthetic-evening-brief/hls-015?id=15",
           "event": "litigation_penalty",
           "sentiment": "negative",
           "company_ids": [
-            "9cec562c-d156-4060-8312-743b8bd3e33f"
+            "721cd2b1-e124-46b8-aa4a-29af9dddf964"
           ]
         },
         {
-          "article_id": "d4ef75c7-496b-4caa-8d47-fbfb9457a686",
+          "article_id": "b2316633-4ee4-43ea-b78a-52ed0d7b17e4",
           "title": "Orchid Circuit publishes routine investor calendar update",
           "source": "Synthetic Announcement Board",
           "url": "https://demo.local/synthetic-announcement-board/orc-018?id=18",
           "event": "other",
           "sentiment": "neutral",
           "company_ids": [
-            "1e40ed36-943e-458d-8618-a7e0dcd3d1d1"
+            "1f8a5aa3-6ccd-4e80-9cfd-9144c23bc425"
           ]
         },
         {
-          "article_id": "86c20fbe-d133-45ac-a3bf-bcb007114adc",
+          "article_id": "189ccb7c-69fa-42f0-8848-598318a0dbf4",
           "title": "NovaMed appoints new chief operating officer",
           "source": "Synthetic JSONL Desk",
           "url": "https://demo.local/synthetic-jsonl-desk/nvm-016?id=16",
           "event": "governance_personnel",
           "sentiment": "neutral",
           "company_ids": [
-            "e5afe6da-01cc-430e-9d77-760cf1940fc6"
+            "b17d20c6-ddfa-4fc6-9ef5-82dcffdcc0d7"
           ]
         },
         {
-          "article_id": "a107fcdc-6472-4ba3-80a3-4650a15732af",
+          "article_id": "8b1bf2fc-3cab-4d5f-8f7e-42a4563ad12a",
           "title": "Alpine Robotics launches maintenance platform for regional customers",
           "source": "Synthetic Import Wire",
           "url": "https://demo.local/synthetic-import-wire/alp-013?id=13",
           "event": "operations_product",
           "sentiment": "positive",
           "company_ids": [
-            "92ff5c41-9325-4c0d-8a59-d31816428f63"
+            "575f4353-6811-4a33-951d-5c82c6cc9a7d"
           ]
         },
         {
-          "article_id": "c105c691-8a5d-49ef-b597-0e5f8d99a3ec",
+          "article_id": "958529e9-503e-4fe8-ae8b-a5a093327b9b",
           "title": "启谷物流签署非约束性并购讨论备忘录",
           "source": "Synthetic Evening Brief",
           "url": "https://demo.local/synthetic-evening-brief/prm-011?id=11",
           "event": "merger_acquisition",
           "sentiment": "uncertain",
           "company_ids": [
-            "711b51ee-7ced-4000-8fd8-5b414c94ba43"
+            "9cfec93e-53bc-4eb5-beda-181b0119d522"
           ]
         },
         {
-          "article_id": "ee63b7f9-7c18-46d6-b5f5-b235e11dfcfa",
+          "article_id": "eb5e7743-b881-4d4b-98dc-54f20cb0309f",
           "title": "A明河云披露扩产融资计划",
           "source": "Synthetic Announcement Board",
           "url": "https://demo.local/synthetic-announcement-board/brc-014?id=14",
           "event": "financing_capital",
           "sentiment": "uncertain",
           "company_ids": [
-            "8aa42885-c947-4695-afaf-38e8775be1c8"
+            "18cd434c-8621-4f3d-b09c-da2461ab7147"
           ]
         }
       ]
@@ -540,91 +540,91 @@
       "not_investment_advice": true,
       "groups": [
         {
-          "article_id": "e9da21dc-4fb6-4d30-8f50-1f6431e0b35a",
+          "article_id": "1b25fd28-d09e-47ce-a47f-493d1a821ad1",
           "title": "EcoMosaic responds to new sector policy guidance",
           "source": "Synthetic JSONL Desk",
           "url": "https://demo.local/synthetic-jsonl-desk/eco-012?id=12",
           "event": "policy_regulation",
           "sentiment": "neutral",
           "company_ids": [
-            "284f7ca6-1b4d-4a45-8aae-0b71f90e2a1e"
+            "16cadd25-a70d-410e-9388-e223458387eb"
           ]
         },
         {
-          "article_id": "9092ebd5-1a4a-4404-81be-a0b1b80be7b6",
+          "article_id": "514a3ad8-7009-4d1e-93e6-c29c40447b06",
           "title": "SkyForge publishes routine investor calendar update",
           "source": "Synthetic Import Wire",
           "url": "https://demo.local/synthetic-import-wire/sky-009?id=9",
           "event": "other",
           "sentiment": "neutral",
           "company_ids": [
-            "4966bce3-2120-4f01-9dd5-bad9490d01bb"
+            "e69ea1c0-b50f-4028-a7a5-53c00d9f8119"
           ]
         },
         {
-          "article_id": "3b74a352-1479-4511-9d73-5cf07948ccd3",
+          "article_id": "b01d3d2e-2006-4e0a-a3e5-46aa7272ebdc",
           "title": "AVectorLoom appoints new chief operating officer",
           "source": "Synthetic Evening Brief",
           "url": "https://demo.local/synthetic-evening-brief/vtl-007?id=7",
           "event": "governance_personnel",
           "sentiment": "neutral",
           "company_ids": [
-            "6bbaad9d-d481-4708-8951-e2a46737253e"
+            "4514c36b-042c-49a3-b9a8-af5eb9031cfe"
           ]
         },
         {
-          "article_id": "5782575d-4655-4864-bb7a-59f849c9b234",
+          "article_id": "c0d80e6b-edc5-496e-9562-bf4ef6ef7d61",
           "title": "LumenBridge reports higher quarterly earnings after service demand improved",
           "source": "Synthetic Announcement Board",
           "url": "https://demo.local/synthetic-announcement-board/lum-010?id=10",
           "event": "earnings",
           "sentiment": "positive",
           "company_ids": [
-            "00df5df4-6429-4834-b9dc-be7606a8bdad"
+            "54c424a4-f3af-4635-b210-787e05ad7886"
           ]
         },
         {
-          "article_id": "274ad142-c51f-4778-8f67-035469b4302f",
+          "article_id": "f3593f13-75a3-4bcb-b56c-8d8d56bd93eb",
           "title": "城籽食品提示宏观市场订单偏弱",
           "source": "Synthetic JSONL Desk",
           "url": "https://demo.local/synthetic-jsonl-desk/mtr-008?id=8",
           "event": "macro_market",
           "sentiment": "negative",
           "company_ids": [
-            "ce6fe592-0301-4857-a9f7-baaa14f3104a"
+            "84db2cfe-2641-4938-92b8-ac296bfd13d9"
           ]
         },
         {
-          "article_id": "ecba19ed-1c7b-4731-9a41-5237f812dbb5",
+          "article_id": "c2759530-a50d-4e49-97d5-0e69e105ead7",
           "title": "量港分析披露扩产融资计划",
           "source": "Synthetic Import Wire",
           "url": "https://demo.local/synthetic-import-wire/qnt-005?id=5",
           "event": "financing_capital",
           "sentiment": "uncertain",
           "company_ids": [
-            "580c0712-bfbd-4648-b77d-ff94c2c10bb9"
+            "ab6f3a7d-ec5d-4b7d-855a-5fd967af928d"
           ]
         },
         {
-          "article_id": "c6b39d03-e408-4b6a-afc3-79745ce6b2a0",
+          "article_id": "382a0084-e20d-4353-b3ce-5ac352ee27a0",
           "title": "HelioStorage responds to new sector policy guidance",
           "source": "Synthetic Evening Brief",
           "url": "https://demo.local/synthetic-evening-brief/hls-003?id=3",
           "event": "policy_regulation",
           "sentiment": "neutral",
           "company_ids": [
-            "9cec562c-d156-4060-8312-743b8bd3e33f"
+            "721cd2b1-e124-46b8-aa4a-29af9dddf964"
           ]
         },
         {
-          "article_id": "84b3dda0-26a7-45b9-8d2c-41786090d97e",
+          "article_id": "39f7a50e-a645-4c08-a283-11727ca8edef",
           "title": "Orchid Circuit warns about overseas litigation expense pressure",
           "source": "Synthetic Announcement Board",
           "url": "https://demo.local/synthetic-announcement-board/orc-006?id=6",
           "event": "litigation_penalty",
           "sentiment": "negative",
           "company_ids": [
-            "1e40ed36-943e-458d-8618-a7e0dcd3d1d1"
+            "1f8a5aa3-6ccd-4e80-9cfd-9144c23bc425"
           ]
         }
       ]
@@ -649,36 +649,36 @@
       "not_investment_advice": true,
       "groups": [
         {
-          "article_id": "dd99d5ca-afa9-4949-8ec8-2c1e3682ce98",
+          "article_id": "0102c951-a416-4ec7-bbb2-235b01c4233f",
           "title": "NovaMed launches maintenance platform for regional customers",
           "source": "Synthetic JSONL Desk",
           "url": "https://demo.local/synthetic-jsonl-desk/nvm-004?id=4",
           "event": "operations_product",
           "sentiment": "positive",
           "company_ids": [
-            "e5afe6da-01cc-430e-9d77-760cf1940fc6"
+            "b17d20c6-ddfa-4fc6-9ef5-82dcffdcc0d7"
           ]
         },
         {
-          "article_id": "76964a00-2e79-45e0-9c28-574844999dc4",
+          "article_id": "62dc45e6-427d-4e6f-bf2f-48d0c8e4b99f",
           "title": "Alpine Robotics reports higher quarterly earnings after service demand improved",
           "source": "Synthetic Import Wire",
           "url": "https://demo.local/synthetic-import-wire/alp-001?id=1",
           "event": "earnings",
           "sentiment": "positive",
           "company_ids": [
-            "92ff5c41-9325-4c0d-8a59-d31816428f63"
+            "575f4353-6811-4a33-951d-5c82c6cc9a7d"
           ]
         },
         {
-          "article_id": "9a8df50a-89af-4405-b49d-31083cabafac",
+          "article_id": "1b7615a5-ebf0-4741-b5dd-3595e5a7d2d8",
           "title": "明河云签署非约束性并购讨论备忘录",
           "source": "Synthetic Announcement Board",
           "url": "https://demo.local/synthetic-announcement-board/brc-002?id=2",
           "event": "merger_acquisition",
           "sentiment": "uncertain",
           "company_ids": [
-            "8aa42885-c947-4695-afaf-38e8775be1c8"
+            "18cd434c-8621-4f3d-b09c-da2461ab7147"
           ]
         }
       ]

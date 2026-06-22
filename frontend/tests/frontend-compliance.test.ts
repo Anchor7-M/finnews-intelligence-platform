@@ -8,6 +8,7 @@ import ArticleExplorer from "../src/pages/ArticleExplorer.vue";
 import CompanyDetail from "../src/pages/CompanyDetail.vue";
 import DailyDigest from "../src/pages/DailyDigest.vue";
 import OverviewPage from "../src/pages/OverviewPage.vue";
+import SourceHealth from "../src/pages/SourceHealth.vue";
 
 const article = {
   id: "1",
@@ -96,6 +97,67 @@ vi.mock("../src/api/client", () => ({
       schema_version: "demo-v1",
     },
   ],
+  loadSourceHealth: async () => [
+    {
+      source_id: "example-rss-feed",
+      display_name: "Example Publisher RSS Feed",
+      source_type: "rss",
+      approval_status: "unreviewed",
+      enabled: false,
+      health: "disabled",
+      last_attempted_at: null,
+      last_successful_at: null,
+      last_outcome: "not_run",
+      last_http_status: null,
+      last_item_count: 0,
+      last_response_byte_count: 0,
+      consecutive_failure_count: 0,
+      etag_available: false,
+      last_modified_available: false,
+      last_error_category: "none",
+      synthetic: true,
+    },
+    {
+      source_id: "mock-approved-rss",
+      display_name: "Mock Approved RSS",
+      source_type: "rss",
+      approval_status: "approved",
+      enabled: true,
+      health: "healthy",
+      last_attempted_at: "2026-06-22T00:00:00Z",
+      last_successful_at: "2026-06-22T00:00:00Z",
+      last_outcome: "success",
+      last_http_status: 200,
+      last_item_count: 2,
+      last_response_byte_count: 800,
+      consecutive_failure_count: 0,
+      etag_available: true,
+      last_modified_available: true,
+      last_error_category: "none",
+      synthetic: true,
+    },
+  ],
+  loadSourceFetchAttempts: async () => [
+    {
+      id: "attempt-1",
+      source_id: "mock-approved-rss",
+      outcome: "success",
+      started_at: "2026-06-22T00:00:00Z",
+      finished_at: "2026-06-22T00:00:01Z",
+      http_status: 200,
+      item_count: 2,
+      new_count: 2,
+      duplicate_count: 0,
+      rejected_count: 0,
+      response_byte_count: 800,
+      retry_count: 0,
+      error_category: "none",
+      error_summary: "",
+      etag_available: true,
+      last_modified_available: true,
+      dry_run: false,
+    },
+  ],
 }));
 
 describe("frontend compliance", () => {
@@ -159,6 +221,18 @@ describe("frontend compliance", () => {
     expect(digest.text()).toContain("2026-06-20");
   });
 
+  it("renders source health and filters by health state", async () => {
+    const wrapper = mount(SourceHealth);
+    await new Promise((resolve) => setTimeout(resolve, 0));
+    expect(wrapper.text()).toContain("Source Health");
+    expect(wrapper.text()).toContain("Example Publisher RSS Feed");
+    expect(wrapper.text()).toContain("Mock Approved RSS");
+    expect(wrapper.text()).toContain("available");
+    await wrapper.find("select").setValue("healthy");
+    expect(wrapper.text()).toContain("Mock Approved RSS");
+    expect(wrapper.text()).not.toContain("Example Publisher RSS Feed");
+  });
+
   it("shows persistent synthetic and not-investment-advice notice with routes", async () => {
     const router = createRouter({
       history: createMemoryHistory(),
@@ -167,6 +241,7 @@ describe("frontend compliance", () => {
         { path: "/articles", component: ArticleExplorer },
         { path: "/companies/:ticker?", component: CompanyDetail },
         { path: "/digest", component: DailyDigest },
+        { path: "/sources", component: SourceHealth },
         { path: "/methodology", component: OverviewPage },
       ],
     });
@@ -177,5 +252,8 @@ describe("frontend compliance", () => {
     await router.push("/articles");
     await wrapper.vm.$nextTick();
     expect(wrapper.text()).toContain("Article Explorer");
+    await router.push("/sources");
+    await wrapper.vm.$nextTick();
+    expect(wrapper.text()).toContain("Source Health");
   });
 });

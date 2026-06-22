@@ -1,6 +1,6 @@
 [
   {
-    "id": "92ff5c41-9325-4c0d-8a59-d31816428f63",
+    "id": "575f4353-6811-4a33-951d-5c82c6cc9a7d",
     "ticker": "ALP",
     "exchange": "SYN",
     "legal_name": "Alpine Robotics Holdings Ltd.",
@@ -9,7 +9,7 @@
     "active": true
   },
   {
-    "id": "8aa42885-c947-4695-afaf-38e8775be1c8",
+    "id": "18cd434c-8621-4f3d-b09c-da2461ab7147",
     "ticker": "BRC",
     "exchange": "SYN",
     "legal_name": "BrightRiver Cloud Systems Inc.",
@@ -18,7 +18,7 @@
     "active": true
   },
   {
-    "id": "284f7ca6-1b4d-4a45-8aae-0b71f90e2a1e",
+    "id": "16cadd25-a70d-410e-9388-e223458387eb",
     "ticker": "ECO",
     "exchange": "SYN",
     "legal_name": "EcoMosaic Water Systems",
@@ -27,7 +27,7 @@
     "active": true
   },
   {
-    "id": "9cec562c-d156-4060-8312-743b8bd3e33f",
+    "id": "721cd2b1-e124-46b8-aa4a-29af9dddf964",
     "ticker": "HLS",
     "exchange": "SYN",
     "legal_name": "HelioStorage Energy Group",
@@ -36,7 +36,7 @@
     "active": true
   },
   {
-    "id": "00df5df4-6429-4834-b9dc-be7606a8bdad",
+    "id": "54c424a4-f3af-4635-b210-787e05ad7886",
     "ticker": "LUM",
     "exchange": "SYN",
     "legal_name": "LumenBridge Optics Ltd.",
@@ -45,7 +45,7 @@
     "active": true
   },
   {
-    "id": "ce6fe592-0301-4857-a9f7-baaa14f3104a",
+    "id": "84db2cfe-2641-4938-92b8-ac296bfd13d9",
     "ticker": "MTR",
     "exchange": "SYN",
     "legal_name": "MetroSeed Foods Inc.",
@@ -54,7 +54,7 @@
     "active": true
   },
   {
-    "id": "e5afe6da-01cc-430e-9d77-760cf1940fc6",
+    "id": "b17d20c6-ddfa-4fc6-9ef5-82dcffdcc0d7",
     "ticker": "NVM",
     "exchange": "SYN",
     "legal_name": "NovaMed Devices Co.",
@@ -63,7 +63,7 @@
     "active": true
   },
   {
-    "id": "1e40ed36-943e-458d-8618-a7e0dcd3d1d1",
+    "id": "1f8a5aa3-6ccd-4e80-9cfd-9144c23bc425",
     "ticker": "ORC",
     "exchange": "SYN",
     "legal_name": "Orchid Circuit Materials Ltd.",
@@ -72,7 +72,7 @@
     "active": true
   },
   {
-    "id": "711b51ee-7ced-4000-8fd8-5b414c94ba43",
+    "id": "9cfec93e-53bc-4eb5-beda-181b0119d522",
     "ticker": "PRM",
     "exchange": "SYN",
     "legal_name": "PrimeVale Logistics SA",
@@ -81,7 +81,7 @@
     "active": true
   },
   {
-    "id": "580c0712-bfbd-4648-b77d-ff94c2c10bb9",
+    "id": "ab6f3a7d-ec5d-4b7d-855a-5fd967af928d",
     "ticker": "QNT",
     "exchange": "SYN",
     "legal_name": "QuantHarbor Analytics PLC",
@@ -90,7 +90,7 @@
     "active": true
   },
   {
-    "id": "4966bce3-2120-4f01-9dd5-bad9490d01bb",
+    "id": "e69ea1c0-b50f-4028-a7a5-53c00d9f8119",
     "ticker": "SKY",
     "exchange": "SYN",
     "legal_name": "SkyForge Components Co.",
@@ -99,7 +99,7 @@
     "active": true
   },
   {
-    "id": "6bbaad9d-d481-4708-8951-e2a46737253e",
+    "id": "4514c36b-042c-49a3-b9a8-af5eb9031cfe",
     "ticker": "VTL",
     "exchange": "SYN",
     "legal_name": "VectorLoom Textiles Group",

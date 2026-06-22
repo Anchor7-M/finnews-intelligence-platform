@@ -1,0 +1,62 @@
+[
+  {
+    "source_id": "example-announcement-json",
+    "display_name": "Example Official JSON Announcements",
+    "source_type": "documented_json_api",
+    "approval_status": "unreviewed",
+    "enabled": false,
+    "terms_url": "https://announcements.example/terms",
+    "documentation_url": "https://announcements.example/docs",
+    "content_storage_policy": "metadata_only",
+    "language": "en",
+    "timezone": "UTC",
+    "risk_classification": "medium",
+    "approved_host_count": 1,
+    "synthetic": true
+  },
+  {
+    "source_id": "example-rss-feed",
+    "display_name": "Example Publisher RSS Feed",
+    "source_type": "rss",
+    "approval_status": "unreviewed",
+    "enabled": false,
+    "terms_url": "https://publisher.example/terms",
+    "documentation_url": "https://publisher.example/rss-docs",
+    "content_storage_policy": "metadata_only",
+    "language": "en",
+    "timezone": "UTC",
+    "risk_classification": "medium",
+    "approved_host_count": 1,
+    "synthetic": true
+  },
+  {
+    "source_id": "user-announcement-csv",
+    "display_name": "User Supplied Official CSV Export",
+    "source_type": "user_export_csv",
+    "approval_status": "approved",
+    "enabled": false,
+    "terms_url": "https://example.local/user-provided-export-policy",
+    "documentation_url": "https://example.local/user-provided-export-schema",
+    "content_storage_policy": "metadata_only",
+    "language": "en",
+    "timezone": "UTC",
+    "risk_classification": "low",
+    "approved_host_count": 0,
+    "synthetic": true
+  },
+  {
+    "source_id": "user-announcement-json",
+    "display_name": "User Supplied Official JSON Export",
+    "source_type": "user_export_json",
+    "approval_status": "approved",
+    "enabled": false,
+    "terms_url": "https://example.local/user-provided-export-policy",
+    "documentation_url": "https://example.local/user-provided-export-schema",
+    "content_storage_policy": "metadata_only",
+    "language": "en",
+    "timezone": "UTC",
+    "risk_classification": "low",
+    "approved_host_count": 0,
+    "synthetic": true
+  }
+]

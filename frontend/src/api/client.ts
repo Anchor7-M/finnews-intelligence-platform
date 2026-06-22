@@ -1,4 +1,14 @@
-import type { Article, Company, DataMode, Digest, Overview, Signal } from "../types/models";
+import type {
+  Article,
+  Company,
+  DataMode,
+  Digest,
+  Overview,
+  Signal,
+  SourceFetchAttempt,
+  SourceHealth,
+  SourceSummary,
+} from "../types/models";
 
 const API_BASE = import.meta.env.VITE_FINNEWS_API_BASE ?? "http://127.0.0.1:8000";
 
@@ -51,4 +61,36 @@ export async function loadSignals(mode: DataMode = getDataMode()): Promise<Signa
     return getJson<Signal[]>(`${API_BASE}/api/v1/signals/daily`);
   }
   return getJson<Signal[]>("/demo-data/signals.json");
+}
+
+export async function loadSources(mode: DataMode = getDataMode()): Promise<SourceSummary[]> {
+  if (mode === "api") {
+    const data = await getJson<{ items: SourceSummary[] }>(`${API_BASE}/api/v1/sources`);
+    return data.items;
+  }
+  return getJson<SourceSummary[]>("/demo-data/sources.json");
+}
+
+export async function loadSourceHealth(mode: DataMode = getDataMode()): Promise<SourceHealth[]> {
+  if (mode === "api") {
+    const sources = await loadSources(mode);
+    return Promise.all(
+      sources.map((source) =>
+        getJson<SourceHealth>(`${API_BASE}/api/v1/sources/${source.source_id}/health`),
+      ),
+    );
+  }
+  return getJson<SourceHealth[]>("/demo-data/source-health.json");
+}
+
+export async function loadSourceFetchAttempts(
+  mode: DataMode = getDataMode(),
+): Promise<SourceFetchAttempt[]> {
+  if (mode === "api") {
+    const data = await getJson<{ items: SourceFetchAttempt[] }>(
+      `${API_BASE}/api/v1/source-fetch-attempts`,
+    );
+    return data.items;
+  }
+  return getJson<SourceFetchAttempt[]>("/demo-data/source-fetch-attempts.json");
 }

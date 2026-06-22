@@ -30,6 +30,17 @@ flowchart LR
 - Vue 3 TypeScript dashboard with static-demo and API data modes.
 - Local verification script, docs, and future GitHub Actions/Page workflow files.
 
+## Implemented In Milestone 1A
+
+- Repository-owned YAML source registry with typed validation and approval gates.
+- Disabled-by-default example RSS, documented JSON API, and user JSON/CSV export definitions.
+- Bounded HTTP client with HTTPS, allowlist, redirect, response-size, content-type, and private-address controls.
+- ETag and Last-Modified fetch state plus `304 Not Modified` handling.
+- Bounded retry, run-once source fetches, source health, and fetch attempts.
+- RSS/Atom, documented JSON announcement, and user JSON/CSV announcement adapters.
+- Memory and PostgreSQL source-state persistence.
+- Read-only source API endpoints, `finnews source ...` CLI commands, Vue Source Health page, and static-demo source-health data.
+
 ## Verified Synthetic Dataset
 
 - 68 raw observations loaded in the memory demo.
@@ -93,6 +104,8 @@ GET /health/live
 GET /api/v1/articles?ticker=ALP&limit=20
 GET /api/v1/digests/2026-06-20
 GET /api/v1/signals/daily
+GET /api/v1/sources
+GET /api/v1/source-fetch-attempts
 ```
 
 ## Frontend
@@ -109,7 +122,8 @@ Milestones 1-4 are documented in `docs/ROADMAP.md` and are not implemented yet.
 
 ## Limitations
 
-- No live source adapters in Milestone 0.
+- Live-source infrastructure exists, but no real source is enabled by default.
+- Live-source smoke testing is not run without explicit source approval and user authorization.
 - Baselines are deterministic rules, not predictive models.
 - PostgreSQL repository behavior is verified locally, but this is still synthetic research tooling rather than production financial advice.
 - GitHub Actions files are present for future manual push; no CI result is claimed locally.

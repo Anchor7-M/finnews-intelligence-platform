@@ -8,7 +8,9 @@ Not verified in the local compliance audit: PostgreSQL integration runtime, beca
 
 ## Milestone 1
 
-Documented only: manually approved live RSS/Atom and official announcement adapters, bounded retries, source health, cursors, ETag and Last-Modified handling.
+Milestone 1A implemented: safe source registry, disabled-by-default source definitions, bounded HTTP client, mocked RSS/Atom and documented JSON ingestion, user JSON/CSV announcement imports, ETag and Last-Modified state, `304` handling, bounded retries, source health, fetch attempts, API/CLI, static demo, and Vue Source Health page.
+
+Milestone 1B deferred: real source selection, terms review evidence, manual approval workflow, and optional user-authorized live smoke test.
 
 ## Milestone 2
 
