@@ -71,6 +71,18 @@ def test_local_override_can_enable_approved_source(
     assert sources["reviewed-rss"].approved_hostnames == ["official.example"]
 
 
+def test_local_override_is_explicit_only(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    source_dir = write_config(tmp_path)
+    tmp_path.joinpath("sources.local.yaml").write_text(
+        "sources:\n  - source_id: reviewed-rss\n    enabled: true\n", encoding="utf-8"
+    )
+    monkeypatch.delenv("FINNEWS_SOURCE_LOCAL_OVERRIDE", raising=False)
+
+    sources = {source.source_id: source for source in load_source_definitions(source_dir)}
+
+    assert sources["reviewed-rss"].enabled is False
+
+
 def test_local_override_blocks_unknown_unapproved_and_extra_fields(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:

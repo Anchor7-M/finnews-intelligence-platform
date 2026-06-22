@@ -40,8 +40,8 @@ privacy_notes: No personal data is required by the feed.
 known_risks:
   - Feed availability and validator behavior may change.
   - Live-smoke success does not imply production availability.
-live_smoke_status: not_run
-live_smoke_checked_at: null
+live_smoke_status: passed
+live_smoke_checked_at: "2026-06-22T22:20:00+10:00"
 evidence_checked_at: "2026-06-22"
 evidence_urls:
   - https://www.federalreserve.gov/feeds/feeds.htm

@@ -42,4 +42,19 @@ Review approval does not mean production readiness.
 
 ## Live Test Status
 
-Status before the guarded smoke run: `not_run`.
+Guarded local smoke status: `passed` on 2026-06-22.
+
+Safe metadata recorded:
+
+- source ID: `federal-reserve-press-releases`
+- host: `www.federalreserve.gov`
+- request count: 2
+- initial HTTP status: 200
+- conditional behavior: `not_modified`
+- decoded response bytes: 15042
+- parsed item count: 5
+- persistence mode: `no_persist`
+- validators offered: ETag yes, Last-Modified yes
+
+No raw response, item titles, item summaries, raw validators, complete headers,
+or linked press-release page content are committed.

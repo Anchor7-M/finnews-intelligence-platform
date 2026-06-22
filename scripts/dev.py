@@ -150,7 +150,7 @@ def verify_postgres(_: argparse.Namespace) -> None:
         db_down(argparse.Namespace())
     if success:
         print(
-            "verify-postgres passed: project=finnews_m1_verify service=postgres "
+            "verify-postgres passed: project=finnews_m1b_verify service=postgres "
             "image=postgres:16 port=127.0.0.1:55432"
         )
 

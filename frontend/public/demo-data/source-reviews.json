@@ -11,8 +11,8 @@
     "documentation_url": "https://www.federalreserve.gov/feeds/feeds.htm",
     "terms_or_policy_url": "https://www.federalreserve.gov/feeds/feeds.htm",
     "enabled": false,
-    "live_smoke_status": "not_run",
-    "live_smoke_checked_at": null,
+    "live_smoke_status": "passed",
+    "live_smoke_checked_at": "2026-06-22T22:20:00+10:00",
     "known_limitations": [
       "Feed availability and validator behavior may change.",
       "Live-smoke success does not imply production availability."

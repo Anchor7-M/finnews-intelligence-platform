@@ -18,7 +18,7 @@ const attempts = useAsyncData(loadSourceFetchAttempts);
 const reviews = useAsyncData(loadSourceReviews);
 
 const reviewBySource = computed(() => {
-  const result = new Map<string, NonNullable<(typeof reviews.data.value)>[number]>();
+  const result = new Map<string, NonNullable<typeof reviews.data.value>[number]>();
   for (const review of reviews.data.value ?? []) {
     result.set(review.source_id, review);
   }
@@ -115,7 +115,8 @@ const reviewMetrics = computed(() => {
       >
         <div>
           <p class="eyebrow">
-            {{ source.source_type }} / {{ reviewBySource.get(source.source_id)?.review_decision ?? source.approval_status }}
+            {{ source.source_type }} /
+            {{ reviewBySource.get(source.source_id)?.review_decision ?? source.approval_status }}
           </p>
           <h3>{{ source.display_name }}</h3>
           <p>{{ reviewBySource.get(source.source_id)?.official_owner ?? source.source_id }}</p>
@@ -131,7 +132,9 @@ const reviewMetrics = computed(() => {
           </div>
           <div>
             <dt>Review</dt>
-            <dd>{{ reviewBySource.get(source.source_id)?.review_decision ?? source.approval_status }}</dd>
+            <dd>
+              {{ reviewBySource.get(source.source_id)?.review_decision ?? source.approval_status }}
+            </dd>
           </div>
           <div>
             <dt>Access</dt>
@@ -170,8 +173,13 @@ const reviewMetrics = computed(() => {
             <dd>{{ source.last_modified_available ? "available" : "absent" }}</dd>
           </div>
         </dl>
-        <p class="source-note">Disabled by default. Engineering review is not production readiness.</p>
-        <p v-if="reviewBySource.get(source.source_id)?.known_limitations.length" class="source-note">
+        <p class="source-note">
+          Disabled by default. Engineering review is not production readiness.
+        </p>
+        <p
+          v-if="reviewBySource.get(source.source_id)?.known_limitations.length"
+          class="source-note"
+        >
           {{ reviewBySource.get(source.source_id)?.known_limitations.join("; ") }}
         </p>
         <p v-if="reviewBySource.get(source.source_id)" class="source-links">

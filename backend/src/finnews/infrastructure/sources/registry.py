@@ -210,7 +210,9 @@ def load_source_definitions(config_dir: Path | None = None) -> list[SourceDefini
                 raise SourceConfigError(f"duplicate source_id: {config.source_id}")
             seen.add(config.source_id)
             definitions.append(config.to_domain())
-    return _apply_local_overrides(definitions)
+    if os.environ.get("FINNEWS_SOURCE_LOCAL_OVERRIDE"):
+        return _apply_local_overrides(definitions)
+    return definitions
 
 
 def validate_source_definitions(config_dir: Path | None = None) -> list[str]:
