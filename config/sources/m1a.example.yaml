@@ -1,0 +1,136 @@
+sources:
+  - source_id: example-rss-feed
+    display_name: Example Publisher RSS Feed
+    source_type: rss
+    base_url: https://publisher.example/rss.xml
+    approved_hostnames: ["publisher.example"]
+    terms_url: https://publisher.example/terms
+    documentation_url: https://publisher.example/rss-docs
+    review_status: unreviewed
+    enabled: false
+    reviewed_date: null
+    reviewer: null
+    content_storage_policy: metadata_only
+    provenance_required: true
+    language: en
+    timezone: UTC
+    connect_timeout_seconds: 5
+    read_timeout_seconds: 15
+    max_response_bytes: 2000000
+    retry_policy:
+      max_retries: 2
+      base_delay_seconds: 1
+      max_delay_seconds: 30
+    minimum_interval_seconds: 3600
+    cursor_strategy: null
+    field_mapping: {}
+    user_agent: "finnews-intelligence-platform/0.1 (+local research; contact: local)"
+    notes: Example only. Not approved for live fetching.
+    risk_classification: medium
+
+  - source_id: example-announcement-json
+    display_name: Example Official JSON Announcements
+    source_type: documented_json_api
+    base_url: https://announcements.example/api/v1/notices
+    approved_hostnames: ["announcements.example"]
+    terms_url: https://announcements.example/terms
+    documentation_url: https://announcements.example/docs
+    review_status: unreviewed
+    enabled: false
+    reviewed_date: null
+    reviewer: null
+    content_storage_policy: metadata_only
+    provenance_required: true
+    language: en
+    timezone: UTC
+    connect_timeout_seconds: 5
+    read_timeout_seconds: 15
+    max_response_bytes: 2000000
+    retry_policy:
+      max_retries: 2
+      base_delay_seconds: 1
+      max_delay_seconds: 30
+    minimum_interval_seconds: 3600
+    cursor_strategy: response_field
+    field_mapping:
+      items: items
+      id: id
+      title: title
+      url: url
+      published_at: published_at
+      summary: summary
+      ticker: ticker
+      next_cursor: next_cursor
+    user_agent: "finnews-intelligence-platform/0.1 (+local research; contact: local)"
+    notes: Example only. Endpoint is illustrative and disabled.
+    risk_classification: medium
+
+  - source_id: user-announcement-json
+    display_name: User Supplied Official JSON Export
+    source_type: user_export_json
+    import_format: json
+    approved_hostnames: []
+    terms_url: https://example.local/user-provided-export-policy
+    documentation_url: https://example.local/user-provided-export-schema
+    review_status: approved
+    enabled: false
+    reviewed_date: "2026-06-22"
+    reviewer: local-demo
+    content_storage_policy: metadata_only
+    provenance_required: true
+    language: en
+    timezone: UTC
+    connect_timeout_seconds: 5
+    read_timeout_seconds: 15
+    max_response_bytes: 2000000
+    retry_policy:
+      max_retries: 0
+      base_delay_seconds: 0
+      max_delay_seconds: 0
+    minimum_interval_seconds: 0
+    cursor_strategy: null
+    field_mapping:
+      id: id
+      title: title
+      url: url
+      published_at: published_at
+      summary: summary
+      ticker: ticker
+    user_agent: "finnews-intelligence-platform/0.1 (+local research; contact: local)"
+    notes: Local file import only; no network call.
+    risk_classification: low
+
+  - source_id: user-announcement-csv
+    display_name: User Supplied Official CSV Export
+    source_type: user_export_csv
+    import_format: csv
+    approved_hostnames: []
+    terms_url: https://example.local/user-provided-export-policy
+    documentation_url: https://example.local/user-provided-export-schema
+    review_status: approved
+    enabled: false
+    reviewed_date: "2026-06-22"
+    reviewer: local-demo
+    content_storage_policy: metadata_only
+    provenance_required: true
+    language: en
+    timezone: UTC
+    connect_timeout_seconds: 5
+    read_timeout_seconds: 15
+    max_response_bytes: 2000000
+    retry_policy:
+      max_retries: 0
+      base_delay_seconds: 0
+      max_delay_seconds: 0
+    minimum_interval_seconds: 0
+    cursor_strategy: null
+    field_mapping:
+      id: id
+      title: title
+      url: url
+      published_at: published_at
+      summary: summary
+      ticker: ticker
+    user_agent: "finnews-intelligence-platform/0.1 (+local research; contact: local)"
+    notes: Local file import only; no network call.
+    risk_classification: low

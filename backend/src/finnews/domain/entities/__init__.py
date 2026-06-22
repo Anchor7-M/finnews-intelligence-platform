@@ -7,10 +7,14 @@ from uuid import UUID
 from finnews.domain.enums import (
     DuplicateType,
     EventType,
+    FetchOutcome,
     IngestionPolicy,
     ProcessingState,
     RunStatus,
     SentimentLabel,
+    SourceApprovalStatus,
+    SourceErrorCategory,
+    SourceHealthStatus,
     SourceType,
 )
 from finnews.domain.value_objects import new_id, utc_now
@@ -64,6 +68,94 @@ class SourceRecord:
     language: str
     published_at: str
     raw_metadata: dict[str, object] = field(default_factory=dict)
+
+
+@dataclass(frozen=True)
+class SourceRetryPolicy:
+    max_retries: int = 2
+    base_delay_seconds: float = 1.0
+    max_delay_seconds: float = 30.0
+
+
+@dataclass(frozen=True)
+class SourceDefinition:
+    source_id: str
+    display_name: str
+    source_type: SourceType
+    approved_hostnames: list[str]
+    review_status: SourceApprovalStatus
+    enabled: bool = False
+    base_url: str | None = None
+    import_format: str | None = None
+    terms_url: str | None = None
+    documentation_url: str | None = None
+    reviewed_date: str | None = None
+    reviewer: str | None = None
+    content_storage_policy: IngestionPolicy = IngestionPolicy.METADATA_ONLY
+    provenance_required: bool = True
+    language: str = "en"
+    timezone: str = "UTC"
+    connect_timeout_seconds: float = 5.0
+    read_timeout_seconds: float = 15.0
+    max_response_bytes: int = 2_000_000
+    retry_policy: SourceRetryPolicy = field(default_factory=SourceRetryPolicy)
+    minimum_interval_seconds: int = 3600
+    cursor_strategy: str | None = None
+    field_mapping: dict[str, str] = field(default_factory=dict)
+    user_agent: str = "finnews-intelligence-platform/0.1 (+local research)"
+    notes: str = ""
+    risk_classification: str = "medium"
+    adapter_version: str = "m1a-v1"
+
+    @property
+    def fetch_allowed(self) -> bool:
+        return self.enabled and self.review_status is SourceApprovalStatus.APPROVED
+
+
+@dataclass
+class SourceFetchState:
+    source_id: str
+    etag: str | None = None
+    last_modified: str | None = None
+    cursor: str | None = None
+    last_attempted_at: datetime | None = None
+    last_successful_at: datetime | None = None
+    next_allowed_at: datetime | None = None
+    last_http_status: int | None = None
+    last_response_hash: str | None = None
+    last_response_byte_count: int = 0
+    last_item_count: int = 0
+    consecutive_failure_count: int = 0
+    last_error_category: SourceErrorCategory = SourceErrorCategory.NONE
+    last_error_summary: str = ""
+    health_status: SourceHealthStatus = SourceHealthStatus.UNKNOWN
+    adapter_version: str = "m1a-v1"
+    updated_at: datetime = field(default_factory=utc_now)
+
+
+@dataclass
+class SourceFetchAttempt:
+    source_id: str
+    outcome: FetchOutcome
+    started_at: datetime
+    finished_at: datetime
+    id: UUID = field(default_factory=new_id)
+    http_status: int | None = None
+    item_count: int = 0
+    new_count: int = 0
+    duplicate_count: int = 0
+    rejected_count: int = 0
+    response_byte_count: int = 0
+    response_hash: str | None = None
+    retry_count: int = 0
+    duration_ms: int = 0
+    error_category: SourceErrorCategory = SourceErrorCategory.NONE
+    error_summary: str = ""
+    etag_present: bool = False
+    last_modified_present: bool = False
+    cursor_before: str | None = None
+    cursor_after: str | None = None
+    dry_run: bool = False
 
 
 @dataclass
