@@ -1,12 +1,9 @@
 [
   {
-    "calibration": {
-      "alpha": 1.5,
-      "method": "probability_power_scaling",
-      "status": "validation_alpha_improved_ece",
-      "test_ece": 0.32902,
-      "validation_ece": 0.332359
-    },
+    "evaluation_id": "m2a-event-word_char_tfidf_logreg-test",
+    "model_id": "m2a-event-word_char_tfidf_logreg",
+    "task": "event",
+    "split": "test",
     "dataset": {
       "dataset_id": "synthetic-finnews-nlp-v1",
       "dataset_sha256": "5eba057ef83198c5a35d29da2c821a5624d813885806cab4f48ecb22dbda67aa",
@@ -19,135 +16,6 @@
       },
       "synthetic_only": true
     },
-    "disclaimer": "Synthetic benchmark only; generator-defined labels; no live or copyrighted news; not investment advice; real-world licensed evaluation is deferred to Milestone 2B.",
-    "evaluation_id": "m2a-event-word_char_tfidf_logreg-test",
-    "model_id": "m2a-event-word_char_tfidf_logreg",
-    "slices": {
-      "challenge_flag": [
-        {
-          "accuracy": 1.0,
-          "macro_f1": 1.0,
-          "name": "alias_or_ticker",
-          "record_count": 12
-        },
-        {
-          "accuracy": 1.0,
-          "macro_f1": 0.666667,
-          "name": "class_overlap",
-          "record_count": 12
-        },
-        {
-          "accuracy": 1.0,
-          "macro_f1": 0.666667,
-          "name": "cross_sentence_context",
-          "record_count": 9
-        },
-        {
-          "accuracy": 1.0,
-          "macro_f1": 0.666667,
-          "name": "hypothetical_or_plan",
-          "record_count": 12
-        },
-        {
-          "accuracy": 1.0,
-          "macro_f1": 0.666667,
-          "name": "long_text",
-          "record_count": 12
-        },
-        {
-          "accuracy": 1.0,
-          "macro_f1": 0.333333,
-          "name": "low_information",
-          "record_count": 9
-        },
-        {
-          "accuracy": 1.0,
-          "macro_f1": 0.666667,
-          "name": "mixed_signal",
-          "record_count": 12
-        },
-        {
-          "accuracy": 1.0,
-          "macro_f1": 0.333333,
-          "name": "negation",
-          "record_count": 9
-        },
-        {
-          "accuracy": 1.0,
-          "macro_f1": 1.0,
-          "name": "neutral_boilerplate",
-          "record_count": 12
-        },
-        {
-          "accuracy": 1.0,
-          "macro_f1": 0.666667,
-          "name": "numerical_reversal",
-          "record_count": 9
-        },
-        {
-          "accuracy": 1.0,
-          "macro_f1": 0.333333,
-          "name": "short_text",
-          "record_count": 9
-        },
-        {
-          "accuracy": 1.0,
-          "macro_f1": 0.666667,
-          "name": "uncertainty",
-          "record_count": 9
-        }
-      ],
-      "difficulty": [
-        {
-          "accuracy": 1.0,
-          "macro_f1": 1.0,
-          "name": "easy",
-          "record_count": 108
-        },
-        {
-          "accuracy": 1.0,
-          "macro_f1": 1.0,
-          "name": "hard",
-          "record_count": 108
-        },
-        {
-          "accuracy": 1.0,
-          "macro_f1": 1.0,
-          "name": "medium",
-          "record_count": 108
-        }
-      ],
-      "language": [
-        {
-          "accuracy": 1.0,
-          "macro_f1": 1.0,
-          "name": "en",
-          "record_count": 108
-        },
-        {
-          "accuracy": 1.0,
-          "macro_f1": 1.0,
-          "name": "zh",
-          "record_count": 216
-        }
-      ],
-      "text_length": [
-        {
-          "accuracy": 1.0,
-          "macro_f1": 1.0,
-          "name": "short_or_equal_median",
-          "record_count": 163
-        },
-        {
-          "accuracy": 1.0,
-          "macro_f1": 1.0,
-          "name": "long_above_median",
-          "record_count": 161
-        }
-      ]
-    },
-    "split": "test",
-    "task": "event",
     "test_metrics": {
       "dummy_most_frequent": {
         "accuracy": 0.111111,
@@ -571,7 +439,7 @@
             ]
           ]
         },
-        "inference_duration_ms": 66,
+        "inference_duration_ms": 0,
         "macro_f1": 0.755556,
         "macro_precision": 0.814815,
         "macro_recall": 0.777778,
@@ -794,7 +662,7 @@
           ]
         },
         "expected_calibration_error": 0.32902,
-        "inference_duration_ms": 286,
+        "inference_duration_ms": 0,
         "log_loss": 0.415803,
         "macro_f1": 1.0,
         "macro_precision": 1.0,
@@ -940,78 +808,54 @@
         ],
         "weighted_f1": 1.0
       }
-    }
-  },
-  {
-    "calibration": {
-      "alpha": 1.5,
-      "method": "probability_power_scaling",
-      "status": "validation_alpha_improved_ece",
-      "test_ece": 0.157792,
-      "validation_ece": 0.110114
     },
-    "dataset": {
-      "dataset_id": "synthetic-finnews-nlp-v1",
-      "dataset_sha256": "5eba057ef83198c5a35d29da2c821a5624d813885806cab4f48ecb22dbda67aa",
-      "dataset_version": "1.0.0",
-      "label_source": "generator_defined_synthetic_gold",
-      "split_hashes": {
-        "test": "2f0b409caa29a341e122d1ff28b4f34b09208d0b6f2f0dff323b5d469657172b",
-        "train": "78c03f095f38b7f40408e63c76924544659a3bbac1c34710f66a67cf5039fb7b",
-        "validation": "8dfe819e5dd65118175f400e99bc863c9bb162d5ce0cd717e3db693cdf97791c"
-      },
-      "synthetic_only": true
-    },
-    "disclaimer": "Synthetic benchmark only; generator-defined labels; no live or copyrighted news; not investment advice; real-world licensed evaluation is deferred to Milestone 2B.",
-    "evaluation_id": "m2a-sentiment-word_char_tfidf_logreg-test",
-    "model_id": "m2a-sentiment-word_char_tfidf_logreg",
     "slices": {
       "challenge_flag": [
         {
           "accuracy": 1.0,
-          "macro_f1": 0.75,
+          "macro_f1": 1.0,
           "name": "alias_or_ticker",
           "record_count": 12
         },
         {
           "accuracy": 1.0,
-          "macro_f1": 1.0,
+          "macro_f1": 0.666667,
           "name": "class_overlap",
           "record_count": 12
         },
         {
           "accuracy": 1.0,
-          "macro_f1": 0.75,
+          "macro_f1": 0.666667,
           "name": "cross_sentence_context",
           "record_count": 9
         },
         {
           "accuracy": 1.0,
-          "macro_f1": 0.75,
+          "macro_f1": 0.666667,
           "name": "hypothetical_or_plan",
           "record_count": 12
         },
         {
           "accuracy": 1.0,
-          "macro_f1": 0.75,
+          "macro_f1": 0.666667,
           "name": "long_text",
           "record_count": 12
         },
         {
           "accuracy": 1.0,
-          "macro_f1": 0.75,
+          "macro_f1": 0.333333,
           "name": "low_information",
           "record_count": 9
         },
         {
           "accuracy": 1.0,
-          "macro_f1": 0.75,
+          "macro_f1": 0.666667,
           "name": "mixed_signal",
           "record_count": 12
         },
         {
           "accuracy": 1.0,
-          "macro_f1": 0.75,
+          "macro_f1": 0.333333,
           "name": "negation",
           "record_count": 9
         },
@@ -1023,19 +867,19 @@
         },
         {
           "accuracy": 1.0,
-          "macro_f1": 0.75,
+          "macro_f1": 0.666667,
           "name": "numerical_reversal",
           "record_count": 9
         },
         {
           "accuracy": 1.0,
-          "macro_f1": 0.75,
+          "macro_f1": 0.333333,
           "name": "short_text",
           "record_count": 9
         },
         {
           "accuracy": 1.0,
-          "macro_f1": 0.75,
+          "macro_f1": 0.666667,
           "name": "uncertainty",
           "record_count": 9
         }
@@ -1089,8 +933,32 @@
         }
       ]
     },
-    "split": "test",
+    "calibration": {
+      "alpha": 1.5,
+      "method": "probability_power_scaling",
+      "status": "validation_alpha_improved_ece",
+      "test_ece": 0.32902,
+      "validation_ece": 0.332359
+    },
+    "disclaimer": "Synthetic benchmark only; generator-defined labels; no live or copyrighted news; not investment advice; real-world licensed evaluation is deferred to Milestone 2B."
+  },
+  {
+    "evaluation_id": "m2a-sentiment-word_char_tfidf_logreg-test",
+    "model_id": "m2a-sentiment-word_char_tfidf_logreg",
     "task": "sentiment",
+    "split": "test",
+    "dataset": {
+      "dataset_id": "synthetic-finnews-nlp-v1",
+      "dataset_sha256": "5eba057ef83198c5a35d29da2c821a5624d813885806cab4f48ecb22dbda67aa",
+      "dataset_version": "1.0.0",
+      "label_source": "generator_defined_synthetic_gold",
+      "split_hashes": {
+        "test": "2f0b409caa29a341e122d1ff28b4f34b09208d0b6f2f0dff323b5d469657172b",
+        "train": "78c03f095f38b7f40408e63c76924544659a3bbac1c34710f66a67cf5039fb7b",
+        "validation": "8dfe819e5dd65118175f400e99bc863c9bb162d5ce0cd717e3db693cdf97791c"
+      },
+      "synthetic_only": true
+    },
     "test_metrics": {
       "dummy_most_frequent": {
         "accuracy": 0.25,
@@ -1324,7 +1192,7 @@
             ]
           ]
         },
-        "inference_duration_ms": 49,
+        "inference_duration_ms": 0,
         "macro_f1": 0.770784,
         "macro_precision": 0.824242,
         "macro_recall": 0.759259,
@@ -1437,7 +1305,7 @@
           ]
         },
         "expected_calibration_error": 0.157792,
-        "inference_duration_ms": 270,
+        "inference_duration_ms": 0,
         "log_loss": 0.180604,
         "macro_f1": 1.0,
         "macro_precision": 1.0,
@@ -1553,6 +1421,138 @@
         ],
         "weighted_f1": 1.0
       }
-    }
+    },
+    "slices": {
+      "challenge_flag": [
+        {
+          "accuracy": 1.0,
+          "macro_f1": 0.75,
+          "name": "alias_or_ticker",
+          "record_count": 12
+        },
+        {
+          "accuracy": 1.0,
+          "macro_f1": 1.0,
+          "name": "class_overlap",
+          "record_count": 12
+        },
+        {
+          "accuracy": 1.0,
+          "macro_f1": 0.75,
+          "name": "cross_sentence_context",
+          "record_count": 9
+        },
+        {
+          "accuracy": 1.0,
+          "macro_f1": 0.75,
+          "name": "hypothetical_or_plan",
+          "record_count": 12
+        },
+        {
+          "accuracy": 1.0,
+          "macro_f1": 0.75,
+          "name": "long_text",
+          "record_count": 12
+        },
+        {
+          "accuracy": 1.0,
+          "macro_f1": 0.75,
+          "name": "low_information",
+          "record_count": 9
+        },
+        {
+          "accuracy": 1.0,
+          "macro_f1": 0.75,
+          "name": "mixed_signal",
+          "record_count": 12
+        },
+        {
+          "accuracy": 1.0,
+          "macro_f1": 0.75,
+          "name": "negation",
+          "record_count": 9
+        },
+        {
+          "accuracy": 1.0,
+          "macro_f1": 1.0,
+          "name": "neutral_boilerplate",
+          "record_count": 12
+        },
+        {
+          "accuracy": 1.0,
+          "macro_f1": 0.75,
+          "name": "numerical_reversal",
+          "record_count": 9
+        },
+        {
+          "accuracy": 1.0,
+          "macro_f1": 0.75,
+          "name": "short_text",
+          "record_count": 9
+        },
+        {
+          "accuracy": 1.0,
+          "macro_f1": 0.75,
+          "name": "uncertainty",
+          "record_count": 9
+        }
+      ],
+      "difficulty": [
+        {
+          "accuracy": 1.0,
+          "macro_f1": 1.0,
+          "name": "easy",
+          "record_count": 108
+        },
+        {
+          "accuracy": 1.0,
+          "macro_f1": 1.0,
+          "name": "hard",
+          "record_count": 108
+        },
+        {
+          "accuracy": 1.0,
+          "macro_f1": 1.0,
+          "name": "medium",
+          "record_count": 108
+        }
+      ],
+      "language": [
+        {
+          "accuracy": 1.0,
+          "macro_f1": 1.0,
+          "name": "en",
+          "record_count": 108
+        },
+        {
+          "accuracy": 1.0,
+          "macro_f1": 1.0,
+          "name": "zh",
+          "record_count": 216
+        }
+      ],
+      "text_length": [
+        {
+          "accuracy": 1.0,
+          "macro_f1": 1.0,
+          "name": "short_or_equal_median",
+          "record_count": 163
+        },
+        {
+          "accuracy": 1.0,
+          "macro_f1": 1.0,
+          "name": "long_above_median",
+          "record_count": 161
+        }
+      ]
+    },
+    "calibration": {
+      "alpha": 1.5,
+      "method": "probability_power_scaling",
+      "status": "validation_alpha_improved_ece",
+      "test_ece": 0.157792,
+      "validation_ece": 0.110114
+    },
+    "disclaimer": "Synthetic benchmark only; generator-defined labels; no live or copyrighted news; not investment advice; real-world licensed evaluation is deferred to Milestone 2B."
   }
 ]

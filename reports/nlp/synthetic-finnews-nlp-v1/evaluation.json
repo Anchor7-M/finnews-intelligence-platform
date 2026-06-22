@@ -1573,7 +1573,7 @@
               ]
             ]
           },
-          "inference_duration_ms": 66,
+          "inference_duration_ms": 0,
           "macro_f1": 0.755556,
           "macro_precision": 0.814815,
           "macro_recall": 0.777778,
@@ -1796,7 +1796,7 @@
             ]
           },
           "expected_calibration_error": 0.32902,
-          "inference_duration_ms": 286,
+          "inference_duration_ms": 0,
           "log_loss": 0.415803,
           "macro_f1": 1.0,
           "macro_precision": 1.0,
@@ -3099,7 +3099,7 @@
               ]
             ]
           },
-          "inference_duration_ms": 49,
+          "inference_duration_ms": 0,
           "macro_f1": 0.770784,
           "macro_precision": 0.824242,
           "macro_recall": 0.759259,
@@ -3212,7 +3212,7 @@
             ]
           },
           "expected_calibration_error": 0.157792,
-          "inference_duration_ms": 270,
+          "inference_duration_ms": 0,
           "log_loss": 0.180604,
           "macro_f1": 1.0,
           "macro_precision": 1.0,

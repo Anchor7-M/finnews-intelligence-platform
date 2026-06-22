@@ -144,7 +144,7 @@ def test_alembic_upgrade_downgrade_schema_types_constraints_and_indexes(engine: 
     command.upgrade(alembic_config(), "head")
     assert (
         ScriptDirectory.from_config(alembic_config()).get_current_head()
-        == "0002_source_fetch_state"
+        == "0003_nlp_model_registry"
     )
     command.current(alembic_config())
 

@@ -18,7 +18,14 @@ and remain disabled by default.
 
 ## Milestone 2
 
-Documented only: labeled evaluation data, traditional scikit-learn classifiers, calibration, error analysis, model registry metadata.
+Milestone 2A implemented locally: versioned synthetic bilingual NLP benchmark,
+leakage-safe splits, dummy/rule/scikit-learn baselines, validation-only
+selection, probability calibration, confidence/coverage, abstention analysis,
+deterministic error reports, trusted local artifact manifests, model-registry
+metadata, read-only API, CLI, Vue evaluation dashboard, and static demo export.
+
+Milestone 2B remains deferred: licensed or user-owned real-world corpus
+acquisition, terms review, and human-reviewed annotation.
 
 ## Milestone 3
 

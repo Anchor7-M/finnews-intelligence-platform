@@ -1,5 +1,6 @@
 [
   {
+    "task": "event",
     "class_labels": [
       "earnings",
       "merger_acquisition",
@@ -327,10 +328,10 @@
         "record_id": "m2a-tf-09-governance_personnel-negative-p1",
         "rule_prediction": "other"
       }
-    ],
-    "task": "event"
+    ]
   },
   {
+    "task": "sentiment",
     "class_labels": [
       "positive",
       "neutral",
@@ -678,7 +679,6 @@
         "record_id": "m2a-tf-10-litigation_penalty-positive-p2",
         "rule_prediction": "neutral"
       }
-    ],
-    "task": "sentiment"
+    ]
   }
 ]

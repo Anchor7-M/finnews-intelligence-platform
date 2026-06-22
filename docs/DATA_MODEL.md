@@ -48,3 +48,14 @@ authentication category, storage policy, official links, enabled status,
 live-smoke status, and known limitations. Personal contact values, raw
 User-Agent strings, raw responses, complete headers, and local override contents
 are not persisted or exposed.
+
+Milestone 2A adds two PostgreSQL metadata tables:
+
+- `nlp_model_registry`
+- `nlp_evaluation_runs`
+
+These tables persist safe model/evaluation metadata: logical IDs, task,
+provider, model kind, status, dataset hashes, split hashes, label sets, metrics,
+calibration summaries, slice summaries, artifact hashes, artifact sizes, config
+hashes, and timestamps. They do not store model binaries, sparse matrices,
+feature vocabularies, raw live text, absolute paths, secrets, or user input.

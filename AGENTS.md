@@ -23,6 +23,7 @@
 - Keep Milestone 0 honest: synthetic offline data only, no investment advice, no live intelligence claims.
 - For Milestone 1A source work, keep real sources disabled by default, use local mocks for automated tests, expose no arbitrary URL fetch endpoint, and store no raw response bodies.
 - For Milestone 1B source work, keep official source configs disabled by default, require typed review evidence for approved network sources, use ignored local overrides for manual smoke tests, never commit personal contact metadata or raw live responses, and keep automated tests offline.
+- For Milestone 2A NLP work, use only the committed synthetic benchmark, keep model binaries under ignored `.finnews-artifacts/`, never train on live-source output, and never claim real-world production accuracy.
 - Stop any temporary services before handing work back.
 - Update docs when behavior changes.
 

@@ -6,6 +6,10 @@
 - Milestone 1B review/source tests remain offline. The only authorized live path
   is a manually confirmed no-persist smoke command for reviewed official
   sources.
+- Milestone 2A NLP training uses only committed synthetic records, CPU-only
+  scikit-learn, `n_jobs=1`, and ignored local artifacts. It does not download
+  datasets, embeddings, tokenizers, model weights, or use hosted experiment
+  trackers.
 - Source fetching is run-once and bounded: default 2 MB response limit, hard 5 MB ceiling, no article-page downloads, no media downloads, and no background worker.
 - Default verification does not require Docker.
 - Python dependencies belong in `.venv`; frontend dependencies belong in `frontend/node_modules`.
@@ -39,3 +43,6 @@ image was pulled because it was absent before the task. No paid services,
 external databases, pgAdmin, Redis, Kafka, or cloud resources are used. M1B
 continues to use zero paid services; SEC contact metadata, if supplied, remains
 local and untracked.
+
+M2A continues the zero-cost policy. The benchmark is below 5 MB, each generated
+model artifact is below 25 MB, and `.finnews-artifacts/` is ignored.
