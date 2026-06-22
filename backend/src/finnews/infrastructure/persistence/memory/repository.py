@@ -19,6 +19,9 @@ from finnews.domain.entities import (
     PipelineRun,
     RawArticle,
     Source,
+    SourceDefinition,
+    SourceFetchAttempt,
+    SourceFetchState,
 )
 from finnews.infrastructure.normalization import comparison_text
 
@@ -26,6 +29,9 @@ from finnews.infrastructure.normalization import comparison_text
 class MemoryNewsRepository:
     def __init__(self) -> None:
         self.sources: dict[str, Source] = {}
+        self.source_definitions: dict[str, SourceDefinition] = {}
+        self.source_fetch_states: dict[str, SourceFetchState] = {}
+        self.source_fetch_attempts: list[SourceFetchAttempt] = []
         self.ingestion_runs: list[IngestionRun] = []
         self.raw_articles: dict[str, RawArticle] = {}
         self.articles: dict[UUID, Article] = {}
@@ -47,6 +53,53 @@ class MemoryNewsRepository:
             return existing
         self.sources[source.source_key] = source
         return source
+
+    def upsert_source_definition(self, definition: SourceDefinition) -> SourceDefinition:
+        self.source_definitions[definition.source_id] = definition
+        self.upsert_source(
+            Source(
+                source_key=definition.source_id,
+                display_name=definition.display_name,
+                source_type=definition.source_type,
+                base_url=definition.base_url,
+                terms_url=definition.terms_url,
+                enabled=definition.enabled,
+                language_hints=[definition.language],
+                ingestion_policy=definition.content_storage_policy,
+                rate_limit={
+                    "minimum_interval_seconds": definition.minimum_interval_seconds,
+                    "max_retries": definition.retry_policy.max_retries,
+                },
+            )
+        )
+        return definition
+
+    def list_source_definitions(self) -> list[SourceDefinition]:
+        return sorted(self.source_definitions.values(), key=lambda item: item.source_id)
+
+    def get_source_definition(self, source_id: str) -> SourceDefinition | None:
+        return self.source_definitions.get(source_id)
+
+    def upsert_source_fetch_state(self, state: SourceFetchState) -> SourceFetchState:
+        self.source_fetch_states[state.source_id] = state
+        return state
+
+    def get_source_fetch_state(self, source_id: str) -> SourceFetchState | None:
+        return self.source_fetch_states.get(source_id)
+
+    def list_source_fetch_states(self) -> list[SourceFetchState]:
+        return sorted(self.source_fetch_states.values(), key=lambda item: item.source_id)
+
+    def add_source_fetch_attempt(self, attempt: SourceFetchAttempt) -> SourceFetchAttempt:
+        self.source_fetch_attempts.append(attempt)
+        return attempt
+
+    def list_source_fetch_attempts(self) -> list[SourceFetchAttempt]:
+        return sorted(
+            self.source_fetch_attempts,
+            key=lambda item: (item.started_at, item.source_id, item.id),
+            reverse=True,
+        )
 
     def add_ingestion_run(self, run: IngestionRun) -> IngestionRun:
         self.ingestion_runs.append(run)
