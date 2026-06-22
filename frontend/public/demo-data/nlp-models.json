@@ -1,0 +1,92 @@
+[
+  {
+    "abstention": {
+      "selected_on": "validation",
+      "sentiment_uncertain_is_label_not_abstention": false,
+      "threshold": 0.5
+    },
+    "artifact_sha256": "59ff51deb0d5e70377bbeba980724ab4ed79c773aabd4da48cb56cce8adc7a99",
+    "artifact_size_bytes": 284034,
+    "calibration": {
+      "alpha": 1.5,
+      "method": "probability_power_scaling",
+      "status": "validation_alpha_improved_ece",
+      "test_ece": 0.32902,
+      "validation_ece": 0.332359
+    },
+    "config_sha256": "a9483c9f2f6d31abdf7277a82f090df06a7118bad292917a41960f7a96e1609d",
+    "created_at": "2026-06-22T00:00:00+00:00",
+    "dataset_id": "synthetic-finnews-nlp-v1",
+    "dataset_sha256": "5eba057ef83198c5a35d29da2c821a5624d813885806cab4f48ecb22dbda67aa",
+    "dataset_version": "1.0.0",
+    "manifest_sha256": "5b8ce127c6d3cb096bc8bd11855cda60909f565165f9d5faff7bbb3b8c5a1561",
+    "model_id": "m2a-event-word_char_tfidf_logreg",
+    "model_kind": "word_char_tfidf_logreg",
+    "promotion_policy": {
+      "checks": {
+        "artifact_manifest_verified": true,
+        "calibration_available": true,
+        "dataset_and_split_integrity": true,
+        "macro_f1_beats_dummy_by_0_10": true,
+        "no_class_zero_recall": true,
+        "no_live_content": true,
+        "test_not_used_for_selection": true
+      },
+      "status": "demo_candidate"
+    },
+    "provider": "scikit_learn",
+    "selected_candidate": "word_char_tfidf_logreg",
+    "split_hashes": {
+      "test": "2f0b409caa29a341e122d1ff28b4f34b09208d0b6f2f0dff323b5d469657172b",
+      "train": "78c03f095f38b7f40408e63c76924544659a3bbac1c34710f66a67cf5039fb7b",
+      "validation": "8dfe819e5dd65118175f400e99bc863c9bb162d5ce0cd717e3db693cdf97791c"
+    },
+    "status": "demo_candidate",
+    "task": "event"
+  },
+  {
+    "abstention": {
+      "selected_on": "validation",
+      "sentiment_uncertain_is_label_not_abstention": true,
+      "threshold": 0.5
+    },
+    "artifact_sha256": "c0e6ae82fe2e51aabe03407732e776c4863a913e7e61032f11f90756ef3e79e1",
+    "artifact_size_bytes": 160654,
+    "calibration": {
+      "alpha": 1.5,
+      "method": "probability_power_scaling",
+      "status": "validation_alpha_improved_ece",
+      "test_ece": 0.157792,
+      "validation_ece": 0.110114
+    },
+    "config_sha256": "d9815f2a0e484e5c7e46d5aa46ece470d9693ce5f22ca2cdb8c4ddabd44a320b",
+    "created_at": "2026-06-22T00:00:00+00:00",
+    "dataset_id": "synthetic-finnews-nlp-v1",
+    "dataset_sha256": "5eba057ef83198c5a35d29da2c821a5624d813885806cab4f48ecb22dbda67aa",
+    "dataset_version": "1.0.0",
+    "manifest_sha256": "3b94369825f1b4013f928fd9363712c72054cc31932cdb6c865d0fd2c0cb9899",
+    "model_id": "m2a-sentiment-word_char_tfidf_logreg",
+    "model_kind": "word_char_tfidf_logreg",
+    "promotion_policy": {
+      "checks": {
+        "artifact_manifest_verified": true,
+        "calibration_available": true,
+        "dataset_and_split_integrity": true,
+        "macro_f1_beats_dummy_by_0_10": true,
+        "no_class_zero_recall": true,
+        "no_live_content": true,
+        "test_not_used_for_selection": true
+      },
+      "status": "demo_candidate"
+    },
+    "provider": "scikit_learn",
+    "selected_candidate": "word_char_tfidf_logreg",
+    "split_hashes": {
+      "test": "2f0b409caa29a341e122d1ff28b4f34b09208d0b6f2f0dff323b5d469657172b",
+      "train": "78c03f095f38b7f40408e63c76924544659a3bbac1c34710f66a67cf5039fb7b",
+      "validation": "8dfe819e5dd65118175f400e99bc863c9bb162d5ce0cd717e3db693cdf97791c"
+    },
+    "status": "demo_candidate",
+    "task": "sentiment"
+  }
+]

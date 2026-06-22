@@ -1311,7 +1311,7 @@
             ]
           },
           "expected_calibration_error": 0.888889,
-          "inference_duration_ms": 1,
+          "inference_duration_ms": 0,
           "log_loss": 32.038803,
           "macro_f1": 0.022222,
           "macro_precision": 0.012346,
@@ -1573,7 +1573,7 @@
               ]
             ]
           },
-          "inference_duration_ms": 77,
+          "inference_duration_ms": 66,
           "macro_f1": 0.755556,
           "macro_precision": 0.814815,
           "macro_recall": 0.777778,
@@ -1796,7 +1796,7 @@
             ]
           },
           "expected_calibration_error": 0.32902,
-          "inference_duration_ms": 377,
+          "inference_duration_ms": 286,
           "log_loss": 0.415803,
           "macro_f1": 1.0,
           "macro_precision": 1.0,
@@ -3099,7 +3099,7 @@
               ]
             ]
           },
-          "inference_duration_ms": 50,
+          "inference_duration_ms": 49,
           "macro_f1": 0.770784,
           "macro_precision": 0.824242,
           "macro_recall": 0.759259,
@@ -3212,7 +3212,7 @@
             ]
           },
           "expected_calibration_error": 0.157792,
-          "inference_duration_ms": 400,
+          "inference_duration_ms": 270,
           "log_loss": 0.180604,
           "macro_f1": 1.0,
           "macro_precision": 1.0,

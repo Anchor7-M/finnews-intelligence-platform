@@ -1,0 +1,1558 @@
+[
+  {
+    "calibration": {
+      "alpha": 1.5,
+      "method": "probability_power_scaling",
+      "status": "validation_alpha_improved_ece",
+      "test_ece": 0.32902,
+      "validation_ece": 0.332359
+    },
+    "dataset": {
+      "dataset_id": "synthetic-finnews-nlp-v1",
+      "dataset_sha256": "5eba057ef83198c5a35d29da2c821a5624d813885806cab4f48ecb22dbda67aa",
+      "dataset_version": "1.0.0",
+      "label_source": "generator_defined_synthetic_gold",
+      "split_hashes": {
+        "test": "2f0b409caa29a341e122d1ff28b4f34b09208d0b6f2f0dff323b5d469657172b",
+        "train": "78c03f095f38b7f40408e63c76924544659a3bbac1c34710f66a67cf5039fb7b",
+        "validation": "8dfe819e5dd65118175f400e99bc863c9bb162d5ce0cd717e3db693cdf97791c"
+      },
+      "synthetic_only": true
+    },
+    "disclaimer": "Synthetic benchmark only; generator-defined labels; no live or copyrighted news; not investment advice; real-world licensed evaluation is deferred to Milestone 2B.",
+    "evaluation_id": "m2a-event-word_char_tfidf_logreg-test",
+    "model_id": "m2a-event-word_char_tfidf_logreg",
+    "slices": {
+      "challenge_flag": [
+        {
+          "accuracy": 1.0,
+          "macro_f1": 1.0,
+          "name": "alias_or_ticker",
+          "record_count": 12
+        },
+        {
+          "accuracy": 1.0,
+          "macro_f1": 0.666667,
+          "name": "class_overlap",
+          "record_count": 12
+        },
+        {
+          "accuracy": 1.0,
+          "macro_f1": 0.666667,
+          "name": "cross_sentence_context",
+          "record_count": 9
+        },
+        {
+          "accuracy": 1.0,
+          "macro_f1": 0.666667,
+          "name": "hypothetical_or_plan",
+          "record_count": 12
+        },
+        {
+          "accuracy": 1.0,
+          "macro_f1": 0.666667,
+          "name": "long_text",
+          "record_count": 12
+        },
+        {
+          "accuracy": 1.0,
+          "macro_f1": 0.333333,
+          "name": "low_information",
+          "record_count": 9
+        },
+        {
+          "accuracy": 1.0,
+          "macro_f1": 0.666667,
+          "name": "mixed_signal",
+          "record_count": 12
+        },
+        {
+          "accuracy": 1.0,
+          "macro_f1": 0.333333,
+          "name": "negation",
+          "record_count": 9
+        },
+        {
+          "accuracy": 1.0,
+          "macro_f1": 1.0,
+          "name": "neutral_boilerplate",
+          "record_count": 12
+        },
+        {
+          "accuracy": 1.0,
+          "macro_f1": 0.666667,
+          "name": "numerical_reversal",
+          "record_count": 9
+        },
+        {
+          "accuracy": 1.0,
+          "macro_f1": 0.333333,
+          "name": "short_text",
+          "record_count": 9
+        },
+        {
+          "accuracy": 1.0,
+          "macro_f1": 0.666667,
+          "name": "uncertainty",
+          "record_count": 9
+        }
+      ],
+      "difficulty": [
+        {
+          "accuracy": 1.0,
+          "macro_f1": 1.0,
+          "name": "easy",
+          "record_count": 108
+        },
+        {
+          "accuracy": 1.0,
+          "macro_f1": 1.0,
+          "name": "hard",
+          "record_count": 108
+        },
+        {
+          "accuracy": 1.0,
+          "macro_f1": 1.0,
+          "name": "medium",
+          "record_count": 108
+        }
+      ],
+      "language": [
+        {
+          "accuracy": 1.0,
+          "macro_f1": 1.0,
+          "name": "en",
+          "record_count": 108
+        },
+        {
+          "accuracy": 1.0,
+          "macro_f1": 1.0,
+          "name": "zh",
+          "record_count": 216
+        }
+      ],
+      "text_length": [
+        {
+          "accuracy": 1.0,
+          "macro_f1": 1.0,
+          "name": "short_or_equal_median",
+          "record_count": 163
+        },
+        {
+          "accuracy": 1.0,
+          "macro_f1": 1.0,
+          "name": "long_above_median",
+          "record_count": 161
+        }
+      ]
+    },
+    "split": "test",
+    "task": "event",
+    "test_metrics": {
+      "dummy_most_frequent": {
+        "accuracy": 0.111111,
+        "brier_score": 1.777778,
+        "confidence_coverage": [
+          {
+            "abstained_count": 0,
+            "coverage": 1.0,
+            "covered_accuracy": 0.111111,
+            "covered_count": 324,
+            "covered_macro_f1": 0.022222,
+            "threshold": 0.5
+          },
+          {
+            "abstained_count": 0,
+            "coverage": 1.0,
+            "covered_accuracy": 0.111111,
+            "covered_count": 324,
+            "covered_macro_f1": 0.022222,
+            "threshold": 0.6
+          },
+          {
+            "abstained_count": 0,
+            "coverage": 1.0,
+            "covered_accuracy": 0.111111,
+            "covered_count": 324,
+            "covered_macro_f1": 0.022222,
+            "threshold": 0.7
+          },
+          {
+            "abstained_count": 0,
+            "coverage": 1.0,
+            "covered_accuracy": 0.111111,
+            "covered_count": 324,
+            "covered_macro_f1": 0.022222,
+            "threshold": 0.8
+          },
+          {
+            "abstained_count": 0,
+            "coverage": 1.0,
+            "covered_accuracy": 0.111111,
+            "covered_count": 324,
+            "covered_macro_f1": 0.022222,
+            "threshold": 0.9
+          }
+        ],
+        "confusion_matrix": {
+          "labels": [
+            "earnings",
+            "merger_acquisition",
+            "policy_regulation",
+            "operations_product",
+            "financing_capital",
+            "litigation_penalty",
+            "governance_personnel",
+            "macro_market",
+            "other"
+          ],
+          "matrix": [
+            [
+              36,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              36,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              36,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              36,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              36,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              36,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              36,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              36,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              36,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ]
+        },
+        "expected_calibration_error": 0.888889,
+        "inference_duration_ms": 0,
+        "log_loss": 32.038803,
+        "macro_f1": 0.022222,
+        "macro_precision": 0.012346,
+        "macro_recall": 0.111111,
+        "per_class": {
+          "earnings": {
+            "f1": 0.2,
+            "precision": 0.111111,
+            "recall": 1.0,
+            "support": 36
+          },
+          "financing_capital": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "support": 36
+          },
+          "governance_personnel": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "support": 36
+          },
+          "litigation_penalty": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "support": 36
+          },
+          "macro_market": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "support": 36
+          },
+          "merger_acquisition": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "support": 36
+          },
+          "operations_product": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "support": 36
+          },
+          "other": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "support": 36
+          },
+          "policy_regulation": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "support": 36
+          }
+        },
+        "record_count": 324,
+        "reliability_bins": [
+          {
+            "accuracy": null,
+            "bin": 0,
+            "count": 0,
+            "lower": 0.0,
+            "mean_confidence": null,
+            "upper": 0.1
+          },
+          {
+            "accuracy": null,
+            "bin": 1,
+            "count": 0,
+            "lower": 0.1,
+            "mean_confidence": null,
+            "upper": 0.2
+          },
+          {
+            "accuracy": null,
+            "bin": 2,
+            "count": 0,
+            "lower": 0.2,
+            "mean_confidence": null,
+            "upper": 0.3
+          },
+          {
+            "accuracy": null,
+            "bin": 3,
+            "count": 0,
+            "lower": 0.3,
+            "mean_confidence": null,
+            "upper": 0.4
+          },
+          {
+            "accuracy": null,
+            "bin": 4,
+            "count": 0,
+            "lower": 0.4,
+            "mean_confidence": null,
+            "upper": 0.5
+          },
+          {
+            "accuracy": null,
+            "bin": 5,
+            "count": 0,
+            "lower": 0.5,
+            "mean_confidence": null,
+            "upper": 0.6
+          },
+          {
+            "accuracy": null,
+            "bin": 6,
+            "count": 0,
+            "lower": 0.6,
+            "mean_confidence": null,
+            "upper": 0.7
+          },
+          {
+            "accuracy": null,
+            "bin": 7,
+            "count": 0,
+            "lower": 0.7,
+            "mean_confidence": null,
+            "upper": 0.8
+          },
+          {
+            "accuracy": null,
+            "bin": 8,
+            "count": 0,
+            "lower": 0.8,
+            "mean_confidence": null,
+            "upper": 0.9
+          },
+          {
+            "accuracy": 0.111111,
+            "bin": 9,
+            "count": 324,
+            "lower": 0.9,
+            "mean_confidence": 1.0,
+            "upper": 1.0
+          }
+        ],
+        "weighted_f1": 0.022222
+      },
+      "rule_baseline": {
+        "accuracy": 0.777778,
+        "confusion_matrix": {
+          "labels": [
+            "earnings",
+            "merger_acquisition",
+            "policy_regulation",
+            "operations_product",
+            "financing_capital",
+            "litigation_penalty",
+            "governance_personnel",
+            "macro_market",
+            "other"
+          ],
+          "matrix": [
+            [
+              24,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              12
+            ],
+            [
+              0,
+              36,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              36,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              12,
+              0,
+              0,
+              0,
+              0,
+              24
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              36,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              36,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              36
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              36,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              36
+            ]
+          ]
+        },
+        "inference_duration_ms": 66,
+        "macro_f1": 0.755556,
+        "macro_precision": 0.814815,
+        "macro_recall": 0.777778,
+        "per_class": {
+          "earnings": {
+            "f1": 0.8,
+            "precision": 1.0,
+            "recall": 0.666667,
+            "support": 36
+          },
+          "financing_capital": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 36
+          },
+          "governance_personnel": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "support": 36
+          },
+          "litigation_penalty": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 36
+          },
+          "macro_market": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 36
+          },
+          "merger_acquisition": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 36
+          },
+          "operations_product": {
+            "f1": 0.5,
+            "precision": 1.0,
+            "recall": 0.333333,
+            "support": 36
+          },
+          "other": {
+            "f1": 0.5,
+            "precision": 0.333333,
+            "recall": 1.0,
+            "support": 36
+          },
+          "policy_regulation": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 36
+          }
+        },
+        "record_count": 324,
+        "weighted_f1": 0.755556
+      },
+      "selected_ml": {
+        "accuracy": 1.0,
+        "brier_score": 0.147753,
+        "confidence_coverage": [
+          {
+            "abstained_count": 49,
+            "coverage": 0.848765,
+            "covered_accuracy": 1.0,
+            "covered_count": 275,
+            "covered_macro_f1": 1.0,
+            "threshold": 0.5
+          },
+          {
+            "abstained_count": 71,
+            "coverage": 0.780864,
+            "covered_accuracy": 1.0,
+            "covered_count": 253,
+            "covered_macro_f1": 1.0,
+            "threshold": 0.6
+          },
+          {
+            "abstained_count": 151,
+            "coverage": 0.533951,
+            "covered_accuracy": 1.0,
+            "covered_count": 173,
+            "covered_macro_f1": 1.0,
+            "threshold": 0.7
+          },
+          {
+            "abstained_count": 313,
+            "coverage": 0.033951,
+            "covered_accuracy": 1.0,
+            "covered_count": 11,
+            "covered_macro_f1": 0.777778,
+            "threshold": 0.8
+          },
+          {
+            "abstained_count": 324,
+            "coverage": 0.0,
+            "covered_accuracy": null,
+            "covered_count": 0,
+            "covered_macro_f1": null,
+            "threshold": 0.9
+          }
+        ],
+        "confusion_matrix": {
+          "labels": [
+            "earnings",
+            "merger_acquisition",
+            "policy_regulation",
+            "operations_product",
+            "financing_capital",
+            "litigation_penalty",
+            "governance_personnel",
+            "macro_market",
+            "other"
+          ],
+          "matrix": [
+            [
+              36,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              36,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              36,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              36,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              36,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              36,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              36,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              36,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              36
+            ]
+          ]
+        },
+        "expected_calibration_error": 0.32902,
+        "inference_duration_ms": 286,
+        "log_loss": 0.415803,
+        "macro_f1": 1.0,
+        "macro_precision": 1.0,
+        "macro_recall": 1.0,
+        "per_class": {
+          "earnings": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 36
+          },
+          "financing_capital": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 36
+          },
+          "governance_personnel": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 36
+          },
+          "litigation_penalty": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 36
+          },
+          "macro_market": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 36
+          },
+          "merger_acquisition": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 36
+          },
+          "operations_product": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 36
+          },
+          "other": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 36
+          },
+          "policy_regulation": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 36
+          }
+        },
+        "record_count": 324,
+        "reliability_bins": [
+          {
+            "accuracy": null,
+            "bin": 0,
+            "count": 0,
+            "lower": 0.0,
+            "mean_confidence": null,
+            "upper": 0.1
+          },
+          {
+            "accuracy": null,
+            "bin": 1,
+            "count": 0,
+            "lower": 0.1,
+            "mean_confidence": null,
+            "upper": 0.2
+          },
+          {
+            "accuracy": null,
+            "bin": 2,
+            "count": 0,
+            "lower": 0.2,
+            "mean_confidence": null,
+            "upper": 0.3
+          },
+          {
+            "accuracy": 1.0,
+            "bin": 3,
+            "count": 2,
+            "lower": 0.3,
+            "mean_confidence": 0.394501,
+            "upper": 0.4
+          },
+          {
+            "accuracy": 1.0,
+            "bin": 4,
+            "count": 47,
+            "lower": 0.4,
+            "mean_confidence": 0.454756,
+            "upper": 0.5
+          },
+          {
+            "accuracy": 1.0,
+            "bin": 5,
+            "count": 22,
+            "lower": 0.5,
+            "mean_confidence": 0.548557,
+            "upper": 0.6
+          },
+          {
+            "accuracy": 1.0,
+            "bin": 6,
+            "count": 80,
+            "lower": 0.6,
+            "mean_confidence": 0.652826,
+            "upper": 0.7
+          },
+          {
+            "accuracy": 1.0,
+            "bin": 7,
+            "count": 162,
+            "lower": 0.7,
+            "mean_confidence": 0.752837,
+            "upper": 0.8
+          },
+          {
+            "accuracy": 1.0,
+            "bin": 8,
+            "count": 11,
+            "lower": 0.8,
+            "mean_confidence": 0.816451,
+            "upper": 0.9
+          },
+          {
+            "accuracy": null,
+            "bin": 9,
+            "count": 0,
+            "lower": 0.9,
+            "mean_confidence": null,
+            "upper": 1.0
+          }
+        ],
+        "weighted_f1": 1.0
+      }
+    }
+  },
+  {
+    "calibration": {
+      "alpha": 1.5,
+      "method": "probability_power_scaling",
+      "status": "validation_alpha_improved_ece",
+      "test_ece": 0.157792,
+      "validation_ece": 0.110114
+    },
+    "dataset": {
+      "dataset_id": "synthetic-finnews-nlp-v1",
+      "dataset_sha256": "5eba057ef83198c5a35d29da2c821a5624d813885806cab4f48ecb22dbda67aa",
+      "dataset_version": "1.0.0",
+      "label_source": "generator_defined_synthetic_gold",
+      "split_hashes": {
+        "test": "2f0b409caa29a341e122d1ff28b4f34b09208d0b6f2f0dff323b5d469657172b",
+        "train": "78c03f095f38b7f40408e63c76924544659a3bbac1c34710f66a67cf5039fb7b",
+        "validation": "8dfe819e5dd65118175f400e99bc863c9bb162d5ce0cd717e3db693cdf97791c"
+      },
+      "synthetic_only": true
+    },
+    "disclaimer": "Synthetic benchmark only; generator-defined labels; no live or copyrighted news; not investment advice; real-world licensed evaluation is deferred to Milestone 2B.",
+    "evaluation_id": "m2a-sentiment-word_char_tfidf_logreg-test",
+    "model_id": "m2a-sentiment-word_char_tfidf_logreg",
+    "slices": {
+      "challenge_flag": [
+        {
+          "accuracy": 1.0,
+          "macro_f1": 0.75,
+          "name": "alias_or_ticker",
+          "record_count": 12
+        },
+        {
+          "accuracy": 1.0,
+          "macro_f1": 1.0,
+          "name": "class_overlap",
+          "record_count": 12
+        },
+        {
+          "accuracy": 1.0,
+          "macro_f1": 0.75,
+          "name": "cross_sentence_context",
+          "record_count": 9
+        },
+        {
+          "accuracy": 1.0,
+          "macro_f1": 0.75,
+          "name": "hypothetical_or_plan",
+          "record_count": 12
+        },
+        {
+          "accuracy": 1.0,
+          "macro_f1": 0.75,
+          "name": "long_text",
+          "record_count": 12
+        },
+        {
+          "accuracy": 1.0,
+          "macro_f1": 0.75,
+          "name": "low_information",
+          "record_count": 9
+        },
+        {
+          "accuracy": 1.0,
+          "macro_f1": 0.75,
+          "name": "mixed_signal",
+          "record_count": 12
+        },
+        {
+          "accuracy": 1.0,
+          "macro_f1": 0.75,
+          "name": "negation",
+          "record_count": 9
+        },
+        {
+          "accuracy": 1.0,
+          "macro_f1": 1.0,
+          "name": "neutral_boilerplate",
+          "record_count": 12
+        },
+        {
+          "accuracy": 1.0,
+          "macro_f1": 0.75,
+          "name": "numerical_reversal",
+          "record_count": 9
+        },
+        {
+          "accuracy": 1.0,
+          "macro_f1": 0.75,
+          "name": "short_text",
+          "record_count": 9
+        },
+        {
+          "accuracy": 1.0,
+          "macro_f1": 0.75,
+          "name": "uncertainty",
+          "record_count": 9
+        }
+      ],
+      "difficulty": [
+        {
+          "accuracy": 1.0,
+          "macro_f1": 1.0,
+          "name": "easy",
+          "record_count": 108
+        },
+        {
+          "accuracy": 1.0,
+          "macro_f1": 1.0,
+          "name": "hard",
+          "record_count": 108
+        },
+        {
+          "accuracy": 1.0,
+          "macro_f1": 1.0,
+          "name": "medium",
+          "record_count": 108
+        }
+      ],
+      "language": [
+        {
+          "accuracy": 1.0,
+          "macro_f1": 1.0,
+          "name": "en",
+          "record_count": 108
+        },
+        {
+          "accuracy": 1.0,
+          "macro_f1": 1.0,
+          "name": "zh",
+          "record_count": 216
+        }
+      ],
+      "text_length": [
+        {
+          "accuracy": 1.0,
+          "macro_f1": 1.0,
+          "name": "short_or_equal_median",
+          "record_count": 163
+        },
+        {
+          "accuracy": 1.0,
+          "macro_f1": 1.0,
+          "name": "long_above_median",
+          "record_count": 161
+        }
+      ]
+    },
+    "split": "test",
+    "task": "sentiment",
+    "test_metrics": {
+      "dummy_most_frequent": {
+        "accuracy": 0.25,
+        "brier_score": 1.5,
+        "confidence_coverage": [
+          {
+            "abstained_count": 0,
+            "coverage": 1.0,
+            "covered_accuracy": 0.25,
+            "covered_count": 324,
+            "covered_macro_f1": 0.1,
+            "threshold": 0.5
+          },
+          {
+            "abstained_count": 0,
+            "coverage": 1.0,
+            "covered_accuracy": 0.25,
+            "covered_count": 324,
+            "covered_macro_f1": 0.1,
+            "threshold": 0.6
+          },
+          {
+            "abstained_count": 0,
+            "coverage": 1.0,
+            "covered_accuracy": 0.25,
+            "covered_count": 324,
+            "covered_macro_f1": 0.1,
+            "threshold": 0.7
+          },
+          {
+            "abstained_count": 0,
+            "coverage": 1.0,
+            "covered_accuracy": 0.25,
+            "covered_count": 324,
+            "covered_macro_f1": 0.1,
+            "threshold": 0.8
+          },
+          {
+            "abstained_count": 0,
+            "coverage": 1.0,
+            "covered_accuracy": 0.25,
+            "covered_count": 324,
+            "covered_macro_f1": 0.1,
+            "threshold": 0.9
+          }
+        ],
+        "confusion_matrix": {
+          "labels": [
+            "positive",
+            "neutral",
+            "negative",
+            "uncertain"
+          ],
+          "matrix": [
+            [
+              0,
+              0,
+              81,
+              0
+            ],
+            [
+              0,
+              0,
+              81,
+              0
+            ],
+            [
+              0,
+              0,
+              81,
+              0
+            ],
+            [
+              0,
+              0,
+              81,
+              0
+            ]
+          ]
+        },
+        "expected_calibration_error": 0.75,
+        "inference_duration_ms": 0,
+        "log_loss": 27.03274,
+        "macro_f1": 0.1,
+        "macro_precision": 0.0625,
+        "macro_recall": 0.25,
+        "per_class": {
+          "negative": {
+            "f1": 0.4,
+            "precision": 0.25,
+            "recall": 1.0,
+            "support": 81
+          },
+          "neutral": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "support": 81
+          },
+          "positive": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "support": 81
+          },
+          "uncertain": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "support": 81
+          }
+        },
+        "record_count": 324,
+        "reliability_bins": [
+          {
+            "accuracy": null,
+            "bin": 0,
+            "count": 0,
+            "lower": 0.0,
+            "mean_confidence": null,
+            "upper": 0.1
+          },
+          {
+            "accuracy": null,
+            "bin": 1,
+            "count": 0,
+            "lower": 0.1,
+            "mean_confidence": null,
+            "upper": 0.2
+          },
+          {
+            "accuracy": null,
+            "bin": 2,
+            "count": 0,
+            "lower": 0.2,
+            "mean_confidence": null,
+            "upper": 0.3
+          },
+          {
+            "accuracy": null,
+            "bin": 3,
+            "count": 0,
+            "lower": 0.3,
+            "mean_confidence": null,
+            "upper": 0.4
+          },
+          {
+            "accuracy": null,
+            "bin": 4,
+            "count": 0,
+            "lower": 0.4,
+            "mean_confidence": null,
+            "upper": 0.5
+          },
+          {
+            "accuracy": null,
+            "bin": 5,
+            "count": 0,
+            "lower": 0.5,
+            "mean_confidence": null,
+            "upper": 0.6
+          },
+          {
+            "accuracy": null,
+            "bin": 6,
+            "count": 0,
+            "lower": 0.6,
+            "mean_confidence": null,
+            "upper": 0.7
+          },
+          {
+            "accuracy": null,
+            "bin": 7,
+            "count": 0,
+            "lower": 0.7,
+            "mean_confidence": null,
+            "upper": 0.8
+          },
+          {
+            "accuracy": null,
+            "bin": 8,
+            "count": 0,
+            "lower": 0.8,
+            "mean_confidence": null,
+            "upper": 0.9
+          },
+          {
+            "accuracy": 0.25,
+            "bin": 9,
+            "count": 324,
+            "lower": 0.9,
+            "mean_confidence": 1.0,
+            "upper": 1.0
+          }
+        ],
+        "weighted_f1": 0.1
+      },
+      "rule_baseline": {
+        "accuracy": 0.759259,
+        "confusion_matrix": {
+          "labels": [
+            "positive",
+            "neutral",
+            "negative",
+            "uncertain"
+          ],
+          "matrix": [
+            [
+              63,
+              15,
+              0,
+              3
+            ],
+            [
+              0,
+              72,
+              9,
+              0
+            ],
+            [
+              0,
+              21,
+              57,
+              3
+            ],
+            [
+              0,
+              27,
+              0,
+              54
+            ]
+          ]
+        },
+        "inference_duration_ms": 49,
+        "macro_f1": 0.770784,
+        "macro_precision": 0.824242,
+        "macro_recall": 0.759259,
+        "per_class": {
+          "negative": {
+            "f1": 0.77551,
+            "precision": 0.863636,
+            "recall": 0.703704,
+            "support": 81
+          },
+          "neutral": {
+            "f1": 0.666667,
+            "precision": 0.533333,
+            "recall": 0.888889,
+            "support": 81
+          },
+          "positive": {
+            "f1": 0.875,
+            "precision": 1.0,
+            "recall": 0.777778,
+            "support": 81
+          },
+          "uncertain": {
+            "f1": 0.765957,
+            "precision": 0.9,
+            "recall": 0.666667,
+            "support": 81
+          }
+        },
+        "record_count": 324,
+        "weighted_f1": 0.770784
+      },
+      "selected_ml": {
+        "accuracy": 1.0,
+        "brier_score": 0.050744,
+        "confidence_coverage": [
+          {
+            "abstained_count": 0,
+            "coverage": 1.0,
+            "covered_accuracy": 1.0,
+            "covered_count": 324,
+            "covered_macro_f1": 1.0,
+            "threshold": 0.5
+          },
+          {
+            "abstained_count": 0,
+            "coverage": 1.0,
+            "covered_accuracy": 1.0,
+            "covered_count": 324,
+            "covered_macro_f1": 1.0,
+            "threshold": 0.6
+          },
+          {
+            "abstained_count": 54,
+            "coverage": 0.833333,
+            "covered_accuracy": 1.0,
+            "covered_count": 270,
+            "covered_macro_f1": 1.0,
+            "threshold": 0.7
+          },
+          {
+            "abstained_count": 108,
+            "coverage": 0.666667,
+            "covered_accuracy": 1.0,
+            "covered_count": 216,
+            "covered_macro_f1": 1.0,
+            "threshold": 0.8
+          },
+          {
+            "abstained_count": 179,
+            "coverage": 0.447531,
+            "covered_accuracy": 1.0,
+            "covered_count": 145,
+            "covered_macro_f1": 1.0,
+            "threshold": 0.9
+          }
+        ],
+        "confusion_matrix": {
+          "labels": [
+            "positive",
+            "neutral",
+            "negative",
+            "uncertain"
+          ],
+          "matrix": [
+            [
+              81,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              81,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              81,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              81
+            ]
+          ]
+        },
+        "expected_calibration_error": 0.157792,
+        "inference_duration_ms": 270,
+        "log_loss": 0.180604,
+        "macro_f1": 1.0,
+        "macro_precision": 1.0,
+        "macro_recall": 1.0,
+        "per_class": {
+          "negative": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 81
+          },
+          "neutral": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 81
+          },
+          "positive": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 81
+          },
+          "uncertain": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 81
+          }
+        },
+        "record_count": 324,
+        "reliability_bins": [
+          {
+            "accuracy": null,
+            "bin": 0,
+            "count": 0,
+            "lower": 0.0,
+            "mean_confidence": null,
+            "upper": 0.1
+          },
+          {
+            "accuracy": null,
+            "bin": 1,
+            "count": 0,
+            "lower": 0.1,
+            "mean_confidence": null,
+            "upper": 0.2
+          },
+          {
+            "accuracy": null,
+            "bin": 2,
+            "count": 0,
+            "lower": 0.2,
+            "mean_confidence": null,
+            "upper": 0.3
+          },
+          {
+            "accuracy": null,
+            "bin": 3,
+            "count": 0,
+            "lower": 0.3,
+            "mean_confidence": null,
+            "upper": 0.4
+          },
+          {
+            "accuracy": null,
+            "bin": 4,
+            "count": 0,
+            "lower": 0.4,
+            "mean_confidence": null,
+            "upper": 0.5
+          },
+          {
+            "accuracy": null,
+            "bin": 5,
+            "count": 0,
+            "lower": 0.5,
+            "mean_confidence": null,
+            "upper": 0.6
+          },
+          {
+            "accuracy": 1.0,
+            "bin": 6,
+            "count": 54,
+            "lower": 0.6,
+            "mean_confidence": 0.662687,
+            "upper": 0.7
+          },
+          {
+            "accuracy": 1.0,
+            "bin": 7,
+            "count": 54,
+            "lower": 0.7,
+            "mean_confidence": 0.734181,
+            "upper": 0.8
+          },
+          {
+            "accuracy": 1.0,
+            "bin": 8,
+            "count": 71,
+            "lower": 0.8,
+            "mean_confidence": 0.869544,
+            "upper": 0.9
+          },
+          {
+            "accuracy": 1.0,
+            "bin": 9,
+            "count": 145,
+            "lower": 0.9,
+            "mean_confidence": 0.93591,
+            "upper": 1.0
+          }
+        ],
+        "weighted_f1": 1.0
+      }
+    }
+  }
+]

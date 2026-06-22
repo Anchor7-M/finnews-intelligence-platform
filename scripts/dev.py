@@ -10,7 +10,7 @@ import time
 
 
 ROOT = Path(__file__).resolve().parents[1]
-POSTGRES_PROJECT = "finnews_m1b_verify"
+POSTGRES_PROJECT = "finnews_m2a_verify"
 POSTGRES_SERVICE = "postgres"
 POSTGRES_URL = "postgresql+psycopg://finnews:finnews@127.0.0.1:55432/finnews"
 
@@ -99,7 +99,12 @@ def validate_static_export() -> None:
         "source-fetch-attempts.json",
         "source-conditional-examples.json",
         "source-reviews.json",
-        "source-review-examples.json",
+            "source-review-examples.json",
+            "nlp-overview.json",
+            "nlp-models.json",
+            "nlp-evaluations.json",
+            "nlp-error-analysis.json",
+            "nlp-dataset-card.json",
     ]
     missing = [name for name in required if not (output / name).is_file()]
     if missing:
@@ -150,7 +155,7 @@ def verify_postgres(_: argparse.Namespace) -> None:
         db_down(argparse.Namespace())
     if success:
         print(
-            "verify-postgres passed: project=finnews_m1b_verify service=postgres "
+            "verify-postgres passed: project=finnews_m2a_verify service=postgres "
             "image=postgres:16 port=127.0.0.1:55432"
         )
 
@@ -216,6 +221,48 @@ def verify_source_reviews(_: argparse.Namespace) -> None:
         backend,
         env=env,
     )
+
+
+def build_nlp_benchmark(_: argparse.Namespace) -> None:
+    run([sys.executable, "-m", "finnews.interfaces.cli.app", "nlp", "dataset", "build"], ROOT / "backend")
+    run([sys.executable, "-m", "finnews.interfaces.cli.app", "nlp", "dataset", "validate"], ROOT / "backend")
+
+
+def benchmark_nlp(_: argparse.Namespace) -> None:
+    run(
+        [
+            sys.executable,
+            "-m",
+            "finnews.interfaces.cli.app",
+            "nlp",
+            "benchmark",
+            "--task",
+            "all",
+        ],
+        ROOT / "backend",
+        env={"OMP_NUM_THREADS": "1", "OPENBLAS_NUM_THREADS": "1", "MKL_NUM_THREADS": "1"},
+    )
+
+
+def verify_ml(_: argparse.Namespace) -> None:
+    backend = ROOT / "backend"
+    build_nlp_benchmark(argparse.Namespace())
+    run(
+        [
+            sys.executable,
+            "-m",
+            "pytest",
+            "tests/unit/test_nlp_benchmark.py",
+            "tests/unit/test_nlp_evaluation.py",
+            "tests/unit/test_nlp_registry.py",
+            "tests/contract/test_nlp_api.py",
+        ],
+        backend,
+        env={"FINNEWS_SOURCE_TEST_MODE": "mocked-offline"},
+    )
+    benchmark_nlp(argparse.Namespace())
+    run([sys.executable, "-m", "finnews.interfaces.cli.app", "nlp", "export-static"], backend)
+    validate_static_export()
 
 
 def smoke_source(args: argparse.Namespace) -> None:
@@ -327,6 +374,9 @@ def main() -> None:
     sub.add_parser("verify-postgres").set_defaults(func=verify_postgres)
     sub.add_parser("verify-sources").set_defaults(func=verify_sources)
     sub.add_parser("verify-source-reviews").set_defaults(func=verify_source_reviews)
+    sub.add_parser("verify-ml").set_defaults(func=verify_ml)
+    sub.add_parser("build-nlp-benchmark").set_defaults(func=build_nlp_benchmark)
+    sub.add_parser("benchmark-nlp").set_defaults(func=benchmark_nlp)
     smoke_parser = sub.add_parser("smoke-source")
     smoke_parser.add_argument("--source", required=True)
     smoke_parser.add_argument("--max-items", type=int, default=5)

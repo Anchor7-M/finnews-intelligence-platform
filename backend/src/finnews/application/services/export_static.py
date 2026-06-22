@@ -9,6 +9,7 @@ from uuid import UUID
 
 from finnews.application.ports.repositories import NewsRepository
 from finnews.application.services.deduplication_accounting import build_deduplication_accounting
+from finnews.application.services.nlp_reporting import nlp_static_payload
 from finnews.domain.entities import SourceDefinition, SourceFetchState
 from finnews.domain.enums import ProcessingState
 from finnews.infrastructure.sources.reviews import (
@@ -81,7 +82,7 @@ def build_static_payload(repository: NewsRepository) -> dict[str, Any]:
         }
         for article in articles
     ]
-    return {
+    payload = {
         "overview": {
             "synthetic": True,
             "not_investment_advice": True,
@@ -203,6 +204,8 @@ def build_static_payload(repository: NewsRepository) -> dict[str, Any]:
             },
         ],
     }
+    payload.update(nlp_static_payload(Path(__file__).resolve().parents[5]))
+    return payload
 
 
 def _counts(values: Iterable[object]) -> dict[str, int]:

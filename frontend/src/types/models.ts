@@ -146,3 +146,56 @@ export interface SourceFetchAttempt {
   last_modified_available: boolean;
   dry_run: boolean;
 }
+
+export interface NlpOverview {
+  disclaimer: string;
+  dataset: {
+    dataset_id: string;
+    dataset_version: string;
+    dataset_sha256: string;
+    split_hashes: Record<string, string>;
+    synthetic_only: boolean;
+  };
+  record_count: number;
+  split_counts: Record<string, number>;
+  language_counts: Record<string, number>;
+  selected_models: Record<string, string>;
+  benchmark_claim: string;
+  not_investment_advice: boolean;
+}
+
+export interface NlpModelSummary {
+  model_id: string;
+  task: string;
+  provider: string;
+  model_kind: string;
+  status: string;
+  artifact_sha256: string;
+  artifact_size_bytes: number;
+  dataset_sha256: string;
+  dataset_version: string;
+  selected_candidate: string;
+  promotion_policy: { status: string; checks: Record<string, boolean> };
+  calibration: Record<string, unknown>;
+  abstention: Record<string, unknown>;
+}
+
+export interface NlpEvaluationSummary {
+  evaluation_id: string;
+  model_id: string;
+  task: string;
+  split: string;
+  test_metrics: Record<string, Record<string, unknown>>;
+  slices: Record<string, Array<Record<string, unknown>>>;
+  calibration: Record<string, unknown>;
+  disclaimer: string;
+}
+
+export interface NlpErrorAnalysis {
+  task: string;
+  confusion_pairs: Array<Record<string, unknown>>;
+  highest_confidence_false_predictions: Array<Record<string, unknown>>;
+  lowest_confidence_correct_predictions: Array<Record<string, unknown>>;
+  errors_by_language: Record<string, number>;
+  errors_by_challenge_flag: Record<string, number>;
+}

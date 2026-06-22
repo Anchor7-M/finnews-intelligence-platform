@@ -322,6 +322,98 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             "offset": offset,
         }
 
+    @app.get("/api/v1/nlp/overview")
+    def nlp_overview() -> dict[str, object]:
+        return cast(dict[str, object], build_static_payload(repository)["nlp-overview"])
+
+    @app.get("/api/v1/nlp/models")
+    def nlp_models(
+        task: str | None = None,
+        provider: str | None = None,
+        status: str | None = None,
+        dataset_version: str | None = None,
+        limit: int = Query(default=50, ge=1, le=100),
+        offset: int = Query(default=0, ge=0),
+    ) -> dict[str, object]:
+        rows = cast(list[dict[str, object]], build_static_payload(repository)["nlp-models"])
+        filtered = [
+            row
+            for row in rows
+            if (not task or row["task"] == task)
+            and (not provider or row["provider"] == provider)
+            and (not status or row["status"] == status)
+            and (not dataset_version or row["dataset_version"] == dataset_version)
+        ]
+        return {
+            "items": filtered[offset : offset + limit],
+            "total": len(filtered),
+            "limit": limit,
+            "offset": offset,
+        }
+
+    @app.get("/api/v1/nlp/models/{model_id}")
+    def nlp_model_detail(model_id: str) -> dict[str, object]:
+        rows = cast(list[dict[str, object]], build_static_payload(repository)["nlp-models"])
+        for row in rows:
+            if row["model_id"] == model_id:
+                return row
+        raise NotFoundError(f"nlp model {model_id} not found")
+
+    @app.get("/api/v1/nlp/evaluations")
+    def nlp_evaluations(
+        task: str | None = None,
+        dataset_version: str | None = None,
+        evaluation_split: str | None = None,
+        language: str | None = None,
+        limit: int = Query(default=50, ge=1, le=100),
+        offset: int = Query(default=0, ge=0),
+    ) -> dict[str, object]:
+        rows = cast(list[dict[str, object]], build_static_payload(repository)["nlp-evaluations"])
+        filtered = []
+        for row in rows:
+            if task and row["task"] != task:
+                continue
+            if evaluation_split and row["split"] != evaluation_split:
+                continue
+            dataset = cast(dict[str, object], row["dataset"])
+            if dataset_version and dataset.get("dataset_version") != dataset_version:
+                continue
+            if language:
+                slices = cast(dict[str, object], row["slices"])
+                language_rows = cast(list[dict[str, object]], slices.get("language", []))
+                if not any(item.get("name") == language for item in language_rows):
+                    continue
+            filtered.append(row)
+        return {
+            "items": filtered[offset : offset + limit],
+            "total": len(filtered),
+            "limit": limit,
+            "offset": offset,
+        }
+
+    @app.get("/api/v1/nlp/evaluations/{evaluation_id}")
+    def nlp_evaluation_detail(evaluation_id: str) -> dict[str, object]:
+        rows = cast(list[dict[str, object]], build_static_payload(repository)["nlp-evaluations"])
+        for row in rows:
+            if row["evaluation_id"] == evaluation_id:
+                return row
+        raise NotFoundError(f"nlp evaluation {evaluation_id} not found")
+
+    @app.get("/api/v1/nlp/error-analysis")
+    def nlp_error_analysis(
+        task: str | None = None,
+        limit: int = Query(default=50, ge=1, le=100),
+        offset: int = Query(default=0, ge=0),
+    ) -> dict[str, object]:
+        rows = cast(list[dict[str, object]], build_static_payload(repository)["nlp-error-analysis"])
+        filtered = [row for row in rows if not task or row["task"] == task]
+        return {
+            "items": filtered[offset : offset + limit],
+            "total": len(filtered),
+            "limit": limit,
+            "offset": offset,
+        }
+
     return app
 
 

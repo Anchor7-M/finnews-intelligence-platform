@@ -3,6 +3,10 @@ import type {
   Company,
   DataMode,
   Digest,
+  NlpErrorAnalysis,
+  NlpEvaluationSummary,
+  NlpModelSummary,
+  NlpOverview,
   Overview,
   Signal,
   SourceFetchAttempt,
@@ -102,4 +106,43 @@ export async function loadSourceReviews(mode: DataMode = getDataMode()): Promise
     return data.items;
   }
   return getJson<SourceReview[]>("/demo-data/source-reviews.json");
+}
+
+export async function loadNlpOverview(mode: DataMode = getDataMode()): Promise<NlpOverview> {
+  if (mode === "api") {
+    return getJson<NlpOverview>(`${API_BASE}/api/v1/nlp/overview`);
+  }
+  return getJson<NlpOverview>("/demo-data/nlp-overview.json");
+}
+
+export async function loadNlpModels(mode: DataMode = getDataMode()): Promise<NlpModelSummary[]> {
+  if (mode === "api") {
+    const data = await getJson<{ items: NlpModelSummary[] }>(`${API_BASE}/api/v1/nlp/models`);
+    return data.items;
+  }
+  return getJson<NlpModelSummary[]>("/demo-data/nlp-models.json");
+}
+
+export async function loadNlpEvaluations(
+  mode: DataMode = getDataMode(),
+): Promise<NlpEvaluationSummary[]> {
+  if (mode === "api") {
+    const data = await getJson<{ items: NlpEvaluationSummary[] }>(
+      `${API_BASE}/api/v1/nlp/evaluations`,
+    );
+    return data.items;
+  }
+  return getJson<NlpEvaluationSummary[]>("/demo-data/nlp-evaluations.json");
+}
+
+export async function loadNlpErrorAnalysis(
+  mode: DataMode = getDataMode(),
+): Promise<NlpErrorAnalysis[]> {
+  if (mode === "api") {
+    const data = await getJson<{ items: NlpErrorAnalysis[] }>(
+      `${API_BASE}/api/v1/nlp/error-analysis`,
+    );
+    return data.items;
+  }
+  return getJson<NlpErrorAnalysis[]>("/demo-data/nlp-error-analysis.json");
 }
