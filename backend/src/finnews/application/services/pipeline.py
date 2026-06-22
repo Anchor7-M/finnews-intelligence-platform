@@ -27,7 +27,7 @@ from finnews.domain.entities import (
     SourceRecord,
 )
 from finnews.domain.enums import DuplicateType, ProcessingState, RunStatus, SentimentLabel
-from finnews.domain.value_objects import utc_now
+from finnews.domain.value_objects import stable_id, utc_now
 from finnews.infrastructure.nlp.deduplication import find_near_duplicate
 from finnews.infrastructure.nlp.events import classify_event
 from finnews.infrastructure.nlp.linking import link_companies
@@ -58,6 +58,7 @@ class NewsPipeline:
                 legal_name=str(item["legal_name"]),
                 short_name=str(item["short_name"]),
                 sector=str(item["sector"]),
+                id=stable_id("company", item["exchange"], item["ticker"]),
             )
             aliases = [str(alias) for alias in item.get("aliases", [])]
             self.repository.upsert_company(company, aliases)
@@ -74,6 +75,7 @@ class NewsPipeline:
                     source_key=record.source_key,
                     display_name=record.source_name,
                     source_type=record.source_type,
+                    id=stable_id("source", record.source_key),
                 )
             )
             run = self.repository.add_ingestion_run(IngestionRun(source_id=source.id))
@@ -101,6 +103,7 @@ class NewsPipeline:
                     raw_metadata=record.raw_metadata,
                     normalized_content_hash=content_hash,
                     ingestion_run_id=run.id,
+                    id=stable_id("raw_article", source.id, source_article_id),
                 )
                 accepted_raw = self.repository.add_raw_article(raw)
                 if accepted_raw is None:
@@ -139,6 +142,7 @@ class NewsPipeline:
                     exact_content_hash=content_hash,
                     source_key=source.source_key,
                     source_name=source.display_name,
+                    id=stable_id("article", accepted_raw.id, content_hash),
                 )
                 existing_article = self.repository.get_article_by_hash(content_hash)
                 existing = self.repository.add_article(article)

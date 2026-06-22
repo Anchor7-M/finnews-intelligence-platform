@@ -1,19 +1,22 @@
 from __future__ import annotations
 
 import json
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
 import httpx
 
+from finnews.application.ports.http import HttpRequest, HttpResponse
 from finnews.application.services.source_ingestion import SourceIngestionService
 from finnews.domain.entities import SourceDefinition
 from finnews.domain.enums import (
     FetchOutcome,
     SourceApprovalStatus,
+    SourceErrorCategory,
     SourceHealthStatus,
     SourceType,
 )
-from finnews.infrastructure.http.client import BoundedSourceHttpClient
+from finnews.infrastructure.http.client import BoundedSourceHttpClient, HttpPolicyError
 from finnews.infrastructure.persistence.memory.repository import MemoryNewsRepository
 from finnews.settings import Settings
 
@@ -59,7 +62,7 @@ def service_with_transport(
         repo,
         Settings(profile="memory"),
         http_client_factory=lambda definition: BoundedSourceHttpClient(
-            definition, transport=transport
+            definition, transport=transport, resolver=lambda _: ["93.184.216.34"]
         ),
     )
 
@@ -148,6 +151,126 @@ def test_user_json_import_is_idempotent(tmp_path: Path) -> None:
     assert first.new_count == 1
     assert second.duplicate_count == 1
     assert len(repo.list_articles()) == 1
+
+
+def test_dry_run_leaves_persistent_state_unchanged(tmp_path: Path) -> None:
+    repo = MemoryNewsRepository()
+    definition = repo.upsert_source_definition(source(SourceType.USER_EXPORT_JSON))
+    path = tmp_path / "announcements.json"
+    path.write_text(json.dumps([announcement_row()]), encoding="utf-8")
+    service = SourceIngestionService(repo, Settings(profile="memory"))
+    result = service.import_announcements(definition.source_id, path, dry_run=True)
+    assert result.dry_run is True
+    assert result.new_count == 1
+    assert repo.list_articles() == []
+    assert repo.list_source_fetch_attempts() == []
+    assert repo.get_source_fetch_state(definition.source_id) is None
+
+
+def test_dry_run_with_existing_state_does_not_mutate_state() -> None:
+    repo = MemoryNewsRepository()
+    definition = repo.upsert_source_definition(source())
+    bodies = [RSS_BODY, b"<rss><broken>"]
+
+    def handler(_: httpx.Request) -> httpx.Response:
+        return httpx.Response(
+            200,
+            headers={"content-type": "application/rss+xml", "etag": '"stable"'},
+            content=bodies.pop(0),
+        )
+
+    service = service_with_transport(repo, httpx.MockTransport(handler))
+    assert service.fetch_source(definition.source_id).outcome is FetchOutcome.SUCCESS
+    before = repo.get_source_fetch_state(definition.source_id)
+    assert before is not None
+    dry_run = service.fetch_source(definition.source_id, dry_run=True)
+    after = repo.get_source_fetch_state(definition.source_id)
+    assert dry_run.outcome is FetchOutcome.FAILED
+    assert after is before
+    assert after.etag == '"stable"'
+    assert after.consecutive_failure_count == 0
+    assert after.health_status is SourceHealthStatus.HEALTHY
+    assert len(repo.list_source_fetch_attempts()) == 1
+
+
+def test_ordinary_4xx_is_not_retried() -> None:
+    repo = MemoryNewsRepository()
+    definition = repo.upsert_source_definition(source())
+    calls = 0
+
+    def handler(_: httpx.Request) -> httpx.Response:
+        nonlocal calls
+        calls += 1
+        return httpx.Response(404, headers={"content-type": "application/rss+xml"})
+
+    result = service_with_transport(repo, httpx.MockTransport(handler)).fetch_source(
+        definition.source_id
+    )
+    assert result.outcome is FetchOutcome.FAILED
+    assert result.retry_count == 0
+    assert calls == 1
+
+
+def test_timeout_retry_and_retry_after_date_are_bounded() -> None:
+    repo = MemoryNewsRepository()
+    definition = repo.upsert_source_definition(source())
+    sleeps: list[float] = []
+
+    class TimeoutThenSuccess:
+        def __init__(self) -> None:
+            self.calls = 0
+
+        def get(self, _: HttpRequest) -> HttpResponse:
+            self.calls += 1
+            if self.calls == 1:
+                raise HttpPolicyError(SourceErrorCategory.TIMEOUT, "timeout token=secret")
+            return HttpResponse(
+                url="https://mock.local/feed.xml",
+                status_code=200,
+                headers={"content-type": "application/rss+xml"},
+                content=RSS_BODY,
+            )
+
+    client = TimeoutThenSuccess()
+    service = SourceIngestionService(
+        repo,
+        Settings(profile="memory"),
+        http_client_factory=lambda _: client,
+        sleeper=sleeps.append,
+        jitter=lambda _: 0.25,
+    )
+    result = service.fetch_source(definition.source_id)
+    assert result.outcome is FetchOutcome.SUCCESS
+    assert result.retry_count == 1
+    assert sleeps == [1.25]
+
+    retry_at = (datetime.now(UTC) + timedelta(seconds=60)).strftime("%a, %d %b %Y %H:%M:%S GMT")
+    response = HttpResponse(
+        url="https://mock.local/feed.xml",
+        status_code=429,
+        headers={"retry-after": retry_at},
+        content=b"",
+    )
+
+    class AlwaysRateLimited:
+        def __init__(self) -> None:
+            self.calls = 0
+
+        def get(self, _: HttpRequest) -> HttpResponse:
+            self.calls += 1
+            return response
+
+    rate_client = AlwaysRateLimited()
+    rate_sleeps: list[float] = []
+    rate_service = SourceIngestionService(
+        repo,
+        Settings(profile="memory"),
+        http_client_factory=lambda _: rate_client,
+        sleeper=rate_sleeps.append,
+    )
+    rate_service.fetch_source(definition.source_id)
+    assert rate_client.calls == 3
+    assert all(0 <= item <= 30 for item in rate_sleeps)
 
 
 def announcement_row() -> dict[str, str]:

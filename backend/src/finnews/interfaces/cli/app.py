@@ -22,6 +22,7 @@ from finnews.bootstrap import (
     load_default_records,
     load_source_registry_into_repository,
 )
+from finnews.domain.enums import SourceType
 from finnews.infrastructure.http.client import BoundedSourceHttpClient
 from finnews.infrastructure.persistence.memory.repository import MemoryNewsRepository
 from finnews.infrastructure.persistence.postgres.repository import PostgresNewsRepository
@@ -123,12 +124,29 @@ def source_fetch(
     )
     sources = repo.list_source_definitions()
     selected = (
-        [source for source in sources if source.fetch_allowed]
+        [
+            source
+            for source in sources
+            if source.fetch_allowed
+            and source.source_type
+            in {SourceType.RSS, SourceType.ATOM, SourceType.DOCUMENTED_JSON_API}
+        ]
         if all_approved
         else [source for source in sources if source.source_id == source_id]
     )
     if not selected:
         _commit_and_close(session)
+        if all_approved:
+            typer.echo(
+                json.dumps(
+                    {
+                        "status": "no_work",
+                        "reason": "no approved enabled network sources",
+                    },
+                    sort_keys=True,
+                )
+            )
+            return
         typer.echo("source_selection_empty", err=True)
         raise typer.Exit(4)
     results = []

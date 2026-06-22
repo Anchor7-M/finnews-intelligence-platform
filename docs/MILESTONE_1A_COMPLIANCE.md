@@ -19,7 +19,7 @@ local mocks; live source selection and terms approval deferred to Milestone 1B.`
 
 ## Verification
 
-- Source-focused backend/API/CLI tests: 21 passed.
+- Source-focused backend/API/CLI tests: 35 passed.
 - Frontend tests: 9 passed.
 - `python scripts/dev.py verify-sources` passed locally without external network
   dependency.

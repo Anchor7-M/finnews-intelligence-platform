@@ -1,7 +1,7 @@
 sources:
   - source_key: synthetic-jsonl
     source_type: fixture
-    enabled: true
+    enabled: false
     content_storage_policy: metadata_only
     base_url: https://demo.local
     terms_url: https://demo.local/terms

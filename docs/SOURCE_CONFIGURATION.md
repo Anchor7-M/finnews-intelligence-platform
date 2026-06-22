@@ -22,7 +22,8 @@ Supported `source_type` values are `rss`, `atom`, `documented_json_api`,
 `user_export_json`, and `user_export_csv`.
 
 No secret fields are allowed in YAML. No committed source is enabled by default.
-Network examples are illustrative and not approved production integrations.
+Unknown fields are rejected. Network examples are illustrative and not approved
+production integrations.
 
 Validate locally:
 

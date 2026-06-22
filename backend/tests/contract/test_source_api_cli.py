@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+import pytest
 from fastapi.testclient import TestClient
 from typer.testing import CliRunner
 
@@ -92,6 +93,19 @@ def test_source_cli_validate_list_import_and_safe_output(tmp_path: Path, monkeyp
     assert imported.exit_code == 0
     assert '"outcome": "success"' in imported.output
     assert "finnews:finnews" not in imported.output
+
+
+def test_source_fetch_all_approved_no_network_sources_is_no_work(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.setenv("FINNEWS_SOURCE_CONFIG_DIR", str(write_config(tmp_path)))
+    get_settings.cache_clear()
+    result = CliRunner().invoke(app, ["source", "fetch", "--all-approved", "--dry-run"])
+    assert result.exit_code == 0
+    assert json.loads(result.output) == {
+        "reason": "no approved enabled network sources",
+        "status": "no_work",
+    }
 
 
 def announcement_row() -> dict[str, str]:

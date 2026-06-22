@@ -77,6 +77,12 @@ def test_secret_like_field_is_rejected(tmp_path: Path) -> None:
         load_source_definitions(tmp_path)
 
 
+def test_unknown_field_is_rejected(tmp_path: Path) -> None:
+    write_config(tmp_path, VALID_CONFIG.replace("risk_classification: low", "unexpected: nope"))
+    with pytest.raises(SourceConfigError, match="unexpected"):
+        load_source_definitions(tmp_path)
+
+
 def test_duplicate_source_ids_are_rejected(tmp_path: Path) -> None:
     write_config(tmp_path, VALID_CONFIG + VALID_CONFIG.split("sources:", 1)[1])
     with pytest.raises(SourceConfigError, match="duplicate source_id"):

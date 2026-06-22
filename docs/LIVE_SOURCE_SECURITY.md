@@ -9,6 +9,8 @@ local mocks, and the committed example sources are disabled by default.
 - Unreviewed, rejected, suspended, or disabled sources are blocked.
 - HTTPS is required for live network sources.
 - Approved hostnames are enforced before requests and after redirects.
+- Hostnames are resolved before each request and redirect, and every returned
+  IPv4 or IPv6 address must pass destination policy checks.
 - Loopback, private, link-local, multicast, and unspecified IP destinations are
   blocked in live mode.
 - Maximum redirects: 3.
@@ -25,3 +27,11 @@ local mocks, and the committed example sources are disabled by default.
 Live source verification is `NOT RUN` unless a source has explicit approval
 metadata and the user separately authorizes a smoke test. Real source selection
 and terms evidence are deferred to Milestone 1B.
+
+## Known Limitations
+
+- DNS rebinding cannot be fully eliminated in Milestone 1A because the HTTP
+  connection is not pinned to the pre-validated address. Mitigations are limited
+  to repository-owned URLs, host allowlists, pre-request and post-redirect
+  address checks, no credentials or cookies, bounded response size, and no
+  arbitrary URL input.
