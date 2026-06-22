@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import json
-import time
 from collections.abc import Sequence
 from datetime import date
 from pathlib import Path
@@ -255,14 +254,12 @@ def _dummy_metrics(
 ) -> dict[str, Any]:
     model = DummyClassifier(strategy="most_frequent", random_state=20260622)
     model.fit(np.asarray(_texts(train)).reshape(-1, 1), _truth(train, task))
-    started = time.perf_counter()
     pred = [str(item) for item in model.predict(np.asarray(_texts(test)).reshape(-1, 1))]
-    duration = int((time.perf_counter() - started) * 1000)
     matrix = np.asarray(_texts(test)).reshape(-1, 1)
     proba = _align_probabilities(model.classes_, model.predict_proba(matrix), labels)
     return {
         "metrics": classification_report_dict(
-            _truth(test, task), pred, labels, probabilities=proba, duration_ms=duration
+            _truth(test, task), pred, labels, probabilities=proba, duration_ms=0
         ),
         "predictions": pred,
     }
@@ -271,13 +268,9 @@ def _dummy_metrics(
 def _rule_metrics(
     task: TaskName, test: Sequence[BenchmarkRecord], labels: list[str]
 ) -> dict[str, Any]:
-    started = time.perf_counter()
     pred = [_rule_prediction(record, task) for record in test]
-    duration = int((time.perf_counter() - started) * 1000)
     return {
-        "metrics": classification_report_dict(
-            _truth(test, task), pred, labels, duration_ms=duration
-        ),
+        "metrics": classification_report_dict(_truth(test, task), pred, labels, duration_ms=0),
         "predictions": pred,
     }
 
@@ -305,10 +298,8 @@ def _rule_prediction(record: BenchmarkRecord, task: TaskName) -> str:
 def _timed_predict(
     model: Pipeline, texts: list[str], labels: list[str]
 ) -> tuple[list[str], dict[str, Any]]:
-    started = time.perf_counter()
     pred, proba = _predict_with_probabilities(model, texts, labels)
-    duration = int((time.perf_counter() - started) * 1000)
-    return pred, {"probabilities": proba, "duration_ms": duration}
+    return pred, {"probabilities": proba, "duration_ms": 0}
 
 
 def _predict_with_probabilities(

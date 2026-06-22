@@ -74,3 +74,23 @@ flowchart LR
 Milestone 1B keeps approval evidence repository-owned and runtime enablement
 local-only. The smoke path is explicit CLI-only, no-persist by default, and does
 not introduce API mutation routes, schedulers, or browser-side live requests.
+
+## Milestone 2A NLP Evaluation Lab
+
+```mermaid
+flowchart LR
+  Generator[Synthetic benchmark generator] --> Checks[Schema and leakage checks]
+  Checks --> Train[Dummy, rule, and scikit-learn baselines]
+  Train --> Reports[Evaluation and error reports]
+  Train --> Artifacts[Ignored local model artifacts]
+  Reports --> Registry[Safe model registry metadata]
+  Reports --> API[Read-only NLP API]
+  Reports --> Static[Static demo JSON]
+  API --> Vue[NLP Evaluation page]
+  Static --> Vue
+```
+
+Model binaries stay under ignored `.finnews-artifacts/`. The committed
+benchmark and reports contain only original synthetic records and safe metadata.
+The default news pipeline remains rule-based; Milestone 2A adds evaluation
+tooling rather than production model activation.

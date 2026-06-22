@@ -1,5 +1,5 @@
 {
-  "benchmark_claim": "synthetic benchmark only, not real-world accuracy",
+  "disclaimer": "Synthetic benchmark only; generator-defined labels; no live or copyrighted news; not investment advice; real-world licensed evaluation is deferred to Milestone 2B.",
   "dataset": {
     "dataset_id": "synthetic-finnews-nlp-v1",
     "dataset_sha256": "5eba057ef83198c5a35d29da2c821a5624d813885806cab4f48ecb22dbda67aa",
@@ -12,20 +12,20 @@
     },
     "synthetic_only": true
   },
-  "disclaimer": "Synthetic benchmark only; generator-defined labels; no live or copyrighted news; not investment advice; real-world licensed evaluation is deferred to Milestone 2B.",
-  "language_counts": {
-    "en": 432,
-    "zh": 864
-  },
-  "not_investment_advice": true,
   "record_count": 1296,
+  "split_counts": {
+    "train": 648,
+    "validation": 324,
+    "test": 324
+  },
+  "language_counts": {
+    "zh": 864,
+    "en": 432
+  },
   "selected_models": {
     "event": "m2a-event-word_char_tfidf_logreg",
     "sentiment": "m2a-sentiment-word_char_tfidf_logreg"
   },
-  "split_counts": {
-    "test": 324,
-    "train": 648,
-    "validation": 324
-  }
+  "benchmark_claim": "synthetic benchmark only, not real-world accuracy",
+  "not_investment_advice": true
 }

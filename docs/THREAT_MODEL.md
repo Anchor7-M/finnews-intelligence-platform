@@ -18,6 +18,9 @@
 - Accidental commit of local live-source override, smoke report, or personal SEC contact.
 - Browser-side live-source fetches.
 - Copyright and provenance mistakes.
+- Untrusted model artifact loading.
+- Synthetic benchmark leakage into train/validation/test splits.
+- Misrepresenting synthetic NLP metrics as real-world performance.
 
 ## Mitigations
 
@@ -38,3 +41,7 @@
   ignored local overrides, explicit live env and confirmation gates, no-persist
   smoke-test defaults, SEC contact redaction, and read-only API review
   summaries.
+- Milestone 2A keeps model binaries under ignored `.finnews-artifacts/`, loads
+  only hash-verified local artifacts under that root, commits only synthetic
+  benchmark/report data, validates split leakage, and labels every metric as
+  synthetic-only.

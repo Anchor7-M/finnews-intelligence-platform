@@ -51,6 +51,17 @@ flowchart LR
 - Read-only source-review API metadata and Vue Source Catalog visibility.
 - Static demo review examples remain synthetic; no live response or real item text is committed.
 
+## Implemented In Milestone 2A
+
+- Versioned `synthetic-finnews-nlp-v1` bilingual benchmark with 1,296 original synthetic records.
+- Leakage-safe train/validation/test split by template family and story group.
+- Dummy, rule-based, and bounded scikit-learn baselines for event and sentiment tasks.
+- Validation-only candidate selection, probability calibration, confidence/coverage, and abstention analysis.
+- Deterministic test reports, error analysis, model cards, dataset card, and safe model-registry metadata.
+- Read-only NLP API endpoints, `finnews nlp ...` CLI commands, Vue NLP Evaluation page, and static-demo JSON.
+
+Milestone 2A metrics describe only the synthetic benchmark. They are not human-labeled, market representative, production validation, or investment advice.
+
 ## Verified Synthetic Dataset
 
 - 68 raw observations loaded in the memory demo.
@@ -117,6 +128,9 @@ GET /api/v1/signals/daily
 GET /api/v1/sources
 GET /api/v1/source-reviews
 GET /api/v1/source-fetch-attempts
+GET /api/v1/nlp/overview
+GET /api/v1/nlp/models
+GET /api/v1/nlp/evaluations
 ```
 
 ## Frontend
@@ -137,5 +151,6 @@ Milestones 1-4 are documented in `docs/ROADMAP.md` and are not implemented yet.
 - Live-source smoke testing is not run without valid review evidence, ignored local enablement, `FINNEWS_ALLOW_LIVE_NETWORK=1`, and explicit confirmation.
 - Review approval is an engineering usage-policy review, not legal advice or production readiness.
 - Baselines are deterministic rules, not predictive models.
+- Milestone 2A ML models are classical scikit-learn baselines evaluated on generator-defined synthetic labels only.
 - PostgreSQL repository behavior is verified locally, but this is still synthetic research tooling rather than production financial advice.
 - GitHub Actions files are present for future manual push; no CI result is claimed locally.

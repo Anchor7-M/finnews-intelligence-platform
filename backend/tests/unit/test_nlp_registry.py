@@ -31,9 +31,7 @@ def test_memory_nlp_registry_idempotent_filters_and_json_round_trip(tmp_path: Pa
     assert event_model.metrics["macro_f1"] == 1.0
     assert event_model.artifact_uri is None
     assert len(repo.list_nlp_evaluations(task="sentiment")) == 1
-    evaluation = repo.get_nlp_evaluation(
-        f"{task_reports['sentiment']['selected_model_id']}-test"
-    )
+    evaluation = repo.get_nlp_evaluation(f"{task_reports['sentiment']['selected_model_id']}-test")
     assert evaluation is not None
     evaluation_metrics = cast(dict[str, dict[str, Any]], evaluation.metrics)
     assert evaluation_metrics["selected_ml"]["macro_f1"] == 1.0

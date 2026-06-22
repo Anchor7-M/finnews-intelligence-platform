@@ -163,9 +163,7 @@ class NlpEvaluationRunModel(Base):
         Index("ix_nlp_evaluation_runs_model", "model_id"),
     )
     evaluation_id: Mapped[str] = mapped_column(String(180), primary_key=True)
-    model_id: Mapped[str] = mapped_column(
-        ForeignKey("nlp_model_registry.model_id"), nullable=False
-    )
+    model_id: Mapped[str] = mapped_column(ForeignKey("nlp_model_registry.model_id"), nullable=False)
     task: Mapped[str] = mapped_column(String(40), nullable=False)
     dataset_id: Mapped[str] = mapped_column(String(160), nullable=False)
     dataset_version: Mapped[str] = mapped_column(String(40), nullable=False)
