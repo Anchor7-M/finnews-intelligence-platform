@@ -24,6 +24,7 @@ def export_static(repository: NewsRepository, output: Path) -> None:
 
 def build_static_payload(repository: NewsRepository) -> dict[str, Any]:
     accounting = build_deduplication_accounting(repository)
+    pipeline_runs = repository.list_pipeline_runs()
     articles = [
         article
         for article in repository.list_articles()
@@ -76,9 +77,7 @@ def build_static_payload(repository: NewsRepository) -> dict[str, Any]:
             "deduplication_groups": accounting.grouped_observation_ids,
             "event_distribution": _counts(row["event"] for row in article_rows),
             "sentiment_distribution": _counts(row["sentiment"] for row in article_rows),
-            "latest_pipeline": repository.list_pipeline_runs()[-1]
-            if repository.list_pipeline_runs()
-            else None,
+            "latest_pipeline": _pipeline_summary(pipeline_runs[-1]) if pipeline_runs else None,
         },
         "articles": article_rows,
         "companies": [
@@ -129,6 +128,18 @@ def _counts(values: Iterable[object]) -> dict[str, int]:
         key = str(value)
         result[key] = result.get(key, 0) + 1
     return result
+
+
+def _pipeline_summary(run: object) -> dict[str, object]:
+    status = getattr(run, "status", "")
+    return {
+        "status": getattr(status, "value", str(status)),
+        "per_step_counts": getattr(run, "per_step_counts", {}),
+        "warnings": getattr(run, "warnings", []),
+        "errors": getattr(run, "errors", []),
+        "configuration_version": getattr(run, "configuration_version", ""),
+        "code_version": getattr(run, "code_version", ""),
+    }
 
 
 def _json_default(value: object) -> str:

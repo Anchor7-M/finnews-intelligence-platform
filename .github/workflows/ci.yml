@@ -47,6 +47,10 @@ jobs:
 
   postgres:
     runs-on: ubuntu-latest
+    env:
+      FINNEWS_PROFILE: postgres
+      FINNEWS_DATABASE_URL: postgresql+psycopg://finnews:finnews@127.0.0.1:55432/finnews
+      FINNEWS_RUN_POSTGRES_TESTS: "1"
     services:
       postgres:
         image: postgres:16

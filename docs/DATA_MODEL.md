@@ -7,6 +7,7 @@ Implemented Milestone 0 tables in the PostgreSQL schema:
 - `raw_articles`
 - `articles`
 - `article_duplicates`
+- `observation_dispositions`
 - `companies`
 - `company_aliases`
 - `article_company_links`
@@ -27,3 +28,6 @@ Audited fixture composition:
 - 8 exact duplicate observations and 10 near-duplicate observations.
 - 8 exact duplicate pairs, 10 near-duplicate pairs, and 18 duplicate clusters.
 - 7 daily digests and 46 daily company signals.
+
+PostgreSQL stores UUID primary keys as PostgreSQL `uuid`, JSON payloads as
+`jsonb`, and timestamp columns as timezone-aware `timestamptz`.

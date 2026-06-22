@@ -6,18 +6,32 @@ from pathlib import Path
 import shutil
 import subprocess
 import sys
+import time
 
 
 ROOT = Path(__file__).resolve().parents[1]
+POSTGRES_PROJECT = "finnews_m0_verify"
+POSTGRES_SERVICE = "postgres"
+POSTGRES_URL = "postgresql+psycopg://finnews:finnews@127.0.0.1:55432/finnews"
 
 
-def run(command: list[str], cwd: Path = ROOT, check: bool = True) -> int:
+def run(
+    command: list[str],
+    cwd: Path = ROOT,
+    check: bool = True,
+    env: dict[str, str] | None = None,
+) -> int:
     resolved = command[:]
     executable = shutil.which(command[0])
     if executable:
         resolved[0] = executable
     print(f"+ {' '.join(command)}")
-    completed = subprocess.run(resolved, cwd=cwd, check=False)
+    completed = subprocess.run(
+        resolved,
+        cwd=cwd,
+        check=False,
+        env={**os.environ, **(env or {})},
+    )
     if check and completed.returncode != 0:
         raise SystemExit(completed.returncode)
     return completed.returncode
@@ -61,21 +75,82 @@ def validate_static_export() -> None:
 
 
 def db_up(_: argparse.Namespace) -> None:
-    run(["docker", "compose", "up", "-d", "postgres"])
+    run(["docker", "compose", "-p", POSTGRES_PROJECT, "up", "-d", POSTGRES_SERVICE])
+    wait_for_postgres_health()
     print("Stop with: python scripts/dev.py db-down")
 
 
 def db_down(_: argparse.Namespace) -> None:
-    run(["docker", "compose", "down"])
+    run(
+        [
+            "docker",
+            "compose",
+            "-p",
+            POSTGRES_PROJECT,
+            "down",
+            "--volumes",
+            "--remove-orphans",
+        ]
+    )
 
 
 def verify_postgres(_: argparse.Namespace) -> None:
+    env = {
+        "FINNEWS_PROFILE": "postgres",
+        "FINNEWS_DATABASE_URL": POSTGRES_URL,
+        "FINNEWS_RUN_POSTGRES_TESTS": "1",
+    }
+    success = False
     try:
         db_up(argparse.Namespace())
-        run([sys.executable, "-m", "alembic", "upgrade", "head"], ROOT / "backend")
-        run([sys.executable, "-m", "pytest", "-m", "postgres"], ROOT / "backend")
+        run([sys.executable, "-m", "alembic", "upgrade", "head"], ROOT / "backend", env=env)
+        run([sys.executable, "-m", "pytest", "-m", "postgres", "-s"], ROOT / "backend", env=env)
+        success = True
     finally:
         db_down(argparse.Namespace())
+    if success:
+        print(
+            "verify-postgres passed: project=finnews_m0_verify service=postgres "
+            "image=postgres:16 port=127.0.0.1:55432"
+        )
+
+
+def wait_for_postgres_health(timeout_seconds: int = 90) -> None:
+    container_id = _postgres_container_id()
+    deadline = time.time() + timeout_seconds
+    while time.time() < deadline:
+        status = subprocess.run(
+            [
+                "docker",
+                "inspect",
+                "--format",
+                "{{.State.Health.Status}}",
+                container_id,
+            ],
+            cwd=ROOT,
+            text=True,
+            capture_output=True,
+            check=False,
+        )
+        if status.stdout.strip() == "healthy":
+            return
+        time.sleep(2)
+    run(["docker", "logs", container_id], check=False)
+    raise SystemExit("PostgreSQL container did not become healthy before timeout")
+
+
+def _postgres_container_id() -> str:
+    completed = subprocess.run(
+        ["docker", "compose", "-p", POSTGRES_PROJECT, "ps", "-q", POSTGRES_SERVICE],
+        cwd=ROOT,
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    container_id = completed.stdout.strip()
+    if not container_id:
+        raise SystemExit("PostgreSQL container was not created")
+    return container_id
 
 
 def export_static(_: argparse.Namespace) -> None:

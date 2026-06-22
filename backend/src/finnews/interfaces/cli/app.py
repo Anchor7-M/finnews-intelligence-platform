@@ -6,12 +6,22 @@ from pathlib import Path
 from typing import Annotated
 
 import typer
+from alembic.config import Config
+from sqlalchemy.orm import Session
 
+from alembic import command
+from finnews.application.ports.repositories import NewsRepository
 from finnews.application.services.deduplication_accounting import build_deduplication_accounting
 from finnews.application.services.export_static import export_static
 from finnews.application.services.pipeline import NewsPipeline
-from finnews.bootstrap import FIXTURE_DIR, build_memory_repository, load_default_records
+from finnews.bootstrap import (
+    FIXTURE_DIR,
+    build_memory_repository,
+    create_postgres_session,
+    load_default_records,
+)
 from finnews.infrastructure.persistence.memory.repository import MemoryNewsRepository
+from finnews.infrastructure.persistence.postgres.repository import PostgresNewsRepository
 from finnews.infrastructure.sources.fixtures import JsonlFixtureSource
 from finnews.infrastructure.sources.local_feed import LocalFeedSource
 from finnews.settings import Settings, get_settings
@@ -34,44 +44,54 @@ def doctor() -> None:
 
 @db_app.command("upgrade")
 def db_upgrade() -> None:
-    typer.echo("Run Alembic upgrade with: cd backend && alembic upgrade head")
+    command.upgrade(Config("alembic.ini"), "head")
+    typer.echo("database_upgraded=head")
 
 
 @ingest_app.command("fixture")
 def ingest_fixture(path: Annotated[Path, typer.Option("--path")]) -> None:
     settings = get_settings()
-    repo = MemoryNewsRepository()
+    repo, session = _empty_repository(settings)
     pipeline = NewsPipeline(repo, settings)
     pipeline.load_companies(FIXTURE_DIR / "companies.json")
     counts = pipeline.ingest_records(
         JsonlFixtureSource(path, settings.max_fixture_bytes).read_records()
     )
+    _commit_and_close(session)
     typer.echo(json.dumps(counts, ensure_ascii=False, sort_keys=True))
 
 
 @ingest_app.command("local-feed")
 def ingest_local_feed(path: Annotated[Path, typer.Option("--path")]) -> None:
     settings = get_settings()
-    repo = MemoryNewsRepository()
+    repo, session = _empty_repository(settings)
     pipeline = NewsPipeline(repo, settings)
     pipeline.load_companies(FIXTURE_DIR / "companies.json")
     counts = pipeline.ingest_records(
         LocalFeedSource(path, settings.max_fixture_bytes).read_records()
     )
+    _commit_and_close(session)
     typer.echo(json.dumps(counts, ensure_ascii=False, sort_keys=True))
 
 
 @app.command()
 def process() -> None:
-    repo = build_memory_repository()
-    typer.echo(f"processed={len(repo.list_articles())}")
+    settings = get_settings()
+    repo, session = _repository(settings)
+    counts = NewsPipeline(repo, settings).process_articles()
+    _commit_and_close(session)
+    typer.echo(json.dumps(counts, sort_keys=True))
 
 
 @app.command()
 def digest(digest_date_text: Annotated[str, typer.Option("--date")]) -> None:
     digest_date = date.fromisoformat(digest_date_text)
-    repo = build_memory_repository()
+    settings = get_settings()
+    repo, session = _repository(settings)
+    if settings.profile == "postgres":
+        NewsPipeline(repo, settings).generate_digest(digest_date)
     item = repo.get_digest(digest_date)
+    _commit_and_close(session)
     if item is None:
         raise typer.Exit(1)
     typer.echo(json.dumps(item.digest_payload, ensure_ascii=False, default=str))
@@ -80,8 +100,12 @@ def digest(digest_date_text: Annotated[str, typer.Option("--date")]) -> None:
 @app.command()
 def signals(signal_date_text: Annotated[str, typer.Option("--date")]) -> None:
     signal_date = date.fromisoformat(signal_date_text)
-    repo = build_memory_repository()
+    settings = get_settings()
+    repo, session = _repository(settings)
+    if settings.profile == "postgres":
+        NewsPipeline(repo, settings).generate_signals(signal_date)
     rows = [item for item in repo.list_signals() if item.signal_date == signal_date]
+    _commit_and_close(session)
     typer.echo(json.dumps([row.__dict__ for row in rows], ensure_ascii=False, default=str))
 
 
@@ -145,15 +169,14 @@ def evaluate_demo() -> None:
 
 @app.command()
 def demo(profile: Annotated[str, typer.Option("--profile")] = "memory") -> None:
-    if profile != "memory":
-        typer.echo("Only memory demo is implemented for the default offline path.")
-        raise typer.Exit(1)
     settings = Settings(profile=profile)
-    repo = MemoryNewsRepository()
+    repo, session = _empty_repository(settings)
     pipeline = NewsPipeline(repo, settings)
     run = pipeline.run_demo(load_default_records(settings), FIXTURE_DIR / "companies.json")
-    export_static(repo, Path("../frontend/public/demo-data"))
+    if profile == "memory":
+        export_static(repo, Path("../frontend/public/demo-data"))
     accounting = build_deduplication_accounting(repo)
+    _commit_and_close(session)
     typer.echo(
         json.dumps(
             {
@@ -168,6 +191,27 @@ def demo(profile: Annotated[str, typer.Option("--profile")] = "memory") -> None:
             sort_keys=True,
         )
     )
+
+
+def _empty_repository(settings: Settings) -> tuple[NewsRepository, Session | None]:
+    if settings.profile == "postgres":
+        session = create_postgres_session(settings)
+        return PostgresNewsRepository(session), session
+    return MemoryNewsRepository(), None
+
+
+def _repository(settings: Settings) -> tuple[NewsRepository, Session | None]:
+    if settings.profile == "postgres":
+        session = create_postgres_session(settings)
+        return PostgresNewsRepository(session), session
+    return build_memory_repository(settings), None
+
+
+def _commit_and_close(session: Session | None) -> None:
+    if session is None:
+        return
+    session.commit()
+    session.close()
 
 
 if __name__ == "__main__":

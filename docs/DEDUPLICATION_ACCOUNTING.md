@@ -67,6 +67,12 @@ Arithmetic:
 18 = 8 + 10
 ```
 
+The same metrics are verified against the memory repository and the PostgreSQL
+repository. PostgreSQL persists the disposition ledger in
+`observation_dispositions`; duplicate-cluster count is asserted from distinct
+canonical IDs referenced by duplicate observations, not inferred from the raw
+duplicate count.
+
 ## Worked Synthetic Example
 
 If five observations are read, one malformed item is rejected, two unique items become canonical articles, one item has the same normalized title/summary/language as the first canonical article, and one item is a near duplicate of the second canonical article:

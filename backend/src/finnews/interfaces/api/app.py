@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from collections.abc import AsyncIterator
+from contextlib import asynccontextmanager
 from datetime import date
 from typing import cast
 from uuid import UUID, uuid4
@@ -9,7 +11,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
 from finnews.application.services.export_static import build_static_payload
-from finnews.bootstrap import build_memory_repository
+from finnews.bootstrap import build_repository
 from finnews.domain.errors import NotFoundError
 from finnews.infrastructure.observability.logging import configure_logging
 from finnews.settings import Settings, get_settings
@@ -18,8 +20,22 @@ from finnews.settings import Settings, get_settings
 def create_app(settings: Settings | None = None) -> FastAPI:
     settings = settings or get_settings()
     configure_logging(settings.log_level)
-    repository = build_memory_repository(settings)
-    app = FastAPI(title="Finnews Intelligence Platform", version="0.1.0")
+    repository = build_repository(settings)
+
+    @asynccontextmanager
+    async def lifespan(_: FastAPI) -> AsyncIterator[None]:
+        try:
+            yield
+        finally:
+            session = getattr(repository, "session", None)
+            if session is not None:
+                session.close()
+
+    app = FastAPI(
+        title="Finnews Intelligence Platform",
+        version="0.1.0",
+        lifespan=lifespan,
+    )
     app.state.repository = repository
     app.state.settings = settings
     app.add_middleware(
@@ -59,7 +75,9 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             return {"status": "ready", "profile": settings.profile}
         if settings.profile == "memory":
             raise HTTPException(status_code=503, detail="memory repository is empty")
-        return {"status": "unknown", "profile": settings.profile}
+        if settings.profile == "postgres" and repository.list_articles():
+            return {"status": "ready", "profile": settings.profile}
+        raise HTTPException(status_code=503, detail=f"{settings.profile} repository is empty")
 
     @app.get("/api/v1/articles")
     def list_articles(
@@ -186,4 +204,4 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     return app
 
 
-app = create_app()
+app = create_app(Settings(profile="memory"))

@@ -114,9 +114,15 @@ def test_static_api_shape_and_cli_statistics_consistency(tmp_path: Path) -> None
     payload = build_static_payload(repo)
     assert payload["overview"]["deduplication"] == EXPECTED_METRICS
     assert payload["overview"]["article_count"] == EXPECTED_METRICS["canonical_article_count"]
+    assert payload["overview"]["latest_pipeline"]["status"] == "completed"
+    assert (
+        payload["overview"]["latest_pipeline"]["per_step_counts"]["canonical_article_count"]
+        == EXPECTED_METRICS["canonical_article_count"]
+    )
     export_static(repo, tmp_path)
     exported = json.loads((tmp_path / "overview.json").read_text(encoding="utf-8"))
     assert exported["deduplication"] == EXPECTED_METRICS
+    assert exported["latest_pipeline"]["status"] == "completed"
 
     result = CliRunner().invoke(app, ["demo", "--profile", "memory"])
     assert result.exit_code == 0

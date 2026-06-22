@@ -111,5 +111,30 @@
     "positive": 11,
     "uncertain": 10
   },
-  "latest_pipeline": "PipelineRun(status=<RunStatus.COMPLETED: 'completed'>, started_at=datetime.datetime(2026, 6, 22, 0, 58, 54, 425027, tzinfo=datetime.timezone.utc), finished_at=datetime.datetime(2026, 6, 22, 0, 58, 54, 425027, tzinfo=datetime.timezone.utc), per_step_timings={'companies': 0.0005, 'ingest': 0.4644, 'process': 0.0066, 'total': 0.4727}, per_step_counts={'companies': 12, 'ingest_fetched': 68, 'ingest_accepted': 56, 'ingest_exact_duplicate': 8, 'ingest_near_duplicate': 10, 'ingest_rejected': 4, 'raw_observation_count': 68, 'rejected_observation_count': 4, 'valid_observation_count': 64, 'canonical_article_count': 46, 'exact_duplicate_observation_count': 8, 'near_duplicate_observation_count': 10, 'duplicate_observation_count': 18, 'exact_duplicate_pair_count': 8, 'near_duplicate_pair_count': 10, 'duplicate_cluster_count': 18, 'processed': 46}, warnings=[], errors=[], configuration_version='demo-v1', code_version='0.1.0', id=UUID('8e677d54-df9b-4cac-87cc-d76107b3516d'))"
+  "latest_pipeline": {
+    "status": "completed",
+    "per_step_counts": {
+      "companies": 12,
+      "ingest_fetched": 68,
+      "ingest_accepted": 56,
+      "ingest_exact_duplicate": 8,
+      "ingest_near_duplicate": 10,
+      "ingest_rejected": 4,
+      "raw_observation_count": 68,
+      "rejected_observation_count": 4,
+      "valid_observation_count": 64,
+      "canonical_article_count": 46,
+      "exact_duplicate_observation_count": 8,
+      "near_duplicate_observation_count": 10,
+      "duplicate_observation_count": 18,
+      "exact_duplicate_pair_count": 8,
+      "near_duplicate_pair_count": 10,
+      "duplicate_cluster_count": 18,
+      "processed": 46
+    },
+    "warnings": [],
+    "errors": [],
+    "configuration_version": "demo-v1",
+    "code_version": "0.1.0"
+  }
 }

@@ -115,6 +115,32 @@ def upgrade() -> None:
         sa.Column("created_at", sa.DateTime(timezone=True), nullable=False),
     )
     op.create_table(
+        "observation_dispositions",
+        sa.Column("observation_id", sa.String(240), primary_key=True),
+        sa.Column("source_key", sa.String(120), nullable=False),
+        sa.Column("disposition", sa.String(40), nullable=False),
+        sa.Column("canonical_observation_id", sa.String(240)),
+        sa.Column(
+            "canonical_article_id",
+            postgresql.UUID(as_uuid=True),
+            sa.ForeignKey("articles.id"),
+        ),
+        sa.Column("duplicate_type", sa.String(40)),
+        sa.Column("similarity_score", sa.Float()),
+        sa.Column("explanation", sa.Text(), nullable=False),
+        sa.Column("fixture_group", sa.String(80), nullable=False),
+    )
+    op.create_index(
+        "ix_observation_dispositions_canonical",
+        "observation_dispositions",
+        ["canonical_article_id"],
+    )
+    op.create_index(
+        "ix_observation_dispositions_disposition",
+        "observation_dispositions",
+        ["disposition"],
+    )
+    op.create_table(
         "companies",
         sa.Column("id", postgresql.UUID(as_uuid=True), primary_key=True),
         sa.Column("ticker", sa.String(32), nullable=False),
@@ -254,6 +280,7 @@ def downgrade() -> None:
         "article_company_links",
         "company_aliases",
         "companies",
+        "observation_dispositions",
         "article_duplicates",
         "articles",
         "raw_articles",
