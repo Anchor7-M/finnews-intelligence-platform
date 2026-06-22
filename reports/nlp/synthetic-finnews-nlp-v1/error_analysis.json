@@ -1,0 +1,685 @@
+{
+  "disclaimer": "Synthetic benchmark only; generator-defined labels; no live or copyrighted news; not investment advice; real-world licensed evaluation is deferred to Milestone 2B.",
+  "tasks": {
+    "event": {
+      "class_labels": [
+        "earnings",
+        "merger_acquisition",
+        "policy_regulation",
+        "operations_product",
+        "financing_capital",
+        "litigation_penalty",
+        "governance_personnel",
+        "macro_market",
+        "other"
+      ],
+      "confusion_pairs": [],
+      "errors_by_challenge_flag": {},
+      "errors_by_language": {},
+      "highest_confidence_false_predictions": [],
+      "lowest_confidence_correct_predictions": [
+        {
+          "challenge_flags": [],
+          "confidence": 0.389957,
+          "error_category": "low_confidence_correct",
+          "expected_label": "earnings",
+          "language": "en",
+          "model_version": "m2a-event-word_char_tfidf_logreg",
+          "predicted_label": "earnings",
+          "record_id": "m2a-tf-11-earnings-positive-p0"
+        },
+        {
+          "challenge_flags": [],
+          "confidence": 0.399045,
+          "error_category": "low_confidence_correct",
+          "expected_label": "litigation_penalty",
+          "language": "en",
+          "model_version": "m2a-event-word_char_tfidf_logreg",
+          "predicted_label": "litigation_penalty",
+          "record_id": "m2a-tf-11-litigation_penalty-negative-p0"
+        },
+        {
+          "challenge_flags": [],
+          "confidence": 0.400256,
+          "error_category": "low_confidence_correct",
+          "expected_label": "earnings",
+          "language": "en",
+          "model_version": "m2a-event-word_char_tfidf_logreg",
+          "predicted_label": "earnings",
+          "record_id": "m2a-tf-11-earnings-neutral-p0"
+        },
+        {
+          "challenge_flags": [
+            "alias_or_ticker"
+          ],
+          "confidence": 0.406043,
+          "error_category": "low_confidence_correct",
+          "expected_label": "litigation_penalty",
+          "language": "en",
+          "model_version": "m2a-event-word_char_tfidf_logreg",
+          "predicted_label": "litigation_penalty",
+          "record_id": "m2a-tf-11-litigation_penalty-negative-p2"
+        },
+        {
+          "challenge_flags": [],
+          "confidence": 0.407687,
+          "error_category": "low_confidence_correct",
+          "expected_label": "financing_capital",
+          "language": "en",
+          "model_version": "m2a-event-word_char_tfidf_logreg",
+          "predicted_label": "financing_capital",
+          "record_id": "m2a-tf-11-financing_capital-negative-p0"
+        },
+        {
+          "challenge_flags": [
+            "uncertainty"
+          ],
+          "confidence": 0.408116,
+          "error_category": "low_confidence_correct",
+          "expected_label": "earnings",
+          "language": "en",
+          "model_version": "m2a-event-word_char_tfidf_logreg",
+          "predicted_label": "earnings",
+          "record_id": "m2a-tf-11-earnings-negative-p2"
+        },
+        {
+          "challenge_flags": [],
+          "confidence": 0.409114,
+          "error_category": "low_confidence_correct",
+          "expected_label": "merger_acquisition",
+          "language": "en",
+          "model_version": "m2a-event-word_char_tfidf_logreg",
+          "predicted_label": "merger_acquisition",
+          "record_id": "m2a-tf-11-merger_acquisition-uncertain-p0"
+        },
+        {
+          "challenge_flags": [
+            "neutral_boilerplate",
+            "numerical_reversal"
+          ],
+          "confidence": 0.41181,
+          "error_category": "low_confidence_correct",
+          "expected_label": "financing_capital",
+          "language": "en",
+          "model_version": "m2a-event-word_char_tfidf_logreg",
+          "predicted_label": "financing_capital",
+          "record_id": "m2a-tf-11-financing_capital-negative-p2"
+        },
+        {
+          "challenge_flags": [
+            "class_overlap",
+            "low_information"
+          ],
+          "confidence": 0.413279,
+          "error_category": "low_confidence_correct",
+          "expected_label": "earnings",
+          "language": "en",
+          "model_version": "m2a-event-word_char_tfidf_logreg",
+          "predicted_label": "earnings",
+          "record_id": "m2a-tf-11-earnings-positive-p2"
+        },
+        {
+          "challenge_flags": [
+            "negation"
+          ],
+          "confidence": 0.416295,
+          "error_category": "low_confidence_correct",
+          "expected_label": "earnings",
+          "language": "en",
+          "model_version": "m2a-event-word_char_tfidf_logreg",
+          "predicted_label": "earnings",
+          "record_id": "m2a-tf-11-earnings-neutral-p2"
+        },
+        {
+          "challenge_flags": [
+            "long_text"
+          ],
+          "confidence": 0.417011,
+          "error_category": "low_confidence_correct",
+          "expected_label": "litigation_penalty",
+          "language": "en",
+          "model_version": "m2a-event-word_char_tfidf_logreg",
+          "predicted_label": "litigation_penalty",
+          "record_id": "m2a-tf-11-litigation_penalty-neutral-p2"
+        },
+        {
+          "challenge_flags": [],
+          "confidence": 0.422317,
+          "error_category": "low_confidence_correct",
+          "expected_label": "merger_acquisition",
+          "language": "en",
+          "model_version": "m2a-event-word_char_tfidf_logreg",
+          "predicted_label": "merger_acquisition",
+          "record_id": "m2a-tf-11-merger_acquisition-neutral-p0"
+        }
+      ],
+      "methodology": "deterministic synthetic-only error slices and confidence sorting",
+      "rule_model_disagreements": [
+        {
+          "challenge_flags": [],
+          "expected_label": "operations_product",
+          "language": "zh",
+          "model_prediction": "operations_product",
+          "record_id": "m2a-tf-09-operations_product-positive-p0",
+          "rule_prediction": "other"
+        },
+        {
+          "challenge_flags": [],
+          "expected_label": "operations_product",
+          "language": "zh",
+          "model_prediction": "operations_product",
+          "record_id": "m2a-tf-09-operations_product-positive-p1",
+          "rule_prediction": "other"
+        },
+        {
+          "challenge_flags": [
+            "alias_or_ticker",
+            "mixed_signal"
+          ],
+          "expected_label": "operations_product",
+          "language": "zh",
+          "model_prediction": "operations_product",
+          "record_id": "m2a-tf-09-operations_product-positive-p2",
+          "rule_prediction": "other"
+        },
+        {
+          "challenge_flags": [],
+          "expected_label": "operations_product",
+          "language": "zh",
+          "model_prediction": "operations_product",
+          "record_id": "m2a-tf-09-operations_product-neutral-p0",
+          "rule_prediction": "other"
+        },
+        {
+          "challenge_flags": [],
+          "expected_label": "operations_product",
+          "language": "zh",
+          "model_prediction": "operations_product",
+          "record_id": "m2a-tf-09-operations_product-neutral-p1",
+          "rule_prediction": "other"
+        },
+        {
+          "challenge_flags": [
+            "neutral_boilerplate"
+          ],
+          "expected_label": "operations_product",
+          "language": "zh",
+          "model_prediction": "operations_product",
+          "record_id": "m2a-tf-09-operations_product-neutral-p2",
+          "rule_prediction": "other"
+        },
+        {
+          "challenge_flags": [],
+          "expected_label": "operations_product",
+          "language": "zh",
+          "model_prediction": "operations_product",
+          "record_id": "m2a-tf-09-operations_product-negative-p0",
+          "rule_prediction": "other"
+        },
+        {
+          "challenge_flags": [],
+          "expected_label": "operations_product",
+          "language": "zh",
+          "model_prediction": "operations_product",
+          "record_id": "m2a-tf-09-operations_product-negative-p1",
+          "rule_prediction": "other"
+        },
+        {
+          "challenge_flags": [
+            "low_information"
+          ],
+          "expected_label": "operations_product",
+          "language": "zh",
+          "model_prediction": "operations_product",
+          "record_id": "m2a-tf-09-operations_product-negative-p2",
+          "rule_prediction": "other"
+        },
+        {
+          "challenge_flags": [],
+          "expected_label": "operations_product",
+          "language": "zh",
+          "model_prediction": "operations_product",
+          "record_id": "m2a-tf-09-operations_product-uncertain-p0",
+          "rule_prediction": "other"
+        },
+        {
+          "challenge_flags": [],
+          "expected_label": "operations_product",
+          "language": "zh",
+          "model_prediction": "operations_product",
+          "record_id": "m2a-tf-09-operations_product-uncertain-p1",
+          "rule_prediction": "other"
+        },
+        {
+          "challenge_flags": [
+            "negation"
+          ],
+          "expected_label": "operations_product",
+          "language": "zh",
+          "model_prediction": "operations_product",
+          "record_id": "m2a-tf-09-operations_product-uncertain-p2",
+          "rule_prediction": "other"
+        },
+        {
+          "challenge_flags": [],
+          "expected_label": "governance_personnel",
+          "language": "zh",
+          "model_prediction": "governance_personnel",
+          "record_id": "m2a-tf-09-governance_personnel-positive-p0",
+          "rule_prediction": "other"
+        },
+        {
+          "challenge_flags": [],
+          "expected_label": "governance_personnel",
+          "language": "zh",
+          "model_prediction": "governance_personnel",
+          "record_id": "m2a-tf-09-governance_personnel-positive-p1",
+          "rule_prediction": "other"
+        },
+        {
+          "challenge_flags": [
+            "alias_or_ticker",
+            "mixed_signal"
+          ],
+          "expected_label": "governance_personnel",
+          "language": "zh",
+          "model_prediction": "governance_personnel",
+          "record_id": "m2a-tf-09-governance_personnel-positive-p2",
+          "rule_prediction": "other"
+        },
+        {
+          "challenge_flags": [],
+          "expected_label": "governance_personnel",
+          "language": "zh",
+          "model_prediction": "governance_personnel",
+          "record_id": "m2a-tf-09-governance_personnel-neutral-p0",
+          "rule_prediction": "other"
+        },
+        {
+          "challenge_flags": [],
+          "expected_label": "governance_personnel",
+          "language": "zh",
+          "model_prediction": "governance_personnel",
+          "record_id": "m2a-tf-09-governance_personnel-neutral-p1",
+          "rule_prediction": "other"
+        },
+        {
+          "challenge_flags": [
+            "neutral_boilerplate"
+          ],
+          "expected_label": "governance_personnel",
+          "language": "zh",
+          "model_prediction": "governance_personnel",
+          "record_id": "m2a-tf-09-governance_personnel-neutral-p2",
+          "rule_prediction": "other"
+        },
+        {
+          "challenge_flags": [],
+          "expected_label": "governance_personnel",
+          "language": "zh",
+          "model_prediction": "governance_personnel",
+          "record_id": "m2a-tf-09-governance_personnel-negative-p0",
+          "rule_prediction": "other"
+        },
+        {
+          "challenge_flags": [],
+          "expected_label": "governance_personnel",
+          "language": "zh",
+          "model_prediction": "governance_personnel",
+          "record_id": "m2a-tf-09-governance_personnel-negative-p1",
+          "rule_prediction": "other"
+        }
+      ]
+    },
+    "sentiment": {
+      "class_labels": [
+        "positive",
+        "neutral",
+        "negative",
+        "uncertain"
+      ],
+      "confusion_pairs": [],
+      "errors_by_challenge_flag": {},
+      "errors_by_language": {},
+      "highest_confidence_false_predictions": [],
+      "lowest_confidence_correct_predictions": [
+        {
+          "challenge_flags": [
+            "neutral_boilerplate",
+            "numerical_reversal"
+          ],
+          "confidence": 0.608328,
+          "error_category": "low_confidence_correct",
+          "expected_label": "negative",
+          "language": "en",
+          "model_version": "m2a-sentiment-word_char_tfidf_logreg",
+          "predicted_label": "negative",
+          "record_id": "m2a-tf-11-macro_market-negative-p2"
+        },
+        {
+          "challenge_flags": [
+            "alias_or_ticker"
+          ],
+          "confidence": 0.620531,
+          "error_category": "low_confidence_correct",
+          "expected_label": "negative",
+          "language": "en",
+          "model_version": "m2a-sentiment-word_char_tfidf_logreg",
+          "predicted_label": "negative",
+          "record_id": "m2a-tf-11-policy_regulation-negative-p2"
+        },
+        {
+          "challenge_flags": [
+            "hypothetical_or_plan"
+          ],
+          "confidence": 0.625789,
+          "error_category": "low_confidence_correct",
+          "expected_label": "positive",
+          "language": "en",
+          "model_version": "m2a-sentiment-word_char_tfidf_logreg",
+          "predicted_label": "positive",
+          "record_id": "m2a-tf-11-macro_market-positive-p2"
+        },
+        {
+          "challenge_flags": [
+            "negation"
+          ],
+          "confidence": 0.626232,
+          "error_category": "low_confidence_correct",
+          "expected_label": "neutral",
+          "language": "en",
+          "model_version": "m2a-sentiment-word_char_tfidf_logreg",
+          "predicted_label": "neutral",
+          "record_id": "m2a-tf-11-operations_product-neutral-p2"
+        },
+        {
+          "challenge_flags": [
+            "uncertainty"
+          ],
+          "confidence": 0.626259,
+          "error_category": "low_confidence_correct",
+          "expected_label": "negative",
+          "language": "en",
+          "model_version": "m2a-sentiment-word_char_tfidf_logreg",
+          "predicted_label": "negative",
+          "record_id": "m2a-tf-11-operations_product-negative-p2"
+        },
+        {
+          "challenge_flags": [],
+          "confidence": 0.62733,
+          "error_category": "low_confidence_correct",
+          "expected_label": "neutral",
+          "language": "en",
+          "model_version": "m2a-sentiment-word_char_tfidf_logreg",
+          "predicted_label": "neutral",
+          "record_id": "m2a-tf-11-macro_market-neutral-p0"
+        },
+        {
+          "challenge_flags": [],
+          "confidence": 0.627628,
+          "error_category": "low_confidence_correct",
+          "expected_label": "neutral",
+          "language": "en",
+          "model_version": "m2a-sentiment-word_char_tfidf_logreg",
+          "predicted_label": "neutral",
+          "record_id": "m2a-tf-11-governance_personnel-neutral-p0"
+        },
+        {
+          "challenge_flags": [
+            "class_overlap"
+          ],
+          "confidence": 0.628416,
+          "error_category": "low_confidence_correct",
+          "expected_label": "neutral",
+          "language": "en",
+          "model_version": "m2a-sentiment-word_char_tfidf_logreg",
+          "predicted_label": "neutral",
+          "record_id": "m2a-tf-11-macro_market-neutral-p2"
+        },
+        {
+          "challenge_flags": [
+            "alias_or_ticker"
+          ],
+          "confidence": 0.629974,
+          "error_category": "low_confidence_correct",
+          "expected_label": "negative",
+          "language": "en",
+          "model_version": "m2a-sentiment-word_char_tfidf_logreg",
+          "predicted_label": "negative",
+          "record_id": "m2a-tf-11-other-negative-p2"
+        },
+        {
+          "challenge_flags": [
+            "uncertainty"
+          ],
+          "confidence": 0.632676,
+          "error_category": "low_confidence_correct",
+          "expected_label": "negative",
+          "language": "en",
+          "model_version": "m2a-sentiment-word_char_tfidf_logreg",
+          "predicted_label": "negative",
+          "record_id": "m2a-tf-11-governance_personnel-negative-p2"
+        },
+        {
+          "challenge_flags": [
+            "negation"
+          ],
+          "confidence": 0.632921,
+          "error_category": "low_confidence_correct",
+          "expected_label": "neutral",
+          "language": "en",
+          "model_version": "m2a-sentiment-word_char_tfidf_logreg",
+          "predicted_label": "neutral",
+          "record_id": "m2a-tf-11-governance_personnel-neutral-p2"
+        },
+        {
+          "challenge_flags": [
+            "class_overlap",
+            "low_information"
+          ],
+          "confidence": 0.638384,
+          "error_category": "low_confidence_correct",
+          "expected_label": "positive",
+          "language": "en",
+          "model_version": "m2a-sentiment-word_char_tfidf_logreg",
+          "predicted_label": "positive",
+          "record_id": "m2a-tf-11-earnings-positive-p2"
+        }
+      ],
+      "methodology": "deterministic synthetic-only error slices and confidence sorting",
+      "rule_model_disagreements": [
+        {
+          "challenge_flags": [
+            "alias_or_ticker",
+            "mixed_signal"
+          ],
+          "expected_label": "positive",
+          "language": "zh",
+          "model_prediction": "positive",
+          "record_id": "m2a-tf-09-earnings-positive-p2",
+          "rule_prediction": "neutral"
+        },
+        {
+          "challenge_flags": [
+            "uncertainty"
+          ],
+          "expected_label": "positive",
+          "language": "zh",
+          "model_prediction": "positive",
+          "record_id": "m2a-tf-09-merger_acquisition-positive-p2",
+          "rule_prediction": "uncertain"
+        },
+        {
+          "challenge_flags": [
+            "mixed_signal"
+          ],
+          "expected_label": "neutral",
+          "language": "zh",
+          "model_prediction": "neutral",
+          "record_id": "m2a-tf-09-merger_acquisition-neutral-p2",
+          "rule_prediction": "negative"
+        },
+        {
+          "challenge_flags": [
+            "alias_or_ticker",
+            "mixed_signal"
+          ],
+          "expected_label": "positive",
+          "language": "zh",
+          "model_prediction": "positive",
+          "record_id": "m2a-tf-09-operations_product-positive-p2",
+          "rule_prediction": "neutral"
+        },
+        {
+          "challenge_flags": [
+            "uncertainty"
+          ],
+          "expected_label": "positive",
+          "language": "zh",
+          "model_prediction": "positive",
+          "record_id": "m2a-tf-09-financing_capital-positive-p2",
+          "rule_prediction": "uncertain"
+        },
+        {
+          "challenge_flags": [
+            "mixed_signal"
+          ],
+          "expected_label": "neutral",
+          "language": "zh",
+          "model_prediction": "neutral",
+          "record_id": "m2a-tf-09-financing_capital-neutral-p2",
+          "rule_prediction": "negative"
+        },
+        {
+          "challenge_flags": [],
+          "expected_label": "positive",
+          "language": "zh",
+          "model_prediction": "positive",
+          "record_id": "m2a-tf-09-litigation_penalty-positive-p0",
+          "rule_prediction": "neutral"
+        },
+        {
+          "challenge_flags": [],
+          "expected_label": "positive",
+          "language": "zh",
+          "model_prediction": "positive",
+          "record_id": "m2a-tf-09-litigation_penalty-positive-p1",
+          "rule_prediction": "neutral"
+        },
+        {
+          "challenge_flags": [
+            "numerical_reversal"
+          ],
+          "expected_label": "positive",
+          "language": "zh",
+          "model_prediction": "positive",
+          "record_id": "m2a-tf-09-litigation_penalty-positive-p2",
+          "rule_prediction": "neutral"
+        },
+        {
+          "challenge_flags": [],
+          "expected_label": "neutral",
+          "language": "zh",
+          "model_prediction": "neutral",
+          "record_id": "m2a-tf-09-litigation_penalty-neutral-p0",
+          "rule_prediction": "negative"
+        },
+        {
+          "challenge_flags": [],
+          "expected_label": "neutral",
+          "language": "zh",
+          "model_prediction": "neutral",
+          "record_id": "m2a-tf-09-litigation_penalty-neutral-p1",
+          "rule_prediction": "negative"
+        },
+        {
+          "challenge_flags": [
+            "cross_sentence_context"
+          ],
+          "expected_label": "neutral",
+          "language": "zh",
+          "model_prediction": "neutral",
+          "record_id": "m2a-tf-09-litigation_penalty-neutral-p2",
+          "rule_prediction": "negative"
+        },
+        {
+          "challenge_flags": [
+            "alias_or_ticker",
+            "mixed_signal"
+          ],
+          "expected_label": "positive",
+          "language": "zh",
+          "model_prediction": "positive",
+          "record_id": "m2a-tf-09-governance_personnel-positive-p2",
+          "rule_prediction": "neutral"
+        },
+        {
+          "challenge_flags": [
+            "uncertainty"
+          ],
+          "expected_label": "positive",
+          "language": "zh",
+          "model_prediction": "positive",
+          "record_id": "m2a-tf-09-macro_market-positive-p2",
+          "rule_prediction": "uncertain"
+        },
+        {
+          "challenge_flags": [
+            "mixed_signal"
+          ],
+          "expected_label": "neutral",
+          "language": "zh",
+          "model_prediction": "neutral",
+          "record_id": "m2a-tf-09-macro_market-neutral-p2",
+          "rule_prediction": "negative"
+        },
+        {
+          "challenge_flags": [
+            "mixed_signal"
+          ],
+          "expected_label": "positive",
+          "language": "zh",
+          "model_prediction": "positive",
+          "record_id": "m2a-tf-10-merger_acquisition-positive-p2",
+          "rule_prediction": "neutral"
+        },
+        {
+          "challenge_flags": [
+            "mixed_signal"
+          ],
+          "expected_label": "positive",
+          "language": "zh",
+          "model_prediction": "positive",
+          "record_id": "m2a-tf-10-financing_capital-positive-p2",
+          "rule_prediction": "neutral"
+        },
+        {
+          "challenge_flags": [],
+          "expected_label": "positive",
+          "language": "zh",
+          "model_prediction": "positive",
+          "record_id": "m2a-tf-10-litigation_penalty-positive-p0",
+          "rule_prediction": "neutral"
+        },
+        {
+          "challenge_flags": [],
+          "expected_label": "positive",
+          "language": "zh",
+          "model_prediction": "positive",
+          "record_id": "m2a-tf-10-litigation_penalty-positive-p1",
+          "rule_prediction": "neutral"
+        },
+        {
+          "challenge_flags": [
+            "cross_sentence_context"
+          ],
+          "expected_label": "positive",
+          "language": "zh",
+          "model_prediction": "positive",
+          "record_id": "m2a-tf-10-litigation_penalty-positive-p2",
+          "rule_prediction": "neutral"
+        }
+      ]
+    }
+  }
+}

@@ -234,8 +234,11 @@ frontend/.vite/
 data/generated/
 data/postgres/
 config/sources.local.yaml
-reports/
+reports/*
+!reports/nlp/
+!reports/nlp/**
 smoke-reports/
+.finnews-artifacts/
 tmp/
 *.db
 *.sqlite
