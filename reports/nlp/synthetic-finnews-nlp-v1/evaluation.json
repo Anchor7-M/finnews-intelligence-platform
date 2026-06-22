@@ -37,6 +37,7 @@
         "dataset_id": "synthetic-finnews-nlp-v1",
         "dataset_sha256": "5eba057ef83198c5a35d29da2c821a5624d813885806cab4f48ecb22dbda67aa",
         "dataset_version": "1.0.0",
+        "manifest_sha256": "5b8ce127c6d3cb096bc8bd11855cda60909f565165f9d5faff7bbb3b8c5a1561",
         "model_id": "m2a-event-word_char_tfidf_logreg",
         "model_kind": "word_char_tfidf_logreg",
         "provider": "scikit_learn",
@@ -1572,7 +1573,7 @@
               ]
             ]
           },
-          "inference_duration_ms": 64,
+          "inference_duration_ms": 77,
           "macro_f1": 0.755556,
           "macro_precision": 0.814815,
           "macro_recall": 0.777778,
@@ -1795,7 +1796,7 @@
             ]
           },
           "expected_calibration_error": 0.32902,
-          "inference_duration_ms": 301,
+          "inference_duration_ms": 377,
           "log_loss": 0.415803,
           "macro_f1": 1.0,
           "macro_precision": 1.0,
@@ -1957,6 +1958,7 @@
         "dataset_id": "synthetic-finnews-nlp-v1",
         "dataset_sha256": "5eba057ef83198c5a35d29da2c821a5624d813885806cab4f48ecb22dbda67aa",
         "dataset_version": "1.0.0",
+        "manifest_sha256": "3b94369825f1b4013f928fd9363712c72054cc31932cdb6c865d0fd2c0cb9899",
         "model_id": "m2a-sentiment-word_char_tfidf_logreg",
         "model_kind": "word_char_tfidf_logreg",
         "provider": "scikit_learn",
@@ -3097,7 +3099,7 @@
               ]
             ]
           },
-          "inference_duration_ms": 54,
+          "inference_duration_ms": 50,
           "macro_f1": 0.770784,
           "macro_precision": 0.824242,
           "macro_recall": 0.759259,
@@ -3210,7 +3212,7 @@
             ]
           },
           "expected_calibration_error": 0.157792,
-          "inference_duration_ms": 317,
+          "inference_duration_ms": 400,
           "log_loss": 0.180604,
           "macro_f1": 1.0,
           "macro_precision": 1.0,

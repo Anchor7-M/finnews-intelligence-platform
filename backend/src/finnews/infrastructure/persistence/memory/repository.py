@@ -15,6 +15,8 @@ from finnews.domain.entities import (
     DailyCompanySignal,
     DailyDigest,
     IngestionRun,
+    NlpEvaluationRun,
+    NlpModelRegistryEntry,
     ObservationDisposition,
     PipelineRun,
     RawArticle,
@@ -32,6 +34,8 @@ class MemoryNewsRepository:
         self.source_definitions: dict[str, SourceDefinition] = {}
         self.source_fetch_states: dict[str, SourceFetchState] = {}
         self.source_fetch_attempts: list[SourceFetchAttempt] = []
+        self.nlp_models: dict[str, NlpModelRegistryEntry] = {}
+        self.nlp_evaluations: dict[str, NlpEvaluationRun] = {}
         self.ingestion_runs: list[IngestionRun] = []
         self.raw_articles: dict[str, RawArticle] = {}
         self.articles: dict[UUID, Article] = {}
@@ -100,6 +104,40 @@ class MemoryNewsRepository:
             key=lambda item: (item.started_at, item.source_id, item.id),
             reverse=True,
         )
+
+    def upsert_nlp_model(self, model: NlpModelRegistryEntry) -> NlpModelRegistryEntry:
+        self.nlp_models[model.model_id] = model
+        return model
+
+    def get_nlp_model(self, model_id: str) -> NlpModelRegistryEntry | None:
+        return self.nlp_models.get(model_id)
+
+    def list_nlp_models(
+        self, task: str | None = None, status: str | None = None
+    ) -> list[NlpModelRegistryEntry]:
+        rows = list(self.nlp_models.values())
+        if task:
+            rows = [row for row in rows if row.task == task]
+        if status:
+            rows = [row for row in rows if row.status == status]
+        return sorted(rows, key=lambda item: (item.task, item.model_id))
+
+    def upsert_nlp_evaluation(self, evaluation: NlpEvaluationRun) -> NlpEvaluationRun:
+        self.nlp_evaluations[evaluation.evaluation_id] = evaluation
+        return evaluation
+
+    def get_nlp_evaluation(self, evaluation_id: str) -> NlpEvaluationRun | None:
+        return self.nlp_evaluations.get(evaluation_id)
+
+    def list_nlp_evaluations(
+        self, task: str | None = None, model_id: str | None = None
+    ) -> list[NlpEvaluationRun]:
+        rows = list(self.nlp_evaluations.values())
+        if task:
+            rows = [row for row in rows if row.task == task]
+        if model_id:
+            rows = [row for row in rows if row.model_id == model_id]
+        return sorted(rows, key=lambda item: (item.evaluated_at, item.evaluation_id), reverse=True)
 
     def add_ingestion_run(self, run: IngestionRun) -> IngestionRun:
         self.ingestion_runs.append(run)

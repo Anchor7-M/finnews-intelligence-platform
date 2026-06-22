@@ -309,6 +309,46 @@ class DailyCompanySignal:
 
 
 @dataclass
+class NlpModelRegistryEntry:
+    model_id: str
+    task: str
+    provider: str
+    model_kind: str
+    status: str
+    dataset_id: str
+    dataset_version: str
+    dataset_sha256: str
+    split_hashes: dict[str, str]
+    label_set: list[str]
+    metrics: dict[str, object]
+    calibration: dict[str, object]
+    artifact_sha256: str
+    artifact_size_bytes: int
+    manifest_sha256: str
+    config_sha256: str
+    artifact_uri: str | None = None
+    created_at: datetime = field(default_factory=utc_now)
+    updated_at: datetime = field(default_factory=utc_now)
+
+
+@dataclass
+class NlpEvaluationRun:
+    evaluation_id: str
+    model_id: str
+    task: str
+    dataset_id: str
+    dataset_version: str
+    dataset_sha256: str
+    split_name: str
+    metrics: dict[str, object]
+    slice_metrics: dict[str, object]
+    calibration: dict[str, object]
+    error_analysis: dict[str, object]
+    selection_procedure: dict[str, object]
+    evaluated_at: datetime = field(default_factory=utc_now)
+
+
+@dataclass
 class PipelineRun:
     status: RunStatus
     started_at: datetime
