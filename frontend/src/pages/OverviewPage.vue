@@ -12,12 +12,24 @@ const { data, error, loading } = useAsyncData(loadOverview);
     <StateBlock :loading="loading" :error="error" :empty="!data">
       <div v-if="data" class="grid">
         <article class="card">
-          <h3>Articles</h3>
-          <p class="metric">{{ data.article_count }}</p>
+          <h3>Canonical Articles</h3>
+          <p class="metric">{{ data.canonical_article_count }}</p>
         </article>
         <article class="card">
           <h3>Companies</h3>
           <p class="metric">{{ data.company_count }}</p>
+        </article>
+        <article class="card">
+          <h3>Raw Observations</h3>
+          <p class="metric">{{ data.deduplication.raw_observation_count }}</p>
+        </article>
+        <article class="card">
+          <h3>Duplicate Observations</h3>
+          <p>
+            exact {{ data.deduplication.exact_duplicate_observation_count }} / near
+            {{ data.deduplication.near_duplicate_observation_count }}
+          </p>
+          <p>clusters {{ data.deduplication.duplicate_cluster_count }}</p>
         </article>
         <article class="card">
           <h3>Events</h3>

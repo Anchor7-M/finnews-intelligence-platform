@@ -7,6 +7,7 @@ from typing import Annotated
 
 import typer
 
+from finnews.application.services.deduplication_accounting import build_deduplication_accounting
 from finnews.application.services.export_static import export_static
 from finnews.application.services.pipeline import NewsPipeline
 from finnews.bootstrap import FIXTURE_DIR, build_memory_repository, load_default_records
@@ -95,6 +96,18 @@ def export_static_command(output: Annotated[Path, typer.Option("--output")]) -> 
 def evaluate_demo() -> None:
     repo = build_memory_repository()
     labels = json.loads((FIXTURE_DIR / "expected_labels.json").read_text(encoding="utf-8"))
+    accounting = build_deduplication_accounting(repo)
+    detected_dispositions = {
+        observation_id: disposition
+        for disposition, observation_ids in accounting.grouped_observation_ids.items()
+        for observation_id in observation_ids
+    }
+    disposition_total = len(labels)
+    disposition_matches = sum(
+        1
+        for observation_id, label in labels.items()
+        if detected_dispositions.get(observation_id) == label.get("disposition")
+    )
     event_by_article = {event.article_id: event for event in repo.list_events()}
     sentiment_by_article = {sentiment.article_id: sentiment for sentiment in repo.list_sentiments()}
     links_by_article = {link.article_id: link for link in repo.list_links()}
@@ -104,6 +117,8 @@ def evaluate_demo() -> None:
     for raw in repo.raw_articles.values():
         label = labels.get(raw.source_article_id)
         if not label:
+            continue
+        if label.get("disposition") not in {"canonical", "exact_duplicate", "near_duplicate"}:
             continue
         article = repo.articles_by_hash.get(raw.normalized_content_hash)
         if (
@@ -121,6 +136,11 @@ def evaluate_demo() -> None:
             and ticker == label["ticker"]
         )
     typer.echo(f"synthetic_demo_matches={matched} synthetic_demo_total={total}")
+    typer.echo(
+        f"synthetic_disposition_matches={disposition_matches} "
+        f"synthetic_disposition_total={disposition_total}"
+    )
+    typer.echo("deduplication_metrics=" + json.dumps(accounting.metrics, sort_keys=True))
 
 
 @app.command()
@@ -133,15 +153,17 @@ def demo(profile: Annotated[str, typer.Option("--profile")] = "memory") -> None:
     pipeline = NewsPipeline(repo, settings)
     run = pipeline.run_demo(load_default_records(settings), FIXTURE_DIR / "companies.json")
     export_static(repo, Path("../frontend/public/demo-data"))
+    accounting = build_deduplication_accounting(repo)
     typer.echo(
         json.dumps(
             {
                 "status": run.status.value,
-                "articles": len(repo.list_articles()),
+                "articles": accounting.metrics["canonical_article_count"],
                 "companies": len(repo.list_companies()),
                 "digests": len(repo.list_digests()),
                 "signals": len(repo.list_signals()),
                 "counts": run.per_step_counts,
+                "deduplication": accounting.metrics,
             },
             sort_keys=True,
         )

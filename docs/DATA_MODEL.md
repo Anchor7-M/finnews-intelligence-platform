@@ -23,6 +23,7 @@ Audited fixture composition:
 - 68 raw memory-demo observations.
 - 60 valid JSONL observations, 4 malformed JSONL validation records, and 4 local RSS observations.
 - 12 fictional companies.
-- 15 exact duplicate observations and 21 near-duplicate observations reported by the memory pipeline.
-- 49 stored article records after exact deduplication.
+- 46 canonical articles after deduplication.
+- 8 exact duplicate observations and 10 near-duplicate observations.
+- 8 exact duplicate pairs, 10 near-duplicate pairs, and 18 duplicate clusters.
 - 7 daily digests and 46 daily company signals.

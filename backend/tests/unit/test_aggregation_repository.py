@@ -50,7 +50,8 @@ def test_aggregation_fields_and_empty_date_behavior_are_deterministic() -> None:
     assert 0 <= signal.novelty_score <= 1
     assert 0 <= signal.source_diversity_score <= 1
     payload = build_static_payload(repo)
-    assert payload["overview"]["article_count"] == len(repo.list_articles())
+    assert payload["overview"]["article_count"] == 46
+    assert payload["overview"]["deduplication"]["canonical_article_count"] == 46
 
 
 def test_memory_repository_uniqueness_update_read_and_not_found_behavior() -> None:

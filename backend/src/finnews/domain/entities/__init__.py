@@ -112,6 +112,19 @@ class ArticleDuplicate:
 
 
 @dataclass
+class ObservationDisposition:
+    observation_id: str
+    source_key: str
+    disposition: str
+    canonical_observation_id: str | None
+    canonical_article_id: UUID | None
+    duplicate_type: DuplicateType | None = None
+    similarity_score: float | None = None
+    explanation: str = ""
+    fixture_group: str = ""
+
+
+@dataclass
 class Company:
     ticker: str
     exchange: str

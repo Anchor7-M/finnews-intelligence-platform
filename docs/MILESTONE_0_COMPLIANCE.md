@@ -7,7 +7,7 @@ PostgreSQL is intentionally **NOT VERIFIED** in this task because Docker must no
 | --- | --- | --- | --- | --- | --- |
 | Local branch, no remote work | PASS | Branch `feat/bootstrap-finnews-platform`; no push/PR commands run | `git status --short --branch` | PASS | None |
 | Synthetic fixture scale | FAIL | 68 raw observations, 60 valid JSONL observations, 4 malformed JSONL observations, 12 companies, 5 loaded sources | `python -m pytest tests/unit/test_fixture_composition.py` | PASS | RSS feed adds 4 observations beyond JSONL manifest |
-| Exact and near duplicates | PARTIAL | Pipeline reports 15 exact and 21 near-duplicate observations | `python -m finnews.interfaces.cli.app demo --profile memory` | PASS | Exact duplicate relationships are counted in memory pipeline; PostgreSQL relationship persistence is not verified |
+| Exact and near duplicates | PARTIAL | Pipeline now reports 8 exact duplicate observations, 10 near-duplicate observations, 8 exact pairs, 10 near pairs, and 18 duplicate clusters with invariant tests | `python -m pytest tests/unit/test_deduplication_accounting.py` | PASS | PostgreSQL relationship persistence is not verified |
 | Event and sentiment coverage | PARTIAL | All 9 event categories and 4 sentiment labels in fixtures and tests | `python -m pytest tests/unit/test_nlp_baselines.py` | PASS | Baselines are deterministic rules, not trained models |
 | Validation and normalization | PARTIAL | NFKC, whitespace, URL cleanup, timestamp, market date, malformed records, oversized fixtures | `python -m pytest tests/unit/test_normalization.py tests/unit/test_sources_and_validation.py` | PASS | Live-source validation is planned only |
 | Company linking | PARTIAL | Ticker, legal name, short name, longest alias, unmatched behavior, evidence, confidence | `python -m pytest tests/unit/test_nlp_baselines.py` | PASS | Deterministic alias matching only |
@@ -23,16 +23,20 @@ PostgreSQL is intentionally **NOT VERIFIED** in this task because Docker must no
 ## Verified Dataset Counts
 
 - Raw observations loaded by memory demo: 68
-- Valid observations accepted or deduplicated: 64
+- Valid observations: 64
 - Rejected observations: 4
-- Exact duplicate observations reported by pipeline: 15
-- Near-duplicate observations reported by pipeline: 21
-- Stored article records after exact-deduplication: 49
+- Canonical articles: 46
+- Exact duplicate observations: 8
+- Near-duplicate observations: 10
+- Duplicate observations: 18
+- Exact duplicate pairs: 8
+- Near-duplicate pairs: 10
+- Duplicate clusters: 18
 - Companies: 12
 - Loaded sources: 5
 - Digests: 7
 - Daily company signals: 46
-- Synthetic label evaluation: 58/58 matched expected labels
+- Synthetic label evaluation: 54/54 matched expected canonical/exact NLP labels; 68/68 matched expected observation dispositions
 
 ## Coverage Exclusions
 

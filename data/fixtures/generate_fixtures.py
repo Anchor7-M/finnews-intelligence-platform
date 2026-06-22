@@ -2,9 +2,13 @@ from __future__ import annotations
 
 import json
 import random
+import hashlib
+import re
+import unicodedata
 from dataclasses import dataclass
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta, timezone
 from pathlib import Path
+from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 from xml.sax.saxutils import escape
 
 
@@ -77,6 +81,49 @@ def render(template: str, company: CompanyFixture) -> str:
     )
 
 
+TRACKING_PARAMS = {"utm_source", "utm_medium", "utm_campaign"}
+
+
+def normalize_display_text(value: str) -> str:
+    text = unicodedata.normalize("NFKC", value)
+    return re.sub(r"\s+", " ", text).strip()
+
+
+def normalize_url(value: str) -> str:
+    parts = urlsplit(value.strip())
+    query = [
+        (key, val)
+        for key, val in parse_qsl(parts.query, keep_blank_values=True)
+        if key.lower() not in TRACKING_PARAMS
+    ]
+    return urlunsplit(
+        parts._replace(
+            scheme=parts.scheme.lower(),
+            netloc=parts.netloc.lower(),
+            query=urlencode(query, doseq=True),
+            fragment="",
+        )
+    )
+
+
+def deterministic_hash(*parts: str) -> str:
+    payload = "\n".join(normalize_display_text(part).lower() for part in parts)
+    return hashlib.sha256(payload.encode("utf-8")).hexdigest()
+
+
+def observation_id(record: dict[str, object]) -> str:
+    article_id = str(record.get("article_id") or "")
+    if article_id:
+        return article_id
+    published = datetime.fromisoformat(str(record["published_at"])).astimezone(UTC)
+    return deterministic_hash(
+        str(record["source_key"]),
+        normalize_url(str(record["url"])),
+        normalize_display_text(str(record["title"])),
+        published.isoformat(),
+    )
+
+
 def make_record(index: int, company: CompanyFixture, template: EventTemplate, language: str) -> dict[str, object]:
     source_key, source_name, source_type, tz = SOURCES[index % len(SOURCES)]
     published = datetime(2026, 6, 18, 9, 0, tzinfo=tz) + timedelta(hours=index * 3)
@@ -128,8 +175,7 @@ def build_records() -> list[dict[str, object]]:
         near = dict(original)
         near["article_id"] = f"near-{offset:03d}"
         near["url"] = f"https://demo.local/near/{offset:03d}?utm_medium=near"
-        near["title"] = str(near["title"]).replace("reports", "reports updated").replace("发布", "更新发布")
-        near["summary"] = str(near["summary"]).replace("said", "said today").replace("表示", "今日表示")
+        near["title"] = f"{near['title']}."
         near["duplicate_kind"] = "near"
         records.append(near)
 
@@ -164,30 +210,74 @@ def write_companies() -> None:
     (ROOT / "companies.json").write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
-def write_labels(records: list[dict[str, object]]) -> None:
-    labels = {
-        str(record["article_id"]): {
-            "event": record["expected_event"],
-            "sentiment": record["expected_sentiment"],
-            "ticker": record["expected_ticker"],
-            "duplicate_kind": record["duplicate_kind"],
-        }
-        for record in records
-        if record.get("duplicate_kind") != "malformed" and record.get("article_id")
+def write_labels(records: list[dict[str, object]], feed_records: list[dict[str, object]]) -> None:
+    labels: dict[str, dict[str, object]] = {}
+    canonical_by_exact = {
+        f"exact-{index:03d}": observation_id(records[index - 1]) for index in range(1, 9)
     }
+    canonical_by_near = {
+        f"near-{index:03d}": observation_id(records[index + 7]) for index in range(1, 11)
+    }
+    for record in [*records, *feed_records]:
+        obs_id = observation_id(record)
+        duplicate_kind = str(record.get("duplicate_kind", "unique"))
+        if duplicate_kind == "malformed":
+            disposition = "rejected"
+            canonical_id = None
+            explanation = "malformed fixture observation rejected before canonical persistence"
+        elif obs_id in canonical_by_exact:
+            disposition = "exact_duplicate"
+            canonical_id = canonical_by_exact[obs_id]
+            explanation = "same normalized title, summary, and language as canonical observation"
+        elif obs_id in canonical_by_near:
+            disposition = "near_duplicate"
+            canonical_id = canonical_by_near[obs_id]
+            explanation = "near duplicate with deterministic high text similarity"
+        else:
+            disposition = "canonical"
+            canonical_id = obs_id
+            explanation = "first valid observation for this canonical article"
+        label: dict[str, object] = {
+            "disposition": disposition,
+            "expected_canonical_observation_id": canonical_id,
+            "expected_source_adapter": "local_feed"
+            if obs_id.startswith("obs-10")
+            else "jsonl_fixture",
+            "fixture_group": duplicate_kind,
+            "explanation": explanation,
+        }
+        if disposition != "rejected":
+            label.update(
+                {
+                    "event": record["expected_event"],
+                    "sentiment": record["expected_sentiment"],
+                    "ticker": record["expected_ticker"],
+                }
+            )
+        if disposition == "exact_duplicate":
+            label["duplicate_type"] = "exact"
+            label["expected_similarity_range"] = [1.0, 1.0]
+        if disposition == "near_duplicate":
+            label["duplicate_type"] = "near"
+            label["expected_similarity_range"] = [0.86, 1.0]
+        labels[obs_id] = label
     (ROOT / "expected_labels.json").write_text(
         json.dumps(labels, ensure_ascii=False, indent=2, sort_keys=True),
         encoding="utf-8",
     )
 
 
-def write_feed() -> None:
+def write_feed() -> list[dict[str, object]]:
     feed_records = [
         make_record(101, COMPANIES[0], TEMPLATES[3], "zh"),
         make_record(102, COMPANIES[4], TEMPLATES[6], "en"),
-        make_record(103, COMPANIES[7], TEMPLATES[8], "zh"),
+        make_record(103, COMPANIES[7], TEMPLATES[8], "en"),
         make_record(104, COMPANIES[10], TEMPLATES[7], "en"),
     ]
+    feed_records[3]["summary"] = (
+        "PrimeVale said market demand weakened and orders face risk pressure this quarter. "
+        "Demo case 104."
+    )
     items = []
     for record in feed_records:
         items.append(
@@ -210,6 +300,7 @@ def write_feed() -> None:
 </rss>
 """.format(items="\n".join(items))
     (ROOT / "sample_feed.xml").write_text(xml, encoding="utf-8")
+    return feed_records
 
 
 def write_manifest(records: list[dict[str, object]]) -> None:
@@ -236,8 +327,8 @@ def main() -> None:
     records = build_records()
     write_jsonl(records)
     write_companies()
-    write_labels(records)
-    write_feed()
+    feed_records = write_feed()
+    write_labels(records, feed_records)
     write_manifest(records)
 
 

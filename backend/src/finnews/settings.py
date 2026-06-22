@@ -15,7 +15,7 @@ class Settings(BaseSettings):
     log_level: str = "INFO"
     cors_origins: str = "http://127.0.0.1:5173,http://localhost:5173"
     market_timezone: str = "Asia/Shanghai"
-    near_duplicate_threshold: float = Field(default=0.86, ge=0.0, le=1.0)
+    near_duplicate_threshold: float = Field(default=0.95, ge=0.0, le=1.0)
     near_duplicate_window_hours: int = Field(default=72, ge=1, le=24 * 30)
     near_duplicate_max_candidates: int = Field(default=200, ge=1, le=1000)
     max_fixture_bytes: int = 5_000_000

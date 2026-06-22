@@ -9,6 +9,7 @@ from pathlib import Path
 from uuid import UUID
 
 from finnews.application.ports.repositories import NewsRepository
+from finnews.application.services.deduplication_accounting import build_deduplication_accounting
 from finnews.domain.entities import (
     Article,
     ArticleCompanyLink,
@@ -19,6 +20,7 @@ from finnews.domain.entities import (
     DailyCompanySignal,
     DailyDigest,
     IngestionRun,
+    ObservationDisposition,
     PipelineRun,
     RawArticle,
     Source,
@@ -66,6 +68,7 @@ class NewsPipeline:
         counts = Counter[str]()
         for record in records:
             counts["fetched"] += 1
+            observation_id = record.article_id or f"unidentified-{counts['fetched']:04d}"
             source = self.repository.upsert_source(
                 Source(
                     source_key=record.source_key,
@@ -86,6 +89,7 @@ class NewsPipeline:
                 source_article_id = record.article_id or deterministic_hash(
                     source.source_key, url, title, published.isoformat()
                 )
+                observation_id = source_article_id
                 raw = RawArticle(
                     source_id=source.id,
                     source_article_id=source_article_id,
@@ -100,6 +104,25 @@ class NewsPipeline:
                 )
                 accepted_raw = self.repository.add_raw_article(raw)
                 if accepted_raw is None:
+                    existing = self.repository.get_article_by_hash(content_hash)
+                    canonical_observation_id = (
+                        _canonical_observation_id(self.repository, existing.id)
+                        if existing
+                        else None
+                    )
+                    self.repository.add_observation_disposition(
+                        ObservationDisposition(
+                            observation_id=observation_id,
+                            source_key=source.source_key,
+                            disposition="exact_duplicate",
+                            canonical_observation_id=canonical_observation_id,
+                            canonical_article_id=existing.id if existing else None,
+                            duplicate_type=DuplicateType.EXACT,
+                            similarity_score=1.0,
+                            explanation="same source observation and exact content hash",
+                            fixture_group=str(record.raw_metadata.get("duplicate_kind", "")),
+                        )
+                    )
                     counts["exact_duplicate"] += 1
                     run.exact_duplicate_count += 1
                     run.status = RunStatus.COMPLETED
@@ -117,8 +140,28 @@ class NewsPipeline:
                     source_key=source.source_key,
                     source_name=source.display_name,
                 )
+                existing_article = self.repository.get_article_by_hash(content_hash)
                 existing = self.repository.add_article(article)
                 if existing is None:
+                    canonical = existing_article
+                    canonical_observation_id = (
+                        _canonical_observation_id(self.repository, canonical.id)
+                        if canonical
+                        else None
+                    )
+                    self.repository.add_observation_disposition(
+                        ObservationDisposition(
+                            observation_id=observation_id,
+                            source_key=source.source_key,
+                            disposition="exact_duplicate",
+                            canonical_observation_id=canonical_observation_id,
+                            canonical_article_id=canonical.id if canonical else None,
+                            duplicate_type=DuplicateType.EXACT,
+                            similarity_score=1.0,
+                            explanation="same normalized title, summary, and language",
+                            fixture_group=str(record.raw_metadata.get("duplicate_kind", "")),
+                        )
+                    )
                     counts["exact_duplicate"] += 1
                     run.exact_duplicate_count += 1
                     run.status = RunStatus.COMPLETED
@@ -126,7 +169,12 @@ class NewsPipeline:
                     continue
                 near = find_near_duplicate(
                     article,
-                    [item for item in self.repository.list_articles() if item.id != article.id],
+                    [
+                        item
+                        for item in self.repository.list_articles()
+                        if item.id != article.id
+                        and item.processing_state is ProcessingState.PROCESSED
+                    ],
                     self.settings.near_duplicate_threshold,
                     self.settings.near_duplicate_window_hours,
                     self.settings.near_duplicate_max_candidates,
@@ -143,13 +191,51 @@ class NewsPipeline:
                             algorithm_name="tfidf_cosine",
                         )
                     )
+                    self.repository.add_observation_disposition(
+                        ObservationDisposition(
+                            observation_id=observation_id,
+                            source_key=source.source_key,
+                            disposition="near_duplicate",
+                            canonical_observation_id=_canonical_observation_id(
+                                self.repository, canonical.id
+                            ),
+                            canonical_article_id=canonical.id,
+                            duplicate_type=DuplicateType.NEAR,
+                            similarity_score=round(score, 4),
+                            explanation="bounded TF-IDF/sequence similarity near duplicate",
+                            fixture_group=str(record.raw_metadata.get("duplicate_kind", "")),
+                        )
+                    )
                     counts["near_duplicate"] += 1
                     run.near_duplicate_count += 1
+                else:
+                    self.repository.add_observation_disposition(
+                        ObservationDisposition(
+                            observation_id=observation_id,
+                            source_key=source.source_key,
+                            disposition="canonical",
+                            canonical_observation_id=observation_id,
+                            canonical_article_id=article.id,
+                            explanation="first valid observation for this canonical article",
+                            fixture_group=str(record.raw_metadata.get("duplicate_kind", "")),
+                        )
+                    )
                 counts["accepted"] += 1
                 run.accepted_count += 1
                 run.status = RunStatus.COMPLETED
                 run.finished_at = utc_now()
             except Exception as exc:  # validation quarantine, not batch failure
+                self.repository.add_observation_disposition(
+                    ObservationDisposition(
+                        observation_id=observation_id,
+                        source_key=record.source_key,
+                        disposition="rejected",
+                        canonical_observation_id=None,
+                        canonical_article_id=None,
+                        explanation=str(exc),
+                        fixture_group=str(record.raw_metadata.get("duplicate_kind", "")),
+                    )
+                )
                 counts["rejected"] += 1
                 run.rejected_count += 1
                 run.status = RunStatus.FAILED
@@ -161,6 +247,8 @@ class NewsPipeline:
         counts = Counter[str]()
         aliases = self.repository.list_aliases()
         for article in self.repository.list_articles():
+            if article.processing_state is not ProcessingState.PROCESSED:
+                continue
             links = link_companies(article, aliases)
             self.repository.replace_article_links(article.id, links)
             self.repository.replace_article_event(classify_event(article))
@@ -173,6 +261,7 @@ class NewsPipeline:
             item
             for item in self.repository.list_articles()
             if item.local_market_date == digest_date
+            and item.processing_state is ProcessingState.PROCESSED
         ]
         article_ids = {item.id for item in articles}
         links = [link for link in self.repository.list_links() if link.article_id in article_ids]
@@ -207,6 +296,7 @@ class NewsPipeline:
             item
             for item in self.repository.list_articles()
             if item.local_market_date == signal_date
+            and item.processing_state is ProcessingState.PROCESSED
         ]
         article_by_id = {item.id: item for item in articles}
         links_by_company: dict[UUID, list[ArticleCompanyLink]] = defaultdict(list)
@@ -262,6 +352,8 @@ class NewsPipeline:
             step = time.perf_counter()
             ingest_counts = self.ingest_records(records)
             counts.update({f"ingest_{key}": value for key, value in ingest_counts.items()})
+            accounting = build_deduplication_accounting(self.repository)
+            counts.update(accounting.metrics)
             timings["ingest"] = time.perf_counter() - step
             step = time.perf_counter()
             counts.update(self.process_articles())
@@ -286,6 +378,20 @@ class NewsPipeline:
         )
         run.per_step_timings["total"] = round(time.perf_counter() - started, 4)
         return self.repository.add_pipeline_run(run)
+
+
+def _canonical_observation_id(repository: NewsRepository, article_id: UUID) -> str | None:
+    for disposition in repository.list_observation_dispositions():
+        if (
+            disposition.disposition == "canonical"
+            and disposition.canonical_article_id == article_id
+        ):
+            return disposition.observation_id
+    article = repository.get_article(article_id)
+    if article is None:
+        return None
+    raw = repository.get_raw_article_by_id(article.canonical_raw_article_id)
+    return raw.source_article_id if raw else None
 
 
 def _digest_groups(

@@ -15,6 +15,7 @@ from finnews.domain.entities import (
     DailyCompanySignal,
     DailyDigest,
     IngestionRun,
+    ObservationDisposition,
     PipelineRun,
     RawArticle,
     Source,
@@ -30,6 +31,7 @@ class MemoryNewsRepository:
         self.articles: dict[UUID, Article] = {}
         self.articles_by_hash: dict[str, Article] = {}
         self.duplicates: list[ArticleDuplicate] = []
+        self.observation_dispositions: dict[str, ObservationDisposition] = {}
         self.companies: dict[str, Company] = {}
         self.aliases: list[CompanyAlias] = []
         self.links: dict[UUID, list[ArticleCompanyLink]] = {}
@@ -69,6 +71,9 @@ class MemoryNewsRepository:
         if duplicate.candidate_article_id == duplicate.canonical_article_id:
             return
         self.duplicates.append(duplicate)
+
+    def add_observation_disposition(self, disposition: ObservationDisposition) -> None:
+        self.observation_dispositions[disposition.observation_id] = disposition
 
     def upsert_company(self, company: Company, aliases: Iterable[str]) -> Company:
         ticker = company.ticker.upper()
@@ -130,6 +135,9 @@ class MemoryNewsRepository:
     def list_duplicates(self) -> list[ArticleDuplicate]:
         return list(self.duplicates)
 
+    def list_observation_dispositions(self) -> list[ObservationDisposition]:
+        return sorted(self.observation_dispositions.values(), key=lambda item: item.observation_id)
+
     def list_digests(self) -> list[DailyDigest]:
         return sorted(self.digests.values(), key=lambda item: item.digest_date, reverse=True)
 
@@ -143,6 +151,15 @@ class MemoryNewsRepository:
 
     def get_article(self, article_id: UUID) -> Article | None:
         return self.articles.get(article_id)
+
+    def get_article_by_hash(self, exact_content_hash: str) -> Article | None:
+        return self.articles_by_hash.get(exact_content_hash)
+
+    def get_raw_article_by_id(self, raw_article_id: UUID) -> RawArticle | None:
+        for raw in self.raw_articles.values():
+            if raw.id == raw_article_id:
+                return raw
+        return None
 
     def get_company_by_ticker(self, ticker: str) -> Company | None:
         return self.companies.get(ticker.upper())

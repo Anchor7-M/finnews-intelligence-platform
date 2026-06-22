@@ -8,6 +8,8 @@ from typing import Any
 from uuid import UUID
 
 from finnews.application.ports.repositories import NewsRepository
+from finnews.application.services.deduplication_accounting import build_deduplication_accounting
+from finnews.domain.enums import ProcessingState
 
 
 def export_static(repository: NewsRepository, output: Path) -> None:
@@ -21,7 +23,12 @@ def export_static(repository: NewsRepository, output: Path) -> None:
 
 
 def build_static_payload(repository: NewsRepository) -> dict[str, Any]:
-    articles = repository.list_articles()
+    accounting = build_deduplication_accounting(repository)
+    articles = [
+        article
+        for article in repository.list_articles()
+        if article.processing_state is ProcessingState.PROCESSED
+    ]
     companies = repository.list_companies()
     links = repository.list_links()
     events = repository.list_events()
@@ -62,8 +69,11 @@ def build_static_payload(repository: NewsRepository) -> dict[str, Any]:
         "overview": {
             "synthetic": True,
             "not_investment_advice": True,
-            "article_count": len(articles),
+            "article_count": accounting.metrics["canonical_article_count"],
+            "canonical_article_count": accounting.metrics["canonical_article_count"],
             "company_count": len(companies),
+            "deduplication": accounting.metrics,
+            "deduplication_groups": accounting.grouped_observation_ids,
             "event_distribution": _counts(row["event"] for row in article_rows),
             "sentiment_distribution": _counts(row["sentiment"] for row in article_rows),
             "latest_pipeline": repository.list_pipeline_runs()[-1]
