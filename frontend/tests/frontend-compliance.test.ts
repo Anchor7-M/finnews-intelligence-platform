@@ -7,6 +7,7 @@ import StateBlock from "../src/components/StateBlock.vue";
 import ArticleExplorer from "../src/pages/ArticleExplorer.vue";
 import CompanyDetail from "../src/pages/CompanyDetail.vue";
 import DailyDigest from "../src/pages/DailyDigest.vue";
+import NlpEvaluation from "../src/pages/NlpEvaluation.vue";
 import OverviewPage from "../src/pages/OverviewPage.vue";
 import SourceHealth from "../src/pages/SourceHealth.vue";
 
@@ -192,6 +193,72 @@ vi.mock("../src/api/client", () => ({
       dry_run: false,
     },
   ],
+  loadNlpOverview: async () => ({
+    disclaimer:
+      "Synthetic benchmark only; generator-defined labels; no live or copyrighted news; not investment advice; real-world licensed evaluation is deferred to Milestone 2B.",
+    dataset: {
+      dataset_id: "synthetic-finnews-nlp-v1",
+      dataset_version: "1.0.0",
+      dataset_sha256: "abc",
+      split_hashes: { train: "t", validation: "v", test: "x" },
+      synthetic_only: true,
+    },
+    record_count: 1296,
+    split_counts: { train: 648, validation: 324, test: 324 },
+    language_counts: { zh: 864, en: 432 },
+    selected_models: {
+      event: "m2a-event-word_char_tfidf_logreg",
+      sentiment: "m2a-sentiment-word_char_tfidf_logreg",
+    },
+    benchmark_claim: "synthetic benchmark only, not real-world accuracy",
+    not_investment_advice: true,
+  }),
+  loadNlpModels: async () => [
+    {
+      model_id: "m2a-event-word_char_tfidf_logreg",
+      task: "event",
+      provider: "scikit_learn",
+      model_kind: "word_char_tfidf_logreg",
+      status: "demo_candidate",
+      artifact_sha256: "abc",
+      artifact_size_bytes: 1000,
+      dataset_sha256: "abc",
+      dataset_version: "1.0.0",
+      selected_candidate: "word_char_tfidf_logreg",
+      promotion_policy: { status: "demo_candidate", checks: { no_live_content: true } },
+      calibration: { status: "validation_alpha_improved_ece", alpha: 1.5, test_ece: 0.1 },
+      abstention: { threshold: 0.5 },
+    },
+  ],
+  loadNlpEvaluations: async () => [
+    {
+      evaluation_id: "m2a-event-word_char_tfidf_logreg-test",
+      model_id: "m2a-event-word_char_tfidf_logreg",
+      task: "event",
+      split: "test",
+      test_metrics: {
+        dummy_most_frequent: { macro_f1: 0.02 },
+        rule_baseline: { macro_f1: 0.5 },
+        selected_ml: { macro_f1: 1.0, accuracy: 1.0 },
+      },
+      slices: {
+        language: [{ name: "zh", record_count: 216, macro_f1: 1.0 }],
+        challenge_flag: [{ name: "negation", record_count: 9, macro_f1: 1.0 }],
+      },
+      calibration: { status: "validation_alpha_improved_ece" },
+      disclaimer: "synthetic only",
+    },
+  ],
+  loadNlpErrorAnalysis: async () => [
+    {
+      task: "event",
+      confusion_pairs: [],
+      highest_confidence_false_predictions: [],
+      lowest_confidence_correct_predictions: [{ record_id: "m2a-1" }],
+      errors_by_language: {},
+      errors_by_challenge_flag: {},
+    },
+  ],
 }));
 
 describe("frontend compliance", () => {
@@ -274,6 +341,18 @@ describe("frontend compliance", () => {
     expect(wrapper.text()).toContain("Mock Approved RSS");
   });
 
+  it("renders nlp evaluation dashboard without artifact paths", async () => {
+    const wrapper = mount(NlpEvaluation);
+    await new Promise((resolve) => setTimeout(resolve, 0));
+    expect(wrapper.text()).toContain("NLP Evaluation Lab");
+    expect(wrapper.text()).toContain("1296");
+    expect(wrapper.text()).toContain("Model Comparison");
+    expect(wrapper.text()).toContain("word_char_tfidf_logreg");
+    expect(wrapper.text()).toContain("not real-world accuracy");
+    expect(wrapper.text()).not.toContain("model.joblib");
+    expect(wrapper.text()).not.toContain("C:\\Users");
+  });
+
   it("shows persistent synthetic and not-investment-advice notice with routes", async () => {
     const router = createRouter({
       history: createMemoryHistory(),
@@ -283,6 +362,7 @@ describe("frontend compliance", () => {
         { path: "/companies/:ticker?", component: CompanyDetail },
         { path: "/digest", component: DailyDigest },
         { path: "/sources", component: SourceHealth },
+        { path: "/nlp-evaluation", component: NlpEvaluation },
         { path: "/methodology", component: OverviewPage },
       ],
     });
@@ -296,5 +376,8 @@ describe("frontend compliance", () => {
     await router.push("/sources");
     await wrapper.vm.$nextTick();
     expect(wrapper.text()).toContain("Source Catalog");
+    await router.push("/nlp-evaluation");
+    await wrapper.vm.$nextTick();
+    expect(wrapper.text()).toContain("NLP Evaluation Lab");
   });
 });

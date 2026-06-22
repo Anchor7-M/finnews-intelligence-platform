@@ -151,6 +151,11 @@ select {
   gap: 18px;
 }
 
+.stack {
+  display: grid;
+  gap: 16px;
+}
+
 .section-heading h2 {
   margin: 0;
 }
@@ -209,6 +214,31 @@ select {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
+}
+
+.metric-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+}
+
+.metric-grid > div {
+  border-left: 3px solid #1d5f67;
+  padding-left: 10px;
+}
+
+.label,
+.muted {
+  color: #53635d;
+}
+
+.label {
+  display: block;
+  font-size: 0.82rem;
+}
+
+.table-wrap {
+  overflow-x: auto;
 }
 
 table {

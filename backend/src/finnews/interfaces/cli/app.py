@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 from datetime import date
 from pathlib import Path
-from typing import Annotated
+from typing import Annotated, Any, cast
 
 import typer
 from alembic.config import Config
@@ -13,6 +13,13 @@ from alembic import command
 from finnews.application.ports.repositories import NewsRepository
 from finnews.application.services.deduplication_accounting import build_deduplication_accounting
 from finnews.application.services.export_static import export_static
+from finnews.application.services.nlp_artifacts import ArtifactError, load_trusted_artifact
+from finnews.application.services.nlp_evaluation import run_nlp_benchmark
+from finnews.application.services.nlp_registry import register_nlp_report
+from finnews.application.services.nlp_reporting import (
+    load_nlp_evaluation_report,
+    nlp_static_payload,
+)
 from finnews.application.services.pipeline import NewsPipeline
 from finnews.application.services.source_ingestion import SourceIngestionService
 from finnews.application.services.source_smoke import (
@@ -329,6 +336,170 @@ def nlp_dataset_validate() -> None:
 @nlp_dataset_app.command("summary")
 def nlp_dataset_summary() -> None:
     nlp_dataset_validate()
+
+
+@nlp_app.command("train")
+def nlp_train(task: Annotated[str, typer.Option("--task")]) -> None:
+    if task not in {"event", "sentiment"}:
+        typer.echo("nlp_task_error=task must be event or sentiment", err=True)
+        raise typer.Exit(4)
+    report = run_nlp_benchmark(
+        benchmark_dir(_repo_root()),
+        _repo_root() / "reports" / "nlp" / "synthetic-finnews-nlp-v1",
+        _repo_root() / ".finnews-artifacts" / "nlp",
+        task=task,  # type: ignore[arg-type]
+    )
+    task_report = report["tasks"][task]
+    typer.echo(
+        json.dumps(
+            {
+                "task": task,
+                "model_id": task_report["selected_model_id"],
+                "status": task_report["artifact"]["status"],
+                "dataset_sha256": report["dataset"]["dataset_sha256"],
+                "disclaimer": report["disclaimer"],
+            },
+            sort_keys=True,
+        )
+    )
+
+
+@nlp_app.command("benchmark")
+def nlp_benchmark(task: Annotated[str, typer.Option("--task")] = "all") -> None:
+    if task not in {"all", "event", "sentiment"}:
+        typer.echo("nlp_task_error=task must be all, event, or sentiment", err=True)
+        raise typer.Exit(4)
+    report = run_nlp_benchmark(
+        benchmark_dir(_repo_root()),
+        _repo_root() / "reports" / "nlp" / "synthetic-finnews-nlp-v1",
+        _repo_root() / ".finnews-artifacts" / "nlp",
+        task=task,  # type: ignore[arg-type]
+    )
+    repo, session = _repository(get_settings())
+    registered = register_nlp_report(repo, report)
+    _commit_and_close(session)
+    typer.echo(
+        json.dumps(
+            {
+                "status": "completed",
+                "task": task,
+                "registered": registered,
+                "dataset_sha256": report["dataset"]["dataset_sha256"],
+                "selected_models": {
+                    name: item["selected_model_id"] for name, item in report["tasks"].items()
+                },
+                "disclaimer": report["disclaimer"],
+            },
+            sort_keys=True,
+        )
+    )
+
+
+@nlp_app.command("evaluate")
+def nlp_evaluate(
+    task: Annotated[str, typer.Option("--task")],
+    model_id: Annotated[str, typer.Option("--model-id")],
+) -> None:
+    report = load_nlp_evaluation_report(_repo_root())
+    task_report = report.get("tasks", {}).get(task)
+    if not task_report or task_report.get("selected_model_id") != model_id:
+        typer.echo("nlp_evaluation_not_found", err=True)
+        raise typer.Exit(4)
+    typer.echo(json.dumps(task_report["test_metrics"], sort_keys=True))
+
+
+@nlp_app.command("compare")
+def nlp_compare(task: Annotated[str, typer.Option("--task")]) -> None:
+    report = load_nlp_evaluation_report(_repo_root())
+    task_report = report.get("tasks", {}).get(task)
+    if not task_report:
+        typer.echo("nlp_task_not_found", err=True)
+        raise typer.Exit(4)
+    typer.echo(
+        json.dumps(
+            {
+                "task": task,
+                "validation_selection": task_report["selected_candidate"],
+                "test_metrics": task_report["test_metrics"],
+                "calibration": task_report["calibration"],
+                "abstention": task_report["abstention"],
+            },
+            sort_keys=True,
+        )
+    )
+
+
+@nlp_app.command("export-static")
+def nlp_export_static() -> None:
+    output = _repo_root() / "frontend" / "public" / "demo-data"
+    for name, payload in nlp_static_payload(_repo_root()).items():
+        (output / f"{name}.json").write_text(
+            json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
+            encoding="utf-8",
+        )
+    typer.echo(json.dumps({"exported": True, "files": sorted(nlp_static_payload(_repo_root()))}))
+
+
+@nlp_app.command("infer")
+def nlp_infer(
+    task: Annotated[str, typer.Option("--task")],
+    model_id: Annotated[str, typer.Option("--model-id")],
+    text: Annotated[str, typer.Option("--text")],
+) -> None:
+    if task not in {"event", "sentiment"}:
+        typer.echo("nlp_task_error=task must be event or sentiment", err=True)
+        raise typer.Exit(4)
+    manifest_path = _repo_root() / ".finnews-artifacts" / "nlp" / task / model_id / "manifest.json"
+    try:
+        loaded = cast(
+            dict[str, Any],
+            load_trusted_artifact(
+                _repo_root() / ".finnews-artifacts" / "nlp", manifest_path, task=task
+            ),
+        )
+    except ArtifactError as exc:
+        typer.echo(f"nlp_artifact_error={exc}", err=True)
+        raise typer.Exit(5) from exc
+    model = loaded["model"]
+    labels = list(loaded["labels"])
+    probabilities = model.predict_proba([text])[0]
+    classes = [str(item) for item in model.named_steps["classifier"].classes_]
+    by_label = {label: float(probabilities[classes.index(label)]) for label in labels}
+    predicted = str(model.predict([text])[0])
+    confidence = by_label[predicted]
+    typer.echo(
+        json.dumps(
+            {
+                "task": task,
+                "model_id": model_id,
+                "predicted_label": predicted,
+                "abstained": False,
+                "confidence": round(confidence, 6),
+                "disclaimer": "synthetic benchmark model only; input text was not persisted",
+            },
+            sort_keys=True,
+        )
+    )
+
+
+nlp_registry_app = typer.Typer(help="NLP model registry metadata")
+nlp_app.add_typer(nlp_registry_app, name="registry")
+
+
+@nlp_registry_app.command("list")
+def nlp_registry_list() -> None:
+    rows = nlp_static_payload(_repo_root())["nlp-models"]
+    typer.echo(json.dumps(rows, sort_keys=True))
+
+
+@nlp_registry_app.command("show")
+def nlp_registry_show(model_id: Annotated[str, typer.Option("--model-id")]) -> None:
+    for row in nlp_static_payload(_repo_root())["nlp-models"]:
+        if row["model_id"] == model_id:
+            typer.echo(json.dumps(row, sort_keys=True))
+            return
+    typer.echo("nlp_model_not_found", err=True)
+    raise typer.Exit(4)
 
 
 @ingest_app.command("fixture")

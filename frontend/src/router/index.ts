@@ -4,6 +4,7 @@ import ArticleExplorer from "../pages/ArticleExplorer.vue";
 import CompanyDetail from "../pages/CompanyDetail.vue";
 import DailyDigest from "../pages/DailyDigest.vue";
 import Methodology from "../pages/Methodology.vue";
+import NlpEvaluation from "../pages/NlpEvaluation.vue";
 import OverviewPage from "../pages/OverviewPage.vue";
 import SourceHealth from "../pages/SourceHealth.vue";
 
@@ -15,6 +16,7 @@ export const router = createRouter({
     { path: "/companies/:ticker?", name: "companies", component: CompanyDetail },
     { path: "/digest", name: "digest", component: DailyDigest },
     { path: "/sources", name: "sources", component: SourceHealth },
+    { path: "/nlp-evaluation", name: "nlp-evaluation", component: NlpEvaluation },
     { path: "/methodology", name: "methodology", component: Methodology },
   ],
 });

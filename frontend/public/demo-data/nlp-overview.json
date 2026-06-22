@@ -1,0 +1,31 @@
+{
+  "benchmark_claim": "synthetic benchmark only, not real-world accuracy",
+  "dataset": {
+    "dataset_id": "synthetic-finnews-nlp-v1",
+    "dataset_sha256": "5eba057ef83198c5a35d29da2c821a5624d813885806cab4f48ecb22dbda67aa",
+    "dataset_version": "1.0.0",
+    "label_source": "generator_defined_synthetic_gold",
+    "split_hashes": {
+      "test": "2f0b409caa29a341e122d1ff28b4f34b09208d0b6f2f0dff323b5d469657172b",
+      "train": "78c03f095f38b7f40408e63c76924544659a3bbac1c34710f66a67cf5039fb7b",
+      "validation": "8dfe819e5dd65118175f400e99bc863c9bb162d5ce0cd717e3db693cdf97791c"
+    },
+    "synthetic_only": true
+  },
+  "disclaimer": "Synthetic benchmark only; generator-defined labels; no live or copyrighted news; not investment advice; real-world licensed evaluation is deferred to Milestone 2B.",
+  "language_counts": {
+    "en": 432,
+    "zh": 864
+  },
+  "not_investment_advice": true,
+  "record_count": 1296,
+  "selected_models": {
+    "event": "m2a-event-word_char_tfidf_logreg",
+    "sentiment": "m2a-sentiment-word_char_tfidf_logreg"
+  },
+  "split_counts": {
+    "test": 324,
+    "train": 648,
+    "validation": 324
+  }
+}
