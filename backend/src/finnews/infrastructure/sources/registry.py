@@ -6,7 +6,14 @@ from typing import Any
 from urllib.parse import urlparse
 
 import yaml
-from pydantic import BaseModel, Field, ValidationError, field_validator, model_validator
+from pydantic import (
+    BaseModel,
+    ConfigDict,
+    Field,
+    ValidationError,
+    field_validator,
+    model_validator,
+)
 
 from finnews.domain.entities import SourceDefinition, SourceRetryPolicy
 from finnews.domain.enums import IngestionPolicy, SourceApprovalStatus, SourceType
@@ -21,12 +28,16 @@ class SourceConfigError(ValueError):
 
 
 class RetryPolicyConfig(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
     max_retries: int = Field(default=2, ge=0, le=2)
     base_delay_seconds: float = Field(default=1.0, ge=0.0, le=30.0)
     max_delay_seconds: float = Field(default=30.0, ge=0.0, le=30.0)
 
 
 class SourceDefinitionConfig(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
     source_id: str = Field(min_length=1, max_length=120, pattern=r"^[a-z0-9][a-z0-9_-]*$")
     display_name: str = Field(min_length=1, max_length=240)
     source_type: SourceType

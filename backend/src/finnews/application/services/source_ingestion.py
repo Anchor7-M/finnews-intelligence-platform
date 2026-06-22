@@ -1,10 +1,13 @@
 from __future__ import annotations
 
 import hashlib
+import re
 import time
 from collections.abc import Callable
+from copy import deepcopy
 from dataclasses import dataclass
-from datetime import datetime, timedelta
+from datetime import UTC, datetime, timedelta
+from email.utils import parsedate_to_datetime
 from pathlib import Path
 
 from finnews.application.ports.http import BoundedHttpClient, HttpRequest, HttpResponse
@@ -65,12 +68,14 @@ class SourceIngestionService:
         *,
         http_client_factory: Callable[[SourceDefinition], BoundedHttpClient] | None = None,
         sleeper: Callable[[float], None] | None = None,
+        jitter: Callable[[int], float] | None = None,
         clock: Callable[[], float] | None = None,
     ) -> None:
         self.repository = repository
         self.settings = settings
         self.http_client_factory = http_client_factory
         self.sleeper = sleeper or (lambda _: None)
+        self.jitter = jitter or (lambda _: 0.0)
         self.clock = clock or time.perf_counter
 
     def fetch_source(self, source_id: str, *, dry_run: bool = False) -> SourceRunResult:
@@ -78,6 +83,8 @@ class SourceIngestionService:
         state = self.repository.get_source_fetch_state(source.source_id) or SourceFetchState(
             source_id=source.source_id, adapter_version=source.adapter_version
         )
+        if dry_run:
+            state = deepcopy(state)
         now = utc_now()
         if state.next_allowed_at and state.next_allowed_at > now:
             result = self._record_blocked(
@@ -98,7 +105,11 @@ class SourceIngestionService:
         try:
             response, retry_count = self._fetch_with_retry(source, request_headers)
             if response.status_code != 304:
-                parsed = self._parse_response(source, response)
+                try:
+                    parsed = self._parse_response(source, response)
+                except HttpPolicyError as exc:
+                    exc.retry_count = retry_count
+                    raise
         except HttpPolicyError as exc:
             return self._record_failure(
                 source,
@@ -107,6 +118,7 @@ class SourceIngestionService:
                 exc.category,
                 _sanitize(str(exc)),
                 dry_run,
+                retry_count=exc.retry_count,
             )
         if response.status_code == 304:
             finished = utc_now()
@@ -134,8 +146,8 @@ class SourceIngestionService:
                 cursor_after=state.cursor,
                 dry_run=dry_run,
             )
-            self.repository.add_source_fetch_attempt(attempt)
             if not dry_run:
+                self.repository.add_source_fetch_attempt(attempt)
                 self.repository.upsert_source_fetch_state(state)
             return self._result_from_attempt(attempt, state)
         if parsed is None:
@@ -156,6 +168,8 @@ class SourceIngestionService:
         state = self.repository.get_source_fetch_state(source.source_id) or SourceFetchState(
             source_id=source.source_id, adapter_version=source.adapter_version
         )
+        if dry_run:
+            state = deepcopy(state)
         started = utc_now()
         try:
             parsed = read_user_export(path, source)
@@ -188,14 +202,27 @@ class SourceIngestionService:
         while True:
             try:
                 response = client.get(HttpRequest(url=source.base_url or "", headers=headers))
-            except HttpPolicyError:
-                raise
+            except HttpPolicyError as exc:
+                if exc.category not in {
+                    SourceErrorCategory.TIMEOUT,
+                    SourceErrorCategory.CONNECTION,
+                    SourceErrorCategory.TRANSIENT_HTTP,
+                }:
+                    raise
+                if retries >= source.retry_policy.max_retries:
+                    exc.retry_count = retries
+                    raise
+                retries += 1
+                self.sleeper(_retry_delay(source, retries, None, self.jitter))
+                continue
             if response.status_code not in RETRYABLE_STATUSES:
                 return response, retries
             if retries >= source.retry_policy.max_retries:
                 return response, retries
             retries += 1
-            self.sleeper(_retry_delay(source, retries, response.headers.get("retry-after")))
+            self.sleeper(
+                _retry_delay(source, retries, response.headers.get("retry-after"), self.jitter)
+            )
 
     def _parse_response(
         self, source: SourceDefinition, response: HttpResponse
@@ -309,8 +336,8 @@ class SourceIngestionService:
             cursor_after=parsed.next_cursor or state.cursor,
             dry_run=dry_run,
         )
-        self.repository.add_source_fetch_attempt(attempt)
         if not dry_run:
+            self.repository.add_source_fetch_attempt(attempt)
             self.repository.upsert_source_fetch_state(state)
         return self._result_from_attempt(attempt, state)
 
@@ -360,6 +387,7 @@ class SourceIngestionService:
         category: SourceErrorCategory,
         summary: str,
         dry_run: bool,
+        retry_count: int = 0,
     ) -> SourceRunResult:
         finished = utc_now()
         state.last_attempted_at = finished
@@ -381,10 +409,11 @@ class SourceIngestionService:
             finished_at=finished,
             error_category=category,
             error_summary=state.last_error_summary,
+            retry_count=retry_count,
             dry_run=dry_run,
         )
-        self.repository.add_source_fetch_attempt(attempt)
         if not dry_run:
+            self.repository.add_source_fetch_attempt(attempt)
             self.repository.upsert_source_fetch_state(state)
         return self._result_from_attempt(attempt, state)
 
@@ -432,15 +461,42 @@ def _records_with_source_metadata(
     ]
 
 
-def _retry_delay(source: SourceDefinition, retry_number: int, retry_after: str | None) -> float:
+def _retry_delay(
+    source: SourceDefinition,
+    retry_number: int,
+    retry_after: str | None,
+    jitter: Callable[[int], float] | None = None,
+) -> float:
+    jitter = jitter or (lambda _: 0.0)
     if retry_after:
-        try:
-            return float(min(float(retry_after), source.retry_policy.max_delay_seconds))
-        except ValueError:
-            pass
+        parsed_retry_after = _parse_retry_after(retry_after)
+        if parsed_retry_after is not None:
+            return float(min(parsed_retry_after, source.retry_policy.max_delay_seconds))
     delay = source.retry_policy.base_delay_seconds * (2 ** max(0, retry_number - 1))
-    return float(min(delay, source.retry_policy.max_delay_seconds))
+    return float(min(delay + jitter(retry_number), source.retry_policy.max_delay_seconds))
 
 
 def _sanitize(value: str) -> str:
-    return value.replace("\n", " ").replace("\r", " ")[:240]
+    text = value.replace("\n", " ").replace("\r", " ")
+    text = re.sub(
+        r"(?i)(authorization|bearer|token|api[_-]?key|password|cookie)=?\s*[^,\s;]+",
+        r"\1=[redacted]",
+        text,
+    )
+    text = re.sub(r"[A-Za-z]:\\[^\s]+", "[local-path-redacted]", text)
+    text = re.sub(r"postgresql\+psycopg://[^\s]+", "[database-url-redacted]", text)
+    return text[:240]
+
+
+def _parse_retry_after(value: str) -> float | None:
+    try:
+        seconds = float(value)
+    except ValueError:
+        try:
+            retry_at = parsedate_to_datetime(value)
+        except (TypeError, ValueError):
+            return None
+        if retry_at.tzinfo is None:
+            retry_at = retry_at.replace(tzinfo=UTC)
+        return max(0.0, (retry_at - datetime.now(UTC)).total_seconds())
+    return max(0.0, seconds)

@@ -12,6 +12,7 @@ from sqlalchemy import create_engine, func, inspect, select, text
 from sqlalchemy.engine import Engine
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session, sessionmaker
+from sqlalchemy.pool import NullPool
 from typer.testing import CliRunner
 
 from alembic import command
@@ -101,7 +102,10 @@ def drop_schema_objects() -> None:
 
 
 def session_for(settings: Settings) -> Session:
-    maker = sessionmaker(bind=create_engine(settings.database_url, future=True), future=True)
+    maker = sessionmaker(
+        bind=create_engine(settings.database_url, future=True, poolclass=NullPool),
+        future=True,
+    )
     return maker()
 
 

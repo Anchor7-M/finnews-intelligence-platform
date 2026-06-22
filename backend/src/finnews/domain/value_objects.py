@@ -2,11 +2,15 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from datetime import UTC, date, datetime
-from uuid import UUID, uuid4
+from uuid import NAMESPACE_URL, UUID, uuid4, uuid5
 
 
 def new_id() -> UUID:
     return uuid4()
+
+
+def stable_id(*parts: object) -> UUID:
+    return uuid5(NAMESPACE_URL, "finnews:" + ":".join(str(part) for part in parts))
 
 
 def utc_now() -> datetime:

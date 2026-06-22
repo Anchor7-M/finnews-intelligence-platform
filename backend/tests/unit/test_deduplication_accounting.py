@@ -112,6 +112,13 @@ def test_fixture_labels_match_detected_dispositions() -> None:
 def test_static_api_shape_and_cli_statistics_consistency(tmp_path: Path) -> None:
     repo = build_repo()
     payload = build_static_payload(repo)
+    second_payload = build_static_payload(build_repo())
+    assert [item["id"] for item in payload["articles"]] == [
+        item["id"] for item in second_payload["articles"]
+    ]
+    assert [item["id"] for item in payload["companies"]] == [
+        item["id"] for item in second_payload["companies"]
+    ]
     assert payload["overview"]["deduplication"] == EXPECTED_METRICS
     assert payload["overview"]["article_count"] == EXPECTED_METRICS["canonical_article_count"]
     assert payload["overview"]["latest_pipeline"]["status"] == "completed"

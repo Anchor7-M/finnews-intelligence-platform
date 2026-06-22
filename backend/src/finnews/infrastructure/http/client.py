@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import ipaddress
+import socket
 from collections.abc import Callable
 from urllib.parse import urlparse
 
@@ -12,9 +13,10 @@ from finnews.domain.enums import SourceErrorCategory
 
 
 class HttpPolicyError(ValueError):
-    def __init__(self, category: SourceErrorCategory, message: str) -> None:
+    def __init__(self, category: SourceErrorCategory, message: str, retry_count: int = 0) -> None:
         super().__init__(message)
         self.category = category
+        self.retry_count = retry_count
 
 
 class BoundedSourceHttpClient:
@@ -25,10 +27,12 @@ class BoundedSourceHttpClient:
         transport: httpx.BaseTransport | None = None,
         allow_local_http_for_tests: bool = False,
         sleeper: Callable[[float], None] | None = None,
+        resolver: Callable[[str], list[str]] | None = None,
     ) -> None:
         self.source = source
         self.allow_local_http_for_tests = allow_local_http_for_tests
         self.sleeper = sleeper or (lambda _: None)
+        self.resolver = resolver or _resolve_host_addresses
         limits = httpx.Limits(max_connections=2, max_keepalive_connections=0)
         timeout = httpx.Timeout(
             connect=source.connect_timeout_seconds,
@@ -99,11 +103,48 @@ class BoundedSourceHttpClient:
             raise HttpPolicyError(
                 SourceErrorCategory.POLICY_BLOCKED, "source host is not allowlisted"
             )
-        if _is_blocked_ip(host) and not self.allow_local_http_for_tests:
-            raise HttpPolicyError(
-                SourceErrorCategory.DNS_OR_DESTINATION_BLOCKED,
-                "source destination is private or otherwise blocked",
-            )
+        if not self.allow_local_http_for_tests:
+            for address in self.resolver(host):
+                if _is_blocked_ip(address):
+                    raise HttpPolicyError(
+                        SourceErrorCategory.DNS_OR_DESTINATION_BLOCKED,
+                        "source destination is private or otherwise blocked",
+                    )
+
+
+def _resolve_host_addresses(host: str) -> list[str]:
+    try:
+        ipaddress.ip_address(host)
+    except ValueError:
+        pass
+    else:
+        return [host]
+    try:
+        infos = socket.getaddrinfo(host, None, type=socket.SOCK_STREAM)
+    except socket.gaierror as exc:
+        raise HttpPolicyError(
+            SourceErrorCategory.DNS_OR_DESTINATION_BLOCKED, "source hostname could not resolve"
+        ) from exc
+    addresses = sorted({str(info[4][0]) for info in infos})
+    if not addresses:
+        raise HttpPolicyError(
+            SourceErrorCategory.DNS_OR_DESTINATION_BLOCKED, "source hostname resolved no addresses"
+        )
+    return addresses
+
+
+def _is_blocked_ip(host: str) -> bool:
+    try:
+        address = ipaddress.ip_address(host)
+    except ValueError:
+        return False
+    return (
+        address.is_loopback
+        or address.is_private
+        or address.is_link_local
+        or address.is_multicast
+        or address.is_unspecified
+    )
 
 
 def _bounded_content(response: httpx.Response, max_bytes: int) -> bytes:
@@ -131,17 +172,3 @@ def _validate_content_type(response: httpx.Response, allowed: tuple[str, ...]) -
             SourceErrorCategory.CONTENT_TYPE,
             f"unsupported content-type: {content_type}",
         )
-
-
-def _is_blocked_ip(host: str) -> bool:
-    try:
-        address = ipaddress.ip_address(host)
-    except ValueError:
-        return False
-    return (
-        address.is_loopback
-        or address.is_private
-        or address.is_link_local
-        or address.is_multicast
-        or address.is_unspecified
-    )
