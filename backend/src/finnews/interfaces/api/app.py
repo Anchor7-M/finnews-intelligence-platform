@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
-from datetime import date
+from datetime import date, datetime
 from typing import cast
 from uuid import UUID, uuid4
 
@@ -200,6 +200,97 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     @app.get("/api/v1/stats/overview")
     def overview() -> dict[str, object]:
         return cast(dict[str, object], build_static_payload(repository)["overview"])
+
+    @app.get("/api/v1/sources")
+    def sources(
+        source_kind: str | None = None,
+        approval_status: str | None = None,
+        enabled: bool | None = None,
+        health: str | None = None,
+        limit: int = Query(default=50, ge=1, le=100),
+        offset: int = Query(default=0, ge=0),
+    ) -> dict[str, object]:
+        source_rows = cast(list[dict[str, object]], build_static_payload(repository)["sources"])
+        health_rows = {
+            str(row["source_id"]): row
+            for row in cast(
+                list[dict[str, object]], build_static_payload(repository)["source-health"]
+            )
+        }
+        rows: list[dict[str, object]] = []
+        for row in source_rows:
+            source_id = str(row["source_id"])
+            merged = {**row, "health": health_rows.get(source_id, {}).get("health", "disabled")}
+            if source_kind and merged["source_type"] != source_kind:
+                continue
+            if approval_status and merged["approval_status"] != approval_status:
+                continue
+            if enabled is not None and merged["enabled"] is not enabled:
+                continue
+            if health and merged["health"] != health:
+                continue
+            rows.append(merged)
+        return {
+            "items": rows[offset : offset + limit],
+            "total": len(rows),
+            "limit": limit,
+            "offset": offset,
+        }
+
+    @app.get("/api/v1/sources/{source_id}")
+    def source_detail(source_id: str) -> dict[str, object]:
+        rows = cast(list[dict[str, object]], build_static_payload(repository)["sources"])
+        for row in rows:
+            if row["source_id"] == source_id:
+                return row
+        raise NotFoundError(f"source {source_id} not found")
+
+    @app.get("/api/v1/sources/{source_id}/health")
+    def source_health(source_id: str) -> dict[str, object]:
+        rows = cast(list[dict[str, object]], build_static_payload(repository)["source-health"])
+        for row in rows:
+            if row["source_id"] == source_id:
+                return row
+        raise NotFoundError(f"source {source_id} health not found")
+
+    @app.get("/api/v1/source-fetch-attempts")
+    def source_fetch_attempts(
+        source_id: str | None = None,
+        outcome: str | None = None,
+        started_from: date | None = None,
+        started_to: date | None = None,
+        limit: int = Query(default=50, ge=1, le=100),
+        offset: int = Query(default=0, ge=0),
+    ) -> dict[str, object]:
+        rows = cast(
+            list[dict[str, object]], build_static_payload(repository)["source-fetch-attempts"]
+        )
+        filtered: list[dict[str, object]] = []
+        for row in rows:
+            if source_id and row["source_id"] != source_id:
+                continue
+            if outcome and row["outcome"] != outcome:
+                continue
+            started = row.get("started_at")
+            if isinstance(started, str):
+                started_day = date.fromisoformat(started[:10])
+            elif isinstance(started, datetime):
+                started_day = started.date()
+            elif isinstance(started, date):
+                started_day = started
+            else:
+                started_day = None
+            if started_day and started_from and started_day < started_from:
+                continue
+            if started_day and started_to and started_day > started_to:
+                continue
+            filtered.append(row)
+        return {
+            "items": filtered[offset : offset + limit],
+            "total": len(filtered),
+            "limit": limit,
+            "offset": offset,
+        }
 
     return app
 

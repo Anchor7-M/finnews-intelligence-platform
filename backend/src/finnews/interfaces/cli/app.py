@@ -14,23 +14,32 @@ from finnews.application.ports.repositories import NewsRepository
 from finnews.application.services.deduplication_accounting import build_deduplication_accounting
 from finnews.application.services.export_static import export_static
 from finnews.application.services.pipeline import NewsPipeline
+from finnews.application.services.source_ingestion import SourceIngestionService
 from finnews.bootstrap import (
     FIXTURE_DIR,
     build_memory_repository,
     create_postgres_session,
     load_default_records,
+    load_source_registry_into_repository,
 )
+from finnews.infrastructure.http.client import BoundedSourceHttpClient
 from finnews.infrastructure.persistence.memory.repository import MemoryNewsRepository
 from finnews.infrastructure.persistence.postgres.repository import PostgresNewsRepository
 from finnews.infrastructure.sources.fixtures import JsonlFixtureSource
 from finnews.infrastructure.sources.local_feed import LocalFeedSource
+from finnews.infrastructure.sources.registry import (
+    SourceConfigError,
+    validate_source_definitions,
+)
 from finnews.settings import Settings, get_settings
 
 app = typer.Typer(help="Finnews local CLI")
 ingest_app = typer.Typer(help="Ingest local synthetic data")
 db_app = typer.Typer(help="Database helpers")
+source_app = typer.Typer(help="Source registry and run-once ingestion")
 app.add_typer(ingest_app, name="ingest")
 app.add_typer(db_app, name="db")
+app.add_typer(source_app, name="source")
 
 
 @app.command()
@@ -46,6 +55,112 @@ def doctor() -> None:
 def db_upgrade() -> None:
     command.upgrade(Config("alembic.ini"), "head")
     typer.echo("database_upgraded=head")
+
+
+@source_app.command("list")
+def source_list() -> None:
+    settings = get_settings()
+    repo, session = _repository(settings)
+    rows = [
+        {
+            "source_id": source.source_id,
+            "display_name": source.display_name,
+            "source_type": source.source_type.value,
+            "review_status": source.review_status.value,
+            "enabled": source.enabled,
+            "risk_classification": source.risk_classification,
+        }
+        for source in repo.list_source_definitions()
+    ]
+    _commit_and_close(session)
+    typer.echo(json.dumps(rows, sort_keys=True))
+
+
+@source_app.command("validate-config")
+def source_validate_config() -> None:
+    try:
+        source_ids = validate_source_definitions()
+    except SourceConfigError as exc:
+        typer.echo(f"source_config_error={exc}", err=True)
+        raise typer.Exit(4) from exc
+    typer.echo(json.dumps({"valid": True, "source_ids": source_ids}, sort_keys=True))
+
+
+@source_app.command("health")
+def source_health() -> None:
+    settings = get_settings()
+    repo, session = _repository(settings)
+    states = {state.source_id: state for state in repo.list_source_fetch_states()}
+    rows = []
+    for source in repo.list_source_definitions():
+        state = states.get(source.source_id)
+        rows.append(
+            {
+                "source_id": source.source_id,
+                "health": state.health_status.value if state else "disabled",
+                "last_attempted_at": state.last_attempted_at if state else None,
+                "last_successful_at": state.last_successful_at if state else None,
+                "last_error_category": state.last_error_category.value if state else "none",
+                "consecutive_failure_count": state.consecutive_failure_count if state else 0,
+            }
+        )
+    _commit_and_close(session)
+    typer.echo(json.dumps(rows, default=str, sort_keys=True))
+
+
+@source_app.command("fetch")
+def source_fetch(
+    source_id: Annotated[str | None, typer.Option("--source")] = None,
+    all_approved: Annotated[bool, typer.Option("--all-approved")] = False,
+    dry_run: Annotated[bool, typer.Option("--dry-run")] = False,
+) -> None:
+    settings = get_settings()
+    repo, session = _repository(settings)
+    service = SourceIngestionService(
+        repo,
+        settings,
+        http_client_factory=lambda source: BoundedSourceHttpClient(source),
+    )
+    sources = repo.list_source_definitions()
+    selected = (
+        [source for source in sources if source.fetch_allowed]
+        if all_approved
+        else [source for source in sources if source.source_id == source_id]
+    )
+    if not selected:
+        _commit_and_close(session)
+        typer.echo("source_selection_empty", err=True)
+        raise typer.Exit(4)
+    results = []
+    try:
+        for source in selected:
+            result = service.fetch_source(source.source_id, dry_run=dry_run)
+            results.append(result.__dict__)
+    except ValueError as exc:
+        _commit_and_close(session)
+        typer.echo(f"source_policy_error={exc}", err=True)
+        raise typer.Exit(4) from exc
+    _commit_and_close(session)
+    typer.echo(json.dumps(results, default=str, sort_keys=True))
+
+
+@source_app.command("import-announcements")
+def source_import_announcements(
+    source_id: Annotated[str, typer.Option("--source")],
+    path: Annotated[Path, typer.Option("--path")],
+    dry_run: Annotated[bool, typer.Option("--dry-run")] = False,
+) -> None:
+    settings = get_settings()
+    repo, session = _repository(settings)
+    service = SourceIngestionService(repo, settings)
+    try:
+        result = service.import_announcements(source_id, path, dry_run=dry_run)
+    except ValueError as exc:
+        _commit_and_close(session)
+        typer.echo(f"source_policy_error={exc}", err=True)
+        raise typer.Exit(4) from exc
+    _commit_and_close(session)
+    typer.echo(json.dumps(result.__dict__, default=str, sort_keys=True))
 
 
 @ingest_app.command("fixture")
@@ -196,8 +311,12 @@ def demo(profile: Annotated[str, typer.Option("--profile")] = "memory") -> None:
 def _empty_repository(settings: Settings) -> tuple[NewsRepository, Session | None]:
     if settings.profile == "postgres":
         session = create_postgres_session(settings)
-        return PostgresNewsRepository(session), session
-    return MemoryNewsRepository(), None
+        postgres_repo = PostgresNewsRepository(session)
+        load_source_registry_into_repository(postgres_repo)
+        return postgres_repo, session
+    memory_repo = MemoryNewsRepository()
+    load_source_registry_into_repository(memory_repo)
+    return memory_repo, None
 
 
 def _repository(settings: Settings) -> tuple[NewsRepository, Session | None]:

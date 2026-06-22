@@ -40,6 +40,95 @@ class SourceModel(Base):
     updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
 
 
+class SourceDefinitionModel(Base):
+    __tablename__ = "source_definitions"
+    source_id: Mapped[str] = mapped_column(String(120), primary_key=True)
+    display_name: Mapped[str] = mapped_column(String(240), nullable=False)
+    source_type: Mapped[str] = mapped_column(String(64), nullable=False)
+    approved_hostnames: Mapped[list[str]] = mapped_column(JSONB, nullable=False)
+    review_status: Mapped[str] = mapped_column(String(40), nullable=False)
+    enabled: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
+    base_url: Mapped[str | None] = mapped_column(Text)
+    import_format: Mapped[str | None] = mapped_column(String(40))
+    terms_url: Mapped[str | None] = mapped_column(Text)
+    documentation_url: Mapped[str | None] = mapped_column(Text)
+    reviewed_date: Mapped[str | None] = mapped_column(String(40))
+    reviewer: Mapped[str | None] = mapped_column(String(120))
+    content_storage_policy: Mapped[str] = mapped_column(String(64), nullable=False)
+    provenance_required: Mapped[bool] = mapped_column(Boolean, nullable=False)
+    language: Mapped[str] = mapped_column(String(16), nullable=False)
+    timezone: Mapped[str] = mapped_column(String(80), nullable=False)
+    connect_timeout_seconds: Mapped[float] = mapped_column(Float, nullable=False)
+    read_timeout_seconds: Mapped[float] = mapped_column(Float, nullable=False)
+    max_response_bytes: Mapped[int] = mapped_column(Integer, nullable=False)
+    retry_policy: Mapped[dict[str, object]] = mapped_column(JSONB, nullable=False)
+    minimum_interval_seconds: Mapped[int] = mapped_column(Integer, nullable=False)
+    cursor_strategy: Mapped[str | None] = mapped_column(String(80))
+    field_mapping: Mapped[dict[str, str]] = mapped_column(JSONB, nullable=False)
+    user_agent: Mapped[str] = mapped_column(String(240), nullable=False)
+    notes: Mapped[str] = mapped_column(Text, nullable=False)
+    risk_classification: Mapped[str] = mapped_column(String(40), nullable=False)
+    adapter_version: Mapped[str] = mapped_column(String(40), nullable=False)
+
+
+class SourceFetchStateModel(Base):
+    __tablename__ = "source_fetch_states"
+    __table_args__ = (
+        Index("ix_source_fetch_states_health", "health_status"),
+        Index("ix_source_fetch_states_next_allowed", "next_allowed_at"),
+    )
+    source_id: Mapped[str] = mapped_column(
+        ForeignKey("source_definitions.source_id"), primary_key=True
+    )
+    etag: Mapped[str | None] = mapped_column(Text)
+    last_modified: Mapped[str | None] = mapped_column(Text)
+    cursor: Mapped[str | None] = mapped_column(Text)
+    last_attempted_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    last_successful_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    next_allowed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    last_http_status: Mapped[int | None] = mapped_column(Integer)
+    last_response_hash: Mapped[str | None] = mapped_column(String(64))
+    last_response_byte_count: Mapped[int] = mapped_column(Integer, nullable=False)
+    last_item_count: Mapped[int] = mapped_column(Integer, nullable=False)
+    consecutive_failure_count: Mapped[int] = mapped_column(Integer, nullable=False)
+    last_error_category: Mapped[str] = mapped_column(String(80), nullable=False)
+    last_error_summary: Mapped[str] = mapped_column(String(240), nullable=False)
+    health_status: Mapped[str] = mapped_column(String(40), nullable=False)
+    adapter_version: Mapped[str] = mapped_column(String(40), nullable=False)
+    updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+
+
+class SourceFetchAttemptModel(Base):
+    __tablename__ = "source_fetch_attempts"
+    __table_args__ = (
+        Index("ix_source_fetch_attempts_source_started", "source_id", "started_at"),
+        Index("ix_source_fetch_attempts_outcome", "outcome"),
+    )
+    id: Mapped[UUID] = mapped_column(PGUUID(as_uuid=True), primary_key=True, default=uuid4)
+    source_id: Mapped[str] = mapped_column(
+        ForeignKey("source_definitions.source_id"), nullable=False
+    )
+    outcome: Mapped[str] = mapped_column(String(40), nullable=False)
+    started_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+    finished_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+    http_status: Mapped[int | None] = mapped_column(Integer)
+    item_count: Mapped[int] = mapped_column(Integer, nullable=False)
+    new_count: Mapped[int] = mapped_column(Integer, nullable=False)
+    duplicate_count: Mapped[int] = mapped_column(Integer, nullable=False)
+    rejected_count: Mapped[int] = mapped_column(Integer, nullable=False)
+    response_byte_count: Mapped[int] = mapped_column(Integer, nullable=False)
+    response_hash: Mapped[str | None] = mapped_column(String(64))
+    retry_count: Mapped[int] = mapped_column(Integer, nullable=False)
+    duration_ms: Mapped[int] = mapped_column(Integer, nullable=False)
+    error_category: Mapped[str] = mapped_column(String(80), nullable=False)
+    error_summary: Mapped[str] = mapped_column(String(240), nullable=False)
+    etag_present: Mapped[bool] = mapped_column(Boolean, nullable=False)
+    last_modified_present: Mapped[bool] = mapped_column(Boolean, nullable=False)
+    cursor_before: Mapped[str | None] = mapped_column(Text)
+    cursor_after: Mapped[str | None] = mapped_column(Text)
+    dry_run: Mapped[bool] = mapped_column(Boolean, nullable=False)
+
+
 class IngestionRunModel(Base):
     __tablename__ = "ingestion_runs"
     id: Mapped[UUID] = mapped_column(PGUUID(as_uuid=True), primary_key=True, default=uuid4)
