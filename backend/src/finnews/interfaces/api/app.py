@@ -253,6 +253,36 @@ def create_app(settings: Settings | None = None) -> FastAPI:
                 return row
         raise NotFoundError(f"source {source_id} health not found")
 
+    @app.get("/api/v1/source-reviews")
+    def source_reviews(
+        review_decision: str | None = None,
+        live_smoke_status: str | None = None,
+        limit: int = Query(default=50, ge=1, le=100),
+        offset: int = Query(default=0, ge=0),
+    ) -> dict[str, object]:
+        rows = cast(list[dict[str, object]], build_static_payload(repository)["source-reviews"])
+        filtered: list[dict[str, object]] = []
+        for row in rows:
+            if review_decision and row["review_decision"] != review_decision:
+                continue
+            if live_smoke_status and row["live_smoke_status"] != live_smoke_status:
+                continue
+            filtered.append(row)
+        return {
+            "items": filtered[offset : offset + limit],
+            "total": len(filtered),
+            "limit": limit,
+            "offset": offset,
+        }
+
+    @app.get("/api/v1/source-reviews/{source_id}")
+    def source_review_detail(source_id: str) -> dict[str, object]:
+        rows = cast(list[dict[str, object]], build_static_payload(repository)["source-reviews"])
+        for row in rows:
+            if row["source_id"] == source_id:
+                return row
+        raise NotFoundError(f"source review {source_id} not found")
+
     @app.get("/api/v1/source-fetch-attempts")
     def source_fetch_attempts(
         source_id: str | None = None,

@@ -1,0 +1,50 @@
+sources:
+  - source_id: sec-edgar-submissions
+    display_name: SEC EDGAR Submissions API
+    source_type: documented_json_api
+    base_url: https://data.sec.gov/submissions/CIK0000000000.json
+    endpoint_template: https://data.sec.gov/submissions/CIK{cik}.json
+    approved_hostnames: ["data.sec.gov"]
+    terms_url: https://www.sec.gov/privacy.htm
+    documentation_url: https://www.sec.gov/search-filings/edgar-application-programming-interfaces
+    review_status: approved
+    enabled: false
+    reviewed_date: "2026-06-22"
+    reviewer: local-review
+    content_storage_policy: metadata_only
+    provenance_required: true
+    language: en
+    timezone: America/New_York
+    connect_timeout_seconds: 5
+    read_timeout_seconds: 15
+    max_response_bytes: 2000000
+    retry_policy:
+      max_retries: 1
+      base_delay_seconds: 5
+      max_delay_seconds: 30
+    minimum_interval_seconds: 5
+    cursor_strategy: null
+    field_mapping:
+      record_mode: columnar
+      columns_path: filings.recent
+      cik_path: cik
+      entity_name_path: name
+      id: accessionNumber
+      form: form
+      filing_date: filingDate
+      acceptance_datetime: acceptanceDateTime
+      primary_document: primaryDocument
+      max_records: "5"
+      title_template: "{form} filing by {entityName}"
+      summary_template: "SEC {form} filing metadata accepted {acceptanceDateTime}"
+      url_template: "https://www.sec.gov/Archives/edgar/data/{cik_unpadded}/{accession_no_dashes}/{primaryDocument}"
+    user_agent: "finnews-intelligence-platform/0.1 (+local research; contact supplied locally)"
+    user_agent_env_var: FINNEWS_SEC_CONTACT
+    user_agent_template: "finnews-intelligence-platform/0.1 {contact}"
+    parameter_schema:
+      cik: ten_digit_cik
+    notes: Official SEC EDGAR Submissions API pilot. Disabled by default; requires local contact and CIK for smoke testing.
+    risk_classification: medium
+    review_evidence_id: sec-edgar-submissions
+    source_config_sha256: "8f08e7bb104937ce95e98e2d4f2d6d755a88fdb335a5e679bfb2ce204658af44"
+    max_items_per_smoke: 5

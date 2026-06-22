@@ -41,6 +41,16 @@ flowchart LR
 - Memory and PostgreSQL source-state persistence.
 - Read-only source API endpoints, `finnews source ...` CLI commands, Vue Source Health page, and static-demo source-health data.
 
+## Implemented In Milestone 1B
+
+- Repository-owned source-review evidence with config/review integrity checks.
+- Disabled-by-default official pilot definitions for Federal Reserve RSS and SEC EDGAR Submissions.
+- Local-only source overrides for one-off reviewed source enablement.
+- SEC columnar JSON metadata parsing for synthetic/offline tests.
+- Guarded `finnews source smoke-test` command with no-persist default and explicit live gates.
+- Read-only source-review API metadata and Vue Source Catalog visibility.
+- Static demo review examples remain synthetic; no live response or real item text is committed.
+
 ## Verified Synthetic Dataset
 
 - 68 raw observations loaded in the memory demo.
@@ -105,6 +115,7 @@ GET /api/v1/articles?ticker=ALP&limit=20
 GET /api/v1/digests/2026-06-20
 GET /api/v1/signals/daily
 GET /api/v1/sources
+GET /api/v1/source-reviews
 GET /api/v1/source-fetch-attempts
 ```
 
@@ -123,7 +134,8 @@ Milestones 1-4 are documented in `docs/ROADMAP.md` and are not implemented yet.
 ## Limitations
 
 - Live-source infrastructure exists, but no real source is enabled by default.
-- Live-source smoke testing is not run without explicit source approval and user authorization.
+- Live-source smoke testing is not run without valid review evidence, ignored local enablement, `FINNEWS_ALLOW_LIVE_NETWORK=1`, and explicit confirmation.
+- Review approval is an engineering usage-policy review, not legal advice or production readiness.
 - Baselines are deterministic rules, not predictive models.
 - PostgreSQL repository behavior is verified locally, but this is still synthetic research tooling rather than production financial advice.
 - GitHub Actions files are present for future manual push; no CI result is claimed locally.

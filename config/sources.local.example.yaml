@@ -1,0 +1,9 @@
+# Copy this file to config/sources.local.yaml to enable a reviewed source for a
+# one-off local command. The real override file is ignored by Git.
+#
+# Overrides may only change the enabled flag. They cannot change hostnames,
+# endpoints, TLS policy, response limits, retries, field mappings, headers, or
+# credentials.
+sources:
+  - source_id: federal-reserve-press-releases
+    enabled: true

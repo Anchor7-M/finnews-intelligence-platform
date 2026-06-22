@@ -87,6 +87,24 @@ export interface SourceSummary {
   risk_classification?: string;
   approved_host_count?: number;
   synthetic?: boolean;
+  review?: SourceReview | null;
+}
+
+export interface SourceReview {
+  source_id: string;
+  official_owner: string;
+  official_source: string;
+  review_decision: string;
+  reviewed_at: string;
+  access_cost: string;
+  authentication_requirement: string;
+  content_storage_policy: string;
+  documentation_url: string;
+  terms_or_policy_url: string;
+  enabled: boolean | null;
+  live_smoke_status: string;
+  live_smoke_checked_at: string | null;
+  known_limitations: string[];
 }
 
 export interface SourceHealth {

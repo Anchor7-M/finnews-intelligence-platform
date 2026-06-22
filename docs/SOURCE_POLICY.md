@@ -1,8 +1,9 @@
 # Source Policy
 
 Milestone 0 uses local synthetic fixtures. Milestone 1A adds live-source
-ingestion infrastructure, but no real source is enabled by default and automated
-tests use local mocks only.
+ingestion infrastructure. Milestone 1B adds source-review evidence and disabled
+official pilot definitions, but no real source is enabled by default and
+automated tests use local mocks only.
 
 Implemented local adapters:
 
@@ -26,6 +27,11 @@ Only `approved` and `enabled` sources can be fetched. Unreviewed, rejected, and
 suspended sources are listed but blocked. Runtime fetch URLs derive from
 repository-owned configuration; the API exposes no public fetch, approve,
 enable, reset, or arbitrary URL endpoint.
+
+Approved network sources also require matching source-review evidence under
+`config/source-reviews/`. Review approval is an engineering usage-policy review,
+not legal advice or production readiness. Local smoke tests require an ignored
+local override, `FINNEWS_ALLOW_LIVE_NETWORK=1`, and explicit confirmation.
 
 Do not implement paywall bypass, login/CAPTCHA bypass, search-result scraping, undocumented endpoints, aggressive crawling, full-text republication, paid News API plans, or paid model APIs.
 

@@ -137,6 +137,40 @@ vi.mock("../src/api/client", () => ({
       synthetic: true,
     },
   ],
+  loadSourceReviews: async () => [
+    {
+      source_id: "example-rss-feed",
+      official_owner: "Example Owner",
+      official_source: "Example RSS",
+      review_decision: "needs_review",
+      reviewed_at: "2026-06-22",
+      access_cost: "unknown",
+      authentication_requirement: "none",
+      content_storage_policy: "metadata_only",
+      documentation_url: "https://example.local/docs",
+      terms_or_policy_url: "https://example.local/terms",
+      enabled: false,
+      live_smoke_status: "not_run",
+      live_smoke_checked_at: null,
+      known_limitations: ["example only"],
+    },
+    {
+      source_id: "mock-approved-rss",
+      official_owner: "Mock Owner",
+      official_source: "Mock RSS",
+      review_decision: "approved",
+      reviewed_at: "2026-06-22",
+      access_cost: "free",
+      authentication_requirement: "none",
+      content_storage_policy: "metadata_only",
+      documentation_url: "https://mock.local/docs",
+      terms_or_policy_url: "https://mock.local/terms",
+      enabled: true,
+      live_smoke_status: "passed",
+      live_smoke_checked_at: "2026-06-22",
+      known_limitations: ["not production ready"],
+    },
+  ],
   loadSourceFetchAttempts: async () => [
     {
       id: "attempt-1",
@@ -224,13 +258,20 @@ describe("frontend compliance", () => {
   it("renders source health and filters by health state", async () => {
     const wrapper = mount(SourceHealth);
     await new Promise((resolve) => setTimeout(resolve, 0));
-    expect(wrapper.text()).toContain("Source Health");
+    expect(wrapper.text()).toContain("Source Catalog");
+    expect(wrapper.text()).toContain("Reviewed Sources");
+    expect(wrapper.text()).toContain("Engineering Approved");
     expect(wrapper.text()).toContain("Example Publisher RSS Feed");
     expect(wrapper.text()).toContain("Mock Approved RSS");
     expect(wrapper.text()).toContain("available");
-    await wrapper.find("select").setValue("healthy");
+    expect(wrapper.text()).toContain("Disabled by default");
+    expect(wrapper.text()).toContain("not production ready");
+    expect(wrapper.text()).not.toContain("FINNEWS_SEC_CONTACT");
+    await wrapper.findAll("select")[0]!.setValue("healthy");
     expect(wrapper.text()).toContain("Mock Approved RSS");
     expect(wrapper.text()).not.toContain("Example Publisher RSS Feed");
+    await wrapper.findAll("select")[1]!.setValue("approved");
+    expect(wrapper.text()).toContain("Mock Approved RSS");
   });
 
   it("shows persistent synthetic and not-investment-advice notice with routes", async () => {
@@ -254,6 +295,6 @@ describe("frontend compliance", () => {
     expect(wrapper.text()).toContain("Article Explorer");
     await router.push("/sources");
     await wrapper.vm.$nextTick();
-    expect(wrapper.text()).toContain("Source Health");
+    expect(wrapper.text()).toContain("Source Catalog");
   });
 });

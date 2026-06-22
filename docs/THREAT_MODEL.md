@@ -14,6 +14,9 @@
 - SQL injection.
 - Future SSRF from live adapters.
 - Live-source SSRF, redirect, oversized response, unsafe XML, and response-body leakage.
+- Stale or missing source-review evidence.
+- Accidental commit of local live-source override, smoke report, or personal SEC contact.
+- Browser-side live-source fetches.
 - Copyright and provenance mistakes.
 
 ## Mitigations
@@ -31,3 +34,7 @@
   revalidates redirects, caps decompressed responses, rejects DTD/entity XML,
   persists only validators/metadata/snippets, and exposes no public mutation or
   arbitrary URL fetch API.
+- Milestone 1B requires typed source-review evidence, source config digests,
+  ignored local overrides, explicit live env and confirmation gates, no-persist
+  smoke-test defaults, SEC contact redaction, and read-only API review
+  summaries.

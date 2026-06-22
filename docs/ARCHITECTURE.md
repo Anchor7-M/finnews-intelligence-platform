@@ -55,3 +55,22 @@ flowchart LR
 
 The source layer is run-once and local-first. It introduces no scheduler, queue,
 Redis, Kafka, search service, browser automation, or full-body cache.
+
+## Milestone 1B Source Review And Smoke Testing
+
+```mermaid
+flowchart LR
+  Config[Disabled source config] --> Integrity[Review integrity check]
+  Review[Review evidence YAML] --> Integrity
+  Override[Ignored local override] --> Gate[Smoke gate]
+  Integrity --> Gate
+  Gate --> HTTP[Bounded HTTP client]
+  HTTP --> Parse[RSS or documented JSON parser]
+  Parse --> Report[Sanitized no-persist report]
+  Review --> API[Read-only review API]
+  API --> Vue[Source Catalog]
+```
+
+Milestone 1B keeps approval evidence repository-owned and runtime enablement
+local-only. The smoke path is explicit CLI-only, no-persist by default, and does
+not introduce API mutation routes, schedulers, or browser-side live requests.

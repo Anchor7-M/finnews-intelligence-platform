@@ -10,7 +10,7 @@ import time
 
 
 ROOT = Path(__file__).resolve().parents[1]
-POSTGRES_PROJECT = "finnews_m1_verify"
+POSTGRES_PROJECT = "finnews_m1b_verify"
 POSTGRES_SERVICE = "postgres"
 POSTGRES_URL = "postgresql+psycopg://finnews:finnews@127.0.0.1:55432/finnews"
 
@@ -98,6 +98,8 @@ def validate_static_export() -> None:
         "source-health.json",
         "source-fetch-attempts.json",
         "source-conditional-examples.json",
+        "source-reviews.json",
+        "source-review-examples.json",
     ]
     missing = [name for name in required if not (output / name).is_file()]
     if missing:
@@ -183,6 +185,59 @@ def verify_sources(_: argparse.Namespace) -> None:
         env=env,
     )
     run(["npm", "run", "test:unit", "--", "--run"], frontend, env=env)
+
+
+def verify_source_reviews(_: argparse.Namespace) -> None:
+    backend = ROOT / "backend"
+    env = {"FINNEWS_SOURCE_TEST_MODE": "mocked-offline"}
+    run(
+        [
+            sys.executable,
+            "-m",
+            "finnews.interfaces.cli.app",
+            "source",
+            "review",
+            "validate",
+        ],
+        backend,
+        env=env,
+    )
+    run(
+        [
+            sys.executable,
+            "-m",
+            "pytest",
+            "tests/unit/test_source_reviews.py",
+            "tests/unit/test_source_overrides.py",
+            "tests/unit/test_source_adapters.py",
+            "tests/unit/test_source_smoke.py",
+            "tests/contract/test_source_reviews_api.py",
+        ],
+        backend,
+        env=env,
+    )
+
+
+def smoke_source(args: argparse.Namespace) -> None:
+    command = [
+        sys.executable,
+        "-m",
+        "finnews.interfaces.cli.app",
+        "source",
+        "smoke-test",
+        "--source",
+        args.source,
+        "--max-items",
+        str(args.max_items),
+        "--no-persist",
+    ]
+    if args.conditional_check:
+        command.append("--conditional-check")
+    if args.confirm_live:
+        command.append("--confirm-live")
+    if args.report_path:
+        command.extend(["--report-path", args.report_path])
+    run(command, ROOT / "backend")
 
 
 def wait_for_postgres_health(timeout_seconds: int = 90) -> None:
@@ -271,6 +326,14 @@ def main() -> None:
     sub.add_parser("db-down").set_defaults(func=db_down)
     sub.add_parser("verify-postgres").set_defaults(func=verify_postgres)
     sub.add_parser("verify-sources").set_defaults(func=verify_sources)
+    sub.add_parser("verify-source-reviews").set_defaults(func=verify_source_reviews)
+    smoke_parser = sub.add_parser("smoke-source")
+    smoke_parser.add_argument("--source", required=True)
+    smoke_parser.add_argument("--max-items", type=int, default=5)
+    smoke_parser.add_argument("--conditional-check", action="store_true", default=False)
+    smoke_parser.add_argument("--confirm-live", action="store_true", default=False)
+    smoke_parser.add_argument("--report-path")
+    smoke_parser.set_defaults(func=smoke_source)
     sub.add_parser("export-static").set_defaults(func=export_static)
     cleanup_parser = sub.add_parser("cleanup")
     cleanup_parser.add_argument("--dry-run", action="store_true", default=False)

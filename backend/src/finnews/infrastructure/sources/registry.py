@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import os
+from dataclasses import replace
 from pathlib import Path
 from typing import Any
 from urllib.parse import urlparse
@@ -20,6 +21,9 @@ from finnews.domain.enums import IngestionPolicy, SourceApprovalStatus, SourceTy
 
 MAX_M1A_RESPONSE_BYTES = 5_000_000
 DEFAULT_SOURCE_CONFIG_DIR = Path(__file__).resolve().parents[5] / "config" / "sources"
+DEFAULT_SOURCE_LOCAL_OVERRIDE = (
+    Path(__file__).resolve().parents[5] / "config" / "sources.local.yaml"
+)
 SECRET_KEY_FRAGMENTS = ("secret", "password", "token", "api_key", "apikey", "credential")
 
 
@@ -64,6 +68,13 @@ class SourceDefinitionConfig(BaseModel):
     user_agent: str = Field(default="finnews-intelligence-platform/0.1 (+local research)")
     notes: str = ""
     risk_classification: str = Field(default="medium", pattern=r"^(low|medium|high)$")
+    review_evidence_id: str | None = Field(default=None, pattern=r"^[a-z0-9][a-z0-9_-]*$")
+    source_config_sha256: str | None = Field(default=None, pattern=r"^[a-f0-9]{64}$")
+    endpoint_template: str | None = None
+    parameter_schema: dict[str, str] = Field(default_factory=dict)
+    user_agent_env_var: str | None = Field(default=None, pattern=r"^[A-Z][A-Z0-9_]*$")
+    user_agent_template: str | None = None
+    max_items_per_smoke: int = Field(default=5, ge=1, le=5)
 
     @field_validator("terms_url", "documentation_url", "base_url")
     @classmethod
@@ -75,6 +86,16 @@ class SourceDefinitionConfig(BaseModel):
             raise ValueError("URL must use https")
         if not parsed.netloc:
             raise ValueError("URL must include a hostname")
+        return value
+
+    @field_validator("endpoint_template")
+    @classmethod
+    def validate_endpoint_template(cls, value: str | None) -> str | None:
+        if value is None:
+            return value
+        parsed = urlparse(value)
+        if parsed.scheme != "https" or not parsed.netloc:
+            raise ValueError("endpoint_template must be an absolute https URL")
         return value
 
     @field_validator("approved_hostnames")
@@ -92,6 +113,10 @@ class SourceDefinitionConfig(BaseModel):
             host = urlparse(self.base_url).hostname or ""
             if host.lower() not in self.approved_hostnames:
                 raise ValueError("base_url host must be listed in approved_hostnames")
+            if self.endpoint_template:
+                endpoint_host = urlparse(self.endpoint_template).hostname or ""
+                if endpoint_host.lower() not in self.approved_hostnames:
+                    raise ValueError("endpoint_template host must be listed in approved_hostnames")
             if not self.documentation_url:
                 raise ValueError("network sources require documentation_url")
         if self.source_type in {SourceType.USER_EXPORT_JSON, SourceType.USER_EXPORT_CSV}:
@@ -139,7 +164,27 @@ class SourceDefinitionConfig(BaseModel):
             user_agent=self.user_agent,
             notes=self.notes,
             risk_classification=self.risk_classification,
+            review_evidence_id=self.review_evidence_id,
+            source_config_sha256=self.source_config_sha256,
+            endpoint_template=self.endpoint_template,
+            parameter_schema=dict(self.parameter_schema),
+            user_agent_env_var=self.user_agent_env_var,
+            user_agent_template=self.user_agent_template,
+            max_items_per_smoke=self.max_items_per_smoke,
         )
+
+
+class SourceOverrideItemConfig(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    source_id: str = Field(min_length=1, max_length=120, pattern=r"^[a-z0-9][a-z0-9_-]*$")
+    enabled: bool
+
+
+class SourceOverrideConfig(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    sources: list[SourceOverrideItemConfig] = Field(default_factory=list)
 
 
 def load_source_definitions(config_dir: Path | None = None) -> list[SourceDefinition]:
@@ -165,11 +210,26 @@ def load_source_definitions(config_dir: Path | None = None) -> list[SourceDefini
                 raise SourceConfigError(f"duplicate source_id: {config.source_id}")
             seen.add(config.source_id)
             definitions.append(config.to_domain())
-    return definitions
+    return _apply_local_overrides(definitions)
 
 
 def validate_source_definitions(config_dir: Path | None = None) -> list[str]:
     return [definition.source_id for definition in load_source_definitions(config_dir)]
+
+
+def load_enabled_local_override_source_ids(path: Path | None = None) -> set[str]:
+    override_path = path or Path(
+        os.environ.get("FINNEWS_SOURCE_LOCAL_OVERRIDE", str(DEFAULT_SOURCE_LOCAL_OVERRIDE))
+    )
+    if not override_path.exists():
+        return set()
+    data = _read_yaml(override_path)
+    _reject_secret_like_fields(data, override_path)
+    try:
+        overrides = SourceOverrideConfig.model_validate(data)
+    except ValidationError as exc:
+        raise SourceConfigError(f"{override_path}: source override invalid: {exc}") from exc
+    return {item.source_id for item in overrides.sources if item.enabled}
 
 
 def _read_yaml(path: Path) -> dict[str, Any]:
@@ -182,6 +242,39 @@ def _read_yaml(path: Path) -> dict[str, Any]:
     if not isinstance(raw, dict):
         raise SourceConfigError(f"{path}: expected YAML mapping")
     return raw
+
+
+def _apply_local_overrides(definitions: list[SourceDefinition]) -> list[SourceDefinition]:
+    override_path = Path(
+        os.environ.get("FINNEWS_SOURCE_LOCAL_OVERRIDE", str(DEFAULT_SOURCE_LOCAL_OVERRIDE))
+    )
+    if not override_path.exists():
+        return definitions
+    data = _read_yaml(override_path)
+    _reject_secret_like_fields(data, override_path)
+    try:
+        overrides = SourceOverrideConfig.model_validate(data)
+    except ValidationError as exc:
+        raise SourceConfigError(f"{override_path}: source override invalid: {exc}") from exc
+    by_id = {definition.source_id: definition for definition in definitions}
+    seen: set[str] = set()
+    for item in overrides.sources:
+        if item.source_id in seen:
+            raise SourceConfigError(
+                f"{override_path}: duplicate override source_id: {item.source_id}"
+            )
+        seen.add(item.source_id)
+        if item.source_id not in by_id:
+            raise SourceConfigError(
+                f"{override_path}: unknown override source_id: {item.source_id}"
+            )
+        current = by_id[item.source_id]
+        if item.enabled and current.review_status is not SourceApprovalStatus.APPROVED:
+            raise SourceConfigError(
+                f"{override_path}: cannot enable unapproved source: {item.source_id}"
+            )
+        by_id[item.source_id] = replace(current, enabled=item.enabled)
+    return [by_id[definition.source_id] for definition in definitions]
 
 
 def _reject_secret_like_fields(value: object, path: Path, trail: str = "") -> None:
