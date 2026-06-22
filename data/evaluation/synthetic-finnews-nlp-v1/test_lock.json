@@ -1,0 +1,7 @@
+{
+  "dataset_id": "synthetic-finnews-nlp-v1",
+  "dataset_version": "1.0.0",
+  "record_ids_sha256": "34c4a8d3c242362a97f15bec1573666368aa11b8e185641d89fdb8b5e7e9362b",
+  "test_record_count": 324,
+  "test_split_sha256": "2f0b409caa29a341e122d1ff28b4f34b09208d0b6f2f0dff323b5d469657172b"
+}
