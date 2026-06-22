@@ -4,7 +4,21 @@ export interface Overview {
   synthetic: boolean;
   not_investment_advice: boolean;
   article_count: number;
+  canonical_article_count: number;
   company_count: number;
+  deduplication: {
+    raw_observation_count: number;
+    rejected_observation_count: number;
+    valid_observation_count: number;
+    canonical_article_count: number;
+    exact_duplicate_observation_count: number;
+    near_duplicate_observation_count: number;
+    duplicate_observation_count: number;
+    exact_duplicate_pair_count: number;
+    near_duplicate_pair_count: number;
+    duplicate_cluster_count: number;
+  };
+  deduplication_groups?: Record<string, string[]>;
   event_distribution: Record<string, number>;
   sentiment_distribution: Record<string, number>;
 }

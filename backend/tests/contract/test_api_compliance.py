@@ -78,5 +78,10 @@ def test_response_shapes_for_companies_events_signals_pipeline_and_overview() ->
     assert {"article_id", "event_type", "confidence", "evidence"}.issubset(event)
     assert {"signal_date", "ticker", "weighted_sentiment_score", "schema_version"}.issubset(signal)
     assert {"status", "counts", "timings"}.issubset(run)
+    assert run["counts"]["canonical_article_count"] == 46
+    assert run["counts"]["exact_duplicate_observation_count"] == 8
+    assert run["counts"]["near_duplicate_observation_count"] == 10
     assert overview["synthetic"] is True
     assert overview["not_investment_advice"] is True
+    assert overview["deduplication"]["canonical_article_count"] == 46
+    assert overview["deduplication"]["duplicate_observation_count"] == 18

@@ -30,8 +30,21 @@ vi.mock("../src/api/client", () => ({
   loadOverview: async () => ({
     synthetic: true,
     not_investment_advice: true,
-    article_count: 49,
+    article_count: 46,
+    canonical_article_count: 46,
     company_count: 12,
+    deduplication: {
+      raw_observation_count: 68,
+      rejected_observation_count: 4,
+      valid_observation_count: 64,
+      canonical_article_count: 46,
+      exact_duplicate_observation_count: 8,
+      near_duplicate_observation_count: 10,
+      duplicate_observation_count: 18,
+      exact_duplicate_pair_count: 8,
+      near_duplicate_pair_count: 10,
+      duplicate_cluster_count: 18,
+    },
     event_distribution: { earnings: 5 },
     sentiment_distribution: { positive: 8 },
   }),
@@ -93,7 +106,11 @@ describe("frontend compliance", () => {
   it("renders overview metrics", async () => {
     const wrapper = mount(OverviewPage);
     await new Promise((resolve) => setTimeout(resolve, 0));
-    expect(wrapper.text()).toContain("49");
+    expect(wrapper.text()).toContain("Canonical Articles");
+    expect(wrapper.text()).toContain("46");
+    expect(wrapper.text()).toContain("Raw Observations");
+    expect(wrapper.text()).toContain("68");
+    expect(wrapper.text()).toContain("exact 8 / near 10");
     expect(wrapper.text()).toContain("12");
     expect(wrapper.text()).toContain("earnings");
   });

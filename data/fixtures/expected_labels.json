@@ -1,350 +1,760 @@
 {
-  "exact-001": {
-    "duplicate_kind": "exact",
+  "1d24d6dbbe09a792f2ad28dda44351bb38ef3c5989078e8808e816fbb9e7194b": {
+    "disposition": "canonical",
+    "event": "merger_acquisition",
+    "expected_canonical_observation_id": "1d24d6dbbe09a792f2ad28dda44351bb38ef3c5989078e8808e816fbb9e7194b",
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "first valid observation for this canonical article",
+    "fixture_group": "unique",
+    "sentiment": "uncertain",
+    "ticker": "PRM"
+  },
+  "a8ad8476d90cfc436c19b64f722ca8a7a02d7c0d8279270b45ef27c101a57608": {
+    "disposition": "canonical",
     "event": "earnings",
+    "expected_canonical_observation_id": "a8ad8476d90cfc436c19b64f722ca8a7a02d7c0d8279270b45ef27c101a57608",
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "first valid observation for this canonical article",
+    "fixture_group": "unique",
+    "sentiment": "positive",
+    "ticker": "ALP"
+  },
+  "bad-empty-title": {
+    "disposition": "rejected",
+    "expected_canonical_observation_id": null,
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "malformed fixture observation rejected before canonical persistence",
+    "fixture_group": "malformed"
+  },
+  "bad-language": {
+    "disposition": "rejected",
+    "expected_canonical_observation_id": null,
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "malformed fixture observation rejected before canonical persistence",
+    "fixture_group": "malformed"
+  },
+  "bad-time": {
+    "disposition": "rejected",
+    "expected_canonical_observation_id": null,
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "malformed fixture observation rejected before canonical persistence",
+    "fixture_group": "malformed"
+  },
+  "bad-url": {
+    "disposition": "rejected",
+    "expected_canonical_observation_id": null,
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "malformed fixture observation rejected before canonical persistence",
+    "fixture_group": "malformed"
+  },
+  "exact-001": {
+    "disposition": "exact_duplicate",
+    "duplicate_type": "exact",
+    "event": "earnings",
+    "expected_canonical_observation_id": "obs-001",
+    "expected_similarity_range": [
+      1.0,
+      1.0
+    ],
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "same normalized title, summary, and language as canonical observation",
+    "fixture_group": "exact",
     "sentiment": "positive",
     "ticker": "ALP"
   },
   "exact-002": {
-    "duplicate_kind": "exact",
+    "disposition": "exact_duplicate",
+    "duplicate_type": "exact",
     "event": "merger_acquisition",
+    "expected_canonical_observation_id": "obs-002",
+    "expected_similarity_range": [
+      1.0,
+      1.0
+    ],
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "same normalized title, summary, and language as canonical observation",
+    "fixture_group": "exact",
     "sentiment": "uncertain",
     "ticker": "BRC"
   },
   "exact-003": {
-    "duplicate_kind": "exact",
+    "disposition": "exact_duplicate",
+    "duplicate_type": "exact",
     "event": "policy_regulation",
+    "expected_canonical_observation_id": "obs-003",
+    "expected_similarity_range": [
+      1.0,
+      1.0
+    ],
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "same normalized title, summary, and language as canonical observation",
+    "fixture_group": "exact",
     "sentiment": "neutral",
     "ticker": "HLS"
   },
   "exact-004": {
-    "duplicate_kind": "exact",
+    "disposition": "exact_duplicate",
+    "duplicate_type": "exact",
     "event": "operations_product",
+    "expected_canonical_observation_id": "obs-004",
+    "expected_similarity_range": [
+      1.0,
+      1.0
+    ],
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "same normalized title, summary, and language as canonical observation",
+    "fixture_group": "exact",
     "sentiment": "positive",
     "ticker": "NVM"
   },
   "exact-005": {
-    "duplicate_kind": "exact",
+    "disposition": "exact_duplicate",
+    "duplicate_type": "exact",
     "event": "financing_capital",
+    "expected_canonical_observation_id": "obs-005",
+    "expected_similarity_range": [
+      1.0,
+      1.0
+    ],
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "same normalized title, summary, and language as canonical observation",
+    "fixture_group": "exact",
     "sentiment": "uncertain",
     "ticker": "QNT"
   },
   "exact-006": {
-    "duplicate_kind": "exact",
+    "disposition": "exact_duplicate",
+    "duplicate_type": "exact",
     "event": "litigation_penalty",
+    "expected_canonical_observation_id": "obs-006",
+    "expected_similarity_range": [
+      1.0,
+      1.0
+    ],
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "same normalized title, summary, and language as canonical observation",
+    "fixture_group": "exact",
     "sentiment": "negative",
     "ticker": "ORC"
   },
   "exact-007": {
-    "duplicate_kind": "exact",
+    "disposition": "exact_duplicate",
+    "duplicate_type": "exact",
     "event": "governance_personnel",
+    "expected_canonical_observation_id": "obs-007",
+    "expected_similarity_range": [
+      1.0,
+      1.0
+    ],
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "same normalized title, summary, and language as canonical observation",
+    "fixture_group": "exact",
     "sentiment": "neutral",
     "ticker": "VTL"
   },
   "exact-008": {
-    "duplicate_kind": "exact",
+    "disposition": "exact_duplicate",
+    "duplicate_type": "exact",
     "event": "macro_market",
+    "expected_canonical_observation_id": "obs-008",
+    "expected_similarity_range": [
+      1.0,
+      1.0
+    ],
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "same normalized title, summary, and language as canonical observation",
+    "fixture_group": "exact",
     "sentiment": "negative",
     "ticker": "MTR"
   },
   "near-001": {
-    "duplicate_kind": "near",
+    "disposition": "near_duplicate",
+    "duplicate_type": "near",
     "event": "other",
+    "expected_canonical_observation_id": "obs-009",
+    "expected_similarity_range": [
+      0.86,
+      1.0
+    ],
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "near duplicate with deterministic high text similarity",
+    "fixture_group": "near",
     "sentiment": "neutral",
     "ticker": "SKY"
   },
   "near-002": {
-    "duplicate_kind": "near",
+    "disposition": "near_duplicate",
+    "duplicate_type": "near",
     "event": "earnings",
+    "expected_canonical_observation_id": "obs-010",
+    "expected_similarity_range": [
+      0.86,
+      1.0
+    ],
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "near duplicate with deterministic high text similarity",
+    "fixture_group": "near",
     "sentiment": "positive",
     "ticker": "LUM"
   },
   "near-003": {
-    "duplicate_kind": "near",
+    "disposition": "near_duplicate",
+    "duplicate_type": "near",
     "event": "merger_acquisition",
+    "expected_canonical_observation_id": "1d24d6dbbe09a792f2ad28dda44351bb38ef3c5989078e8808e816fbb9e7194b",
+    "expected_similarity_range": [
+      0.86,
+      1.0
+    ],
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "near duplicate with deterministic high text similarity",
+    "fixture_group": "near",
     "sentiment": "uncertain",
     "ticker": "PRM"
   },
   "near-004": {
-    "duplicate_kind": "near",
+    "disposition": "near_duplicate",
+    "duplicate_type": "near",
     "event": "policy_regulation",
+    "expected_canonical_observation_id": "obs-012",
+    "expected_similarity_range": [
+      0.86,
+      1.0
+    ],
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "near duplicate with deterministic high text similarity",
+    "fixture_group": "near",
     "sentiment": "neutral",
     "ticker": "ECO"
   },
   "near-005": {
-    "duplicate_kind": "near",
+    "disposition": "near_duplicate",
+    "duplicate_type": "near",
     "event": "operations_product",
+    "expected_canonical_observation_id": "obs-013",
+    "expected_similarity_range": [
+      0.86,
+      1.0
+    ],
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "near duplicate with deterministic high text similarity",
+    "fixture_group": "near",
     "sentiment": "positive",
     "ticker": "ALP"
   },
   "near-006": {
-    "duplicate_kind": "near",
+    "disposition": "near_duplicate",
+    "duplicate_type": "near",
     "event": "financing_capital",
+    "expected_canonical_observation_id": "obs-014",
+    "expected_similarity_range": [
+      0.86,
+      1.0
+    ],
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "near duplicate with deterministic high text similarity",
+    "fixture_group": "near",
     "sentiment": "uncertain",
     "ticker": "BRC"
   },
   "near-007": {
-    "duplicate_kind": "near",
+    "disposition": "near_duplicate",
+    "duplicate_type": "near",
     "event": "litigation_penalty",
+    "expected_canonical_observation_id": "obs-015",
+    "expected_similarity_range": [
+      0.86,
+      1.0
+    ],
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "near duplicate with deterministic high text similarity",
+    "fixture_group": "near",
     "sentiment": "negative",
     "ticker": "HLS"
   },
   "near-008": {
-    "duplicate_kind": "near",
+    "disposition": "near_duplicate",
+    "duplicate_type": "near",
     "event": "governance_personnel",
+    "expected_canonical_observation_id": "obs-016",
+    "expected_similarity_range": [
+      0.86,
+      1.0
+    ],
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "near duplicate with deterministic high text similarity",
+    "fixture_group": "near",
     "sentiment": "neutral",
     "ticker": "NVM"
   },
   "near-009": {
-    "duplicate_kind": "near",
+    "disposition": "near_duplicate",
+    "duplicate_type": "near",
     "event": "macro_market",
+    "expected_canonical_observation_id": "obs-017",
+    "expected_similarity_range": [
+      0.86,
+      1.0
+    ],
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "near duplicate with deterministic high text similarity",
+    "fixture_group": "near",
     "sentiment": "negative",
     "ticker": "QNT"
   },
   "near-010": {
-    "duplicate_kind": "near",
+    "disposition": "near_duplicate",
+    "duplicate_type": "near",
     "event": "other",
+    "expected_canonical_observation_id": "obs-018",
+    "expected_similarity_range": [
+      0.86,
+      1.0
+    ],
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "near duplicate with deterministic high text similarity",
+    "fixture_group": "near",
     "sentiment": "neutral",
     "ticker": "ORC"
   },
   "obs-001": {
-    "duplicate_kind": "unique",
+    "disposition": "canonical",
     "event": "earnings",
+    "expected_canonical_observation_id": "obs-001",
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "first valid observation for this canonical article",
+    "fixture_group": "unique",
     "sentiment": "positive",
     "ticker": "ALP"
   },
   "obs-002": {
-    "duplicate_kind": "unique",
+    "disposition": "canonical",
     "event": "merger_acquisition",
+    "expected_canonical_observation_id": "obs-002",
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "first valid observation for this canonical article",
+    "fixture_group": "unique",
     "sentiment": "uncertain",
     "ticker": "BRC"
   },
   "obs-003": {
-    "duplicate_kind": "unique",
+    "disposition": "canonical",
     "event": "policy_regulation",
+    "expected_canonical_observation_id": "obs-003",
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "first valid observation for this canonical article",
+    "fixture_group": "unique",
     "sentiment": "neutral",
     "ticker": "HLS"
   },
   "obs-004": {
-    "duplicate_kind": "unique",
+    "disposition": "canonical",
     "event": "operations_product",
+    "expected_canonical_observation_id": "obs-004",
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "first valid observation for this canonical article",
+    "fixture_group": "unique",
     "sentiment": "positive",
     "ticker": "NVM"
   },
   "obs-005": {
-    "duplicate_kind": "unique",
+    "disposition": "canonical",
     "event": "financing_capital",
+    "expected_canonical_observation_id": "obs-005",
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "first valid observation for this canonical article",
+    "fixture_group": "unique",
     "sentiment": "uncertain",
     "ticker": "QNT"
   },
   "obs-006": {
-    "duplicate_kind": "unique",
+    "disposition": "canonical",
     "event": "litigation_penalty",
+    "expected_canonical_observation_id": "obs-006",
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "first valid observation for this canonical article",
+    "fixture_group": "unique",
     "sentiment": "negative",
     "ticker": "ORC"
   },
   "obs-007": {
-    "duplicate_kind": "unique",
+    "disposition": "canonical",
     "event": "governance_personnel",
+    "expected_canonical_observation_id": "obs-007",
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "first valid observation for this canonical article",
+    "fixture_group": "unique",
     "sentiment": "neutral",
     "ticker": "VTL"
   },
   "obs-008": {
-    "duplicate_kind": "unique",
+    "disposition": "canonical",
     "event": "macro_market",
+    "expected_canonical_observation_id": "obs-008",
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "first valid observation for this canonical article",
+    "fixture_group": "unique",
     "sentiment": "negative",
     "ticker": "MTR"
   },
   "obs-009": {
-    "duplicate_kind": "unique",
+    "disposition": "canonical",
     "event": "other",
+    "expected_canonical_observation_id": "obs-009",
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "first valid observation for this canonical article",
+    "fixture_group": "unique",
     "sentiment": "neutral",
     "ticker": "SKY"
   },
   "obs-010": {
-    "duplicate_kind": "unique",
+    "disposition": "canonical",
     "event": "earnings",
+    "expected_canonical_observation_id": "obs-010",
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "first valid observation for this canonical article",
+    "fixture_group": "unique",
     "sentiment": "positive",
     "ticker": "LUM"
   },
   "obs-012": {
-    "duplicate_kind": "unique",
+    "disposition": "canonical",
     "event": "policy_regulation",
+    "expected_canonical_observation_id": "obs-012",
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "first valid observation for this canonical article",
+    "fixture_group": "unique",
     "sentiment": "neutral",
     "ticker": "ECO"
   },
   "obs-013": {
-    "duplicate_kind": "unique",
+    "disposition": "canonical",
     "event": "operations_product",
+    "expected_canonical_observation_id": "obs-013",
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "first valid observation for this canonical article",
+    "fixture_group": "unique",
     "sentiment": "positive",
     "ticker": "ALP"
   },
   "obs-014": {
-    "duplicate_kind": "unique",
+    "disposition": "canonical",
     "event": "financing_capital",
+    "expected_canonical_observation_id": "obs-014",
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "first valid observation for this canonical article",
+    "fixture_group": "unique",
     "sentiment": "uncertain",
     "ticker": "BRC"
   },
   "obs-015": {
-    "duplicate_kind": "unique",
+    "disposition": "canonical",
     "event": "litigation_penalty",
+    "expected_canonical_observation_id": "obs-015",
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "first valid observation for this canonical article",
+    "fixture_group": "unique",
     "sentiment": "negative",
     "ticker": "HLS"
   },
   "obs-016": {
-    "duplicate_kind": "unique",
+    "disposition": "canonical",
     "event": "governance_personnel",
+    "expected_canonical_observation_id": "obs-016",
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "first valid observation for this canonical article",
+    "fixture_group": "unique",
     "sentiment": "neutral",
     "ticker": "NVM"
   },
   "obs-017": {
-    "duplicate_kind": "unique",
+    "disposition": "canonical",
     "event": "macro_market",
+    "expected_canonical_observation_id": "obs-017",
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "first valid observation for this canonical article",
+    "fixture_group": "unique",
     "sentiment": "negative",
     "ticker": "QNT"
   },
   "obs-018": {
-    "duplicate_kind": "unique",
+    "disposition": "canonical",
     "event": "other",
+    "expected_canonical_observation_id": "obs-018",
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "first valid observation for this canonical article",
+    "fixture_group": "unique",
     "sentiment": "neutral",
     "ticker": "ORC"
   },
   "obs-019": {
-    "duplicate_kind": "unique",
+    "disposition": "canonical",
     "event": "earnings",
+    "expected_canonical_observation_id": "obs-019",
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "first valid observation for this canonical article",
+    "fixture_group": "unique",
     "sentiment": "positive",
     "ticker": "VTL"
   },
   "obs-020": {
-    "duplicate_kind": "unique",
+    "disposition": "canonical",
     "event": "merger_acquisition",
+    "expected_canonical_observation_id": "obs-020",
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "first valid observation for this canonical article",
+    "fixture_group": "unique",
     "sentiment": "uncertain",
     "ticker": "MTR"
   },
   "obs-021": {
-    "duplicate_kind": "unique",
+    "disposition": "canonical",
     "event": "policy_regulation",
+    "expected_canonical_observation_id": "obs-021",
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "first valid observation for this canonical article",
+    "fixture_group": "unique",
     "sentiment": "neutral",
     "ticker": "SKY"
   },
   "obs-022": {
-    "duplicate_kind": "unique",
+    "disposition": "canonical",
     "event": "operations_product",
+    "expected_canonical_observation_id": "obs-022",
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "first valid observation for this canonical article",
+    "fixture_group": "unique",
     "sentiment": "positive",
     "ticker": "LUM"
   },
   "obs-023": {
-    "duplicate_kind": "unique",
+    "disposition": "canonical",
     "event": "financing_capital",
+    "expected_canonical_observation_id": "obs-023",
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "first valid observation for this canonical article",
+    "fixture_group": "unique",
     "sentiment": "uncertain",
     "ticker": "PRM"
   },
   "obs-024": {
-    "duplicate_kind": "unique",
+    "disposition": "canonical",
     "event": "litigation_penalty",
+    "expected_canonical_observation_id": "obs-024",
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "first valid observation for this canonical article",
+    "fixture_group": "unique",
     "sentiment": "negative",
     "ticker": "ECO"
   },
   "obs-025": {
-    "duplicate_kind": "unique",
+    "disposition": "canonical",
     "event": "governance_personnel",
+    "expected_canonical_observation_id": "obs-025",
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "first valid observation for this canonical article",
+    "fixture_group": "unique",
     "sentiment": "neutral",
     "ticker": "ALP"
   },
   "obs-026": {
-    "duplicate_kind": "unique",
+    "disposition": "canonical",
     "event": "macro_market",
+    "expected_canonical_observation_id": "obs-026",
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "first valid observation for this canonical article",
+    "fixture_group": "unique",
     "sentiment": "negative",
     "ticker": "BRC"
   },
   "obs-027": {
-    "duplicate_kind": "unique",
+    "disposition": "canonical",
     "event": "other",
+    "expected_canonical_observation_id": "obs-027",
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "first valid observation for this canonical article",
+    "fixture_group": "unique",
     "sentiment": "neutral",
     "ticker": "HLS"
   },
   "obs-028": {
-    "duplicate_kind": "unique",
+    "disposition": "canonical",
     "event": "earnings",
+    "expected_canonical_observation_id": "obs-028",
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "first valid observation for this canonical article",
+    "fixture_group": "unique",
     "sentiment": "positive",
     "ticker": "NVM"
   },
   "obs-029": {
-    "duplicate_kind": "unique",
+    "disposition": "canonical",
     "event": "merger_acquisition",
+    "expected_canonical_observation_id": "obs-029",
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "first valid observation for this canonical article",
+    "fixture_group": "unique",
     "sentiment": "uncertain",
     "ticker": "QNT"
   },
   "obs-030": {
-    "duplicate_kind": "unique",
+    "disposition": "canonical",
     "event": "policy_regulation",
+    "expected_canonical_observation_id": "obs-030",
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "first valid observation for this canonical article",
+    "fixture_group": "unique",
     "sentiment": "neutral",
     "ticker": "ORC"
   },
   "obs-031": {
-    "duplicate_kind": "unique",
+    "disposition": "canonical",
     "event": "operations_product",
+    "expected_canonical_observation_id": "obs-031",
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "first valid observation for this canonical article",
+    "fixture_group": "unique",
     "sentiment": "positive",
     "ticker": "VTL"
   },
   "obs-032": {
-    "duplicate_kind": "unique",
+    "disposition": "canonical",
     "event": "financing_capital",
+    "expected_canonical_observation_id": "obs-032",
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "first valid observation for this canonical article",
+    "fixture_group": "unique",
     "sentiment": "uncertain",
     "ticker": "MTR"
   },
   "obs-033": {
-    "duplicate_kind": "unique",
+    "disposition": "canonical",
     "event": "litigation_penalty",
+    "expected_canonical_observation_id": "obs-033",
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "first valid observation for this canonical article",
+    "fixture_group": "unique",
     "sentiment": "negative",
     "ticker": "SKY"
   },
   "obs-034": {
-    "duplicate_kind": "unique",
+    "disposition": "canonical",
     "event": "governance_personnel",
+    "expected_canonical_observation_id": "obs-034",
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "first valid observation for this canonical article",
+    "fixture_group": "unique",
     "sentiment": "neutral",
     "ticker": "LUM"
   },
   "obs-035": {
-    "duplicate_kind": "unique",
+    "disposition": "canonical",
     "event": "macro_market",
+    "expected_canonical_observation_id": "obs-035",
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "first valid observation for this canonical article",
+    "fixture_group": "unique",
     "sentiment": "negative",
     "ticker": "PRM"
   },
   "obs-036": {
-    "duplicate_kind": "unique",
+    "disposition": "canonical",
     "event": "other",
+    "expected_canonical_observation_id": "obs-036",
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "first valid observation for this canonical article",
+    "fixture_group": "unique",
     "sentiment": "neutral",
     "ticker": "ECO"
   },
   "obs-038": {
-    "duplicate_kind": "unique",
+    "disposition": "canonical",
     "event": "merger_acquisition",
+    "expected_canonical_observation_id": "obs-038",
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "first valid observation for this canonical article",
+    "fixture_group": "unique",
     "sentiment": "uncertain",
     "ticker": "BRC"
   },
   "obs-039": {
-    "duplicate_kind": "unique",
+    "disposition": "canonical",
     "event": "policy_regulation",
+    "expected_canonical_observation_id": "obs-039",
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "first valid observation for this canonical article",
+    "fixture_group": "unique",
     "sentiment": "neutral",
     "ticker": "HLS"
   },
   "obs-040": {
-    "duplicate_kind": "unique",
+    "disposition": "canonical",
     "event": "operations_product",
+    "expected_canonical_observation_id": "obs-040",
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "first valid observation for this canonical article",
+    "fixture_group": "unique",
     "sentiment": "positive",
     "ticker": "NVM"
   },
   "obs-041": {
-    "duplicate_kind": "unique",
+    "disposition": "canonical",
     "event": "financing_capital",
+    "expected_canonical_observation_id": "obs-041",
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "first valid observation for this canonical article",
+    "fixture_group": "unique",
     "sentiment": "uncertain",
     "ticker": "QNT"
   },
   "obs-042": {
-    "duplicate_kind": "unique",
+    "disposition": "canonical",
     "event": "litigation_penalty",
+    "expected_canonical_observation_id": "obs-042",
+    "expected_source_adapter": "jsonl_fixture",
+    "explanation": "first valid observation for this canonical article",
+    "fixture_group": "unique",
     "sentiment": "negative",
     "ticker": "ORC"
+  },
+  "obs-101": {
+    "disposition": "canonical",
+    "event": "operations_product",
+    "expected_canonical_observation_id": "obs-101",
+    "expected_source_adapter": "local_feed",
+    "explanation": "first valid observation for this canonical article",
+    "fixture_group": "unique",
+    "sentiment": "positive",
+    "ticker": "ALP"
+  },
+  "obs-102": {
+    "disposition": "canonical",
+    "event": "governance_personnel",
+    "expected_canonical_observation_id": "obs-102",
+    "expected_source_adapter": "local_feed",
+    "explanation": "first valid observation for this canonical article",
+    "fixture_group": "unique",
+    "sentiment": "neutral",
+    "ticker": "QNT"
+  },
+  "obs-103": {
+    "disposition": "canonical",
+    "event": "other",
+    "expected_canonical_observation_id": "obs-103",
+    "expected_source_adapter": "local_feed",
+    "explanation": "first valid observation for this canonical article",
+    "fixture_group": "unique",
+    "sentiment": "neutral",
+    "ticker": "MTR"
+  },
+  "obs-104": {
+    "disposition": "canonical",
+    "event": "macro_market",
+    "expected_canonical_observation_id": "obs-104",
+    "expected_source_adapter": "local_feed",
+    "explanation": "first valid observation for this canonical article",
+    "fixture_group": "unique",
+    "sentiment": "negative",
+    "ticker": "PRM"
   }
 }

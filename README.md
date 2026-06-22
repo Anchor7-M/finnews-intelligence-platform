@@ -36,9 +36,10 @@ flowchart LR
 - 60 valid JSONL observations, 4 malformed JSONL validation records, and 4 RSS fixture records.
 - 12 clearly fictional companies across multiple fictional sectors.
 - 5 loaded synthetic sources.
-- Pipeline demo output: 49 stored article records, 15 exact duplicate observations, 21 near-duplicate observations, 4 rejected observations, 7 digests, and 46 daily company signals.
+- Deduplication accounting: 4 rejected observations, 64 valid observations, 46 canonical articles, 8 exact duplicate observations, 10 near-duplicate observations, 18 duplicate observations, 8 exact duplicate pairs, 10 near-duplicate pairs, and 18 duplicate clusters.
+- Pipeline demo output: 46 canonical articles, 7 digests, and 46 daily company signals.
 - All 9 event categories and all 4 sentiment labels are represented.
-- `finnews evaluate-demo` currently reports `synthetic_demo_matches=58 synthetic_demo_total=58`.
+- `finnews evaluate-demo` currently reports `synthetic_demo_matches=54 synthetic_demo_total=54`, `synthetic_disposition_matches=68 synthetic_disposition_total=68`, and the same deduplication metrics.
 
 ## Quick Start
 
@@ -75,8 +76,8 @@ PostgreSQL integration has not been verified in this local audit because Docker 
 
 The latest lightweight verification passed:
 
-- Backend tests: 39 passed.
-- Backend coverage: 92.09%, threshold 80%.
+- Backend tests: tracked by `python scripts/dev.py verify-lite`.
+- Backend coverage: enforced at the 80% threshold.
 - Frontend tests: 8 passed.
 - Ruff, Ruff format, mypy, ESLint, Prettier, TypeScript, Vite build, memory demo, static export, and `git diff --check` passed.
 

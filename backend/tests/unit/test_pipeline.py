@@ -1,7 +1,9 @@
 from __future__ import annotations
 
+from collections import Counter
 from pathlib import Path
 
+from finnews.application.services.deduplication_accounting import build_deduplication_accounting
 from finnews.application.services.pipeline import NewsPipeline
 from finnews.bootstrap import FIXTURE_DIR, load_default_records
 from finnews.domain.enums import ProcessingState, SentimentLabel
@@ -31,8 +33,15 @@ def test_pipeline_rejects_malformed_record_and_is_idempotent() -> None:
 
 def test_full_demo_generates_articles_links_events_sentiments_digest_and_signals() -> None:
     repo = build_repo()
+    accounting = build_deduplication_accounting(repo)
+    assert accounting.metrics["canonical_article_count"] == 46
+    assert accounting.metrics["exact_duplicate_observation_count"] == 8
+    assert accounting.metrics["near_duplicate_observation_count"] == 10
     assert len(repo.list_companies()) == 12
-    assert len(repo.list_articles()) >= 49
+    assert Counter(article.processing_state.value for article in repo.list_articles()) == {
+        "processed": 46,
+        "duplicate": 10,
+    }
     assert repo.list_links()
     assert repo.list_events()
     assert repo.list_sentiments()

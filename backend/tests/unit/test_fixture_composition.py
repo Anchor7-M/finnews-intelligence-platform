@@ -14,11 +14,14 @@ def test_committed_fixture_composition_requirements() -> None:
     ]
     companies = json.loads((FIXTURE_DIR / "companies.json").read_text(encoding="utf-8"))
     manifest = json.loads((FIXTURE_DIR / "fixture_manifest.json").read_text(encoding="utf-8"))
+    labels = json.loads((FIXTURE_DIR / "expected_labels.json").read_text(encoding="utf-8"))
     assert manifest["seed"] == 20260622
     assert len(records) >= 60
     assert len(companies) >= 12
     assert manifest["exact_duplicate_observations"] >= 8
     assert manifest["near_duplicate_observations"] >= 10
+    assert sum(1 for label in labels.values() if label["disposition"] == "exact_duplicate") == 8
+    assert sum(1 for label in labels.values() if label["disposition"] == "near_duplicate") == 10
     assert {"en", "zh"}.issubset(
         {record["language"] for record in records if record["duplicate_kind"] != "malformed"}
     )

@@ -18,8 +18,8 @@
     "ticker": "PRM",
     "article_count": 1,
     "unique_source_count": 1,
-    "weighted_sentiment_score": -0.142,
-    "negative_event_count": 0,
+    "weighted_sentiment_score": -0.391,
+    "negative_event_count": 1,
     "event_distribution": {
       "macro_market": 1
     },
@@ -35,7 +35,7 @@
     "weighted_sentiment_score": 0.0,
     "negative_event_count": 0,
     "event_distribution": {
-      "operations_product": 1
+      "other": 1
     },
     "novelty_score": 0.25,
     "source_diversity_score": 0.333,
@@ -450,12 +450,12 @@
   {
     "signal_date": "2026-06-20",
     "ticker": "HLS",
-    "article_count": 2,
+    "article_count": 1,
     "unique_source_count": 1,
-    "weighted_sentiment_score": -1.0,
-    "negative_event_count": 2,
+    "weighted_sentiment_score": -0.79,
+    "negative_event_count": 1,
     "event_distribution": {
-      "litigation_penalty": 2
+      "litigation_penalty": 1
     },
     "novelty_score": 0.25,
     "source_diversity_score": 0.333,
@@ -562,12 +562,12 @@
   {
     "signal_date": "2026-06-19",
     "ticker": "LUM",
-    "article_count": 2,
+    "article_count": 1,
     "unique_source_count": 1,
-    "weighted_sentiment_score": 0.875,
+    "weighted_sentiment_score": 0.621,
     "negative_event_count": 0,
     "event_distribution": {
-      "earnings": 2
+      "earnings": 1
     },
     "novelty_score": 0.25,
     "source_diversity_score": 0.333,
@@ -590,12 +590,12 @@
   {
     "signal_date": "2026-06-19",
     "ticker": "ECO",
-    "article_count": 2,
+    "article_count": 1,
     "unique_source_count": 1,
     "weighted_sentiment_score": 0.0,
     "negative_event_count": 0,
     "event_distribution": {
-      "policy_regulation": 2
+      "policy_regulation": 1
     },
     "novelty_score": 0.25,
     "source_diversity_score": 0.333,

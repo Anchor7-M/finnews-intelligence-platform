@@ -20,16 +20,16 @@
     </item>
     <item>
       <guid>obs-103</guid>
-      <title>城籽食品发布例行投资者日程更新</title>
+      <title>MetroSeed Foods publishes routine investor calendar update</title>
       <link>https://demo.local/synthetic-evening-brief/mtr-103?utm_source=fixture&amp;id=103</link>
-      <description>城籽食品发布例行日程通知，经营信息没有变化。 演示编号 103.</description>
+      <description>MetroSeed Foods published a routine calendar notice with no operational change. Demo case 103.</description>
       <pubDate>Wed, 01 Jul 2026 06:00:00 -0400</pubDate>
     </item>
     <item>
       <guid>obs-104</guid>
       <title>PrimeVale notes softer macro market orders</title>
       <link>https://demo.local/synthetic-jsonl-desk/prm-104?utm_source=fixture&amp;id=104</link>
-      <description>PrimeVale said market demand weakened and orders may face pressure this quarter. Demo case 104.</description>
+      <description>PrimeVale said market demand weakened and orders face risk pressure this quarter. Demo case 104.</description>
       <pubDate>Wed, 01 Jul 2026 09:00:00 +0800</pubDate>
     </item>
   </channel>
