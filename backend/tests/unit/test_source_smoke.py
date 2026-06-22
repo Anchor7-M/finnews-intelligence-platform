@@ -154,6 +154,7 @@ def test_smoke_gates_missing_live_confirmation_and_disabled(
     )
     assert result.exit_kind == "policy_blocked"
     monkeypatch.setenv("FINNEWS_ALLOW_LIVE_NETWORK", "1")
+    monkeypatch.setenv("FINNEWS_SOURCE_LOCAL_OVERRIDE", str(tmp_path / "missing.local.yaml"))
     result = service(source, httpx.MockTransport(lambda _: httpx.Response(200))).run(
         SmokeOptions(source_id=source.source_id, confirm_live=True)
     )

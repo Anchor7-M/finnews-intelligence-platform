@@ -49,4 +49,7 @@ passing smoke test do not mean production readiness.
 
 ## Live Test Status
 
-Status before prerequisite check: `not_run`.
+Live smoke status for this milestone: `NOT RUN - SEC contact metadata and/or test CIK was not supplied locally.`
+
+No SEC request was made, no CIK was committed, and no contact metadata was
+printed, persisted, or documented.

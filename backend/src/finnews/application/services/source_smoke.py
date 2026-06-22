@@ -214,9 +214,10 @@ class SourceSmokeService:
             validate_source_review_integrity([source], [review])
         except SourceReviewError as exc:
             raise SmokeGateError("policy_blocked", "review_integrity", str(exc)) from exc
-        if not source.enabled:
+        locally_enabled_source_ids = load_enabled_local_override_source_ids()
+        if not source.enabled and source.source_id not in locally_enabled_source_ids:
             raise SmokeGateError("disabled", "source_disabled", "source is disabled")
-        if source.source_id not in load_enabled_local_override_source_ids():
+        if source.source_id not in locally_enabled_source_ids:
             raise SmokeGateError(
                 "disabled", "local_override_missing", "source must be enabled by local override"
             )
