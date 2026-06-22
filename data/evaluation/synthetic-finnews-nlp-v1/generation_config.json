@@ -1,0 +1,53 @@
+{
+  "challenge_flags": [
+    "negation",
+    "uncertainty",
+    "mixed_signal",
+    "hypothetical_or_plan",
+    "class_overlap",
+    "numerical_reversal",
+    "cross_sentence_context",
+    "short_text",
+    "long_text",
+    "alias_or_ticker",
+    "neutral_boilerplate",
+    "low_information"
+  ],
+  "dataset_id": "synthetic-finnews-nlp-v1",
+  "dataset_version": "1.0.0",
+  "event_label_count": 9,
+  "generator_version": "m2a-v1",
+  "language_by_family": {
+    "tf-00": "zh",
+    "tf-01": "zh",
+    "tf-02": "zh",
+    "tf-03": "zh",
+    "tf-04": "en",
+    "tf-05": "en",
+    "tf-06": "zh",
+    "tf-07": "zh",
+    "tf-08": "en",
+    "tf-09": "zh",
+    "tf-10": "zh",
+    "tf-11": "en"
+  },
+  "paraphrases_per_story": 3,
+  "real_company_denylist_size": 18,
+  "seed": 20260622,
+  "sentiment_label_count": 4,
+  "split_by_family": {
+    "tf-00": "train",
+    "tf-01": "train",
+    "tf-02": "train",
+    "tf-03": "train",
+    "tf-04": "train",
+    "tf-05": "train",
+    "tf-06": "validation",
+    "tf-07": "validation",
+    "tf-08": "validation",
+    "tf-09": "test",
+    "tf-10": "test",
+    "tf-11": "test"
+  },
+  "template_family_count": 12
+}

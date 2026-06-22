@@ -1,0 +1,86 @@
+{
+  "challenge_by_split": {
+    "test": 108,
+    "train": 216,
+    "validation": 108
+  },
+  "challenge_flags": {
+    "alias_or_ticker": 42,
+    "class_overlap": 42,
+    "cross_sentence_context": 42,
+    "hypothetical_or_plan": 42,
+    "long_text": 42,
+    "low_information": 42,
+    "mixed_signal": 42,
+    "negation": 42,
+    "neutral_boilerplate": 42,
+    "numerical_reversal": 42,
+    "short_text": 42,
+    "uncertainty": 42
+  },
+  "challenge_records": 432,
+  "event_sentiment": {
+    "earnings:negative": 36,
+    "earnings:neutral": 36,
+    "earnings:positive": 36,
+    "earnings:uncertain": 36,
+    "financing_capital:negative": 36,
+    "financing_capital:neutral": 36,
+    "financing_capital:positive": 36,
+    "financing_capital:uncertain": 36,
+    "governance_personnel:negative": 36,
+    "governance_personnel:neutral": 36,
+    "governance_personnel:positive": 36,
+    "governance_personnel:uncertain": 36,
+    "litigation_penalty:negative": 36,
+    "litigation_penalty:neutral": 36,
+    "litigation_penalty:positive": 36,
+    "litigation_penalty:uncertain": 36,
+    "macro_market:negative": 36,
+    "macro_market:neutral": 36,
+    "macro_market:positive": 36,
+    "macro_market:uncertain": 36,
+    "merger_acquisition:negative": 36,
+    "merger_acquisition:neutral": 36,
+    "merger_acquisition:positive": 36,
+    "merger_acquisition:uncertain": 36,
+    "operations_product:negative": 36,
+    "operations_product:neutral": 36,
+    "operations_product:positive": 36,
+    "operations_product:uncertain": 36,
+    "other:negative": 36,
+    "other:neutral": 36,
+    "other:positive": 36,
+    "other:uncertain": 36,
+    "policy_regulation:negative": 36,
+    "policy_regulation:neutral": 36,
+    "policy_regulation:positive": 36,
+    "policy_regulation:uncertain": 36
+  },
+  "events": {
+    "earnings": 144,
+    "financing_capital": 144,
+    "governance_personnel": 144,
+    "litigation_penalty": 144,
+    "macro_market": 144,
+    "merger_acquisition": 144,
+    "operations_product": 144,
+    "other": 144,
+    "policy_regulation": 144
+  },
+  "language": {
+    "en": 432,
+    "zh": 864
+  },
+  "sentiments": {
+    "negative": 324,
+    "neutral": 324,
+    "positive": 324,
+    "uncertain": 324
+  },
+  "split": {
+    "test": 324,
+    "train": 648,
+    "validation": 324
+  }
+}

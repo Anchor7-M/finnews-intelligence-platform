@@ -29,6 +29,11 @@ from finnews.bootstrap import (
 )
 from finnews.domain.enums import SourceType
 from finnews.infrastructure.http.client import BoundedSourceHttpClient
+from finnews.infrastructure.nlp.benchmark.generator import benchmark_dir, write_benchmark
+from finnews.infrastructure.nlp.benchmark.validation import (
+    BenchmarkValidationError,
+    validate_benchmark_dir,
+)
 from finnews.infrastructure.persistence.memory.repository import MemoryNewsRepository
 from finnews.infrastructure.persistence.postgres.repository import PostgresNewsRepository
 from finnews.infrastructure.sources.fixtures import JsonlFixtureSource
@@ -50,10 +55,14 @@ ingest_app = typer.Typer(help="Ingest local synthetic data")
 db_app = typer.Typer(help="Database helpers")
 source_app = typer.Typer(help="Source registry and run-once ingestion")
 source_review_app = typer.Typer(help="Source review evidence")
+nlp_app = typer.Typer(help="Synthetic NLP benchmark and evaluation")
+nlp_dataset_app = typer.Typer(help="Synthetic NLP dataset commands")
 app.add_typer(ingest_app, name="ingest")
 app.add_typer(db_app, name="db")
 app.add_typer(source_app, name="source")
 source_app.add_typer(source_review_app, name="review")
+app.add_typer(nlp_app, name="nlp")
+nlp_app.add_typer(nlp_dataset_app, name="dataset")
 
 
 @app.command()
@@ -301,6 +310,27 @@ def source_smoke_test(
         raise typer.Exit(exit_code)
 
 
+@nlp_dataset_app.command("build")
+def nlp_dataset_build() -> None:
+    manifest = write_benchmark(benchmark_dir(_repo_root()))
+    typer.echo(json.dumps(manifest, sort_keys=True))
+
+
+@nlp_dataset_app.command("validate")
+def nlp_dataset_validate() -> None:
+    try:
+        result = validate_benchmark_dir(benchmark_dir(_repo_root()))
+    except BenchmarkValidationError as exc:
+        typer.echo(f"nlp_dataset_error={exc}", err=True)
+        raise typer.Exit(4) from exc
+    typer.echo(json.dumps(result, sort_keys=True))
+
+
+@nlp_dataset_app.command("summary")
+def nlp_dataset_summary() -> None:
+    nlp_dataset_validate()
+
+
 @ingest_app.command("fixture")
 def ingest_fixture(path: Annotated[Path, typer.Option("--path")]) -> None:
     settings = get_settings()
@@ -469,6 +499,10 @@ def _commit_and_close(session: Session | None) -> None:
         return
     session.commit()
     session.close()
+
+
+def _repo_root() -> Path:
+    return Path(__file__).resolve().parents[5]
 
 
 if __name__ == "__main__":
