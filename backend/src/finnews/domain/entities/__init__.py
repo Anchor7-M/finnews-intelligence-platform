@@ -106,6 +106,13 @@ class SourceDefinition:
     notes: str = ""
     risk_classification: str = "medium"
     adapter_version: str = "m1a-v1"
+    review_evidence_id: str | None = None
+    source_config_sha256: str | None = None
+    endpoint_template: str | None = None
+    parameter_schema: dict[str, str] = field(default_factory=dict)
+    user_agent_env_var: str | None = None
+    user_agent_template: str | None = None
+    max_items_per_smoke: int = 5
 
     @property
     def fetch_allowed(self) -> bool:

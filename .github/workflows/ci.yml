@@ -63,6 +63,7 @@ jobs:
       - run: npm ci
         working-directory: frontend
       - run: python scripts/dev.py verify-sources
+      - run: python scripts/dev.py verify-source-reviews
 
   postgres:
     runs-on: ubuntu-latest

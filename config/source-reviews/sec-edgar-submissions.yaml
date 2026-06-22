@@ -1,0 +1,55 @@
+source_id: sec-edgar-submissions
+review_schema_version: m1b-v1
+review_decision: approved
+review_scope: Engineering usage-policy review for SEC EDGAR Submissions API filing metadata from one local CIK at a time.
+reviewed_at: "2026-06-22"
+reviewer: local-review
+official_owner: U.S. Securities and Exchange Commission
+official_source: SEC EDGAR Submissions API
+documentation_url: https://www.sec.gov/search-filings/edgar-application-programming-interfaces
+terms_or_policy_url: https://www.sec.gov/privacy.htm
+access_cost: free
+authentication_requirement: No API key is required; local contact metadata is required for the declared User-Agent before any SEC smoke request.
+allowed_methods: ["GET", "HEAD"]
+allowed_hostnames: ["data.sec.gov"]
+documented_endpoint_patterns:
+  - 'https://data\.sec\.gov/submissions/CIK\{cik\}\.json'
+rate_limit_evidence: SEC publishes EDGAR APIs for programmatic access. This project uses one dry-run CIK request only, maximum five filings, and a minimum five-second interval.
+user_agent_requirement: SEC automated access guidance expects a declared User-Agent. This project reads FINNEWS_SEC_CONTACT locally and never prints or commits it.
+content_available:
+  - filer CIK and entity metadata
+  - form type
+  - accession number
+  - filing and acceptance dates
+  - primary document identifier
+  - official filing metadata URL derived from documented fields
+content_to_store:
+  - filer and CIK metadata
+  - form type
+  - accession number
+  - filing and acceptance dates
+  - primary document identifier
+  - derived official filing URL
+  - provenance, hashes, and derived features
+content_not_to_store:
+  - filing document body
+  - exhibits
+  - HTML page content
+  - raw JSON response body
+  - personal contact value
+redistribution_assessment: Metadata-only storage is used. This review is not legal advice and does not certify redistribution rights.
+attribution_requirement: Attribute SEC EDGAR as the official source and keep official URLs in metadata.
+robots_or_automated_access_notes: No browser automation, filing-page scraping, bulk ZIP download, or document retrieval is performed.
+privacy_notes: FINNEWS_SEC_CONTACT stays local and is not persisted, logged, printed, or committed.
+known_risks:
+  - SEC schema fields may change.
+  - Local contact metadata is required before live smoke testing.
+  - Live-smoke success does not imply production availability.
+live_smoke_status: not_run
+live_smoke_checked_at: null
+evidence_checked_at: "2026-06-22"
+evidence_urls:
+  - https://www.sec.gov/search-filings/edgar-application-programming-interfaces
+  - https://www.sec.gov/privacy.htm
+review_notes: Engineering usage-policy review approved this disabled-by-default metadata pilot with local contact and CIK prerequisites. Not legal advice.
+source_config_sha256: 8f08e7bb104937ce95e98e2d4f2d6d755a88fdb335a5e679bfb2ce204658af44

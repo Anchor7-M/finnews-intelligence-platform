@@ -29,4 +29,18 @@ Validate locally:
 
 ```text
 python -m finnews.interfaces.cli.app source validate-config
+python -m finnews.interfaces.cli.app source review validate
 ```
+
+## Milestone 1B Review Evidence
+
+Network sources with `review_status: approved` require a matching review record
+under `config/source-reviews/*.yaml`. The review stores paraphrased engineering
+evidence, allowed hosts, endpoint patterns, storage rules, live-smoke status,
+and a SHA-256 digest of security-sensitive source configuration.
+
+Tracked official source definitions remain `enabled: false`. To run a reviewed
+source locally, copy `config/sources.local.example.yaml` to the ignored
+`config/sources.local.yaml` and change only the `enabled` flag. Overrides cannot
+change hostnames, endpoint templates, timeouts, response limits, retries, field
+mappings, headers, or secrets.

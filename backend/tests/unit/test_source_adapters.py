@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 from pathlib import Path
 
 import pytest
@@ -8,6 +9,7 @@ from finnews.domain.entities import SourceDefinition
 from finnews.domain.enums import SourceApprovalStatus, SourceType
 from finnews.infrastructure.sources.announcements import (
     AnnouncementParseError,
+    normalize_cik,
     parse_json_announcement_bytes,
     read_user_export,
 )
@@ -104,3 +106,66 @@ def test_json_mapping_cursor_and_csv_import(tmp_path: Path) -> None:
 def test_json_encoding_failure() -> None:
     with pytest.raises(AnnouncementParseError, match="UTF-8"):
         parse_json_announcement_bytes(b"\xff", source(SourceType.DOCUMENTED_JSON_API))
+
+
+def test_sec_columnar_json_mapping_and_bounds() -> None:
+    sec_source = source(
+        SourceType.DOCUMENTED_JSON_API,
+        {
+            "record_mode": "columnar",
+            "columns_path": "filings.recent",
+            "cik_path": "cik",
+            "entity_name_path": "name",
+            "id": "accessionNumber",
+            "form": "form",
+            "filing_date": "filingDate",
+            "acceptance_datetime": "acceptanceDateTime",
+            "primary_document": "primaryDocument",
+            "max_records": "5",
+            "title_template": "{form} filing by {entityName}",
+            "url_template": "https://www.sec.gov/Archives/edgar/data/{cik_unpadded}/{accession_no_dashes}/{primaryDocument}",
+        },
+    )
+    payload = {
+        "cik": "320193",
+        "name": "Example Issuer Inc.",
+        "filings": {
+            "recent": {
+                "accessionNumber": [f"0000320193-26-00000{i}" for i in range(1, 7)],
+                "form": ["10-K", "8-K", "10-Q", "4", "DEF 14A", "8-K"],
+                "filingDate": ["2026-06-20"] * 6,
+                "acceptanceDateTime": ["20260620123456"] * 6,
+                "primaryDocument": [f"doc{i}.htm" for i in range(1, 7)],
+            }
+        },
+    }
+    parsed = parse_json_announcement_bytes(json.dumps(payload).encode("utf-8"), sec_source)
+    assert len(parsed.records) == 5
+    assert parsed.records[0].article_id == "0000320193-26-000001"
+    assert parsed.records[0].title == "10-K filing by Example Issuer Inc."
+    assert parsed.records[0].published_at == "2026-06-20T12:34:56Z"
+    assert "Archives/edgar/data/320193/000032019326000001/doc1.htm" in parsed.records[0].url
+    assert parsed.records[0].raw_metadata["form"] == "10-K"
+
+
+def test_sec_columnar_json_rejects_unequal_arrays_and_bad_cik() -> None:
+    sec_source = source(
+        SourceType.DOCUMENTED_JSON_API,
+        {"record_mode": "columnar", "columns_path": "filings.recent", "cik_path": "cik"},
+    )
+    assert normalize_cik("320193") == "0000320193"
+    with pytest.raises(AnnouncementParseError, match="CIK"):
+        normalize_cik("12345678901")
+    payload = {
+        "cik": "320193",
+        "filings": {
+            "recent": {
+                "accessionNumber": ["a", "b"],
+                "form": ["8-K"],
+                "filingDate": ["2026-06-20", "2026-06-21"],
+                "primaryDocument": ["a.htm", "b.htm"],
+            }
+        },
+    }
+    with pytest.raises(AnnouncementParseError, match="equal"):
+        parse_json_announcement_bytes(json.dumps(payload).encode("utf-8"), sec_source)

@@ -12,7 +12,8 @@
     "timezone": "UTC",
     "risk_classification": "medium",
     "approved_host_count": 1,
-    "synthetic": true
+    "synthetic": true,
+    "review": null
   },
   {
     "source_id": "example-rss-feed",
@@ -27,7 +28,77 @@
     "timezone": "UTC",
     "risk_classification": "medium",
     "approved_host_count": 1,
-    "synthetic": true
+    "synthetic": true,
+    "review": null
+  },
+  {
+    "source_id": "federal-reserve-press-releases",
+    "display_name": "Federal Reserve Board Press Releases RSS",
+    "source_type": "rss",
+    "approval_status": "approved",
+    "enabled": false,
+    "terms_url": "https://www.federalreserve.gov/feeds/feeds.htm",
+    "documentation_url": "https://www.federalreserve.gov/feeds/feeds.htm",
+    "content_storage_policy": "metadata_only",
+    "language": "en",
+    "timezone": "America/New_York",
+    "risk_classification": "low",
+    "approved_host_count": 1,
+    "synthetic": true,
+    "review": {
+      "source_id": "federal-reserve-press-releases",
+      "official_owner": "Board of Governors of the Federal Reserve System",
+      "official_source": "Federal Reserve Board press release RSS feed",
+      "review_decision": "approved",
+      "reviewed_at": "2026-06-22",
+      "access_cost": "free",
+      "authentication_requirement": "No authentication or API key identified for the RSS feed.",
+      "content_storage_policy": "metadata_only",
+      "documentation_url": "https://www.federalreserve.gov/feeds/feeds.htm",
+      "terms_or_policy_url": "https://www.federalreserve.gov/feeds/feeds.htm",
+      "enabled": false,
+      "live_smoke_status": "not_run",
+      "live_smoke_checked_at": null,
+      "known_limitations": [
+        "Feed availability and validator behavior may change.",
+        "Live-smoke success does not imply production availability."
+      ]
+    }
+  },
+  {
+    "source_id": "sec-edgar-submissions",
+    "display_name": "SEC EDGAR Submissions API",
+    "source_type": "documented_json_api",
+    "approval_status": "approved",
+    "enabled": false,
+    "terms_url": "https://www.sec.gov/privacy.htm",
+    "documentation_url": "https://www.sec.gov/search-filings/edgar-application-programming-interfaces",
+    "content_storage_policy": "metadata_only",
+    "language": "en",
+    "timezone": "America/New_York",
+    "risk_classification": "medium",
+    "approved_host_count": 1,
+    "synthetic": true,
+    "review": {
+      "source_id": "sec-edgar-submissions",
+      "official_owner": "U.S. Securities and Exchange Commission",
+      "official_source": "SEC EDGAR Submissions API",
+      "review_decision": "approved",
+      "reviewed_at": "2026-06-22",
+      "access_cost": "free",
+      "authentication_requirement": "No API key is required; local contact metadata is required for the declared User-Agent before any SEC smoke request.",
+      "content_storage_policy": "metadata_only",
+      "documentation_url": "https://www.sec.gov/search-filings/edgar-application-programming-interfaces",
+      "terms_or_policy_url": "https://www.sec.gov/privacy.htm",
+      "enabled": false,
+      "live_smoke_status": "not_run",
+      "live_smoke_checked_at": null,
+      "known_limitations": [
+        "SEC schema fields may change.",
+        "Local contact metadata is required before live smoke testing.",
+        "Live-smoke success does not imply production availability."
+      ]
+    }
   },
   {
     "source_id": "user-announcement-csv",
@@ -42,7 +113,8 @@
     "timezone": "UTC",
     "risk_classification": "low",
     "approved_host_count": 0,
-    "synthetic": true
+    "synthetic": true,
+    "review": null
   },
   {
     "source_id": "user-announcement-json",
@@ -57,6 +129,7 @@
     "timezone": "UTC",
     "risk_classification": "low",
     "approved_host_count": 0,
-    "synthetic": true
+    "synthetic": true,
+    "review": null
   }
 ]

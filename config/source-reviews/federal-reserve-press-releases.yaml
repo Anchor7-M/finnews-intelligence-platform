@@ -1,0 +1,49 @@
+source_id: federal-reserve-press-releases
+review_schema_version: m1b-v1
+review_decision: approved
+review_scope: Engineering usage-policy review for the Federal Reserve Board press-release RSS feed metadata pilot.
+reviewed_at: "2026-06-22"
+reviewer: local-review
+official_owner: Board of Governors of the Federal Reserve System
+official_source: Federal Reserve Board press release RSS feed
+documentation_url: https://www.federalreserve.gov/feeds/feeds.htm
+terms_or_policy_url: https://www.federalreserve.gov/feeds/feeds.htm
+access_cost: free
+authentication_requirement: No authentication or API key identified for the RSS feed.
+allowed_methods: ["GET", "HEAD"]
+allowed_hostnames: ["www.federalreserve.gov"]
+documented_endpoint_patterns:
+  - 'https://www\.federalreserve\.gov/feeds/press_all\.xml'
+rate_limit_evidence: The RSS page presents public feed URLs. This project uses a conservative manual smoke test and a six-hour minimum interval.
+user_agent_requirement: No feed-specific User-Agent rule was identified on the RSS documentation page; the project sends a clear local research User-Agent.
+content_available:
+  - RSS item title
+  - official item link
+  - source-provided identifier
+  - publication timestamp
+  - feed-provided summary or description
+content_to_store:
+  - title
+  - official URL
+  - source-provided ID
+  - publication timestamp
+  - brief feed summary where present
+  - provenance, hashes, and derived features
+content_not_to_store:
+  - linked press-release page body
+  - raw RSS response body
+  - cookies or complete response headers
+redistribution_assessment: Metadata-only storage is used. This review is not legal advice and does not certify redistribution rights.
+attribution_requirement: Attribute the official owner and keep official links in metadata.
+robots_or_automated_access_notes: No article-page crawling is performed; the pilot uses the published RSS feed only.
+privacy_notes: No personal data is required by the feed.
+known_risks:
+  - Feed availability and validator behavior may change.
+  - Live-smoke success does not imply production availability.
+live_smoke_status: not_run
+live_smoke_checked_at: null
+evidence_checked_at: "2026-06-22"
+evidence_urls:
+  - https://www.federalreserve.gov/feeds/feeds.htm
+review_notes: Engineering usage-policy review approved this disabled-by-default RSS metadata pilot. Not legal advice.
+source_config_sha256: d2ac863035cc919f9bea3abf59c4a92b3047e46445e206466ba2b2431987e190

@@ -10,7 +10,11 @@ Not verified in the local compliance audit: PostgreSQL integration runtime, beca
 
 Milestone 1A implemented: safe source registry, disabled-by-default source definitions, bounded HTTP client, mocked RSS/Atom and documented JSON ingestion, user JSON/CSV announcement imports, ETag and Last-Modified state, `304` handling, bounded retries, source health, fetch attempts, API/CLI, static demo, and Vue Source Health page.
 
-Milestone 1B deferred: real source selection, terms review evidence, manual approval workflow, and optional user-authorized live smoke test.
+Milestone 1B implemented locally: source-review evidence, disabled official
+Federal Reserve RSS and SEC EDGAR Submissions pilot definitions, local-only
+overrides, guarded no-persist smoke testing, review API/frontend visibility, and
+A-share source boundary documentation. Reviewed sources are not production-ready
+and remain disabled by default.
 
 ## Milestone 2
 

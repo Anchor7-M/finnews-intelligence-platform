@@ -7,6 +7,7 @@ import type {
   Signal,
   SourceFetchAttempt,
   SourceHealth,
+  SourceReview,
   SourceSummary,
 } from "../types/models";
 
@@ -93,4 +94,12 @@ export async function loadSourceFetchAttempts(
     return data.items;
   }
   return getJson<SourceFetchAttempt[]>("/demo-data/source-fetch-attempts.json");
+}
+
+export async function loadSourceReviews(mode: DataMode = getDataMode()): Promise<SourceReview[]> {
+  if (mode === "api") {
+    const data = await getJson<{ items: SourceReview[] }>(`${API_BASE}/api/v1/source-reviews`);
+    return data.items;
+  }
+  return getJson<SourceReview[]>("/demo-data/source-reviews.json");
 }

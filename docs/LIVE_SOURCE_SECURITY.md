@@ -1,7 +1,8 @@
 # Live Source Security
 
-Milestone 1A implements safe ingestion infrastructure only. Automated tests use
-local mocks, and the committed example sources are disabled by default.
+Milestone 1A implements safe ingestion infrastructure. Milestone 1B adds
+source-review evidence and guarded manual smoke testing. Automated tests use
+local mocks, and committed real source definitions are disabled by default.
 
 ## Controls
 
@@ -21,12 +22,18 @@ local mocks, and the committed example sources are disabled by default.
   executed, and authentication/login support is out of scope.
 - Raw response bodies and stack traces are not exposed through API, CLI, logs, or
   persisted user-facing fields.
+- Approved network sources require typed review evidence and config/review
+  integrity checks.
+- Manual smoke tests require an ignored local override,
+  `FINNEWS_ALLOW_LIVE_NETWORK=1`, and `--confirm-live`.
+- SEC smoke tests additionally require local-only `FINNEWS_SEC_CONTACT` and
+  `FINNEWS_SEC_TEST_CIK`; these values are not printed, persisted, or committed.
 
 ## Live Smoke Tests
 
-Live source verification is `NOT RUN` unless a source has explicit approval
-metadata and the user separately authorizes a smoke test. Real source selection
-and terms evidence are deferred to Milestone 1B.
+Live source verification is `NOT RUN` unless a source has valid review evidence,
+is enabled by ignored local override, and the user explicitly authorizes a
+bounded no-persist smoke test. A passing smoke test is not production readiness.
 
 ## Known Limitations
 

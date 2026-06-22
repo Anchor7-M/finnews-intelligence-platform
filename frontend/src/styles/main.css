@@ -159,6 +159,13 @@ select {
   max-width: 260px;
 }
 
+.filters {
+  align-items: end;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
 .source-grid {
   display: grid;
   gap: 14px;
@@ -191,6 +198,17 @@ select {
 .source-card dd {
   margin: 0;
   overflow-wrap: anywhere;
+}
+
+.source-note {
+  color: #53635d;
+  font-size: 0.9rem;
+}
+
+.source-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
 table {

@@ -40,3 +40,11 @@ current fetch state per source, and append-only fetch attempts. They store cache
 validators, cursors, counters, health, sanitized error summaries, and JSONB
 metadata such as retry policy and field mapping. They do not store raw response
 bodies or full article bodies.
+
+Milestone 1B source-review evidence is repository-owned YAML, not a new
+PostgreSQL table. Runtime/API/static views expose safe summaries only:
+source ID, official owner, review decision, reviewed date, access cost,
+authentication category, storage policy, official links, enabled status,
+live-smoke status, and known limitations. Personal contact values, raw
+User-Agent strings, raw responses, complete headers, and local override contents
+are not persisted or exposed.

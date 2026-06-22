@@ -10,6 +10,7 @@ npm install
 cd ..
 python scripts/dev.py verify-lite
 python scripts/dev.py verify-sources
+python scripts/dev.py verify-source-reviews
 ```
 
 `verify-lite` runs backend tests with coverage threshold, Ruff, mypy, frontend ESLint, Prettier, TypeScript, Vitest, production build, memory demo, static export validation, and `git diff --check`.
@@ -17,6 +18,10 @@ python scripts/dev.py verify-sources
 `verify-sources` validates source YAML, runs source-focused backend unit/API/CLI
 tests with local mocks only, and runs frontend Vitest once. It must not access
 the internet.
+
+`verify-source-reviews` validates source-review evidence and review/config
+integrity, then runs review, override, smoke-gate, and review API tests with
+mocked transports only. It must not access the internet.
 
 Current audited evidence is produced by `verify-lite`; live PostgreSQL tests are
 skipped unless `FINNEWS_RUN_POSTGRES_TESTS=1` is set.
@@ -29,12 +34,12 @@ python scripts/dev.py verify-postgres
 python scripts/dev.py db-down
 ```
 
-`verify-postgres` uses Compose project `finnews_m1_verify`, starts only the
+`verify-postgres` uses Compose project `finnews_m1b_verify`, starts only the
 `postgres` service from `postgres:16`, waits for health, runs Alembic migration
 and PostgreSQL-marked tests, and always runs:
 
 ```text
-docker compose -p finnews_m1_verify down --volumes --remove-orphans
+docker compose -p finnews_m1b_verify down --volumes --remove-orphans
 ```
 
 Do not leave Docker, dev servers, or watch processes running.

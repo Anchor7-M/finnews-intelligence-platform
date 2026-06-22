@@ -15,6 +15,11 @@ from finnews.application.services.deduplication_accounting import build_deduplic
 from finnews.application.services.export_static import export_static
 from finnews.application.services.pipeline import NewsPipeline
 from finnews.application.services.source_ingestion import SourceIngestionService
+from finnews.application.services.source_smoke import (
+    SMOKE_EXIT_CODES,
+    SmokeOptions,
+    SourceSmokeService,
+)
 from finnews.bootstrap import (
     FIXTURE_DIR,
     build_memory_repository,
@@ -32,15 +37,23 @@ from finnews.infrastructure.sources.registry import (
     SourceConfigError,
     validate_source_definitions,
 )
+from finnews.infrastructure.sources.reviews import (
+    SourceReviewError,
+    load_source_reviews,
+    validate_source_review_integrity,
+    validate_source_reviews,
+)
 from finnews.settings import Settings, get_settings
 
 app = typer.Typer(help="Finnews local CLI")
 ingest_app = typer.Typer(help="Ingest local synthetic data")
 db_app = typer.Typer(help="Database helpers")
 source_app = typer.Typer(help="Source registry and run-once ingestion")
+source_review_app = typer.Typer(help="Source review evidence")
 app.add_typer(ingest_app, name="ingest")
 app.add_typer(db_app, name="db")
 app.add_typer(source_app, name="source")
+source_app.add_typer(source_review_app, name="review")
 
 
 @app.command()
@@ -81,10 +94,87 @@ def source_list() -> None:
 def source_validate_config() -> None:
     try:
         source_ids = validate_source_definitions()
+        repo, session = _repository(get_settings())
+        review_ids = validate_source_reviews()
+        validated_review_sources = validate_source_review_integrity(
+            repo.list_source_definitions(), load_source_reviews()
+        )
+        _commit_and_close(session)
     except SourceConfigError as exc:
         typer.echo(f"source_config_error={exc}", err=True)
         raise typer.Exit(4) from exc
-    typer.echo(json.dumps({"valid": True, "source_ids": source_ids}, sort_keys=True))
+    except SourceReviewError as exc:
+        typer.echo(f"source_review_error={exc}", err=True)
+        raise typer.Exit(4) from exc
+    typer.echo(
+        json.dumps(
+            {
+                "valid": True,
+                "source_ids": source_ids,
+                "review_ids": review_ids,
+                "review_validated_source_ids": validated_review_sources,
+            },
+            sort_keys=True,
+        )
+    )
+
+
+@source_review_app.command("list")
+def source_review_list() -> None:
+    try:
+        reviews = load_source_reviews()
+    except SourceReviewError as exc:
+        typer.echo(f"source_review_error={exc}", err=True)
+        raise typer.Exit(4) from exc
+    rows = [
+        {
+            "source_id": review.source_id,
+            "review_decision": review.review_decision,
+            "official_owner": review.official_owner,
+            "access_cost": review.access_cost,
+            "live_smoke_status": review.live_smoke_status,
+        }
+        for review in reviews
+    ]
+    typer.echo(json.dumps(rows, sort_keys=True))
+
+
+@source_review_app.command("validate")
+def source_review_validate() -> None:
+    try:
+        repo, session = _repository(get_settings())
+        review_ids = validate_source_reviews()
+        validated_sources = validate_source_review_integrity(
+            repo.list_source_definitions(), load_source_reviews()
+        )
+        _commit_and_close(session)
+    except (SourceConfigError, SourceReviewError) as exc:
+        typer.echo(f"source_review_error={exc}", err=True)
+        raise typer.Exit(4) from exc
+    typer.echo(
+        json.dumps(
+            {
+                "valid": True,
+                "review_ids": review_ids,
+                "review_validated_source_ids": validated_sources,
+            },
+            sort_keys=True,
+        )
+    )
+
+
+@source_review_app.command("show")
+def source_review_show(source_id: Annotated[str, typer.Option("--source")]) -> None:
+    try:
+        for review in load_source_reviews():
+            if review.source_id == source_id:
+                typer.echo(json.dumps(review.safe_summary(), default=str, sort_keys=True))
+                return
+    except SourceReviewError as exc:
+        typer.echo(f"source_review_error={exc}", err=True)
+        raise typer.Exit(4) from exc
+    typer.echo("source_review_not_found", err=True)
+    raise typer.Exit(4)
 
 
 @source_app.command("health")
@@ -179,6 +269,36 @@ def source_import_announcements(
         raise typer.Exit(4) from exc
     _commit_and_close(session)
     typer.echo(json.dumps(result.__dict__, default=str, sort_keys=True))
+
+
+@source_app.command("smoke-test")
+def source_smoke_test(
+    source_id: Annotated[str, typer.Option("--source")],
+    max_items: Annotated[int, typer.Option("--max-items", min=1, max=5)] = 5,
+    conditional_check: Annotated[bool, typer.Option("--conditional-check")] = False,
+    persist: Annotated[bool, typer.Option("--persist/--no-persist")] = False,
+    profile: Annotated[str, typer.Option("--profile")] = "memory",
+    report_path: Annotated[Path | None, typer.Option("--report-path")] = None,
+    confirm_live: Annotated[bool, typer.Option("--confirm-live")] = False,
+) -> None:
+    settings = Settings(profile=profile)
+    repo, session = _repository(settings)
+    reviews = load_source_reviews()
+    result = SourceSmokeService(repo.list_source_definitions(), reviews).run(
+        SmokeOptions(
+            source_id=source_id,
+            max_items=max_items,
+            conditional_check=conditional_check,
+            persist=persist,
+            confirm_live=confirm_live,
+            report_path=report_path,
+        )
+    )
+    _commit_and_close(session)
+    typer.echo(json.dumps(result.safe_dict(), sort_keys=True))
+    exit_code = SMOKE_EXIT_CODES[result.exit_kind]
+    if exit_code:
+        raise typer.Exit(exit_code)
 
 
 @ingest_app.command("fixture")

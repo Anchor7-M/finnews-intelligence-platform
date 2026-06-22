@@ -233,6 +233,9 @@ frontend/coverage/
 frontend/.vite/
 data/generated/
 data/postgres/
+config/sources.local.yaml
+reports/
+smoke-reports/
 tmp/
 *.db
 *.sqlite

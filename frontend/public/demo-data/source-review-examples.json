@@ -1,0 +1,92 @@
+[
+  {
+    "official_owner": "Synthetic Official Owner",
+    "official_source": "Synthetic Official Source",
+    "reviewed_at": "2026-06-22",
+    "access_cost": "free",
+    "authentication_requirement": "none",
+    "content_storage_policy": "metadata_only",
+    "documentation_url": "https://demo.local/docs",
+    "terms_or_policy_url": "https://demo.local/policy",
+    "enabled": false,
+    "live_smoke_checked_at": null,
+    "known_limitations": [
+      "synthetic static-demo review state"
+    ],
+    "source_id": "synthetic-approved-disabled",
+    "review_decision": "approved",
+    "live_smoke_status": "not_run"
+  },
+  {
+    "official_owner": "Synthetic Official Owner",
+    "official_source": "Synthetic Official Source",
+    "reviewed_at": "2026-06-22",
+    "access_cost": "free",
+    "authentication_requirement": "none",
+    "content_storage_policy": "metadata_only",
+    "documentation_url": "https://demo.local/docs",
+    "terms_or_policy_url": "https://demo.local/policy",
+    "enabled": false,
+    "live_smoke_checked_at": null,
+    "known_limitations": [
+      "synthetic static-demo review state"
+    ],
+    "source_id": "synthetic-needs-review",
+    "review_decision": "needs_review",
+    "live_smoke_status": "blocked"
+  },
+  {
+    "official_owner": "Synthetic Official Owner",
+    "official_source": "Synthetic Official Source",
+    "reviewed_at": "2026-06-22",
+    "access_cost": "free",
+    "authentication_requirement": "none",
+    "content_storage_policy": "metadata_only",
+    "documentation_url": "https://demo.local/docs",
+    "terms_or_policy_url": "https://demo.local/policy",
+    "enabled": false,
+    "live_smoke_checked_at": null,
+    "known_limitations": [
+      "synthetic static-demo review state"
+    ],
+    "source_id": "synthetic-rejected",
+    "review_decision": "rejected",
+    "live_smoke_status": "blocked"
+  },
+  {
+    "official_owner": "Synthetic Official Owner",
+    "official_source": "Synthetic Official Source",
+    "reviewed_at": "2026-06-22",
+    "access_cost": "free",
+    "authentication_requirement": "none",
+    "content_storage_policy": "metadata_only",
+    "documentation_url": "https://demo.local/docs",
+    "terms_or_policy_url": "https://demo.local/policy",
+    "enabled": false,
+    "live_smoke_checked_at": "2026-06-22",
+    "known_limitations": [
+      "synthetic static-demo review state"
+    ],
+    "source_id": "synthetic-smoke-passed",
+    "review_decision": "approved",
+    "live_smoke_status": "passed"
+  },
+  {
+    "official_owner": "Synthetic Official Owner",
+    "official_source": "Synthetic Official Source",
+    "reviewed_at": "2026-06-22",
+    "access_cost": "free",
+    "authentication_requirement": "local environment prerequisite",
+    "content_storage_policy": "metadata_only",
+    "documentation_url": "https://demo.local/docs",
+    "terms_or_policy_url": "https://demo.local/policy",
+    "enabled": false,
+    "live_smoke_checked_at": null,
+    "known_limitations": [
+      "synthetic static-demo review state"
+    ],
+    "source_id": "synthetic-missing-local-prerequisite",
+    "review_decision": "approved",
+    "live_smoke_status": "blocked"
+  }
+]

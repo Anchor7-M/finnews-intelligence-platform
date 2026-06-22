@@ -11,6 +11,11 @@ from finnews.application.ports.repositories import NewsRepository
 from finnews.application.services.deduplication_accounting import build_deduplication_accounting
 from finnews.domain.entities import SourceDefinition, SourceFetchState
 from finnews.domain.enums import ProcessingState
+from finnews.infrastructure.sources.reviews import (
+    SourceReviewError,
+    load_source_reviews,
+    review_summaries_for_sources,
+)
 
 
 def export_static(repository: NewsRepository, output: Path) -> None:
@@ -38,6 +43,12 @@ def build_static_payload(repository: NewsRepository) -> dict[str, Any]:
     digests = repository.list_digests()
     signals = repository.list_signals()
     source_definitions = repository.list_source_definitions()
+    try:
+        source_reviews = load_source_reviews()
+    except SourceReviewError:
+        source_reviews = []
+    review_rows = review_summaries_for_sources(source_definitions, source_reviews)
+    review_by_id = {str(row["source_id"]): row for row in review_rows}
     source_states = {state.source_id: state for state in repository.list_source_fetch_states()}
     source_attempts = repository.list_source_fetch_attempts()
     event_by_article = {item.article_id: item for item in events}
@@ -138,9 +149,12 @@ def build_static_payload(repository: NewsRepository) -> dict[str, Any]:
                 "risk_classification": source.risk_classification,
                 "approved_host_count": len(source.approved_hostnames),
                 "synthetic": True,
+                "review": review_by_id.get(source.source_id),
             }
             for source in source_definitions
         ],
+        "source-reviews": review_rows,
+        "source-review-examples": _synthetic_review_examples(),
         "source-health": [
             _source_health_row(source, source_states.get(source.source_id))
             for source in source_definitions
@@ -233,6 +247,56 @@ def _source_health_row(
         "last_error_category": state.last_error_category.value if state else "none",
         "synthetic": True,
     }
+
+
+def _synthetic_review_examples() -> list[dict[str, object]]:
+    base = {
+        "official_owner": "Synthetic Official Owner",
+        "official_source": "Synthetic Official Source",
+        "reviewed_at": "2026-06-22",
+        "access_cost": "free",
+        "authentication_requirement": "none",
+        "content_storage_policy": "metadata_only",
+        "documentation_url": "https://demo.local/docs",
+        "terms_or_policy_url": "https://demo.local/policy",
+        "enabled": False,
+        "live_smoke_checked_at": None,
+        "known_limitations": ["synthetic static-demo review state"],
+    }
+    return [
+        {
+            **base,
+            "source_id": "synthetic-approved-disabled",
+            "review_decision": "approved",
+            "live_smoke_status": "not_run",
+        },
+        {
+            **base,
+            "source_id": "synthetic-needs-review",
+            "review_decision": "needs_review",
+            "live_smoke_status": "blocked",
+        },
+        {
+            **base,
+            "source_id": "synthetic-rejected",
+            "review_decision": "rejected",
+            "live_smoke_status": "blocked",
+        },
+        {
+            **base,
+            "source_id": "synthetic-smoke-passed",
+            "review_decision": "approved",
+            "live_smoke_status": "passed",
+            "live_smoke_checked_at": "2026-06-22",
+        },
+        {
+            **base,
+            "source_id": "synthetic-missing-local-prerequisite",
+            "review_decision": "approved",
+            "authentication_requirement": "local environment prerequisite",
+            "live_smoke_status": "blocked",
+        },
+    ]
 
 
 def _json_default(value: object) -> str:
