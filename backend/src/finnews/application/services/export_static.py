@@ -9,6 +9,7 @@ from uuid import UUID
 
 from finnews.application.ports.repositories import NewsRepository
 from finnews.application.services.deduplication_accounting import build_deduplication_accounting
+from finnews.domain.entities import SourceDefinition, SourceFetchState
 from finnews.domain.enums import ProcessingState
 
 
@@ -36,6 +37,9 @@ def build_static_payload(repository: NewsRepository) -> dict[str, Any]:
     sentiments = repository.list_sentiments()
     digests = repository.list_digests()
     signals = repository.list_signals()
+    source_definitions = repository.list_source_definitions()
+    source_states = {state.source_id: state for state in repository.list_source_fetch_states()}
+    source_attempts = repository.list_source_fetch_attempts()
     event_by_article = {item.article_id: item for item in events}
     sentiment_by_article = {item.article_id: item for item in sentiments}
     links_by_article: dict[UUID, list[str]] = {}
@@ -119,6 +123,71 @@ def build_static_payload(repository: NewsRepository) -> dict[str, Any]:
             }
             for signal in signals
         ],
+        "sources": [
+            {
+                "source_id": source.source_id,
+                "display_name": source.display_name,
+                "source_type": source.source_type.value,
+                "approval_status": source.review_status.value,
+                "enabled": source.enabled,
+                "terms_url": source.terms_url,
+                "documentation_url": source.documentation_url,
+                "content_storage_policy": source.content_storage_policy.value,
+                "language": source.language,
+                "timezone": source.timezone,
+                "risk_classification": source.risk_classification,
+                "approved_host_count": len(source.approved_hostnames),
+                "synthetic": True,
+            }
+            for source in source_definitions
+        ],
+        "source-health": [
+            _source_health_row(source, source_states.get(source.source_id))
+            for source in source_definitions
+        ],
+        "source-fetch-attempts": [
+            {
+                "id": attempt.id,
+                "source_id": attempt.source_id,
+                "outcome": attempt.outcome.value,
+                "started_at": attempt.started_at,
+                "finished_at": attempt.finished_at,
+                "http_status": attempt.http_status,
+                "item_count": attempt.item_count,
+                "new_count": attempt.new_count,
+                "duplicate_count": attempt.duplicate_count,
+                "rejected_count": attempt.rejected_count,
+                "response_byte_count": attempt.response_byte_count,
+                "retry_count": attempt.retry_count,
+                "error_category": attempt.error_category.value,
+                "error_summary": attempt.error_summary,
+                "etag_available": attempt.etag_present,
+                "last_modified_available": attempt.last_modified_present,
+                "dry_run": attempt.dry_run,
+            }
+            for attempt in source_attempts
+        ],
+        "source-conditional-examples": [
+            {
+                "source_id": "example-rss-feed",
+                "scenario": "conditional_request",
+                "sends_if_none_match": True,
+                "sends_if_modified_since": True,
+                "stores_raw_body": False,
+            },
+            {
+                "source_id": "example-rss-feed",
+                "scenario": "not_modified_304",
+                "outcome": "no_change",
+                "successful_no_change": True,
+            },
+            {
+                "source_id": "example-announcement-json",
+                "scenario": "transient_failure_recovery",
+                "max_retries_after_initial": 2,
+                "bounded": True,
+            },
+        ],
     }
 
 
@@ -139,6 +208,30 @@ def _pipeline_summary(run: object) -> dict[str, object]:
         "errors": getattr(run, "errors", []),
         "configuration_version": getattr(run, "configuration_version", ""),
         "code_version": getattr(run, "code_version", ""),
+    }
+
+
+def _source_health_row(
+    source: SourceDefinition, state: SourceFetchState | None
+) -> dict[str, object]:
+    return {
+        "source_id": source.source_id,
+        "display_name": source.display_name,
+        "source_type": source.source_type.value,
+        "approval_status": source.review_status.value,
+        "enabled": source.enabled,
+        "health": state.health_status.value if state else "disabled",
+        "last_attempted_at": state.last_attempted_at if state else None,
+        "last_successful_at": state.last_successful_at if state else None,
+        "last_outcome": "not_run" if state is None else "success",
+        "last_http_status": state.last_http_status if state else None,
+        "last_item_count": state.last_item_count if state else 0,
+        "last_response_byte_count": state.last_response_byte_count if state else 0,
+        "consecutive_failure_count": state.consecutive_failure_count if state else 0,
+        "etag_available": bool(state.etag) if state else False,
+        "last_modified_available": bool(state.last_modified) if state else False,
+        "last_error_category": state.last_error_category.value if state else "none",
+        "synthetic": True,
     }
 
 

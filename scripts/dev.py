@@ -10,7 +10,7 @@ import time
 
 
 ROOT = Path(__file__).resolve().parents[1]
-POSTGRES_PROJECT = "finnews_m0_verify"
+POSTGRES_PROJECT = "finnews_m1_verify"
 POSTGRES_SERVICE = "postgres"
 POSTGRES_URL = "postgresql+psycopg://finnews:finnews@127.0.0.1:55432/finnews"
 
@@ -51,7 +51,17 @@ def doctor(_: argparse.Namespace) -> None:
 def verify_lite(_: argparse.Namespace) -> None:
     backend = ROOT / "backend"
     frontend = ROOT / "frontend"
-    run([sys.executable, "-m", "pytest", "--cov=finnews", "--cov-report=term-missing", "--cov-fail-under=80"], backend)
+    run(
+        [
+            sys.executable,
+            "-m",
+            "pytest",
+            "--cov=finnews",
+            "--cov-report=term-missing",
+            "--cov-fail-under=80",
+        ],
+        backend,
+    )
     run([sys.executable, "-m", "ruff", "check", "."], backend)
     run([sys.executable, "-m", "ruff", "format", "--check", "."], backend)
     run([sys.executable, "-m", "mypy", "src", "tests"], backend)
@@ -60,7 +70,17 @@ def verify_lite(_: argparse.Namespace) -> None:
     run(["npm", "run", "typecheck"], frontend)
     run(["npm", "run", "test:unit", "--", "--run"], frontend)
     run(["npm", "run", "build"], frontend)
-    run([sys.executable, "-m", "finnews.interfaces.cli.app", "demo", "--profile", "memory"], backend)
+    run(
+        [
+            sys.executable,
+            "-m",
+            "finnews.interfaces.cli.app",
+            "demo",
+            "--profile",
+            "memory",
+        ],
+        backend,
+    )
     validate_static_export()
     if shutil.which("git"):
         run(["git", "diff", "--check"], ROOT)
@@ -68,7 +88,17 @@ def verify_lite(_: argparse.Namespace) -> None:
 
 def validate_static_export() -> None:
     output = ROOT / "frontend" / "public" / "demo-data"
-    required = ["overview.json", "articles.json", "companies.json", "digests.json", "signals.json"]
+    required = [
+        "overview.json",
+        "articles.json",
+        "companies.json",
+        "digests.json",
+        "signals.json",
+        "sources.json",
+        "source-health.json",
+        "source-fetch-attempts.json",
+        "source-conditional-examples.json",
+    ]
     missing = [name for name in required if not (output / name).is_file()]
     if missing:
         raise SystemExit(f"missing static demo files: {', '.join(missing)}")
@@ -103,16 +133,56 @@ def verify_postgres(_: argparse.Namespace) -> None:
     success = False
     try:
         db_up(argparse.Namespace())
-        run([sys.executable, "-m", "alembic", "upgrade", "head"], ROOT / "backend", env=env)
-        run([sys.executable, "-m", "pytest", "-m", "postgres", "-s"], ROOT / "backend", env=env)
+        run(
+            [sys.executable, "-m", "alembic", "upgrade", "head"],
+            ROOT / "backend",
+            env=env,
+        )
+        run(
+            [sys.executable, "-m", "pytest", "-m", "postgres", "-s"],
+            ROOT / "backend",
+            env=env,
+        )
         success = True
     finally:
         db_down(argparse.Namespace())
     if success:
         print(
-            "verify-postgres passed: project=finnews_m0_verify service=postgres "
+            "verify-postgres passed: project=finnews_m1_verify service=postgres "
             "image=postgres:16 port=127.0.0.1:55432"
         )
+
+
+def verify_sources(_: argparse.Namespace) -> None:
+    backend = ROOT / "backend"
+    frontend = ROOT / "frontend"
+    env = {"FINNEWS_SOURCE_TEST_MODE": "mocked-offline"}
+    run(
+        [
+            sys.executable,
+            "-m",
+            "finnews.interfaces.cli.app",
+            "source",
+            "validate-config",
+        ],
+        backend,
+        env=env,
+    )
+    run(
+        [
+            sys.executable,
+            "-m",
+            "pytest",
+            "tests/unit/test_source_registry.py",
+            "tests/unit/test_http_safety.py",
+            "tests/unit/test_source_adapters.py",
+            "tests/unit/test_source_ingestion.py",
+            "tests/contract/test_source_api_cli.py",
+        ],
+        backend,
+        env=env,
+    )
+    run(["npm", "run", "test:unit", "--", "--run"], frontend, env=env)
 
 
 def wait_for_postgres_health(timeout_seconds: int = 90) -> None:
@@ -181,7 +251,9 @@ def cleanup(args: argparse.Namespace) -> None:
     for path in existing:
         print(path)
     if args.dry_run or not args.confirm:
-        print("Dry run only. Re-run with cleanup --confirm to remove repository-local generated files.")
+        print(
+            "Dry run only. Re-run with cleanup --confirm to remove repository-local generated files."
+        )
         return
     for path in existing:
         if path.is_dir():
@@ -198,6 +270,7 @@ def main() -> None:
     sub.add_parser("db-up").set_defaults(func=db_up)
     sub.add_parser("db-down").set_defaults(func=db_down)
     sub.add_parser("verify-postgres").set_defaults(func=verify_postgres)
+    sub.add_parser("verify-sources").set_defaults(func=verify_sources)
     sub.add_parser("export-static").set_defaults(func=export_static)
     cleanup_parser = sub.add_parser("cleanup")
     cleanup_parser.add_argument("--dry-run", action="store_true", default=False)

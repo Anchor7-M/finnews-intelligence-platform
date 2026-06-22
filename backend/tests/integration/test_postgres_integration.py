@@ -19,6 +19,9 @@ from finnews.application.services.deduplication_accounting import build_deduplic
 from finnews.application.services.export_static import build_static_payload
 from finnews.application.services.pipeline import NewsPipeline
 from finnews.bootstrap import FIXTURE_DIR, load_default_records
+from finnews.domain.entities import SourceDefinition, SourceFetchAttempt, SourceFetchState
+from finnews.domain.enums import FetchOutcome, SourceApprovalStatus, SourceHealthStatus, SourceType
+from finnews.domain.value_objects import utc_now
 from finnews.infrastructure.persistence.postgres.models import (
     ArticleCompanyLinkModel,
     CompanyModel,
@@ -45,6 +48,9 @@ EXPECTED_TABLES = {
     "daily_digests",
     "daily_company_signals",
     "pipeline_runs",
+    "source_definitions",
+    "source_fetch_states",
+    "source_fetch_attempts",
 }
 EXPECTED_METRICS = {
     "raw_observation_count": 68,
@@ -123,7 +129,10 @@ def test_alembic_upgrade_downgrade_schema_types_constraints_and_indexes(engine: 
     assert EXPECTED_TABLES.isdisjoint(set(inspector.get_table_names()))
 
     command.upgrade(alembic_config(), "head")
-    assert ScriptDirectory.from_config(alembic_config()).get_current_head() == "0001_initial_schema"
+    assert (
+        ScriptDirectory.from_config(alembic_config()).get_current_head()
+        == "0002_source_fetch_state"
+    )
     command.current(alembic_config())
 
     inspector = inspect(engine)
@@ -139,7 +148,10 @@ def test_alembic_upgrade_downgrade_schema_types_constraints_and_indexes(engine: 
     }
     indexes = {item["name"] for item in inspector.get_indexes("articles")}
     assert {"ix_articles_published_at", "ix_articles_state"}.issubset(indexes)
+    source_indexes = {item["name"] for item in inspector.get_indexes("source_fetch_attempts")}
+    assert "ix_source_fetch_attempts_source_started" in source_indexes
     assert inspector.get_foreign_keys("article_company_links")
+    assert inspector.get_foreign_keys("source_fetch_states")
 
     with Session(engine) as session:
         rows = session.execute(
@@ -261,6 +273,62 @@ def test_repository_contract_constraints_jsonb_timezone_and_rollback(settings: S
     repo.session.rollback()
     assert repo.session.scalar(select(func.count()).select_from(CompanyModel)) == 12
     repo.session.close()
+
+
+@pytest.mark.postgres
+def test_source_state_repository_contract_jsonb_and_attempts(settings: Settings) -> None:
+    reset_schema()
+    session = session_for(settings)
+    repo = PostgresNewsRepository(session)
+    definition = repo.upsert_source_definition(
+        SourceDefinition(
+            source_id="pg-mock-rss",
+            display_name="PG Mock RSS",
+            source_type=SourceType.RSS,
+            approved_hostnames=["mock.local"],
+            review_status=SourceApprovalStatus.APPROVED,
+            enabled=True,
+            base_url="https://mock.local/rss.xml",
+            terms_url="https://mock.local/terms",
+            documentation_url="https://mock.local/docs",
+            reviewer="test",
+            field_mapping={"id": "id"},
+            minimum_interval_seconds=0,
+        )
+    )
+    state = repo.upsert_source_fetch_state(
+        SourceFetchState(
+            source_id=definition.source_id,
+            etag='"pg"',
+            last_modified="Mon, 22 Jun 2026 00:00:00 GMT",
+            cursor="cursor-1",
+            last_successful_at=utc_now(),
+            last_response_hash="a" * 64,
+            last_response_byte_count=100,
+            last_item_count=2,
+            health_status=SourceHealthStatus.HEALTHY,
+        )
+    )
+    attempt = repo.add_source_fetch_attempt(
+        SourceFetchAttempt(
+            source_id=definition.source_id,
+            outcome=FetchOutcome.SUCCESS,
+            started_at=utc_now(),
+            finished_at=utc_now(),
+            http_status=200,
+            item_count=2,
+            new_count=2,
+            response_byte_count=100,
+            etag_present=True,
+            last_modified_present=True,
+        )
+    )
+    session.commit()
+    assert repo.get_source_definition("pg-mock-rss") == definition
+    assert repo.get_source_fetch_state("pg-mock-rss") == state
+    assert repo.list_source_fetch_attempts()[0].id == attempt.id
+    assert repo.list_source_definitions()[0].field_mapping == {"id": "id"}
+    session.close()
 
 
 @pytest.mark.postgres

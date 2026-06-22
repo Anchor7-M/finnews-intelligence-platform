@@ -22,14 +22,22 @@ from finnews.domain.entities import (
     PipelineRun,
     RawArticle,
     Source,
+    SourceDefinition,
+    SourceFetchAttempt,
+    SourceFetchState,
+    SourceRetryPolicy,
 )
 from finnews.domain.enums import (
     DuplicateType,
     EventType,
+    FetchOutcome,
     IngestionPolicy,
     ProcessingState,
     RunStatus,
     SentimentLabel,
+    SourceApprovalStatus,
+    SourceErrorCategory,
+    SourceHealthStatus,
     SourceType,
 )
 from finnews.infrastructure.normalization import comparison_text
@@ -47,6 +55,9 @@ from finnews.infrastructure.persistence.postgres.models import (
     ObservationDispositionModel,
     PipelineRunModel,
     RawArticleModel,
+    SourceDefinitionModel,
+    SourceFetchAttemptModel,
+    SourceFetchStateModel,
     SourceModel,
 )
 
@@ -78,6 +89,145 @@ class PostgresNewsRepository:
         self.session.add(model)
         self.session.flush()
         return _source(model)
+
+    def upsert_source_definition(self, definition: SourceDefinition) -> SourceDefinition:
+        model = self.session.get(SourceDefinitionModel, definition.source_id)
+        if model is None:
+            model = SourceDefinitionModel(source_id=definition.source_id)
+            self.session.add(model)
+        model.display_name = definition.display_name
+        model.source_type = definition.source_type.value
+        model.approved_hostnames = definition.approved_hostnames
+        model.review_status = definition.review_status.value
+        model.enabled = definition.enabled
+        model.base_url = definition.base_url
+        model.import_format = definition.import_format
+        model.terms_url = definition.terms_url
+        model.documentation_url = definition.documentation_url
+        model.reviewed_date = definition.reviewed_date
+        model.reviewer = definition.reviewer
+        model.content_storage_policy = definition.content_storage_policy.value
+        model.provenance_required = definition.provenance_required
+        model.language = definition.language
+        model.timezone = definition.timezone
+        model.connect_timeout_seconds = definition.connect_timeout_seconds
+        model.read_timeout_seconds = definition.read_timeout_seconds
+        model.max_response_bytes = definition.max_response_bytes
+        model.retry_policy = {
+            "max_retries": definition.retry_policy.max_retries,
+            "base_delay_seconds": definition.retry_policy.base_delay_seconds,
+            "max_delay_seconds": definition.retry_policy.max_delay_seconds,
+        }
+        model.minimum_interval_seconds = definition.minimum_interval_seconds
+        model.cursor_strategy = definition.cursor_strategy
+        model.field_mapping = definition.field_mapping
+        model.user_agent = definition.user_agent
+        model.notes = definition.notes
+        model.risk_classification = definition.risk_classification
+        model.adapter_version = definition.adapter_version
+        self.upsert_source(
+            Source(
+                source_key=definition.source_id,
+                display_name=definition.display_name,
+                source_type=definition.source_type,
+                base_url=definition.base_url,
+                terms_url=definition.terms_url,
+                enabled=definition.enabled,
+                language_hints=[definition.language],
+                ingestion_policy=definition.content_storage_policy,
+                rate_limit={
+                    "minimum_interval_seconds": definition.minimum_interval_seconds,
+                    "max_retries": definition.retry_policy.max_retries,
+                },
+            )
+        )
+        self.session.flush()
+        return _source_definition(model)
+
+    def list_source_definitions(self) -> list[SourceDefinition]:
+        return [
+            _source_definition(row)
+            for row in self.session.scalars(
+                select(SourceDefinitionModel).order_by(SourceDefinitionModel.source_id)
+            ).all()
+        ]
+
+    def get_source_definition(self, source_id: str) -> SourceDefinition | None:
+        model = self.session.get(SourceDefinitionModel, source_id)
+        return _source_definition(model) if model else None
+
+    def upsert_source_fetch_state(self, state: SourceFetchState) -> SourceFetchState:
+        model = self.session.get(SourceFetchStateModel, state.source_id)
+        if model is None:
+            model = SourceFetchStateModel(source_id=state.source_id)
+            self.session.add(model)
+        model.etag = state.etag
+        model.last_modified = state.last_modified
+        model.cursor = state.cursor
+        model.last_attempted_at = state.last_attempted_at
+        model.last_successful_at = state.last_successful_at
+        model.next_allowed_at = state.next_allowed_at
+        model.last_http_status = state.last_http_status
+        model.last_response_hash = state.last_response_hash
+        model.last_response_byte_count = state.last_response_byte_count
+        model.last_item_count = state.last_item_count
+        model.consecutive_failure_count = state.consecutive_failure_count
+        model.last_error_category = state.last_error_category.value
+        model.last_error_summary = state.last_error_summary
+        model.health_status = state.health_status.value
+        model.adapter_version = state.adapter_version
+        model.updated_at = state.updated_at
+        self.session.flush()
+        return state
+
+    def get_source_fetch_state(self, source_id: str) -> SourceFetchState | None:
+        model = self.session.get(SourceFetchStateModel, source_id)
+        return _source_fetch_state(model) if model else None
+
+    def list_source_fetch_states(self) -> list[SourceFetchState]:
+        return [
+            _source_fetch_state(row)
+            for row in self.session.scalars(
+                select(SourceFetchStateModel).order_by(SourceFetchStateModel.source_id)
+            ).all()
+        ]
+
+    def add_source_fetch_attempt(self, attempt: SourceFetchAttempt) -> SourceFetchAttempt:
+        self.session.add(
+            SourceFetchAttemptModel(
+                id=attempt.id,
+                source_id=attempt.source_id,
+                outcome=attempt.outcome.value,
+                started_at=attempt.started_at,
+                finished_at=attempt.finished_at,
+                http_status=attempt.http_status,
+                item_count=attempt.item_count,
+                new_count=attempt.new_count,
+                duplicate_count=attempt.duplicate_count,
+                rejected_count=attempt.rejected_count,
+                response_byte_count=attempt.response_byte_count,
+                response_hash=attempt.response_hash,
+                retry_count=attempt.retry_count,
+                duration_ms=attempt.duration_ms,
+                error_category=attempt.error_category.value,
+                error_summary=attempt.error_summary,
+                etag_present=attempt.etag_present,
+                last_modified_present=attempt.last_modified_present,
+                cursor_before=attempt.cursor_before,
+                cursor_after=attempt.cursor_after,
+                dry_run=attempt.dry_run,
+            )
+        )
+        self.session.flush()
+        return attempt
+
+    def list_source_fetch_attempts(self) -> list[SourceFetchAttempt]:
+        return [
+            _source_fetch_attempt(row)
+            for row in self.session.scalars(
+                select(SourceFetchAttemptModel).order_by(SourceFetchAttemptModel.started_at.desc())
+            ).all()
+        ]
 
     def add_ingestion_run(self, run: IngestionRun) -> IngestionRun:
         self.session.add(
@@ -466,6 +616,106 @@ def _source(row: SourceModel) -> Source:
         rate_limit=dict(row.rate_limit),
         created_at=row.created_at,
         updated_at=row.updated_at,
+    )
+
+
+def _source_definition(row: SourceDefinitionModel) -> SourceDefinition:
+    retry_policy = dict(row.retry_policy)
+    retry = SourceRetryPolicy(
+        max_retries=_json_int(retry_policy.get("max_retries"), 2),
+        base_delay_seconds=_json_float(retry_policy.get("base_delay_seconds"), 1.0),
+        max_delay_seconds=_json_float(retry_policy.get("max_delay_seconds"), 30.0),
+    )
+    return SourceDefinition(
+        source_id=row.source_id,
+        display_name=row.display_name,
+        source_type=SourceType(row.source_type),
+        approved_hostnames=list(row.approved_hostnames),
+        review_status=SourceApprovalStatus(row.review_status),
+        enabled=row.enabled,
+        base_url=row.base_url,
+        import_format=row.import_format,
+        terms_url=row.terms_url,
+        documentation_url=row.documentation_url,
+        reviewed_date=row.reviewed_date,
+        reviewer=row.reviewer,
+        content_storage_policy=IngestionPolicy(row.content_storage_policy),
+        provenance_required=row.provenance_required,
+        language=row.language,
+        timezone=row.timezone,
+        connect_timeout_seconds=row.connect_timeout_seconds,
+        read_timeout_seconds=row.read_timeout_seconds,
+        max_response_bytes=row.max_response_bytes,
+        retry_policy=retry,
+        minimum_interval_seconds=row.minimum_interval_seconds,
+        cursor_strategy=row.cursor_strategy,
+        field_mapping=dict(row.field_mapping),
+        user_agent=row.user_agent,
+        notes=row.notes,
+        risk_classification=row.risk_classification,
+        adapter_version=row.adapter_version,
+    )
+
+
+def _json_int(value: object, default: int) -> int:
+    if isinstance(value, int):
+        return value
+    if isinstance(value, str) and value.isdigit():
+        return int(value)
+    return default
+
+
+def _json_float(value: object, default: float) -> float:
+    if isinstance(value, int | float | str):
+        return float(value)
+    return default
+
+
+def _source_fetch_state(row: SourceFetchStateModel) -> SourceFetchState:
+    return SourceFetchState(
+        source_id=row.source_id,
+        etag=row.etag,
+        last_modified=row.last_modified,
+        cursor=row.cursor,
+        last_attempted_at=row.last_attempted_at,
+        last_successful_at=row.last_successful_at,
+        next_allowed_at=row.next_allowed_at,
+        last_http_status=row.last_http_status,
+        last_response_hash=row.last_response_hash,
+        last_response_byte_count=row.last_response_byte_count,
+        last_item_count=row.last_item_count,
+        consecutive_failure_count=row.consecutive_failure_count,
+        last_error_category=SourceErrorCategory(row.last_error_category),
+        last_error_summary=row.last_error_summary,
+        health_status=SourceHealthStatus(row.health_status),
+        adapter_version=row.adapter_version,
+        updated_at=row.updated_at,
+    )
+
+
+def _source_fetch_attempt(row: SourceFetchAttemptModel) -> SourceFetchAttempt:
+    return SourceFetchAttempt(
+        id=row.id,
+        source_id=row.source_id,
+        outcome=FetchOutcome(row.outcome),
+        started_at=row.started_at,
+        finished_at=row.finished_at,
+        http_status=row.http_status,
+        item_count=row.item_count,
+        new_count=row.new_count,
+        duplicate_count=row.duplicate_count,
+        rejected_count=row.rejected_count,
+        response_byte_count=row.response_byte_count,
+        response_hash=row.response_hash,
+        retry_count=row.retry_count,
+        duration_ms=row.duration_ms,
+        error_category=SourceErrorCategory(row.error_category),
+        error_summary=row.error_summary,
+        etag_present=row.etag_present,
+        last_modified_present=row.last_modified_present,
+        cursor_before=row.cursor_before,
+        cursor_after=row.cursor_after,
+        dry_run=row.dry_run,
     )
 
 
