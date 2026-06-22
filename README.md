@@ -70,13 +70,18 @@ python scripts/dev.py db-down
 
 The database is bound to `127.0.0.1:55432`, uses a local demo password, and is not suitable for production.
 
-PostgreSQL integration has not been verified in this local audit because Docker was not started.
+PostgreSQL integration was verified locally with the official `postgres:16` image,
+Compose project `finnews_m0_verify`, service `postgres`, and port
+`127.0.0.1:55432`. The verification runs Alembic upgrade/downgrade/re-upgrade,
+repository parity, full fixture-pipeline persistence, API and CLI PostgreSQL
+profile checks, then removes the task-owned container, volume, and network.
 
 ## Verification Evidence
 
 The latest lightweight verification passed:
 
 - Backend tests: tracked by `python scripts/dev.py verify-lite`.
+- PostgreSQL integration tests: 5 passed with `python scripts/dev.py verify-postgres`.
 - Backend coverage: enforced at the 80% threshold.
 - Frontend tests: 8 passed.
 - Ruff, Ruff format, mypy, ESLint, Prettier, TypeScript, Vite build, memory demo, static export, and `git diff --check` passed.
@@ -106,5 +111,5 @@ Milestones 1-4 are documented in `docs/ROADMAP.md` and are not implemented yet.
 
 - No live source adapters in Milestone 0.
 - Baselines are deterministic rules, not predictive models.
-- PostgreSQL repository behavior is production-shaped but optional for local verification.
+- PostgreSQL repository behavior is verified locally, but this is still synthetic research tooling rather than production financial advice.
 - GitHub Actions files are present for future manual push; no CI result is claimed locally.

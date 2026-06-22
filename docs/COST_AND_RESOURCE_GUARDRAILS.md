@@ -19,10 +19,16 @@ Stop it:
 python scripts/dev.py db-down
 ```
 
-The Compose file starts one PostgreSQL 16 container bound to `127.0.0.1:55432` with `restart: "no"`. Volumes are preserved by default.
+The Compose file starts one PostgreSQL 16 container bound to `127.0.0.1:55432`
+with `restart: "no"`, 0.50 CPU, 512 MB memory, a project-scoped network, and a
+project-scoped disposable volume. PostgreSQL data is never bind-mounted from the
+host filesystem.
 
 Never run `docker system prune` for this project.
 
 ## Audit Status
 
-The non-Docker lightweight path is verified. PostgreSQL integration is **not verified** in the compliance audit because Docker was not started and no image was pulled.
+The non-Docker lightweight path is verified. PostgreSQL integration was verified
+locally with `python scripts/dev.py verify-postgres`; the official `postgres:16`
+image was pulled because it was absent before the task. No paid services,
+external databases, pgAdmin, Redis, Kafka, or cloud resources are used.
