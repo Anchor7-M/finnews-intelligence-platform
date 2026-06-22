@@ -1,0 +1,21 @@
+[
+  {
+    "source_id": "example-rss-feed",
+    "scenario": "conditional_request",
+    "sends_if_none_match": true,
+    "sends_if_modified_since": true,
+    "stores_raw_body": false
+  },
+  {
+    "source_id": "example-rss-feed",
+    "scenario": "not_modified_304",
+    "outcome": "no_change",
+    "successful_no_change": true
+  },
+  {
+    "source_id": "example-announcement-json",
+    "scenario": "transient_failure_recovery",
+    "max_retries_after_initial": 2,
+    "bounded": true
+  }
+]

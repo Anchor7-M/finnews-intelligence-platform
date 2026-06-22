@@ -2,6 +2,8 @@
 
 - Milestone 0 runs offline with synthetic data.
 - No paid API, paid hosting, telemetry, browser automation, model weight, or live news source is required.
+- Milestone 1A source tests use local mocks only and do not fetch from real publishers.
+- Source fetching is run-once and bounded: default 2 MB response limit, hard 5 MB ceiling, no article-page downloads, no media downloads, and no background worker.
 - Default verification does not require Docker.
 - Python dependencies belong in `.venv`; frontend dependencies belong in `frontend/node_modules`.
 

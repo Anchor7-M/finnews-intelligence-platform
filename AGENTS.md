@@ -21,6 +21,7 @@
 - Do not push, open PRs, or modify remotes during this local phase.
 - Do not add React, paid APIs, paid hosting dependencies, proprietary data, copied article bodies, telemetry, or analytics.
 - Keep Milestone 0 honest: synthetic offline data only, no investment advice, no live intelligence claims.
+- For Milestone 1A source work, keep real sources disabled by default, use local mocks for automated tests, expose no arbitrary URL fetch endpoint, and store no raw response bodies.
 - Stop any temporary services before handing work back.
 - Update docs when behavior changes.
 

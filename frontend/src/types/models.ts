@@ -71,3 +71,60 @@ export interface Signal {
   source_diversity_score: number;
   schema_version: string;
 }
+
+export interface SourceSummary {
+  source_id: string;
+  display_name: string;
+  source_type: string;
+  approval_status: string;
+  enabled: boolean;
+  health?: string;
+  terms_url?: string;
+  documentation_url?: string;
+  content_storage_policy?: string;
+  language?: string;
+  timezone?: string;
+  risk_classification?: string;
+  approved_host_count?: number;
+  synthetic?: boolean;
+}
+
+export interface SourceHealth {
+  source_id: string;
+  display_name: string;
+  source_type: string;
+  approval_status: string;
+  enabled: boolean;
+  health: string;
+  last_attempted_at: string | null;
+  last_successful_at: string | null;
+  last_outcome: string;
+  last_http_status: number | null;
+  last_item_count: number;
+  last_response_byte_count: number;
+  consecutive_failure_count: number;
+  etag_available: boolean;
+  last_modified_available: boolean;
+  last_error_category: string;
+  synthetic: boolean;
+}
+
+export interface SourceFetchAttempt {
+  id: string;
+  source_id: string;
+  outcome: string;
+  started_at: string;
+  finished_at: string;
+  http_status: number | null;
+  item_count: number;
+  new_count: number;
+  duplicate_count: number;
+  rejected_count: number;
+  response_byte_count: number;
+  retry_count: number;
+  error_category: string;
+  error_summary: string;
+  etag_available: boolean;
+  last_modified_available: boolean;
+  dry_run: boolean;
+}
