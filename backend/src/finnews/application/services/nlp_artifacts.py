@@ -132,6 +132,7 @@ def safe_manifest_summary(manifest: ModelArtifactManifest) -> dict[str, Any]:
         "status": manifest.status,
         "artifact_sha256": manifest.artifact_sha256,
         "artifact_size_bytes": manifest.artifact_size_bytes,
+        "manifest_sha256": sha256_text(manifest.model_dump_json()),
         "config_sha256": manifest.config_sha256,
         "created_at": manifest.created_at,
     }

@@ -129,6 +129,56 @@ class SourceFetchAttemptModel(Base):
     dry_run: Mapped[bool] = mapped_column(Boolean, nullable=False)
 
 
+class NlpModelRegistryModel(Base):
+    __tablename__ = "nlp_model_registry"
+    __table_args__ = (
+        Index("ix_nlp_model_registry_task_status", "task", "status"),
+        Index("ix_nlp_model_registry_dataset", "dataset_id", "dataset_version"),
+    )
+    model_id: Mapped[str] = mapped_column(String(160), primary_key=True)
+    task: Mapped[str] = mapped_column(String(40), nullable=False)
+    provider: Mapped[str] = mapped_column(String(80), nullable=False)
+    model_kind: Mapped[str] = mapped_column(String(120), nullable=False)
+    status: Mapped[str] = mapped_column(String(80), nullable=False)
+    dataset_id: Mapped[str] = mapped_column(String(160), nullable=False)
+    dataset_version: Mapped[str] = mapped_column(String(40), nullable=False)
+    dataset_sha256: Mapped[str] = mapped_column(String(64), nullable=False)
+    split_hashes: Mapped[dict[str, str]] = mapped_column(JSONB, nullable=False)
+    label_set: Mapped[list[str]] = mapped_column(JSONB, nullable=False)
+    metrics: Mapped[dict[str, object]] = mapped_column(JSONB, nullable=False)
+    calibration: Mapped[dict[str, object]] = mapped_column(JSONB, nullable=False)
+    artifact_uri: Mapped[str | None] = mapped_column(Text)
+    artifact_sha256: Mapped[str] = mapped_column(String(64), nullable=False)
+    artifact_size_bytes: Mapped[int] = mapped_column(Integer, nullable=False)
+    manifest_sha256: Mapped[str] = mapped_column(String(64), nullable=False)
+    config_sha256: Mapped[str] = mapped_column(String(64), nullable=False)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+    updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+
+
+class NlpEvaluationRunModel(Base):
+    __tablename__ = "nlp_evaluation_runs"
+    __table_args__ = (
+        Index("ix_nlp_evaluation_runs_task_split", "task", "split_name"),
+        Index("ix_nlp_evaluation_runs_model", "model_id"),
+    )
+    evaluation_id: Mapped[str] = mapped_column(String(180), primary_key=True)
+    model_id: Mapped[str] = mapped_column(
+        ForeignKey("nlp_model_registry.model_id"), nullable=False
+    )
+    task: Mapped[str] = mapped_column(String(40), nullable=False)
+    dataset_id: Mapped[str] = mapped_column(String(160), nullable=False)
+    dataset_version: Mapped[str] = mapped_column(String(40), nullable=False)
+    dataset_sha256: Mapped[str] = mapped_column(String(64), nullable=False)
+    split_name: Mapped[str] = mapped_column(String(40), nullable=False)
+    metrics: Mapped[dict[str, object]] = mapped_column(JSONB, nullable=False)
+    slice_metrics: Mapped[dict[str, object]] = mapped_column(JSONB, nullable=False)
+    calibration: Mapped[dict[str, object]] = mapped_column(JSONB, nullable=False)
+    error_analysis: Mapped[dict[str, object]] = mapped_column(JSONB, nullable=False)
+    selection_procedure: Mapped[dict[str, object]] = mapped_column(JSONB, nullable=False)
+    evaluated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+
+
 class IngestionRunModel(Base):
     __tablename__ = "ingestion_runs"
     id: Mapped[UUID] = mapped_column(PGUUID(as_uuid=True), primary_key=True, default=uuid4)

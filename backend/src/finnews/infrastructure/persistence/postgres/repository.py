@@ -18,6 +18,8 @@ from finnews.domain.entities import (
     DailyCompanySignal,
     DailyDigest,
     IngestionRun,
+    NlpEvaluationRun,
+    NlpModelRegistryEntry,
     ObservationDisposition,
     PipelineRun,
     RawArticle,
@@ -52,6 +54,8 @@ from finnews.infrastructure.persistence.postgres.models import (
     DailyCompanySignalModel,
     DailyDigestModel,
     IngestionRunModel,
+    NlpEvaluationRunModel,
+    NlpModelRegistryModel,
     ObservationDispositionModel,
     PipelineRunModel,
     RawArticleModel,
@@ -228,6 +232,82 @@ class PostgresNewsRepository:
                 select(SourceFetchAttemptModel).order_by(SourceFetchAttemptModel.started_at.desc())
             ).all()
         ]
+
+    def upsert_nlp_model(self, model: NlpModelRegistryEntry) -> NlpModelRegistryEntry:
+        row = self.session.get(NlpModelRegistryModel, model.model_id)
+        if row is None:
+            row = NlpModelRegistryModel(model_id=model.model_id)
+            self.session.add(row)
+        row.task = model.task
+        row.provider = model.provider
+        row.model_kind = model.model_kind
+        row.status = model.status
+        row.dataset_id = model.dataset_id
+        row.dataset_version = model.dataset_version
+        row.dataset_sha256 = model.dataset_sha256
+        row.split_hashes = model.split_hashes
+        row.label_set = model.label_set
+        row.metrics = model.metrics
+        row.calibration = model.calibration
+        row.artifact_uri = model.artifact_uri
+        row.artifact_sha256 = model.artifact_sha256
+        row.artifact_size_bytes = model.artifact_size_bytes
+        row.manifest_sha256 = model.manifest_sha256
+        row.config_sha256 = model.config_sha256
+        row.created_at = model.created_at
+        row.updated_at = model.updated_at
+        self.session.flush()
+        return _nlp_model(row)
+
+    def get_nlp_model(self, model_id: str) -> NlpModelRegistryEntry | None:
+        row = self.session.get(NlpModelRegistryModel, model_id)
+        return _nlp_model(row) if row else None
+
+    def list_nlp_models(
+        self, task: str | None = None, status: str | None = None
+    ) -> list[NlpModelRegistryEntry]:
+        statement = select(NlpModelRegistryModel)
+        if task:
+            statement = statement.where(NlpModelRegistryModel.task == task)
+        if status:
+            statement = statement.where(NlpModelRegistryModel.status == status)
+        statement = statement.order_by(NlpModelRegistryModel.task, NlpModelRegistryModel.model_id)
+        return [_nlp_model(row) for row in self.session.scalars(statement).all()]
+
+    def upsert_nlp_evaluation(self, evaluation: NlpEvaluationRun) -> NlpEvaluationRun:
+        row = self.session.get(NlpEvaluationRunModel, evaluation.evaluation_id)
+        if row is None:
+            row = NlpEvaluationRunModel(evaluation_id=evaluation.evaluation_id)
+            self.session.add(row)
+        row.model_id = evaluation.model_id
+        row.task = evaluation.task
+        row.dataset_id = evaluation.dataset_id
+        row.dataset_version = evaluation.dataset_version
+        row.dataset_sha256 = evaluation.dataset_sha256
+        row.split_name = evaluation.split_name
+        row.metrics = evaluation.metrics
+        row.slice_metrics = evaluation.slice_metrics
+        row.calibration = evaluation.calibration
+        row.error_analysis = evaluation.error_analysis
+        row.selection_procedure = evaluation.selection_procedure
+        row.evaluated_at = evaluation.evaluated_at
+        self.session.flush()
+        return _nlp_evaluation(row)
+
+    def get_nlp_evaluation(self, evaluation_id: str) -> NlpEvaluationRun | None:
+        row = self.session.get(NlpEvaluationRunModel, evaluation_id)
+        return _nlp_evaluation(row) if row else None
+
+    def list_nlp_evaluations(
+        self, task: str | None = None, model_id: str | None = None
+    ) -> list[NlpEvaluationRun]:
+        statement = select(NlpEvaluationRunModel)
+        if task:
+            statement = statement.where(NlpEvaluationRunModel.task == task)
+        if model_id:
+            statement = statement.where(NlpEvaluationRunModel.model_id == model_id)
+        statement = statement.order_by(NlpEvaluationRunModel.evaluated_at.desc())
+        return [_nlp_evaluation(row) for row in self.session.scalars(statement).all()]
 
     def add_ingestion_run(self, run: IngestionRun) -> IngestionRun:
         self.session.add(
@@ -716,6 +796,48 @@ def _source_fetch_attempt(row: SourceFetchAttemptModel) -> SourceFetchAttempt:
         cursor_before=row.cursor_before,
         cursor_after=row.cursor_after,
         dry_run=row.dry_run,
+    )
+
+
+def _nlp_model(row: NlpModelRegistryModel) -> NlpModelRegistryEntry:
+    return NlpModelRegistryEntry(
+        model_id=row.model_id,
+        task=row.task,
+        provider=row.provider,
+        model_kind=row.model_kind,
+        status=row.status,
+        dataset_id=row.dataset_id,
+        dataset_version=row.dataset_version,
+        dataset_sha256=row.dataset_sha256,
+        split_hashes=dict(row.split_hashes),
+        label_set=list(row.label_set),
+        metrics=dict(row.metrics),
+        calibration=dict(row.calibration),
+        artifact_uri=row.artifact_uri,
+        artifact_sha256=row.artifact_sha256,
+        artifact_size_bytes=row.artifact_size_bytes,
+        manifest_sha256=row.manifest_sha256,
+        config_sha256=row.config_sha256,
+        created_at=row.created_at,
+        updated_at=row.updated_at,
+    )
+
+
+def _nlp_evaluation(row: NlpEvaluationRunModel) -> NlpEvaluationRun:
+    return NlpEvaluationRun(
+        evaluation_id=row.evaluation_id,
+        model_id=row.model_id,
+        task=row.task,
+        dataset_id=row.dataset_id,
+        dataset_version=row.dataset_version,
+        dataset_sha256=row.dataset_sha256,
+        split_name=row.split_name,
+        metrics=dict(row.metrics),
+        slice_metrics=dict(row.slice_metrics),
+        calibration=dict(row.calibration),
+        error_analysis=dict(row.error_analysis),
+        selection_procedure=dict(row.selection_procedure),
+        evaluated_at=row.evaluated_at,
     )
 
 

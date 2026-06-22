@@ -3,6 +3,7 @@ from __future__ import annotations
 import os
 from collections.abc import Iterator
 from datetime import date
+from typing import Any, cast
 
 import pytest
 from alembic.config import Config
@@ -20,7 +21,13 @@ from finnews.application.services.deduplication_accounting import build_deduplic
 from finnews.application.services.export_static import build_static_payload
 from finnews.application.services.pipeline import NewsPipeline
 from finnews.bootstrap import FIXTURE_DIR, load_default_records
-from finnews.domain.entities import SourceDefinition, SourceFetchAttempt, SourceFetchState
+from finnews.domain.entities import (
+    NlpEvaluationRun,
+    NlpModelRegistryEntry,
+    SourceDefinition,
+    SourceFetchAttempt,
+    SourceFetchState,
+)
 from finnews.domain.enums import FetchOutcome, SourceApprovalStatus, SourceHealthStatus, SourceType
 from finnews.domain.value_objects import utc_now
 from finnews.infrastructure.persistence.postgres.models import (
@@ -52,6 +59,8 @@ EXPECTED_TABLES = {
     "source_definitions",
     "source_fetch_states",
     "source_fetch_attempts",
+    "nlp_model_registry",
+    "nlp_evaluation_runs",
 }
 EXPECTED_METRICS = {
     "raw_observation_count": 68,
@@ -399,3 +408,74 @@ def test_postgres_cli_profile_without_secret_output(
         assert "finnews:finnews" not in result.output
     assert '"processed": 46' in process.output
     assert signals.output.startswith("[")
+
+
+@pytest.mark.postgres
+def test_postgres_nlp_model_registry_metadata_jsonb_and_rollback(settings: Settings) -> None:
+    reset_schema()
+    engine = create_engine(settings.database_url, future=True)
+    session = Session(engine)
+    repo = PostgresNewsRepository(session)
+    model = NlpModelRegistryEntry(
+        model_id="m2a-event-demo",
+        task="event",
+        provider="scikit_learn",
+        model_kind="word_char_tfidf_logreg",
+        status="demo_candidate",
+        dataset_id="synthetic-finnews-nlp-v1",
+        dataset_version="1.0.0",
+        dataset_sha256="a" * 64,
+        split_hashes={"train": "b" * 64, "validation": "c" * 64, "test": "d" * 64},
+        label_set=["earnings", "other"],
+        metrics={"macro_f1": 0.75, "per_class": {"earnings": {"recall": 1.0}}},
+        calibration={"expected_calibration_error": 0.12},
+        artifact_uri=None,
+        artifact_sha256="e" * 64,
+        artifact_size_bytes=1234,
+        manifest_sha256="f" * 64,
+        config_sha256="1" * 64,
+        created_at=utc_now(),
+        updated_at=utc_now(),
+    )
+    repo.upsert_nlp_model(model)
+    repo.upsert_nlp_model(model)
+    evaluation = NlpEvaluationRun(
+        evaluation_id="m2a-event-demo-test",
+        model_id=model.model_id,
+        task="event",
+        dataset_id=model.dataset_id,
+        dataset_version=model.dataset_version,
+        dataset_sha256=model.dataset_sha256,
+        split_name="test",
+        metrics={"selected_ml": {"macro_f1": 0.75}},
+        slice_metrics={"language": [{"name": "zh", "macro_f1": 0.7}]},
+        calibration={"alpha": 1.0},
+        error_analysis={"confusion_pairs": []},
+        selection_procedure={"test_set_used_for_selection": False},
+        evaluated_at=utc_now(),
+    )
+    repo.upsert_nlp_evaluation(evaluation)
+    session.commit()
+    assert len(repo.list_nlp_models()) == 1
+    persisted_model = repo.get_nlp_model(model.model_id)
+    assert persisted_model is not None
+    assert persisted_model.metrics["macro_f1"] == 0.75
+    slice_json = cast(
+        dict[str, list[dict[str, Any]]], repo.list_nlp_evaluations(task="event")[0].slice_metrics
+    )
+    assert slice_json["language"][0]["name"] == "zh"
+
+    repo.upsert_nlp_model(
+        NlpModelRegistryEntry(
+            **{
+                **model.__dict__,
+                "model_id": "m2a-rollback",
+                "artifact_sha256": "2" * 64,
+            }
+        )
+    )
+    session.rollback()
+    assert repo.get_nlp_model("m2a-rollback") is None
+    assert repo.get_nlp_model(model.model_id) is not None
+    session.close()
+    engine.dispose()
