@@ -1,0 +1,23 @@
+{
+  "body_storage": "metadata_and_source_abstracts_only",
+  "dataset_count": 4,
+  "fixture_version": "official-data-synthetic-v1",
+  "generated_at": "2026-06-24T00:00:00+00:00",
+  "live_data_persisted": false,
+  "not_investment_advice": true,
+  "observation_count": 24,
+  "official_release_event_count": 32,
+  "regulatory_document_count": 8,
+  "revised_observation_count": 4,
+  "revision_count": 28,
+  "revision_policy": "append_only_point_in_time",
+  "series_asset_association_count": 80,
+  "series_profile_count": 10,
+  "source_counts": {
+    "bls-public-data": 1,
+    "cftc-cot-pre": 1,
+    "eia-open-data-v2": 1,
+    "federal-register-api": 1
+  },
+  "synthetic_data": true
+}

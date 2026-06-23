@@ -1,0 +1,44 @@
+[
+  {
+    "dataset_id": "eia-petroleum-stocks",
+    "id": "eb593156-eb3c-5978-a1a7-5b097498191a",
+    "new_revision_count": 10,
+    "no_persist_live": false,
+    "observation_count": 10,
+    "observed_at": "2026-06-24T00:03:00+00:00",
+    "profile_count": 3,
+    "release_run_id": "ODR-003",
+    "source_id": "eia-open-data-v2",
+    "status": "completed",
+    "synthetic": true,
+    "unchanged_count": 0
+  },
+  {
+    "dataset_id": "cftc-cot-pre",
+    "id": "d9adee55-269a-58b4-a45c-49721c07c203",
+    "new_revision_count": 8,
+    "no_persist_live": false,
+    "observation_count": 8,
+    "observed_at": "2026-06-24T00:02:00+00:00",
+    "profile_count": 2,
+    "release_run_id": "ODR-002",
+    "source_id": "cftc-cot-pre",
+    "status": "completed",
+    "synthetic": true,
+    "unchanged_count": 0
+  },
+  {
+    "dataset_id": "bls-ces",
+    "id": "2ea081ff-de52-5c8b-8f5a-b293b3dfd4e1",
+    "new_revision_count": 10,
+    "no_persist_live": false,
+    "observation_count": 10,
+    "observed_at": "2026-06-24T00:01:00+00:00",
+    "profile_count": 3,
+    "release_run_id": "ODR-001",
+    "source_id": "bls-public-data",
+    "status": "completed",
+    "synthetic": true,
+    "unchanged_count": 0
+  }
+]

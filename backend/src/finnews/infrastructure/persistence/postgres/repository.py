@@ -27,6 +27,12 @@ from finnews.domain.entities import (
     NlpEvaluationRun,
     NlpModelRegistryEntry,
     ObservationDisposition,
+    OfficialDataReleaseRun,
+    OfficialDataset,
+    OfficialObservation,
+    OfficialObservationRevision,
+    OfficialReleaseEvent,
+    OfficialSeriesProfile,
     PipelineRun,
     ProviderSymbol,
     RawArticle,
@@ -42,6 +48,8 @@ from finnews.domain.entities import (
     SourceFetchState,
     SourceRetryPolicy,
     SymbolAlias,
+    RegulatoryDocument,
+    SeriesAssetAssociation,
 )
 from finnews.domain.enums import (
     AssetClass,
@@ -85,6 +93,12 @@ from finnews.infrastructure.persistence.postgres.models import (
     NlpEvaluationRunModel,
     NlpModelRegistryModel,
     ObservationDispositionModel,
+    OfficialDataReleaseRunModel,
+    OfficialDatasetModel,
+    OfficialObservationModel,
+    OfficialObservationRevisionModel,
+    OfficialReleaseEventModel,
+    OfficialSeriesProfileModel,
     PipelineRunModel,
     ProviderSymbolModel,
     RawArticleModel,
@@ -99,6 +113,8 @@ from finnews.infrastructure.persistence.postgres.models import (
     SourceFetchStateModel,
     SourceModel,
     SymbolAliasModel,
+    RegulatoryDocumentModel,
+    SeriesAssetAssociationModel,
 )
 
 
@@ -976,6 +992,468 @@ class PostgresNewsRepository:
             statement = statement.where(MarketSignalCandidateModel.status == status)
         statement = statement.order_by(MarketSignalCandidateModel.signal_id)
         return [_market_signal(row) for row in self.session.scalars(statement)]
+
+    def upsert_official_dataset(self, dataset: OfficialDataset) -> OfficialDataset:
+        model = self.session.scalar(
+            select(OfficialDatasetModel).where(
+                OfficialDatasetModel.dataset_id == dataset.dataset_id
+            )
+        )
+        if model is None:
+            model = OfficialDatasetModel(id=dataset.id, dataset_id=dataset.dataset_id)
+            self.session.add(model)
+        _fill_official_dataset_model(model, dataset)
+        self.session.flush()
+        return _official_dataset(model)
+
+    def upsert_official_series_profile(
+        self, profile: OfficialSeriesProfile
+    ) -> OfficialSeriesProfile:
+        model = self.session.scalar(
+            select(OfficialSeriesProfileModel).where(
+                OfficialSeriesProfileModel.profile_id == profile.profile_id
+            )
+        )
+        if model is None:
+            model = OfficialSeriesProfileModel(id=profile.id, profile_id=profile.profile_id)
+            self.session.add(model)
+        _fill_official_series_profile_model(model, profile)
+        self.session.flush()
+        return _official_series_profile(model)
+
+    def upsert_official_observation(
+        self,
+        observation: OfficialObservation,
+        revision: OfficialObservationRevision,
+    ) -> OfficialObservation:
+        model = self.session.scalar(
+            select(OfficialObservationModel).where(
+                OfficialObservationModel.observation_key == observation.observation_key
+            )
+        )
+        if model is None:
+            model = OfficialObservationModel(
+                id=observation.id, observation_key=observation.observation_key
+            )
+            self.session.add(model)
+        _fill_official_observation_model(model, observation)
+        revision_model = self.session.scalar(
+            select(OfficialObservationRevisionModel).where(
+                OfficialObservationRevisionModel.observation_key == revision.observation_key,
+                OfficialObservationRevisionModel.revision_number == revision.revision_number,
+            )
+        )
+        if revision_model is None:
+            self.session.add(_official_observation_revision_model(revision))
+        self.session.flush()
+        return _official_observation(model)
+
+    def add_official_data_release_run(
+        self, run: OfficialDataReleaseRun
+    ) -> OfficialDataReleaseRun:
+        model = self.session.scalar(
+            select(OfficialDataReleaseRunModel).where(
+                OfficialDataReleaseRunModel.release_run_id == run.release_run_id
+            )
+        )
+        if model is None:
+            model = _official_data_release_run_model(run)
+            self.session.add(model)
+        self.session.flush()
+        return _official_data_release_run(model)
+
+    def upsert_regulatory_document(self, document: RegulatoryDocument) -> RegulatoryDocument:
+        model = self.session.scalar(
+            select(RegulatoryDocumentModel).where(
+                RegulatoryDocumentModel.document_id == document.document_id
+            )
+        )
+        if model is None:
+            model = RegulatoryDocumentModel(id=document.id, document_id=document.document_id)
+            self.session.add(model)
+        _fill_regulatory_document_model(model, document)
+        self.session.flush()
+        return _regulatory_document(model)
+
+    def upsert_series_asset_association(
+        self, association: SeriesAssetAssociation
+    ) -> SeriesAssetAssociation:
+        model = self.session.scalar(
+            select(SeriesAssetAssociationModel).where(
+                SeriesAssetAssociationModel.association_id == association.association_id
+            )
+        )
+        if model is None:
+            model = SeriesAssetAssociationModel(
+                id=association.id, association_id=association.association_id
+            )
+            self.session.add(model)
+        _fill_series_asset_association_model(model, association)
+        self.session.flush()
+        return _series_asset_association(model)
+
+    def upsert_official_release_event(self, event: OfficialReleaseEvent) -> OfficialReleaseEvent:
+        model = self.session.scalar(
+            select(OfficialReleaseEventModel).where(
+                OfficialReleaseEventModel.event_id == event.event_id
+            )
+        )
+        if model is None:
+            model = OfficialReleaseEventModel(id=event.id, event_id=event.event_id)
+            self.session.add(model)
+        _fill_official_release_event_model(model, event)
+        self.session.flush()
+        return _official_release_event(model)
+
+    def list_official_datasets(self) -> list[OfficialDataset]:
+        return [
+            _official_dataset(row)
+            for row in self.session.scalars(
+                select(OfficialDatasetModel).order_by(OfficialDatasetModel.dataset_id)
+            )
+        ]
+
+    def list_official_series_profiles(
+        self, source_id: str | None = None
+    ) -> list[OfficialSeriesProfile]:
+        statement = select(OfficialSeriesProfileModel)
+        if source_id:
+            statement = statement.where(OfficialSeriesProfileModel.source_id == source_id)
+        statement = statement.order_by(OfficialSeriesProfileModel.profile_id)
+        return [_official_series_profile(row) for row in self.session.scalars(statement)]
+
+    def list_official_observations(
+        self,
+        dataset_id: str | None = None,
+        profile_id: str | None = None,
+    ) -> list[OfficialObservation]:
+        statement = select(OfficialObservationModel)
+        if dataset_id:
+            statement = statement.where(OfficialObservationModel.dataset_id == dataset_id)
+        if profile_id:
+            statement = statement.where(OfficialObservationModel.profile_id == profile_id)
+        statement = statement.order_by(
+            OfficialObservationModel.profile_id, OfficialObservationModel.period_start
+        )
+        return [_official_observation(row) for row in self.session.scalars(statement)]
+
+    def list_official_observation_revisions(
+        self, observation_key: str | None = None
+    ) -> list[OfficialObservationRevision]:
+        statement = select(OfficialObservationRevisionModel)
+        if observation_key:
+            statement = statement.where(
+                OfficialObservationRevisionModel.observation_key == observation_key
+            )
+        statement = statement.order_by(
+            OfficialObservationRevisionModel.observation_key,
+            OfficialObservationRevisionModel.revision_number,
+        )
+        return [_official_observation_revision(row) for row in self.session.scalars(statement)]
+
+    def list_official_data_release_runs(self) -> list[OfficialDataReleaseRun]:
+        return [
+            _official_data_release_run(row)
+            for row in self.session.scalars(
+                select(OfficialDataReleaseRunModel).order_by(
+                    OfficialDataReleaseRunModel.observed_at.desc()
+                )
+            )
+        ]
+
+    def list_regulatory_documents(self) -> list[RegulatoryDocument]:
+        return [
+            _regulatory_document(row)
+            for row in self.session.scalars(
+                select(RegulatoryDocumentModel).order_by(
+                    RegulatoryDocumentModel.publication_date.desc(),
+                    RegulatoryDocumentModel.document_id,
+                )
+            )
+        ]
+
+    def list_series_asset_associations(
+        self,
+        profile_id: str | None = None,
+        asset_id: str | None = None,
+    ) -> list[SeriesAssetAssociation]:
+        statement = select(SeriesAssetAssociationModel)
+        if profile_id:
+            statement = statement.where(SeriesAssetAssociationModel.profile_id == profile_id)
+        if asset_id:
+            statement = statement.where(SeriesAssetAssociationModel.asset_id == asset_id)
+        statement = statement.order_by(SeriesAssetAssociationModel.association_id)
+        return [_series_asset_association(row) for row in self.session.scalars(statement)]
+
+    def list_official_release_events(self) -> list[OfficialReleaseEvent]:
+        return [
+            _official_release_event(row)
+            for row in self.session.scalars(
+                select(OfficialReleaseEventModel).order_by(OfficialReleaseEventModel.event_id)
+            )
+        ]
+
+
+def _fill_official_dataset_model(model: OfficialDatasetModel, row: OfficialDataset) -> None:
+    model.source_id = row.source_id
+    model.display_name = row.display_name
+    model.category = row.category
+    model.description = row.description
+    model.documentation_url = row.documentation_url
+    model.revision_policy = row.revision_policy
+    model.frequency = row.frequency
+    model.unit = row.unit
+    model.synthetic = row.synthetic
+    model.provenance = row.provenance
+
+
+def _official_dataset(row: OfficialDatasetModel) -> OfficialDataset:
+    return OfficialDataset(
+        id=row.id,
+        dataset_id=row.dataset_id,
+        source_id=row.source_id,
+        display_name=row.display_name,
+        category=row.category,
+        description=row.description,
+        documentation_url=row.documentation_url,
+        revision_policy=row.revision_policy,
+        frequency=row.frequency,
+        unit=row.unit,
+        synthetic=row.synthetic,
+        provenance=dict(row.provenance),
+    )
+
+
+def _fill_official_series_profile_model(
+    model: OfficialSeriesProfileModel, row: OfficialSeriesProfile
+) -> None:
+    model.dataset_id = row.dataset_id
+    model.source_id = row.source_id
+    model.display_name = row.display_name
+    model.query = row.query
+    model.dimensions = row.dimensions
+    model.unit = row.unit
+    model.frequency = row.frequency
+    model.seasonal_adjustment = row.seasonal_adjustment
+    model.synthetic = row.synthetic
+    model.provenance = row.provenance
+
+
+def _official_series_profile(row: OfficialSeriesProfileModel) -> OfficialSeriesProfile:
+    return OfficialSeriesProfile(
+        id=row.id,
+        profile_id=row.profile_id,
+        dataset_id=row.dataset_id,
+        source_id=row.source_id,
+        display_name=row.display_name,
+        query=dict(row.query),
+        dimensions=dict(row.dimensions),
+        unit=row.unit,
+        frequency=row.frequency,
+        seasonal_adjustment=row.seasonal_adjustment,
+        synthetic=row.synthetic,
+        provenance=dict(row.provenance),
+    )
+
+
+def _fill_official_observation_model(
+    model: OfficialObservationModel, row: OfficialObservation
+) -> None:
+    model.source_id = row.source_id
+    model.dataset_id = row.dataset_id
+    model.profile_id = row.profile_id
+    model.period_start = row.period_start
+    model.period_end = row.period_end
+    model.dimensions = row.dimensions
+    model.current_revision = row.current_revision
+    model.current_value = row.current_value
+    model.first_seen_at = row.first_seen_at
+    model.information_available_at = row.information_available_at
+    model.synthetic = row.synthetic
+
+
+def _official_observation(row: OfficialObservationModel) -> OfficialObservation:
+    return OfficialObservation(
+        id=row.id,
+        observation_key=row.observation_key,
+        source_id=row.source_id,
+        dataset_id=row.dataset_id,
+        profile_id=row.profile_id,
+        period_start=row.period_start,
+        period_end=row.period_end,
+        dimensions=dict(row.dimensions),
+        current_revision=row.current_revision,
+        current_value=row.current_value,
+        first_seen_at=row.first_seen_at,
+        information_available_at=row.information_available_at,
+        synthetic=row.synthetic,
+    )
+
+
+def _official_observation_revision_model(
+    row: OfficialObservationRevision,
+) -> OfficialObservationRevisionModel:
+    return OfficialObservationRevisionModel(
+        id=row.id,
+        observation_key=row.observation_key,
+        revision_number=row.revision_number,
+        value=row.value,
+        first_seen_at=row.first_seen_at,
+        source_updated_at=row.source_updated_at,
+        information_available_at=row.information_available_at,
+        provenance=row.provenance,
+        quality_flags=row.quality_flags,
+    )
+
+
+def _official_observation_revision(
+    row: OfficialObservationRevisionModel,
+) -> OfficialObservationRevision:
+    return OfficialObservationRevision(
+        id=row.id,
+        observation_key=row.observation_key,
+        revision_number=row.revision_number,
+        value=row.value,
+        first_seen_at=row.first_seen_at,
+        source_updated_at=row.source_updated_at,
+        information_available_at=row.information_available_at,
+        provenance=dict(row.provenance),
+        quality_flags=list(row.quality_flags),
+    )
+
+
+def _official_data_release_run_model(row: OfficialDataReleaseRun) -> OfficialDataReleaseRunModel:
+    return OfficialDataReleaseRunModel(
+        id=row.id,
+        release_run_id=row.release_run_id,
+        source_id=row.source_id,
+        dataset_id=row.dataset_id,
+        observed_at=row.observed_at,
+        profile_count=row.profile_count,
+        observation_count=row.observation_count,
+        new_revision_count=row.new_revision_count,
+        unchanged_count=row.unchanged_count,
+        status=row.status,
+        no_persist_live=row.no_persist_live,
+        synthetic=row.synthetic,
+    )
+
+
+def _official_data_release_run(row: OfficialDataReleaseRunModel) -> OfficialDataReleaseRun:
+    return OfficialDataReleaseRun(
+        id=row.id,
+        release_run_id=row.release_run_id,
+        source_id=row.source_id,
+        dataset_id=row.dataset_id,
+        observed_at=row.observed_at,
+        profile_count=row.profile_count,
+        observation_count=row.observation_count,
+        new_revision_count=row.new_revision_count,
+        unchanged_count=row.unchanged_count,
+        status=row.status,
+        no_persist_live=row.no_persist_live,
+        synthetic=row.synthetic,
+    )
+
+
+def _fill_regulatory_document_model(
+    model: RegulatoryDocumentModel, row: RegulatoryDocument
+) -> None:
+    model.source_id = row.source_id
+    model.title = row.title
+    model.abstract = row.abstract
+    model.publication_date = row.publication_date
+    model.document_type = row.document_type
+    model.agencies = row.agencies
+    model.cfr_references = row.cfr_references
+    model.rin = row.rin
+    model.html_url = row.html_url
+    model.pdf_url = row.pdf_url
+    model.information_available_at = row.information_available_at
+    model.source_updated_at = row.source_updated_at
+    model.synthetic = row.synthetic
+    model.provenance = row.provenance
+
+
+def _regulatory_document(row: RegulatoryDocumentModel) -> RegulatoryDocument:
+    return RegulatoryDocument(
+        id=row.id,
+        document_id=row.document_id,
+        source_id=row.source_id,
+        title=row.title,
+        abstract=row.abstract,
+        publication_date=row.publication_date,
+        document_type=row.document_type,
+        agencies=list(row.agencies),
+        cfr_references=list(row.cfr_references),
+        rin=list(row.rin),
+        html_url=row.html_url,
+        pdf_url=row.pdf_url,
+        information_available_at=row.information_available_at,
+        source_updated_at=row.source_updated_at,
+        synthetic=row.synthetic,
+        provenance=dict(row.provenance),
+    )
+
+
+def _fill_series_asset_association_model(
+    model: SeriesAssetAssociationModel, row: SeriesAssetAssociation
+) -> None:
+    model.profile_id = row.profile_id
+    model.asset_id = row.asset_id
+    model.relationship_type = row.relationship_type
+    model.rationale = row.rationale
+    model.confidence = row.confidence
+    model.active = row.active
+    model.synthetic = row.synthetic
+    model.provenance = row.provenance
+
+
+def _series_asset_association(row: SeriesAssetAssociationModel) -> SeriesAssetAssociation:
+    return SeriesAssetAssociation(
+        id=row.id,
+        association_id=row.association_id,
+        profile_id=row.profile_id,
+        asset_id=row.asset_id,
+        relationship_type=row.relationship_type,
+        rationale=row.rationale,
+        confidence=row.confidence,
+        active=row.active,
+        synthetic=row.synthetic,
+        provenance=dict(row.provenance),
+    )
+
+
+def _fill_official_release_event_model(
+    model: OfficialReleaseEventModel, row: OfficialReleaseEvent
+) -> None:
+    model.source_id = row.source_id
+    model.dataset_id = row.dataset_id
+    model.profile_id = row.profile_id
+    model.document_id = row.document_id
+    model.event_family = row.event_family.value
+    model.description = row.description
+    model.information_available_at = row.information_available_at
+    model.revision_number = row.revision_number
+    model.provenance = row.provenance
+    model.synthetic = row.synthetic
+
+
+def _official_release_event(row: OfficialReleaseEventModel) -> OfficialReleaseEvent:
+    return OfficialReleaseEvent(
+        id=row.id,
+        event_id=row.event_id,
+        source_id=row.source_id,
+        dataset_id=row.dataset_id,
+        profile_id=row.profile_id,
+        document_id=row.document_id,
+        event_family=CrossAssetEventFamily(row.event_family),
+        description=row.description,
+        information_available_at=row.information_available_at,
+        revision_number=row.revision_number,
+        provenance=dict(row.provenance),
+        synthetic=row.synthetic,
+    )
 
 
 def _source(row: SourceModel) -> Source:

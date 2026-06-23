@@ -49,6 +49,12 @@ class BoundedSourceHttpClient:
         )
 
     def get(self, request: HttpRequest) -> HttpResponse:
+        return self._request("GET", request)
+
+    def post(self, request: HttpRequest) -> HttpResponse:
+        return self._request("POST", request)
+
+    def _request(self, method: str, request: HttpRequest) -> HttpResponse:
         url = request.url
         redirects = 0
         headers = {
@@ -59,7 +65,10 @@ class BoundedSourceHttpClient:
         while True:
             self._validate_url(url)
             try:
-                response = self.client.get(url, headers=headers)
+                if method == "POST":
+                    response = self.client.post(url, headers=headers, content=request.body)
+                else:
+                    response = self.client.get(url, headers=headers)
             except httpx.TimeoutException as exc:
                 raise HttpPolicyError(
                     SourceErrorCategory.TIMEOUT, "source request timed out"

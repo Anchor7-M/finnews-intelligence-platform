@@ -34,6 +34,11 @@ from finnews.application.services.nlp_reporting import (
     load_nlp_evaluation_report,
     nlp_static_payload,
 )
+from finnews.application.services.official_data import (
+    official_data_overview,
+    official_data_static_payload,
+    persist_official_data_demo,
+)
 from finnews.application.services.pipeline import NewsPipeline
 from finnews.application.services.research_export import (
     DEFAULT_CUTOFF_POLICY,
@@ -99,6 +104,7 @@ asset_app = typer.Typer(help="Canonical cross-asset registry commands")
 cross_asset_app = typer.Typer(help="Cross-asset event intelligence commands")
 signal_app = typer.Typer(help="Versioned market signal contract commands")
 mt5_app = typer.Typer(help="Offline MT5 readiness and symbol-map validation")
+official_data_app = typer.Typer(help="Official-data fixtures and point-in-time metadata")
 app.add_typer(ingest_app, name="ingest")
 app.add_typer(db_app, name="db")
 app.add_typer(source_app, name="source")
@@ -112,6 +118,7 @@ app.add_typer(asset_app, name="asset")
 app.add_typer(cross_asset_app, name="cross-asset")
 app.add_typer(signal_app, name="signal")
 app.add_typer(mt5_app, name="mt5")
+app.add_typer(official_data_app, name="official-data")
 
 
 @app.command()
@@ -940,6 +947,90 @@ def mt5_validate_symbol_map(path: Annotated[Path, typer.Option("--path")]) -> No
         typer.echo(f"mt5_symbol_map_error={exc}", err=True)
         raise typer.Exit(code=2) from exc
     typer.echo(json.dumps(result, sort_keys=True))
+
+
+@official_data_app.command("summary")
+def official_data_summary(profile: Annotated[str, typer.Option("--profile")] = "memory") -> None:
+    repo, session = _repository(Settings(profile=profile))
+    typer.echo(json.dumps(official_data_overview(repo), sort_keys=True, default=str))
+    _commit_and_close(session)
+
+
+@official_data_app.command("validate-fixtures")
+def official_data_validate_fixtures() -> None:
+    repo = MemoryNewsRepository()
+    counts = persist_official_data_demo(repo)
+    overview = official_data_overview(repo)
+    expected = {
+        "dataset_count": 4,
+        "series_profile_count": 10,
+        "observation_count": 24,
+        "revision_count": 28,
+        "revised_observation_count": 4,
+        "regulatory_document_count": 8,
+        "series_asset_association_count": 80,
+        "official_release_event_count": 32,
+    }
+    mismatches = {
+        key: {"expected": value, "actual": overview.get(key)}
+        for key, value in expected.items()
+        if overview.get(key) != value
+    }
+    result = {
+        "valid": not mismatches,
+        "counts": counts,
+        "overview": overview,
+        "mismatches": mismatches,
+    }
+    typer.echo(json.dumps(result, sort_keys=True, default=str))
+    if mismatches:
+        raise typer.Exit(code=4)
+
+
+@official_data_app.command("export-static")
+def official_data_export_static() -> None:
+    output = _repo_root() / "frontend" / "public" / "demo-data"
+    repo = build_memory_repository()
+    payload = official_data_static_payload(repo)
+    for name, value in payload.items():
+        (output / f"{name}.json").write_text(
+            json.dumps(value, ensure_ascii=False, indent=2, default=str, sort_keys=True) + "\n",
+            encoding="utf-8",
+        )
+    typer.echo(json.dumps({"exported": True, "files": sorted(payload)}, sort_keys=True))
+
+
+@official_data_app.command("live-smoke")
+def official_data_live_smoke(
+    source_id: Annotated[str, typer.Option("--source")],
+    no_persist: Annotated[bool, typer.Option("--no-persist")] = False,
+    confirm_live: Annotated[bool, typer.Option("--confirm-live")] = False,
+) -> None:
+    if not no_persist or not confirm_live:
+        typer.echo(
+            json.dumps(
+                {
+                    "status": "policy_blocked",
+                    "source_id": source_id,
+                    "reason": "--no-persist and --confirm-live are required",
+                    "request_count": 0,
+                },
+                sort_keys=True,
+            )
+        )
+        raise typer.Exit(code=4)
+    typer.echo(
+        json.dumps(
+            {
+                "status": "not_run",
+                "source_id": source_id,
+                "request_count": 0,
+                "persistence_mode": "no_persist",
+                "note": "M3B live smoke must be run manually through source-specific adapters.",
+            },
+            sort_keys=True,
+        )
+    )
 
 
 @app.command()

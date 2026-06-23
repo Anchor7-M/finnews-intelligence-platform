@@ -24,6 +24,12 @@ from finnews.domain.entities import (
     NlpEvaluationRun,
     NlpModelRegistryEntry,
     ObservationDisposition,
+    OfficialDataReleaseRun,
+    OfficialDataset,
+    OfficialObservation,
+    OfficialObservationRevision,
+    OfficialReleaseEvent,
+    OfficialSeriesProfile,
     PipelineRun,
     ProviderSymbol,
     RawArticle,
@@ -38,6 +44,8 @@ from finnews.domain.entities import (
     SourceFetchAttempt,
     SourceFetchState,
     SymbolAlias,
+    RegulatoryDocument,
+    SeriesAssetAssociation,
 )
 from finnews.infrastructure.normalization import comparison_text
 
@@ -78,6 +86,16 @@ class MemoryNewsRepository:
         self.asset_impacts: dict[str, AssetImpactHypothesis] = {}
         self.market_signals: dict[str, MarketSignalCandidate] = {}
         self.signal_publication_runs: dict[str, SignalPublicationRun] = {}
+        self.official_datasets: dict[str, OfficialDataset] = {}
+        self.official_series_profiles: dict[str, OfficialSeriesProfile] = {}
+        self.official_observations: dict[str, OfficialObservation] = {}
+        self.official_observation_revisions: dict[
+            tuple[str, int], OfficialObservationRevision
+        ] = {}
+        self.official_data_release_runs: dict[str, OfficialDataReleaseRun] = {}
+        self.regulatory_documents: dict[str, RegulatoryDocument] = {}
+        self.series_asset_associations: dict[str, SeriesAssetAssociation] = {}
+        self.official_release_events: dict[str, OfficialReleaseEvent] = {}
 
     def upsert_source(self, source: Source) -> Source:
         existing = self.sources.get(source.source_key)
@@ -428,3 +446,104 @@ class MemoryNewsRepository:
         if status:
             rows = [row for row in rows if row.status.value == status]
         return sorted(rows, key=lambda item: item.signal_id)
+
+    def upsert_official_dataset(self, dataset: OfficialDataset) -> OfficialDataset:
+        self.official_datasets[dataset.dataset_id] = dataset
+        return dataset
+
+    def upsert_official_series_profile(
+        self, profile: OfficialSeriesProfile
+    ) -> OfficialSeriesProfile:
+        self.official_series_profiles[profile.profile_id] = profile
+        return profile
+
+    def upsert_official_observation(
+        self,
+        observation: OfficialObservation,
+        revision: OfficialObservationRevision,
+    ) -> OfficialObservation:
+        self.official_observations[observation.observation_key] = observation
+        self.official_observation_revisions[
+            (revision.observation_key, revision.revision_number)
+        ] = revision
+        return observation
+
+    def add_official_data_release_run(
+        self, run: OfficialDataReleaseRun
+    ) -> OfficialDataReleaseRun:
+        self.official_data_release_runs[run.release_run_id] = run
+        return run
+
+    def upsert_regulatory_document(self, document: RegulatoryDocument) -> RegulatoryDocument:
+        self.regulatory_documents[document.document_id] = document
+        return document
+
+    def upsert_series_asset_association(
+        self, association: SeriesAssetAssociation
+    ) -> SeriesAssetAssociation:
+        self.series_asset_associations[association.association_id] = association
+        return association
+
+    def upsert_official_release_event(self, event: OfficialReleaseEvent) -> OfficialReleaseEvent:
+        self.official_release_events[event.event_id] = event
+        return event
+
+    def list_official_datasets(self) -> list[OfficialDataset]:
+        return sorted(self.official_datasets.values(), key=lambda item: item.dataset_id)
+
+    def list_official_series_profiles(
+        self, source_id: str | None = None
+    ) -> list[OfficialSeriesProfile]:
+        rows = list(self.official_series_profiles.values())
+        if source_id:
+            rows = [row for row in rows if row.source_id == source_id]
+        return sorted(rows, key=lambda item: item.profile_id)
+
+    def list_official_observations(
+        self,
+        dataset_id: str | None = None,
+        profile_id: str | None = None,
+    ) -> list[OfficialObservation]:
+        rows = list(self.official_observations.values())
+        if dataset_id:
+            rows = [row for row in rows if row.dataset_id == dataset_id]
+        if profile_id:
+            rows = [row for row in rows if row.profile_id == profile_id]
+        return sorted(rows, key=lambda item: (item.profile_id, item.period_start))
+
+    def list_official_observation_revisions(
+        self, observation_key: str | None = None
+    ) -> list[OfficialObservationRevision]:
+        rows = list(self.official_observation_revisions.values())
+        if observation_key:
+            rows = [row for row in rows if row.observation_key == observation_key]
+        return sorted(rows, key=lambda item: (item.observation_key, item.revision_number))
+
+    def list_official_data_release_runs(self) -> list[OfficialDataReleaseRun]:
+        return sorted(
+            self.official_data_release_runs.values(),
+            key=lambda item: (item.observed_at, item.release_run_id),
+            reverse=True,
+        )
+
+    def list_regulatory_documents(self) -> list[RegulatoryDocument]:
+        return sorted(
+            self.regulatory_documents.values(),
+            key=lambda item: (item.publication_date, item.document_id),
+            reverse=True,
+        )
+
+    def list_series_asset_associations(
+        self,
+        profile_id: str | None = None,
+        asset_id: str | None = None,
+    ) -> list[SeriesAssetAssociation]:
+        rows = list(self.series_asset_associations.values())
+        if profile_id:
+            rows = [row for row in rows if row.profile_id == profile_id]
+        if asset_id:
+            rows = [row for row in rows if row.asset_id == asset_id]
+        return sorted(rows, key=lambda item: item.association_id)
+
+    def list_official_release_events(self) -> list[OfficialReleaseEvent]:
+        return sorted(self.official_release_events.values(), key=lambda item: item.event_id)

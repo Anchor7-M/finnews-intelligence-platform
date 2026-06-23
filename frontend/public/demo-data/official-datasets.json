@@ -1,0 +1,66 @@
+[
+  {
+    "category": "labor_market",
+    "dataset_id": "bls-ces",
+    "description": "Selected synthetic payroll and hours observations.",
+    "display_name": "BLS Current Employment Statistics",
+    "documentation_url": "https://www.bls.gov/developers/",
+    "frequency": "monthly",
+    "id": "bc2d51e2-72c1-5f44-88df-d00f137f6f1b",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "revision_policy": "append_only_when_value_changes",
+    "source_id": "bls-public-data",
+    "synthetic": true,
+    "unit": "varies"
+  },
+  {
+    "category": "derivatives_positioning",
+    "dataset_id": "cftc-cot-pre",
+    "description": "Selected synthetic trader-positioning observations.",
+    "display_name": "CFTC COT PRE",
+    "documentation_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+    "frequency": "weekly",
+    "id": "61161f23-74db-5aae-ab27-8c57ed740366",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "revision_policy": "append_only_when_value_changes",
+    "source_id": "cftc-cot-pre",
+    "synthetic": true,
+    "unit": "contracts"
+  },
+  {
+    "category": "commodity_supply",
+    "dataset_id": "eia-petroleum-stocks",
+    "description": "Selected synthetic energy inventory observations.",
+    "display_name": "EIA Petroleum Stocks",
+    "documentation_url": "https://www.eia.gov/opendata/documentation.php",
+    "frequency": "weekly",
+    "id": "7726fc3f-cf3f-52f0-9bad-8cda7cbda894",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "revision_policy": "append_only_when_value_changes",
+    "source_id": "eia-open-data-v2",
+    "synthetic": true,
+    "unit": "thousand_barrels"
+  },
+  {
+    "category": "regulation",
+    "dataset_id": "federal-register-documents",
+    "description": "Selected synthetic regulatory metadata and abstracts.",
+    "display_name": "Federal Register Documents",
+    "documentation_url": "https://www.federalregister.gov/developers/documentation/api/v1",
+    "frequency": "event",
+    "id": "76a078b5-bb58-5834-aecd-1a939b5d66cf",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "revision_policy": "document_metadata_versions_retained",
+    "source_id": "federal-register-api",
+    "synthetic": true,
+    "unit": null
+  }
+]

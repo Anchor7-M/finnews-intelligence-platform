@@ -1,0 +1,218 @@
+[
+  {
+    "dataset_id": "bls-ces",
+    "dimensions": {
+      "measure": "earnings",
+      "seasonal": "sa"
+    },
+    "display_name": "Average hourly earnings",
+    "frequency": "monthly",
+    "id": "c75b713f-09bb-5240-a639-f83266891771",
+    "profile_id": "bls-ces-avg-hourly-earnings",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "query": {
+      "series_id": "CES0500000003"
+    },
+    "seasonal_adjustment": "seasonally_adjusted",
+    "source_id": "bls-public-data",
+    "synthetic": true,
+    "unit": "usd_per_hour"
+  },
+  {
+    "dataset_id": "bls-ces",
+    "dimensions": {
+      "measure": "employment",
+      "seasonal": "sa",
+      "sector": "manufacturing"
+    },
+    "display_name": "Manufacturing payrolls",
+    "frequency": "monthly",
+    "id": "fd84bce7-3454-534f-8106-09eb01b00d88",
+    "profile_id": "bls-ces-manufacturing",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "query": {
+      "series_id": "CES3000000001"
+    },
+    "seasonal_adjustment": "seasonally_adjusted",
+    "source_id": "bls-public-data",
+    "synthetic": true,
+    "unit": "thousands_of_persons"
+  },
+  {
+    "dataset_id": "bls-ces",
+    "dimensions": {
+      "measure": "employment",
+      "seasonal": "sa"
+    },
+    "display_name": "Total nonfarm payrolls",
+    "frequency": "monthly",
+    "id": "fd000adf-b092-5fad-a41a-b29cac3eaf32",
+    "profile_id": "bls-ces-total-nonfarm",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "query": {
+      "series_id": "CES0000000001"
+    },
+    "seasonal_adjustment": "seasonally_adjusted",
+    "source_id": "bls-public-data",
+    "synthetic": true,
+    "unit": "thousands_of_persons"
+  },
+  {
+    "dataset_id": "cftc-cot-pre",
+    "dimensions": {
+      "market": "equity_index",
+      "report": "pre"
+    },
+    "display_name": "Equity index positioning",
+    "frequency": "weekly",
+    "id": "94aa2ac6-54fa-5142-9de4-d0072eabbd4d",
+    "profile_id": "cftc-equity-index-positioning",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "query": {
+      "market_code": "13874A",
+      "resource": "6dca-aqww"
+    },
+    "seasonal_adjustment": null,
+    "source_id": "cftc-cot-pre",
+    "synthetic": true,
+    "unit": "contracts"
+  },
+  {
+    "dataset_id": "cftc-cot-pre",
+    "dimensions": {
+      "market": "rates",
+      "report": "pre"
+    },
+    "display_name": "Treasury futures positioning",
+    "frequency": "weekly",
+    "id": "725235c4-7f52-58df-9116-5e8586ccd000",
+    "profile_id": "cftc-rates-positioning",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "query": {
+      "market_code": "020601",
+      "resource": "6dca-aqww"
+    },
+    "seasonal_adjustment": null,
+    "source_id": "cftc-cot-pre",
+    "synthetic": true,
+    "unit": "contracts"
+  },
+  {
+    "dataset_id": "eia-petroleum-stocks",
+    "dimensions": {
+      "commodity": "crude_oil",
+      "region": "us"
+    },
+    "display_name": "Commercial crude oil stocks",
+    "frequency": "weekly",
+    "id": "444b2738-adea-5ec4-8bba-6995656f3961",
+    "profile_id": "eia-crude-stocks",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "query": {
+      "route": "petroleum/stoc/wstk",
+      "series": "WCESTUS1"
+    },
+    "seasonal_adjustment": null,
+    "source_id": "eia-open-data-v2",
+    "synthetic": true,
+    "unit": "thousand_barrels"
+  },
+  {
+    "dataset_id": "eia-petroleum-stocks",
+    "dimensions": {
+      "commodity": "gasoline",
+      "region": "us"
+    },
+    "display_name": "Motor gasoline stocks",
+    "frequency": "weekly",
+    "id": "8a9856b9-94fd-5b58-ae45-6e5dc05dced3",
+    "profile_id": "eia-gasoline-stocks",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "query": {
+      "route": "petroleum/stoc/wstk",
+      "series": "WGTSTUS1"
+    },
+    "seasonal_adjustment": null,
+    "source_id": "eia-open-data-v2",
+    "synthetic": true,
+    "unit": "thousand_barrels"
+  },
+  {
+    "dataset_id": "eia-petroleum-stocks",
+    "dimensions": {
+      "commodity": "natural_gas",
+      "region": "us"
+    },
+    "display_name": "Natural gas storage",
+    "frequency": "weekly",
+    "id": "249ef048-0ab8-5db6-ba9f-4bbb067e9553",
+    "profile_id": "eia-natural-gas-storage",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "query": {
+      "route": "natural-gas/stor/wkly",
+      "series": "WNGSRUS2"
+    },
+    "seasonal_adjustment": null,
+    "source_id": "eia-open-data-v2",
+    "synthetic": true,
+    "unit": "bcf"
+  },
+  {
+    "dataset_id": "federal-register-documents",
+    "dimensions": {
+      "topic": "energy"
+    },
+    "display_name": "Energy regulatory documents",
+    "frequency": "event",
+    "id": "925b54c2-b704-5ff0-a8af-449389c1c050",
+    "profile_id": "fr-energy-regulation",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "query": {
+      "conditions[term]": "energy",
+      "per_page": 5
+    },
+    "seasonal_adjustment": null,
+    "source_id": "federal-register-api",
+    "synthetic": true,
+    "unit": null
+  },
+  {
+    "dataset_id": "federal-register-documents",
+    "dimensions": {
+      "topic": "market_structure"
+    },
+    "display_name": "Market structure regulatory documents",
+    "frequency": "event",
+    "id": "d2a23671-7f11-5d76-a24d-a6e5f4ea0be6",
+    "profile_id": "fr-market-structure-regulation",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "query": {
+      "conditions[term]": "market structure",
+      "per_page": 5
+    },
+    "seasonal_adjustment": null,
+    "source_id": "federal-register-api",
+    "synthetic": true,
+    "unit": null
+  }
+]
