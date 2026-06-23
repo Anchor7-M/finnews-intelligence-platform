@@ -23,6 +23,11 @@ from finnews.domain.entities import (
     ObservationDisposition,
     PipelineRun,
     RawArticle,
+    ResearchCalendar,
+    ResearchExportRun,
+    ResearchFeatureRow,
+    ResearchLineageRow,
+    ResearchSession,
     Source,
     SourceDefinition,
     SourceFetchAttempt,
@@ -59,6 +64,11 @@ from finnews.infrastructure.persistence.postgres.models import (
     ObservationDispositionModel,
     PipelineRunModel,
     RawArticleModel,
+    ResearchCalendarModel,
+    ResearchExportRunModel,
+    ResearchFeatureRowModel,
+    ResearchLineageRowModel,
+    ResearchSessionModel,
     SourceDefinitionModel,
     SourceFetchAttemptModel,
     SourceFetchStateModel,
@@ -681,6 +691,162 @@ class PostgresNewsRepository:
         )
         return _digest(model) if model else None
 
+    def upsert_research_calendar(
+        self, calendar: ResearchCalendar, sessions: Sequence[ResearchSession]
+    ) -> ResearchCalendar:
+        model = self.session.scalar(
+            select(ResearchCalendarModel).where(
+                ResearchCalendarModel.calendar_id == calendar.calendar_id,
+                ResearchCalendarModel.calendar_version == calendar.calendar_version,
+            )
+        )
+        if model is None:
+            model = ResearchCalendarModel(id=calendar.id)
+            self.session.add(model)
+        model.calendar_id = calendar.calendar_id
+        model.calendar_version = calendar.calendar_version
+        model.timezone = calendar.timezone
+        model.calendar_hash = calendar.calendar_hash
+        model.provenance = calendar.provenance
+        model.synthetic = calendar.synthetic
+        self.session.execute(
+            delete(ResearchSessionModel).where(
+                ResearchSessionModel.calendar_id == calendar.calendar_id,
+                ResearchSessionModel.calendar_version == calendar.calendar_version,
+            )
+        )
+        for session in sessions:
+            self.session.add(_research_session_model(session))
+        self.session.flush()
+        return calendar
+
+    def get_research_calendar(self, calendar_id: str) -> ResearchCalendar | None:
+        model = self.session.scalar(
+            select(ResearchCalendarModel)
+            .where(ResearchCalendarModel.calendar_id == calendar_id)
+            .order_by(ResearchCalendarModel.calendar_version.desc())
+        )
+        return _research_calendar(model) if model else None
+
+    def list_research_calendars(self) -> list[ResearchCalendar]:
+        return [
+            _research_calendar(row)
+            for row in self.session.scalars(
+                select(ResearchCalendarModel).order_by(
+                    ResearchCalendarModel.calendar_id,
+                    ResearchCalendarModel.calendar_version,
+                )
+            )
+        ]
+
+    def list_research_sessions(
+        self, calendar_id: str, calendar_version: str | None = None
+    ) -> list[ResearchSession]:
+        statement = select(ResearchSessionModel).where(
+            ResearchSessionModel.calendar_id == calendar_id
+        )
+        if calendar_version:
+            statement = statement.where(ResearchSessionModel.calendar_version == calendar_version)
+        statement = statement.order_by(ResearchSessionModel.sequence)
+        return [_research_session(row) for row in self.session.scalars(statement)]
+
+    def upsert_research_export(
+        self,
+        export_run: ResearchExportRun,
+        feature_rows: Sequence[ResearchFeatureRow],
+        lineage_rows: Sequence[ResearchLineageRow],
+    ) -> ResearchExportRun:
+        model = self.session.scalar(
+            select(ResearchExportRunModel).where(
+                ResearchExportRunModel.export_id == export_run.export_id,
+                ResearchExportRunModel.contract_version == export_run.contract_version,
+                ResearchExportRunModel.config_hash == export_run.config_hash,
+                ResearchExportRunModel.calendar_hash == export_run.calendar_hash,
+                ResearchExportRunModel.package_hash == export_run.package_hash,
+            )
+        )
+        if model is None:
+            model = ResearchExportRunModel(id=export_run.id)
+            self.session.add(model)
+        model.export_id = export_run.export_id
+        model.contract_version = export_run.contract_version
+        model.config_hash = export_run.config_hash
+        model.calendar_id = export_run.calendar_id
+        model.calendar_version = export_run.calendar_version
+        model.calendar_hash = export_run.calendar_hash
+        model.cutoff_policy = export_run.cutoff_policy
+        model.windows = export_run.windows
+        model.company_universe_hash = export_run.company_universe_hash
+        model.package_hash = export_run.package_hash
+        model.status = export_run.status
+        model.counts = export_run.counts
+        model.quality_summary = export_run.quality_summary
+        model.leakage_status = export_run.leakage_status
+        model.leakage_hash = export_run.leakage_hash
+        model.synthetic = export_run.synthetic
+        model.created_at = export_run.created_at
+        self.session.execute(
+            delete(ResearchFeatureRowModel).where(
+                ResearchFeatureRowModel.export_id == export_run.export_id
+            )
+        )
+        self.session.execute(
+            delete(ResearchLineageRowModel).where(
+                ResearchLineageRowModel.export_id == export_run.export_id
+            )
+        )
+        for feature_row in feature_rows:
+            self.session.add(_research_feature_row_model(feature_row))
+        for lineage_row in lineage_rows:
+            self.session.add(_research_lineage_row_model(lineage_row))
+        self.session.flush()
+        return export_run
+
+    def get_research_export(self, export_id: str) -> ResearchExportRun | None:
+        model = self.session.scalar(
+            select(ResearchExportRunModel).where(ResearchExportRunModel.export_id == export_id)
+        )
+        return _research_export_run(model) if model else None
+
+    def list_research_exports(self) -> list[ResearchExportRun]:
+        return [
+            _research_export_run(row)
+            for row in self.session.scalars(
+                select(ResearchExportRunModel).order_by(ResearchExportRunModel.export_id)
+            )
+        ]
+
+    def list_research_feature_rows(
+        self,
+        export_id: str | None = None,
+        ticker: str | None = None,
+        window_sessions: int | None = None,
+    ) -> list[ResearchFeatureRow]:
+        statement = select(ResearchFeatureRowModel)
+        if export_id:
+            statement = statement.where(ResearchFeatureRowModel.export_id == export_id)
+        if ticker:
+            statement = statement.where(ResearchFeatureRowModel.ticker == ticker.upper())
+        if window_sessions:
+            statement = statement.where(ResearchFeatureRowModel.window_sessions == window_sessions)
+        statement = statement.order_by(ResearchFeatureRowModel.logical_key)
+        return [_research_feature_row(row) for row in self.session.scalars(statement)]
+
+    def get_research_lineage_row(self, lineage_row_id: str) -> ResearchLineageRow | None:
+        model = self.session.scalar(
+            select(ResearchLineageRowModel).where(
+                ResearchLineageRowModel.lineage_row_id == lineage_row_id
+            )
+        )
+        return _research_lineage_row(model) if model else None
+
+    def list_research_lineage_rows(self, export_id: str | None = None) -> list[ResearchLineageRow]:
+        statement = select(ResearchLineageRowModel)
+        if export_id:
+            statement = statement.where(ResearchLineageRowModel.export_id == export_id)
+        statement = statement.order_by(ResearchLineageRowModel.lineage_row_id)
+        return [_research_lineage_row(row) for row in self.session.scalars(statement)]
+
 
 def _source(row: SourceModel) -> Source:
     return Source(
@@ -1014,4 +1180,145 @@ def _pipeline_run(row: PipelineRunModel) -> PipelineRun:
         errors=list(row.errors),
         configuration_version=row.configuration_version,
         code_version=row.code_version,
+    )
+
+
+def _research_calendar(row: ResearchCalendarModel) -> ResearchCalendar:
+    return ResearchCalendar(
+        id=row.id,
+        calendar_id=row.calendar_id,
+        calendar_version=row.calendar_version,
+        timezone=row.timezone,
+        calendar_hash=row.calendar_hash,
+        provenance=dict(row.provenance),
+        synthetic=row.synthetic,
+    )
+
+
+def _research_session(row: ResearchSessionModel) -> ResearchSession:
+    return ResearchSession(
+        id=row.id,
+        calendar_id=row.calendar_id,
+        calendar_version=row.calendar_version,
+        session_date=row.session_date,
+        open_at=row.open_at,
+        break_start_at=row.break_start_at,
+        break_end_at=row.break_end_at,
+        close_at=row.close_at,
+        sequence=row.sequence,
+        special_session=row.special_session,
+    )
+
+
+def _research_export_run(row: ResearchExportRunModel) -> ResearchExportRun:
+    return ResearchExportRun(
+        id=row.id,
+        export_id=row.export_id,
+        contract_version=row.contract_version,
+        config_hash=row.config_hash,
+        calendar_id=row.calendar_id,
+        calendar_version=row.calendar_version,
+        calendar_hash=row.calendar_hash,
+        cutoff_policy=row.cutoff_policy,
+        windows=list(row.windows),
+        company_universe_hash=row.company_universe_hash,
+        package_hash=row.package_hash,
+        status=row.status,
+        counts=dict(row.counts),
+        quality_summary=dict(row.quality_summary),
+        leakage_status=row.leakage_status,
+        leakage_hash=row.leakage_hash,
+        synthetic=row.synthetic,
+        created_at=row.created_at,
+    )
+
+
+def _research_feature_row(row: ResearchFeatureRowModel) -> ResearchFeatureRow:
+    return ResearchFeatureRow(
+        id=row.id,
+        export_id=row.export_id,
+        logical_key=row.logical_key,
+        session_date=row.session_date,
+        decision_cutoff_at=row.decision_cutoff_at,
+        ticker=row.ticker,
+        company_id=row.company_id,
+        window_sessions=row.window_sessions,
+        feature_schema_version=row.feature_schema_version,
+        features=dict(row.features),
+        lineage_row_id=row.lineage_row_id,
+        synthetic=row.synthetic,
+    )
+
+
+def _research_lineage_row(row: ResearchLineageRowModel) -> ResearchLineageRow:
+    return ResearchLineageRow(
+        id=row.id,
+        export_id=row.export_id,
+        lineage_row_id=row.lineage_row_id,
+        feature_row_key=row.feature_row_key,
+        canonical_article_id=row.canonical_article_id,
+        source_id=row.source_id,
+        company_id=row.company_id,
+        information_available_at=row.information_available_at,
+        decision_cutoff_at=row.decision_cutoff_at,
+        inclusion_reason=row.inclusion_reason,
+        event_provider=row.event_provider,
+        event_model_version=row.event_model_version,
+        sentiment_provider=row.sentiment_provider,
+        sentiment_model_version=row.sentiment_model_version,
+        payload=dict(row.payload),
+        synthetic=row.synthetic,
+    )
+
+
+def _research_session_model(session: ResearchSession) -> ResearchSessionModel:
+    return ResearchSessionModel(
+        id=session.id,
+        calendar_id=session.calendar_id,
+        calendar_version=session.calendar_version,
+        session_date=session.session_date,
+        open_at=session.open_at,
+        break_start_at=session.break_start_at,
+        break_end_at=session.break_end_at,
+        close_at=session.close_at,
+        sequence=session.sequence,
+        special_session=session.special_session,
+    )
+
+
+def _research_feature_row_model(row: ResearchFeatureRow) -> ResearchFeatureRowModel:
+    return ResearchFeatureRowModel(
+        id=row.id,
+        export_id=row.export_id,
+        logical_key=row.logical_key,
+        session_date=row.session_date,
+        decision_cutoff_at=row.decision_cutoff_at,
+        ticker=row.ticker,
+        company_id=row.company_id,
+        window_sessions=row.window_sessions,
+        feature_schema_version=row.feature_schema_version,
+        features=row.features,
+        lineage_row_id=row.lineage_row_id,
+        synthetic=row.synthetic,
+    )
+
+
+def _research_lineage_row_model(row: ResearchLineageRow) -> ResearchLineageRowModel:
+    return ResearchLineageRowModel(
+        id=row.id,
+        export_id=row.export_id,
+        lineage_row_id=row.lineage_row_id,
+        feature_row_key=row.feature_row_key,
+        canonical_article_id=row.canonical_article_id,
+        source_id=row.source_id,
+        company_id=row.company_id,
+        information_available_at=row.information_available_at,
+        decision_cutoff_at=row.decision_cutoff_at,
+        inclusion_reason=row.inclusion_reason,
+        event_provider=row.event_provider,
+        event_model_version=row.event_model_version,
+        sentiment_provider=row.sentiment_provider,
+        sentiment_model_version=row.sentiment_model_version,
+        payload=row.payload,
+        synthetic=row.synthetic,
     )

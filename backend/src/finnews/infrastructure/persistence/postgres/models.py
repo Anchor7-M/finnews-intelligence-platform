@@ -374,3 +374,120 @@ class PipelineRunModel(Base):
     errors: Mapped[list[str]] = mapped_column(JSONB, nullable=False)
     configuration_version: Mapped[str] = mapped_column(String(80), nullable=False)
     code_version: Mapped[str] = mapped_column(String(80), nullable=False)
+
+
+class ResearchCalendarModel(Base):
+    __tablename__ = "research_calendars"
+    __table_args__ = (
+        UniqueConstraint("calendar_id", "calendar_version"),
+        Index("ix_research_calendars_calendar", "calendar_id", "calendar_version"),
+    )
+    id: Mapped[UUID] = mapped_column(PGUUID(as_uuid=True), primary_key=True, default=uuid4)
+    calendar_id: Mapped[str] = mapped_column(String(160), nullable=False)
+    calendar_version: Mapped[str] = mapped_column(String(80), nullable=False)
+    timezone: Mapped[str] = mapped_column(String(80), nullable=False)
+    calendar_hash: Mapped[str] = mapped_column(String(64), nullable=False)
+    provenance: Mapped[dict[str, object]] = mapped_column(JSONB, nullable=False)
+    synthetic: Mapped[bool] = mapped_column(Boolean, nullable=False)
+
+
+class ResearchSessionModel(Base):
+    __tablename__ = "research_sessions"
+    __table_args__ = (
+        UniqueConstraint("calendar_id", "calendar_version", "session_date"),
+        UniqueConstraint("calendar_id", "calendar_version", "sequence"),
+        Index(
+            "ix_research_sessions_calendar_sequence",
+            "calendar_id",
+            "calendar_version",
+            "sequence",
+        ),
+    )
+    id: Mapped[UUID] = mapped_column(PGUUID(as_uuid=True), primary_key=True, default=uuid4)
+    calendar_id: Mapped[str] = mapped_column(String(160), nullable=False)
+    calendar_version: Mapped[str] = mapped_column(String(80), nullable=False)
+    session_date: Mapped[date] = mapped_column(Date, nullable=False)
+    open_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+    break_start_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+    break_end_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+    close_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+    sequence: Mapped[int] = mapped_column(Integer, nullable=False)
+    special_session: Mapped[bool] = mapped_column(Boolean, nullable=False)
+
+
+class ResearchExportRunModel(Base):
+    __tablename__ = "research_export_runs"
+    __table_args__ = (
+        UniqueConstraint(
+            "export_id",
+            "contract_version",
+            "config_hash",
+            "calendar_hash",
+            "package_hash",
+        ),
+        Index("ix_research_export_runs_export", "export_id"),
+    )
+    id: Mapped[UUID] = mapped_column(PGUUID(as_uuid=True), primary_key=True, default=uuid4)
+    export_id: Mapped[str] = mapped_column(String(180), nullable=False)
+    contract_version: Mapped[str] = mapped_column(String(40), nullable=False)
+    config_hash: Mapped[str] = mapped_column(String(64), nullable=False)
+    calendar_id: Mapped[str] = mapped_column(String(160), nullable=False)
+    calendar_version: Mapped[str] = mapped_column(String(80), nullable=False)
+    calendar_hash: Mapped[str] = mapped_column(String(64), nullable=False)
+    cutoff_policy: Mapped[str] = mapped_column(String(80), nullable=False)
+    windows: Mapped[list[int]] = mapped_column(JSONB, nullable=False)
+    company_universe_hash: Mapped[str] = mapped_column(String(64), nullable=False)
+    package_hash: Mapped[str] = mapped_column(String(64), nullable=False)
+    status: Mapped[str] = mapped_column(String(40), nullable=False)
+    counts: Mapped[dict[str, object]] = mapped_column(JSONB, nullable=False)
+    quality_summary: Mapped[dict[str, object]] = mapped_column(JSONB, nullable=False)
+    leakage_status: Mapped[str] = mapped_column(String(40), nullable=False)
+    leakage_hash: Mapped[str] = mapped_column(String(64), nullable=False)
+    synthetic: Mapped[bool] = mapped_column(Boolean, nullable=False)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+
+
+class ResearchFeatureRowModel(Base):
+    __tablename__ = "research_feature_rows"
+    __table_args__ = (
+        UniqueConstraint("export_id", "logical_key"),
+        Index("ix_research_feature_rows_lookup", "export_id", "ticker", "session_date"),
+        Index("ix_research_feature_rows_window", "window_sessions"),
+    )
+    id: Mapped[UUID] = mapped_column(PGUUID(as_uuid=True), primary_key=True, default=uuid4)
+    export_id: Mapped[str] = mapped_column(String(180), nullable=False)
+    logical_key: Mapped[str] = mapped_column(Text, nullable=False)
+    session_date: Mapped[date] = mapped_column(Date, nullable=False)
+    decision_cutoff_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+    ticker: Mapped[str] = mapped_column(String(32), nullable=False)
+    company_id: Mapped[UUID] = mapped_column(PGUUID(as_uuid=True), nullable=False)
+    window_sessions: Mapped[int] = mapped_column(Integer, nullable=False)
+    feature_schema_version: Mapped[str] = mapped_column(String(80), nullable=False)
+    features: Mapped[dict[str, object]] = mapped_column(JSONB, nullable=False)
+    lineage_row_id: Mapped[str] = mapped_column(String(80), nullable=False)
+    synthetic: Mapped[bool] = mapped_column(Boolean, nullable=False)
+
+
+class ResearchLineageRowModel(Base):
+    __tablename__ = "research_lineage_rows"
+    __table_args__ = (
+        UniqueConstraint("export_id", "lineage_row_id"),
+        Index("ix_research_lineage_export", "export_id"),
+        Index("ix_research_lineage_article", "canonical_article_id"),
+    )
+    id: Mapped[UUID] = mapped_column(PGUUID(as_uuid=True), primary_key=True, default=uuid4)
+    export_id: Mapped[str] = mapped_column(String(180), nullable=False)
+    lineage_row_id: Mapped[str] = mapped_column(String(80), nullable=False)
+    feature_row_key: Mapped[str] = mapped_column(Text, nullable=False)
+    canonical_article_id: Mapped[UUID | None] = mapped_column(PGUUID(as_uuid=True))
+    source_id: Mapped[str | None] = mapped_column(String(160))
+    company_id: Mapped[UUID | None] = mapped_column(PGUUID(as_uuid=True))
+    information_available_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    decision_cutoff_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    inclusion_reason: Mapped[str] = mapped_column(String(80), nullable=False)
+    event_provider: Mapped[str | None] = mapped_column(String(120))
+    event_model_version: Mapped[str | None] = mapped_column(String(80))
+    sentiment_provider: Mapped[str | None] = mapped_column(String(120))
+    sentiment_model_version: Mapped[str | None] = mapped_column(String(80))
+    payload: Mapped[dict[str, object]] = mapped_column(JSONB, nullable=False)
+    synthetic: Mapped[bool] = mapped_column(Boolean, nullable=False)
