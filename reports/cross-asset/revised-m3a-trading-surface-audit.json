@@ -7,10 +7,14 @@
       "pattern": "buy"
     }
   ],
+  "excluded_generated_evidence_files": [
+    "reports/cross-asset/revised-m3a-trading-surface-audit.json",
+    "reports/verification/revised-m3a-timings.json"
+  ],
   "forbidden": [],
   "forbidden_count": 0,
-  "match_count": 178,
-  "matched_file_count": 42,
+  "match_count": 202,
+  "matched_file_count": 43,
   "matches": [
     {
       "classification": "permitted release guardrail",
@@ -122,6 +126,120 @@
     },
     {
       "classification": "permitted release guardrail",
+      "count": 2,
+      "path": "backend/src/finnews/application/services/cross_asset_release_audit.py",
+      "pattern": "MetaTrader5"
+    },
+    {
+      "classification": "permitted release guardrail",
+      "count": 1,
+      "path": "backend/src/finnews/application/services/cross_asset_release_audit.py",
+      "pattern": "ORDER_TYPE"
+    },
+    {
+      "classification": "permitted release guardrail",
+      "count": 1,
+      "path": "backend/src/finnews/application/services/cross_asset_release_audit.py",
+      "pattern": "TRADE_ACTION"
+    },
+    {
+      "classification": "permitted release guardrail",
+      "count": 1,
+      "path": "backend/src/finnews/application/services/cross_asset_release_audit.py",
+      "pattern": "account_info("
+    },
+    {
+      "classification": "permitted release guardrail",
+      "count": 1,
+      "path": "backend/src/finnews/application/services/cross_asset_release_audit.py",
+      "pattern": "buy"
+    },
+    {
+      "classification": "permitted release guardrail",
+      "count": 1,
+      "path": "backend/src/finnews/application/services/cross_asset_release_audit.py",
+      "pattern": "execute"
+    },
+    {
+      "classification": "permitted release guardrail",
+      "count": 1,
+      "path": "backend/src/finnews/application/services/cross_asset_release_audit.py",
+      "pattern": "history_deals_get("
+    },
+    {
+      "classification": "permitted release guardrail",
+      "count": 1,
+      "path": "backend/src/finnews/application/services/cross_asset_release_audit.py",
+      "pattern": "initialize("
+    },
+    {
+      "classification": "permitted release guardrail",
+      "count": 1,
+      "path": "backend/src/finnews/application/services/cross_asset_release_audit.py",
+      "pattern": "login("
+    },
+    {
+      "classification": "permitted release guardrail",
+      "count": 1,
+      "path": "backend/src/finnews/application/services/cross_asset_release_audit.py",
+      "pattern": "lot"
+    },
+    {
+      "classification": "permitted release guardrail",
+      "count": 2,
+      "path": "backend/src/finnews/application/services/cross_asset_release_audit.py",
+      "pattern": "metatrader5"
+    },
+    {
+      "classification": "permitted release guardrail",
+      "count": 1,
+      "path": "backend/src/finnews/application/services/cross_asset_release_audit.py",
+      "pattern": "order_check("
+    },
+    {
+      "classification": "permitted release guardrail",
+      "count": 1,
+      "path": "backend/src/finnews/application/services/cross_asset_release_audit.py",
+      "pattern": "order_send("
+    },
+    {
+      "classification": "permitted release guardrail",
+      "count": 1,
+      "path": "backend/src/finnews/application/services/cross_asset_release_audit.py",
+      "pattern": "orders_get("
+    },
+    {
+      "classification": "permitted release guardrail",
+      "count": 1,
+      "path": "backend/src/finnews/application/services/cross_asset_release_audit.py",
+      "pattern": "positions_get("
+    },
+    {
+      "classification": "permitted release guardrail",
+      "count": 1,
+      "path": "backend/src/finnews/application/services/cross_asset_release_audit.py",
+      "pattern": "sell"
+    },
+    {
+      "classification": "permitted release guardrail",
+      "count": 1,
+      "path": "backend/src/finnews/application/services/cross_asset_release_audit.py",
+      "pattern": "stop_loss"
+    },
+    {
+      "classification": "permitted release guardrail",
+      "count": 1,
+      "path": "backend/src/finnews/application/services/cross_asset_release_audit.py",
+      "pattern": "take_profit"
+    },
+    {
+      "classification": "permitted release guardrail",
+      "count": 1,
+      "path": "backend/src/finnews/application/services/cross_asset_release_audit.py",
+      "pattern": "volume"
+    },
+    {
+      "classification": "permitted release guardrail",
       "count": 14,
       "path": "backend/src/finnews/infrastructure/persistence/postgres/repository.py",
       "pattern": "execute"
@@ -161,6 +279,12 @@
       "count": 2,
       "path": "backend/tests/unit/test_cross_asset.py",
       "pattern": "lot"
+    },
+    {
+      "classification": "permitted test fixture proving rejection",
+      "count": 2,
+      "path": "backend/tests/unit/test_cross_asset.py",
+      "pattern": "order_send("
     },
     {
       "classification": "permitted test fixture proving rejection",
@@ -554,7 +678,7 @@
     },
     {
       "classification": "permitted architecture documentation",
-      "count": 1,
+      "count": 2,
       "path": "docs/TRADING_SURFACE_AUDIT.md",
       "pattern": "volume"
     },
@@ -660,5 +784,5 @@
     "execute"
   ],
   "status": "PASS",
-  "tracked_file_count": 278
+  "tracked_file_count": 282
 }

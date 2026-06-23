@@ -20,8 +20,8 @@ Tracked source, configuration, contracts, workflows, CLI, API, frontend, docs, a
 
 | Metric | Value |
 | --- | ---: |
-| Matched files | 42 |
-| Matched pattern instances | 178 |
+| Matched files | 43 |
+| Matched pattern instances | 202 |
 | Forbidden production matches | 0 |
 | `MetaTrader5` dependency declarations | 0 |
 | Production `MetaTrader5` imports | 0 |
@@ -30,6 +30,8 @@ Tracked source, configuration, contracts, workflows, CLI, API, frontend, docs, a
 | Public trading endpoints/commands/UI controls | 0 |
 
 One dependency-file match appears in `frontend/package-lock.json` for the generic token `buy`; it is classified as a permitted release guardrail false positive and is not an MT5 or trading dependency.
+
+Generated evidence exclusions are exact-path only: `reports/cross-asset/revised-m3a-trading-surface-audit.json` is excluded so the report does not scan its own prior output, and `reports/verification/revised-m3a-timings.json` is excluded because it can contain command text such as Docker volume cleanup flags. The audit does not broadly allow `reports/`.
 
 ## Classifications
 
