@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FinNews research company row v1",
+  "type": "object",
+  "required": [
+    "company_id",
+    "ticker",
+    "exchange",
+    "legal_name",
+    "short_name",
+    "sector",
+    "active",
+    "synthetic_data"
+  ],
+  "properties": {
+    "company_id": { "type": "string" },
+    "ticker": { "type": "string" },
+    "exchange": { "type": "string" },
+    "active": { "type": "boolean" },
+    "synthetic_data": { "type": "boolean" }
+  },
+  "additionalProperties": false
+}

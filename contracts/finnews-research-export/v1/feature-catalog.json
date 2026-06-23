@@ -1,0 +1,17 @@
+{
+  "contract_name": "finnews-research-export-v1",
+  "contract_version": "1.0.0",
+  "feature_schema_version": "news-factor-v1",
+  "windows": [1, 3, 5, 10],
+  "null_policy": "null means undefined; zero means counted absence for count fields",
+  "no_market_data": true,
+  "feature_groups": {
+    "coverage": ["news_count", "unique_article_count", "unique_source_count", "has_news", "missing_published_time_count", "abstained_prediction_count"],
+    "sentiment_labels": ["positive_count", "neutral_count", "negative_count", "uncertain_count", "positive_share", "negative_share", "uncertain_share"],
+    "sentiment_scores": ["mean_sentiment_score", "confidence_weighted_sentiment_score", "sentiment_score_std", "min_sentiment_score", "max_sentiment_score"],
+    "events": ["event_type_count", "event_entropy", "event_<event_type>_count", "event_<event_type>_share"],
+    "novelty_source": ["mean_novelty_score", "max_novelty_score", "source_diversity_ratio"],
+    "recency_decay": ["hours_since_latest_news", "decayed_news_count", "decayed_sentiment_score"],
+    "quality": ["low_coverage", "contains_missing_timestamp", "contains_abstention", "contains_multi_company_article", "contains_backfilled_information"]
+  }
+}
