@@ -713,6 +713,164 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     def mt5_readiness() -> dict[str, object]:
         return cast(dict[str, object], build_static_payload(repository)["mt5-readiness"])
 
+    @app.get("/api/v1/official-data/overview")
+    def official_data_overview() -> dict[str, object]:
+        return cast(dict[str, object], build_static_payload(repository)["official-data-overview"])
+
+    @app.get("/api/v1/official-data/datasets")
+    def official_data_datasets(
+        source_id: str | None = None,
+        limit: int = Query(default=50, ge=1, le=100),
+        offset: int = Query(default=0, ge=0),
+    ) -> dict[str, object]:
+        rows = cast(list[dict[str, object]], build_static_payload(repository)["official-datasets"])
+        filtered = [row for row in rows if not source_id or row["source_id"] == source_id]
+        return {
+            "items": filtered[offset : offset + limit],
+            "total": len(filtered),
+            "limit": limit,
+            "offset": offset,
+        }
+
+    @app.get("/api/v1/official-data/series")
+    def official_data_series(
+        source_id: str | None = None,
+        dataset_id: str | None = None,
+        limit: int = Query(default=50, ge=1, le=100),
+        offset: int = Query(default=0, ge=0),
+    ) -> dict[str, object]:
+        rows = cast(list[dict[str, object]], build_static_payload(repository)["official-series"])
+        filtered = [
+            row
+            for row in rows
+            if (not source_id or row["source_id"] == source_id)
+            and (not dataset_id or row["dataset_id"] == dataset_id)
+        ]
+        return {
+            "items": filtered[offset : offset + limit],
+            "total": len(filtered),
+            "limit": limit,
+            "offset": offset,
+        }
+
+    @app.get("/api/v1/official-data/observations")
+    def official_data_observations(
+        dataset_id: str | None = None,
+        profile_id: str | None = None,
+        as_of: datetime | None = None,
+        limit: int = Query(default=50, ge=1, le=200),
+        offset: int = Query(default=0, ge=0),
+    ) -> dict[str, object]:
+        rows = cast(
+            list[dict[str, object]], build_static_payload(repository)["official-observations"]
+        )
+        filtered: list[dict[str, object]] = []
+        for row in rows:
+            if dataset_id and row["dataset_id"] != dataset_id:
+                continue
+            if profile_id and row["profile_id"] != profile_id:
+                continue
+            if as_of and datetime.fromisoformat(str(row["information_available_at"])) > as_of:
+                continue
+            filtered.append(row)
+        return {
+            "items": filtered[offset : offset + limit],
+            "total": len(filtered),
+            "limit": limit,
+            "offset": offset,
+        }
+
+    @app.get("/api/v1/official-data/observations/{observation_key}/revisions")
+    def official_data_observation_revisions(observation_key: str) -> list[dict[str, object]]:
+        rows = cast(
+            list[dict[str, object]],
+            build_static_payload(repository)["official-observation-revisions"],
+        )
+        matches = [row for row in rows if row["observation_key"] == observation_key]
+        if not matches:
+            raise NotFoundError(f"official observation {observation_key} not found")
+        return matches
+
+    @app.get("/api/v1/official-data/regulatory-documents")
+    def official_data_regulatory_documents(
+        agency: str | None = None,
+        document_type: str | None = None,
+        published_from: date | None = None,
+        published_to: date | None = None,
+        limit: int = Query(default=50, ge=1, le=100),
+        offset: int = Query(default=0, ge=0),
+    ) -> dict[str, object]:
+        rows = cast(
+            list[dict[str, object]],
+            build_static_payload(repository)["official-regulatory-documents"],
+        )
+        filtered: list[dict[str, object]] = []
+        for row in rows:
+            publication_date = date.fromisoformat(str(row["publication_date"]))
+            agencies = cast(list[str], row["agencies"])
+            if agency and not any(agency.lower() in item.lower() for item in agencies):
+                continue
+            if document_type and row["document_type"] != document_type:
+                continue
+            if published_from and publication_date < published_from:
+                continue
+            if published_to and publication_date > published_to:
+                continue
+            filtered.append(row)
+        return {
+            "items": filtered[offset : offset + limit],
+            "total": len(filtered),
+            "limit": limit,
+            "offset": offset,
+        }
+
+    @app.get("/api/v1/official-data/series-asset-associations")
+    def official_data_associations(
+        profile_id: str | None = None,
+        asset_id: str | None = None,
+        limit: int = Query(default=50, ge=1, le=200),
+        offset: int = Query(default=0, ge=0),
+    ) -> dict[str, object]:
+        rows = cast(
+            list[dict[str, object]],
+            build_static_payload(repository)["official-series-asset-associations"],
+        )
+        filtered = [
+            row
+            for row in rows
+            if (not profile_id or row["profile_id"] == profile_id)
+            and (not asset_id or row["asset_id"] == asset_id)
+        ]
+        return {
+            "items": filtered[offset : offset + limit],
+            "total": len(filtered),
+            "limit": limit,
+            "offset": offset,
+        }
+
+    @app.get("/api/v1/official-data/release-events")
+    def official_data_release_events(
+        source_id: str | None = None,
+        event_family: str | None = None,
+        limit: int = Query(default=50, ge=1, le=200),
+        offset: int = Query(default=0, ge=0),
+    ) -> dict[str, object]:
+        rows = cast(
+            list[dict[str, object]], build_static_payload(repository)["official-release-events"]
+        )
+        filtered = [
+            row
+            for row in rows
+            if (not source_id or row["source_id"] == source_id)
+            and (not event_family or row["event_family"] == event_family)
+        ]
+        return {
+            "items": filtered[offset : offset + limit],
+            "total": len(filtered),
+            "limit": limit,
+            "offset": offset,
+        }
+
     return app
 
 

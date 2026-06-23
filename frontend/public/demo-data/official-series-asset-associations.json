@@ -1,0 +1,1122 @@
+[
+  {
+    "active": true,
+    "asset_id": "US-EQ-ALPHA",
+    "association_id": "ODA-ASSOC-001",
+    "confidence": 0.45,
+    "id": "555ad990-b1a2-5684-ad38-5458b10625d2",
+    "profile_id": "bls-ces-total-nonfarm",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "US-EQ-BETA",
+    "association_id": "ODA-ASSOC-002",
+    "confidence": 0.55,
+    "id": "e9bf20cb-6332-552a-824c-5d30748fc0d7",
+    "profile_id": "bls-ces-total-nonfarm",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "US-EQ-GAMMA",
+    "association_id": "ODA-ASSOC-003",
+    "confidence": 0.65,
+    "id": "2ccc7fad-18a8-5a87-b6c0-0b8b24a3c6f7",
+    "profile_id": "bls-ces-total-nonfarm",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "US-EQ-DELTA",
+    "association_id": "ODA-ASSOC-004",
+    "confidence": 0.75,
+    "id": "da47d91a-0b30-5ce9-99bd-4d6a40849d45",
+    "profile_id": "bls-ces-total-nonfarm",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "US-EQ-EPSILON",
+    "association_id": "ODA-ASSOC-005",
+    "confidence": 0.85,
+    "id": "e69ec957-a041-5c49-bff5-3669f7855cc4",
+    "profile_id": "bls-ces-total-nonfarm",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "US-EQ-ZETA",
+    "association_id": "ODA-ASSOC-006",
+    "confidence": 0.45,
+    "id": "344888e2-0572-590e-9bd2-80aa2566e931",
+    "profile_id": "bls-ces-total-nonfarm",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "US-EQ-OMEGA",
+    "association_id": "ODA-ASSOC-007",
+    "confidence": 0.55,
+    "id": "c56a9b55-e4ac-56b5-864c-0d3748258c41",
+    "profile_id": "bls-ces-total-nonfarm",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "US-EQ-SIGMA",
+    "association_id": "ODA-ASSOC-008",
+    "confidence": 0.65,
+    "id": "5b71624e-1317-5ec1-880b-2fd5d1f7969c",
+    "profile_id": "bls-ces-total-nonfarm",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "US-EQ-DELTA",
+    "association_id": "ODA-ASSOC-009",
+    "confidence": 0.45,
+    "id": "54e548ee-9615-5519-b4bb-acfa02a12aa8",
+    "profile_id": "bls-ces-manufacturing",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "US-EQ-EPSILON",
+    "association_id": "ODA-ASSOC-010",
+    "confidence": 0.55,
+    "id": "a74bd03a-6f5c-5890-9409-5c9c6b01a12d",
+    "profile_id": "bls-ces-manufacturing",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "US-EQ-ZETA",
+    "association_id": "ODA-ASSOC-011",
+    "confidence": 0.65,
+    "id": "7f052256-50bf-512d-bdad-3768fe9ff18b",
+    "profile_id": "bls-ces-manufacturing",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "US-EQ-OMEGA",
+    "association_id": "ODA-ASSOC-012",
+    "confidence": 0.75,
+    "id": "0d1c0f71-aab1-5837-a8ec-3d2de584c1de",
+    "profile_id": "bls-ces-manufacturing",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "US-EQ-SIGMA",
+    "association_id": "ODA-ASSOC-013",
+    "confidence": 0.85,
+    "id": "fe808766-e650-530d-9f6b-c301d6776fff",
+    "profile_id": "bls-ces-manufacturing",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "ETF-US-LARGE",
+    "association_id": "ODA-ASSOC-014",
+    "confidence": 0.45,
+    "id": "2b993501-49f8-5957-a8f8-88f99bdc7fe1",
+    "profile_id": "bls-ces-manufacturing",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "ETF-US-TECH",
+    "association_id": "ODA-ASSOC-015",
+    "confidence": 0.55,
+    "id": "976f5970-d0e4-53c8-8a1e-3282b4de1e04",
+    "profile_id": "bls-ces-manufacturing",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "ETF-US-BOND",
+    "association_id": "ODA-ASSOC-016",
+    "confidence": 0.65,
+    "id": "39d5a102-1c32-52bd-9e16-eb4ea54bd9c0",
+    "profile_id": "bls-ces-manufacturing",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "US-EQ-OMEGA",
+    "association_id": "ODA-ASSOC-017",
+    "confidence": 0.45,
+    "id": "7319cc00-b397-586a-8817-a98f0680172c",
+    "profile_id": "bls-ces-avg-hourly-earnings",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "US-EQ-SIGMA",
+    "association_id": "ODA-ASSOC-018",
+    "confidence": 0.55,
+    "id": "de20cfff-209d-5563-9dd2-811e71c5f43b",
+    "profile_id": "bls-ces-avg-hourly-earnings",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "ETF-US-LARGE",
+    "association_id": "ODA-ASSOC-019",
+    "confidence": 0.65,
+    "id": "2f08d541-f5cc-56be-8711-f0e4f1a9f2f4",
+    "profile_id": "bls-ces-avg-hourly-earnings",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "ETF-US-TECH",
+    "association_id": "ODA-ASSOC-020",
+    "confidence": 0.75,
+    "id": "ef2c0986-a0ae-5445-b865-7649410df96f",
+    "profile_id": "bls-ces-avg-hourly-earnings",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "ETF-US-BOND",
+    "association_id": "ODA-ASSOC-021",
+    "confidence": 0.85,
+    "id": "17151160-2726-5627-925e-dcd4665e51ed",
+    "profile_id": "bls-ces-avg-hourly-earnings",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "ETF-GLD-PROXY",
+    "association_id": "ODA-ASSOC-022",
+    "confidence": 0.45,
+    "id": "6bd9beb5-3ad9-5178-8b4a-42497678d423",
+    "profile_id": "bls-ces-avg-hourly-earnings",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "ETF-OIL-PROXY",
+    "association_id": "ODA-ASSOC-023",
+    "confidence": 0.55,
+    "id": "0108482f-1e93-539e-924e-75f4d1fd1cff",
+    "profile_id": "bls-ces-avg-hourly-earnings",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "IDX-US-LARGE",
+    "association_id": "ODA-ASSOC-024",
+    "confidence": 0.65,
+    "id": "7b3022e5-49ab-5b92-ac13-95c17dd7d8a0",
+    "profile_id": "bls-ces-avg-hourly-earnings",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "ETF-US-TECH",
+    "association_id": "ODA-ASSOC-025",
+    "confidence": 0.45,
+    "id": "54a7a763-abf4-53e9-8419-a882e61f8407",
+    "profile_id": "eia-crude-stocks",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "ETF-US-BOND",
+    "association_id": "ODA-ASSOC-026",
+    "confidence": 0.55,
+    "id": "ce7474b2-c3ce-545f-bac1-ee73ea54cd1f",
+    "profile_id": "eia-crude-stocks",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "ETF-GLD-PROXY",
+    "association_id": "ODA-ASSOC-027",
+    "confidence": 0.65,
+    "id": "6f814764-a2a9-5955-b829-7e45569af6fc",
+    "profile_id": "eia-crude-stocks",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "ETF-OIL-PROXY",
+    "association_id": "ODA-ASSOC-028",
+    "confidence": 0.75,
+    "id": "067233f3-efbc-5523-bf45-944efe17c311",
+    "profile_id": "eia-crude-stocks",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "IDX-US-LARGE",
+    "association_id": "ODA-ASSOC-029",
+    "confidence": 0.85,
+    "id": "fea7d18c-5458-59df-a642-1fb21c259896",
+    "profile_id": "eia-crude-stocks",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "IDX-US-TECH",
+    "association_id": "ODA-ASSOC-030",
+    "confidence": 0.45,
+    "id": "a399e541-998f-51b7-a7bb-0431858679cd",
+    "profile_id": "eia-crude-stocks",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "IDX-US-VOL",
+    "association_id": "ODA-ASSOC-031",
+    "confidence": 0.55,
+    "id": "4f49dfe8-3ef5-52c1-b359-733112ea5504",
+    "profile_id": "eia-crude-stocks",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "FX-EURUSD",
+    "association_id": "ODA-ASSOC-032",
+    "confidence": 0.65,
+    "id": "0492aa6e-0b38-5c74-a129-c900aef40d23",
+    "profile_id": "eia-crude-stocks",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "ETF-OIL-PROXY",
+    "association_id": "ODA-ASSOC-033",
+    "confidence": 0.45,
+    "id": "f95eb1dc-3dad-5026-8f84-89e953b4f4df",
+    "profile_id": "eia-gasoline-stocks",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "IDX-US-LARGE",
+    "association_id": "ODA-ASSOC-034",
+    "confidence": 0.55,
+    "id": "a6ca585d-ee30-5efa-a9cd-16dc921ff329",
+    "profile_id": "eia-gasoline-stocks",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "IDX-US-TECH",
+    "association_id": "ODA-ASSOC-035",
+    "confidence": 0.65,
+    "id": "30589f55-48ae-586a-acee-93c6bc4873f5",
+    "profile_id": "eia-gasoline-stocks",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "IDX-US-VOL",
+    "association_id": "ODA-ASSOC-036",
+    "confidence": 0.75,
+    "id": "604bdb5b-164b-5cb0-8ff0-24699a47dd30",
+    "profile_id": "eia-gasoline-stocks",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "FX-EURUSD",
+    "association_id": "ODA-ASSOC-037",
+    "confidence": 0.85,
+    "id": "2255f559-fdb4-50f6-8904-0be04a822102",
+    "profile_id": "eia-gasoline-stocks",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "FX-USDJPY",
+    "association_id": "ODA-ASSOC-038",
+    "confidence": 0.45,
+    "id": "242cb34d-6eae-593a-b9b4-245f6140f249",
+    "profile_id": "eia-gasoline-stocks",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "FX-GBPUSD",
+    "association_id": "ODA-ASSOC-039",
+    "confidence": 0.55,
+    "id": "beb13b0c-4059-5e2b-9609-a8b0a4becf7d",
+    "profile_id": "eia-gasoline-stocks",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "FX-AUDUSD",
+    "association_id": "ODA-ASSOC-040",
+    "confidence": 0.65,
+    "id": "a2b27721-1c55-5b80-b7a8-38b5fd788065",
+    "profile_id": "eia-gasoline-stocks",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "IDX-US-VOL",
+    "association_id": "ODA-ASSOC-041",
+    "confidence": 0.45,
+    "id": "dc1f40eb-eec2-5e7b-825c-017e86b76a08",
+    "profile_id": "eia-natural-gas-storage",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "FX-EURUSD",
+    "association_id": "ODA-ASSOC-042",
+    "confidence": 0.55,
+    "id": "2d339e0e-c4bd-587e-aa29-73dfc36299d8",
+    "profile_id": "eia-natural-gas-storage",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "FX-USDJPY",
+    "association_id": "ODA-ASSOC-043",
+    "confidence": 0.65,
+    "id": "cb9beb14-556a-5d23-8ac1-9f38bf1bced4",
+    "profile_id": "eia-natural-gas-storage",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "FX-GBPUSD",
+    "association_id": "ODA-ASSOC-044",
+    "confidence": 0.75,
+    "id": "575ba924-828b-5823-863e-dbee1d8f9bd2",
+    "profile_id": "eia-natural-gas-storage",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "FX-AUDUSD",
+    "association_id": "ODA-ASSOC-045",
+    "confidence": 0.85,
+    "id": "ee82725e-212b-54fc-93ae-f97b921c5815",
+    "profile_id": "eia-natural-gas-storage",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "FX-USDCAD",
+    "association_id": "ODA-ASSOC-046",
+    "confidence": 0.45,
+    "id": "44b863d6-2ab0-5860-b70f-8dc3716d5465",
+    "profile_id": "eia-natural-gas-storage",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "PM-GOLD",
+    "association_id": "ODA-ASSOC-047",
+    "confidence": 0.55,
+    "id": "350de707-2303-584f-97c9-e9580cd4a99c",
+    "profile_id": "eia-natural-gas-storage",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "PM-SILVER",
+    "association_id": "ODA-ASSOC-048",
+    "confidence": 0.65,
+    "id": "38251e79-3fd1-5ddc-94ef-2b3068dc64d2",
+    "profile_id": "eia-natural-gas-storage",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "FX-GBPUSD",
+    "association_id": "ODA-ASSOC-049",
+    "confidence": 0.45,
+    "id": "d4d1b505-4fff-5bef-b270-dc2f007964b3",
+    "profile_id": "cftc-equity-index-positioning",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "FX-AUDUSD",
+    "association_id": "ODA-ASSOC-050",
+    "confidence": 0.55,
+    "id": "66b741cc-3ed8-5724-a5c5-cd9814870600",
+    "profile_id": "cftc-equity-index-positioning",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "FX-USDCAD",
+    "association_id": "ODA-ASSOC-051",
+    "confidence": 0.65,
+    "id": "f134a4fb-9bd9-5d9c-acd6-83cf9daa2cc4",
+    "profile_id": "cftc-equity-index-positioning",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "PM-GOLD",
+    "association_id": "ODA-ASSOC-052",
+    "confidence": 0.75,
+    "id": "c50f8749-26cf-5f26-bf4c-6488a2e33641",
+    "profile_id": "cftc-equity-index-positioning",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "PM-SILVER",
+    "association_id": "ODA-ASSOC-053",
+    "confidence": 0.85,
+    "id": "2f481e8a-facf-5b27-abe8-334875aa2b7b",
+    "profile_id": "cftc-equity-index-positioning",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "PM-PLATINUM",
+    "association_id": "ODA-ASSOC-054",
+    "confidence": 0.45,
+    "id": "941ed2ee-0eb3-5e7e-872d-e86a5511f92f",
+    "profile_id": "cftc-equity-index-positioning",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "CMD-OIL",
+    "association_id": "ODA-ASSOC-055",
+    "confidence": 0.55,
+    "id": "2d9144bd-3b43-5e15-aae0-9f9229e755e6",
+    "profile_id": "cftc-equity-index-positioning",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "CMD-GAS",
+    "association_id": "ODA-ASSOC-056",
+    "confidence": 0.65,
+    "id": "0e4e2016-01a7-5d37-b587-0a9f74669731",
+    "profile_id": "cftc-equity-index-positioning",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "PM-GOLD",
+    "association_id": "ODA-ASSOC-057",
+    "confidence": 0.45,
+    "id": "e2e7a61c-2120-56de-aa94-21da0ea6b66a",
+    "profile_id": "cftc-rates-positioning",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "PM-SILVER",
+    "association_id": "ODA-ASSOC-058",
+    "confidence": 0.55,
+    "id": "a4d43b90-4ba8-50c5-8963-f7ba4235d508",
+    "profile_id": "cftc-rates-positioning",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "PM-PLATINUM",
+    "association_id": "ODA-ASSOC-059",
+    "confidence": 0.65,
+    "id": "241e83ce-5d41-5c53-896c-41c5ae6caf82",
+    "profile_id": "cftc-rates-positioning",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "CMD-OIL",
+    "association_id": "ODA-ASSOC-060",
+    "confidence": 0.75,
+    "id": "372268f2-c9cc-5660-99de-08b4b137ae65",
+    "profile_id": "cftc-rates-positioning",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "CMD-GAS",
+    "association_id": "ODA-ASSOC-061",
+    "confidence": 0.85,
+    "id": "913f7978-aa22-59c9-a486-10a080aa68b5",
+    "profile_id": "cftc-rates-positioning",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "CMD-COPPER",
+    "association_id": "ODA-ASSOC-062",
+    "confidence": 0.45,
+    "id": "967183e9-2750-5c23-89e0-a914dc4e1ccb",
+    "profile_id": "cftc-rates-positioning",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "FUT-ROOT-OIL",
+    "association_id": "ODA-ASSOC-063",
+    "confidence": 0.55,
+    "id": "630e3159-ef68-5b91-b878-a2583e39c356",
+    "profile_id": "cftc-rates-positioning",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "FUT-CONTRACT-OIL-JUL26",
+    "association_id": "ODA-ASSOC-064",
+    "confidence": 0.65,
+    "id": "1bb218ca-2ef7-5ad9-a594-0f74a8a8fa48",
+    "profile_id": "cftc-rates-positioning",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "CMD-OIL",
+    "association_id": "ODA-ASSOC-065",
+    "confidence": 0.45,
+    "id": "34149b98-f3ff-5dc2-bd9a-932f54362b3f",
+    "profile_id": "fr-energy-regulation",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "CMD-GAS",
+    "association_id": "ODA-ASSOC-066",
+    "confidence": 0.55,
+    "id": "2cd92d5b-4082-58f2-9ded-dff9488b0fb8",
+    "profile_id": "fr-energy-regulation",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "CMD-COPPER",
+    "association_id": "ODA-ASSOC-067",
+    "confidence": 0.65,
+    "id": "6bd341ee-5672-54fa-a158-70b15e4d0406",
+    "profile_id": "fr-energy-regulation",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "FUT-ROOT-OIL",
+    "association_id": "ODA-ASSOC-068",
+    "confidence": 0.75,
+    "id": "cee5d28f-9ebe-59ad-a4b1-770d9bf84ff0",
+    "profile_id": "fr-energy-regulation",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "FUT-CONTRACT-OIL-JUL26",
+    "association_id": "ODA-ASSOC-069",
+    "confidence": 0.85,
+    "id": "b11958ff-4cbb-575a-bcb8-48b8b3a3cad3",
+    "profile_id": "fr-energy-regulation",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "FUT-ROOT-GOLD",
+    "association_id": "ODA-ASSOC-070",
+    "confidence": 0.45,
+    "id": "fb4927d7-f94c-548d-ad47-bb0cd3c05d93",
+    "profile_id": "fr-energy-regulation",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "FUT-CONTRACT-GOLD-AUG26",
+    "association_id": "ODA-ASSOC-071",
+    "confidence": 0.55,
+    "id": "0b6afee9-ef79-524c-bfd1-451b8e90216e",
+    "profile_id": "fr-energy-regulation",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "CRYPTO-BTC-PROXY",
+    "association_id": "ODA-ASSOC-072",
+    "confidence": 0.65,
+    "id": "8aaf5649-9b92-54d9-8cbf-ff06eda9913c",
+    "profile_id": "fr-energy-regulation",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "FUT-ROOT-OIL",
+    "association_id": "ODA-ASSOC-073",
+    "confidence": 0.45,
+    "id": "b5e48b35-b4a3-5f0f-a790-7eba38448e1f",
+    "profile_id": "fr-market-structure-regulation",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "FUT-CONTRACT-OIL-JUL26",
+    "association_id": "ODA-ASSOC-074",
+    "confidence": 0.55,
+    "id": "6a3a59a9-f00a-52ee-a610-83bfe8da1e62",
+    "profile_id": "fr-market-structure-regulation",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "FUT-ROOT-GOLD",
+    "association_id": "ODA-ASSOC-075",
+    "confidence": 0.65,
+    "id": "4175439b-077c-52b2-afff-bb275d11f269",
+    "profile_id": "fr-market-structure-regulation",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "FUT-CONTRACT-GOLD-AUG26",
+    "association_id": "ODA-ASSOC-076",
+    "confidence": 0.75,
+    "id": "0a3ae43c-713d-5947-8ea8-446d7d7a53de",
+    "profile_id": "fr-market-structure-regulation",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "CRYPTO-BTC-PROXY",
+    "association_id": "ODA-ASSOC-077",
+    "confidence": 0.85,
+    "id": "c2132315-7aba-5d29-9f25-5a1766b95339",
+    "profile_id": "fr-market-structure-regulation",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "CRYPTO-ETH-PROXY",
+    "association_id": "ODA-ASSOC-078",
+    "confidence": 0.45,
+    "id": "67300dc7-2ca3-54a2-86be-8050cf57fe06",
+    "profile_id": "fr-market-structure-regulation",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "CRYPTO-STABLE-PROXY",
+    "association_id": "ODA-ASSOC-079",
+    "confidence": 0.55,
+    "id": "38abafe7-a462-5ba3-b7b8-269e26bd3808",
+    "profile_id": "fr-market-structure-regulation",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  },
+  {
+    "active": true,
+    "asset_id": "CRYPTO-EXCH-PROXY",
+    "association_id": "ODA-ASSOC-080",
+    "confidence": 0.65,
+    "id": "875069ad-000a-5efd-be9e-6cf2dcb365f2",
+    "profile_id": "fr-market-structure-regulation",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "rationale": "Synthetic mapping for research navigation only; not a direction, recommendation, or executable signal.",
+    "relationship_type": "macro_relevance_hypothesis",
+    "synthetic": true
+  }
+]

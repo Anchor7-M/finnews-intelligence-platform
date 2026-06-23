@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from datetime import date, datetime
+from decimal import Decimal
 from uuid import UUID
 
 from finnews.domain.enums import (
@@ -589,6 +590,134 @@ class MarketSignalCandidate:
     risk_tags: list[str]
     payload_hash: str
     idempotency_key: str
+    synthetic: bool = True
+    id: UUID = field(default_factory=new_id)
+
+
+@dataclass
+class OfficialDataset:
+    dataset_id: str
+    source_id: str
+    display_name: str
+    category: str
+    description: str
+    documentation_url: str
+    revision_policy: str
+    frequency: str
+    unit: str | None
+    synthetic: bool = True
+    provenance: dict[str, object] = field(default_factory=dict)
+    id: UUID = field(default_factory=new_id)
+
+
+@dataclass
+class OfficialSeriesProfile:
+    profile_id: str
+    dataset_id: str
+    source_id: str
+    display_name: str
+    query: dict[str, object]
+    dimensions: dict[str, str]
+    unit: str | None
+    frequency: str
+    seasonal_adjustment: str | None
+    synthetic: bool = True
+    provenance: dict[str, object] = field(default_factory=dict)
+    id: UUID = field(default_factory=new_id)
+
+
+@dataclass
+class OfficialObservationRevision:
+    observation_key: str
+    revision_number: int
+    value: Decimal
+    first_seen_at: datetime
+    source_updated_at: datetime | None
+    information_available_at: datetime
+    provenance: dict[str, object]
+    quality_flags: list[str] = field(default_factory=list)
+    id: UUID = field(default_factory=new_id)
+
+
+@dataclass
+class OfficialObservation:
+    observation_key: str
+    source_id: str
+    dataset_id: str
+    profile_id: str
+    period_start: date
+    period_end: date
+    dimensions: dict[str, str]
+    current_revision: int
+    current_value: Decimal
+    first_seen_at: datetime
+    information_available_at: datetime
+    synthetic: bool = True
+    id: UUID = field(default_factory=new_id)
+
+
+@dataclass
+class OfficialDataReleaseRun:
+    release_run_id: str
+    source_id: str
+    dataset_id: str
+    observed_at: datetime
+    profile_count: int
+    observation_count: int
+    new_revision_count: int
+    unchanged_count: int
+    status: str
+    no_persist_live: bool = False
+    synthetic: bool = True
+    id: UUID = field(default_factory=new_id)
+
+
+@dataclass
+class RegulatoryDocument:
+    document_id: str
+    source_id: str
+    title: str
+    abstract: str
+    publication_date: date
+    document_type: str
+    agencies: list[str]
+    cfr_references: list[str]
+    rin: list[str]
+    html_url: str
+    pdf_url: str | None
+    information_available_at: datetime
+    source_updated_at: datetime | None
+    synthetic: bool = True
+    provenance: dict[str, object] = field(default_factory=dict)
+    id: UUID = field(default_factory=new_id)
+
+
+@dataclass
+class SeriesAssetAssociation:
+    association_id: str
+    profile_id: str
+    asset_id: str
+    relationship_type: str
+    rationale: str
+    confidence: float
+    active: bool = True
+    synthetic: bool = True
+    provenance: dict[str, object] = field(default_factory=dict)
+    id: UUID = field(default_factory=new_id)
+
+
+@dataclass
+class OfficialReleaseEvent:
+    event_id: str
+    source_id: str
+    dataset_id: str
+    profile_id: str | None
+    document_id: str | None
+    event_family: CrossAssetEventFamily
+    description: str
+    information_available_at: datetime
+    revision_number: int | None
+    provenance: dict[str, object]
     synthetic: bool = True
     id: UUID = field(default_factory=new_id)
 

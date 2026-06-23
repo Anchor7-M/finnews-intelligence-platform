@@ -25,6 +25,12 @@ from finnews.domain.entities import (
     NlpEvaluationRun,
     NlpModelRegistryEntry,
     ObservationDisposition,
+    OfficialDataReleaseRun,
+    OfficialDataset,
+    OfficialObservation,
+    OfficialObservationRevision,
+    OfficialReleaseEvent,
+    OfficialSeriesProfile,
     PipelineRun,
     ProviderSymbol,
     RawArticle,
@@ -39,6 +45,8 @@ from finnews.domain.entities import (
     SourceFetchAttempt,
     SourceFetchState,
     SymbolAlias,
+    RegulatoryDocument,
+    SeriesAssetAssociation,
 )
 
 
@@ -141,6 +149,41 @@ class NewsRepository(Protocol):
     def list_market_signal_candidates(
         self, asset_id: str | None = None, status: str | None = None
     ) -> list[MarketSignalCandidate]: ...
+    def upsert_official_dataset(self, dataset: OfficialDataset) -> OfficialDataset: ...
+    def upsert_official_series_profile(
+        self, profile: OfficialSeriesProfile
+    ) -> OfficialSeriesProfile: ...
+    def upsert_official_observation(
+        self,
+        observation: OfficialObservation,
+        revision: OfficialObservationRevision,
+    ) -> OfficialObservation: ...
+    def add_official_data_release_run(
+        self, run: OfficialDataReleaseRun
+    ) -> OfficialDataReleaseRun: ...
+    def upsert_regulatory_document(self, document: RegulatoryDocument) -> RegulatoryDocument: ...
+    def upsert_series_asset_association(
+        self, association: SeriesAssetAssociation
+    ) -> SeriesAssetAssociation: ...
+    def upsert_official_release_event(self, event: OfficialReleaseEvent) -> OfficialReleaseEvent: ...
+    def list_official_datasets(self) -> list[OfficialDataset]: ...
+    def list_official_series_profiles(
+        self, source_id: str | None = None
+    ) -> list[OfficialSeriesProfile]: ...
+    def list_official_observations(
+        self, dataset_id: str | None = None,
+        profile_id: str | None = None,
+    ) -> list[OfficialObservation]: ...
+    def list_official_observation_revisions(
+        self, observation_key: str | None = None
+    ) -> list[OfficialObservationRevision]: ...
+    def list_official_data_release_runs(self) -> list[OfficialDataReleaseRun]: ...
+    def list_regulatory_documents(self) -> list[RegulatoryDocument]: ...
+    def list_series_asset_associations(
+        self, profile_id: str | None = None,
+        asset_id: str | None = None,
+    ) -> list[SeriesAssetAssociation]: ...
+    def list_official_release_events(self) -> list[OfficialReleaseEvent]: ...
 
 
 class SourceAdapter(Protocol):

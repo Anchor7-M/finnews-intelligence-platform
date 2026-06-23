@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from datetime import date, datetime
+from decimal import Decimal
 from uuid import UUID, uuid4
 
 from sqlalchemy import (
@@ -11,6 +12,7 @@ from sqlalchemy import (
     ForeignKey,
     Index,
     Integer,
+    Numeric,
     String,
     Text,
     UniqueConstraint,
@@ -683,4 +685,163 @@ class SignalPublicationRunModel(Base):
     status: Mapped[str] = mapped_column(String(40), nullable=False)
     manifest_hash: Mapped[str] = mapped_column(String(64), nullable=False)
     file_hashes: Mapped[dict[str, str]] = mapped_column(JSONB, nullable=False)
+    synthetic: Mapped[bool] = mapped_column(Boolean, nullable=False)
+
+
+class OfficialDatasetModel(Base):
+    __tablename__ = "official_datasets"
+    id: Mapped[UUID] = mapped_column(PGUUID(as_uuid=True), primary_key=True, default=uuid4)
+    dataset_id: Mapped[str] = mapped_column(String(160), unique=True, nullable=False)
+    source_id: Mapped[str] = mapped_column(String(120), nullable=False)
+    display_name: Mapped[str] = mapped_column(String(240), nullable=False)
+    category: Mapped[str] = mapped_column(String(120), nullable=False)
+    description: Mapped[str] = mapped_column(Text, nullable=False)
+    documentation_url: Mapped[str] = mapped_column(Text, nullable=False)
+    revision_policy: Mapped[str] = mapped_column(String(120), nullable=False)
+    frequency: Mapped[str] = mapped_column(String(40), nullable=False)
+    unit: Mapped[str | None] = mapped_column(String(80))
+    synthetic: Mapped[bool] = mapped_column(Boolean, nullable=False)
+    provenance: Mapped[dict[str, object]] = mapped_column(JSONB, nullable=False)
+
+
+class OfficialSeriesProfileModel(Base):
+    __tablename__ = "official_series_profiles"
+    __table_args__ = (
+        UniqueConstraint("profile_id"),
+        Index("ix_official_series_source_dataset", "source_id", "dataset_id"),
+    )
+    id: Mapped[UUID] = mapped_column(PGUUID(as_uuid=True), primary_key=True, default=uuid4)
+    profile_id: Mapped[str] = mapped_column(String(160), nullable=False)
+    dataset_id: Mapped[str] = mapped_column(String(160), nullable=False)
+    source_id: Mapped[str] = mapped_column(String(120), nullable=False)
+    display_name: Mapped[str] = mapped_column(String(240), nullable=False)
+    query: Mapped[dict[str, object]] = mapped_column(JSONB, nullable=False)
+    dimensions: Mapped[dict[str, str]] = mapped_column(JSONB, nullable=False)
+    unit: Mapped[str | None] = mapped_column(String(80))
+    frequency: Mapped[str] = mapped_column(String(40), nullable=False)
+    seasonal_adjustment: Mapped[str | None] = mapped_column(String(80))
+    synthetic: Mapped[bool] = mapped_column(Boolean, nullable=False)
+    provenance: Mapped[dict[str, object]] = mapped_column(JSONB, nullable=False)
+
+
+class OfficialObservationModel(Base):
+    __tablename__ = "official_observations"
+    __table_args__ = (
+        Index("ix_official_observations_profile_period", "profile_id", "period_start"),
+        Index("ix_official_observations_dataset", "dataset_id"),
+    )
+    id: Mapped[UUID] = mapped_column(PGUUID(as_uuid=True), primary_key=True, default=uuid4)
+    observation_key: Mapped[str] = mapped_column(String(64), unique=True, nullable=False)
+    source_id: Mapped[str] = mapped_column(String(120), nullable=False)
+    dataset_id: Mapped[str] = mapped_column(String(160), nullable=False)
+    profile_id: Mapped[str] = mapped_column(String(160), nullable=False)
+    period_start: Mapped[date] = mapped_column(Date, nullable=False)
+    period_end: Mapped[date] = mapped_column(Date, nullable=False)
+    dimensions: Mapped[dict[str, str]] = mapped_column(JSONB, nullable=False)
+    current_revision: Mapped[int] = mapped_column(Integer, nullable=False)
+    current_value: Mapped[Decimal] = mapped_column(Numeric(24, 6), nullable=False)
+    first_seen_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+    information_available_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False
+    )
+    synthetic: Mapped[bool] = mapped_column(Boolean, nullable=False)
+
+
+class OfficialObservationRevisionModel(Base):
+    __tablename__ = "official_observation_revisions"
+    __table_args__ = (
+        UniqueConstraint("observation_key", "revision_number"),
+        Index("ix_official_revisions_available", "information_available_at"),
+    )
+    id: Mapped[UUID] = mapped_column(PGUUID(as_uuid=True), primary_key=True, default=uuid4)
+    observation_key: Mapped[str] = mapped_column(String(64), nullable=False)
+    revision_number: Mapped[int] = mapped_column(Integer, nullable=False)
+    value: Mapped[Decimal] = mapped_column(Numeric(24, 6), nullable=False)
+    first_seen_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+    source_updated_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    information_available_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False
+    )
+    provenance: Mapped[dict[str, object]] = mapped_column(JSONB, nullable=False)
+    quality_flags: Mapped[list[str]] = mapped_column(JSONB, nullable=False)
+
+
+class OfficialDataReleaseRunModel(Base):
+    __tablename__ = "official_data_release_runs"
+    id: Mapped[UUID] = mapped_column(PGUUID(as_uuid=True), primary_key=True, default=uuid4)
+    release_run_id: Mapped[str] = mapped_column(String(120), unique=True, nullable=False)
+    source_id: Mapped[str] = mapped_column(String(120), nullable=False)
+    dataset_id: Mapped[str] = mapped_column(String(160), nullable=False)
+    observed_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+    profile_count: Mapped[int] = mapped_column(Integer, nullable=False)
+    observation_count: Mapped[int] = mapped_column(Integer, nullable=False)
+    new_revision_count: Mapped[int] = mapped_column(Integer, nullable=False)
+    unchanged_count: Mapped[int] = mapped_column(Integer, nullable=False)
+    status: Mapped[str] = mapped_column(String(40), nullable=False)
+    no_persist_live: Mapped[bool] = mapped_column(Boolean, nullable=False)
+    synthetic: Mapped[bool] = mapped_column(Boolean, nullable=False)
+
+
+class RegulatoryDocumentModel(Base):
+    __tablename__ = "regulatory_documents"
+    __table_args__ = (Index("ix_regulatory_documents_publication", "publication_date"),)
+    id: Mapped[UUID] = mapped_column(PGUUID(as_uuid=True), primary_key=True, default=uuid4)
+    document_id: Mapped[str] = mapped_column(String(120), unique=True, nullable=False)
+    source_id: Mapped[str] = mapped_column(String(120), nullable=False)
+    title: Mapped[str] = mapped_column(Text, nullable=False)
+    abstract: Mapped[str] = mapped_column(Text, nullable=False)
+    publication_date: Mapped[date] = mapped_column(Date, nullable=False)
+    document_type: Mapped[str] = mapped_column(String(120), nullable=False)
+    agencies: Mapped[list[str]] = mapped_column(JSONB, nullable=False)
+    cfr_references: Mapped[list[str]] = mapped_column(JSONB, nullable=False)
+    rin: Mapped[list[str]] = mapped_column(JSONB, nullable=False)
+    html_url: Mapped[str] = mapped_column(Text, nullable=False)
+    pdf_url: Mapped[str | None] = mapped_column(Text)
+    information_available_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False
+    )
+    source_updated_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    synthetic: Mapped[bool] = mapped_column(Boolean, nullable=False)
+    provenance: Mapped[dict[str, object]] = mapped_column(JSONB, nullable=False)
+
+
+class SeriesAssetAssociationModel(Base):
+    __tablename__ = "series_asset_associations"
+    __table_args__ = (
+        UniqueConstraint("association_id"),
+        Index("ix_series_asset_profile", "profile_id"),
+        Index("ix_series_asset_asset", "asset_id"),
+    )
+    id: Mapped[UUID] = mapped_column(PGUUID(as_uuid=True), primary_key=True, default=uuid4)
+    association_id: Mapped[str] = mapped_column(String(120), nullable=False)
+    profile_id: Mapped[str] = mapped_column(String(160), nullable=False)
+    asset_id: Mapped[str] = mapped_column(String(120), nullable=False)
+    relationship_type: Mapped[str] = mapped_column(String(120), nullable=False)
+    rationale: Mapped[str] = mapped_column(Text, nullable=False)
+    confidence: Mapped[float] = mapped_column(Float, nullable=False)
+    active: Mapped[bool] = mapped_column(Boolean, nullable=False)
+    synthetic: Mapped[bool] = mapped_column(Boolean, nullable=False)
+    provenance: Mapped[dict[str, object]] = mapped_column(JSONB, nullable=False)
+
+
+class OfficialReleaseEventModel(Base):
+    __tablename__ = "official_release_events"
+    __table_args__ = (
+        UniqueConstraint("event_id"),
+        Index("ix_official_release_events_source", "source_id"),
+        Index("ix_official_release_events_available", "information_available_at"),
+    )
+    id: Mapped[UUID] = mapped_column(PGUUID(as_uuid=True), primary_key=True, default=uuid4)
+    event_id: Mapped[str] = mapped_column(String(120), nullable=False)
+    source_id: Mapped[str] = mapped_column(String(120), nullable=False)
+    dataset_id: Mapped[str] = mapped_column(String(160), nullable=False)
+    profile_id: Mapped[str | None] = mapped_column(String(160))
+    document_id: Mapped[str | None] = mapped_column(String(120))
+    event_family: Mapped[str] = mapped_column(String(100), nullable=False)
+    description: Mapped[str] = mapped_column(Text, nullable=False)
+    information_available_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False
+    )
+    revision_number: Mapped[int | None] = mapped_column(Integer)
+    provenance: Mapped[dict[str, object]] = mapped_column(JSONB, nullable=False)
     synthetic: Mapped[bool] = mapped_column(Boolean, nullable=False)

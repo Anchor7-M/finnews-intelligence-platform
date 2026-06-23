@@ -8,6 +8,7 @@ from typing import Protocol
 class HttpRequest:
     url: str
     headers: dict[str, str] = field(default_factory=dict)
+    body: bytes | None = None
     acceptable_content_types: tuple[str, ...] = (
         "application/rss+xml",
         "application/atom+xml",
@@ -29,3 +30,4 @@ class HttpResponse:
 
 class BoundedHttpClient(Protocol):
     def get(self, request: HttpRequest) -> HttpResponse: ...
+    def post(self, request: HttpRequest) -> HttpResponse: ...
