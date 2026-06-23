@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Implemented Milestone 3A point-in-time research export contract with synthetic market calendar, dense rolling news-factor package, safe lineage, leakage audit, read-only API/CLI/Vue/static-demo surfaces, and PostgreSQL metadata tables.
 - Implemented Milestone 2A synthetic bilingual NLP evaluation lab with deterministic benchmark generation, leakage checks, scikit-learn baselines, calibration/abstention analysis, trusted local artifact manifests, model-registry metadata, read-only API, CLI, Vue dashboard, and static demo files.
 - Implemented Milestone 1B source-review evidence workflow, disabled official Federal Reserve/SEC pilot configs, local-only overrides, guarded smoke-test CLI, SEC columnar JSON parsing, source-review API/static export, Vue Source Catalog visibility, and A-share boundary documentation.
 - Implemented Milestone 1A safe source ingestion infrastructure with typed source registry, HTTP safety, source state, API/CLI, static demo data, and Vue Source Health.

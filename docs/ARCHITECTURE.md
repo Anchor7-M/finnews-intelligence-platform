@@ -2,6 +2,8 @@
 
 Milestone 0 is a modular monolith with ports and adapters.
 
+Milestone 3A adds a research-export application service that reads existing news metadata through repository ports and writes deterministic packages plus safe metadata. FinNews owns news provenance, information availability, event/sentiment metadata, feature lineage, and the export contract. The future `ashare-research-platform` owns prices, returns, backtests, and portfolio logic.
+
 ```mermaid
 flowchart TD
   Domain[Domain entities and rules] --> Application[Application use cases and ports]

@@ -3,6 +3,8 @@
 Milestone 1B does not scrape Shanghai Stock Exchange, Shenzhen Stock Exchange,
 CNINFO, CSRC, PBOC, or other A-share websites.
 
+Milestone 3A continues that boundary. It uses a deterministic synthetic calendar and accepts only explicit user-supplied local CSV/JSON calendar files with strict validation. It does not fetch live A-share calendars, announcements, prices, index constituents, corporate actions, or returns.
+
 Network integration for A-share sources requires a future engineering review of
 an official documented feed or API, acceptable automated-use evidence, clear
 rate limits, storage permissions, and a source-review record. This project does

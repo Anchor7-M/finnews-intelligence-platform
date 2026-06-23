@@ -1,5 +1,9 @@
 # Threat Model
 
+## Research Export
+
+Research-export risks include lookahead leakage, backfill leakage, accidental article-text export, local-path leakage, false official-calendar claims, and market-data scope creep. Mitigations include explicit information-availability timestamps, cutoff timestamps, leakage audit, no-text lineage, synthetic flags, local ignored exports, and a documented boundary with the future A-share research repository.
+
 ## Risks
 
 - Untrusted metadata in local imports.
