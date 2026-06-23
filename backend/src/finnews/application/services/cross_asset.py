@@ -506,8 +506,8 @@ def write_signal_package(output: Path, dataset: CrossAssetDataset | None = None)
         for name, data in files.items():
             (temp_root / name).write_bytes(data)
         if output.exists():
-            output.rmdir()
-        temp_root.replace(output)
+            shutil.rmtree(output)
+        shutil.move(str(temp_root), str(output))
     except Exception:
         shutil.rmtree(temp_root, ignore_errors=True)
         raise

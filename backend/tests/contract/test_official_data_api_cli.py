@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+from pathlib import Path
 
 from fastapi.testclient import TestClient
 from typer.testing import CliRunner
@@ -8,6 +9,8 @@ from typer.testing import CliRunner
 from finnews.interfaces.api.app import create_app
 from finnews.interfaces.cli.app import app as cli_app
 from finnews.settings import Settings
+
+REPO_ROOT = Path(__file__).resolve().parents[3]
 
 
 def test_official_data_api_contract() -> None:
@@ -60,6 +63,17 @@ def test_official_data_cli_contract() -> None:
     assert validation.exit_code == 0
     validation_payload = json.loads(validation.stdout)
     assert validation_payload["valid"] is True
+
+    export = runner.invoke(cli_app, ["official-data", "export-static"])
+    assert export.exit_code == 0
+    export_payload = json.loads(export.stdout)
+    assert "official-data-overview" in export_payload["files"]
+    overview = json.loads(
+        (REPO_ROOT / "frontend" / "public" / "demo-data" / "official-data-overview.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    assert overview["dataset_count"] == 4
 
     blocked = runner.invoke(cli_app, ["official-data", "live-smoke", "--source", "bls-public-data"])
     assert blocked.exit_code == 4

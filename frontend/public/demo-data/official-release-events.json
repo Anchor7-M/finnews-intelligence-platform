@@ -1,514 +1,514 @@
 [
   {
+    "event_id": "ODE-DOC-001",
+    "source_id": "federal-register-api",
     "dataset_id": "federal-register-documents",
-    "description": "Synthetic regulatory metadata release for FR-SYN-0001",
+    "profile_id": "fr-energy-regulation",
     "document_id": "FR-SYN-0001",
     "event_family": "regulation_enforcement",
-    "event_id": "ODE-DOC-001",
-    "id": "38da45e3-9798-53f9-9626-4eff8b0df6c0",
+    "description": "Synthetic regulatory metadata release for FR-SYN-0001",
     "information_available_at": "2026-03-01T12:00:00+00:00",
-    "profile_id": "fr-energy-regulation",
+    "revision_number": null,
     "provenance": {
       "fixture_version": "official-data-synthetic-v1"
     },
-    "revision_number": null,
-    "source_id": "federal-register-api",
-    "synthetic": true
+    "synthetic": true,
+    "id": "38da45e3-9798-53f9-9626-4eff8b0df6c0"
   },
   {
+    "event_id": "ODE-DOC-002",
+    "source_id": "federal-register-api",
     "dataset_id": "federal-register-documents",
-    "description": "Synthetic regulatory metadata release for FR-SYN-0002",
+    "profile_id": "fr-market-structure-regulation",
     "document_id": "FR-SYN-0002",
     "event_family": "regulation_enforcement",
-    "event_id": "ODE-DOC-002",
-    "id": "03002ac4-ccb0-5200-89d4-c6f8f48e029f",
+    "description": "Synthetic regulatory metadata release for FR-SYN-0002",
     "information_available_at": "2026-03-02T12:00:00+00:00",
-    "profile_id": "fr-market-structure-regulation",
+    "revision_number": null,
     "provenance": {
       "fixture_version": "official-data-synthetic-v1"
     },
-    "revision_number": null,
-    "source_id": "federal-register-api",
-    "synthetic": true
+    "synthetic": true,
+    "id": "03002ac4-ccb0-5200-89d4-c6f8f48e029f"
   },
   {
+    "event_id": "ODE-DOC-003",
+    "source_id": "federal-register-api",
     "dataset_id": "federal-register-documents",
-    "description": "Synthetic regulatory metadata release for FR-SYN-0003",
+    "profile_id": "fr-energy-regulation",
     "document_id": "FR-SYN-0003",
     "event_family": "regulation_enforcement",
-    "event_id": "ODE-DOC-003",
-    "id": "67343719-c408-5f53-a96b-c7b8a93dba22",
+    "description": "Synthetic regulatory metadata release for FR-SYN-0003",
     "information_available_at": "2026-03-03T12:00:00+00:00",
-    "profile_id": "fr-energy-regulation",
+    "revision_number": null,
     "provenance": {
       "fixture_version": "official-data-synthetic-v1"
     },
-    "revision_number": null,
-    "source_id": "federal-register-api",
-    "synthetic": true
+    "synthetic": true,
+    "id": "67343719-c408-5f53-a96b-c7b8a93dba22"
   },
   {
+    "event_id": "ODE-DOC-004",
+    "source_id": "federal-register-api",
     "dataset_id": "federal-register-documents",
-    "description": "Synthetic regulatory metadata release for FR-SYN-0004",
+    "profile_id": "fr-market-structure-regulation",
     "document_id": "FR-SYN-0004",
     "event_family": "regulation_enforcement",
-    "event_id": "ODE-DOC-004",
-    "id": "c0a90f3a-d37e-53ed-9282-a43e863b9328",
+    "description": "Synthetic regulatory metadata release for FR-SYN-0004",
     "information_available_at": "2026-03-04T12:00:00+00:00",
-    "profile_id": "fr-market-structure-regulation",
+    "revision_number": null,
     "provenance": {
       "fixture_version": "official-data-synthetic-v1"
     },
-    "revision_number": null,
-    "source_id": "federal-register-api",
-    "synthetic": true
+    "synthetic": true,
+    "id": "c0a90f3a-d37e-53ed-9282-a43e863b9328"
   },
   {
+    "event_id": "ODE-DOC-005",
+    "source_id": "federal-register-api",
     "dataset_id": "federal-register-documents",
-    "description": "Synthetic regulatory metadata release for FR-SYN-0005",
+    "profile_id": "fr-energy-regulation",
     "document_id": "FR-SYN-0005",
     "event_family": "regulation_enforcement",
-    "event_id": "ODE-DOC-005",
-    "id": "c1f531aa-c763-5393-b924-638bee3f5db4",
+    "description": "Synthetic regulatory metadata release for FR-SYN-0005",
     "information_available_at": "2026-03-05T12:00:00+00:00",
-    "profile_id": "fr-energy-regulation",
+    "revision_number": null,
     "provenance": {
       "fixture_version": "official-data-synthetic-v1"
     },
-    "revision_number": null,
-    "source_id": "federal-register-api",
-    "synthetic": true
+    "synthetic": true,
+    "id": "c1f531aa-c763-5393-b924-638bee3f5db4"
   },
   {
+    "event_id": "ODE-DOC-006",
+    "source_id": "federal-register-api",
     "dataset_id": "federal-register-documents",
-    "description": "Synthetic regulatory metadata release for FR-SYN-0006",
+    "profile_id": "fr-market-structure-regulation",
     "document_id": "FR-SYN-0006",
     "event_family": "regulation_enforcement",
-    "event_id": "ODE-DOC-006",
-    "id": "33421b9e-fb6f-5dde-9a89-7fa21df68377",
+    "description": "Synthetic regulatory metadata release for FR-SYN-0006",
     "information_available_at": "2026-03-06T12:00:00+00:00",
-    "profile_id": "fr-market-structure-regulation",
+    "revision_number": null,
     "provenance": {
       "fixture_version": "official-data-synthetic-v1"
     },
-    "revision_number": null,
-    "source_id": "federal-register-api",
-    "synthetic": true
+    "synthetic": true,
+    "id": "33421b9e-fb6f-5dde-9a89-7fa21df68377"
   },
   {
+    "event_id": "ODE-DOC-007",
+    "source_id": "federal-register-api",
     "dataset_id": "federal-register-documents",
-    "description": "Synthetic regulatory metadata release for FR-SYN-0007",
+    "profile_id": "fr-energy-regulation",
     "document_id": "FR-SYN-0007",
     "event_family": "regulation_enforcement",
-    "event_id": "ODE-DOC-007",
-    "id": "9d6ec0ca-377c-5b2d-86ad-bbb06b03bfb4",
+    "description": "Synthetic regulatory metadata release for FR-SYN-0007",
     "information_available_at": "2026-03-07T12:00:00+00:00",
-    "profile_id": "fr-energy-regulation",
+    "revision_number": null,
     "provenance": {
       "fixture_version": "official-data-synthetic-v1"
     },
-    "revision_number": null,
-    "source_id": "federal-register-api",
-    "synthetic": true
+    "synthetic": true,
+    "id": "9d6ec0ca-377c-5b2d-86ad-bbb06b03bfb4"
   },
   {
+    "event_id": "ODE-DOC-008",
+    "source_id": "federal-register-api",
     "dataset_id": "federal-register-documents",
-    "description": "Synthetic regulatory metadata release for FR-SYN-0008",
+    "profile_id": "fr-market-structure-regulation",
     "document_id": "FR-SYN-0008",
     "event_family": "regulation_enforcement",
-    "event_id": "ODE-DOC-008",
-    "id": "391817c3-97ee-520e-9bf2-85ebe10a3ec2",
+    "description": "Synthetic regulatory metadata release for FR-SYN-0008",
     "information_available_at": "2026-03-08T12:00:00+00:00",
-    "profile_id": "fr-market-structure-regulation",
+    "revision_number": null,
     "provenance": {
       "fixture_version": "official-data-synthetic-v1"
     },
-    "revision_number": null,
-    "source_id": "federal-register-api",
-    "synthetic": true
+    "synthetic": true,
+    "id": "391817c3-97ee-520e-9bf2-85ebe10a3ec2"
   },
   {
-    "dataset_id": "bls-ces",
-    "description": "Synthetic official release for bls-ces-total-nonfarm",
-    "document_id": null,
-    "event_family": "labor_market",
     "event_id": "ODE-OBS-001",
-    "id": "2237ed57-ab6b-570c-8c7e-ae36c20eb946",
-    "information_available_at": "2026-05-15T00:00:00+00:00",
+    "source_id": "bls-public-data",
+    "dataset_id": "bls-ces",
     "profile_id": "bls-ces-total-nonfarm",
+    "document_id": null,
+    "event_family": "labor_market",
+    "description": "Synthetic official release for bls-ces-total-nonfarm",
+    "information_available_at": "2026-05-15T00:00:00+00:00",
+    "revision_number": null,
     "provenance": {
       "fixture_version": "official-data-synthetic-v1"
     },
-    "revision_number": null,
-    "source_id": "bls-public-data",
-    "synthetic": true
+    "synthetic": true,
+    "id": "2237ed57-ab6b-570c-8c7e-ae36c20eb946"
   },
   {
-    "dataset_id": "bls-ces",
-    "description": "Synthetic official release for bls-ces-total-nonfarm",
-    "document_id": null,
-    "event_family": "labor_market",
     "event_id": "ODE-OBS-002",
-    "id": "29bd7e57-0e58-500c-b085-7c53d1d756af",
-    "information_available_at": "2026-05-23T00:00:00+00:00",
-    "profile_id": "bls-ces-total-nonfarm",
-    "provenance": {
-      "fixture_version": "official-data-synthetic-v1"
-    },
-    "revision_number": null,
     "source_id": "bls-public-data",
-    "synthetic": true
-  },
-  {
     "dataset_id": "bls-ces",
+    "profile_id": "bls-ces-total-nonfarm",
+    "document_id": null,
+    "event_family": "labor_market",
     "description": "Synthetic official release for bls-ces-total-nonfarm",
-    "document_id": null,
-    "event_family": "labor_market",
+    "information_available_at": "2026-05-23T00:00:00+00:00",
+    "revision_number": null,
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "synthetic": true,
+    "id": "29bd7e57-0e58-500c-b085-7c53d1d756af"
+  },
+  {
     "event_id": "ODE-OBS-003",
-    "id": "75a0d348-4ea0-5906-b67c-43c87a38ab1f",
-    "information_available_at": "2026-05-17T00:00:00+00:00",
+    "source_id": "bls-public-data",
+    "dataset_id": "bls-ces",
     "profile_id": "bls-ces-total-nonfarm",
+    "document_id": null,
+    "event_family": "labor_market",
+    "description": "Synthetic official release for bls-ces-total-nonfarm",
+    "information_available_at": "2026-05-17T00:00:00+00:00",
+    "revision_number": null,
     "provenance": {
       "fixture_version": "official-data-synthetic-v1"
     },
-    "revision_number": null,
-    "source_id": "bls-public-data",
-    "synthetic": true
+    "synthetic": true,
+    "id": "75a0d348-4ea0-5906-b67c-43c87a38ab1f"
   },
   {
-    "dataset_id": "bls-ces",
-    "description": "Synthetic official release for bls-ces-manufacturing",
-    "document_id": null,
-    "event_family": "labor_market",
     "event_id": "ODE-OBS-004",
-    "id": "51a0e05e-0c77-5fd7-a44d-97a2486281f9",
-    "information_available_at": "2026-05-15T00:00:00+00:00",
+    "source_id": "bls-public-data",
+    "dataset_id": "bls-ces",
     "profile_id": "bls-ces-manufacturing",
+    "document_id": null,
+    "event_family": "labor_market",
+    "description": "Synthetic official release for bls-ces-manufacturing",
+    "information_available_at": "2026-05-15T00:00:00+00:00",
+    "revision_number": null,
     "provenance": {
       "fixture_version": "official-data-synthetic-v1"
     },
-    "revision_number": null,
-    "source_id": "bls-public-data",
-    "synthetic": true
+    "synthetic": true,
+    "id": "51a0e05e-0c77-5fd7-a44d-97a2486281f9"
   },
   {
-    "dataset_id": "bls-ces",
-    "description": "Synthetic official release for bls-ces-manufacturing",
-    "document_id": null,
-    "event_family": "labor_market",
     "event_id": "ODE-OBS-005",
-    "id": "8dec32e7-c592-5606-9a31-405aff8a3393",
-    "information_available_at": "2026-05-16T00:00:00+00:00",
-    "profile_id": "bls-ces-manufacturing",
-    "provenance": {
-      "fixture_version": "official-data-synthetic-v1"
-    },
-    "revision_number": null,
     "source_id": "bls-public-data",
-    "synthetic": true
-  },
-  {
     "dataset_id": "bls-ces",
+    "profile_id": "bls-ces-manufacturing",
+    "document_id": null,
+    "event_family": "labor_market",
     "description": "Synthetic official release for bls-ces-manufacturing",
-    "document_id": null,
-    "event_family": "labor_market",
+    "information_available_at": "2026-05-16T00:00:00+00:00",
+    "revision_number": null,
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "synthetic": true,
+    "id": "8dec32e7-c592-5606-9a31-405aff8a3393"
+  },
+  {
     "event_id": "ODE-OBS-006",
-    "id": "f466cc73-1fae-569b-b084-f763338d1a6d",
-    "information_available_at": "2026-05-17T00:00:00+00:00",
+    "source_id": "bls-public-data",
+    "dataset_id": "bls-ces",
     "profile_id": "bls-ces-manufacturing",
+    "document_id": null,
+    "event_family": "labor_market",
+    "description": "Synthetic official release for bls-ces-manufacturing",
+    "information_available_at": "2026-05-17T00:00:00+00:00",
+    "revision_number": null,
     "provenance": {
       "fixture_version": "official-data-synthetic-v1"
     },
-    "revision_number": null,
-    "source_id": "bls-public-data",
-    "synthetic": true
+    "synthetic": true,
+    "id": "f466cc73-1fae-569b-b084-f763338d1a6d"
   },
   {
-    "dataset_id": "bls-ces",
-    "description": "Synthetic official release for bls-ces-avg-hourly-earnings",
-    "document_id": null,
-    "event_family": "labor_market",
     "event_id": "ODE-OBS-007",
-    "id": "b52620f9-0f3a-5db8-b536-fa645be1d596",
-    "information_available_at": "2026-05-15T00:00:00+00:00",
+    "source_id": "bls-public-data",
+    "dataset_id": "bls-ces",
     "profile_id": "bls-ces-avg-hourly-earnings",
+    "document_id": null,
+    "event_family": "labor_market",
+    "description": "Synthetic official release for bls-ces-avg-hourly-earnings",
+    "information_available_at": "2026-05-15T00:00:00+00:00",
+    "revision_number": null,
     "provenance": {
       "fixture_version": "official-data-synthetic-v1"
     },
-    "revision_number": null,
-    "source_id": "bls-public-data",
-    "synthetic": true
+    "synthetic": true,
+    "id": "b52620f9-0f3a-5db8-b536-fa645be1d596"
   },
   {
-    "dataset_id": "bls-ces",
-    "description": "Synthetic official release for bls-ces-avg-hourly-earnings",
-    "document_id": null,
-    "event_family": "labor_market",
     "event_id": "ODE-OBS-008",
-    "id": "957fbe53-50cf-517a-aecb-dbbe45286c07",
-    "information_available_at": "2026-05-16T00:00:00+00:00",
-    "profile_id": "bls-ces-avg-hourly-earnings",
-    "provenance": {
-      "fixture_version": "official-data-synthetic-v1"
-    },
-    "revision_number": null,
     "source_id": "bls-public-data",
-    "synthetic": true
-  },
-  {
     "dataset_id": "bls-ces",
-    "description": "Synthetic official release for bls-ces-avg-hourly-earnings",
+    "profile_id": "bls-ces-avg-hourly-earnings",
     "document_id": null,
     "event_family": "labor_market",
+    "description": "Synthetic official release for bls-ces-avg-hourly-earnings",
+    "information_available_at": "2026-05-16T00:00:00+00:00",
+    "revision_number": null,
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "synthetic": true,
+    "id": "957fbe53-50cf-517a-aecb-dbbe45286c07"
+  },
+  {
     "event_id": "ODE-OBS-009",
-    "id": "581025ee-b2a8-57da-93c1-ab43015a55b2",
-    "information_available_at": "2026-05-17T00:00:00+00:00",
-    "profile_id": "bls-ces-avg-hourly-earnings",
-    "provenance": {
-      "fixture_version": "official-data-synthetic-v1"
-    },
-    "revision_number": null,
     "source_id": "bls-public-data",
-    "synthetic": true
+    "dataset_id": "bls-ces",
+    "profile_id": "bls-ces-avg-hourly-earnings",
+    "document_id": null,
+    "event_family": "labor_market",
+    "description": "Synthetic official release for bls-ces-avg-hourly-earnings",
+    "information_available_at": "2026-05-17T00:00:00+00:00",
+    "revision_number": null,
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "synthetic": true,
+    "id": "581025ee-b2a8-57da-93c1-ab43015a55b2"
   },
   {
-    "dataset_id": "eia-petroleum-stocks",
-    "description": "Synthetic official release for eia-crude-stocks",
-    "document_id": null,
-    "event_family": "inventory_demand",
     "event_id": "ODE-OBS-010",
-    "id": "fe8fce0e-170a-5384-bb35-44de714c6522",
-    "information_available_at": "2026-05-15T00:00:00+00:00",
+    "source_id": "eia-open-data-v2",
+    "dataset_id": "eia-petroleum-stocks",
     "profile_id": "eia-crude-stocks",
+    "document_id": null,
+    "event_family": "inventory_demand",
+    "description": "Synthetic official release for eia-crude-stocks",
+    "information_available_at": "2026-05-15T00:00:00+00:00",
+    "revision_number": null,
     "provenance": {
       "fixture_version": "official-data-synthetic-v1"
     },
-    "revision_number": null,
-    "source_id": "eia-open-data-v2",
-    "synthetic": true
+    "synthetic": true,
+    "id": "fe8fce0e-170a-5384-bb35-44de714c6522"
   },
   {
-    "dataset_id": "eia-petroleum-stocks",
-    "description": "Synthetic official release for eia-crude-stocks",
-    "document_id": null,
-    "event_family": "inventory_demand",
     "event_id": "ODE-OBS-011",
-    "id": "78a3e2a2-71bc-5b24-8710-5d852c443d97",
-    "information_available_at": "2026-05-23T00:00:00+00:00",
-    "profile_id": "eia-crude-stocks",
-    "provenance": {
-      "fixture_version": "official-data-synthetic-v1"
-    },
-    "revision_number": null,
     "source_id": "eia-open-data-v2",
-    "synthetic": true
-  },
-  {
     "dataset_id": "eia-petroleum-stocks",
+    "profile_id": "eia-crude-stocks",
+    "document_id": null,
+    "event_family": "inventory_demand",
     "description": "Synthetic official release for eia-crude-stocks",
-    "document_id": null,
-    "event_family": "inventory_demand",
+    "information_available_at": "2026-05-23T00:00:00+00:00",
+    "revision_number": null,
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "synthetic": true,
+    "id": "78a3e2a2-71bc-5b24-8710-5d852c443d97"
+  },
+  {
     "event_id": "ODE-OBS-012",
-    "id": "b22ed854-4ab5-52ab-af76-d9350d4dd001",
-    "information_available_at": "2026-05-17T00:00:00+00:00",
+    "source_id": "eia-open-data-v2",
+    "dataset_id": "eia-petroleum-stocks",
     "profile_id": "eia-crude-stocks",
+    "document_id": null,
+    "event_family": "inventory_demand",
+    "description": "Synthetic official release for eia-crude-stocks",
+    "information_available_at": "2026-05-17T00:00:00+00:00",
+    "revision_number": null,
     "provenance": {
       "fixture_version": "official-data-synthetic-v1"
     },
-    "revision_number": null,
-    "source_id": "eia-open-data-v2",
-    "synthetic": true
+    "synthetic": true,
+    "id": "b22ed854-4ab5-52ab-af76-d9350d4dd001"
   },
   {
-    "dataset_id": "eia-petroleum-stocks",
-    "description": "Synthetic official release for eia-gasoline-stocks",
-    "document_id": null,
-    "event_family": "inventory_demand",
     "event_id": "ODE-OBS-013",
-    "id": "3fa41b95-e463-54a4-abf1-7b9a03279c9b",
-    "information_available_at": "2026-05-15T00:00:00+00:00",
+    "source_id": "eia-open-data-v2",
+    "dataset_id": "eia-petroleum-stocks",
     "profile_id": "eia-gasoline-stocks",
+    "document_id": null,
+    "event_family": "inventory_demand",
+    "description": "Synthetic official release for eia-gasoline-stocks",
+    "information_available_at": "2026-05-15T00:00:00+00:00",
+    "revision_number": null,
     "provenance": {
       "fixture_version": "official-data-synthetic-v1"
     },
-    "revision_number": null,
-    "source_id": "eia-open-data-v2",
-    "synthetic": true
+    "synthetic": true,
+    "id": "3fa41b95-e463-54a4-abf1-7b9a03279c9b"
   },
   {
-    "dataset_id": "eia-petroleum-stocks",
-    "description": "Synthetic official release for eia-gasoline-stocks",
-    "document_id": null,
-    "event_family": "inventory_demand",
     "event_id": "ODE-OBS-014",
-    "id": "961487cf-c64f-5b18-acd2-c53e3ae1a675",
-    "information_available_at": "2026-05-16T00:00:00+00:00",
-    "profile_id": "eia-gasoline-stocks",
-    "provenance": {
-      "fixture_version": "official-data-synthetic-v1"
-    },
-    "revision_number": null,
     "source_id": "eia-open-data-v2",
-    "synthetic": true
-  },
-  {
     "dataset_id": "eia-petroleum-stocks",
+    "profile_id": "eia-gasoline-stocks",
+    "document_id": null,
+    "event_family": "inventory_demand",
     "description": "Synthetic official release for eia-gasoline-stocks",
-    "document_id": null,
-    "event_family": "inventory_demand",
-    "event_id": "ODE-OBS-015",
-    "id": "b3601a06-d10d-563e-9700-83ef897c5061",
-    "information_available_at": "2026-05-17T00:00:00+00:00",
-    "profile_id": "eia-gasoline-stocks",
-    "provenance": {
-      "fixture_version": "official-data-synthetic-v1"
-    },
-    "revision_number": null,
-    "source_id": "eia-open-data-v2",
-    "synthetic": true
-  },
-  {
-    "dataset_id": "eia-petroleum-stocks",
-    "description": "Synthetic official release for eia-natural-gas-storage",
-    "document_id": null,
-    "event_family": "inventory_demand",
-    "event_id": "ODE-OBS-016",
-    "id": "0329b131-d525-5688-b180-4d76505b0103",
-    "information_available_at": "2026-05-15T00:00:00+00:00",
-    "profile_id": "eia-natural-gas-storage",
-    "provenance": {
-      "fixture_version": "official-data-synthetic-v1"
-    },
-    "revision_number": null,
-    "source_id": "eia-open-data-v2",
-    "synthetic": true
-  },
-  {
-    "dataset_id": "eia-petroleum-stocks",
-    "description": "Synthetic official release for eia-natural-gas-storage",
-    "document_id": null,
-    "event_family": "inventory_demand",
-    "event_id": "ODE-OBS-017",
-    "id": "eb3d4d80-5907-543c-bed0-8e23dc65b32f",
     "information_available_at": "2026-05-16T00:00:00+00:00",
-    "profile_id": "eia-natural-gas-storage",
+    "revision_number": null,
     "provenance": {
       "fixture_version": "official-data-synthetic-v1"
     },
-    "revision_number": null,
-    "source_id": "eia-open-data-v2",
-    "synthetic": true
+    "synthetic": true,
+    "id": "961487cf-c64f-5b18-acd2-c53e3ae1a675"
   },
   {
+    "event_id": "ODE-OBS-015",
+    "source_id": "eia-open-data-v2",
     "dataset_id": "eia-petroleum-stocks",
-    "description": "Synthetic official release for eia-natural-gas-storage",
+    "profile_id": "eia-gasoline-stocks",
     "document_id": null,
     "event_family": "inventory_demand",
-    "event_id": "ODE-OBS-018",
-    "id": "fe0a274e-fdd7-5977-8c8c-422068312ae5",
+    "description": "Synthetic official release for eia-gasoline-stocks",
     "information_available_at": "2026-05-17T00:00:00+00:00",
-    "profile_id": "eia-natural-gas-storage",
+    "revision_number": null,
     "provenance": {
       "fixture_version": "official-data-synthetic-v1"
     },
-    "revision_number": null,
+    "synthetic": true,
+    "id": "b3601a06-d10d-563e-9700-83ef897c5061"
+  },
+  {
+    "event_id": "ODE-OBS-016",
     "source_id": "eia-open-data-v2",
-    "synthetic": true
+    "dataset_id": "eia-petroleum-stocks",
+    "profile_id": "eia-natural-gas-storage",
+    "document_id": null,
+    "event_family": "inventory_demand",
+    "description": "Synthetic official release for eia-natural-gas-storage",
+    "information_available_at": "2026-05-15T00:00:00+00:00",
+    "revision_number": null,
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "synthetic": true,
+    "id": "0329b131-d525-5688-b180-4d76505b0103"
   },
   {
-    "dataset_id": "cftc-cot-pre",
-    "description": "Synthetic official release for cftc-equity-index-positioning",
+    "event_id": "ODE-OBS-017",
+    "source_id": "eia-open-data-v2",
+    "dataset_id": "eia-petroleum-stocks",
+    "profile_id": "eia-natural-gas-storage",
     "document_id": null,
-    "event_family": "derivatives_positioning",
+    "event_family": "inventory_demand",
+    "description": "Synthetic official release for eia-natural-gas-storage",
+    "information_available_at": "2026-05-16T00:00:00+00:00",
+    "revision_number": null,
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "synthetic": true,
+    "id": "eb3d4d80-5907-543c-bed0-8e23dc65b32f"
+  },
+  {
+    "event_id": "ODE-OBS-018",
+    "source_id": "eia-open-data-v2",
+    "dataset_id": "eia-petroleum-stocks",
+    "profile_id": "eia-natural-gas-storage",
+    "document_id": null,
+    "event_family": "inventory_demand",
+    "description": "Synthetic official release for eia-natural-gas-storage",
+    "information_available_at": "2026-05-17T00:00:00+00:00",
+    "revision_number": null,
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "synthetic": true,
+    "id": "fe0a274e-fdd7-5977-8c8c-422068312ae5"
+  },
+  {
     "event_id": "ODE-OBS-019",
-    "id": "5b085b0c-5b1c-5a5d-9e0e-2e227ae3c826",
-    "information_available_at": "2026-05-15T00:00:00+00:00",
+    "source_id": "cftc-cot-pre",
+    "dataset_id": "cftc-cot-pre",
     "profile_id": "cftc-equity-index-positioning",
+    "document_id": null,
+    "event_family": "derivatives_positioning",
+    "description": "Synthetic official release for cftc-equity-index-positioning",
+    "information_available_at": "2026-05-15T00:00:00+00:00",
+    "revision_number": null,
     "provenance": {
       "fixture_version": "official-data-synthetic-v1"
     },
-    "revision_number": null,
-    "source_id": "cftc-cot-pre",
-    "synthetic": true
+    "synthetic": true,
+    "id": "5b085b0c-5b1c-5a5d-9e0e-2e227ae3c826"
   },
   {
-    "dataset_id": "cftc-cot-pre",
-    "description": "Synthetic official release for cftc-equity-index-positioning",
-    "document_id": null,
-    "event_family": "derivatives_positioning",
     "event_id": "ODE-OBS-020",
-    "id": "fe97caec-8158-56bc-ac98-5ef34545dcd4",
-    "information_available_at": "2026-05-23T00:00:00+00:00",
-    "profile_id": "cftc-equity-index-positioning",
-    "provenance": {
-      "fixture_version": "official-data-synthetic-v1"
-    },
-    "revision_number": null,
     "source_id": "cftc-cot-pre",
-    "synthetic": true
-  },
-  {
     "dataset_id": "cftc-cot-pre",
+    "profile_id": "cftc-equity-index-positioning",
+    "document_id": null,
+    "event_family": "derivatives_positioning",
     "description": "Synthetic official release for cftc-equity-index-positioning",
-    "document_id": null,
-    "event_family": "derivatives_positioning",
-    "event_id": "ODE-OBS-021",
-    "id": "0b47a815-14ca-51a6-b65c-77df1edc6bc9",
-    "information_available_at": "2026-05-17T00:00:00+00:00",
-    "profile_id": "cftc-equity-index-positioning",
-    "provenance": {
-      "fixture_version": "official-data-synthetic-v1"
-    },
-    "revision_number": null,
-    "source_id": "cftc-cot-pre",
-    "synthetic": true
-  },
-  {
-    "dataset_id": "cftc-cot-pre",
-    "description": "Synthetic official release for cftc-rates-positioning",
-    "document_id": null,
-    "event_family": "derivatives_positioning",
-    "event_id": "ODE-OBS-022",
-    "id": "1adf9d9d-acad-5016-992e-16c3c9fbed42",
-    "information_available_at": "2026-05-15T00:00:00+00:00",
-    "profile_id": "cftc-rates-positioning",
-    "provenance": {
-      "fixture_version": "official-data-synthetic-v1"
-    },
-    "revision_number": null,
-    "source_id": "cftc-cot-pre",
-    "synthetic": true
-  },
-  {
-    "dataset_id": "cftc-cot-pre",
-    "description": "Synthetic official release for cftc-rates-positioning",
-    "document_id": null,
-    "event_family": "derivatives_positioning",
-    "event_id": "ODE-OBS-023",
-    "id": "bdbe9dba-7b4e-57fb-98f4-a611efebb81b",
     "information_available_at": "2026-05-23T00:00:00+00:00",
-    "profile_id": "cftc-rates-positioning",
+    "revision_number": null,
     "provenance": {
       "fixture_version": "official-data-synthetic-v1"
     },
-    "revision_number": null,
-    "source_id": "cftc-cot-pre",
-    "synthetic": true
+    "synthetic": true,
+    "id": "fe97caec-8158-56bc-ac98-5ef34545dcd4"
   },
   {
+    "event_id": "ODE-OBS-021",
+    "source_id": "cftc-cot-pre",
     "dataset_id": "cftc-cot-pre",
-    "description": "Synthetic official release for cftc-rates-positioning",
+    "profile_id": "cftc-equity-index-positioning",
     "document_id": null,
     "event_family": "derivatives_positioning",
-    "event_id": "ODE-OBS-024",
-    "id": "f6d9ae54-4281-53ae-a68d-0e920643f93f",
+    "description": "Synthetic official release for cftc-equity-index-positioning",
     "information_available_at": "2026-05-17T00:00:00+00:00",
-    "profile_id": "cftc-rates-positioning",
+    "revision_number": null,
     "provenance": {
       "fixture_version": "official-data-synthetic-v1"
     },
-    "revision_number": null,
+    "synthetic": true,
+    "id": "0b47a815-14ca-51a6-b65c-77df1edc6bc9"
+  },
+  {
+    "event_id": "ODE-OBS-022",
     "source_id": "cftc-cot-pre",
-    "synthetic": true
+    "dataset_id": "cftc-cot-pre",
+    "profile_id": "cftc-rates-positioning",
+    "document_id": null,
+    "event_family": "derivatives_positioning",
+    "description": "Synthetic official release for cftc-rates-positioning",
+    "information_available_at": "2026-05-15T00:00:00+00:00",
+    "revision_number": null,
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "synthetic": true,
+    "id": "1adf9d9d-acad-5016-992e-16c3c9fbed42"
+  },
+  {
+    "event_id": "ODE-OBS-023",
+    "source_id": "cftc-cot-pre",
+    "dataset_id": "cftc-cot-pre",
+    "profile_id": "cftc-rates-positioning",
+    "document_id": null,
+    "event_family": "derivatives_positioning",
+    "description": "Synthetic official release for cftc-rates-positioning",
+    "information_available_at": "2026-05-23T00:00:00+00:00",
+    "revision_number": null,
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "synthetic": true,
+    "id": "bdbe9dba-7b4e-57fb-98f4-a611efebb81b"
+  },
+  {
+    "event_id": "ODE-OBS-024",
+    "source_id": "cftc-cot-pre",
+    "dataset_id": "cftc-cot-pre",
+    "profile_id": "cftc-rates-positioning",
+    "document_id": null,
+    "event_family": "derivatives_positioning",
+    "description": "Synthetic official release for cftc-rates-positioning",
+    "information_available_at": "2026-05-17T00:00:00+00:00",
+    "revision_number": null,
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "synthetic": true,
+    "id": "f6d9ae54-4281-53ae-a68d-0e920643f93f"
   }
 ]

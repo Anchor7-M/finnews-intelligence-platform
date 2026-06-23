@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import re
 import subprocess
 from collections import Counter
 from collections.abc import Iterable
@@ -47,6 +48,7 @@ TRADING_SURFACE_PATTERNS = [
     "sell",
     "execute",
 ]
+TOKEN_TRADING_SURFACE_PATTERNS = {"lot", "volume", "buy", "sell", "execute"}
 GENERATED_TRADING_SURFACE_AUDIT_OUTPUT_PATH = (
     "reports/cross-asset/revised-m3a-trading-surface-audit.json"
 )
@@ -362,7 +364,7 @@ def build_trading_surface_report(repo_root: Path) -> dict[str, Any]:
             continue
         text = (repo_root / rel).read_text(encoding="utf-8", errors="ignore")
         for pattern in TRADING_SURFACE_PATTERNS:
-            count = text.count(pattern)
+            count = _pattern_count(text, pattern)
             if count == 0:
                 continue
             classification = _classify_match(rel)
@@ -400,6 +402,12 @@ def build_trading_surface_report(repo_root: Path) -> dict[str, Any]:
         ),
         "status": "PASS" if not forbidden else "FAIL",
     }
+
+
+def _pattern_count(text: str, pattern: str) -> int:
+    if pattern in TOKEN_TRADING_SURFACE_PATTERNS:
+        return len(re.findall(rf"(?<![A-Za-z0-9_]){re.escape(pattern)}(?![A-Za-z0-9_])", text))
+    return text.count(pattern)
 
 
 def _counts(values: Iterable[object]) -> dict[str, int]:

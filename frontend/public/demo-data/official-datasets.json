@@ -1,66 +1,66 @@
 [
   {
-    "category": "labor_market",
     "dataset_id": "bls-ces",
-    "description": "Selected synthetic payroll and hours observations.",
-    "display_name": "BLS Current Employment Statistics",
-    "documentation_url": "https://www.bls.gov/developers/",
-    "frequency": "monthly",
-    "id": "bc2d51e2-72c1-5f44-88df-d00f137f6f1b",
-    "provenance": {
-      "fixture_version": "official-data-synthetic-v1"
-    },
-    "revision_policy": "append_only_when_value_changes",
     "source_id": "bls-public-data",
+    "display_name": "BLS Current Employment Statistics",
+    "category": "labor_market",
+    "description": "Selected synthetic payroll and hours observations.",
+    "documentation_url": "https://www.bls.gov/developers/",
+    "revision_policy": "append_only_when_value_changes",
+    "frequency": "monthly",
+    "unit": "varies",
     "synthetic": true,
-    "unit": "varies"
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "id": "bc2d51e2-72c1-5f44-88df-d00f137f6f1b"
   },
   {
-    "category": "derivatives_positioning",
     "dataset_id": "cftc-cot-pre",
-    "description": "Selected synthetic trader-positioning observations.",
-    "display_name": "CFTC COT PRE",
-    "documentation_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
-    "frequency": "weekly",
-    "id": "61161f23-74db-5aae-ab27-8c57ed740366",
-    "provenance": {
-      "fixture_version": "official-data-synthetic-v1"
-    },
-    "revision_policy": "append_only_when_value_changes",
     "source_id": "cftc-cot-pre",
-    "synthetic": true,
-    "unit": "contracts"
-  },
-  {
-    "category": "commodity_supply",
-    "dataset_id": "eia-petroleum-stocks",
-    "description": "Selected synthetic energy inventory observations.",
-    "display_name": "EIA Petroleum Stocks",
-    "documentation_url": "https://www.eia.gov/opendata/documentation.php",
-    "frequency": "weekly",
-    "id": "7726fc3f-cf3f-52f0-9bad-8cda7cbda894",
-    "provenance": {
-      "fixture_version": "official-data-synthetic-v1"
-    },
+    "display_name": "CFTC COT PRE",
+    "category": "derivatives_positioning",
+    "description": "Selected synthetic trader-positioning observations.",
+    "documentation_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
     "revision_policy": "append_only_when_value_changes",
-    "source_id": "eia-open-data-v2",
+    "frequency": "weekly",
+    "unit": "contracts",
     "synthetic": true,
-    "unit": "thousand_barrels"
-  },
-  {
-    "category": "regulation",
-    "dataset_id": "federal-register-documents",
-    "description": "Selected synthetic regulatory metadata and abstracts.",
-    "display_name": "Federal Register Documents",
-    "documentation_url": "https://www.federalregister.gov/developers/documentation/api/v1",
-    "frequency": "event",
-    "id": "76a078b5-bb58-5834-aecd-1a939b5d66cf",
     "provenance": {
       "fixture_version": "official-data-synthetic-v1"
     },
-    "revision_policy": "document_metadata_versions_retained",
-    "source_id": "federal-register-api",
+    "id": "61161f23-74db-5aae-ab27-8c57ed740366"
+  },
+  {
+    "dataset_id": "eia-petroleum-stocks",
+    "source_id": "eia-open-data-v2",
+    "display_name": "EIA Petroleum Stocks",
+    "category": "commodity_supply",
+    "description": "Selected synthetic energy inventory observations.",
+    "documentation_url": "https://www.eia.gov/opendata/documentation.php",
+    "revision_policy": "append_only_when_value_changes",
+    "frequency": "weekly",
+    "unit": "thousand_barrels",
     "synthetic": true,
-    "unit": null
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "id": "7726fc3f-cf3f-52f0-9bad-8cda7cbda894"
+  },
+  {
+    "dataset_id": "federal-register-documents",
+    "source_id": "federal-register-api",
+    "display_name": "Federal Register Documents",
+    "category": "regulation",
+    "description": "Selected synthetic regulatory metadata and abstracts.",
+    "documentation_url": "https://www.federalregister.gov/developers/documentation/api/v1",
+    "revision_policy": "document_metadata_versions_retained",
+    "frequency": "event",
+    "unit": null,
+    "synthetic": true,
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "id": "76a078b5-bb58-5834-aecd-1a939b5d66cf"
   }
 ]

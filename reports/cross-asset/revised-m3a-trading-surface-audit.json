@@ -1,38 +1,19 @@
 {
-  "dependency_matches": [
-    {
-      "classification": "permitted release guardrail",
-      "count": 1,
-      "path": "frontend/package-lock.json",
-      "pattern": "buy"
-    }
-  ],
+  "dependency_matches": [],
   "excluded_generated_evidence_files": [
     "reports/cross-asset/revised-m3a-trading-surface-audit.json",
     "reports/verification/revised-m3a-timings.json"
   ],
   "forbidden": [],
   "forbidden_count": 0,
-  "match_count": 202,
-  "matched_file_count": 43,
+  "match_count": 163,
+  "matched_file_count": 23,
   "matches": [
-    {
-      "classification": "permitted release guardrail",
-      "count": 1,
-      "path": "CHANGELOG.md",
-      "pattern": "lot"
-    },
     {
       "classification": "permitted release guardrail",
       "count": 1,
       "path": "README.md",
       "pattern": "execute"
-    },
-    {
-      "classification": "permitted release guardrail",
-      "count": 1,
-      "path": "README.md",
-      "pattern": "lot"
     },
     {
       "classification": "permitted release guardrail",
@@ -66,7 +47,7 @@
     },
     {
       "classification": "permitted release guardrail",
-      "count": 4,
+      "count": 2,
       "path": "backend/src/finnews/application/services/cross_asset.py",
       "pattern": "execute"
     },
@@ -84,7 +65,7 @@
     },
     {
       "classification": "permitted release guardrail",
-      "count": 6,
+      "count": 4,
       "path": "backend/src/finnews/application/services/cross_asset.py",
       "pattern": "lot"
     },
@@ -150,13 +131,13 @@
     },
     {
       "classification": "permitted release guardrail",
-      "count": 1,
+      "count": 2,
       "path": "backend/src/finnews/application/services/cross_asset_release_audit.py",
       "pattern": "buy"
     },
     {
       "classification": "permitted release guardrail",
-      "count": 1,
+      "count": 2,
       "path": "backend/src/finnews/application/services/cross_asset_release_audit.py",
       "pattern": "execute"
     },
@@ -180,7 +161,7 @@
     },
     {
       "classification": "permitted release guardrail",
-      "count": 1,
+      "count": 2,
       "path": "backend/src/finnews/application/services/cross_asset_release_audit.py",
       "pattern": "lot"
     },
@@ -216,7 +197,7 @@
     },
     {
       "classification": "permitted release guardrail",
-      "count": 1,
+      "count": 2,
       "path": "backend/src/finnews/application/services/cross_asset_release_audit.py",
       "pattern": "sell"
     },
@@ -234,7 +215,7 @@
     },
     {
       "classification": "permitted release guardrail",
-      "count": 1,
+      "count": 2,
       "path": "backend/src/finnews/application/services/cross_asset_release_audit.py",
       "pattern": "volume"
     },
@@ -270,13 +251,13 @@
     },
     {
       "classification": "permitted test fixture proving rejection",
-      "count": 4,
+      "count": 2,
       "path": "backend/tests/unit/test_cross_asset.py",
       "pattern": "execute"
     },
     {
       "classification": "permitted test fixture proving rejection",
-      "count": 2,
+      "count": 5,
       "path": "backend/tests/unit/test_cross_asset.py",
       "pattern": "lot"
     },
@@ -309,42 +290,6 @@
       "count": 4,
       "path": "backend/tests/unit/test_cross_asset.py",
       "pattern": "volume"
-    },
-    {
-      "classification": "permitted test fixture proving rejection",
-      "count": 1,
-      "path": "backend/tests/unit/test_source_reviews.py",
-      "pattern": "lot"
-    },
-    {
-      "classification": "permitted release guardrail",
-      "count": 2,
-      "path": "compose.yml",
-      "pattern": "volume"
-    },
-    {
-      "classification": "permitted release guardrail",
-      "count": 3,
-      "path": "config/source-reviews/federal-reserve-press-releases.yaml",
-      "pattern": "lot"
-    },
-    {
-      "classification": "permitted release guardrail",
-      "count": 1,
-      "path": "config/source-reviews/sec-edgar-submissions.yaml",
-      "pattern": "lot"
-    },
-    {
-      "classification": "permitted release guardrail",
-      "count": 1,
-      "path": "config/sources/federal-reserve-press-releases.yaml",
-      "pattern": "lot"
-    },
-    {
-      "classification": "permitted release guardrail",
-      "count": 1,
-      "path": "config/sources/sec-edgar-submissions.yaml",
-      "pattern": "lot"
     },
     {
       "classification": "permitted contract fixture proving rejection",
@@ -385,60 +330,12 @@
     {
       "classification": "permitted architecture documentation",
       "count": 1,
-      "path": "docs/DEVELOPMENT.md",
-      "pattern": "volume"
-    },
-    {
-      "classification": "permitted architecture documentation",
-      "count": 1,
-      "path": "docs/EXECUTION_PLAN.md",
-      "pattern": "volume"
-    },
-    {
-      "classification": "permitted architecture documentation",
-      "count": 1,
-      "path": "docs/LIVE_SOURCE_SECURITY.md",
-      "pattern": "execute"
-    },
-    {
-      "classification": "permitted architecture documentation",
-      "count": 5,
-      "path": "docs/M1B_EXECUTION_PLAN.md",
-      "pattern": "lot"
-    },
-    {
-      "classification": "permitted architecture documentation",
-      "count": 2,
       "path": "docs/M1B_EXECUTION_PLAN.md",
       "pattern": "volume"
     },
     {
       "classification": "permitted architecture documentation",
-      "count": 2,
-      "path": "docs/M1B_RELEASE_AUDIT.md",
-      "pattern": "lot"
-    },
-    {
-      "classification": "permitted architecture documentation",
       "count": 1,
-      "path": "docs/M1_RELEASE_AUDIT.md",
-      "pattern": "volume"
-    },
-    {
-      "classification": "permitted architecture documentation",
-      "count": 2,
-      "path": "docs/M2A_EXECUTION_PLAN.md",
-      "pattern": "lot"
-    },
-    {
-      "classification": "permitted architecture documentation",
-      "count": 1,
-      "path": "docs/M2A_RELEASE_AUDIT.md",
-      "pattern": "execute"
-    },
-    {
-      "classification": "permitted architecture documentation",
-      "count": 2,
       "path": "docs/M2A_RELEASE_AUDIT.md",
       "pattern": "volume"
     },
@@ -446,23 +343,11 @@
       "classification": "permitted architecture documentation",
       "count": 1,
       "path": "docs/M3A_EXECUTION_PLAN.md",
-      "pattern": "lot"
-    },
-    {
-      "classification": "permitted architecture documentation",
-      "count": 1,
-      "path": "docs/M3A_EXECUTION_PLAN.md",
       "pattern": "volume"
     },
     {
       "classification": "permitted architecture documentation",
       "count": 1,
-      "path": "docs/M3A_RELEASE_AUDIT.md",
-      "pattern": "execute"
-    },
-    {
-      "classification": "permitted architecture documentation",
-      "count": 2,
       "path": "docs/M3A_RELEASE_AUDIT.md",
       "pattern": "volume"
     },
@@ -501,12 +386,6 @@
       "count": 1,
       "path": "docs/M3A_REVISED_EXECUTION_PLAN.md",
       "pattern": "sell"
-    },
-    {
-      "classification": "permitted architecture documentation",
-      "count": 2,
-      "path": "docs/MILESTONE_0_COMPLIANCE.md",
-      "pattern": "volume"
     },
     {
       "classification": "permitted architecture documentation",
@@ -558,18 +437,6 @@
     },
     {
       "classification": "permitted architecture documentation",
-      "count": 1,
-      "path": "docs/ROADMAP.md",
-      "pattern": "lot"
-    },
-    {
-      "classification": "permitted architecture documentation",
-      "count": 1,
-      "path": "docs/SOURCE_POLICY.md",
-      "pattern": "lot"
-    },
-    {
-      "classification": "permitted architecture documentation",
       "count": 3,
       "path": "docs/TRADING_SURFACE_AUDIT.md",
       "pattern": "MetaTrader5"
@@ -683,24 +550,6 @@
       "pattern": "volume"
     },
     {
-      "classification": "permitted architecture documentation",
-      "count": 1,
-      "path": "docs/source-reviews/federal-reserve-press-releases.md",
-      "pattern": "lot"
-    },
-    {
-      "classification": "permitted architecture documentation",
-      "count": 1,
-      "path": "docs/source-reviews/sec-edgar-submissions.md",
-      "pattern": "lot"
-    },
-    {
-      "classification": "permitted release guardrail",
-      "count": 1,
-      "path": "frontend/package-lock.json",
-      "pattern": "buy"
-    },
-    {
       "classification": "permitted release guardrail",
       "count": 1,
       "path": "frontend/public/demo-data/market-signal-contract-example.json",
@@ -708,13 +557,13 @@
     },
     {
       "classification": "permitted release guardrail",
-      "count": 2,
+      "count": 1,
       "path": "frontend/public/demo-data/market-signal-contract-example.json",
       "pattern": "execute"
     },
     {
       "classification": "permitted release guardrail",
-      "count": 2,
+      "count": 1,
       "path": "frontend/public/demo-data/market-signal-contract-example.json",
       "pattern": "lot"
     },
@@ -743,22 +592,10 @@
       "pattern": "volume"
     },
     {
-      "classification": "permitted release guardrail",
-      "count": 1,
-      "path": "frontend/src/components/StateBlock.vue",
-      "pattern": "lot"
-    },
-    {
       "classification": "permitted test fixture proving rejection",
       "count": 2,
       "path": "frontend/tests/frontend-compliance.test.ts",
       "pattern": "buy"
-    },
-    {
-      "classification": "permitted release guardrail",
-      "count": 1,
-      "path": "scripts/dev.py",
-      "pattern": "volume"
     }
   ],
   "mt5_dependency_present": false,
@@ -784,5 +621,5 @@
     "execute"
   ],
   "status": "PASS",
-  "tracked_file_count": 282
+  "tracked_file_count": 319
 }

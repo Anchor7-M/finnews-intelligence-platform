@@ -16,6 +16,7 @@ from finnews.application.services.cross_asset import (
     build_cross_asset_demo,
     cross_asset_overview,
     mt5_readiness,
+    persist_cross_asset_demo,
     resolve_asset_alias,
     validate_mt5_symbol_map,
     validate_signal_package,
@@ -991,6 +992,7 @@ def official_data_validate_fixtures() -> None:
 def official_data_export_static() -> None:
     output = _repo_root() / "frontend" / "public" / "demo-data"
     repo = build_memory_repository()
+    persist_official_data_demo(repo)
     payload = official_data_static_payload(repo)
     for name, value in payload.items():
         (output / f"{name}.json").write_text(
@@ -1132,6 +1134,8 @@ def demo(profile: Annotated[str, typer.Option("--profile")] = "memory") -> None:
     repo, session = _empty_repository(settings)
     pipeline = NewsPipeline(repo, settings)
     run = pipeline.run_demo(load_default_records(settings), FIXTURE_DIR / "companies.json")
+    persist_cross_asset_demo(repo, build_cross_asset_demo())
+    persist_official_data_demo(repo)
     if profile == "memory":
         export_static(repo, Path("../frontend/public/demo-data"))
     accounting = build_deduplication_accounting(repo)

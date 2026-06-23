@@ -39,6 +39,19 @@ def test_official_data_fixture_counts_are_deterministic() -> None:
     assert overview["official_release_event_count"] == 32
 
 
+def test_official_data_fixture_replay_is_idempotent_for_revision_history() -> None:
+    repo = MemoryNewsRepository()
+    first_counts = persist_official_data_demo(repo)
+    first_overview = official_data_overview(repo)
+    second_counts = persist_official_data_demo(repo)
+    second_overview = official_data_overview(repo)
+
+    assert first_counts["official_observation_revisions"] == 28
+    assert second_counts["official_observation_revisions"] == 0
+    assert second_counts["official_observation_unchanged"] == 28
+    assert first_overview == second_overview
+
+
 def test_observation_ingestion_is_idempotent_and_revision_aware() -> None:
     repo = MemoryNewsRepository()
     first_seen = datetime(2026, 6, 24, tzinfo=UTC)
@@ -71,6 +84,17 @@ def test_observation_ingestion_is_idempotent_and_revision_aware() -> None:
     observation = repo.list_official_observations()[0]
     assert observation.current_revision == 2
     assert observation.current_value == Decimal("101.0")
+    assert len(repo.list_official_observation_revisions(observation.observation_key)) == 2
+    historical_replay = OfficialObservationRecord(
+        **{
+            **record.__dict__,
+            "first_seen_at": first_seen + timedelta(days=2),
+        }
+    )
+    replay_counts = ingest_official_observation_records(repo, [historical_replay])
+    assert replay_counts["official_observation_revisions"] == 0
+    assert replay_counts["official_observation_unchanged"] == 1
+    assert repo.list_official_observations()[0].current_value == Decimal("101.0")
     assert len(repo.list_official_observation_revisions(observation.observation_key)) == 2
 
 
