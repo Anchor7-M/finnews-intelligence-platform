@@ -129,6 +129,12 @@ def ingest_official_observation_records(
         if current_value == record.value:
             unchanged += 1
             continue
+        previous_values = {
+            revision.value for revision in repository.list_official_observation_revisions(key)
+        }
+        if record.value in previous_values:
+            unchanged += 1
+            continue
         revision_number = current_revision + 1
         information_time, quality_flags = information_available_at(
             record.first_seen_at, record.source_updated_at

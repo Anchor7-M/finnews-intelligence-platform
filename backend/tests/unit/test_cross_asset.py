@@ -20,6 +20,7 @@ from finnews.application.services.cross_asset import (
 from finnews.application.services.cross_asset_release_audit import (
     EXCLUDED_GENERATED_EVIDENCE_FILES,
     GENERATED_TRADING_SURFACE_AUDIT_OUTPUT_PATH,
+    _pattern_count,
     build_lifecycle_audit_report,
     build_release_ledger,
     build_trading_surface_report,
@@ -189,6 +190,16 @@ def test_signal_package_is_deterministic_and_rejects_forbidden_fields(tmp_path: 
         validate_signal_package(left)
 
 
+def test_signal_package_can_use_existing_empty_output_directory(tmp_path: Path) -> None:
+    output = tmp_path / ".finnews-market-signals" / "empty-target"
+    output.mkdir(parents=True)
+
+    result = write_signal_package(output)
+
+    assert result["valid"] is True
+    assert (output / "manifest.json").exists()
+
+
 def test_signal_package_strict_contract_rejects_unknown_and_execution_fields(
     tmp_path: Path,
 ) -> None:
@@ -341,6 +352,11 @@ def test_trading_surface_report_still_classifies_docs_tests_and_forbidden_source
         "count": 1,
         "classification": "forbidden executable production path",
     }
+
+
+def test_trading_surface_token_patterns_do_not_match_substrings() -> None:
+    assert _pattern_count("disabled pilot source", "lot") == 0
+    assert _pattern_count("lot = 0.1", "lot") == 1
 
 
 def test_trading_surface_report_generation_is_byte_identical(tmp_path: Path) -> None:

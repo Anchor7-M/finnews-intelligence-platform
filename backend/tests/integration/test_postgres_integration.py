@@ -24,6 +24,10 @@ from finnews.application.services.cross_asset import (
 )
 from finnews.application.services.deduplication_accounting import build_deduplication_accounting
 from finnews.application.services.export_static import build_static_payload
+from finnews.application.services.official_data import (
+    official_data_overview,
+    persist_official_data_demo,
+)
 from finnews.application.services.pipeline import NewsPipeline
 from finnews.application.services.research_export import (
     build_research_export,
@@ -45,7 +49,15 @@ from finnews.infrastructure.persistence.postgres.models import (
     AssetModel,
     CompanyModel,
     MarketSignalCandidateModel,
+    OfficialDataReleaseRunModel,
+    OfficialDatasetModel,
+    OfficialObservationModel,
+    OfficialObservationRevisionModel,
+    OfficialReleaseEventModel,
+    OfficialSeriesProfileModel,
     RawArticleModel,
+    RegulatoryDocumentModel,
+    SeriesAssetAssociationModel,
     SourceModel,
 )
 from finnews.infrastructure.persistence.postgres.repository import PostgresNewsRepository
@@ -87,6 +99,14 @@ EXPECTED_TABLES = {
     "asset_impact_hypotheses",
     "market_signal_candidates",
     "signal_publication_runs",
+    "official_datasets",
+    "official_series_profiles",
+    "official_observations",
+    "official_observation_revisions",
+    "official_data_release_runs",
+    "regulatory_documents",
+    "series_asset_associations",
+    "official_release_events",
 }
 EXPECTED_METRICS = {
     "raw_observation_count": 68,
@@ -168,10 +188,7 @@ def test_alembic_upgrade_downgrade_schema_types_constraints_and_indexes(engine: 
     assert EXPECTED_TABLES.isdisjoint(set(inspector.get_table_names()))
 
     command.upgrade(alembic_config(), "head")
-    assert (
-        ScriptDirectory.from_config(alembic_config()).get_current_head()
-        == "0005_cross_asset_signal"
-    )
+    assert ScriptDirectory.from_config(alembic_config()).get_current_head() == "0006_official_data"
     command.current(alembic_config())
 
     inspector = inspect(engine)
@@ -191,6 +208,19 @@ def test_alembic_upgrade_downgrade_schema_types_constraints_and_indexes(engine: 
     assert "ix_source_fetch_attempts_source_started" in source_indexes
     asset_indexes = {item["name"] for item in inspector.get_indexes("assets")}
     assert {"ix_assets_class_region", "ix_assets_status"}.issubset(asset_indexes)
+    official_observation_indexes = {
+        item["name"] for item in inspector.get_indexes("official_observations")
+    }
+    assert {
+        "ix_official_observations_profile_period",
+        "ix_official_observations_dataset",
+    }.issubset(official_observation_indexes)
+    assert "ix_official_series_source_dataset" in {
+        item["name"] for item in inspector.get_indexes("official_series_profiles")
+    }
+    assert "ix_official_revisions_available" in {
+        item["name"] for item in inspector.get_indexes("official_observation_revisions")
+    }
     assert inspector.get_foreign_keys("article_company_links")
     assert inspector.get_foreign_keys("source_fetch_states")
 
@@ -212,6 +242,9 @@ def test_alembic_upgrade_downgrade_schema_types_constraints_and_indexes(engine: 
         assert ("raw_metadata", "jsonb", "jsonb") in by_column
         assert ("contract_metadata", "jsonb", "jsonb") in by_column
         assert ("evidence_codes", "jsonb", "jsonb") in by_column
+        assert ("dimensions", "jsonb", "jsonb") in by_column
+        assert ("quality_flags", "jsonb", "jsonb") in by_column
+        assert ("provenance", "jsonb", "jsonb") in by_column
         assert ("published_at", "timestamptz", "timestamp with time zone") in by_column
         assert session.execute(text("show server_encoding")).scalar_one() == "UTF8"
         client_encoding = session.execute(text("select current_setting('client_encoding')"))
@@ -269,6 +302,79 @@ def test_postgres_cross_asset_signal_foundation_idempotency(settings: Settings) 
         "assets": session.scalar(select(func.count()).select_from(AssetModel)),
         "impacts": session.scalar(select(func.count()).select_from(AssetImpactHypothesisModel)),
         "signals": session.scalar(select(func.count()).select_from(MarketSignalCandidateModel)),
+    } == first_counts
+    session.close()
+
+
+@pytest.mark.postgres
+def test_postgres_official_data_foundation_idempotency_and_jsonb(settings: Settings) -> None:
+    reset_schema()
+    session = session_for(settings)
+    repo = PostgresNewsRepository(session)
+    counts = persist_official_data_demo(repo)
+    session.commit()
+
+    overview = official_data_overview(repo)
+    assert counts["datasets"] == 4
+    assert counts["series_profiles"] == 10
+    assert counts["official_observation_revisions"] == 28
+    assert overview["observation_count"] == 24
+    assert overview["revision_count"] == 28
+    assert overview["revised_observation_count"] == 4
+    assert overview["regulatory_document_count"] == 8
+    assert overview["series_asset_association_count"] == 80
+    assert overview["official_release_event_count"] == 32
+    first_counts = {
+        "datasets": session.scalar(select(func.count()).select_from(OfficialDatasetModel)),
+        "series": session.scalar(select(func.count()).select_from(OfficialSeriesProfileModel)),
+        "observations": session.scalar(select(func.count()).select_from(OfficialObservationModel)),
+        "revisions": session.scalar(
+            select(func.count()).select_from(OfficialObservationRevisionModel)
+        ),
+        "release_runs": session.scalar(
+            select(func.count()).select_from(OfficialDataReleaseRunModel)
+        ),
+        "documents": session.scalar(select(func.count()).select_from(RegulatoryDocumentModel)),
+        "associations": session.scalar(
+            select(func.count()).select_from(SeriesAssetAssociationModel)
+        ),
+        "events": session.scalar(select(func.count()).select_from(OfficialReleaseEventModel)),
+    }
+    assert first_counts == {
+        "datasets": 4,
+        "series": 10,
+        "observations": 24,
+        "revisions": 28,
+        "release_runs": 3,
+        "documents": 8,
+        "associations": 80,
+        "events": 32,
+    }
+    first_revision = repo.list_official_observation_revisions()[0]
+    assert first_revision.information_available_at.tzinfo is not None
+    assert isinstance(first_revision.provenance, dict)
+    assert "password" not in str(first_revision.provenance).lower()
+    assert repo.list_official_observations()[0].dimensions
+
+    second_counts = persist_official_data_demo(repo)
+    session.commit()
+    assert second_counts["official_observation_revisions"] == 0
+    assert second_counts["official_observation_unchanged"] == 28
+    assert {
+        "datasets": session.scalar(select(func.count()).select_from(OfficialDatasetModel)),
+        "series": session.scalar(select(func.count()).select_from(OfficialSeriesProfileModel)),
+        "observations": session.scalar(select(func.count()).select_from(OfficialObservationModel)),
+        "revisions": session.scalar(
+            select(func.count()).select_from(OfficialObservationRevisionModel)
+        ),
+        "release_runs": session.scalar(
+            select(func.count()).select_from(OfficialDataReleaseRunModel)
+        ),
+        "documents": session.scalar(select(func.count()).select_from(RegulatoryDocumentModel)),
+        "associations": session.scalar(
+            select(func.count()).select_from(SeriesAssetAssociationModel)
+        ),
+        "events": session.scalar(select(func.count()).select_from(OfficialReleaseEventModel)),
     } == first_counts
     session.close()
 

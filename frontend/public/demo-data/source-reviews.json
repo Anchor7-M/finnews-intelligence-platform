@@ -1,5 +1,81 @@
 [
   {
+    "source_id": "bls-public-data",
+    "official_owner": "U.S. Bureau of Labor Statistics",
+    "official_source": "BLS Public Data API",
+    "review_decision": "approved",
+    "reviewed_at": "2026-06-24",
+    "access_cost": "free",
+    "authentication_requirement": "BLS v1 public data requests require no registration; v2 registration key use is optional and local-only through FINNEWS_BLS_API_KEY.",
+    "content_storage_policy": "metadata_only",
+    "documentation_url": "https://www.bls.gov/developers/",
+    "terms_or_policy_url": "https://www.bls.gov/developers/",
+    "enabled": false,
+    "live_smoke_status": "not_run",
+    "live_smoke_checked_at": null,
+    "known_limitations": [
+      "API rate rules and registration behavior may change.",
+      "Series definitions and seasonal-adjustment metadata must be reviewed before expansion."
+    ]
+  },
+  {
+    "source_id": "cftc-cot-pre",
+    "official_owner": "U.S. Commodity Futures Trading Commission",
+    "official_source": "CFTC Commitments of Traders public reporting",
+    "review_decision": "approved",
+    "reviewed_at": "2026-06-24",
+    "access_cost": "free",
+    "authentication_requirement": "No token is stored or required for the configured public COT PRE profile.",
+    "content_storage_policy": "metadata_only",
+    "documentation_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+    "terms_or_policy_url": "https://www.cftc.gov/PrivacyandSecurityPolicy/index.htm",
+    "enabled": false,
+    "live_smoke_status": "not_run",
+    "live_smoke_checked_at": null,
+    "known_limitations": [
+      "COT datasets lack one universal primary key across all rows and formats.",
+      "Market names and code fields can change and require conservative logical keys."
+    ]
+  },
+  {
+    "source_id": "eia-open-data-v2",
+    "official_owner": "U.S. Energy Information Administration",
+    "official_source": "EIA Open Data API v2",
+    "review_decision": "approved",
+    "reviewed_at": "2026-06-24",
+    "access_cost": "free_with_key",
+    "authentication_requirement": "A free local FINNEWS_EIA_API_KEY is required for live smoke; the tracked config stores only the env var name.",
+    "content_storage_policy": "metadata_only",
+    "documentation_url": "https://www.eia.gov/opendata/documentation.php",
+    "terms_or_policy_url": "https://www.eia.gov/about/copyrights_reuse.php",
+    "enabled": false,
+    "live_smoke_status": "not_run",
+    "live_smoke_checked_at": null,
+    "known_limitations": [
+      "Live smoke is blocked when the local key is absent.",
+      "Route/facet schemas can vary by dataset and require profile-specific validation."
+    ]
+  },
+  {
+    "source_id": "federal-register-api",
+    "official_owner": "Office of the Federal Register and U.S. Government Publishing Office",
+    "official_source": "FederalRegister.gov API",
+    "review_decision": "approved",
+    "reviewed_at": "2026-06-24",
+    "access_cost": "free",
+    "authentication_requirement": "No API key is required for the configured metadata profile.",
+    "content_storage_policy": "metadata_only",
+    "documentation_url": "https://www.federalregister.gov/developers/documentation/api/v1",
+    "terms_or_policy_url": "https://www.federalregister.gov/policy/privacy",
+    "enabled": false,
+    "live_smoke_status": "not_run",
+    "live_smoke_checked_at": null,
+    "known_limitations": [
+      "FederalRegister.gov is informational and not the official legal edition.",
+      "Regulatory metadata can change and must retain point-in-time provenance."
+    ]
+  },
+  {
     "source_id": "federal-reserve-press-releases",
     "official_owner": "Board of Governors of the Federal Reserve System",
     "official_source": "Federal Reserve Board press release RSS feed",
