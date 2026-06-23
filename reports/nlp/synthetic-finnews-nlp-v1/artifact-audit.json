@@ -1,0 +1,32 @@
+{
+  "all_local_artifacts_below_100mb": true,
+  "api_exposes_absolute_paths": false,
+  "artifact_root_ignored": true,
+  "each_local_artifact_below_25mb": true,
+  "frontend_exposes_absolute_paths": false,
+  "local_artifact_count": 2,
+  "local_artifact_size_bytes": 444688,
+  "local_manifest_count": 2,
+  "postgres_stores_binary_bytes": false,
+  "reported_artifacts": [
+    {
+      "artifact_sha256": "59ff51deb0d5e70377bbeba980724ab4ed79c773aabd4da48cb56cce8adc7a99",
+      "artifact_size_bytes": 284034,
+      "config_sha256": "a9483c9f2f6d31abdf7277a82f090df06a7118bad292917a41960f7a96e1609d",
+      "manifest_sha256": "5b8ce127c6d3cb096bc8bd11855cda60909f565165f9d5faff7bbb3b8c5a1561",
+      "model_id": "m2a-event-word_char_tfidf_logreg",
+      "task": "event"
+    },
+    {
+      "artifact_sha256": "c0e6ae82fe2e51aabe03407732e776c4863a913e7e61032f11f90756ef3e79e1",
+      "artifact_size_bytes": 160654,
+      "config_sha256": "d9815f2a0e484e5c7e46d5aa46ece470d9693ce5f22ca2cdb8c4ddabd44a320b",
+      "manifest_sha256": "3b94369825f1b4013f928fd9363712c72054cc31932cdb6c865d0fd2c0cb9899",
+      "model_id": "m2a-sentiment-word_char_tfidf_logreg",
+      "task": "sentiment"
+    }
+  ],
+  "tracked_model_binaries": [],
+  "tracked_model_binary_count": 0,
+  "trusted_deserialization_boundary": "Only locally generated, hash-verified artifacts under the ignored registry root are eligible for joblib loading."
+}

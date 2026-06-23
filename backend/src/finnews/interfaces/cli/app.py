@@ -16,6 +16,7 @@ from finnews.application.services.export_static import export_static
 from finnews.application.services.nlp_artifacts import ArtifactError, load_trusted_artifact
 from finnews.application.services.nlp_evaluation import run_nlp_benchmark
 from finnews.application.services.nlp_registry import register_nlp_report
+from finnews.application.services.nlp_release_audit import write_release_audit_reports
 from finnews.application.services.nlp_reporting import (
     load_nlp_evaluation_report,
     nlp_static_payload,
@@ -438,6 +439,12 @@ def nlp_export_static() -> None:
             encoding="utf-8",
         )
     typer.echo(json.dumps({"exported": True, "files": sorted(nlp_static_payload(_repo_root()))}))
+
+
+@nlp_app.command("release-audit")
+def nlp_release_audit() -> None:
+    result = write_release_audit_reports(_repo_root())
+    typer.echo(json.dumps(result, sort_keys=True))
 
 
 @nlp_app.command("infer")

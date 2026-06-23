@@ -35,6 +35,36 @@ function selectedMetric(evaluation: Record<string, unknown>, system: string, key
   const metrics = evaluation.test_metrics as Record<string, Record<string, unknown>>;
   return metricValue(metrics[system] ?? {}, key);
 }
+
+function selectedMl(evaluation: Record<string, unknown>): Record<string, unknown> {
+  const metrics = evaluation.test_metrics as Record<string, Record<string, unknown>>;
+  return metrics.selected_ml ?? {};
+}
+
+function perClassRows(
+  evaluation: Record<string, unknown>,
+): Array<[string, Record<string, unknown>]> {
+  const rows = selectedMl(evaluation).per_class as Record<string, Record<string, unknown>>;
+  return Object.entries(rows ?? {});
+}
+
+function confusionRows(evaluation: Record<string, unknown>): number[][] {
+  const matrix =
+    (selectedMl(evaluation).confusion_matrix as { matrix?: number[][] } | undefined) ?? {};
+  return matrix.matrix ?? [];
+}
+
+function reliabilityRows(evaluation: Record<string, unknown>): Array<Record<string, unknown>> {
+  return (selectedMl(evaluation).reliability_bins as Array<Record<string, unknown>>) ?? [];
+}
+
+function coverageRows(evaluation: Record<string, unknown>): Array<Record<string, unknown>> {
+  return (selectedMl(evaluation).confidence_coverage as Array<Record<string, unknown>>) ?? [];
+}
+
+function shortHash(value: unknown): string {
+  return typeof value === "string" ? value.slice(0, 12) : "";
+}
 </script>
 
 <template>
@@ -134,6 +164,85 @@ function selectedMetric(evaluation: Record<string, unknown>, system: string, key
       </section>
 
       <section class="panel">
+        <h3>Per-Class Metrics</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Task</th>
+                <th>Class</th>
+                <th>Support</th>
+                <th>Precision</th>
+                <th>Recall</th>
+                <th>F1</th>
+              </tr>
+            </thead>
+            <tbody>
+              <template
+                v-for="evaluation in evaluations.data.value ?? []"
+                :key="`${evaluation.evaluation_id}-classes`"
+              >
+                <tr
+                  v-for="[label, row] in perClassRows(evaluation)"
+                  :key="`${evaluation.task}-${label}`"
+                >
+                  <td>{{ evaluation.task }}</td>
+                  <td>{{ label }}</td>
+                  <td>{{ row.support }}</td>
+                  <td>{{ row.precision }}</td>
+                  <td>{{ row.recall }}</td>
+                  <td>{{ row.f1 }}</td>
+                </tr>
+              </template>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h3>Confusion Matrix</h3>
+        <div
+          v-for="evaluation in evaluations.data.value ?? []"
+          :key="`${evaluation.evaluation_id}-matrix`"
+          class="source-note"
+        >
+          <strong>{{ evaluation.task }} locked test</strong>
+          <div class="matrix-grid">
+            <span v-for="(row, index) in confusionRows(evaluation)" :key="index">
+              {{ row.join(" ") }}
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h3>Reliability And Coverage</h3>
+        <div
+          v-for="evaluation in evaluations.data.value ?? []"
+          :key="`${evaluation.evaluation_id}-reliability`"
+          class="source-note"
+        >
+          <strong>{{ evaluation.task }}</strong>
+          <p class="muted">
+            Reliability bins:
+            {{
+              reliabilityRows(evaluation)
+                .map((row) => `${row.lower}-${row.upper}:${row.count}`)
+                .join(" / ")
+            }}
+          </p>
+          <p class="muted">
+            Coverage:
+            {{
+              coverageRows(evaluation)
+                .map((row) => `${row.threshold}:${row.covered_count}`)
+                .join(" / ")
+            }}
+          </p>
+        </div>
+      </section>
+
+      <section class="panel">
         <h3>Language And Challenge Slices</h3>
         <div class="table-wrap">
           <table>
@@ -182,6 +291,23 @@ function selectedMetric(evaluation: Record<string, unknown>, system: string, key
             {{ taskErrors.lowest_confidence_correct_predictions.length }}
           </p>
         </div>
+      </section>
+
+      <section class="panel">
+        <h3>Artifacts And Limitations</h3>
+        <div v-for="model in models.data.value ?? []" :key="`${model.model_id}-artifact`">
+          <strong>{{ model.model_id }}</strong>
+          <p class="muted">
+            Status {{ model.status }}; artifact {{ shortHash(model.artifact_sha256) }};
+            {{ model.artifact_size_bytes }} bytes; validation-selected candidate
+            {{ model.selected_candidate }}.
+          </p>
+        </div>
+        <p class="muted">
+          Metrics are benchmark-only, synthetic generator-defined labels are not human annotations,
+          no model is production ready, and Milestone 2B licensed or human-reviewed evaluation is
+          deferred.
+        </p>
       </section>
     </div>
   </section>

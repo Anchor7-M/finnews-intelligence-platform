@@ -1,0 +1,30 @@
+{
+  "artifact_hash_note": "If a future joblib version changes binary serialization, prediction/config determinism remains the release gate and each artifact must verify against its own manifest.",
+  "artifact_hashes": {
+    "event": {
+      "first_sha256": "59ff51deb0d5e70377bbeba980724ab4ed79c773aabd4da48cb56cce8adc7a99",
+      "second_sha256": "59ff51deb0d5e70377bbeba980724ab4ed79c773aabd4da48cb56cce8adc7a99"
+    },
+    "sentiment": {
+      "first_sha256": "c0e6ae82fe2e51aabe03407732e776c4863a913e7e61032f11f90756ef3e79e1",
+      "second_sha256": "c0e6ae82fe2e51aabe03407732e776c4863a913e7e61032f11f90756ef3e79e1"
+    }
+  },
+  "artifact_hashes_identical": {
+    "event": true,
+    "sentiment": true
+  },
+  "committed_dataset_sha256": "5eba057ef83198c5a35d29da2c821a5624d813885806cab4f48ecb22dbda67aa",
+  "first_dataset_sha256": "5eba057ef83198c5a35d29da2c821a5624d813885806cab4f48ecb22dbda67aa",
+  "floating_point_tolerance": 0.0,
+  "metrics_identical": true,
+  "preexisting_artifact_root": "nlp",
+  "records_byte_identical": true,
+  "second_dataset_sha256": "5eba057ef83198c5a35d29da2c821a5624d813885806cab4f48ecb22dbda67aa",
+  "selected_candidates_identical": {
+    "event": true,
+    "sentiment": true
+  },
+  "split_hashes_identical": true,
+  "test_predictions_identical": true
+}

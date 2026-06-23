@@ -1,0 +1,165 @@
+{
+  "challenge_by_split": {
+    "test": 108,
+    "train": 216,
+    "validation": 108
+  },
+  "challenge_flag_counts": {
+    "alias_or_ticker": 42,
+    "class_overlap": 42,
+    "cross_sentence_context": 42,
+    "hypothetical_or_plan": 42,
+    "long_text": 42,
+    "low_information": 42,
+    "mixed_signal": 42,
+    "negation": 42,
+    "neutral_boilerplate": 42,
+    "numerical_reversal": 42,
+    "short_text": 42,
+    "uncertainty": 42
+  },
+  "challenge_flags": [
+    "negation",
+    "uncertainty",
+    "mixed_signal",
+    "hypothetical_or_plan",
+    "class_overlap",
+    "numerical_reversal",
+    "cross_sentence_context",
+    "short_text",
+    "long_text",
+    "alias_or_ticker",
+    "neutral_boilerplate",
+    "low_information"
+  ],
+  "challenge_presence_counts": {
+    "challenge": 432,
+    "plain": 864
+  },
+  "committed_records_bytes": 1772778,
+  "dataset_id": "synthetic-finnews-nlp-v1",
+  "dataset_sha256": "5eba057ef83198c5a35d29da2c821a5624d813885806cab4f48ecb22dbda67aa",
+  "dataset_version": "1.0.0",
+  "difficulty_counts": {
+    "easy": 432,
+    "hard": 432,
+    "medium": 432
+  },
+  "event_counts": {
+    "earnings": 144,
+    "financing_capital": 144,
+    "governance_personnel": 144,
+    "litigation_penalty": 144,
+    "macro_market": 144,
+    "merger_acquisition": 144,
+    "operations_product": 144,
+    "other": 144,
+    "policy_regulation": 144
+  },
+  "event_enum_values": [
+    "earnings",
+    "merger_acquisition",
+    "policy_regulation",
+    "operations_product",
+    "financing_capital",
+    "litigation_penalty",
+    "governance_personnel",
+    "macro_market",
+    "other"
+  ],
+  "event_sentiment_counts": {
+    "earnings:negative": 36,
+    "earnings:neutral": 36,
+    "earnings:positive": 36,
+    "earnings:uncertain": 36,
+    "financing_capital:negative": 36,
+    "financing_capital:neutral": 36,
+    "financing_capital:positive": 36,
+    "financing_capital:uncertain": 36,
+    "governance_personnel:negative": 36,
+    "governance_personnel:neutral": 36,
+    "governance_personnel:positive": 36,
+    "governance_personnel:uncertain": 36,
+    "litigation_penalty:negative": 36,
+    "litigation_penalty:neutral": 36,
+    "litigation_penalty:positive": 36,
+    "litigation_penalty:uncertain": 36,
+    "macro_market:negative": 36,
+    "macro_market:neutral": 36,
+    "macro_market:positive": 36,
+    "macro_market:uncertain": 36,
+    "merger_acquisition:negative": 36,
+    "merger_acquisition:neutral": 36,
+    "merger_acquisition:positive": 36,
+    "merger_acquisition:uncertain": 36,
+    "operations_product:negative": 36,
+    "operations_product:neutral": 36,
+    "operations_product:positive": 36,
+    "operations_product:uncertain": 36,
+    "other:negative": 36,
+    "other:neutral": 36,
+    "other:positive": 36,
+    "other:uncertain": 36,
+    "policy_regulation:negative": 36,
+    "policy_regulation:neutral": 36,
+    "policy_regulation:positive": 36,
+    "policy_regulation:uncertain": 36
+  },
+  "fictional_company_count": 36,
+  "fictional_industry_count": 72,
+  "fictional_source_type_count": 3,
+  "generator_version": "m2a-v1",
+  "language_counts": {
+    "en": 432,
+    "zh": 864
+  },
+  "manifest_sha256": "019582151559fb8a6a4eded797435288e46b221cfb644fea09967ac0327e6d26",
+  "record_count": 1296,
+  "schema_config_hash": "6b3af577cb07b90e24247e387316b8206b2c260ce768aa765cbf01bf75814903",
+  "sentiment_counts": {
+    "negative": 324,
+    "neutral": 324,
+    "positive": 324,
+    "uncertain": 324
+  },
+  "sentiment_enum_values": [
+    "positive",
+    "neutral",
+    "negative",
+    "uncertain"
+  ],
+  "source_types": [
+    "synthetic_wire",
+    "synthetic_exchange_notice",
+    "synthetic_research_note"
+  ],
+  "split_counts": {
+    "test": 324,
+    "train": 648,
+    "validation": 324
+  },
+  "split_hashes": {
+    "test": "2f0b409caa29a341e122d1ff28b4f34b09208d0b6f2f0dff323b5d469657172b",
+    "train": "78c03f095f38b7f40408e63c76924544659a3bbac1c34710f66a67cf5039fb7b",
+    "validation": "8dfe819e5dd65118175f400e99bc863c9bb162d5ce0cd717e3db693cdf97791c"
+  },
+  "story_group_count": 432,
+  "story_group_size_counts": {
+    "3": 432
+  },
+  "template_family_counts": {
+    "tf-00": 108,
+    "tf-01": 108,
+    "tf-02": 108,
+    "tf-03": 108,
+    "tf-04": 108,
+    "tf-05": 108,
+    "tf-06": 108,
+    "tf-07": 108,
+    "tf-08": 108,
+    "tf-09": 108,
+    "tf-10": 108,
+    "tf-11": 108
+  },
+  "test_lock_sha256": "472f763afc3087d741d76c3795b5d594eba5556145ec5e776762a059f72639cd"
+}

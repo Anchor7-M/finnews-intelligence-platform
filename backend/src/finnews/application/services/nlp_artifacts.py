@@ -8,7 +8,7 @@ from pathlib import Path
 from typing import Any
 
 import joblib  # type: ignore[import-untyped]
-from pydantic import BaseModel, ConfigDict, Field, field_validator
+from pydantic import BaseModel, ConfigDict, Field, ValidationError, field_validator
 
 
 class ArtifactError(ValueError):
@@ -42,6 +42,8 @@ class ModelArtifactManifest(BaseModel):
             raise ValueError("artifact_uri must be a relative local path")
         if any(part == ".." for part in path.parts):
             raise ValueError("artifact_uri must not traverse outside artifact root")
+        if path.suffix != ".joblib":
+            raise ValueError("artifact_uri must reference a supported .joblib artifact")
         return value
 
 
@@ -104,9 +106,12 @@ def load_trusted_artifact(artifact_root: Path, manifest_path: Path, *, task: str
     manifest_resolved = manifest_path.resolve()
     if not manifest_resolved.is_relative_to(root):
         raise ArtifactError("manifest is outside artifact root")
-    manifest = ModelArtifactManifest.model_validate_json(
-        manifest_resolved.read_text(encoding="utf-8")
-    )
+    try:
+        manifest = ModelArtifactManifest.model_validate_json(
+            manifest_resolved.read_text(encoding="utf-8")
+        )
+    except ValidationError as exc:
+        raise ArtifactError("artifact manifest validation failed") from exc
     if manifest.task != task:
         raise ArtifactError("artifact task mismatch")
     artifact_path = (root / manifest.artifact_uri).resolve()
@@ -114,6 +119,8 @@ def load_trusted_artifact(artifact_root: Path, manifest_path: Path, *, task: str
         raise ArtifactError("artifact path is outside artifact root")
     if not artifact_path.is_file():
         raise ArtifactError("artifact is missing")
+    if artifact_path.suffix != ".joblib":
+        raise ArtifactError("unsupported artifact format")
     if sha256_file(artifact_path) != manifest.artifact_sha256:
         raise ArtifactError("artifact hash mismatch")
     return joblib.load(artifact_path)

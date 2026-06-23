@@ -1,0 +1,279 @@
+{
+  "forbidden_metadata_sentinel_test": {
+    "feature_text_unchanged": true,
+    "metadata_fields_mutated": [
+      "company_id",
+      "fictional_ticker",
+      "source_type",
+      "template_family_id",
+      "story_group_id",
+      "challenge_flags",
+      "generator_version"
+    ],
+    "production_features_access_hidden_metadata": false
+  },
+  "production_feature_path": "BenchmarkRecord.combined_text only",
+  "tasks": {
+    "event": {
+      "label_permutation_negative_control": {
+        "accuracy": 0.101852,
+        "evaluated_on": "validation",
+        "macro_f1": 0.101447,
+        "seed": 20260622,
+        "trained_on": "train labels shuffled only",
+        "used_for_selection": false
+      },
+      "metadata_only_negative_control": {
+        "accuracy": 0.0,
+        "features": [
+          "company_id",
+          "fictional_ticker",
+          "industry",
+          "language",
+          "source_type"
+        ],
+        "interpretation": "diagnostic only; metadata is not used by production candidates",
+        "macro_f1": 0.0,
+        "production_feature_path": false
+      },
+      "top_coefficient_shortcut_inspection": {
+        "earnings": {
+          "contains_exact_label_name": false,
+          "contains_generator_marker": false,
+          "top_positive_features": [
+            "word__披露业绩进展",
+            "word__results",
+            "char__业绩",
+            "word__results update",
+            "word__围绕业绩主题",
+            "word__summary 围绕业绩主题",
+            "char__业绩进展",
+            "char__）披露业"
+          ]
+        },
+        "financing_capital": {
+          "contains_exact_label_name": false,
+          "contains_generator_marker": false,
+          "top_positive_features": [
+            "word__披露融资资本进展",
+            "word__financing",
+            "char__融资资",
+            "char__资资",
+            "char__资本",
+            "char__融资资本",
+            "char__融资",
+            "char__资资本"
+          ]
+        },
+        "governance_personnel": {
+          "contains_exact_label_name": false,
+          "contains_generator_marker": false,
+          "top_positive_features": [
+            "word__披露治理人事进展",
+            "word__governance",
+            "char__治理人",
+            "char__治理",
+            "char__人事",
+            "char__治理人事",
+            "char__理人",
+            "char__理人事"
+          ]
+        },
+        "litigation_penalty": {
+          "contains_exact_label_name": false,
+          "contains_generator_marker": false,
+          "top_positive_features": [
+            "word__litigation",
+            "word__披露诉讼处罚进展",
+            "char__讼处",
+            "char__讼处罚",
+            "char__诉讼",
+            "char__处罚",
+            "char__诉讼处罚",
+            "char__诉讼处"
+          ]
+        },
+        "macro_market": {
+          "contains_exact_label_name": false,
+          "contains_generator_marker": false,
+          "top_positive_features": [
+            "word__披露宏观市场进展",
+            "word__macro",
+            "word__macro market",
+            "word__market",
+            "char__观市场",
+            "char__观市",
+            "char__市场",
+            "char__宏观"
+          ]
+        },
+        "merger_acquisition": {
+          "contains_exact_label_name": false,
+          "contains_generator_marker": false,
+          "top_positive_features": [
+            "word__披露并购进展",
+            "word__merger",
+            "char__并购",
+            "word__merger update",
+            "word__围绕并购主题",
+            "word__summary 围绕并购主题",
+            "word__披露并购进展 基调承压",
+            "char__露并"
+          ]
+        },
+        "operations_product": {
+          "contains_exact_label_name": false,
+          "contains_generator_marker": false,
+          "top_positive_features": [
+            "word__披露产品运营进展",
+            "word__product",
+            "word__operations",
+            "word__product operations",
+            "char__品运营",
+            "char__品运",
+            "char__产品运",
+            "char__产品"
+          ]
+        },
+        "other": {
+          "contains_exact_label_name": false,
+          "contains_generator_marker": false,
+          "top_positive_features": [
+            "word__披露综合事项进展",
+            "word__general",
+            "word__general update",
+            "char__综合",
+            "char__综合事",
+            "char__综合事项",
+            "char__合事项",
+            "char__合事"
+          ]
+        },
+        "policy_regulation": {
+          "contains_exact_label_name": false,
+          "contains_generator_marker": false,
+          "top_positive_features": [
+            "word__披露监管政策进展",
+            "word__policy",
+            "word__review",
+            "word__policy review",
+            "char__监管",
+            "char__政策",
+            "char__监管政策",
+            "char__监管政"
+          ]
+        }
+      },
+      "train_validation_group_robustness": {
+        "fold_count": 3,
+        "groups": "template_family_id within train+validation only",
+        "macro_f1_scores": [
+          0.990737,
+          1.0,
+          1.0
+        ],
+        "mean_macro_f1": 0.996912,
+        "std_macro_f1": 0.004367,
+        "test_set_used": false
+      }
+    },
+    "sentiment": {
+      "label_permutation_negative_control": {
+        "accuracy": 0.166667,
+        "evaluated_on": "validation",
+        "macro_f1": 0.168185,
+        "seed": 20260622,
+        "trained_on": "train labels shuffled only",
+        "used_for_selection": false
+      },
+      "metadata_only_negative_control": {
+        "accuracy": 0.135802,
+        "features": [
+          "company_id",
+          "fictional_ticker",
+          "industry",
+          "language",
+          "source_type"
+        ],
+        "interpretation": "diagnostic only; metadata is not used by production candidates",
+        "macro_f1": 0.150887,
+        "production_feature_path": false
+      },
+      "top_coefficient_shortcut_inspection": {
+        "negative": {
+          "contains_exact_label_name": false,
+          "contains_generator_marker": false,
+          "top_positive_features": [
+            "word__基调承压 summary",
+            "word__基调承压",
+            "word__pressured",
+            "char__承压",
+            "char__re",
+            "word__posts pressured",
+            "word__管理层描述为承压",
+            "word__管理层描述为承压 这家虚构企业表示"
+          ]
+        },
+        "neutral": {
+          "contains_exact_label_name": false,
+          "contains_generator_marker": false,
+          "top_positive_features": [
+            "word__基调平稳",
+            "word__基调平稳 summary",
+            "word__steady",
+            "char__平稳",
+            "word__posts steady",
+            "word__管理层描述为平稳",
+            "word__管理层描述为平稳 这家虚构企业表示",
+            "word__整体措辞保持平稳 这家虚构企业表示"
+          ]
+        },
+        "positive": {
+          "contains_exact_label_name": false,
+          "contains_generator_marker": false,
+          "top_positive_features": [
+            "word__基调改善",
+            "word__基调改善 summary",
+            "word__improved",
+            "char__改善",
+            "word__posts improved",
+            "word__管理层描述为改善 这家虚构企业表示",
+            "word__管理层描述为改善",
+            "word__整体措辞保持改善"
+          ]
+        },
+        "uncertain": {
+          "contains_exact_label_name": false,
+          "contains_generator_marker": false,
+          "top_positive_features": [
+            "word__基调不确定",
+            "word__基调不确定 summary",
+            "word__ambiguous",
+            "char__确定",
+            "char__不确",
+            "char__不确定",
+            "word__posts ambiguous",
+            "word__管理层描述为不确定 这家虚构企业表示"
+          ]
+        }
+      },
+      "train_validation_group_robustness": {
+        "fold_count": 3,
+        "groups": "template_family_id within train+validation only",
+        "macro_f1_scores": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "mean_macro_f1": 1.0,
+        "std_macro_f1": 0.0,
+        "test_set_used": false
+      }
+    }
+  },
+  "visible_text_shortcuts": {
+    "fictional_company_names_visible_in_text": true,
+    "fictional_ticker_tokens_visible_in_text": true,
+    "interpretation": "These are visible synthetic article tokens, not hidden metadata fields. They are documented as benchmark-only shortcuts."
+  }
+}
