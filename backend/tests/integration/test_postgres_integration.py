@@ -20,6 +20,10 @@ from alembic import command
 from finnews.application.services.deduplication_accounting import build_deduplication_accounting
 from finnews.application.services.export_static import build_static_payload
 from finnews.application.services.pipeline import NewsPipeline
+from finnews.application.services.research_export import (
+    build_research_export,
+    persist_research_export,
+)
 from finnews.bootstrap import FIXTURE_DIR, load_default_records
 from finnews.domain.entities import (
     NlpEvaluationRun,
@@ -61,6 +65,11 @@ EXPECTED_TABLES = {
     "source_fetch_attempts",
     "nlp_model_registry",
     "nlp_evaluation_runs",
+    "research_calendars",
+    "research_sessions",
+    "research_export_runs",
+    "research_feature_rows",
+    "research_lineage_rows",
 }
 EXPECTED_METRICS = {
     "raw_observation_count": 68,
@@ -144,7 +153,7 @@ def test_alembic_upgrade_downgrade_schema_types_constraints_and_indexes(engine: 
     command.upgrade(alembic_config(), "head")
     assert (
         ScriptDirectory.from_config(alembic_config()).get_current_head()
-        == "0003_nlp_model_registry"
+        == "0004_research_export_metadata"
     )
     command.current(alembic_config())
 
@@ -234,6 +243,29 @@ def test_postgres_repository_pipeline_idempotency_and_memory_parity(settings: Se
     assert second_counts["pipeline_runs"] == first_counts["pipeline_runs"] + 1
     assert second_counts["ingestion_runs"] == first_counts["ingestion_runs"] + 68
     second_repo.session.close()
+
+
+@pytest.mark.postgres
+def test_postgres_research_export_metadata_parity(settings: Settings) -> None:
+    reset_schema()
+    repo = run_full_pipeline(settings)
+    package = build_research_export(repo, persist_metadata=False)
+    persist_research_export(repo, package)
+    repo.session.commit()
+
+    assert repo.get_research_calendar(package.calendar.calendar_id) is not None
+    assert len(repo.list_research_sessions(package.calendar.calendar_id)) == 60
+    assert repo.get_research_export(package.export_id).package_hash == package.package_hash  # type: ignore[union-attr]
+    assert len(repo.list_research_feature_rows(package.export_id)) == 2880
+    assert len(repo.list_research_lineage_rows(package.export_id)) == len(package.lineage_rows)
+    first_row = repo.list_research_feature_rows(package.export_id)[0]
+    assert isinstance(first_row.features, dict)
+    assert "title" not in str(repo.list_research_lineage_rows(package.export_id)[0].payload).lower()
+
+    persist_research_export(repo, package)
+    repo.session.commit()
+    assert len(repo.list_research_feature_rows(package.export_id)) == 2880
+    repo.session.close()
 
 
 @pytest.mark.postgres
