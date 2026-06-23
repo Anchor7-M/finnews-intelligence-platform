@@ -18,7 +18,7 @@ Future MT5 work is local, demo-first, risk-gated, and separately reviewed. Optio
 | Impact engine | Rule coverage and lifecycle reports | `revised-m3a-rule-coverage.json` | 240 impacts; 2-3 impacts per event; no all-to-all mapping | PASS | Hypotheses only |
 | Signal contract | Strict schemas and package validator | `signal export`, `signal validate`, schema tests | 80 candidates; no execution fields; package hash stable | PASS | Local research handoff only |
 | Lifecycle/idempotency | Stable hashes and cutoff/expiry checks | `revised-m3a-lifecycle-audit.json` | Byte-identical rebuild and idempotency match | PASS | Fixed synthetic generation time |
-| Trading surface | Repository-wide text scan | `revised-m3a-trading-surface-audit.json` | 178 matches, 42 files, 0 forbidden production matches | PASS | Docs mention future MT5 function names |
+| Trading surface | Repository-wide text scan | `revised-m3a-trading-surface-audit.json` | 202 matches, 43 files, 0 forbidden production matches | PASS | Docs mention future MT5 function names |
 | MT5 readiness | CLI/API/static readiness reports disabled status | `finnews mt5 readiness` | Terminal not implemented; execution disabled | PASS | Future milestones deferred |
 | CLI/API/frontend | Read-only routes and command groups | contract/API/frontend tests | No connect/login/order/account route, command, or UI control | PASS | No live trading UI by design |
 | PostgreSQL migration | Alembic revision `0005_cross_asset_signal` | `python scripts/dev.py verify-postgres` | 9 PostgreSQL tests passed; downgrade/re-upgrade passed | PASS | Uses disposable local Docker PostgreSQL |

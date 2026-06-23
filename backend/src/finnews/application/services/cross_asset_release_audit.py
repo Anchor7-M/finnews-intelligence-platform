@@ -47,6 +47,13 @@ TRADING_SURFACE_PATTERNS = [
     "sell",
     "execute",
 ]
+GENERATED_TRADING_SURFACE_AUDIT_OUTPUT_PATH = (
+    "reports/cross-asset/revised-m3a-trading-surface-audit.json"
+)
+EXCLUDED_GENERATED_EVIDENCE_FILES = (
+    GENERATED_TRADING_SURFACE_AUDIT_OUTPUT_PATH,
+    "reports/verification/revised-m3a-timings.json",
+)
 ALLOWED_TRADING_SURFACE_PREFIXES = (
     "docs/",
     "contracts/finnews-market-signal/v1/",
@@ -342,7 +349,11 @@ def build_lifecycle_audit_report(repo_root: Path) -> dict[str, Any]:
 
 
 def build_trading_surface_report(repo_root: Path) -> dict[str, Any]:
-    tracked_files = _tracked_files(repo_root)
+    tracked_files = [
+        rel
+        for rel in _tracked_files(repo_root)
+        if rel not in set(EXCLUDED_GENERATED_EVIDENCE_FILES)
+    ]
     matches: list[dict[str, Any]] = []
     forbidden: list[dict[str, Any]] = []
     dependency_matches: list[dict[str, Any]] = []
@@ -372,6 +383,7 @@ def build_trading_surface_report(repo_root: Path) -> dict[str, Any]:
                 forbidden.append(row)
     return {
         "patterns": TRADING_SURFACE_PATTERNS,
+        "excluded_generated_evidence_files": list(EXCLUDED_GENERATED_EVIDENCE_FILES),
         "tracked_file_count": len(tracked_files),
         "match_count": sum(row["count"] for row in matches),
         "matched_file_count": len({row["path"] for row in matches}),

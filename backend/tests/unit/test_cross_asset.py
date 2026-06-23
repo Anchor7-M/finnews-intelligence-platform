@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import subprocess
 from pathlib import Path
 
 import pytest
@@ -17,6 +18,8 @@ from finnews.application.services.cross_asset import (
     write_signal_package,
 )
 from finnews.application.services.cross_asset_release_audit import (
+    EXCLUDED_GENERATED_EVIDENCE_FILES,
+    GENERATED_TRADING_SURFACE_AUDIT_OUTPUT_PATH,
     build_lifecycle_audit_report,
     build_release_ledger,
     build_trading_surface_report,
@@ -294,6 +297,62 @@ def test_lifecycle_and_trading_surface_release_reports() -> None:
     assert surface["status"] == "PASS"
     assert surface["forbidden_count"] == 0
     assert surface["mt5_dependency_present"] is False
+    assert GENERATED_TRADING_SURFACE_AUDIT_OUTPUT_PATH in set(
+        surface["excluded_generated_evidence_files"]
+    )
+    assert set(surface["excluded_generated_evidence_files"]) == set(
+        EXCLUDED_GENERATED_EVIDENCE_FILES
+    )
+    for row in [*surface["matches"], *surface["forbidden"]]:
+        assert row["path"] not in EXCLUDED_GENERATED_EVIDENCE_FILES
+
+
+def test_trading_surface_report_still_classifies_docs_tests_and_forbidden_source(
+    tmp_path: Path,
+) -> None:
+    surface = build_trading_surface_report(REPO_ROOT)
+    classifications = {(row["path"], row["classification"]) for row in surface["matches"]}
+    assert (
+        "docs/TRADING_SURFACE_AUDIT.md",
+        "permitted architecture documentation",
+    ) in classifications
+    assert (
+        "backend/tests/unit/test_cross_asset.py",
+        "permitted test fixture proving rejection",
+    ) in classifications
+
+    repo = tmp_path / "repo"
+    production_file = repo / "backend" / "src" / "finnews" / "interfaces" / "api" / "trading.py"
+    production_file.parent.mkdir(parents=True)
+    production_file.write_text(
+        "def unsafe_route():\n    order_send({'symbol': 'DEMO'})\n",
+        encoding="utf-8",
+    )
+    subprocess.run(["git", "init"], cwd=repo, check=True, capture_output=True)
+    subprocess.run(["git", "add", "."], cwd=repo, check=True, capture_output=True)
+
+    forbidden_surface = build_trading_surface_report(repo)
+
+    assert forbidden_surface["status"] == "FAIL"
+    assert forbidden_surface["forbidden_count"] == 1
+    assert forbidden_surface["forbidden"][0] == {
+        "path": "backend/src/finnews/interfaces/api/trading.py",
+        "pattern": "order_send(",
+        "count": 1,
+        "classification": "forbidden executable production path",
+    }
+
+
+def test_trading_surface_report_generation_is_byte_identical(tmp_path: Path) -> None:
+    write_revised_m3a_release_reports(REPO_ROOT, output_root=tmp_path)
+    left = (
+        tmp_path / "reports" / "cross-asset" / "revised-m3a-trading-surface-audit.json"
+    ).read_bytes()
+    write_revised_m3a_release_reports(REPO_ROOT, output_root=tmp_path)
+    right = (
+        tmp_path / "reports" / "cross-asset" / "revised-m3a-trading-surface-audit.json"
+    ).read_bytes()
+    assert left == right
 
 
 def _rewrite_signal_rows_with_valid_manifest(output: Path, rows: list[str]) -> None:
