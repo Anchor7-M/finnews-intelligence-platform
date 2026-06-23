@@ -74,7 +74,10 @@ def parse_eia_observations(payload: bytes, *, profile_id: str) -> list[OfficialO
                 profile_id=profile_id,
                 period_start=_period_date(period),
                 period_end=_period_date(period),
-                dimensions={"series": str(row.get("series", "")), "unit": str(row.get("units", ""))},
+                dimensions={
+                    "series": str(row.get("series", "")),
+                    "unit": str(row.get("units", "")),
+                },
                 value=_decimal(row.get("value")),
                 first_seen_at=_fixture_seen_at(),
                 source_updated_at=None,

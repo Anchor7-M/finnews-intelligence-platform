@@ -19,6 +19,7 @@ import { RouterLink, RouterView } from "vue-router";
         <RouterLink to="/articles">Articles</RouterLink>
         <RouterLink to="/companies">Companies</RouterLink>
         <RouterLink to="/optional-integrations/research-export">Optional Export</RouterLink>
+        <RouterLink to="/official-data">Official Data</RouterLink>
         <RouterLink to="/methodology">Methodology</RouterLink>
       </nav>
     </header>

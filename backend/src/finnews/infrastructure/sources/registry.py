@@ -116,7 +116,9 @@ class SourceDefinitionConfig(BaseModel):
             name = item.strip()
             if not name:
                 continue
-            if not name.isupper() or not all(character.isalnum() or character == "_" for character in name):
+            if not name.isupper() or not all(
+                character.isalnum() or character == "_" for character in name
+            ):
                 raise ValueError("required_local_env_vars must contain uppercase env var names")
             normalized.append(name)
         return normalized
@@ -193,9 +195,7 @@ class SourceDefinitionConfig(BaseModel):
             request_body_template=dict(self.request_body_template),
             required_local_env_vars=list(self.required_local_env_vars),
             pagination_strategy=self.pagination_strategy,
-            dataset_profiles={
-                key: dict(value) for key, value in self.dataset_profiles.items()
-            },
+            dataset_profiles={key: dict(value) for key, value in self.dataset_profiles.items()},
         )
 
 

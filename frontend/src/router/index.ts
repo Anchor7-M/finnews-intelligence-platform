@@ -9,6 +9,7 @@ import EventImpact from "../pages/EventImpact.vue";
 import IntegrationReadiness from "../pages/IntegrationReadiness.vue";
 import Methodology from "../pages/Methodology.vue";
 import NlpEvaluation from "../pages/NlpEvaluation.vue";
+import OfficialDataMonitor from "../pages/OfficialDataMonitor.vue";
 import OverviewPage from "../pages/OverviewPage.vue";
 import ResearchExport from "../pages/ResearchExport.vue";
 import SignalCandidates from "../pages/SignalCandidates.vue";
@@ -32,6 +33,7 @@ export const router = createRouter({
     { path: "/companies/:ticker?", name: "companies", component: CompanyDetail },
     { path: "/digest", name: "digest", component: DailyDigest },
     { path: "/sources", name: "sources", component: SourceHealth },
+    { path: "/official-data", name: "official-data", component: OfficialDataMonitor },
     { path: "/nlp-evaluation", name: "nlp-evaluation", component: NlpEvaluation },
     { path: "/research-export", redirect: "/optional-integrations/research-export" },
     {

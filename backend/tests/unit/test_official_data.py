@@ -54,14 +54,18 @@ def test_observation_ingestion_is_idempotent_and_revision_aware() -> None:
         source_updated_at=first_seen - timedelta(minutes=1),
         provenance={"fixture": True},
     )
-    assert ingest_official_observation_records(repo, [record])[
-        "official_observation_revisions"
-    ] == 1
-    assert ingest_official_observation_records(repo, [record])[
-        "official_observation_unchanged"
-    ] == 1
+    assert (
+        ingest_official_observation_records(repo, [record])["official_observation_revisions"] == 1
+    )
+    assert (
+        ingest_official_observation_records(repo, [record])["official_observation_unchanged"] == 1
+    )
     changed = OfficialObservationRecord(
-        **{**record.__dict__, "value": Decimal("101.0"), "first_seen_at": first_seen + timedelta(days=1)}
+        **{
+            **record.__dict__,
+            "value": Decimal("101.0"),
+            "first_seen_at": first_seen + timedelta(days=1),
+        }
     )
     ingest_official_observation_records(repo, [changed])
     observation = repo.list_official_observations()[0]
@@ -160,7 +164,10 @@ def test_official_source_parser_rejects_malformed_records() -> None:
     with pytest.raises(OfficialSourceParseError):
         parse_bls_observations(b"{}", profile_id="bls-ces-total-nonfarm")
     with pytest.raises(OfficialSourceParseError):
-        parse_eia_observations(b'{"response":{"data":[{"period":"bad","value":"1"}]}}', profile_id="x")
+        parse_eia_observations(
+            b'{"response":{"data":[{"period":"bad","value":"1"}]}}',
+            profile_id="x",
+        )
 
 
 def test_fixture_build_is_stable() -> None:

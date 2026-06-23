@@ -222,9 +222,24 @@ select {
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
 }
 
-.metric-grid > div {
+.metric-grid > div,
+.metric-grid > article {
   border-left: 3px solid #1d5f67;
   padding-left: 10px;
+}
+
+.two-column {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.compact-card {
+  margin-top: 12px;
+}
+
+.compact-card h4 {
+  margin: 0;
 }
 
 .label,

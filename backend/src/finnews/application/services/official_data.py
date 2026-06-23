@@ -332,7 +332,19 @@ def _datasets() -> list[OfficialDataset]:
 
 
 def _profiles() -> list[OfficialSeriesProfile]:
-    rows: list[tuple[str, str, str, str, dict[str, object], dict[str, str], str | None, str, str | None]] = [
+    rows: list[
+        tuple[
+            str,
+            str,
+            str,
+            str,
+            dict[str, object],
+            dict[str, str],
+            str | None,
+            str,
+            str | None,
+        ]
+    ] = [
         (
             "bls-ces-total-nonfarm",
             "bls-ces",
@@ -476,7 +488,9 @@ def _profiles() -> list[OfficialSeriesProfile]:
 def _observation_records(
     profiles: list[OfficialSeriesProfile],
 ) -> list[OfficialObservationRecord]:
-    numeric_profiles = [profile for profile in profiles if profile.source_id != "federal-register-api"]
+    numeric_profiles = [
+        profile for profile in profiles if profile.source_id != "federal-register-api"
+    ]
     records: list[OfficialObservationRecord] = []
     revised_profiles = {
         "bls-ces-total-nonfarm",
@@ -535,9 +549,19 @@ def _regulatory_documents() -> list[RegulatoryDocument]:
     docs: list[RegulatoryDocument] = []
     topics = [
         ("energy", ["Department of Energy"], ["10 CFR 430"], ["1904-AF01"]),
-        ("market structure", ["Securities and Exchange Commission"], ["17 CFR 242"], ["3235-AM88"]),
+        (
+            "market structure",
+            ["Securities and Exchange Commission"],
+            ["17 CFR 242"],
+            ["3235-AM88"],
+        ),
         ("bank capital", ["Federal Reserve System"], ["12 CFR 217"], ["7100-AG77"]),
-        ("commodity reporting", ["Commodity Futures Trading Commission"], ["17 CFR 45"], ["3038-AF45"]),
+        (
+            "commodity reporting",
+            ["Commodity Futures Trading Commission"],
+            ["17 CFR 45"],
+            ["3038-AF45"],
+        ),
     ]
     for index in range(8):
         topic, agencies, cfr, rin = topics[index % len(topics)]
@@ -551,15 +575,17 @@ def _regulatory_documents() -> list[RegulatoryDocument]:
                 source_id="federal-register-api",
                 title=f"Synthetic {topic} regulatory document {index + 1}",
                 abstract=(
-                    f"Source-provided synthetic abstract for {topic} metadata fixture "
-                    f"{index + 1}."
+                    f"Source-provided synthetic abstract for {topic} metadata fixture {index + 1}."
                 ),
                 publication_date=publication_day,
                 document_type="Proposed Rule" if index % 2 else "Notice",
                 agencies=agencies,
                 cfr_references=cfr,
                 rin=rin,
-                html_url=f"https://www.federalregister.gov/documents/2026/03/{index + 1:02d}/{document_id.lower()}",
+                html_url=(
+                    "https://www.federalregister.gov/documents/"
+                    f"2026/03/{index + 1:02d}/{document_id.lower()}"
+                ),
                 pdf_url=f"https://www.govinfo.gov/content/pkg/{document_id}/pdf/{document_id}.pdf",
                 information_available_at=available_at,
                 source_updated_at=available_at,
@@ -641,7 +667,9 @@ def _events(
                 event_id=f"ODE-DOC-{index:03d}",
                 source_id=document.source_id,
                 dataset_id="federal-register-documents",
-                profile_id="fr-energy-regulation" if index % 2 else "fr-market-structure-regulation",
+                profile_id="fr-energy-regulation"
+                if index % 2
+                else "fr-market-structure-regulation",
                 document_id=document.document_id,
                 event_family=CrossAssetEventFamily.REGULATION_ENFORCEMENT,
                 description=f"Synthetic regulatory metadata release for {document.document_id}",

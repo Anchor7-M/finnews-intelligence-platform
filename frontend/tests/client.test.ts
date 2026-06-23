@@ -4,6 +4,8 @@ import {
   loadArticles,
   loadCrossAssetOverview,
   loadMarketSignalCandidates,
+  loadOfficialDataOverview,
+  loadOfficialObservations,
   loadOverview,
 } from "../src/api/client";
 
@@ -43,5 +45,20 @@ describe("data client", () => {
       asset_count: 40,
     });
     await expect(loadMarketSignalCandidates("api")).resolves.toHaveLength(1);
+  });
+
+  it("loads official data static and API envelopes", async () => {
+    const fetchMock = vi.fn(async (url: string) => ({
+      ok: true,
+      json: async () =>
+        url.includes("/api/v1/official-data/observations")
+          ? { items: [{ observation_key: "obs-1", current_revision: 2 }] }
+          : { dataset_count: 4, revision_count: 28 },
+    }));
+    vi.stubGlobal("fetch", fetchMock);
+    await expect(loadOfficialDataOverview("static-demo")).resolves.toMatchObject({
+      dataset_count: 4,
+    });
+    await expect(loadOfficialObservations("api")).resolves.toHaveLength(1);
   });
 });

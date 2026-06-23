@@ -12,6 +12,7 @@ import DailyDigest from "../src/pages/DailyDigest.vue";
 import EventImpact from "../src/pages/EventImpact.vue";
 import IntegrationReadiness from "../src/pages/IntegrationReadiness.vue";
 import NlpEvaluation from "../src/pages/NlpEvaluation.vue";
+import OfficialDataMonitor from "../src/pages/OfficialDataMonitor.vue";
 import OverviewPage from "../src/pages/OverviewPage.vue";
 import ResearchExport from "../src/pages/ResearchExport.vue";
 import SignalCandidates from "../src/pages/SignalCandidates.vue";
@@ -231,6 +232,117 @@ vi.mock("../src/api/client", () => ({
     order_routes: false,
     notes: ["Future bridge must be local and read-only before any demo execution milestone."],
   }),
+  loadOfficialDataOverview: async () => ({
+    synthetic_data: true,
+    not_investment_advice: true,
+    live_data_persisted: false,
+    fixture_version: "official-data-synthetic-v1",
+    generated_at: "2026-06-24T00:00:00+00:00",
+    dataset_count: 4,
+    series_profile_count: 10,
+    observation_count: 24,
+    revision_count: 28,
+    revised_observation_count: 4,
+    regulatory_document_count: 8,
+    series_asset_association_count: 80,
+    official_release_event_count: 32,
+    source_counts: { "bls-public-data": 1 },
+    revision_policy: "append_only_point_in_time",
+    body_storage: "metadata_and_source_abstracts_only",
+  }),
+  loadOfficialDatasets: async () => [
+    {
+      id: "dataset-1",
+      dataset_id: "bls-ces",
+      source_id: "bls-public-data",
+      display_name: "BLS Current Employment Statistics",
+      category: "labor_market",
+      description: "Selected synthetic payroll observations.",
+      documentation_url: "https://www.bls.gov/developers/",
+      revision_policy: "append_only_when_value_changes",
+      frequency: "monthly",
+      unit: "varies",
+      synthetic: true,
+    },
+  ],
+  loadOfficialSeries: async () => [
+    {
+      id: "series-1",
+      profile_id: "bls-ces-total-nonfarm",
+      dataset_id: "bls-ces",
+      source_id: "bls-public-data",
+      display_name: "Total nonfarm payrolls",
+      query: { series_id: "CES0000000001" },
+      dimensions: { measure: "employment" },
+      unit: "thousands_of_persons",
+      frequency: "monthly",
+      seasonal_adjustment: "seasonally_adjusted",
+      synthetic: true,
+    },
+  ],
+  loadOfficialObservations: async () => [
+    {
+      id: "obs-1",
+      observation_key: "obs-key-1",
+      source_id: "bls-public-data",
+      dataset_id: "bls-ces",
+      profile_id: "bls-ces-total-nonfarm",
+      period_start: "2026-01-01",
+      period_end: "2026-01-01",
+      dimensions: { measure: "employment" },
+      current_revision: 2,
+      current_value: "155001.500000",
+      first_seen_at: "2026-06-01T00:00:00+00:00",
+      information_available_at: "2026-06-08T00:00:00+00:00",
+      synthetic: true,
+    },
+  ],
+  loadOfficialRegulatoryDocuments: async () => [
+    {
+      id: "doc-1",
+      document_id: "FR-SYN-0001",
+      source_id: "federal-register-api",
+      title: "Synthetic energy regulatory document",
+      abstract: "Source-provided synthetic abstract.",
+      publication_date: "2026-03-01",
+      document_type: "Notice",
+      agencies: ["Department of Energy"],
+      cfr_references: ["10 CFR 430"],
+      rin: ["1904-AF01"],
+      html_url: "https://www.federalregister.gov/documents/demo",
+      pdf_url: "https://www.govinfo.gov/demo.pdf",
+      information_available_at: "2026-03-01T12:00:00+00:00",
+      synthetic: true,
+    },
+  ],
+  loadOfficialSeriesAssetAssociations: async () => [
+    {
+      id: "assoc-1",
+      association_id: "ODA-ASSOC-001",
+      profile_id: "bls-ces-total-nonfarm",
+      asset_id: "US-EQ-ALPHA",
+      relationship_type: "macro_relevance_hypothesis",
+      rationale: "Synthetic mapping for research navigation only.",
+      confidence: 0.75,
+      active: true,
+      synthetic: true,
+    },
+  ],
+  loadOfficialReleaseEvents: async () => [
+    {
+      id: "event-1",
+      event_id: "ODE-OBS-001",
+      source_id: "bls-public-data",
+      dataset_id: "bls-ces",
+      profile_id: "bls-ces-total-nonfarm",
+      document_id: null,
+      event_family: "labor_market",
+      description: "Synthetic official release",
+      information_available_at: "2026-06-08T00:00:00+00:00",
+      revision_number: null,
+      synthetic: true,
+    },
+  ],
   loadArticles: async () => [
     article,
     {
@@ -661,6 +773,21 @@ describe("frontend compliance", () => {
     expect(wrapper.text()).not.toContain("C:\\Users");
   });
 
+  it("renders official data monitor with point-in-time language", async () => {
+    const wrapper = mount(OfficialDataMonitor);
+    await new Promise((resolve) => setTimeout(resolve, 0));
+    expect(wrapper.text()).toContain("Official Data Monitor");
+    expect(wrapper.text()).toContain("Synthetic official-data demo");
+    expect(wrapper.text()).toContain("Datasets");
+    expect(wrapper.text()).toContain("28");
+    expect(wrapper.text()).toContain("Total nonfarm payrolls");
+    expect(wrapper.text()).toContain("155001.500000");
+    expect(wrapper.text()).toContain("Regulatory Metadata");
+    expect(wrapper.text()).toContain("Synthetic energy regulatory document");
+    expect(wrapper.text()).toContain("Series To Asset Associations");
+    expect(wrapper.text()).not.toContain("FINNEWS_EIA_API_KEY");
+  });
+
   it("renders research export dashboard with safe handoff language", async () => {
     const wrapper = mount(ResearchExport);
     await new Promise((resolve) => setTimeout(resolve, 0));
@@ -687,6 +814,7 @@ describe("frontend compliance", () => {
         { path: "/companies/:ticker?", component: CompanyDetail },
         { path: "/digest", component: DailyDigest },
         { path: "/sources", component: SourceHealth },
+        { path: "/official-data", component: OfficialDataMonitor },
         { path: "/nlp-evaluation", component: NlpEvaluation },
         { path: "/optional-integrations/research-export", component: ResearchExport },
         { path: "/methodology", component: OverviewPage },
@@ -705,6 +833,9 @@ describe("frontend compliance", () => {
     await router.push("/sources");
     await wrapper.vm.$nextTick();
     expect(wrapper.text()).toContain("Source Catalog");
+    await router.push("/official-data");
+    await wrapper.vm.$nextTick();
+    expect(wrapper.text()).toContain("Official Data Monitor");
     await router.push("/nlp-evaluation");
     await wrapper.vm.$nextTick();
     expect(wrapper.text()).toContain("NLP Evaluation Lab");
