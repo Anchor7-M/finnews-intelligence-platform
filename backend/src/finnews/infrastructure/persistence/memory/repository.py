@@ -33,19 +33,19 @@ from finnews.domain.entities import (
     PipelineRun,
     ProviderSymbol,
     RawArticle,
+    RegulatoryDocument,
     ResearchCalendar,
     ResearchExportRun,
     ResearchFeatureRow,
     ResearchLineageRow,
     ResearchSession,
+    SeriesAssetAssociation,
     SignalPublicationRun,
     Source,
     SourceDefinition,
     SourceFetchAttempt,
     SourceFetchState,
     SymbolAlias,
-    RegulatoryDocument,
-    SeriesAssetAssociation,
 )
 from finnews.infrastructure.normalization import comparison_text
 
@@ -89,9 +89,7 @@ class MemoryNewsRepository:
         self.official_datasets: dict[str, OfficialDataset] = {}
         self.official_series_profiles: dict[str, OfficialSeriesProfile] = {}
         self.official_observations: dict[str, OfficialObservation] = {}
-        self.official_observation_revisions: dict[
-            tuple[str, int], OfficialObservationRevision
-        ] = {}
+        self.official_observation_revisions: dict[tuple[str, int], OfficialObservationRevision] = {}
         self.official_data_release_runs: dict[str, OfficialDataReleaseRun] = {}
         self.regulatory_documents: dict[str, RegulatoryDocument] = {}
         self.series_asset_associations: dict[str, SeriesAssetAssociation] = {}
@@ -468,9 +466,7 @@ class MemoryNewsRepository:
         ] = revision
         return observation
 
-    def add_official_data_release_run(
-        self, run: OfficialDataReleaseRun
-    ) -> OfficialDataReleaseRun:
+    def add_official_data_release_run(self, run: OfficialDataReleaseRun) -> OfficialDataReleaseRun:
         self.official_data_release_runs[run.release_run_id] = run
         return run
 

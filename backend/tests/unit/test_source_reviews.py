@@ -83,7 +83,10 @@ source_config_sha256: {digest}
 
 
 def post_review_yaml(digest: str) -> str:
-    return review_yaml(digest).replace('allowed_methods: ["GET", "HEAD"]', 'allowed_methods: ["POST"]')
+    return review_yaml(digest).replace(
+        'allowed_methods: ["GET", "HEAD"]',
+        'allowed_methods: ["POST"]',
+    )
 
 
 def write_review(tmp_path: Path, digest: str, *, text: str | None = None) -> Path:

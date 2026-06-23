@@ -36,11 +36,13 @@ from finnews.domain.entities import (
     PipelineRun,
     ProviderSymbol,
     RawArticle,
+    RegulatoryDocument,
     ResearchCalendar,
     ResearchExportRun,
     ResearchFeatureRow,
     ResearchLineageRow,
     ResearchSession,
+    SeriesAssetAssociation,
     SignalPublicationRun,
     Source,
     SourceDefinition,
@@ -48,8 +50,6 @@ from finnews.domain.entities import (
     SourceFetchState,
     SourceRetryPolicy,
     SymbolAlias,
-    RegulatoryDocument,
-    SeriesAssetAssociation,
 )
 from finnews.domain.enums import (
     AssetClass,
@@ -102,19 +102,19 @@ from finnews.infrastructure.persistence.postgres.models import (
     PipelineRunModel,
     ProviderSymbolModel,
     RawArticleModel,
+    RegulatoryDocumentModel,
     ResearchCalendarModel,
     ResearchExportRunModel,
     ResearchFeatureRowModel,
     ResearchLineageRowModel,
     ResearchSessionModel,
+    SeriesAssetAssociationModel,
     SignalPublicationRunModel,
     SourceDefinitionModel,
     SourceFetchAttemptModel,
     SourceFetchStateModel,
     SourceModel,
     SymbolAliasModel,
-    RegulatoryDocumentModel,
-    SeriesAssetAssociationModel,
 )
 
 
@@ -1048,9 +1048,7 @@ class PostgresNewsRepository:
         self.session.flush()
         return _official_observation(model)
 
-    def add_official_data_release_run(
-        self, run: OfficialDataReleaseRun
-    ) -> OfficialDataReleaseRun:
+    def add_official_data_release_run(self, run: OfficialDataReleaseRun) -> OfficialDataReleaseRun:
         model = self.session.scalar(
             select(OfficialDataReleaseRunModel).where(
                 OfficialDataReleaseRunModel.release_run_id == run.release_run_id

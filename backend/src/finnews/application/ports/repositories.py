@@ -34,19 +34,19 @@ from finnews.domain.entities import (
     PipelineRun,
     ProviderSymbol,
     RawArticle,
+    RegulatoryDocument,
     ResearchCalendar,
     ResearchExportRun,
     ResearchFeatureRow,
     ResearchLineageRow,
     ResearchSession,
+    SeriesAssetAssociation,
     SignalPublicationRun,
     Source,
     SourceDefinition,
     SourceFetchAttempt,
     SourceFetchState,
     SymbolAlias,
-    RegulatoryDocument,
-    SeriesAssetAssociation,
 )
 
 
@@ -165,13 +165,16 @@ class NewsRepository(Protocol):
     def upsert_series_asset_association(
         self, association: SeriesAssetAssociation
     ) -> SeriesAssetAssociation: ...
-    def upsert_official_release_event(self, event: OfficialReleaseEvent) -> OfficialReleaseEvent: ...
+    def upsert_official_release_event(
+        self, event: OfficialReleaseEvent
+    ) -> OfficialReleaseEvent: ...
     def list_official_datasets(self) -> list[OfficialDataset]: ...
     def list_official_series_profiles(
         self, source_id: str | None = None
     ) -> list[OfficialSeriesProfile]: ...
     def list_official_observations(
-        self, dataset_id: str | None = None,
+        self,
+        dataset_id: str | None = None,
         profile_id: str | None = None,
     ) -> list[OfficialObservation]: ...
     def list_official_observation_revisions(
@@ -180,7 +183,8 @@ class NewsRepository(Protocol):
     def list_official_data_release_runs(self) -> list[OfficialDataReleaseRun]: ...
     def list_regulatory_documents(self) -> list[RegulatoryDocument]: ...
     def list_series_asset_associations(
-        self, profile_id: str | None = None,
+        self,
+        profile_id: str | None = None,
         asset_id: str | None = None,
     ) -> list[SeriesAssetAssociation]: ...
     def list_official_release_events(self) -> list[OfficialReleaseEvent]: ...

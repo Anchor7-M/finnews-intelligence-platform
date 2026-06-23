@@ -148,7 +148,7 @@ def validate_source_reviews(review_dir: Path | None = None) -> list[str]:
 
 
 def source_config_digest(source: SourceDefinition) -> str:
-    payload = {
+    payload: dict[str, object] = {
         "source_id": source.source_id,
         "source_type": source.source_type.value,
         "base_url": source.base_url,

@@ -435,3 +435,109 @@ export interface Mt5Readiness {
   order_routes: boolean;
   notes: string[];
 }
+
+export interface OfficialDataOverview {
+  synthetic_data: boolean;
+  not_investment_advice: boolean;
+  live_data_persisted: boolean;
+  fixture_version: string;
+  generated_at: string;
+  dataset_count: number;
+  series_profile_count: number;
+  observation_count: number;
+  revision_count: number;
+  revised_observation_count: number;
+  regulatory_document_count: number;
+  series_asset_association_count: number;
+  official_release_event_count: number;
+  source_counts: Record<string, number>;
+  revision_policy: string;
+  body_storage: string;
+}
+
+export interface OfficialDataset {
+  id: string;
+  dataset_id: string;
+  source_id: string;
+  display_name: string;
+  category: string;
+  description: string;
+  documentation_url: string;
+  revision_policy: string;
+  frequency: string;
+  unit: string | null;
+  synthetic: boolean;
+}
+
+export interface OfficialSeriesProfile {
+  id: string;
+  profile_id: string;
+  dataset_id: string;
+  source_id: string;
+  display_name: string;
+  query: Record<string, unknown>;
+  dimensions: Record<string, string>;
+  unit: string | null;
+  frequency: string;
+  seasonal_adjustment: string | null;
+  synthetic: boolean;
+}
+
+export interface OfficialObservation {
+  id: string;
+  observation_key: string;
+  source_id: string;
+  dataset_id: string;
+  profile_id: string;
+  period_start: string;
+  period_end: string;
+  dimensions: Record<string, string>;
+  current_revision: number;
+  current_value: string;
+  first_seen_at: string;
+  information_available_at: string;
+  synthetic: boolean;
+}
+
+export interface OfficialRegulatoryDocument {
+  id: string;
+  document_id: string;
+  source_id: string;
+  title: string;
+  abstract: string;
+  publication_date: string;
+  document_type: string;
+  agencies: string[];
+  cfr_references: string[];
+  rin: string[];
+  html_url: string;
+  pdf_url: string | null;
+  information_available_at: string;
+  synthetic: boolean;
+}
+
+export interface OfficialSeriesAssetAssociation {
+  id: string;
+  association_id: string;
+  profile_id: string;
+  asset_id: string;
+  relationship_type: string;
+  rationale: string;
+  confidence: number;
+  active: boolean;
+  synthetic: boolean;
+}
+
+export interface OfficialReleaseEvent {
+  id: string;
+  event_id: string;
+  source_id: string;
+  dataset_id: string;
+  profile_id: string | null;
+  document_id: string | null;
+  event_family: string;
+  description: string;
+  information_available_at: string;
+  revision_number: number | null;
+  synthetic: boolean;
+}

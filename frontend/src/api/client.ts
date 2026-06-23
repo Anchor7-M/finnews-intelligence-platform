@@ -15,6 +15,13 @@ import type {
   NlpEvaluationSummary,
   NlpModelSummary,
   NlpOverview,
+  OfficialDataOverview,
+  OfficialDataset,
+  OfficialObservation,
+  OfficialRegulatoryDocument,
+  OfficialReleaseEvent,
+  OfficialSeriesAssetAssociation,
+  OfficialSeriesProfile,
   Overview,
   ResearchCalendar,
   ResearchExportSummary,
@@ -300,4 +307,87 @@ export async function loadMt5Readiness(mode: DataMode = getDataMode()): Promise<
     return getJson<Mt5Readiness>(`${API_BASE}/api/v1/integrations/mt5/readiness`);
   }
   return getJson<Mt5Readiness>("/demo-data/mt5-readiness.json");
+}
+
+export async function loadOfficialDataOverview(
+  mode: DataMode = getDataMode(),
+): Promise<OfficialDataOverview> {
+  if (mode === "api") {
+    return getJson<OfficialDataOverview>(`${API_BASE}/api/v1/official-data/overview`);
+  }
+  return getJson<OfficialDataOverview>("/demo-data/official-data-overview.json");
+}
+
+export async function loadOfficialDatasets(
+  mode: DataMode = getDataMode(),
+): Promise<OfficialDataset[]> {
+  if (mode === "api") {
+    const data = await getJson<{ items: OfficialDataset[] }>(
+      `${API_BASE}/api/v1/official-data/datasets`,
+    );
+    return data.items;
+  }
+  return getJson<OfficialDataset[]>("/demo-data/official-datasets.json");
+}
+
+export async function loadOfficialSeries(
+  mode: DataMode = getDataMode(),
+): Promise<OfficialSeriesProfile[]> {
+  if (mode === "api") {
+    const data = await getJson<{ items: OfficialSeriesProfile[] }>(
+      `${API_BASE}/api/v1/official-data/series`,
+    );
+    return data.items;
+  }
+  return getJson<OfficialSeriesProfile[]>("/demo-data/official-series.json");
+}
+
+export async function loadOfficialObservations(
+  mode: DataMode = getDataMode(),
+): Promise<OfficialObservation[]> {
+  if (mode === "api") {
+    const data = await getJson<{ items: OfficialObservation[] }>(
+      `${API_BASE}/api/v1/official-data/observations?limit=200`,
+    );
+    return data.items;
+  }
+  return getJson<OfficialObservation[]>("/demo-data/official-observations.json");
+}
+
+export async function loadOfficialRegulatoryDocuments(
+  mode: DataMode = getDataMode(),
+): Promise<OfficialRegulatoryDocument[]> {
+  if (mode === "api") {
+    const data = await getJson<{ items: OfficialRegulatoryDocument[] }>(
+      `${API_BASE}/api/v1/official-data/regulatory-documents`,
+    );
+    return data.items;
+  }
+  return getJson<OfficialRegulatoryDocument[]>("/demo-data/official-regulatory-documents.json");
+}
+
+export async function loadOfficialSeriesAssetAssociations(
+  mode: DataMode = getDataMode(),
+): Promise<OfficialSeriesAssetAssociation[]> {
+  if (mode === "api") {
+    const data = await getJson<{ items: OfficialSeriesAssetAssociation[] }>(
+      `${API_BASE}/api/v1/official-data/series-asset-associations?limit=200`,
+    );
+    return data.items;
+  }
+  return getJson<OfficialSeriesAssetAssociation[]>(
+    "/demo-data/official-series-asset-associations.json",
+  );
+}
+
+export async function loadOfficialReleaseEvents(
+  mode: DataMode = getDataMode(),
+): Promise<OfficialReleaseEvent[]> {
+  if (mode === "api") {
+    const data = await getJson<{ items: OfficialReleaseEvent[] }>(
+      `${API_BASE}/api/v1/official-data/release-events?limit=200`,
+    );
+    return data.items;
+  }
+  return getJson<OfficialReleaseEvent[]>("/demo-data/official-release-events.json");
 }

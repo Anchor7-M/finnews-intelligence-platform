@@ -231,6 +231,9 @@ def test_timeout_retry_and_retry_after_date_are_bounded() -> None:
                 content=RSS_BODY,
             )
 
+        def post(self, request: HttpRequest) -> HttpResponse:
+            return self.get(request)
+
     client = TimeoutThenSuccess()
     service = SourceIngestionService(
         repo,
@@ -259,6 +262,9 @@ def test_timeout_retry_and_retry_after_date_are_bounded() -> None:
         def get(self, _: HttpRequest) -> HttpResponse:
             self.calls += 1
             return response
+
+        def post(self, request: HttpRequest) -> HttpResponse:
+            return self.get(request)
 
     rate_client = AlwaysRateLimited()
     rate_sleeps: list[float] = []

@@ -12,7 +12,7 @@ from pathlib import Path
 from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
-POSTGRES_PROJECT = "finnews_m3r_verify"
+POSTGRES_PROJECT = "finnews_m3b_verify"
 POSTGRES_SERVICE = "postgres"
 POSTGRES_URL = "postgresql+psycopg://finnews:finnews@127.0.0.1:55432/finnews"
 TIMINGS: list[dict[str, Any]] = []
@@ -261,6 +261,15 @@ def validate_static_export() -> None:
         "market-signals.json",
         "mt5-readiness.json",
         "market-signal-contract-example.json",
+        "official-data-overview.json",
+        "official-datasets.json",
+        "official-series.json",
+        "official-observations.json",
+        "official-observation-revisions.json",
+        "official-regulatory-documents.json",
+        "official-series-asset-associations.json",
+        "official-release-events.json",
+        "official-data-release-runs.json",
     ]
     missing = [name for name in required if not (output / name).is_file()]
     if missing:
@@ -315,7 +324,7 @@ def verify_postgres(_: argparse.Namespace) -> None:
         db_down(argparse.Namespace())
     if success:
         print(
-            "verify-postgres passed: project=finnews_m3r_verify service=postgres "
+            "verify-postgres passed: project=finnews_m3b_verify service=postgres "
             "image=postgres:16 port=127.0.0.1:55432"
         )
 
@@ -678,6 +687,50 @@ def verify_cross_asset(_: argparse.Namespace) -> None:
     )
 
 
+def verify_official_data(_: argparse.Namespace) -> None:
+    backend = ROOT / "backend"
+    frontend = ROOT / "frontend"
+    env = {"FINNEWS_SOURCE_TEST_MODE": "mocked-offline"}
+    run(
+        [
+            PYTHON,
+            "-m",
+            "finnews.interfaces.cli.app",
+            "official-data",
+            "validate-fixtures",
+        ],
+        backend,
+        env=env,
+        timeout_seconds=120,
+    )
+    run(
+        [
+            PYTHON,
+            "-m",
+            "finnews.interfaces.cli.app",
+            "official-data",
+            "export-static",
+        ],
+        backend,
+        env=env,
+        timeout_seconds=120,
+    )
+    run(
+        [
+            PYTHON,
+            "-m",
+            "pytest",
+            "tests/unit/test_official_data.py",
+            "tests/contract/test_official_data_api_cli.py",
+        ],
+        backend,
+        env=env,
+        timeout_seconds=240,
+    )
+    run(["npm", "run", "test:unit", "--", "--run"], frontend, env=env, timeout_seconds=180)
+    validate_static_export()
+
+
 def build_research_export(_: argparse.Namespace) -> None:
     output = ROOT / ".finnews-research-exports" / "latest"
     if output.exists():
@@ -814,6 +867,7 @@ def main() -> None:
     sub.add_parser("verify-ml").set_defaults(func=verify_ml)
     sub.add_parser("verify-research-export").set_defaults(func=verify_research_export)
     sub.add_parser("verify-cross-asset").set_defaults(func=verify_cross_asset)
+    sub.add_parser("verify-official-data").set_defaults(func=verify_official_data)
     sub.add_parser("build-research-export").set_defaults(func=build_research_export)
     sub.add_parser("build-nlp-benchmark").set_defaults(func=build_nlp_benchmark)
     sub.add_parser("benchmark-nlp").set_defaults(func=benchmark_nlp)
