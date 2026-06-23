@@ -1,23 +1,48 @@
 # Trading Surface Audit
 
-Revised Milestone 3A includes a local audit that scans repository text for accidental trading-surface additions.
+Revised Milestone 3A is a cross-asset information and event-intelligence release. It does not implement MT5 terminal connectivity, account access, order checking, order sending, position management, or execution.
 
-## Checked Patterns
+## Commands
 
-The audit checks for MT5 package references, terminal connection calls, account-login calls, trading request validation/submission calls, action constants, order-type constants, password phrases, sizing phrases, and protective-level phrases.
+- `python scripts/dev.py verify-cross-asset`
+- `git diff --check`
+- `docker compose -p finnews_m3r_verify ps`
 
-Allowed findings are limited to:
+The detailed machine-readable report is `reports/cross-asset/revised-m3a-trading-surface-audit.json`.
 
-- this documentation set;
-- the revised execution plan;
-- the signal contract schema;
-- cross-asset unit and contract tests;
-- the self-audit pattern list in `cross_asset.py`.
+## Search Scope
 
-## Current Result
+Tracked source, configuration, contracts, workflows, CLI, API, frontend, docs, and dependency files were scanned for:
 
-`python scripts/dev.py verify-cross-asset` runs the cross-asset unit tests, including the trading-surface audit. The expected result is:
+`MetaTrader5`, `metatrader5`, `initialize(`, `login(`, `order_check(`, `order_send(`, `TRADE_ACTION`, `ORDER_TYPE`, `account_info(`, `positions_get(`, `orders_get(`, `history_deals_get(`, `lot`, `volume`, `stop_loss`, `take_profit`, `buy`, `sell`, `execute`.
 
-- no MT5 package import in production code;
-- no terminal contact in production code;
-- no execution route in production code.
+## Result
+
+| Metric | Value |
+| --- | ---: |
+| Matched files | 42 |
+| Matched pattern instances | 178 |
+| Forbidden production matches | 0 |
+| `MetaTrader5` dependency declarations | 0 |
+| Production `MetaTrader5` imports | 0 |
+| Terminal/contact/order routes | 0 |
+| Account credential models | 0 |
+| Public trading endpoints/commands/UI controls | 0 |
+
+One dependency-file match appears in `frontend/package-lock.json` for the generic token `buy`; it is classified as a permitted release guardrail false positive and is not an MT5 or trading dependency.
+
+## Classifications
+
+Permitted matches are limited to architecture documentation, future-risk documentation, schema-denylist fields, static safety notices, and tests proving rejection of execution-like fields.
+
+Forbidden production categories all returned zero:
+
+- MT5 package import or dynamic import;
+- subprocess, COM, terminal launch, or terminal path;
+- credential, login, account, order, position, or execution models;
+- mutation route or CLI command for connect/login/buy/sell/trade/order/position;
+- UI button or static-demo data that can execute or imply execution.
+
+## Status
+
+PASS. Signal candidates are hypotheses for local research. They are not orders, not recommendations, and not executable instructions.

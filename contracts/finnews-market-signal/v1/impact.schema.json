@@ -18,11 +18,25 @@
     "synthetic"
   ],
   "properties": {
+    "id": { "type": "string" },
+    "impact_id": { "type": "string" },
+    "event_id": { "type": "string" },
+    "asset_id": { "type": "string" },
+    "relationship_type": { "type": "string" },
     "direction": { "enum": ["positive", "negative", "mixed", "uncertain"] },
     "horizon": { "enum": ["intraday", "one_day", "one_week", "one_month"] },
+    "evidence_codes": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "provider": { "type": "string" },
+    "provider_version": { "type": "string" },
+    "information_cutoff_at": { "type": "string" },
+    "created_at": { "type": "string" },
+    "expires_at": { "type": "string" },
+    "status": { "enum": ["active", "rejected"] },
+    "rejection_reason": { "type": ["string", "null"] },
+    "uncertainty_reason": { "type": ["string", "null"] },
     "confidence": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
     "impact_strength": { "type": "number", "minimum": 0, "maximum": 1 },
     "synthetic": { "const": true }
   },
-  "additionalProperties": true
+  "additionalProperties": false
 }

@@ -21,10 +21,14 @@ The package validator checks:
 - file sizes;
 - per-file SHA-256 hashes;
 - package content hash;
+- strict JSON schemas with `additionalProperties: false`;
+- UTC/RFC 3339 timestamp ordering;
+- asset, event, impact, and signal references;
+- confidence and bounded-strength ranges;
 - absence of prohibited execution fields.
 
 Local generated packages must be written under `.finnews-market-signals/`, which is ignored by Git.
 
 ## Boundary
 
-The contract is designed for downstream local research consumers. It contains no broker credentials, account identifiers, position sizing, protective levels, action fields, or route instructions. It is not investment advice.
+The contract is designed for downstream local research consumers. A signal candidate is not an order. It contains no broker credentials, account identifiers, position sizing, protective levels, action fields, route instructions, account data, terminal path, live price, or execution request. It is research tooling, not investment advice.

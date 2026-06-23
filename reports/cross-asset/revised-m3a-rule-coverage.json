@@ -1,0 +1,18 @@
+{
+  "accepted_impacts_have_evidence": true,
+  "active_expiry_after_creation": true,
+  "all_events_not_mapped_to_all_assets": true,
+  "confidence_bounds_ok": true,
+  "cutoff_before_creation": true,
+  "event_count": 100,
+  "events_without_impacts": [],
+  "fixture_version": "cross-asset-demo-v1",
+  "impact_count": 240,
+  "impact_strength_bounds_ok": true,
+  "input_order_invariance_hash": "fbc5255505503f330d8a1d6696fb30d7342f6867b24b6da3a74d46c7fa3d3f36",
+  "max_impacts_per_event": 3,
+  "min_impacts_per_event": 2,
+  "rejected_impacts_have_reason": true,
+  "signal_count": 80,
+  "signals_per_impact_max": 1
+}

@@ -16,7 +16,15 @@ from finnews.application.services.cross_asset import (
     validate_signal_package,
     write_signal_package,
 )
+from finnews.application.services.cross_asset_release_audit import (
+    build_lifecycle_audit_report,
+    build_release_ledger,
+    build_trading_surface_report,
+    write_revised_m3a_release_reports,
+)
 from finnews.domain.enums import AssetClass, CrossAssetEventFamily
+
+REPO_ROOT = Path(__file__).resolve().parents[3]
 
 
 def test_cross_asset_fixture_exact_counts_and_class_coverage() -> None:
@@ -105,6 +113,54 @@ mappings:
     assert result["terminal_contacted"] is False
 
 
+def test_mt5_symbol_map_validation_rejects_each_forbidden_category(tmp_path: Path) -> None:
+    forbidden_fields = [
+        "account_id",
+        "account_number",
+        "broker_server",
+        "login",
+        "password",
+        "investor_password",
+        "terminal_path",
+        "order_type",
+        "action",
+        "volume",
+        "lot",
+        "leverage",
+        "margin",
+        "price",
+        "entry_price",
+        "stop_loss",
+        "sl",
+        "take_profit",
+        "tp",
+        "position_id",
+        "order_ticket",
+        "execute",
+        "execute_now",
+        "buy",
+        "sell",
+        "close_position",
+    ]
+    for field in forbidden_fields:
+        path = tmp_path / f"{field}.yaml"
+        path.write_text(
+            f"""
+mappings:
+  - canonical_asset_id: FX-EURUSD
+    broker_profile_id: demo
+    mt5_symbol: DEMO.EURUSD
+    enabled: true
+    {field}: forbidden
+            """,
+            encoding="utf-8",
+        )
+        result = validate_mt5_symbol_map(path)
+        assert result["valid"] is False
+        assert field in " ".join(result["errors"])
+        assert result["terminal_contacted"] is False
+
+
 def test_signal_package_is_deterministic_and_rejects_forbidden_fields(tmp_path: Path) -> None:
     left = tmp_path / ".finnews-market-signals" / "left"
     right = tmp_path / ".finnews-market-signals" / "right"
@@ -130,6 +186,70 @@ def test_signal_package_is_deterministic_and_rejects_forbidden_fields(tmp_path: 
         validate_signal_package(left)
 
 
+def test_signal_package_strict_contract_rejects_unknown_and_execution_fields(
+    tmp_path: Path,
+) -> None:
+    forbidden_fields = [
+        "account_id",
+        "account_number",
+        "broker_server",
+        "login",
+        "password",
+        "investor_password",
+        "order_type",
+        "action",
+        "volume",
+        "lot",
+        "leverage",
+        "entry_price",
+        "price",
+        "stop_loss",
+        "sl",
+        "take_profit",
+        "tp",
+        "margin",
+        "position_id",
+        "order_ticket",
+        "execute",
+        "execute_now",
+        "buy",
+        "sell",
+        "close_position",
+    ]
+    for field in forbidden_fields:
+        output = tmp_path / ".finnews-market-signals" / field
+        write_signal_package(output)
+        rows = (output / "signals.jsonl").read_text(encoding="utf-8").splitlines()
+        tampered = json.loads(rows[0])
+        tampered[field] = "forbidden"
+        rows[0] = json.dumps(tampered, sort_keys=True)
+        _rewrite_signal_rows_with_valid_manifest(output, rows)
+        with pytest.raises(CrossAssetError, match="unknown fields|forbidden fields"):
+            validate_signal_package(output)
+
+    output = tmp_path / ".finnews-market-signals" / "unknown"
+    write_signal_package(output)
+    rows = (output / "signals.jsonl").read_text(encoding="utf-8").splitlines()
+    tampered = json.loads(rows[0])
+    tampered["unexpected_field"] = "x"
+    rows[0] = json.dumps(tampered, sort_keys=True)
+    _rewrite_signal_rows_with_valid_manifest(output, rows)
+    with pytest.raises(CrossAssetError, match="unknown fields"):
+        validate_signal_package(output)
+
+
+def test_signal_lifecycle_rejects_invalid_timestamp_boundaries(tmp_path: Path) -> None:
+    output = tmp_path / ".finnews-market-signals" / "lifecycle"
+    write_signal_package(output)
+    rows = (output / "signals.jsonl").read_text(encoding="utf-8").splitlines()
+    tampered = json.loads(rows[0])
+    tampered["expires_at"] = tampered["generated_at"]
+    rows[0] = json.dumps(tampered, sort_keys=True)
+    _rewrite_signal_rows_with_valid_manifest(output, rows)
+    with pytest.raises(CrossAssetError, match="generated_at must be before expires_at"):
+        validate_signal_package(output)
+
+
 def test_signal_output_must_stay_under_ignored_local_root(tmp_path: Path) -> None:
     with pytest.raises(CrossAssetError, match="signal exports must be under"):
         write_signal_package(tmp_path / "signals")
@@ -142,3 +262,54 @@ def test_trading_surface_audit_has_no_disallowed_execution_surface() -> None:
     assert result["mt5_import_present"] is False
     assert result["terminal_contact_present"] is False
     assert result["order_route_present"] is False
+
+
+def test_release_ledger_and_audit_reports_are_deterministic(tmp_path: Path) -> None:
+    first = build_release_ledger(REPO_ROOT)
+    second = build_release_ledger(REPO_ROOT)
+    assert json.dumps(first, sort_keys=True) == json.dumps(second, sort_keys=True)
+    assert first["asset_ledger"]["total"] == 40
+    assert first["alias_ledger"]["total"] == 211
+    assert first["event_ledger"]["total"] == 100
+    assert first["impact_ledger"]["total"] == 240
+    assert first["signal_ledger"]["total"] == 80
+    assert first["alias_ledger"]["active_alias_uniqueness_violations"] == 0
+
+    report = write_revised_m3a_release_reports(REPO_ROOT, output_root=tmp_path)
+    left = (tmp_path / "reports" / "cross-asset" / "revised-m3a-release-ledger.json").read_bytes()
+    report_again = write_revised_m3a_release_reports(REPO_ROOT, output_root=tmp_path)
+    right = (tmp_path / "reports" / "cross-asset" / "revised-m3a-release-ledger.json").read_bytes()
+    assert left == right
+    assert report["ledger_sha256"] == report_again["ledger_sha256"]
+
+
+def test_lifecycle_and_trading_surface_release_reports() -> None:
+    lifecycle = build_lifecycle_audit_report(REPO_ROOT)
+    assert lifecycle["package_byte_identical_rebuild"] is True
+    assert lifecycle["cutoff_lte_generated"] is True
+    assert lifecycle["generated_before_expiry"] is True
+    assert lifecycle["logical_rebuild_idempotency_same"] is True
+
+    surface = build_trading_surface_report(REPO_ROOT)
+    assert surface["status"] == "PASS"
+    assert surface["forbidden_count"] == 0
+    assert surface["mt5_dependency_present"] is False
+
+
+def _rewrite_signal_rows_with_valid_manifest(output: Path, rows: list[str]) -> None:
+    from finnews.application.services.cross_asset import sha256_bytes, sha256_text
+
+    manifest = json.loads((output / "manifest.json").read_text(encoding="utf-8"))
+    data = ("\n".join(rows) + "\n").encode()
+    (output / "signals.jsonl").write_bytes(data)
+    hashes: dict[str, str] = {}
+    for file_info in manifest["files"]:
+        name = file_info["path"]
+        if name == "signals.jsonl":
+            file_info["size_bytes"] = len(data)
+            file_info["sha256"] = sha256_bytes(data)
+        hashes[name] = file_info["sha256"]
+    manifest["package_content_hash"] = sha256_text(
+        "\n".join(f"{name}:{hashes[name]}" for name in sorted(hashes))
+    )
+    (output / "manifest.json").write_text(json.dumps(manifest, sort_keys=True), encoding="utf-8")

@@ -1,0 +1,401 @@
+{
+  "alias_ledger": {
+    "active_alias_uniqueness_violations": 0,
+    "ambiguous_resolution_fixture_count": 1,
+    "by_active": {
+      "active": 210,
+      "inactive": 1
+    },
+    "by_namespace": {
+      "canonical": 40,
+      "market_data": 40,
+      "mt5_broker_local": 40,
+      "news_source": 43,
+      "research": 40,
+      "sec_cik_or_issuer": 8
+    },
+    "total": 211,
+    "unresolved_resolution_fixture_count": 1
+  },
+  "asset_ledger": {
+    "asset_relationship_count": 10,
+    "base_currency_count": 11,
+    "base_currency_coverage": 40,
+    "by_asset_class": {
+      "commodity": 3,
+      "crypto_asset": 4,
+      "equity_index": 3,
+      "etf": 5,
+      "futures_contract": 2,
+      "futures_root": 2,
+      "fx": 5,
+      "interest_rate": 2,
+      "macro_indicator": 3,
+      "precious_metal": 3,
+      "us_equity": 8
+    },
+    "by_region": {
+      "Global": 15,
+      "US": 25
+    },
+    "by_status": {
+      "active": 40
+    },
+    "by_venue": {
+      "ARCX": 5,
+      "COMMODITY": 3,
+      "CRYPTO": 4,
+      "FUTURES": 4,
+      "FX": 5,
+      "INDEX": 3,
+      "MACRO": 3,
+      "METAL": 3,
+      "RATES": 2,
+      "XNAS": 4,
+      "XNYS": 4
+    },
+    "futures_contract_count": 2,
+    "futures_contracts_with_valid_root": 2,
+    "futures_root_count": 2,
+    "quote_currency_count": 3,
+    "quote_currency_coverage": 12,
+    "synthetic_count": 40,
+    "total": 40,
+    "venue_count": 11
+  },
+  "asset_schema_version": "cross-asset-v1",
+  "contract_files": [
+    {
+      "path": "assets.json",
+      "sha256": "80df36474b6e8ee94e63b6b8d3e449fbe8b7fa2643a7356a0460ec17b1c402c3",
+      "size_bytes": 21562
+    },
+    {
+      "path": "event_impacts.jsonl",
+      "sha256": "c208695f88680c73502273f346652776bfb4c0a4d5b6fe5a87cd232d6e8d8411",
+      "size_bytes": 144933
+    },
+    {
+      "path": "manifest.json",
+      "sha256": "d2291c2897b7851727254047209c445fd0aac17b43028ad619dbd0479a783824",
+      "size_bytes": 794
+    },
+    {
+      "path": "signals.jsonl",
+      "sha256": "5c6cb42a193c66b3d45be8f4987224e50cbdfb77164b5020ab2b9e5ba78d6b5a",
+      "size_bytes": 66757
+    }
+  ],
+  "contract_name": "finnews-market-signal-v1",
+  "contract_version": "1.0.0",
+  "dataset_content_hash": "663e54e0adb5fd0680ddac5274dc6bf23108f1dbe194fdf9c6f306a0c5beff72",
+  "event_ledger": {
+    "by_event_family": {
+      "commodity_supply": 6,
+      "corporate_earnings_guidance": 6,
+      "crypto_protocol_ecosystem": 5,
+      "crypto_regulation": 5,
+      "derivatives_positioning": 5,
+      "economic_growth": 6,
+      "exchange_market_infrastructure": 5,
+      "fiscal_policy": 6,
+      "geopolitical_risk": 5,
+      "idiosyncratic_company_event": 5,
+      "inflation": 6,
+      "inventory_demand": 5,
+      "labor_market": 6,
+      "liquidity_funding": 6,
+      "mergers_corporate_actions": 6,
+      "monetary_policy": 6,
+      "other_uncertain": 5,
+      "regulation_enforcement": 6
+    },
+    "by_event_subtype": {
+      "commodity_supply_demo_0": 1,
+      "commodity_supply_demo_1": 1,
+      "commodity_supply_demo_2": 1,
+      "commodity_supply_demo_3": 1,
+      "commodity_supply_demo_4": 2,
+      "corporate_earnings_guidance_demo_0": 1,
+      "corporate_earnings_guidance_demo_1": 1,
+      "corporate_earnings_guidance_demo_2": 2,
+      "corporate_earnings_guidance_demo_3": 1,
+      "corporate_earnings_guidance_demo_4": 1,
+      "crypto_protocol_ecosystem_demo_0": 1,
+      "crypto_protocol_ecosystem_demo_1": 1,
+      "crypto_protocol_ecosystem_demo_2": 1,
+      "crypto_protocol_ecosystem_demo_3": 1,
+      "crypto_protocol_ecosystem_demo_4": 1,
+      "crypto_regulation_demo_0": 1,
+      "crypto_regulation_demo_1": 1,
+      "crypto_regulation_demo_2": 1,
+      "crypto_regulation_demo_3": 1,
+      "crypto_regulation_demo_4": 1,
+      "derivatives_positioning_demo_0": 1,
+      "derivatives_positioning_demo_1": 1,
+      "derivatives_positioning_demo_2": 1,
+      "derivatives_positioning_demo_3": 1,
+      "derivatives_positioning_demo_4": 1,
+      "economic_growth_demo_0": 1,
+      "economic_growth_demo_1": 1,
+      "economic_growth_demo_2": 1,
+      "economic_growth_demo_3": 2,
+      "economic_growth_demo_4": 1,
+      "exchange_market_infrastructure_demo_0": 1,
+      "exchange_market_infrastructure_demo_1": 1,
+      "exchange_market_infrastructure_demo_2": 1,
+      "exchange_market_infrastructure_demo_3": 1,
+      "exchange_market_infrastructure_demo_4": 1,
+      "fiscal_policy_demo_0": 2,
+      "fiscal_policy_demo_1": 1,
+      "fiscal_policy_demo_2": 1,
+      "fiscal_policy_demo_3": 1,
+      "fiscal_policy_demo_4": 1,
+      "geopolitical_risk_demo_0": 1,
+      "geopolitical_risk_demo_1": 1,
+      "geopolitical_risk_demo_2": 1,
+      "geopolitical_risk_demo_3": 1,
+      "geopolitical_risk_demo_4": 1,
+      "idiosyncratic_company_event_demo_0": 1,
+      "idiosyncratic_company_event_demo_1": 1,
+      "idiosyncratic_company_event_demo_2": 1,
+      "idiosyncratic_company_event_demo_3": 1,
+      "idiosyncratic_company_event_demo_4": 1,
+      "inflation_demo_0": 1,
+      "inflation_demo_1": 2,
+      "inflation_demo_2": 1,
+      "inflation_demo_3": 1,
+      "inflation_demo_4": 1,
+      "inventory_demand_demo_0": 1,
+      "inventory_demand_demo_1": 1,
+      "inventory_demand_demo_2": 1,
+      "inventory_demand_demo_3": 1,
+      "inventory_demand_demo_4": 1,
+      "labor_market_demo_0": 1,
+      "labor_market_demo_1": 1,
+      "labor_market_demo_2": 2,
+      "labor_market_demo_3": 1,
+      "labor_market_demo_4": 1,
+      "liquidity_funding_demo_0": 1,
+      "liquidity_funding_demo_1": 1,
+      "liquidity_funding_demo_2": 1,
+      "liquidity_funding_demo_3": 1,
+      "liquidity_funding_demo_4": 2,
+      "mergers_corporate_actions_demo_0": 1,
+      "mergers_corporate_actions_demo_1": 1,
+      "mergers_corporate_actions_demo_2": 1,
+      "mergers_corporate_actions_demo_3": 2,
+      "mergers_corporate_actions_demo_4": 1,
+      "monetary_policy_demo_0": 2,
+      "monetary_policy_demo_1": 1,
+      "monetary_policy_demo_2": 1,
+      "monetary_policy_demo_3": 1,
+      "monetary_policy_demo_4": 1,
+      "other_uncertain_demo_0": 1,
+      "other_uncertain_demo_1": 1,
+      "other_uncertain_demo_2": 1,
+      "other_uncertain_demo_3": 1,
+      "other_uncertain_demo_4": 1,
+      "regulation_enforcement_demo_0": 1,
+      "regulation_enforcement_demo_1": 2,
+      "regulation_enforcement_demo_2": 1,
+      "regulation_enforcement_demo_3": 1,
+      "regulation_enforcement_demo_4": 1
+    },
+    "by_provider": {
+      "ml_demo_event_mapper": 12,
+      "rule_cross_asset_event_mapper": 88
+    },
+    "by_uncertainty_flag": {
+      "missing_confidence": 6
+    },
+    "stale_fresh_counts": {
+      "fresh_at_generation": 100
+    },
+    "synthetic_count": 100,
+    "total": 100
+  },
+  "fixture_version": "cross-asset-demo-v1",
+  "generated_at": "2026-06-23T00:00:00+00:00",
+  "impact_ledger": {
+    "by_asset_class": {
+      "commodity": 22,
+      "crypto_asset": 19,
+      "equity_index": 26,
+      "etf": 30,
+      "futures_contract": 12,
+      "futures_root": 11,
+      "fx": 30,
+      "interest_rate": 30,
+      "macro_indicator": 5,
+      "precious_metal": 11,
+      "us_equity": 44
+    },
+    "by_direction": {
+      "mixed": 62,
+      "negative": 59,
+      "positive": 59,
+      "uncertain": 60
+    },
+    "by_event_family": {
+      "commodity_supply": 14,
+      "corporate_earnings_guidance": 14,
+      "crypto_protocol_ecosystem": 12,
+      "crypto_regulation": 12,
+      "derivatives_positioning": 12,
+      "economic_growth": 15,
+      "exchange_market_infrastructure": 12,
+      "fiscal_policy": 14,
+      "geopolitical_risk": 12,
+      "idiosyncratic_company_event": 12,
+      "inflation": 15,
+      "inventory_demand": 12,
+      "labor_market": 15,
+      "liquidity_funding": 14,
+      "mergers_corporate_actions": 14,
+      "monetary_policy": 15,
+      "other_uncertain": 12,
+      "regulation_enforcement": 14
+    },
+    "by_horizon": {
+      "intraday": 60,
+      "one_day": 60,
+      "one_month": 60,
+      "one_week": 60
+    },
+    "by_provider": {
+      "deterministic_impact_rules": 205,
+      "ml_demo_impact_ranker": 35
+    },
+    "by_relationship_type": {
+      "commodity_input_exposure": 20,
+      "correlation_hypothesis": 20,
+      "currency_translation": 20,
+      "direct_issuer": 20,
+      "index_constituent": 20,
+      "inflation_sensitivity": 20,
+      "rate_sensitivity": 20,
+      "regulatory_exposure": 20,
+      "risk_sentiment_hypothesis": 20,
+      "safe_haven_hypothesis": 20,
+      "sector_industry": 20,
+      "uncertain_other": 20
+    },
+    "by_status": {
+      "active": 231,
+      "expired": 3,
+      "rejected": 6
+    },
+    "confidence_null_non_null": {
+      "non_null": 232,
+      "null": 8
+    },
+    "duplicate_idempotency_examples": [
+      "IMPACT-0001",
+      "IMPACT-0002"
+    ],
+    "mixed_examples": [
+      "IMPACT-0003",
+      "IMPACT-0007",
+      "IMPACT-0011",
+      "IMPACT-0015",
+      "IMPACT-0019"
+    ],
+    "total": 240,
+    "uncertain_or_abstained_examples": [
+      "IMPACT-0004",
+      "IMPACT-0008",
+      "IMPACT-0012",
+      "IMPACT-0014",
+      "IMPACT-0016"
+    ]
+  },
+  "no_execution": true,
+  "not_investment_advice": true,
+  "package_content_hash": "003f6523b5930942a0122fe27e940431deef8673928de08f0469176517595950",
+  "schema_files": [
+    {
+      "path": "asset.schema.json",
+      "sha256": "635b0823e80a5bf54dd1d1e71f1005eaa9d7d8a5ab841f012397333cc04b1974",
+      "size_bytes": 1348
+    },
+    {
+      "path": "impact.schema.json",
+      "sha256": "1c152386fd0230df13e5ca259c161bb236d45a7b31cb7c73dc7e7fca5ae99640",
+      "size_bytes": 1466
+    },
+    {
+      "path": "manifest.schema.json",
+      "sha256": "461b461997c0fd9471223c75448679492f4227418284cd16da322fbcf6512fec",
+      "size_bytes": 1446
+    },
+    {
+      "path": "signal.schema.json",
+      "sha256": "99557c8fdcc859c30853543ebc26142725df9079055652b82a38d4bebaff5345",
+      "size_bytes": 1989
+    }
+  ],
+  "signal_ledger": {
+    "by_asset_class": {
+      "commodity": 7,
+      "crypto_asset": 7,
+      "equity_index": 11,
+      "etf": 9,
+      "futures_contract": 3,
+      "futures_root": 2,
+      "fx": 9,
+      "interest_rate": 10,
+      "macro_indicator": 1,
+      "precious_metal": 5,
+      "us_equity": 16
+    },
+    "by_direction": {
+      "mixed": 20,
+      "negative": 20,
+      "positive": 20,
+      "uncertain": 20
+    },
+    "by_horizon": {
+      "intraday": 20,
+      "one_day": 20,
+      "one_month": 20,
+      "one_week": 20
+    },
+    "by_provider": {
+      "deterministic_signal_candidate_generator": 80
+    },
+    "by_quality_tag": {
+      "metadata_only": 80,
+      "point_in_time": 80,
+      "synthetic": 80
+    },
+    "by_risk_tag": {
+      "hypothesis": 80,
+      "no_execution": 80,
+      "not_investment_advice": 80
+    },
+    "by_status": {
+      "abstained": 14,
+      "expired": 16,
+      "informational": 16,
+      "rejected": 18,
+      "research": 16
+    },
+    "confidence_null_non_null": {
+      "non_null": 77,
+      "null": 3
+    },
+    "expired_examples": [
+      "SIGNAL-0005",
+      "SIGNAL-0010",
+      "SIGNAL-0015",
+      "SIGNAL-0018",
+      "SIGNAL-0020"
+    ],
+    "idempotency_key_unique_count": 80,
+    "research_candidate_count": 16,
+    "total": 80
+  },
+  "signal_schema_version": "market-signal-v1",
+  "synthetic_data": true
+}

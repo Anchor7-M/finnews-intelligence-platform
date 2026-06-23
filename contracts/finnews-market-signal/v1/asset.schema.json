@@ -13,6 +13,9 @@
     "schema_version"
   ],
   "properties": {
+    "id": { "type": "string" },
+    "asset_id": { "type": "string" },
+    "display_name": { "type": "string" },
     "asset_class": {
       "enum": [
         "us_equity",
@@ -28,8 +31,18 @@
         "interest_rate"
       ]
     },
+    "canonical_symbol": { "type": ["string", "null"] },
+    "home_venue": { "type": ["string", "null"] },
+    "country_region": { "type": "string" },
+    "base_currency": { "type": ["string", "null"] },
+    "quote_currency": { "type": ["string", "null"] },
+    "parent_asset_id": { "type": ["string", "null"] },
+    "expiry": { "type": ["string", "null"] },
+    "contract_metadata": { "type": "object" },
     "status": { "enum": ["active", "inactive"] },
-    "synthetic": { "const": true }
+    "synthetic": { "const": true },
+    "provenance": { "type": "object" },
+    "schema_version": { "const": "cross-asset-v1" }
   },
-  "additionalProperties": true
+  "additionalProperties": false
 }
