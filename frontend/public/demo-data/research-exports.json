@@ -2,16 +2,16 @@
   {
     "export_id": "synthetic-news-factor-demo-v1",
     "contract_version": "1.0.0",
-    "package_content_hash": "c47a571b516914be16e9acadbc82404bfd68c246e60dca44f5722ca1bda64dec",
+    "package_content_hash": "c5269bbabed8afec2cf014a48d53b4a7515dc4c51a80926539084a5cc06a21c5",
     "file_hashes": {
-      "calendar.csv": "2f41e911e2433350680dc350d4915f8d7a6f8059ee7e78dae9d0277ebcf693b2",
+      "calendar.csv": "8ab148c4aece8d33b8ffdf58a03c7a9fd26b03768e98efc7334484f4ba4b9c37",
       "companies.csv": "a95eba1372209f955b704bab644a0f7164c3088c504d89603823d5fdeb8151a0",
-      "feature_rows.csv": "28a8ac5a5a7928c8d37cddfdc7fd084969af0dc5da28991184b6cf9b490ee40e",
-      "feature_rows.jsonl": "433f09b01d2df4f3959ec451adec5715fa5b0c738d8a688a7e870ea0497b6ce8",
+      "feature_rows.csv": "3e1bd8fdb6dc8a72b25eabdff52de63431ed0b8c2af52f37d7b74310e895914c",
+      "feature_rows.jsonl": "4948802822b9300a647da21210fe9402f86e5ecbd04fb516e4a8537e9b25592d",
       "lineage.jsonl": "a67bcbaf6bbd1f0005b14b96b9053062828bb2d69c34191cceaed22998a814bf",
       "quality_report.json": "f21e27684a1854c4d2303c626e86e453f71d7380cad452c9da02b926143bf323",
       "leakage_audit.json": "542076fcb18a6a6989498bc7e743c21910087fae700b279799c142cdaadb1dc1",
-      "manifest.json": "fd5c60c549c02aeb274130f87b6c6d3864098056d073531058053ca5fa7fd095"
+      "manifest.json": "2719d54cea1d2055fd54eca6696e038b384d6221eb6212d3cac796dfc85b222a"
     },
     "counts": {
       "session_count": 60,

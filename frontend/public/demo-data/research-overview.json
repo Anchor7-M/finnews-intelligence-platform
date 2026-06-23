@@ -4,7 +4,7 @@
   "export_id": "synthetic-news-factor-demo-v1",
   "calendar_id": "synthetic-ashare-demo-calendar",
   "calendar_version": "2026-demo-v1",
-  "calendar_hash": "0e08ec04d9dff2bca704f209a93b9e44715eec56ccccf37b0e902be8707fe39f",
+  "calendar_hash": "404cb8a3bc356d40b308eaf870469a6653be264995d39c819d286947e54290d4",
   "cutoff_policy": "pre_open_15m",
   "windows": [
     1,
@@ -12,7 +12,7 @@
     5,
     10
   ],
-  "package_content_hash": "c47a571b516914be16e9acadbc82404bfd68c246e60dca44f5722ca1bda64dec",
+  "package_content_hash": "c5269bbabed8afec2cf014a48d53b4a7515dc4c51a80926539084a5cc06a21c5",
   "counts": {
     "session_count": 60,
     "company_count": 12,
