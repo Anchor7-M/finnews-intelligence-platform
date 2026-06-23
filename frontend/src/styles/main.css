@@ -252,3 +252,13 @@ td {
   padding: 10px;
   text-align: left;
 }
+
+.matrix-grid {
+  display: grid;
+  font-family: "SFMono-Regular", Consolas, monospace;
+  font-size: 0.8rem;
+  gap: 4px;
+  margin-top: 8px;
+  overflow-x: auto;
+  white-space: pre;
+}

@@ -252,15 +252,18 @@ def verify_ml(_: argparse.Namespace) -> None:
             sys.executable,
             "-m",
             "pytest",
+            "tests/unit/test_nlp_baselines.py",
             "tests/unit/test_nlp_benchmark.py",
             "tests/unit/test_nlp_evaluation.py",
             "tests/unit/test_nlp_registry.py",
+            "tests/unit/test_nlp_release_audit.py",
             "tests/contract/test_nlp_api.py",
         ],
         backend,
         env={"FINNEWS_SOURCE_TEST_MODE": "mocked-offline"},
     )
     benchmark_nlp(argparse.Namespace())
+    run([sys.executable, "-m", "finnews.interfaces.cli.app", "nlp", "release-audit"], backend)
     run([sys.executable, "-m", "finnews.interfaces.cli.app", "nlp", "export-static"], backend)
     validate_static_export()
 

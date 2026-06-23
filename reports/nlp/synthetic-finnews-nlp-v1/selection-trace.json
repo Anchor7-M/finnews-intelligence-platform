@@ -1,0 +1,1590 @@
+{
+  "dataset_id": "synthetic-finnews-nlp-v1",
+  "dataset_sha256": "5eba057ef83198c5a35d29da2c821a5624d813885806cab4f48ecb22dbda67aa",
+  "split_hashes": {
+    "test": "2f0b409caa29a341e122d1ff28b4f34b09208d0b6f2f0dff323b5d469657172b",
+    "train": "78c03f095f38b7f40408e63c76924544659a3bbac1c34710f66a67cf5039fb7b",
+    "validation": "8dfe819e5dd65118175f400e99bc863c9bb162d5ce0cd717e3db693cdf97791c"
+  },
+  "tasks": {
+    "event": {
+      "abstention_threshold": 0.5,
+      "calibration_decision": {
+        "alpha": 1.5,
+        "method": "probability_power_scaling",
+        "status": "validation_alpha_improved_ece",
+        "test_ece": 0.32902,
+        "validation_ece": 0.332359
+      },
+      "candidate_ids": [
+        "char_tfidf_logreg",
+        "word_char_tfidf_logreg"
+      ],
+      "final_test_evaluation_id": "m2a-event-word_char_tfidf_logreg-test",
+      "freeze_config_hash": "a9483c9f2f6d31abdf7277a82f090df06a7118bad292917a41960f7a96e1609d",
+      "locked_test_hash": "2f0b409caa29a341e122d1ff28b4f34b09208d0b6f2f0dff323b5d469657172b",
+      "selected_candidate": "word_char_tfidf_logreg",
+      "selected_validation_metrics": {
+        "accuracy": 1.0,
+        "brier_score": 0.33847,
+        "confidence_coverage": [
+          {
+            "abstained_count": 171,
+            "coverage": 0.472222,
+            "covered_accuracy": 1.0,
+            "covered_count": 153,
+            "covered_macro_f1": 0.888889,
+            "threshold": 0.5
+          },
+          {
+            "abstained_count": 323,
+            "coverage": 0.003086,
+            "covered_accuracy": 1.0,
+            "covered_count": 1,
+            "covered_macro_f1": 0.111111,
+            "threshold": 0.6
+          },
+          {
+            "abstained_count": 324,
+            "coverage": 0.0,
+            "covered_accuracy": null,
+            "covered_count": 0,
+            "covered_macro_f1": null,
+            "threshold": 0.7
+          },
+          {
+            "abstained_count": 324,
+            "coverage": 0.0,
+            "covered_accuracy": null,
+            "covered_count": 0,
+            "covered_macro_f1": null,
+            "threshold": 0.8
+          },
+          {
+            "abstained_count": 324,
+            "coverage": 0.0,
+            "covered_accuracy": null,
+            "covered_count": 0,
+            "covered_macro_f1": null,
+            "threshold": 0.9
+          }
+        ],
+        "confusion_matrix": {
+          "labels": [
+            "earnings",
+            "merger_acquisition",
+            "policy_regulation",
+            "operations_product",
+            "financing_capital",
+            "litigation_penalty",
+            "governance_personnel",
+            "macro_market",
+            "other"
+          ],
+          "matrix": [
+            [
+              36,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              36,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              36,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              36,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              36,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              36,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              36,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              36,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              36
+            ]
+          ]
+        },
+        "expected_calibration_error": 0.534369,
+        "inference_duration_ms": 0,
+        "log_loss": 0.781196,
+        "macro_f1": 1.0,
+        "macro_precision": 1.0,
+        "macro_recall": 1.0,
+        "per_class": {
+          "earnings": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 36
+          },
+          "financing_capital": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 36
+          },
+          "governance_personnel": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 36
+          },
+          "litigation_penalty": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 36
+          },
+          "macro_market": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 36
+          },
+          "merger_acquisition": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 36
+          },
+          "operations_product": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 36
+          },
+          "other": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 36
+          },
+          "policy_regulation": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 36
+          }
+        },
+        "record_count": 324,
+        "reliability_bins": [
+          {
+            "accuracy": null,
+            "bin": 0,
+            "count": 0,
+            "lower": 0.0,
+            "mean_confidence": null,
+            "upper": 0.1
+          },
+          {
+            "accuracy": null,
+            "bin": 1,
+            "count": 0,
+            "lower": 0.1,
+            "mean_confidence": null,
+            "upper": 0.2
+          },
+          {
+            "accuracy": 1.0,
+            "bin": 2,
+            "count": 7,
+            "lower": 0.2,
+            "mean_confidence": 0.28821,
+            "upper": 0.3
+          },
+          {
+            "accuracy": 1.0,
+            "bin": 3,
+            "count": 62,
+            "lower": 0.3,
+            "mean_confidence": 0.340092,
+            "upper": 0.4
+          },
+          {
+            "accuracy": 1.0,
+            "bin": 4,
+            "count": 102,
+            "lower": 0.4,
+            "mean_confidence": 0.451165,
+            "upper": 0.5
+          },
+          {
+            "accuracy": 1.0,
+            "bin": 5,
+            "count": 152,
+            "lower": 0.5,
+            "mean_confidence": 0.533743,
+            "upper": 0.6
+          },
+          {
+            "accuracy": 1.0,
+            "bin": 6,
+            "count": 1,
+            "lower": 0.6,
+            "mean_confidence": 0.6135,
+            "upper": 0.7
+          },
+          {
+            "accuracy": null,
+            "bin": 7,
+            "count": 0,
+            "lower": 0.7,
+            "mean_confidence": null,
+            "upper": 0.8
+          },
+          {
+            "accuracy": null,
+            "bin": 8,
+            "count": 0,
+            "lower": 0.8,
+            "mean_confidence": null,
+            "upper": 0.9
+          },
+          {
+            "accuracy": null,
+            "bin": 9,
+            "count": 0,
+            "lower": 0.9,
+            "mean_confidence": null,
+            "upper": 1.0
+          }
+        ],
+        "weighted_f1": 1.0
+      },
+      "test_evaluation_after_freeze": true,
+      "tie_break_reason": "highest validation macro_f1",
+      "tie_break_values": {
+        "char_tfidf_logreg": {
+          "complexity_rank": 1,
+          "expected_calibration_error": 0.597495,
+          "macro_f1": 0.993822
+        },
+        "word_char_tfidf_logreg": {
+          "complexity_rank": 2,
+          "expected_calibration_error": 0.534369,
+          "macro_f1": 1.0
+        }
+      },
+      "train_hash": "78c03f095f38b7f40408e63c76924544659a3bbac1c34710f66a67cf5039fb7b",
+      "validation_hash": "8dfe819e5dd65118175f400e99bc863c9bb162d5ce0cd717e3db693cdf97791c",
+      "validation_metrics": {
+        "char_tfidf_logreg": {
+          "accuracy": 0.993827,
+          "brier_score": 0.427679,
+          "confidence_coverage": [
+            {
+              "abstained_count": 264,
+              "coverage": 0.185185,
+              "covered_accuracy": 1.0,
+              "covered_count": 60,
+              "covered_macro_f1": 0.777778,
+              "threshold": 0.5
+            },
+            {
+              "abstained_count": 324,
+              "coverage": 0.0,
+              "covered_accuracy": null,
+              "covered_count": 0,
+              "covered_macro_f1": null,
+              "threshold": 0.6
+            },
+            {
+              "abstained_count": 324,
+              "coverage": 0.0,
+              "covered_accuracy": null,
+              "covered_count": 0,
+              "covered_macro_f1": null,
+              "threshold": 0.7
+            },
+            {
+              "abstained_count": 324,
+              "coverage": 0.0,
+              "covered_accuracy": null,
+              "covered_count": 0,
+              "covered_macro_f1": null,
+              "threshold": 0.8
+            },
+            {
+              "abstained_count": 324,
+              "coverage": 0.0,
+              "covered_accuracy": null,
+              "covered_count": 0,
+              "covered_macro_f1": null,
+              "threshold": 0.9
+            }
+          ],
+          "confusion_matrix": {
+            "labels": [
+              "earnings",
+              "merger_acquisition",
+              "policy_regulation",
+              "operations_product",
+              "financing_capital",
+              "litigation_penalty",
+              "governance_personnel",
+              "macro_market",
+              "other"
+            ],
+            "matrix": [
+              [
+                36,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                36,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                36,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                36,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                36,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                34,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                36,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                36,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                36
+              ]
+            ]
+          },
+          "expected_calibration_error": 0.597495,
+          "inference_duration_ms": 0,
+          "log_loss": 0.961369,
+          "macro_f1": 0.993822,
+          "macro_precision": 0.994152,
+          "macro_recall": 0.993827,
+          "per_class": {
+            "earnings": {
+              "f1": 1.0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "support": 36
+            },
+            "financing_capital": {
+              "f1": 1.0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "support": 36
+            },
+            "governance_personnel": {
+              "f1": 1.0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "support": 36
+            },
+            "litigation_penalty": {
+              "f1": 0.971429,
+              "precision": 1.0,
+              "recall": 0.944444,
+              "support": 36
+            },
+            "macro_market": {
+              "f1": 1.0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "support": 36
+            },
+            "merger_acquisition": {
+              "f1": 1.0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "support": 36
+            },
+            "operations_product": {
+              "f1": 1.0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "support": 36
+            },
+            "other": {
+              "f1": 0.972973,
+              "precision": 0.947368,
+              "recall": 1.0,
+              "support": 36
+            },
+            "policy_regulation": {
+              "f1": 1.0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "support": 36
+            }
+          },
+          "record_count": 324,
+          "reliability_bins": [
+            {
+              "accuracy": null,
+              "bin": 0,
+              "count": 0,
+              "lower": 0.0,
+              "mean_confidence": null,
+              "upper": 0.1
+            },
+            {
+              "accuracy": 1.0,
+              "bin": 1,
+              "count": 1,
+              "lower": 0.1,
+              "mean_confidence": 0.199563,
+              "upper": 0.2
+            },
+            {
+              "accuracy": 0.975309,
+              "bin": 2,
+              "count": 81,
+              "lower": 0.2,
+              "mean_confidence": 0.256981,
+              "upper": 0.3
+            },
+            {
+              "accuracy": 1.0,
+              "bin": 3,
+              "count": 60,
+              "lower": 0.3,
+              "mean_confidence": 0.354233,
+              "upper": 0.4
+            },
+            {
+              "accuracy": 1.0,
+              "bin": 4,
+              "count": 122,
+              "lower": 0.4,
+              "mean_confidence": 0.454869,
+              "upper": 0.5
+            },
+            {
+              "accuracy": 1.0,
+              "bin": 5,
+              "count": 60,
+              "lower": 0.5,
+              "mean_confidence": 0.510809,
+              "upper": 0.6
+            },
+            {
+              "accuracy": null,
+              "bin": 6,
+              "count": 0,
+              "lower": 0.6,
+              "mean_confidence": null,
+              "upper": 0.7
+            },
+            {
+              "accuracy": null,
+              "bin": 7,
+              "count": 0,
+              "lower": 0.7,
+              "mean_confidence": null,
+              "upper": 0.8
+            },
+            {
+              "accuracy": null,
+              "bin": 8,
+              "count": 0,
+              "lower": 0.8,
+              "mean_confidence": null,
+              "upper": 0.9
+            },
+            {
+              "accuracy": null,
+              "bin": 9,
+              "count": 0,
+              "lower": 0.9,
+              "mean_confidence": null,
+              "upper": 1.0
+            }
+          ],
+          "weighted_f1": 0.993822
+        },
+        "word_char_tfidf_logreg": {
+          "accuracy": 1.0,
+          "brier_score": 0.33847,
+          "confidence_coverage": [
+            {
+              "abstained_count": 171,
+              "coverage": 0.472222,
+              "covered_accuracy": 1.0,
+              "covered_count": 153,
+              "covered_macro_f1": 0.888889,
+              "threshold": 0.5
+            },
+            {
+              "abstained_count": 323,
+              "coverage": 0.003086,
+              "covered_accuracy": 1.0,
+              "covered_count": 1,
+              "covered_macro_f1": 0.111111,
+              "threshold": 0.6
+            },
+            {
+              "abstained_count": 324,
+              "coverage": 0.0,
+              "covered_accuracy": null,
+              "covered_count": 0,
+              "covered_macro_f1": null,
+              "threshold": 0.7
+            },
+            {
+              "abstained_count": 324,
+              "coverage": 0.0,
+              "covered_accuracy": null,
+              "covered_count": 0,
+              "covered_macro_f1": null,
+              "threshold": 0.8
+            },
+            {
+              "abstained_count": 324,
+              "coverage": 0.0,
+              "covered_accuracy": null,
+              "covered_count": 0,
+              "covered_macro_f1": null,
+              "threshold": 0.9
+            }
+          ],
+          "confusion_matrix": {
+            "labels": [
+              "earnings",
+              "merger_acquisition",
+              "policy_regulation",
+              "operations_product",
+              "financing_capital",
+              "litigation_penalty",
+              "governance_personnel",
+              "macro_market",
+              "other"
+            ],
+            "matrix": [
+              [
+                36,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                36,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                36,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                36,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                36,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                36,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                36,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                36,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                36
+              ]
+            ]
+          },
+          "expected_calibration_error": 0.534369,
+          "inference_duration_ms": 0,
+          "log_loss": 0.781196,
+          "macro_f1": 1.0,
+          "macro_precision": 1.0,
+          "macro_recall": 1.0,
+          "per_class": {
+            "earnings": {
+              "f1": 1.0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "support": 36
+            },
+            "financing_capital": {
+              "f1": 1.0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "support": 36
+            },
+            "governance_personnel": {
+              "f1": 1.0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "support": 36
+            },
+            "litigation_penalty": {
+              "f1": 1.0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "support": 36
+            },
+            "macro_market": {
+              "f1": 1.0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "support": 36
+            },
+            "merger_acquisition": {
+              "f1": 1.0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "support": 36
+            },
+            "operations_product": {
+              "f1": 1.0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "support": 36
+            },
+            "other": {
+              "f1": 1.0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "support": 36
+            },
+            "policy_regulation": {
+              "f1": 1.0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "support": 36
+            }
+          },
+          "record_count": 324,
+          "reliability_bins": [
+            {
+              "accuracy": null,
+              "bin": 0,
+              "count": 0,
+              "lower": 0.0,
+              "mean_confidence": null,
+              "upper": 0.1
+            },
+            {
+              "accuracy": null,
+              "bin": 1,
+              "count": 0,
+              "lower": 0.1,
+              "mean_confidence": null,
+              "upper": 0.2
+            },
+            {
+              "accuracy": 1.0,
+              "bin": 2,
+              "count": 7,
+              "lower": 0.2,
+              "mean_confidence": 0.28821,
+              "upper": 0.3
+            },
+            {
+              "accuracy": 1.0,
+              "bin": 3,
+              "count": 62,
+              "lower": 0.3,
+              "mean_confidence": 0.340092,
+              "upper": 0.4
+            },
+            {
+              "accuracy": 1.0,
+              "bin": 4,
+              "count": 102,
+              "lower": 0.4,
+              "mean_confidence": 0.451165,
+              "upper": 0.5
+            },
+            {
+              "accuracy": 1.0,
+              "bin": 5,
+              "count": 152,
+              "lower": 0.5,
+              "mean_confidence": 0.533743,
+              "upper": 0.6
+            },
+            {
+              "accuracy": 1.0,
+              "bin": 6,
+              "count": 1,
+              "lower": 0.6,
+              "mean_confidence": 0.6135,
+              "upper": 0.7
+            },
+            {
+              "accuracy": null,
+              "bin": 7,
+              "count": 0,
+              "lower": 0.7,
+              "mean_confidence": null,
+              "upper": 0.8
+            },
+            {
+              "accuracy": null,
+              "bin": 8,
+              "count": 0,
+              "lower": 0.8,
+              "mean_confidence": null,
+              "upper": 0.9
+            },
+            {
+              "accuracy": null,
+              "bin": 9,
+              "count": 0,
+              "lower": 0.9,
+              "mean_confidence": null,
+              "upper": 1.0
+            }
+          ],
+          "weighted_f1": 1.0
+        }
+      }
+    },
+    "sentiment": {
+      "abstention_threshold": 0.5,
+      "calibration_decision": {
+        "alpha": 1.5,
+        "method": "probability_power_scaling",
+        "status": "validation_alpha_improved_ece",
+        "test_ece": 0.157792,
+        "validation_ece": 0.110114
+      },
+      "candidate_ids": [
+        "char_tfidf_logreg",
+        "word_char_tfidf_logreg"
+      ],
+      "final_test_evaluation_id": "m2a-sentiment-word_char_tfidf_logreg-test",
+      "freeze_config_hash": "d9815f2a0e484e5c7e46d5aa46ece470d9693ce5f22ca2cdb8c4ddabd44a320b",
+      "locked_test_hash": "2f0b409caa29a341e122d1ff28b4f34b09208d0b6f2f0dff323b5d469657172b",
+      "selected_candidate": "word_char_tfidf_logreg",
+      "selected_validation_metrics": {
+        "accuracy": 1.0,
+        "brier_score": 0.092702,
+        "confidence_coverage": [
+          {
+            "abstained_count": 0,
+            "coverage": 1.0,
+            "covered_accuracy": 1.0,
+            "covered_count": 324,
+            "covered_macro_f1": 1.0,
+            "threshold": 0.5
+          },
+          {
+            "abstained_count": 0,
+            "coverage": 1.0,
+            "covered_accuracy": 1.0,
+            "covered_count": 324,
+            "covered_macro_f1": 1.0,
+            "threshold": 0.6
+          },
+          {
+            "abstained_count": 112,
+            "coverage": 0.654321,
+            "covered_accuracy": 1.0,
+            "covered_count": 212,
+            "covered_macro_f1": 1.0,
+            "threshold": 0.7
+          },
+          {
+            "abstained_count": 236,
+            "coverage": 0.271605,
+            "covered_accuracy": 1.0,
+            "covered_count": 88,
+            "covered_macro_f1": 1.0,
+            "threshold": 0.8
+          },
+          {
+            "abstained_count": 324,
+            "coverage": 0.0,
+            "covered_accuracy": null,
+            "covered_count": 0,
+            "covered_macro_f1": null,
+            "threshold": 0.9
+          }
+        ],
+        "confusion_matrix": {
+          "labels": [
+            "positive",
+            "neutral",
+            "negative",
+            "uncertain"
+          ],
+          "matrix": [
+            [
+              81,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              81,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              81,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              81
+            ]
+          ]
+        },
+        "expected_calibration_error": 0.256287,
+        "inference_duration_ms": 0,
+        "log_loss": 0.299012,
+        "macro_f1": 1.0,
+        "macro_precision": 1.0,
+        "macro_recall": 1.0,
+        "per_class": {
+          "negative": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 81
+          },
+          "neutral": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 81
+          },
+          "positive": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 81
+          },
+          "uncertain": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 81
+          }
+        },
+        "record_count": 324,
+        "reliability_bins": [
+          {
+            "accuracy": null,
+            "bin": 0,
+            "count": 0,
+            "lower": 0.0,
+            "mean_confidence": null,
+            "upper": 0.1
+          },
+          {
+            "accuracy": null,
+            "bin": 1,
+            "count": 0,
+            "lower": 0.1,
+            "mean_confidence": null,
+            "upper": 0.2
+          },
+          {
+            "accuracy": null,
+            "bin": 2,
+            "count": 0,
+            "lower": 0.2,
+            "mean_confidence": null,
+            "upper": 0.3
+          },
+          {
+            "accuracy": null,
+            "bin": 3,
+            "count": 0,
+            "lower": 0.3,
+            "mean_confidence": null,
+            "upper": 0.4
+          },
+          {
+            "accuracy": null,
+            "bin": 4,
+            "count": 0,
+            "lower": 0.4,
+            "mean_confidence": null,
+            "upper": 0.5
+          },
+          {
+            "accuracy": null,
+            "bin": 5,
+            "count": 0,
+            "lower": 0.5,
+            "mean_confidence": null,
+            "upper": 0.6
+          },
+          {
+            "accuracy": 1.0,
+            "bin": 6,
+            "count": 112,
+            "lower": 0.6,
+            "mean_confidence": 0.681976,
+            "upper": 0.7
+          },
+          {
+            "accuracy": 1.0,
+            "bin": 7,
+            "count": 124,
+            "lower": 0.7,
+            "mean_confidence": 0.751169,
+            "upper": 0.8
+          },
+          {
+            "accuracy": 1.0,
+            "bin": 8,
+            "count": 88,
+            "lower": 0.8,
+            "mean_confidence": 0.81178,
+            "upper": 0.9
+          },
+          {
+            "accuracy": null,
+            "bin": 9,
+            "count": 0,
+            "lower": 0.9,
+            "mean_confidence": null,
+            "upper": 1.0
+          }
+        ],
+        "weighted_f1": 1.0
+      },
+      "test_evaluation_after_freeze": true,
+      "tie_break_reason": "validation macro_f1 tie, lower validation ECE",
+      "tie_break_values": {
+        "char_tfidf_logreg": {
+          "complexity_rank": 1,
+          "expected_calibration_error": 0.3928,
+          "macro_f1": 1.0
+        },
+        "word_char_tfidf_logreg": {
+          "complexity_rank": 2,
+          "expected_calibration_error": 0.256287,
+          "macro_f1": 1.0
+        }
+      },
+      "train_hash": "78c03f095f38b7f40408e63c76924544659a3bbac1c34710f66a67cf5039fb7b",
+      "validation_hash": "8dfe819e5dd65118175f400e99bc863c9bb162d5ce0cd717e3db693cdf97791c",
+      "validation_metrics": {
+        "char_tfidf_logreg": {
+          "accuracy": 1.0,
+          "brier_score": 0.207822,
+          "confidence_coverage": [
+            {
+              "abstained_count": 0,
+              "coverage": 1.0,
+              "covered_accuracy": 1.0,
+              "covered_count": 324,
+              "covered_macro_f1": 1.0,
+              "threshold": 0.5
+            },
+            {
+              "abstained_count": 127,
+              "coverage": 0.608025,
+              "covered_accuracy": 1.0,
+              "covered_count": 197,
+              "covered_macro_f1": 1.0,
+              "threshold": 0.6
+            },
+            {
+              "abstained_count": 324,
+              "coverage": 0.0,
+              "covered_accuracy": null,
+              "covered_count": 0,
+              "covered_macro_f1": null,
+              "threshold": 0.7
+            },
+            {
+              "abstained_count": 324,
+              "coverage": 0.0,
+              "covered_accuracy": null,
+              "covered_count": 0,
+              "covered_macro_f1": null,
+              "threshold": 0.8
+            },
+            {
+              "abstained_count": 324,
+              "coverage": 0.0,
+              "covered_accuracy": null,
+              "covered_count": 0,
+              "covered_macro_f1": null,
+              "threshold": 0.9
+            }
+          ],
+          "confusion_matrix": {
+            "labels": [
+              "positive",
+              "neutral",
+              "negative",
+              "uncertain"
+            ],
+            "matrix": [
+              [
+                81,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                81,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                81,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                81
+              ]
+            ]
+          },
+          "expected_calibration_error": 0.3928,
+          "inference_duration_ms": 0,
+          "log_loss": 0.500105,
+          "macro_f1": 1.0,
+          "macro_precision": 1.0,
+          "macro_recall": 1.0,
+          "per_class": {
+            "negative": {
+              "f1": 1.0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "support": 81
+            },
+            "neutral": {
+              "f1": 1.0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "support": 81
+            },
+            "positive": {
+              "f1": 1.0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "support": 81
+            },
+            "uncertain": {
+              "f1": 1.0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "support": 81
+            }
+          },
+          "record_count": 324,
+          "reliability_bins": [
+            {
+              "accuracy": null,
+              "bin": 0,
+              "count": 0,
+              "lower": 0.0,
+              "mean_confidence": null,
+              "upper": 0.1
+            },
+            {
+              "accuracy": null,
+              "bin": 1,
+              "count": 0,
+              "lower": 0.1,
+              "mean_confidence": null,
+              "upper": 0.2
+            },
+            {
+              "accuracy": null,
+              "bin": 2,
+              "count": 0,
+              "lower": 0.2,
+              "mean_confidence": null,
+              "upper": 0.3
+            },
+            {
+              "accuracy": null,
+              "bin": 3,
+              "count": 0,
+              "lower": 0.3,
+              "mean_confidence": null,
+              "upper": 0.4
+            },
+            {
+              "accuracy": null,
+              "bin": 4,
+              "count": 0,
+              "lower": 0.4,
+              "mean_confidence": null,
+              "upper": 0.5
+            },
+            {
+              "accuracy": 1.0,
+              "bin": 5,
+              "count": 127,
+              "lower": 0.5,
+              "mean_confidence": 0.576405,
+              "upper": 0.6
+            },
+            {
+              "accuracy": 1.0,
+              "bin": 6,
+              "count": 197,
+              "lower": 0.6,
+              "mean_confidence": 0.627052,
+              "upper": 0.7
+            },
+            {
+              "accuracy": null,
+              "bin": 7,
+              "count": 0,
+              "lower": 0.7,
+              "mean_confidence": null,
+              "upper": 0.8
+            },
+            {
+              "accuracy": null,
+              "bin": 8,
+              "count": 0,
+              "lower": 0.8,
+              "mean_confidence": null,
+              "upper": 0.9
+            },
+            {
+              "accuracy": null,
+              "bin": 9,
+              "count": 0,
+              "lower": 0.9,
+              "mean_confidence": null,
+              "upper": 1.0
+            }
+          ],
+          "weighted_f1": 1.0
+        },
+        "word_char_tfidf_logreg": {
+          "accuracy": 1.0,
+          "brier_score": 0.092702,
+          "confidence_coverage": [
+            {
+              "abstained_count": 0,
+              "coverage": 1.0,
+              "covered_accuracy": 1.0,
+              "covered_count": 324,
+              "covered_macro_f1": 1.0,
+              "threshold": 0.5
+            },
+            {
+              "abstained_count": 0,
+              "coverage": 1.0,
+              "covered_accuracy": 1.0,
+              "covered_count": 324,
+              "covered_macro_f1": 1.0,
+              "threshold": 0.6
+            },
+            {
+              "abstained_count": 112,
+              "coverage": 0.654321,
+              "covered_accuracy": 1.0,
+              "covered_count": 212,
+              "covered_macro_f1": 1.0,
+              "threshold": 0.7
+            },
+            {
+              "abstained_count": 236,
+              "coverage": 0.271605,
+              "covered_accuracy": 1.0,
+              "covered_count": 88,
+              "covered_macro_f1": 1.0,
+              "threshold": 0.8
+            },
+            {
+              "abstained_count": 324,
+              "coverage": 0.0,
+              "covered_accuracy": null,
+              "covered_count": 0,
+              "covered_macro_f1": null,
+              "threshold": 0.9
+            }
+          ],
+          "confusion_matrix": {
+            "labels": [
+              "positive",
+              "neutral",
+              "negative",
+              "uncertain"
+            ],
+            "matrix": [
+              [
+                81,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                81,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                81,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                81
+              ]
+            ]
+          },
+          "expected_calibration_error": 0.256287,
+          "inference_duration_ms": 0,
+          "log_loss": 0.299012,
+          "macro_f1": 1.0,
+          "macro_precision": 1.0,
+          "macro_recall": 1.0,
+          "per_class": {
+            "negative": {
+              "f1": 1.0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "support": 81
+            },
+            "neutral": {
+              "f1": 1.0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "support": 81
+            },
+            "positive": {
+              "f1": 1.0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "support": 81
+            },
+            "uncertain": {
+              "f1": 1.0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "support": 81
+            }
+          },
+          "record_count": 324,
+          "reliability_bins": [
+            {
+              "accuracy": null,
+              "bin": 0,
+              "count": 0,
+              "lower": 0.0,
+              "mean_confidence": null,
+              "upper": 0.1
+            },
+            {
+              "accuracy": null,
+              "bin": 1,
+              "count": 0,
+              "lower": 0.1,
+              "mean_confidence": null,
+              "upper": 0.2
+            },
+            {
+              "accuracy": null,
+              "bin": 2,
+              "count": 0,
+              "lower": 0.2,
+              "mean_confidence": null,
+              "upper": 0.3
+            },
+            {
+              "accuracy": null,
+              "bin": 3,
+              "count": 0,
+              "lower": 0.3,
+              "mean_confidence": null,
+              "upper": 0.4
+            },
+            {
+              "accuracy": null,
+              "bin": 4,
+              "count": 0,
+              "lower": 0.4,
+              "mean_confidence": null,
+              "upper": 0.5
+            },
+            {
+              "accuracy": null,
+              "bin": 5,
+              "count": 0,
+              "lower": 0.5,
+              "mean_confidence": null,
+              "upper": 0.6
+            },
+            {
+              "accuracy": 1.0,
+              "bin": 6,
+              "count": 112,
+              "lower": 0.6,
+              "mean_confidence": 0.681976,
+              "upper": 0.7
+            },
+            {
+              "accuracy": 1.0,
+              "bin": 7,
+              "count": 124,
+              "lower": 0.7,
+              "mean_confidence": 0.751169,
+              "upper": 0.8
+            },
+            {
+              "accuracy": 1.0,
+              "bin": 8,
+              "count": 88,
+              "lower": 0.8,
+              "mean_confidence": 0.81178,
+              "upper": 0.9
+            },
+            {
+              "accuracy": null,
+              "bin": 9,
+              "count": 0,
+              "lower": 0.9,
+              "mean_confidence": null,
+              "upper": 1.0
+            }
+          ],
+          "weighted_f1": 1.0
+        }
+      }
+    }
+  },
+  "test_set_used_for_selection": false
+}

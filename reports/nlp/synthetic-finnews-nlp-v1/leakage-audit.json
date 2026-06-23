@@ -1,0 +1,41 @@
+{
+  "exact_cross_split_overlaps": {
+    "train_vs_test": [],
+    "train_vs_validation": [],
+    "validation_vs_test": []
+  },
+  "exact_text_duplicate_count": 0,
+  "maximum_cross_split_similarities": {
+    "train_vs_test": {
+      "left_record_id": "m2a-tf-05-financing_capital-negative-p2",
+      "right_record_id": "m2a-tf-11-earnings-positive-p2",
+      "similarity": 0.850374
+    },
+    "train_vs_validation": {
+      "left_record_id": "m2a-tf-04-merger_acquisition-neutral-p0",
+      "right_record_id": "m2a-tf-08-macro_market-neutral-p0",
+      "similarity": 0.897281
+    },
+    "validation_vs_test": {
+      "left_record_id": "m2a-tf-08-other-neutral-p0",
+      "right_record_id": "m2a-tf-11-governance_personnel-positive-p0",
+      "similarity": 0.819242
+    }
+  },
+  "method": {
+    "near_duplicate_similarity": "Jaccard similarity over normalized character 5-grams",
+    "normalization": "comparison_text lowercase/punctuation normalization",
+    "warning_threshold": 0.92
+  },
+  "pairs_at_or_above_warning_threshold": {
+    "train_vs_test": [],
+    "train_vs_validation": [],
+    "validation_vs_test": []
+  },
+  "paraphrases_stay_in_one_split": true,
+  "prohibited_pair_found": false,
+  "record_ids_disjoint": true,
+  "story_groups_disjoint": true,
+  "template_families_disjoint": true,
+  "test_lock_checked": true
+}

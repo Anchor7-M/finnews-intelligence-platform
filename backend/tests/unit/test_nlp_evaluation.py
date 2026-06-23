@@ -38,6 +38,17 @@ def test_metric_math_for_probabilities_and_coverage() -> None:
     coverage = confidence_coverage(y_true, y_pred, probabilities, labels)
     assert coverage[1]["threshold"] == 0.6
     assert coverage[1]["covered_count"] == 4
+    empty_coverage = confidence_coverage(y_true, y_pred, probabilities, labels, thresholds=[0.95])
+    assert empty_coverage == [
+        {
+            "threshold": 0.95,
+            "coverage": 0.0,
+            "covered_count": 0,
+            "abstained_count": 4,
+            "covered_accuracy": None,
+            "covered_macro_f1": None,
+        }
+    ]
 
 
 def test_nlp_benchmark_report_artifacts_and_tamper_detection(tmp_path: Path) -> None:
