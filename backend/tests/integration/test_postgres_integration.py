@@ -211,7 +211,7 @@ def test_alembic_upgrade_downgrade_schema_types_constraints_and_indexes(engine: 
         )
         assert ("raw_metadata", "jsonb", "jsonb") in by_column
         assert ("contract_metadata", "jsonb", "jsonb") in by_column
-        assert ("evidence_codes", "_text", "ARRAY") in by_column
+        assert ("evidence_codes", "jsonb", "jsonb") in by_column
         assert ("published_at", "timestamptz", "timestamp with time zone") in by_column
         assert session.execute(text("show server_encoding")).scalar_one() == "UTF8"
         client_encoding = session.execute(text("select current_setting('client_encoding')"))

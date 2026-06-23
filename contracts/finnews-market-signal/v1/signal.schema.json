@@ -19,11 +19,26 @@
     "synthetic"
   ],
   "properties": {
+    "id": { "type": "string" },
+    "signal_id": { "type": "string" },
+    "impact_id": { "type": "string" },
+    "event_id": { "type": "string" },
+    "asset_id": { "type": "string" },
     "direction": { "enum": ["positive", "negative", "mixed", "uncertain"] },
     "horizon": { "enum": ["intraday", "one_day", "one_week", "one_month"] },
     "status": { "enum": ["informational", "research", "abstained", "rejected", "expired"] },
     "confidence": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+    "score": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+    "information_cutoff_at": { "type": "string" },
+    "generated_at": { "type": "string" },
+    "expires_at": { "type": "string" },
+    "provider": { "type": "string" },
+    "provider_version": { "type": "string" },
+    "evidence_codes": { "type": "array", "items": { "type": "string" } },
+    "quality_tags": { "type": "array", "items": { "type": "string" } },
+    "risk_tags": { "type": "array", "items": { "type": "string" } },
     "payload_hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "idempotency_key": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
     "synthetic": { "const": true }
   },
   "not": {
@@ -38,5 +53,5 @@
       { "required": ["password"] }
     ]
   },
-  "additionalProperties": true
+  "additionalProperties": false
 }

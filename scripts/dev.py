@@ -1,20 +1,25 @@
 from __future__ import annotations
 
 import argparse
-from contextlib import contextmanager
 import os
-from pathlib import Path
 import shutil
 import subprocess
 import sys
 import tempfile
 import time
-
+from contextlib import contextmanager
+from pathlib import Path
+from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 POSTGRES_PROJECT = "finnews_m3r_verify"
 POSTGRES_SERVICE = "postgres"
 POSTGRES_URL = "postgresql+psycopg://finnews:finnews@127.0.0.1:55432/finnews"
+TIMINGS: list[dict[str, Any]] = []
+TIMINGS_PATH = ROOT / "reports" / "verification" / "revised-m3a-timings.json"
+VENV_PYTHON = ROOT / ".venv" / "Scripts" / "python.exe"
+PYTHON = str(VENV_PYTHON if VENV_PYTHON.exists() else Path(sys.executable))
+RUN_STARTED = time.monotonic()
 
 
 def run(
@@ -22,21 +27,93 @@ def run(
     cwd: Path = ROOT,
     check: bool = True,
     env: dict[str, str] | None = None,
+    timeout_seconds: int = 600,
+    step_name: str | None = None,
 ) -> int:
     resolved = command[:]
     executable = shutil.which(command[0])
     if executable:
         resolved[0] = executable
     print(f"+ {' '.join(command)}")
-    completed = subprocess.run(
-        resolved,
-        cwd=cwd,
-        check=False,
-        env={**os.environ, **(env or {})},
+    started = time.monotonic()
+    status = "completed"
+    try:
+        completed = subprocess.run(
+            resolved,
+            cwd=cwd,
+            check=False,
+            env={**os.environ, **(env or {})},
+            timeout=timeout_seconds,
+        )
+        return_code = completed.returncode
+    except subprocess.TimeoutExpired:
+        status = "timeout"
+        return_code = 124
+    duration = time.monotonic() - started
+    ended = started + duration
+    report_command = stable_command(command)
+    _record_timing(
+        {
+            "step": step_name or " ".join(report_command[:4]),
+            "command": report_command,
+            "cwd": str(cwd.relative_to(ROOT)) if cwd.is_relative_to(ROOT) else str(cwd),
+            "started_offset_seconds": round(started - RUN_STARTED, 3),
+            "ended_offset_seconds": round(ended - RUN_STARTED, 3),
+            "duration_seconds": round(duration, 3),
+            "exit_code": return_code,
+            "timeout_seconds": timeout_seconds,
+            "outcome": status if return_code == 0 else f"{status}_failed",
+        }
     )
-    if check and completed.returncode != 0:
-        raise SystemExit(completed.returncode)
-    return completed.returncode
+    if status == "timeout":
+        print(f"timed out after {timeout_seconds}s: {' '.join(command)}")
+    if check and return_code != 0:
+        raise SystemExit(return_code)
+    return return_code
+
+
+def stable_command(command: list[str]) -> list[str]:
+    stable: list[str] = []
+    for item in command:
+        if item == PYTHON:
+            stable.append(".venv/Scripts/python.exe" if VENV_PYTHON.exists() else "python")
+            continue
+        try:
+            path = Path(item)
+        except ValueError:
+            stable.append(item)
+            continue
+        if path.is_absolute():
+            try:
+                stable.append(path.relative_to(ROOT).as_posix())
+            except ValueError:
+                stable.append("<external-path>")
+        else:
+            stable.append(item)
+    return stable
+
+
+def _record_timing(row: dict[str, Any]) -> None:
+    if not TIMINGS and TIMINGS_PATH.exists():
+        import json
+
+        try:
+            existing = json.loads(TIMINGS_PATH.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            existing = {}
+        TIMINGS.extend(existing.get("steps", []))
+    TIMINGS.append(row)
+    TIMINGS_PATH.parent.mkdir(parents=True, exist_ok=True)
+    TIMINGS_PATH.write_text(
+        json_dumps({"steps": TIMINGS}, indent=2),
+        encoding="utf-8",
+    )
+
+
+def json_dumps(payload: object, indent: int | None = None) -> str:
+    import json
+
+    return json.dumps(payload, ensure_ascii=False, indent=indent, sort_keys=True) + "\n"
 
 
 @contextmanager
@@ -61,7 +138,7 @@ def temporary_signal_package():
 
 def doctor(_: argparse.Namespace) -> None:
     print(f"repo={ROOT}")
-    run([sys.executable, "--version"], check=False)
+    run([PYTHON, "--version"], check=False)
     run(["node", "--version"], check=False)
     run(["npm", "--version"], check=False)
     run(["docker", "--version"], check=False)
@@ -73,28 +150,18 @@ def doctor(_: argparse.Namespace) -> None:
 def verify_lite(_: argparse.Namespace) -> None:
     backend = ROOT / "backend"
     frontend = ROOT / "frontend"
+    run_backend_non_postgres_tests_with_coverage(backend)
+    run([PYTHON, "-m", "ruff", "check", "."], backend, timeout_seconds=120)
+    run([PYTHON, "-m", "ruff", "format", "--check", "."], backend, timeout_seconds=120)
+    run([PYTHON, "-m", "mypy", "src", "tests"], backend, timeout_seconds=240)
+    run(["npm", "run", "lint"], frontend, timeout_seconds=120)
+    run(["npm", "run", "format:check"], frontend, timeout_seconds=120)
+    run(["npm", "run", "typecheck"], frontend, timeout_seconds=180)
+    run(["npm", "run", "test:unit", "--", "--run"], frontend, timeout_seconds=180)
+    run(["npm", "run", "build"], frontend, timeout_seconds=240)
     run(
         [
-            sys.executable,
-            "-m",
-            "pytest",
-            "--cov=finnews",
-            "--cov-report=term-missing",
-            "--cov-fail-under=80",
-        ],
-        backend,
-    )
-    run([sys.executable, "-m", "ruff", "check", "."], backend)
-    run([sys.executable, "-m", "ruff", "format", "--check", "."], backend)
-    run([sys.executable, "-m", "mypy", "src", "tests"], backend)
-    run(["npm", "run", "lint"], frontend)
-    run(["npm", "run", "format:check"], frontend)
-    run(["npm", "run", "typecheck"], frontend)
-    run(["npm", "run", "test:unit", "--", "--run"], frontend)
-    run(["npm", "run", "build"], frontend)
-    run(
-        [
-            sys.executable,
+            PYTHON,
             "-m",
             "finnews.interfaces.cli.app",
             "demo",
@@ -102,10 +169,60 @@ def verify_lite(_: argparse.Namespace) -> None:
             "memory",
         ],
         backend,
+        timeout_seconds=180,
     )
     validate_static_export()
     if shutil.which("git"):
-        run(["git", "diff", "--check"], ROOT)
+        run(["git", "diff", "--check"], ROOT, timeout_seconds=120)
+
+
+def backend_non_postgres_test_files(backend: Path) -> list[str]:
+    files = sorted((backend / "tests" / "unit").glob("test_*.py"))
+    files += sorted((backend / "tests" / "contract").glob("test_*.py"))
+    return [path.relative_to(backend).as_posix() for path in files]
+
+
+def run_backend_non_postgres_tests_with_coverage(backend: Path) -> None:
+    run([PYTHON, "-m", "coverage", "erase"], backend, timeout_seconds=60)
+    for test_file in backend_non_postgres_test_files(backend):
+        run(
+            [
+                PYTHON,
+                "-m",
+                "coverage",
+                "run",
+                "--parallel-mode",
+                "-m",
+                "pytest",
+                test_file,
+                "-q",
+            ],
+            backend,
+            timeout_seconds=240,
+            step_name=f"backend pytest coverage {test_file}",
+        )
+    run(
+        [
+            PYTHON,
+            "-m",
+            "coverage",
+            "combine",
+        ],
+        backend,
+        timeout_seconds=120,
+    )
+    run(
+        [
+            PYTHON,
+            "-m",
+            "coverage",
+            "report",
+            "--fail-under=80",
+            "--show-missing",
+        ],
+        backend,
+        timeout_seconds=180,
+    )
 
 
 def validate_static_export() -> None:
@@ -180,15 +297,19 @@ def verify_postgres(_: argparse.Namespace) -> None:
     try:
         db_up(argparse.Namespace())
         run(
-            [sys.executable, "-m", "alembic", "upgrade", "head"],
+            [PYTHON, "-m", "alembic", "upgrade", "head"],
             ROOT / "backend",
             env=env,
+            timeout_seconds=120,
         )
-        run(
-            [sys.executable, "-m", "pytest", "-m", "postgres", "-s"],
-            ROOT / "backend",
-            env=env,
-        )
+        for nodeid in collect_postgres_test_nodeids(ROOT / "backend", env):
+            run(
+                [PYTHON, "-m", "pytest", nodeid, "-s", "-q"],
+                ROOT / "backend",
+                env=env,
+                timeout_seconds=300,
+                step_name=f"postgres pytest {nodeid}",
+            )
         success = True
     finally:
         db_down(argparse.Namespace())
@@ -199,13 +320,70 @@ def verify_postgres(_: argparse.Namespace) -> None:
         )
 
 
+def collect_postgres_test_nodeids(backend: Path, env: dict[str, str]) -> list[str]:
+    command = [
+        PYTHON,
+        "-m",
+        "pytest",
+        "--collect-only",
+        "-vv",
+        "-m",
+        "postgres",
+    ]
+    resolved = command[:]
+    executable = shutil.which(command[0])
+    if executable:
+        resolved[0] = executable
+    print(f"+ {' '.join(command)}")
+    started = time.monotonic()
+    completed = subprocess.run(
+        resolved,
+        cwd=backend,
+        check=False,
+        text=True,
+        capture_output=True,
+        env={**os.environ, **env},
+        timeout=180,
+    )
+    duration = time.monotonic() - started
+    ended = started + duration
+    _record_timing(
+        {
+            "step": "postgres pytest collect",
+            "command": stable_command(command),
+            "cwd": str(backend.relative_to(ROOT)),
+            "started_offset_seconds": round(started - RUN_STARTED, 3),
+            "ended_offset_seconds": round(ended - RUN_STARTED, 3),
+            "duration_seconds": round(duration, 3),
+            "exit_code": completed.returncode,
+            "timeout_seconds": 180,
+            "outcome": "completed" if completed.returncode == 0 else "completed_failed",
+        }
+    )
+    if completed.returncode != 0:
+        print(completed.stdout)
+        print(completed.stderr)
+        raise SystemExit(completed.returncode)
+    nodeids: list[str] = []
+    for line in completed.stdout.splitlines():
+        stripped = line.strip()
+        if "::test_" in stripped and not stripped.startswith("<"):
+            nodeids.append(stripped)
+        elif stripped.startswith("<Function test_") and stripped.endswith(">"):
+            name = stripped.removeprefix("<Function ").removesuffix(">")
+            nodeids.append(f"tests/integration/test_postgres_integration.py::{name}")
+    if not nodeids:
+        raise SystemExit("no PostgreSQL test nodeids collected")
+    return nodeids
+
+
 def verify_sources(_: argparse.Namespace) -> None:
     backend = ROOT / "backend"
     frontend = ROOT / "frontend"
     env = {"FINNEWS_SOURCE_TEST_MODE": "mocked-offline"}
     run(
         [
-            sys.executable,
+            PYTHON,
             "-m",
             "finnews.interfaces.cli.app",
             "source",
@@ -216,7 +394,7 @@ def verify_sources(_: argparse.Namespace) -> None:
     )
     run(
         [
-            sys.executable,
+            PYTHON,
             "-m",
             "pytest",
             "tests/unit/test_source_registry.py",
@@ -236,7 +414,7 @@ def verify_source_reviews(_: argparse.Namespace) -> None:
     env = {"FINNEWS_SOURCE_TEST_MODE": "mocked-offline"}
     run(
         [
-            sys.executable,
+            PYTHON,
             "-m",
             "finnews.interfaces.cli.app",
             "source",
@@ -248,7 +426,7 @@ def verify_source_reviews(_: argparse.Namespace) -> None:
     )
     run(
         [
-            sys.executable,
+            PYTHON,
             "-m",
             "pytest",
             "tests/unit/test_source_reviews.py",
@@ -264,12 +442,12 @@ def verify_source_reviews(_: argparse.Namespace) -> None:
 
 def build_nlp_benchmark(_: argparse.Namespace) -> None:
     run(
-        [sys.executable, "-m", "finnews.interfaces.cli.app", "nlp", "dataset", "build"],
+        [PYTHON, "-m", "finnews.interfaces.cli.app", "nlp", "dataset", "build"],
         ROOT / "backend",
     )
     run(
         [
-            sys.executable,
+            PYTHON,
             "-m",
             "finnews.interfaces.cli.app",
             "nlp",
@@ -283,7 +461,7 @@ def build_nlp_benchmark(_: argparse.Namespace) -> None:
 def benchmark_nlp(_: argparse.Namespace) -> None:
     run(
         [
-            sys.executable,
+            PYTHON,
             "-m",
             "finnews.interfaces.cli.app",
             "nlp",
@@ -305,7 +483,7 @@ def verify_ml(_: argparse.Namespace) -> None:
     build_nlp_benchmark(argparse.Namespace())
     run(
         [
-            sys.executable,
+            PYTHON,
             "-m",
             "pytest",
             "tests/unit/test_nlp_baselines.py",
@@ -320,11 +498,11 @@ def verify_ml(_: argparse.Namespace) -> None:
     )
     benchmark_nlp(argparse.Namespace())
     run(
-        [sys.executable, "-m", "finnews.interfaces.cli.app", "nlp", "release-audit"],
+        [PYTHON, "-m", "finnews.interfaces.cli.app", "nlp", "release-audit"],
         backend,
     )
     run(
-        [sys.executable, "-m", "finnews.interfaces.cli.app", "nlp", "export-static"],
+        [PYTHON, "-m", "finnews.interfaces.cli.app", "nlp", "export-static"],
         backend,
     )
     validate_static_export()
@@ -337,7 +515,7 @@ def verify_research_export(_: argparse.Namespace) -> None:
         right = temp_root / "right"
         run(
             [
-                sys.executable,
+                PYTHON,
                 "-m",
                 "finnews.interfaces.cli.app",
                 "research",
@@ -349,7 +527,7 @@ def verify_research_export(_: argparse.Namespace) -> None:
         for output in [left, right]:
             run(
                 [
-                    sys.executable,
+                    PYTHON,
                     "-m",
                     "finnews.interfaces.cli.app",
                     "research",
@@ -364,7 +542,7 @@ def verify_research_export(_: argparse.Namespace) -> None:
             )
             run(
                 [
-                    sys.executable,
+                    PYTHON,
                     "-m",
                     "finnews.interfaces.cli.app",
                     "research",
@@ -377,7 +555,7 @@ def verify_research_export(_: argparse.Namespace) -> None:
             )
         run(
             [
-                sys.executable,
+                PYTHON,
                 "-m",
                 "finnews.interfaces.cli.app",
                 "research",
@@ -392,7 +570,7 @@ def verify_research_export(_: argparse.Namespace) -> None:
         )
     run(
         [
-            sys.executable,
+            PYTHON,
             "-m",
             "pytest",
             "tests/unit/test_research_export.py",
@@ -405,36 +583,51 @@ def verify_research_export(_: argparse.Namespace) -> None:
 def verify_cross_asset(_: argparse.Namespace) -> None:
     backend = ROOT / "backend"
     run(
-        [sys.executable, "-m", "finnews.interfaces.cli.app", "asset", "validate"],
+        [PYTHON, "-m", "finnews.interfaces.cli.app", "asset", "validate"],
         backend,
+        timeout_seconds=120,
     )
     run(
         [
-            sys.executable,
+            PYTHON,
             "-m",
             "finnews.interfaces.cli.app",
             "cross-asset",
             "build-demo",
         ],
         backend,
+        timeout_seconds=120,
     )
     run(
-        [sys.executable, "-m", "finnews.interfaces.cli.app", "cross-asset", "summary"],
+        [PYTHON, "-m", "finnews.interfaces.cli.app", "cross-asset", "summary"],
         backend,
+        timeout_seconds=120,
     )
     run(
         [
-            sys.executable,
+            PYTHON,
+            "-m",
+            "finnews.interfaces.cli.app",
+            "cross-asset",
+            "release-audit",
+        ],
+        backend,
+        timeout_seconds=120,
+    )
+    run(
+        [
+            PYTHON,
             "-m",
             "finnews.interfaces.cli.app",
             "mt5",
             "readiness",
         ],
         backend,
+        timeout_seconds=120,
     )
     run(
         [
-            sys.executable,
+            PYTHON,
             "-m",
             "finnews.interfaces.cli.app",
             "mt5",
@@ -443,11 +636,12 @@ def verify_cross_asset(_: argparse.Namespace) -> None:
             "../config/integrations/mt5-symbol-map.example.yaml",
         ],
         backend,
+        timeout_seconds=120,
     )
     with temporary_signal_package() as output:
         run(
             [
-                sys.executable,
+                PYTHON,
                 "-m",
                 "finnews.interfaces.cli.app",
                 "signal",
@@ -456,10 +650,11 @@ def verify_cross_asset(_: argparse.Namespace) -> None:
                 str(output),
             ],
             backend,
+            timeout_seconds=120,
         )
         run(
             [
-                sys.executable,
+                PYTHON,
                 "-m",
                 "finnews.interfaces.cli.app",
                 "signal",
@@ -468,16 +663,18 @@ def verify_cross_asset(_: argparse.Namespace) -> None:
                 str(output),
             ],
             backend,
+            timeout_seconds=120,
         )
     run(
         [
-            sys.executable,
+            PYTHON,
             "-m",
             "pytest",
             "tests/unit/test_cross_asset.py",
             "tests/contract/test_cross_asset_api_cli.py",
         ],
         backend,
+        timeout_seconds=240,
     )
 
 
@@ -487,7 +684,7 @@ def build_research_export(_: argparse.Namespace) -> None:
         shutil.rmtree(output)
     run(
         [
-            sys.executable,
+            PYTHON,
             "-m",
             "finnews.interfaces.cli.app",
             "research",
@@ -504,7 +701,7 @@ def build_research_export(_: argparse.Namespace) -> None:
 
 def smoke_source(args: argparse.Namespace) -> None:
     command = [
-        sys.executable,
+        PYTHON,
         "-m",
         "finnews.interfaces.cli.app",
         "source",
@@ -565,7 +762,7 @@ def _postgres_container_id() -> str:
 def export_static(_: argparse.Namespace) -> None:
     run(
         [
-            sys.executable,
+            PYTHON,
             "-m",
             "finnews.interfaces.cli.app",
             "export-static",
@@ -593,7 +790,8 @@ def cleanup(args: argparse.Namespace) -> None:
         print(path)
     if args.dry_run or not args.confirm:
         print(
-            "Dry run only. Re-run with cleanup --confirm to remove repository-local generated files."
+            "Dry run only. Re-run with cleanup --confirm to remove "
+            "repository-local generated files."
         )
         return
     for path in existing:

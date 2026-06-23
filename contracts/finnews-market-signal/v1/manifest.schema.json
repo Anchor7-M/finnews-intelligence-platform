@@ -37,9 +37,10 @@
           "path": { "type": "string" },
           "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
           "size_bytes": { "type": "integer", "minimum": 0 }
-        }
+        },
+        "additionalProperties": false
       }
     }
   },
-  "additionalProperties": true
+  "additionalProperties": false
 }

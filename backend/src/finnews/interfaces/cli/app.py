@@ -21,6 +21,9 @@ from finnews.application.services.cross_asset import (
     validate_signal_package,
     write_signal_package,
 )
+from finnews.application.services.cross_asset_release_audit import (
+    write_revised_m3a_release_reports,
+)
 from finnews.application.services.deduplication_accounting import build_deduplication_accounting
 from finnews.application.services.export_static import build_static_payload, export_static
 from finnews.application.services.nlp_artifacts import ArtifactError, load_trusted_artifact
@@ -872,6 +875,12 @@ def cross_asset_impacts(event_id: Annotated[str, typer.Option("--event-id")]) ->
 @cross_asset_app.command("summary")
 def cross_asset_summary() -> None:
     typer.echo(json.dumps(cross_asset_overview(), sort_keys=True, default=str))
+
+
+@cross_asset_app.command("release-audit")
+def cross_asset_release_audit() -> None:
+    result = write_revised_m3a_release_reports(_repo_root())
+    typer.echo(json.dumps(result, sort_keys=True))
 
 
 @signal_app.command("generate-demo")

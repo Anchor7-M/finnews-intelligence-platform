@@ -1,0 +1,12 @@
+{
+  "cutoff_lte_generated": true,
+  "expired_signals_inactive": true,
+  "fixture_version": "cross-asset-demo-v1",
+  "generated_before_expiry": true,
+  "idempotency_key_unique_count": 80,
+  "logical_rebuild_idempotency_same": true,
+  "package_byte_identical_rebuild": true,
+  "validation_again_hash": "003f6523b5930942a0122fe27e940431deef8673928de08f0469176517595950",
+  "validation_hash": "003f6523b5930942a0122fe27e940431deef8673928de08f0469176517595950",
+  "wall_clock_independent": "2026-06-23T00:00:00+00:00"
+}

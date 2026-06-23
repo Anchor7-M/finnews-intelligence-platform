@@ -60,9 +60,11 @@ def _repo_root() -> Path:
 
 
 FORBIDDEN_SYMBOL_MAP_FIELDS = {
+    "account_id",
     "login",
     "password",
     "server",
+    "broker_server",
     "server_password",
     "terminal_path",
     "account",
@@ -72,14 +74,27 @@ FORBIDDEN_SYMBOL_MAP_FIELDS = {
     "volume",
     "lot",
     "lot_size",
+    "leverage",
+    "margin",
+    "price",
+    "entry_price",
     "order_type",
+    "action",
     "stop_loss",
     "take_profit",
     "sl",
     "tp",
     "risk_limits",
+    "position_id",
+    "order_ticket",
+    "execute",
+    "execute_now",
+    "buy",
+    "sell",
+    "close_position",
 }
 FORBIDDEN_SIGNAL_FIELDS = {
+    "account_id",
     "account",
     "account_number",
     "broker_server",
@@ -91,16 +106,90 @@ FORBIDDEN_SIGNAL_FIELDS = {
     "order_type",
     "order_request",
     "position",
+    "position_id",
     "position_size",
+    "order_ticket",
     "volume",
     "lot",
     "lot_size",
+    "leverage",
+    "margin",
+    "price",
+    "entry_price",
     "stop_loss",
     "take_profit",
     "sl",
     "tp",
     "ticket",
     "trade_action",
+    "action",
+    "execute",
+    "execute_now",
+    "buy",
+    "sell",
+    "close_position",
+}
+ALLOWED_ASSET_FIELDS = {
+    "asset_id",
+    "display_name",
+    "asset_class",
+    "canonical_symbol",
+    "home_venue",
+    "country_region",
+    "base_currency",
+    "quote_currency",
+    "parent_asset_id",
+    "expiry",
+    "contract_metadata",
+    "status",
+    "synthetic",
+    "provenance",
+    "schema_version",
+    "id",
+}
+ALLOWED_IMPACT_FIELDS = {
+    "impact_id",
+    "event_id",
+    "asset_id",
+    "relationship_type",
+    "direction",
+    "impact_strength",
+    "confidence",
+    "horizon",
+    "evidence_codes",
+    "provider",
+    "provider_version",
+    "information_cutoff_at",
+    "created_at",
+    "expires_at",
+    "status",
+    "rejection_reason",
+    "uncertainty_reason",
+    "synthetic",
+    "id",
+}
+ALLOWED_SIGNAL_FIELDS = {
+    "signal_id",
+    "impact_id",
+    "event_id",
+    "asset_id",
+    "direction",
+    "horizon",
+    "status",
+    "confidence",
+    "score",
+    "information_cutoff_at",
+    "generated_at",
+    "expires_at",
+    "provider",
+    "provider_version",
+    "evidence_codes",
+    "quality_tags",
+    "risk_tags",
+    "payload_hash",
+    "idempotency_key",
+    "synthetic",
+    "id",
 }
 
 
@@ -452,10 +541,55 @@ def validate_signal_package(path: Path) -> dict[str, Any]:
         for line in (path / "signals.jsonl").read_text(encoding="utf-8").splitlines()
         if line
     ]
+    assets = json.loads((path / "assets.json").read_text(encoding="utf-8"))
+    impacts = [
+        json.loads(line)
+        for line in (path / "event_impacts.jsonl").read_text(encoding="utf-8").splitlines()
+        if line
+    ]
+    asset_ids = {str(row["asset_id"]) for row in assets}
+    impact_ids = {str(row["impact_id"]) for row in impacts}
+    event_ids = {str(row["event_id"]) for row in impacts}
+    for row in assets:
+        _validate_allowed_fields(row, ALLOWED_ASSET_FIELDS, "asset")
+        if row.get("synthetic") is not True:
+            raise CrossAssetError("asset row must declare synthetic=true")
+    for row in impacts:
+        _validate_allowed_fields(row, ALLOWED_IMPACT_FIELDS, "event impact")
+        _reject_forbidden_fields(row, "event impact")
+        if row["asset_id"] not in asset_ids:
+            raise CrossAssetError(f"impact references unknown asset: {row['asset_id']}")
+        cutoff = _parse_aware_timestamp(str(row["information_cutoff_at"]))
+        created = _parse_aware_timestamp(str(row["created_at"]))
+        expires = _parse_aware_timestamp(str(row["expires_at"]))
+        if cutoff > created:
+            raise CrossAssetError("impact information_cutoff_at after created_at")
+        if expires <= created:
+            raise CrossAssetError("impact expires_at must be after created_at")
+        if row["confidence"] is not None and not 0 <= float(row["confidence"]) <= 1:
+            raise CrossAssetError("impact confidence out of bounds")
+        if not 0 <= float(row["impact_strength"]) <= 1:
+            raise CrossAssetError("impact strength out of bounds")
+        if not row["evidence_codes"]:
+            raise CrossAssetError("impact evidence_codes must be non-empty")
     for row in signals:
-        forbidden = set(row) & FORBIDDEN_SIGNAL_FIELDS
-        if forbidden:
-            raise CrossAssetError(f"signal contains forbidden fields: {', '.join(forbidden)}")
+        _validate_allowed_fields(row, ALLOWED_SIGNAL_FIELDS, "signal")
+        _reject_forbidden_fields(row, "signal")
+        if row["asset_id"] not in asset_ids:
+            raise CrossAssetError(f"signal references unknown asset: {row['asset_id']}")
+        if row["impact_id"] not in impact_ids:
+            raise CrossAssetError(f"signal references unknown impact: {row['impact_id']}")
+        if row["event_id"] not in event_ids:
+            raise CrossAssetError(f"signal references unknown event: {row['event_id']}")
+        cutoff = _parse_aware_timestamp(str(row["information_cutoff_at"]))
+        generated = _parse_aware_timestamp(str(row["generated_at"]))
+        expires = _parse_aware_timestamp(str(row["expires_at"]))
+        if cutoff > generated:
+            raise CrossAssetError("signal information_cutoff_at after generated_at")
+        if generated >= expires:
+            raise CrossAssetError("signal generated_at must be before expires_at")
+        if row["confidence"] is not None and not 0 <= float(row["confidence"]) <= 1:
+            raise CrossAssetError("signal confidence out of bounds")
     return {
         "valid": True,
         "contract_name": manifest["contract_name"],
@@ -466,6 +600,25 @@ def validate_signal_package(path: Path) -> dict[str, Any]:
         "signal_count": manifest["signal_count"],
         "no_execution": True,
     }
+
+
+def _validate_allowed_fields(row: dict[str, Any], allowed: set[str], label: str) -> None:
+    unknown = set(row) - allowed
+    if unknown:
+        raise CrossAssetError(f"{label} contains unknown fields: {', '.join(sorted(unknown))}")
+
+
+def _reject_forbidden_fields(row: dict[str, Any], label: str) -> None:
+    forbidden = set(row) & FORBIDDEN_SIGNAL_FIELDS
+    if forbidden:
+        raise CrossAssetError(f"{label} contains forbidden fields: {', '.join(sorted(forbidden))}")
+
+
+def _parse_aware_timestamp(value: str) -> datetime:
+    parsed = datetime.fromisoformat(value.replace("Z", "+00:00"))
+    if parsed.tzinfo is None:
+        raise CrossAssetError("timestamp must be timezone-aware")
+    return parsed
 
 
 def trading_surface_audit(root: Path) -> dict[str, Any]:
@@ -530,24 +683,23 @@ def trading_surface_audit(root: Path) -> dict[str, Any]:
             if pattern in text:
                 record: dict[str, object] = {"path": relative, "pattern": pattern}
                 findings.append(record)
-                is_self_audit_pattern = (
-                    relative == "backend/src/finnews/application/services/cross_asset.py"
-                    and pattern
-                    in {
-                        "MetaTrader5",
-                        "initialize(",
-                        "login(",
-                        "order_check(",
-                        "order_send(",
-                        "TRADE_ACTION",
-                        "ORDER_TYPE",
-                        "account password",
-                        "investor password",
-                        "lot size",
-                        "stop loss",
-                        "take profit",
-                    }
-                )
+                is_self_audit_pattern = relative in {
+                    "backend/src/finnews/application/services/cross_asset.py",
+                    "backend/src/finnews/application/services/cross_asset_release_audit.py",
+                } and pattern in {
+                    "MetaTrader5",
+                    "initialize(",
+                    "login(",
+                    "order_check(",
+                    "order_send(",
+                    "TRADE_ACTION",
+                    "ORDER_TYPE",
+                    "account password",
+                    "investor password",
+                    "lot size",
+                    "stop loss",
+                    "take profit",
+                }
                 if (
                     relative not in allowed_docs
                     and relative not in allowed_tests
