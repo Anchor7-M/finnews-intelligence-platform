@@ -2,6 +2,8 @@
 
 Implemented Milestone 0 tables in the PostgreSQL schema:
 
+Milestone 3A adds `research_calendars`, `research_sessions`, `research_export_runs`, `research_feature_rows`, and `research_lineage_rows`. These tables store safe metadata, timezone-aware timestamps, JSONB feature values, quality summaries, and lineage IDs. They do not store package bytes, article text, raw source responses, local paths, prices, returns, or recommendations.
+
 - `sources`
 - `ingestion_runs`
 - `raw_articles`

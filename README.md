@@ -62,6 +62,16 @@ flowchart LR
 
 Milestone 2A metrics describe only the synthetic benchmark. They are not human-labeled, market representative, production validation, or investment advice.
 
+## Implemented In Milestone 3A
+
+- Versioned `finnews-research-export-v1` contract at semantic version `1.0.0`.
+- Deterministic synthetic A-share-style calendar with 60 sessions and no official-calendar claim.
+- Point-in-time information availability, explicit decision cutoffs, session assignment, and leakage audit.
+- Dense rolling news-factor panel over 12 fictional companies and windows `1,3,5,10`, producing exactly 2,880 demo feature rows.
+- Safe lineage, quality report, deterministic CSV/JSONL package writer, read-only API, CLI, Vue Research Export page, static-demo JSON, and PostgreSQL metadata tables.
+
+Milestone 3A exports contain no article text, market prices, returns, backtests, strategy signals, or investment recommendations.
+
 ## Verified Synthetic Dataset
 
 - 68 raw observations loaded in the memory demo.

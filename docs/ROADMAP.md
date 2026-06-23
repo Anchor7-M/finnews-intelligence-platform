@@ -4,6 +4,10 @@
 
 Implemented: deterministic local synthetic data, modular backend, memory profile, PostgreSQL schema and Alembic migration, FastAPI read API, Typer CLI, Vue static/API dashboard, tests, coverage gate, docs, resource-safe scripts.
 
+## Milestone 3A
+
+Implemented locally: versioned point-in-time research export contract, synthetic 60-session A-share-style calendar, local calendar validation, dense rolling news-factor panel, leakage audit, safe lineage, API/CLI/Vue/static demo, and PostgreSQL metadata. Deferred to the future A-share research repository: market data, returns, factor evaluation, backtesting, portfolios, and recommendations.
+
 Not verified in the local compliance audit: PostgreSQL integration runtime, because Docker was not started.
 
 ## Milestone 1

@@ -1,5 +1,16 @@
 # Development
 
+## Research Export
+
+Build a local ignored package with:
+
+```text
+cd backend
+python -m finnews.interfaces.cli.app research export build --profile memory --output ../.finnews-research-exports/latest
+```
+
+Validate or compare packages with `finnews research export validate --path <package>` and `finnews research export compare --left <a> --right <b>`. The commands are offline and use synthetic data by default.
+
 ## Lightweight Path
 
 ```text

@@ -1,5 +1,9 @@
 # Cost And Resource Guardrails
 
+## Milestone 3A Research Export
+
+The default dense panel is exactly 2,880 rows and runs CPU-only in one local process. Research packages stay below 10 MB, individual package files below 5 MB, and local exports under ignored `.finnews-research-exports/`. Do not add live market dependencies, schedulers, queues, model downloads, cloud services, or background daemons.
+
 - Milestone 0 runs offline with synthetic data.
 - No paid API, paid hosting, telemetry, browser automation, model weight, or live news source is required.
 - Milestone 1A source tests use local mocks only and do not fetch from real publishers.
