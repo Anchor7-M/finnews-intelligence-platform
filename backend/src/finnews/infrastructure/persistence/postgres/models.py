@@ -491,3 +491,196 @@ class ResearchLineageRowModel(Base):
     sentiment_model_version: Mapped[str | None] = mapped_column(String(80))
     payload: Mapped[dict[str, object]] = mapped_column(JSONB, nullable=False)
     synthetic: Mapped[bool] = mapped_column(Boolean, nullable=False)
+
+
+class AssetModel(Base):
+    __tablename__ = "assets"
+    __table_args__ = (
+        Index("ix_assets_class_region", "asset_class", "country_region"),
+        Index("ix_assets_status", "status"),
+    )
+    id: Mapped[UUID] = mapped_column(PGUUID(as_uuid=True), primary_key=True, default=uuid4)
+    asset_id: Mapped[str] = mapped_column(String(120), unique=True, nullable=False)
+    display_name: Mapped[str] = mapped_column(String(240), nullable=False)
+    asset_class: Mapped[str] = mapped_column(String(60), nullable=False)
+    canonical_symbol: Mapped[str | None] = mapped_column(String(80))
+    home_venue: Mapped[str | None] = mapped_column(String(80))
+    country_region: Mapped[str] = mapped_column(String(80), nullable=False)
+    base_currency: Mapped[str | None] = mapped_column(String(16))
+    quote_currency: Mapped[str | None] = mapped_column(String(16))
+    parent_asset_id: Mapped[str | None] = mapped_column(String(120))
+    expiry: Mapped[date | None] = mapped_column(Date)
+    contract_metadata: Mapped[dict[str, object]] = mapped_column(JSONB, nullable=False)
+    status: Mapped[str] = mapped_column(String(40), nullable=False)
+    synthetic: Mapped[bool] = mapped_column(Boolean, nullable=False)
+    provenance: Mapped[dict[str, object]] = mapped_column(JSONB, nullable=False)
+    schema_version: Mapped[str] = mapped_column(String(80), nullable=False)
+
+
+class SymbolAliasModel(Base):
+    __tablename__ = "asset_symbol_aliases"
+    __table_args__ = (
+        UniqueConstraint("asset_id", "namespace", "symbol", "provider", "provider_version"),
+        Index("ix_asset_alias_namespace_symbol", "namespace", "normalized_symbol", "active"),
+    )
+    id: Mapped[UUID] = mapped_column(PGUUID(as_uuid=True), primary_key=True, default=uuid4)
+    asset_id: Mapped[str] = mapped_column(String(120), nullable=False)
+    namespace: Mapped[str] = mapped_column(String(80), nullable=False)
+    symbol: Mapped[str] = mapped_column(String(240), nullable=False)
+    normalized_symbol: Mapped[str] = mapped_column(String(240), nullable=False)
+    provider: Mapped[str] = mapped_column(String(120), nullable=False)
+    provider_version: Mapped[str] = mapped_column(String(80), nullable=False)
+    active: Mapped[bool] = mapped_column(Boolean, nullable=False)
+    confidence: Mapped[float] = mapped_column(Float, nullable=False)
+    provenance: Mapped[dict[str, object]] = mapped_column(JSONB, nullable=False)
+    valid_from: Mapped[date | None] = mapped_column(Date)
+    valid_to: Mapped[date | None] = mapped_column(Date)
+
+
+class ProviderSymbolModel(Base):
+    __tablename__ = "asset_provider_symbols"
+    __table_args__ = (
+        UniqueConstraint("asset_id", "namespace", "provider", "symbol"),
+        Index("ix_provider_symbols_lookup", "namespace", "provider", "symbol", "active"),
+    )
+    id: Mapped[UUID] = mapped_column(PGUUID(as_uuid=True), primary_key=True, default=uuid4)
+    asset_id: Mapped[str] = mapped_column(String(120), nullable=False)
+    namespace: Mapped[str] = mapped_column(String(80), nullable=False)
+    provider: Mapped[str] = mapped_column(String(120), nullable=False)
+    symbol: Mapped[str] = mapped_column(String(240), nullable=False)
+    provider_version: Mapped[str] = mapped_column(String(80), nullable=False)
+    active: Mapped[bool] = mapped_column(Boolean, nullable=False)
+    provenance: Mapped[dict[str, object]] = mapped_column(JSONB, nullable=False)
+
+
+class BrokerSymbolMappingModel(Base):
+    __tablename__ = "broker_symbol_mappings"
+    __table_args__ = (
+        UniqueConstraint("broker_profile_id", "mt5_symbol", "enabled"),
+        Index("ix_broker_symbol_mappings_asset", "asset_id"),
+    )
+    id: Mapped[UUID] = mapped_column(PGUUID(as_uuid=True), primary_key=True, default=uuid4)
+    asset_id: Mapped[str] = mapped_column(String(120), nullable=False)
+    broker_profile_id: Mapped[str] = mapped_column(String(120), nullable=False)
+    mt5_symbol: Mapped[str] = mapped_column(String(120), nullable=False)
+    enabled: Mapped[bool] = mapped_column(Boolean, nullable=False)
+    provenance: Mapped[dict[str, object]] = mapped_column(JSONB, nullable=False)
+    local_note: Mapped[str | None] = mapped_column(Text)
+
+
+class AssetRelationshipModel(Base):
+    __tablename__ = "asset_relationships"
+    __table_args__ = (
+        UniqueConstraint("relationship_id"),
+        Index("ix_asset_relationships_source", "source_asset_id"),
+        Index("ix_asset_relationships_target", "target_asset_id"),
+    )
+    id: Mapped[UUID] = mapped_column(PGUUID(as_uuid=True), primary_key=True, default=uuid4)
+    relationship_id: Mapped[str] = mapped_column(String(120), nullable=False)
+    source_asset_id: Mapped[str] = mapped_column(String(120), nullable=False)
+    target_asset_id: Mapped[str] = mapped_column(String(120), nullable=False)
+    relationship_type: Mapped[str] = mapped_column(String(80), nullable=False)
+    direction: Mapped[str] = mapped_column(String(80), nullable=False)
+    confidence: Mapped[float | None] = mapped_column(Float)
+    active: Mapped[bool] = mapped_column(Boolean, nullable=False)
+    provenance: Mapped[dict[str, object]] = mapped_column(JSONB, nullable=False)
+    synthetic: Mapped[bool] = mapped_column(Boolean, nullable=False)
+
+
+class CrossAssetEventModel(Base):
+    __tablename__ = "cross_asset_events"
+    __table_args__ = (
+        UniqueConstraint("event_id"),
+        Index("ix_cross_asset_events_family_time", "event_family", "information_available_at"),
+    )
+    id: Mapped[UUID] = mapped_column(PGUUID(as_uuid=True), primary_key=True, default=uuid4)
+    event_id: Mapped[str] = mapped_column(String(120), nullable=False)
+    event_family: Mapped[str] = mapped_column(String(100), nullable=False)
+    event_subtype: Mapped[str] = mapped_column(String(160), nullable=False)
+    description: Mapped[str] = mapped_column(Text, nullable=False)
+    information_available_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False
+    )
+    affected_region: Mapped[str] = mapped_column(String(80), nullable=False)
+    relevant_currency: Mapped[str | None] = mapped_column(String(16))
+    source_provenance: Mapped[dict[str, object]] = mapped_column(JSONB, nullable=False)
+    provider: Mapped[str] = mapped_column(String(120), nullable=False)
+    provider_version: Mapped[str] = mapped_column(String(80), nullable=False)
+    confidence: Mapped[float | None] = mapped_column(Float)
+    uncertainty_flags: Mapped[list[str]] = mapped_column(JSONB, nullable=False)
+    duplicate_of_event_id: Mapped[str | None] = mapped_column(String(120))
+    synthetic: Mapped[bool] = mapped_column(Boolean, nullable=False)
+
+
+class AssetImpactHypothesisModel(Base):
+    __tablename__ = "asset_impact_hypotheses"
+    __table_args__ = (
+        UniqueConstraint("impact_id"),
+        Index("ix_asset_impacts_asset_event", "asset_id", "event_id"),
+        Index("ix_asset_impacts_direction_horizon", "direction", "horizon"),
+    )
+    id: Mapped[UUID] = mapped_column(PGUUID(as_uuid=True), primary_key=True, default=uuid4)
+    impact_id: Mapped[str] = mapped_column(String(120), nullable=False)
+    event_id: Mapped[str] = mapped_column(String(120), nullable=False)
+    asset_id: Mapped[str] = mapped_column(String(120), nullable=False)
+    relationship_type: Mapped[str] = mapped_column(String(100), nullable=False)
+    direction: Mapped[str] = mapped_column(String(40), nullable=False)
+    impact_strength: Mapped[float] = mapped_column(Float, nullable=False)
+    confidence: Mapped[float | None] = mapped_column(Float)
+    horizon: Mapped[str] = mapped_column(String(40), nullable=False)
+    evidence_codes: Mapped[list[str]] = mapped_column(JSONB, nullable=False)
+    provider: Mapped[str] = mapped_column(String(120), nullable=False)
+    provider_version: Mapped[str] = mapped_column(String(80), nullable=False)
+    information_cutoff_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+    expires_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    status: Mapped[str] = mapped_column(String(40), nullable=False)
+    rejection_reason: Mapped[str | None] = mapped_column(String(160))
+    uncertainty_reason: Mapped[str | None] = mapped_column(String(160))
+    synthetic: Mapped[bool] = mapped_column(Boolean, nullable=False)
+
+
+class MarketSignalCandidateModel(Base):
+    __tablename__ = "market_signal_candidates"
+    __table_args__ = (
+        UniqueConstraint("signal_id"),
+        UniqueConstraint("idempotency_key"),
+        Index("ix_market_signals_asset_status", "asset_id", "status"),
+        Index("ix_market_signals_horizon_direction", "horizon", "direction"),
+    )
+    id: Mapped[UUID] = mapped_column(PGUUID(as_uuid=True), primary_key=True, default=uuid4)
+    signal_id: Mapped[str] = mapped_column(String(120), nullable=False)
+    impact_id: Mapped[str] = mapped_column(String(120), nullable=False)
+    event_id: Mapped[str] = mapped_column(String(120), nullable=False)
+    asset_id: Mapped[str] = mapped_column(String(120), nullable=False)
+    direction: Mapped[str] = mapped_column(String(40), nullable=False)
+    horizon: Mapped[str] = mapped_column(String(40), nullable=False)
+    status: Mapped[str] = mapped_column(String(40), nullable=False)
+    confidence: Mapped[float | None] = mapped_column(Float)
+    score: Mapped[float | None] = mapped_column(Float)
+    information_cutoff_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+    generated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+    expires_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    provider: Mapped[str] = mapped_column(String(120), nullable=False)
+    provider_version: Mapped[str] = mapped_column(String(80), nullable=False)
+    evidence_codes: Mapped[list[str]] = mapped_column(JSONB, nullable=False)
+    quality_tags: Mapped[list[str]] = mapped_column(JSONB, nullable=False)
+    risk_tags: Mapped[list[str]] = mapped_column(JSONB, nullable=False)
+    payload_hash: Mapped[str] = mapped_column(String(64), nullable=False)
+    idempotency_key: Mapped[str] = mapped_column(String(64), nullable=False)
+    synthetic: Mapped[bool] = mapped_column(Boolean, nullable=False)
+
+
+class SignalPublicationRunModel(Base):
+    __tablename__ = "signal_publication_runs"
+    __table_args__ = (UniqueConstraint("run_id"),)
+    id: Mapped[UUID] = mapped_column(PGUUID(as_uuid=True), primary_key=True, default=uuid4)
+    run_id: Mapped[str] = mapped_column(String(120), nullable=False)
+    contract_name: Mapped[str] = mapped_column(String(120), nullable=False)
+    contract_version: Mapped[str] = mapped_column(String(40), nullable=False)
+    generated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+    count: Mapped[int] = mapped_column(Integer, nullable=False)
+    status: Mapped[str] = mapped_column(String(40), nullable=False)
+    manifest_hash: Mapped[str] = mapped_column(String(64), nullable=False)
+    file_hashes: Mapped[dict[str, str]] = mapped_column(JSONB, nullable=False)
+    synthetic: Mapped[bool] = mapped_column(Boolean, nullable=False)

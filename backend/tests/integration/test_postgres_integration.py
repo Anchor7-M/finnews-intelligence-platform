@@ -17,6 +17,11 @@ from sqlalchemy.pool import NullPool
 from typer.testing import CliRunner
 
 from alembic import command
+from finnews.application.services.cross_asset import (
+    build_cross_asset_demo,
+    cross_asset_static_payload,
+    persist_cross_asset_demo,
+)
 from finnews.application.services.deduplication_accounting import build_deduplication_accounting
 from finnews.application.services.export_static import build_static_payload
 from finnews.application.services.pipeline import NewsPipeline
@@ -36,7 +41,10 @@ from finnews.domain.enums import FetchOutcome, SourceApprovalStatus, SourceHealt
 from finnews.domain.value_objects import utc_now
 from finnews.infrastructure.persistence.postgres.models import (
     ArticleCompanyLinkModel,
+    AssetImpactHypothesisModel,
+    AssetModel,
     CompanyModel,
+    MarketSignalCandidateModel,
     RawArticleModel,
     SourceModel,
 )
@@ -70,6 +78,15 @@ EXPECTED_TABLES = {
     "research_export_runs",
     "research_feature_rows",
     "research_lineage_rows",
+    "assets",
+    "asset_symbol_aliases",
+    "asset_provider_symbols",
+    "broker_symbol_mappings",
+    "asset_relationships",
+    "cross_asset_events",
+    "asset_impact_hypotheses",
+    "market_signal_candidates",
+    "signal_publication_runs",
 }
 EXPECTED_METRICS = {
     "raw_observation_count": 68,
@@ -153,7 +170,7 @@ def test_alembic_upgrade_downgrade_schema_types_constraints_and_indexes(engine: 
     command.upgrade(alembic_config(), "head")
     assert (
         ScriptDirectory.from_config(alembic_config()).get_current_head()
-        == "0004_research_export_metadata"
+        == "0005_cross_asset_signal"
     )
     command.current(alembic_config())
 
@@ -172,6 +189,8 @@ def test_alembic_upgrade_downgrade_schema_types_constraints_and_indexes(engine: 
     assert {"ix_articles_published_at", "ix_articles_state"}.issubset(indexes)
     source_indexes = {item["name"] for item in inspector.get_indexes("source_fetch_attempts")}
     assert "ix_source_fetch_attempts_source_started" in source_indexes
+    asset_indexes = {item["name"] for item in inspector.get_indexes("assets")}
+    assert {"ix_assets_class_region", "ix_assets_status"}.issubset(asset_indexes)
     assert inspector.get_foreign_keys("article_company_links")
     assert inspector.get_foreign_keys("source_fetch_states")
 
@@ -191,6 +210,8 @@ def test_alembic_upgrade_downgrade_schema_types_constraints_and_indexes(engine: 
             for column_name, udt_name, _data_type in by_column
         )
         assert ("raw_metadata", "jsonb", "jsonb") in by_column
+        assert ("contract_metadata", "jsonb", "jsonb") in by_column
+        assert ("evidence_codes", "_text", "ARRAY") in by_column
         assert ("published_at", "timestamptz", "timestamp with time zone") in by_column
         assert session.execute(text("show server_encoding")).scalar_one() == "UTF8"
         client_encoding = session.execute(text("select current_setting('client_encoding')"))
@@ -200,6 +221,56 @@ def test_alembic_upgrade_downgrade_schema_types_constraints_and_indexes(engine: 
     assert EXPECTED_TABLES.isdisjoint(set(inspect(engine).get_table_names()))
     command.upgrade(alembic_config(), "head")
     assert EXPECTED_TABLES.issubset(set(inspect(engine).get_table_names()))
+
+
+@pytest.mark.postgres
+def test_postgres_cross_asset_signal_foundation_idempotency(settings: Settings) -> None:
+    reset_schema()
+    session = session_for(settings)
+    repo = PostgresNewsRepository(session)
+    dataset = build_cross_asset_demo()
+    persist_cross_asset_demo(repo, dataset)
+    session.commit()
+
+    assert len(repo.list_assets()) == 40
+    assert len(repo.list_asset_aliases()) == 211
+    assert len(repo.list_asset_relationships()) == len(dataset.relationships)
+    assert len(repo.list_cross_asset_events()) == 100
+    assert len(repo.list_asset_impact_hypotheses()) == 240
+    assert len(repo.list_market_signal_candidates()) == 80
+    first_counts = {
+        "assets": session.scalar(select(func.count()).select_from(AssetModel)),
+        "impacts": session.scalar(select(func.count()).select_from(AssetImpactHypothesisModel)),
+        "signals": session.scalar(select(func.count()).select_from(MarketSignalCandidateModel)),
+    }
+
+    first_signal = repo.list_market_signal_candidates()[0]
+    assert first_signal.information_cutoff_at.tzinfo is not None
+    assert first_signal.status.value in {
+        "research",
+        "informational",
+        "abstained",
+        "rejected",
+        "expired",
+    }
+    assert first_signal.evidence_codes
+    first_asset = repo.list_assets()[0]
+    assert first_asset.contract_metadata["contract_metadata_available"] is False
+    assert "password" not in str(first_asset.provenance).lower()
+
+    payload = cross_asset_static_payload()
+    assert payload["cross-asset-overview"]["asset_count"] == 40
+    assert payload["mt5-readiness"]["terminal_adapter_status"] == "not_implemented"
+    assert payload["market-signal-contract-example"]["no_execution"] is True
+
+    persist_cross_asset_demo(repo, dataset)
+    session.commit()
+    assert {
+        "assets": session.scalar(select(func.count()).select_from(AssetModel)),
+        "impacts": session.scalar(select(func.count()).select_from(AssetImpactHypothesisModel)),
+        "signals": session.scalar(select(func.count()).select_from(MarketSignalCandidateModel)),
+    } == first_counts
+    session.close()
 
 
 @pytest.mark.postgres

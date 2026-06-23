@@ -11,6 +11,30 @@ python -m finnews.interfaces.cli.app research export build --profile memory --ou
 
 Validate or compare packages with `finnews research export validate --path <package>` and `finnews research export compare --left <a> --right <b>`. The commands are offline and use synthetic data by default.
 
+## Cross-Asset Signal Contract
+
+Build and validate a local ignored signal package with:
+
+```text
+cd backend
+python -m finnews.interfaces.cli.app signal export --output ../.finnews-market-signals/latest
+python -m finnews.interfaces.cli.app signal validate --path ../.finnews-market-signals/latest
+```
+
+Inspect the offline readiness boundary with:
+
+```text
+cd backend
+python -m finnews.interfaces.cli.app asset validate
+python -m finnews.interfaces.cli.app cross-asset summary
+python -m finnews.interfaces.cli.app mt5 readiness
+python -m finnews.interfaces.cli.app mt5 validate-symbol-map --path ../config/integrations/mt5-symbol-map.example.yaml
+```
+
+`python scripts/dev.py verify-cross-asset` runs the cross-asset CLI smoke checks,
+package validation, symbol-map validation, API/CLI tests, and trading-surface
+audit.
+
 ## Lightweight Path
 
 ```text
@@ -23,6 +47,7 @@ python scripts/dev.py verify-lite
 python scripts/dev.py verify-sources
 python scripts/dev.py verify-source-reviews
 python scripts/dev.py verify-ml
+python scripts/dev.py verify-cross-asset
 ```
 
 `verify-lite` runs backend tests with coverage threshold, Ruff, mypy, frontend ESLint, Prettier, TypeScript, Vitest, production build, memory demo, static export validation, and `git diff --check`.
@@ -51,12 +76,12 @@ python scripts/dev.py verify-postgres
 python scripts/dev.py db-down
 ```
 
-`verify-postgres` uses Compose project `finnews_m2a_verify`, starts only the
+`verify-postgres` uses Compose project `finnews_m3r_verify`, starts only the
 `postgres` service from `postgres:16`, waits for health, runs Alembic migration
 and PostgreSQL-marked tests, and always runs:
 
 ```text
-docker compose -p finnews_m2a_verify down --volumes --remove-orphans
+docker compose -p finnews_m3r_verify down --volumes --remove-orphans
 ```
 
 Do not leave Docker, dev servers, or watch processes running.

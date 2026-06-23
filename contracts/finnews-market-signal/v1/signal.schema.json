@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FinNews market signal row v1",
+  "type": "object",
+  "required": [
+    "signal_id",
+    "impact_id",
+    "event_id",
+    "asset_id",
+    "direction",
+    "horizon",
+    "status",
+    "information_cutoff_at",
+    "generated_at",
+    "provider",
+    "provider_version",
+    "payload_hash",
+    "idempotency_key",
+    "synthetic"
+  ],
+  "properties": {
+    "direction": { "enum": ["positive", "negative", "mixed", "uncertain"] },
+    "horizon": { "enum": ["intraday", "one_day", "one_week", "one_month"] },
+    "status": { "enum": ["informational", "research", "abstained", "rejected", "expired"] },
+    "confidence": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+    "payload_hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "synthetic": { "const": true }
+  },
+  "not": {
+    "anyOf": [
+      { "required": ["order"] },
+      { "required": ["order_type"] },
+      { "required": ["position_size"] },
+      { "required": ["volume"] },
+      { "required": ["stop_loss"] },
+      { "required": ["take_profit"] },
+      { "required": ["account"] },
+      { "required": ["password"] }
+    ]
+  },
+  "additionalProperties": true
+}

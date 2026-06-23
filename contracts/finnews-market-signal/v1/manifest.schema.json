@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FinNews market signal manifest v1",
+  "type": "object",
+  "required": [
+    "contract_name",
+    "contract_version",
+    "signal_schema_version",
+    "fixture_version",
+    "generated_at",
+    "synthetic_data",
+    "not_investment_advice",
+    "no_execution",
+    "asset_count",
+    "event_impact_count",
+    "signal_count",
+    "files",
+    "package_content_hash"
+  ],
+  "properties": {
+    "contract_name": { "const": "finnews-market-signal-v1" },
+    "contract_version": { "const": "1.0.0" },
+    "signal_schema_version": { "const": "market-signal-v1" },
+    "synthetic_data": { "const": true },
+    "not_investment_advice": { "const": true },
+    "no_execution": { "const": true },
+    "asset_count": { "type": "integer", "const": 40 },
+    "event_impact_count": { "type": "integer", "const": 240 },
+    "signal_count": { "type": "integer", "const": 80 },
+    "package_content_hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["path", "sha256", "size_bytes"],
+        "properties": {
+          "path": { "type": "string" },
+          "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+          "size_bytes": { "type": "integer", "minimum": 0 }
+        }
+      }
+    }
+  },
+  "additionalProperties": true
+}

@@ -8,6 +8,7 @@ from typing import Any
 from uuid import UUID
 
 from finnews.application.ports.repositories import NewsRepository
+from finnews.application.services.cross_asset import cross_asset_static_payload
 from finnews.application.services.deduplication_accounting import build_deduplication_accounting
 from finnews.application.services.nlp_reporting import nlp_static_payload
 from finnews.application.services.research_export import research_static_payload
@@ -207,6 +208,7 @@ def build_static_payload(repository: NewsRepository) -> dict[str, Any]:
     }
     payload.update(nlp_static_payload(Path(__file__).resolve().parents[5]))
     payload.update(research_static_payload(repository))
+    payload.update(cross_asset_static_payload())
     return payload
 
 

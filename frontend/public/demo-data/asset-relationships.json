@@ -1,0 +1,142 @@
+[
+  {
+    "relationship_id": "REL-001",
+    "source_asset_id": "ETF-US-LARGE",
+    "target_asset_id": "IDX-US-LARGE",
+    "relationship_type": "index_constituent",
+    "direction": "association",
+    "confidence": 0.65,
+    "active": true,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "synthetic": true,
+    "id": "b2f2d279-0d3a-5d99-92c2-fe4fe33a4d2d"
+  },
+  {
+    "relationship_id": "REL-002",
+    "source_asset_id": "ETF-US-TECH",
+    "target_asset_id": "IDX-US-TECH",
+    "relationship_type": "index_constituent",
+    "direction": "association",
+    "confidence": 0.65,
+    "active": true,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "synthetic": true,
+    "id": "7b5d75c8-8f24-5afb-ade0-89f68dc62308"
+  },
+  {
+    "relationship_id": "REL-003",
+    "source_asset_id": "ETF-GLD-PROXY",
+    "target_asset_id": "PM-GOLD",
+    "relationship_type": "correlation_hypothesis",
+    "direction": "association",
+    "confidence": 0.65,
+    "active": true,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "synthetic": true,
+    "id": "d5c4b6f8-b7a8-5642-a42e-e711a009da3f"
+  },
+  {
+    "relationship_id": "REL-004",
+    "source_asset_id": "ETF-OIL-PROXY",
+    "target_asset_id": "CMD-OIL",
+    "relationship_type": "correlation_hypothesis",
+    "direction": "association",
+    "confidence": 0.65,
+    "active": true,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "synthetic": true,
+    "id": "d6ba1992-d2b3-529f-bc17-543c0b2c385d"
+  },
+  {
+    "relationship_id": "REL-005",
+    "source_asset_id": "FUT-CONTRACT-OIL-JUL26",
+    "target_asset_id": "FUT-ROOT-OIL",
+    "relationship_type": "correlation_hypothesis",
+    "direction": "association",
+    "confidence": 0.65,
+    "active": true,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "synthetic": true,
+    "id": "de907392-398b-516b-857d-6a8a2410db8c"
+  },
+  {
+    "relationship_id": "REL-006",
+    "source_asset_id": "FUT-CONTRACT-GOLD-AUG26",
+    "target_asset_id": "FUT-ROOT-GOLD",
+    "relationship_type": "correlation_hypothesis",
+    "direction": "association",
+    "confidence": 0.65,
+    "active": true,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "synthetic": true,
+    "id": "b125bd0a-3555-5a1a-be64-1b4ce341442e"
+  },
+  {
+    "relationship_id": "REL-007",
+    "source_asset_id": "RATE-FED-POLICY",
+    "target_asset_id": "RATE-US10Y",
+    "relationship_type": "rate_sensitivity",
+    "direction": "association",
+    "confidence": 0.65,
+    "active": true,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "synthetic": true,
+    "id": "4331f66b-0019-5c26-ad4c-c179dfb020dd"
+  },
+  {
+    "relationship_id": "REL-008",
+    "source_asset_id": "MACRO-CPI-US",
+    "target_asset_id": "RATE-FED-POLICY",
+    "relationship_type": "inflation_sensitivity",
+    "direction": "association",
+    "confidence": 0.65,
+    "active": true,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "synthetic": true,
+    "id": "520f024e-f6d7-54b3-b6d2-2c1dafb8df60"
+  },
+  {
+    "relationship_id": "REL-009",
+    "source_asset_id": "PM-GOLD",
+    "target_asset_id": "FX-EURUSD",
+    "relationship_type": "safe_haven_hypothesis",
+    "direction": "association",
+    "confidence": 0.65,
+    "active": true,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "synthetic": true,
+    "id": "fbcbcc6e-b25b-59fe-ac8a-79827468db2c"
+  },
+  {
+    "relationship_id": "REL-010",
+    "source_asset_id": "CRYPTO-BTC-PROXY",
+    "target_asset_id": "CRYPTO-EXCH-PROXY",
+    "relationship_type": "correlation_hypothesis",
+    "direction": "association",
+    "confidence": 0.65,
+    "active": true,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "synthetic": true,
+    "id": "773c48b3-ebb7-5d8b-adce-79a281f3d6e2"
+  }
+]

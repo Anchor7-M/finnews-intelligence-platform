@@ -1,8 +1,8 @@
-# Finnews Intelligence Platform
+# FinNews Intelligence Platform
 
-Local-first financial-news intelligence platform for portfolio demonstration. Milestone 0 is an offline synthetic-data vertical slice: it ingests fictional Chinese and English financial-news metadata, normalizes and deduplicates it, links fictional companies, classifies events and sentiment with transparent baselines, generates daily digests and company signals, exposes a FastAPI read API, and renders a Vue 3 dashboard.
+Local-first cross-asset financial information and event-intelligence platform. FinNews now centers on canonical asset identity, event-to-asset impact hypotheses, research signal candidates, and safe local handoff contracts across U.S. equities, ETFs, indices, FX, precious metals, commodities, futures, crypto assets, macro indicators, rates, and regulation.
 
-This project is not investment advice and does not provide live market intelligence.
+This project is synthetic research tooling. It is not investment advice, does not provide live market intelligence, and does not execute trades.
 
 ## Architecture
 
@@ -11,6 +11,8 @@ flowchart LR
   Fixtures[Synthetic fixtures] --> Pipeline[Validation, normalization, deduplication, linking, baselines]
   Pipeline --> Memory[Memory profile]
   Pipeline --> Postgres[Optional PostgreSQL adapter]
+  Pipeline --> Assets[Cross-asset registry and impact hypotheses]
+  Assets --> Contract[Versioned research signal contract]
   Memory --> API[FastAPI]
   Memory --> Static[Static JSON]
   API --> Vue[Vue dashboard]
@@ -72,6 +74,17 @@ Milestone 2A metrics describe only the synthetic benchmark. They are not human-l
 
 Milestone 3A exports contain no article text, market prices, returns, backtests, strategy signals, or investment recommendations.
 
+## Implemented In Revised Milestone 3A
+
+- Repositioned the product around cross-asset information intelligence instead of an A-share-first downstream export.
+- Added a canonical 40-asset synthetic registry with aliases, provider symbols, local broker-symbol mapping schema, and cross-asset relationships.
+- Added 100 synthetic cross-asset events, 240 event-to-asset impact hypotheses, and 80 point-in-time research signal candidates.
+- Added versioned `finnews-market-signal-v1` package contract with deterministic hashes and no execution fields.
+- Added read-only API endpoints, Typer CLI commands, Vue pages, static-demo JSON, PostgreSQL tables, and Alembic migration for the cross-asset foundation.
+- Added offline MT5 readiness checks and documentation. There is no MT5 package import, terminal connection, credential handling, account access, or execution path.
+
+The prior A-share research export remains available as an optional integration under `/optional-integrations/research-export`.
+
 ## Verified Synthetic Dataset
 
 - 68 raw observations loaded in the memory demo.
@@ -92,6 +105,7 @@ cd frontend
 npm install
 cd ..
 python scripts/dev.py export-static
+python scripts/dev.py verify-cross-asset
 python scripts/dev.py verify-lite
 ```
 
@@ -113,20 +127,24 @@ python scripts/dev.py db-down
 The database is bound to `127.0.0.1:55432`, uses a local demo password, and is not suitable for production.
 
 PostgreSQL integration was verified locally with the official `postgres:16` image,
-Compose project `finnews_m0_verify`, service `postgres`, and port
+Compose project `finnews_m3r_verify`, service `postgres`, and port
 `127.0.0.1:55432`. The verification runs Alembic upgrade/downgrade/re-upgrade,
 repository parity, full fixture-pipeline persistence, API and CLI PostgreSQL
 profile checks, then removes the task-owned container, volume, and network.
 
 ## Verification Evidence
 
-The latest lightweight verification passed:
+Revised Milestone 3A local verification evidence:
 
-- Backend tests: tracked by `python scripts/dev.py verify-lite`.
-- PostgreSQL integration tests: 5 passed with `python scripts/dev.py verify-postgres`.
-- Backend coverage: enforced at the 80% threshold.
-- Frontend tests: 8 passed.
-- Ruff, Ruff format, mypy, ESLint, Prettier, TypeScript, Vite build, memory demo, static export, and `git diff --check` passed.
+- `python scripts/dev.py verify-cross-asset` passed.
+- Backend unit tests passed: 106 tests.
+- Backend contract tests passed: 22 tests.
+- Backend Ruff check, Ruff format check, and mypy passed.
+- Frontend ESLint, Prettier check, TypeScript check, Vitest, and Vite build passed.
+- Static demo manifest validation, memory demo, and `git diff --check` passed.
+- PostgreSQL Alembic upgrade and targeted cross-asset PostgreSQL idempotency test passed with Compose project `finnews_m3r_verify`.
+
+The full `verify-lite` coverage run and full `verify-postgres` suite exceeded the local command timeout in this session; component checks were run separately and results are documented in `docs/M3A_REVISED_RELEASE_AUDIT.md`.
 
 ## API Examples
 
@@ -141,6 +159,11 @@ GET /api/v1/source-fetch-attempts
 GET /api/v1/nlp/overview
 GET /api/v1/nlp/models
 GET /api/v1/nlp/evaluations
+GET /api/v1/cross-asset/overview
+GET /api/v1/assets
+GET /api/v1/event-impacts
+GET /api/v1/signals
+GET /api/v1/integrations/mt5/readiness
 ```
 
 ## Frontend
@@ -153,7 +176,7 @@ Committed records are fully synthetic and fictional. The project stores metadata
 
 ## Roadmap
 
-Milestones 1-4 are documented in `docs/ROADMAP.md` and are not implemented yet.
+Completed and planned milestones are documented in `docs/ROADMAP.md`. Optional A-share export documentation remains in the repository but no longer defines the main product surface.
 
 ## Limitations
 

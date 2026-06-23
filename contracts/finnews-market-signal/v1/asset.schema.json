@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FinNews canonical asset row v1",
+  "type": "object",
+  "required": [
+    "asset_id",
+    "display_name",
+    "asset_class",
+    "country_region",
+    "status",
+    "synthetic",
+    "provenance",
+    "schema_version"
+  ],
+  "properties": {
+    "asset_class": {
+      "enum": [
+        "us_equity",
+        "etf",
+        "equity_index",
+        "fx",
+        "precious_metal",
+        "commodity",
+        "futures_root",
+        "futures_contract",
+        "crypto_asset",
+        "macro_indicator",
+        "interest_rate"
+      ]
+    },
+    "status": { "enum": ["active", "inactive"] },
+    "synthetic": { "const": true }
+  },
+  "additionalProperties": true
+}

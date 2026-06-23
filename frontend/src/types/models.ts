@@ -280,3 +280,158 @@ export interface ResearchLineageRow {
   sentiment_label: string | null;
   inclusion_reason: string;
 }
+
+export interface CrossAssetOverview {
+  product_positioning: string;
+  synthetic_data: boolean;
+  not_investment_advice: boolean;
+  no_execution: boolean;
+  mt5_terminal_connection: string;
+  order_execution: string;
+  asset_count: number;
+  event_count: number;
+  impact_hypothesis_count: number;
+  signal_candidate_count: number;
+  asset_class_counts: Record<string, number>;
+  event_family_counts: Record<string, number>;
+  impact_direction_counts: Record<string, number>;
+  impact_horizon_counts: Record<string, number>;
+  signal_status_counts: Record<string, number>;
+  active_signal_count: number;
+  expired_signal_count: number;
+  contract_name: string;
+  contract_version: string;
+  fixture_version: string;
+  live_prices: boolean;
+  official_market_data: boolean;
+  optional_integrations: string[];
+}
+
+export interface Asset {
+  id: string;
+  asset_id: string;
+  display_name: string;
+  asset_class: string;
+  canonical_symbol: string | null;
+  home_venue: string | null;
+  country_region: string;
+  base_currency: string | null;
+  quote_currency: string | null;
+  parent_asset_id: string | null;
+  expiry: string | null;
+  contract_metadata: Record<string, unknown>;
+  status: string;
+  synthetic: boolean;
+  provenance: Record<string, unknown>;
+  schema_version: string;
+}
+
+export interface AssetAlias {
+  id: string;
+  asset_id: string;
+  namespace: string;
+  symbol: string;
+  normalized_symbol: string;
+  provider: string;
+  provider_version: string;
+  active: boolean;
+  confidence: number;
+  provenance: Record<string, unknown>;
+  valid_from: string | null;
+  valid_to: string | null;
+}
+
+export interface AssetRelationship {
+  id: string;
+  relationship_id: string;
+  source_asset_id: string;
+  target_asset_id: string;
+  relationship_type: string;
+  direction: string;
+  confidence: number;
+  active: boolean;
+  provenance: Record<string, unknown>;
+  synthetic: boolean;
+}
+
+export interface CrossAssetEvent {
+  id: string;
+  event_id: string;
+  event_family: string;
+  event_subtype: string;
+  description: string;
+  information_available_at: string;
+  affected_region: string;
+  relevant_currency: string | null;
+  source_provenance: Record<string, unknown>;
+  provider: string;
+  provider_version: string;
+  confidence: number | null;
+  uncertainty_flags: string[];
+  duplicate_of_event_id: string | null;
+  synthetic: boolean;
+}
+
+export interface EventImpact {
+  id: string;
+  impact_id: string;
+  event_id: string;
+  asset_id: string;
+  relationship_type: string;
+  direction: string;
+  impact_strength: number;
+  confidence: number | null;
+  horizon: string;
+  evidence_codes: string[];
+  provider: string;
+  provider_version: string;
+  information_cutoff_at: string;
+  created_at: string;
+  expires_at: string;
+  status: string;
+  rejection_reason: string | null;
+  uncertainty_reason: string | null;
+  synthetic: boolean;
+  asset_class?: string;
+  event_family?: string;
+}
+
+export interface MarketSignalCandidate {
+  id: string;
+  signal_id: string;
+  impact_id: string;
+  event_id: string;
+  asset_id: string;
+  direction: string;
+  horizon: string;
+  status: string;
+  confidence: number | null;
+  score: number | null;
+  information_cutoff_at: string;
+  generated_at: string;
+  expires_at: string;
+  provider: string;
+  provider_version: string;
+  evidence_codes: string[];
+  quality_tags: string[];
+  risk_tags: string[];
+  payload_hash: string;
+  idempotency_key: string;
+  synthetic: boolean;
+  asset_class?: string;
+}
+
+export interface Mt5Readiness {
+  signal_contract_status: string;
+  symbol_map_schema_status: string;
+  canonical_mapping_coverage: { mapped_assets: number; total_assets: number };
+  utc_policy: string;
+  terminal_adapter_status: string;
+  mt5_terminal_connection: string;
+  execution_status: string;
+  order_execution: string;
+  credentials_accepted: boolean;
+  account_data_access: boolean;
+  order_routes: boolean;
+  notes: string[];
+}

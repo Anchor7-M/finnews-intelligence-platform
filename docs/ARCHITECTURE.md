@@ -4,6 +4,8 @@ Milestone 0 is a modular monolith with ports and adapters.
 
 Milestone 3A adds a research-export application service that reads existing news metadata through repository ports and writes deterministic packages plus safe metadata. FinNews owns news provenance, information availability, event/sentiment metadata, feature lineage, and the export contract. The future `ashare-research-platform` owns prices, returns, backtests, and portfolio logic.
 
+Revised Milestone 3A makes cross-asset information intelligence the primary architecture path. The A-share research export remains an optional downstream adapter.
+
 ```mermaid
 flowchart TD
   Domain[Domain entities and rules] --> Application[Application use cases and ports]
@@ -96,3 +98,26 @@ Model binaries stay under ignored `.finnews-artifacts/`. The committed
 benchmark and reports contain only original synthetic records and safe metadata.
 The default news pipeline remains rule-based; Milestone 2A adds evaluation
 tooling rather than production model activation.
+
+## Revised Milestone 3A Cross-Asset Foundation
+
+```mermaid
+flowchart LR
+  News[Normalized news metadata] --> Events[Cross-asset event families]
+  Assets[Canonical asset registry] --> Impact[Impact hypotheses]
+  Events --> Impact
+  Impact --> Signals[Research signal candidates]
+  Signals --> Contract[finnews-market-signal-v1]
+  Contract --> Future[Future local bridge boundary]
+```
+
+The cross-asset layer adds domain entities for assets, aliases, provider symbols,
+local broker-symbol mappings, relationships, events, impact hypotheses, signal
+candidates, and publication runs. It keeps the dependency direction unchanged:
+domain remains framework-free, application owns deterministic builders and
+validators, infrastructure persists memory/PostgreSQL state, and interfaces
+expose read-only API/CLI surfaces.
+
+The MT5 boundary is documentation, validation, and readiness metadata only. The
+repository contains no terminal adapter, no credentials, no account access, and
+no execution path.

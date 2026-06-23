@@ -12,7 +12,7 @@ import time
 
 
 ROOT = Path(__file__).resolve().parents[1]
-POSTGRES_PROJECT = "finnews_m3a_verify"
+POSTGRES_PROJECT = "finnews_m3r_verify"
 POSTGRES_SERVICE = "postgres"
 POSTGRES_URL = "postgresql+psycopg://finnews:finnews@127.0.0.1:55432/finnews"
 
@@ -42,6 +42,17 @@ def run(
 @contextmanager
 def tempfile_directory():
     path = Path(tempfile.mkdtemp(prefix="finnews-research-verify-"))
+    try:
+        yield path
+    finally:
+        shutil.rmtree(path, ignore_errors=True)
+
+
+@contextmanager
+def temporary_signal_package():
+    path = ROOT / ".finnews-market-signals" / "verify"
+    if path.exists():
+        shutil.rmtree(path)
     try:
         yield path
     finally:
@@ -124,6 +135,15 @@ def validate_static_export() -> None:
         "research-lineage-sample.json",
         "research-quality-report.json",
         "research-leakage-audit.json",
+        "cross-asset-overview.json",
+        "assets.json",
+        "asset-aliases.json",
+        "asset-relationships.json",
+        "cross-asset-events.json",
+        "event-impacts.json",
+        "market-signals.json",
+        "mt5-readiness.json",
+        "market-signal-contract-example.json",
     ]
     missing = [name for name in required if not (output / name).is_file()]
     if missing:
@@ -174,7 +194,7 @@ def verify_postgres(_: argparse.Namespace) -> None:
         db_down(argparse.Namespace())
     if success:
         print(
-            "verify-postgres passed: project=finnews_m3a_verify service=postgres "
+            "verify-postgres passed: project=finnews_m3r_verify service=postgres "
             "image=postgres:16 port=127.0.0.1:55432"
         )
 
@@ -243,8 +263,21 @@ def verify_source_reviews(_: argparse.Namespace) -> None:
 
 
 def build_nlp_benchmark(_: argparse.Namespace) -> None:
-    run([sys.executable, "-m", "finnews.interfaces.cli.app", "nlp", "dataset", "build"], ROOT / "backend")
-    run([sys.executable, "-m", "finnews.interfaces.cli.app", "nlp", "dataset", "validate"], ROOT / "backend")
+    run(
+        [sys.executable, "-m", "finnews.interfaces.cli.app", "nlp", "dataset", "build"],
+        ROOT / "backend",
+    )
+    run(
+        [
+            sys.executable,
+            "-m",
+            "finnews.interfaces.cli.app",
+            "nlp",
+            "dataset",
+            "validate",
+        ],
+        ROOT / "backend",
+    )
 
 
 def benchmark_nlp(_: argparse.Namespace) -> None:
@@ -259,7 +292,11 @@ def benchmark_nlp(_: argparse.Namespace) -> None:
             "all",
         ],
         ROOT / "backend",
-        env={"OMP_NUM_THREADS": "1", "OPENBLAS_NUM_THREADS": "1", "MKL_NUM_THREADS": "1"},
+        env={
+            "OMP_NUM_THREADS": "1",
+            "OPENBLAS_NUM_THREADS": "1",
+            "MKL_NUM_THREADS": "1",
+        },
     )
 
 
@@ -282,8 +319,14 @@ def verify_ml(_: argparse.Namespace) -> None:
         env={"FINNEWS_SOURCE_TEST_MODE": "mocked-offline"},
     )
     benchmark_nlp(argparse.Namespace())
-    run([sys.executable, "-m", "finnews.interfaces.cli.app", "nlp", "release-audit"], backend)
-    run([sys.executable, "-m", "finnews.interfaces.cli.app", "nlp", "export-static"], backend)
+    run(
+        [sys.executable, "-m", "finnews.interfaces.cli.app", "nlp", "release-audit"],
+        backend,
+    )
+    run(
+        [sys.executable, "-m", "finnews.interfaces.cli.app", "nlp", "export-static"],
+        backend,
+    )
     validate_static_export()
 
 
@@ -354,6 +397,85 @@ def verify_research_export(_: argparse.Namespace) -> None:
             "pytest",
             "tests/unit/test_research_export.py",
             "tests/contract/test_research_api_cli.py",
+        ],
+        backend,
+    )
+
+
+def verify_cross_asset(_: argparse.Namespace) -> None:
+    backend = ROOT / "backend"
+    run(
+        [sys.executable, "-m", "finnews.interfaces.cli.app", "asset", "validate"],
+        backend,
+    )
+    run(
+        [
+            sys.executable,
+            "-m",
+            "finnews.interfaces.cli.app",
+            "cross-asset",
+            "build-demo",
+        ],
+        backend,
+    )
+    run(
+        [sys.executable, "-m", "finnews.interfaces.cli.app", "cross-asset", "summary"],
+        backend,
+    )
+    run(
+        [
+            sys.executable,
+            "-m",
+            "finnews.interfaces.cli.app",
+            "mt5",
+            "readiness",
+        ],
+        backend,
+    )
+    run(
+        [
+            sys.executable,
+            "-m",
+            "finnews.interfaces.cli.app",
+            "mt5",
+            "validate-symbol-map",
+            "--path",
+            "../config/integrations/mt5-symbol-map.example.yaml",
+        ],
+        backend,
+    )
+    with temporary_signal_package() as output:
+        run(
+            [
+                sys.executable,
+                "-m",
+                "finnews.interfaces.cli.app",
+                "signal",
+                "export",
+                "--output",
+                str(output),
+            ],
+            backend,
+        )
+        run(
+            [
+                sys.executable,
+                "-m",
+                "finnews.interfaces.cli.app",
+                "signal",
+                "validate",
+                "--path",
+                str(output),
+            ],
+            backend,
+        )
+    run(
+        [
+            sys.executable,
+            "-m",
+            "pytest",
+            "tests/unit/test_cross_asset.py",
+            "tests/contract/test_cross_asset_api_cli.py",
         ],
         backend,
     )
@@ -464,6 +586,7 @@ def cleanup(args: argparse.Namespace) -> None:
         ROOT / "frontend" / "coverage",
         ROOT / "data" / "generated",
         ROOT / ".finnews-research-exports",
+        ROOT / ".finnews-market-signals",
     ]
     existing = [path for path in candidates if path.exists()]
     for path in existing:
@@ -492,6 +615,7 @@ def main() -> None:
     sub.add_parser("verify-source-reviews").set_defaults(func=verify_source_reviews)
     sub.add_parser("verify-ml").set_defaults(func=verify_ml)
     sub.add_parser("verify-research-export").set_defaults(func=verify_research_export)
+    sub.add_parser("verify-cross-asset").set_defaults(func=verify_cross_asset)
     sub.add_parser("build-research-export").set_defaults(func=build_research_export)
     sub.add_parser("build-nlp-benchmark").set_defaults(func=build_nlp_benchmark)
     sub.add_parser("benchmark-nlp").set_defaults(func=benchmark_nlp)

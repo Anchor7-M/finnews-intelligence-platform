@@ -1,6 +1,11 @@
 import { describe, expect, it, vi } from "vitest";
 
-import { loadArticles, loadOverview } from "../src/api/client";
+import {
+  loadArticles,
+  loadCrossAssetOverview,
+  loadMarketSignalCandidates,
+  loadOverview,
+} from "../src/api/client";
 
 describe("data client", () => {
   it("loads static overview data", async () => {
@@ -23,5 +28,20 @@ describe("data client", () => {
       })),
     );
     await expect(loadArticles("api")).resolves.toHaveLength(1);
+  });
+
+  it("loads cross-asset static and API data", async () => {
+    const fetchMock = vi.fn(async (url: string) => ({
+      ok: true,
+      json: async () =>
+        url.includes("/api/v1/signals")
+          ? { items: [{ signal_id: "SIGNAL-1", status: "research" }] }
+          : { asset_count: 40, signal_candidate_count: 80 },
+    }));
+    vi.stubGlobal("fetch", fetchMock);
+    await expect(loadCrossAssetOverview("static-demo")).resolves.toMatchObject({
+      asset_count: 40,
+    });
+    await expect(loadMarketSignalCandidates("api")).resolves.toHaveLength(1);
   });
 });

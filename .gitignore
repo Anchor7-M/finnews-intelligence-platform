@@ -240,6 +240,8 @@ reports/*
 smoke-reports/
 .finnews-artifacts/
 .finnews-research-exports/
+.finnews-market-signals/
+config/integrations/mt5-symbol-map.local.yaml
 tmp/
 *.db
 *.sqlite

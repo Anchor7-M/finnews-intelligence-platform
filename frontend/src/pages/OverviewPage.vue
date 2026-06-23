@@ -1,16 +1,29 @@
 <script setup lang="ts">
 import StateBlock from "../components/StateBlock.vue";
-import { loadOverview } from "../api/client";
+import { loadCrossAssetOverview, loadOverview } from "../api/client";
 import { useAsyncData } from "../composables/useAsyncData";
 
 const { data, error, loading } = useAsyncData(loadOverview);
+const crossAsset = useAsyncData(loadCrossAssetOverview);
 </script>
 
 <template>
   <section>
     <h2>Overview</h2>
-    <StateBlock :loading="loading" :error="error" :empty="!data">
+    <StateBlock
+      :loading="loading || crossAsset.loading.value"
+      :error="error || crossAsset.error.value"
+      :empty="!data"
+    >
       <div v-if="data" class="grid">
+        <article v-if="crossAsset.data.value" class="card">
+          <h3>Cross-Asset Assets</h3>
+          <p class="metric">{{ crossAsset.data.value.asset_count }}</p>
+        </article>
+        <article v-if="crossAsset.data.value" class="card">
+          <h3>Signal Candidates</h3>
+          <p class="metric">{{ crossAsset.data.value.signal_candidate_count }}</p>
+        </article>
         <article class="card">
           <h3>Canonical Articles</h3>
           <p class="metric">{{ data.canonical_article_count }}</p>

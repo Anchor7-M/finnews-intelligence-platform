@@ -5,17 +5,25 @@ from datetime import date, datetime
 from uuid import UUID
 
 from finnews.domain.enums import (
+    AssetClass,
+    AssetStatus,
+    CrossAssetEventFamily,
     DuplicateType,
     EventType,
     FetchOutcome,
+    ImpactDirection,
+    ImpactHorizon,
+    ImpactRelationshipType,
     IngestionPolicy,
     ProcessingState,
+    ResearchSignalStatus,
     RunStatus,
     SentimentLabel,
     SourceApprovalStatus,
     SourceErrorCategory,
     SourceHealthStatus,
     SourceType,
+    SymbolNamespace,
 )
 from finnews.domain.value_objects import new_id, utc_now
 
@@ -427,6 +435,169 @@ class ResearchLineageRow:
     sentiment_provider: str | None = None
     sentiment_model_version: str | None = None
     payload: dict[str, object] = field(default_factory=dict)
+    synthetic: bool = True
+    id: UUID = field(default_factory=new_id)
+
+
+@dataclass(frozen=True)
+class Venue:
+    venue_id: str
+    display_name: str
+    country_region: str
+    timezone: str
+    synthetic: bool = True
+
+
+@dataclass
+class Asset:
+    asset_id: str
+    display_name: str
+    asset_class: AssetClass
+    canonical_symbol: str | None
+    home_venue: str | None
+    country_region: str
+    base_currency: str | None = None
+    quote_currency: str | None = None
+    parent_asset_id: str | None = None
+    expiry: date | None = None
+    contract_metadata: dict[str, object] = field(default_factory=dict)
+    status: AssetStatus = AssetStatus.ACTIVE
+    synthetic: bool = True
+    provenance: dict[str, object] = field(default_factory=dict)
+    schema_version: str = "cross-asset-v1"
+    id: UUID = field(default_factory=new_id)
+
+
+@dataclass
+class SymbolAlias:
+    asset_id: str
+    namespace: SymbolNamespace
+    symbol: str
+    normalized_symbol: str
+    provider: str
+    provider_version: str
+    active: bool = True
+    confidence: float = 1.0
+    provenance: dict[str, object] = field(default_factory=dict)
+    valid_from: date | None = None
+    valid_to: date | None = None
+    id: UUID = field(default_factory=new_id)
+
+
+@dataclass
+class ProviderSymbol:
+    asset_id: str
+    namespace: SymbolNamespace
+    provider: str
+    symbol: str
+    provider_version: str
+    active: bool = True
+    provenance: dict[str, object] = field(default_factory=dict)
+    id: UUID = field(default_factory=new_id)
+
+
+@dataclass
+class BrokerSymbolMapping:
+    asset_id: str
+    broker_profile_id: str
+    mt5_symbol: str
+    enabled: bool
+    provenance: dict[str, object] = field(default_factory=dict)
+    local_note: str | None = None
+    id: UUID = field(default_factory=new_id)
+
+
+@dataclass
+class AssetRelationship:
+    relationship_id: str
+    source_asset_id: str
+    target_asset_id: str
+    relationship_type: ImpactRelationshipType
+    direction: str
+    confidence: float | None
+    active: bool = True
+    provenance: dict[str, object] = field(default_factory=dict)
+    synthetic: bool = True
+    id: UUID = field(default_factory=new_id)
+
+
+@dataclass
+class CrossAssetEvent:
+    event_id: str
+    event_family: CrossAssetEventFamily
+    event_subtype: str
+    description: str
+    information_available_at: datetime
+    affected_region: str
+    relevant_currency: str | None
+    source_provenance: dict[str, object]
+    provider: str
+    provider_version: str
+    confidence: float | None
+    uncertainty_flags: list[str] = field(default_factory=list)
+    duplicate_of_event_id: str | None = None
+    synthetic: bool = True
+    id: UUID = field(default_factory=new_id)
+
+
+@dataclass
+class AssetImpactHypothesis:
+    impact_id: str
+    event_id: str
+    asset_id: str
+    relationship_type: ImpactRelationshipType
+    direction: ImpactDirection
+    impact_strength: float
+    confidence: float | None
+    horizon: ImpactHorizon
+    evidence_codes: list[str]
+    provider: str
+    provider_version: str
+    information_cutoff_at: datetime
+    created_at: datetime
+    expires_at: datetime | None
+    status: str
+    rejection_reason: str | None = None
+    uncertainty_reason: str | None = None
+    synthetic: bool = True
+    id: UUID = field(default_factory=new_id)
+
+
+@dataclass
+class MarketSignalCandidate:
+    signal_id: str
+    impact_id: str
+    event_id: str
+    asset_id: str
+    direction: ImpactDirection
+    horizon: ImpactHorizon
+    status: ResearchSignalStatus
+    confidence: float | None
+    score: float | None
+    information_cutoff_at: datetime
+    generated_at: datetime
+    expires_at: datetime | None
+    provider: str
+    provider_version: str
+    evidence_codes: list[str]
+    quality_tags: list[str]
+    risk_tags: list[str]
+    payload_hash: str
+    idempotency_key: str
+    synthetic: bool = True
+    id: UUID = field(default_factory=new_id)
+
+
+@dataclass
+class SignalPublicationRun:
+    run_id: str
+    contract_name: str
+    contract_version: str
+    generated_at: datetime
+    count: int
+    status: str
+    manifest_hash: str
+    file_hashes: dict[str, str]
     synthetic: bool = True
     id: UUID = field(default_factory=new_id)
 

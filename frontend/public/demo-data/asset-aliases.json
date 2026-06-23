@@ -1,0 +1,3380 @@
+[
+  {
+    "asset_id": "US-EQ-ALPHA",
+    "namespace": "canonical",
+    "symbol": "US-EQ-ALPHA",
+    "normalized_symbol": "US-EQ-ALPHA",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "e0ac395f-2017-5c92-bf9d-9984b15e3d9a"
+  },
+  {
+    "asset_id": "US-EQ-ALPHA",
+    "namespace": "research",
+    "symbol": "R:US-EQ-ALPHA",
+    "normalized_symbol": "R:US-EQ-ALPHA",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "63b0bd98-2767-590a-9d28-21f47fa01c42"
+  },
+  {
+    "asset_id": "US-EQ-ALPHA",
+    "namespace": "news_source",
+    "symbol": "Alpha Robotics Synthetic Corp",
+    "normalized_symbol": "ALPHA ROBOTICS SYNTHETIC CORP",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 0.92,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "7f9a801d-b3ba-571f-8e30-e091b024662c"
+  },
+  {
+    "asset_id": "US-EQ-ALPHA",
+    "namespace": "market_data",
+    "symbol": "ALPR",
+    "normalized_symbol": "ALPR",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "98b2c22d-4c1a-5d93-ac8b-e649cb3f2ef0"
+  },
+  {
+    "asset_id": "US-EQ-ALPHA",
+    "namespace": "mt5_broker_local",
+    "symbol": "DEMO.ALPR",
+    "normalized_symbol": "DEMO.ALPR",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "334dcc07-9be7-5cc9-88d6-43cd29e290a9"
+  },
+  {
+    "asset_id": "US-EQ-ALPHA",
+    "namespace": "sec_cik_or_issuer",
+    "symbol": "DEMO-CIK-ALPHA",
+    "normalized_symbol": "DEMO-CIK-ALPHA",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "d0235422-25a1-5b67-9e54-a26d65a373e3"
+  },
+  {
+    "asset_id": "US-EQ-BETA",
+    "namespace": "canonical",
+    "symbol": "US-EQ-BETA",
+    "normalized_symbol": "US-EQ-BETA",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "cd33213a-59e7-5569-923f-9752e32b0977"
+  },
+  {
+    "asset_id": "US-EQ-BETA",
+    "namespace": "research",
+    "symbol": "R:US-EQ-BETA",
+    "normalized_symbol": "R:US-EQ-BETA",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "f7d3c24a-cf79-5965-9573-e6cea7341e34"
+  },
+  {
+    "asset_id": "US-EQ-BETA",
+    "namespace": "news_source",
+    "symbol": "Beta Cloud Synthetic Inc",
+    "normalized_symbol": "BETA CLOUD SYNTHETIC INC",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 0.92,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "87db5ddd-12d1-5e03-88e8-6eb1e3aa3d46"
+  },
+  {
+    "asset_id": "US-EQ-BETA",
+    "namespace": "market_data",
+    "symbol": "BETC",
+    "normalized_symbol": "BETC",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "48a27d72-9e0a-52d8-a530-e27c854a2c6e"
+  },
+  {
+    "asset_id": "US-EQ-BETA",
+    "namespace": "mt5_broker_local",
+    "symbol": "DEMO.BETC",
+    "normalized_symbol": "DEMO.BETC",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "54f0a960-d203-5e5c-ba7b-49145d1c32ca"
+  },
+  {
+    "asset_id": "US-EQ-BETA",
+    "namespace": "sec_cik_or_issuer",
+    "symbol": "DEMO-CIK--BETA",
+    "normalized_symbol": "DEMO-CIK--BETA",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "ae41206d-c004-5eaa-9c28-d98f3920e389"
+  },
+  {
+    "asset_id": "US-EQ-GAMMA",
+    "namespace": "canonical",
+    "symbol": "US-EQ-GAMMA",
+    "normalized_symbol": "US-EQ-GAMMA",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "f13c8a08-3941-5db0-93ca-94bd7b300035"
+  },
+  {
+    "asset_id": "US-EQ-GAMMA",
+    "namespace": "research",
+    "symbol": "R:US-EQ-GAMMA",
+    "normalized_symbol": "R:US-EQ-GAMMA",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "64aa7ed6-db3f-52a1-9296-eb2b2b3e9f5d"
+  },
+  {
+    "asset_id": "US-EQ-GAMMA",
+    "namespace": "news_source",
+    "symbol": "Gamma Health Synthetic Co",
+    "normalized_symbol": "GAMMA HEALTH SYNTHETIC CO",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 0.92,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "0e697c16-5084-510d-a3c2-1affe3ecac3f"
+  },
+  {
+    "asset_id": "US-EQ-GAMMA",
+    "namespace": "market_data",
+    "symbol": "GMHL",
+    "normalized_symbol": "GMHL",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "7b442e6c-624f-5434-b342-e9b5af679d56"
+  },
+  {
+    "asset_id": "US-EQ-GAMMA",
+    "namespace": "mt5_broker_local",
+    "symbol": "DEMO.GMHL",
+    "normalized_symbol": "DEMO.GMHL",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "e4b3c081-f8b3-5dea-bc14-8d8d7ba93bb8"
+  },
+  {
+    "asset_id": "US-EQ-GAMMA",
+    "namespace": "sec_cik_or_issuer",
+    "symbol": "DEMO-CIK-GAMMA",
+    "normalized_symbol": "DEMO-CIK-GAMMA",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "53976fbf-74dd-5dfd-9bb4-0cdec627451d"
+  },
+  {
+    "asset_id": "US-EQ-DELTA",
+    "namespace": "canonical",
+    "symbol": "US-EQ-DELTA",
+    "normalized_symbol": "US-EQ-DELTA",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "aa9eb129-9909-574d-ab2a-8a0a2d90a4ac"
+  },
+  {
+    "asset_id": "US-EQ-DELTA",
+    "namespace": "research",
+    "symbol": "R:US-EQ-DELTA",
+    "normalized_symbol": "R:US-EQ-DELTA",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "7b2089db-4067-52dd-81ae-516f599d47e8"
+  },
+  {
+    "asset_id": "US-EQ-DELTA",
+    "namespace": "news_source",
+    "symbol": "Delta Retail Synthetic Group",
+    "normalized_symbol": "DELTA RETAIL SYNTHETIC GROUP",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 0.92,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "c9e81b2a-d339-5a20-8f56-23208a7d81e6"
+  },
+  {
+    "asset_id": "US-EQ-DELTA",
+    "namespace": "market_data",
+    "symbol": "DLRT",
+    "normalized_symbol": "DLRT",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "a4a8a819-ed2d-59bd-bae7-55254f4e8787"
+  },
+  {
+    "asset_id": "US-EQ-DELTA",
+    "namespace": "mt5_broker_local",
+    "symbol": "DEMO.DLRT",
+    "normalized_symbol": "DEMO.DLRT",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "bbaa77d5-b093-5fef-96dc-db92f468042b"
+  },
+  {
+    "asset_id": "US-EQ-DELTA",
+    "namespace": "sec_cik_or_issuer",
+    "symbol": "DEMO-CIK-DELTA",
+    "normalized_symbol": "DEMO-CIK-DELTA",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "1d6b495d-cade-5c48-80ba-c388ffe22160"
+  },
+  {
+    "asset_id": "US-EQ-EPSILON",
+    "namespace": "canonical",
+    "symbol": "US-EQ-EPSILON",
+    "normalized_symbol": "US-EQ-EPSILON",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "52707029-e386-51a6-bf02-12ccba0f31dd"
+  },
+  {
+    "asset_id": "US-EQ-EPSILON",
+    "namespace": "research",
+    "symbol": "R:US-EQ-EPSILON",
+    "normalized_symbol": "R:US-EQ-EPSILON",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "f59ef5b8-5f7e-5546-ab69-340cc4795e42"
+  },
+  {
+    "asset_id": "US-EQ-EPSILON",
+    "namespace": "news_source",
+    "symbol": "Epsilon Energy Synthetic Ltd",
+    "normalized_symbol": "EPSILON ENERGY SYNTHETIC LTD",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 0.92,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "f7d5e2e2-7294-5262-969b-e6988122c1e3"
+  },
+  {
+    "asset_id": "US-EQ-EPSILON",
+    "namespace": "market_data",
+    "symbol": "EPEN",
+    "normalized_symbol": "EPEN",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "fdcf0cd4-bcd7-5c19-b678-6ed38e161539"
+  },
+  {
+    "asset_id": "US-EQ-EPSILON",
+    "namespace": "mt5_broker_local",
+    "symbol": "DEMO.EPEN",
+    "normalized_symbol": "DEMO.EPEN",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "3cdce755-ddd9-5422-927c-a9b997add038"
+  },
+  {
+    "asset_id": "US-EQ-EPSILON",
+    "namespace": "sec_cik_or_issuer",
+    "symbol": "DEMO-CIK-SILON",
+    "normalized_symbol": "DEMO-CIK-SILON",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "a7ae353a-d99c-5544-a036-d95bf6a0afee"
+  },
+  {
+    "asset_id": "US-EQ-ZETA",
+    "namespace": "canonical",
+    "symbol": "US-EQ-ZETA",
+    "normalized_symbol": "US-EQ-ZETA",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "b466d785-efac-5ffc-9808-ac51a97ccd1c"
+  },
+  {
+    "asset_id": "US-EQ-ZETA",
+    "namespace": "research",
+    "symbol": "R:US-EQ-ZETA",
+    "normalized_symbol": "R:US-EQ-ZETA",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "1702cd26-8dc6-5bc7-a90b-816e57cb91cc"
+  },
+  {
+    "asset_id": "US-EQ-ZETA",
+    "namespace": "news_source",
+    "symbol": "Zeta Industrial Synthetic Works",
+    "normalized_symbol": "ZETA INDUSTRIAL SYNTHETIC WORKS",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 0.92,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "99dcaca8-716c-53de-b1a3-02b873365097"
+  },
+  {
+    "asset_id": "US-EQ-ZETA",
+    "namespace": "market_data",
+    "symbol": "ZTIN",
+    "normalized_symbol": "ZTIN",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "729010dc-3036-5a4e-b630-f06418e31587"
+  },
+  {
+    "asset_id": "US-EQ-ZETA",
+    "namespace": "mt5_broker_local",
+    "symbol": "DEMO.ZTIN",
+    "normalized_symbol": "DEMO.ZTIN",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "af708e8d-8c5f-5b47-97f4-8e53f066b57c"
+  },
+  {
+    "asset_id": "US-EQ-ZETA",
+    "namespace": "sec_cik_or_issuer",
+    "symbol": "DEMO-CIK--ZETA",
+    "normalized_symbol": "DEMO-CIK--ZETA",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "e1d58649-5a76-587c-8e0b-c736fbe5fe00"
+  },
+  {
+    "asset_id": "US-EQ-OMEGA",
+    "namespace": "canonical",
+    "symbol": "US-EQ-OMEGA",
+    "normalized_symbol": "US-EQ-OMEGA",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "c32f81e3-881b-5eed-a749-856873a409a7"
+  },
+  {
+    "asset_id": "US-EQ-OMEGA",
+    "namespace": "research",
+    "symbol": "R:US-EQ-OMEGA",
+    "normalized_symbol": "R:US-EQ-OMEGA",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "e288869c-da72-568b-ae22-bc761a3d3a9f"
+  },
+  {
+    "asset_id": "US-EQ-OMEGA",
+    "namespace": "news_source",
+    "symbol": "Omega Payments Synthetic Holdings",
+    "normalized_symbol": "OMEGA PAYMENTS SYNTHETIC HOLDINGS",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 0.92,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "8a3305dd-47d7-5471-847e-d6d8e4dd39ca"
+  },
+  {
+    "asset_id": "US-EQ-OMEGA",
+    "namespace": "market_data",
+    "symbol": "OMPY",
+    "normalized_symbol": "OMPY",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "29e348e5-a55f-593b-a1e1-0cba50811ad2"
+  },
+  {
+    "asset_id": "US-EQ-OMEGA",
+    "namespace": "mt5_broker_local",
+    "symbol": "DEMO.OMPY",
+    "normalized_symbol": "DEMO.OMPY",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "e607c314-ba62-56bb-a986-ad86377009c6"
+  },
+  {
+    "asset_id": "US-EQ-OMEGA",
+    "namespace": "sec_cik_or_issuer",
+    "symbol": "DEMO-CIK-OMEGA",
+    "normalized_symbol": "DEMO-CIK-OMEGA",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "a8eff024-062e-5c54-b7a1-a2a2b2651bb8"
+  },
+  {
+    "asset_id": "US-EQ-SIGMA",
+    "namespace": "canonical",
+    "symbol": "US-EQ-SIGMA",
+    "normalized_symbol": "US-EQ-SIGMA",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "a66fee42-4bf7-5dbd-b2fd-e0e19f541e6d"
+  },
+  {
+    "asset_id": "US-EQ-SIGMA",
+    "namespace": "research",
+    "symbol": "R:US-EQ-SIGMA",
+    "normalized_symbol": "R:US-EQ-SIGMA",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "f06660f9-3805-5ea9-8d9a-6a23d1b27003"
+  },
+  {
+    "asset_id": "US-EQ-SIGMA",
+    "namespace": "news_source",
+    "symbol": "Sigma Chips Synthetic Corp",
+    "normalized_symbol": "SIGMA CHIPS SYNTHETIC CORP",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 0.92,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "f44cad3b-b5bb-5755-97f7-a3ee86da60db"
+  },
+  {
+    "asset_id": "US-EQ-SIGMA",
+    "namespace": "market_data",
+    "symbol": "SGCH",
+    "normalized_symbol": "SGCH",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "9cddaf0c-a51a-5c09-a585-89595a567f61"
+  },
+  {
+    "asset_id": "US-EQ-SIGMA",
+    "namespace": "mt5_broker_local",
+    "symbol": "DEMO.SGCH",
+    "normalized_symbol": "DEMO.SGCH",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "76f74bf6-c1ca-5b43-b190-0550ad8f1f43"
+  },
+  {
+    "asset_id": "US-EQ-SIGMA",
+    "namespace": "sec_cik_or_issuer",
+    "symbol": "DEMO-CIK-SIGMA",
+    "normalized_symbol": "DEMO-CIK-SIGMA",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "53030ede-99ca-59d3-9c0d-0f6c9aacd191"
+  },
+  {
+    "asset_id": "ETF-US-LARGE",
+    "namespace": "canonical",
+    "symbol": "ETF-US-LARGE",
+    "normalized_symbol": "ETF-US-LARGE",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "eee995b2-8b1b-546e-be42-25b7fe4ff8a2"
+  },
+  {
+    "asset_id": "ETF-US-LARGE",
+    "namespace": "research",
+    "symbol": "R:ETF-US-LARGE",
+    "normalized_symbol": "R:ETF-US-LARGE",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "159c87a4-5564-5e82-82ca-b82c20b22dc1"
+  },
+  {
+    "asset_id": "ETF-US-LARGE",
+    "namespace": "news_source",
+    "symbol": "Synthetic US Large Equity ETF Proxy",
+    "normalized_symbol": "SYNTHETIC US LARGE EQUITY ETF PROXY",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 0.92,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "a2b8e182-4c84-580c-94ad-fdb4387b5fef"
+  },
+  {
+    "asset_id": "ETF-US-LARGE",
+    "namespace": "market_data",
+    "symbol": "SULG",
+    "normalized_symbol": "SULG",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "9ab319c3-7ed3-552b-a0f3-1b6f8a594c16"
+  },
+  {
+    "asset_id": "ETF-US-LARGE",
+    "namespace": "mt5_broker_local",
+    "symbol": "DEMO.SULG",
+    "normalized_symbol": "DEMO.SULG",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "aa315c19-f54b-509e-804f-d472497c5297"
+  },
+  {
+    "asset_id": "ETF-US-TECH",
+    "namespace": "canonical",
+    "symbol": "ETF-US-TECH",
+    "normalized_symbol": "ETF-US-TECH",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "ca6406de-c1a3-560b-bd9b-107414b5bd91"
+  },
+  {
+    "asset_id": "ETF-US-TECH",
+    "namespace": "research",
+    "symbol": "R:ETF-US-TECH",
+    "normalized_symbol": "R:ETF-US-TECH",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "858fd78b-0ecf-5226-8a7d-44c82700cede"
+  },
+  {
+    "asset_id": "ETF-US-TECH",
+    "namespace": "news_source",
+    "symbol": "Synthetic Technology ETF Proxy",
+    "normalized_symbol": "SYNTHETIC TECHNOLOGY ETF PROXY",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 0.92,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "6479e441-ee3b-56a1-9b42-e3153f480ca5"
+  },
+  {
+    "asset_id": "ETF-US-TECH",
+    "namespace": "market_data",
+    "symbol": "STEC",
+    "normalized_symbol": "STEC",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "89d0b3a6-2bfe-5fdc-a381-185b09494254"
+  },
+  {
+    "asset_id": "ETF-US-TECH",
+    "namespace": "mt5_broker_local",
+    "symbol": "DEMO.STEC",
+    "normalized_symbol": "DEMO.STEC",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "630bbf71-e329-53ce-aaf7-f2254089ad69"
+  },
+  {
+    "asset_id": "ETF-US-BOND",
+    "namespace": "canonical",
+    "symbol": "ETF-US-BOND",
+    "normalized_symbol": "ETF-US-BOND",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "71ab0f8f-e299-5eeb-8ecd-97ccb8ee9a00"
+  },
+  {
+    "asset_id": "ETF-US-BOND",
+    "namespace": "research",
+    "symbol": "R:ETF-US-BOND",
+    "normalized_symbol": "R:ETF-US-BOND",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "f88e12b3-f21a-53fe-a8e3-d4d77fada9b5"
+  },
+  {
+    "asset_id": "ETF-US-BOND",
+    "namespace": "news_source",
+    "symbol": "Synthetic Treasury ETF Proxy",
+    "normalized_symbol": "SYNTHETIC TREASURY ETF PROXY",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 0.92,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "7e11cbd4-1783-5e62-b311-3b8f906e16f7"
+  },
+  {
+    "asset_id": "ETF-US-BOND",
+    "namespace": "market_data",
+    "symbol": "STSY",
+    "normalized_symbol": "STSY",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "f4b698d2-4c23-5718-8e42-6edec0f121d5"
+  },
+  {
+    "asset_id": "ETF-US-BOND",
+    "namespace": "mt5_broker_local",
+    "symbol": "DEMO.STSY",
+    "normalized_symbol": "DEMO.STSY",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "12500af1-e8da-58e5-9bb7-1758299a4b4a"
+  },
+  {
+    "asset_id": "ETF-GLD-PROXY",
+    "namespace": "canonical",
+    "symbol": "ETF-GLD-PROXY",
+    "normalized_symbol": "ETF-GLD-PROXY",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "2357ba4f-9de1-5d0a-83fd-17d2d3c58ae8"
+  },
+  {
+    "asset_id": "ETF-GLD-PROXY",
+    "namespace": "research",
+    "symbol": "R:ETF-GLD-PROXY",
+    "normalized_symbol": "R:ETF-GLD-PROXY",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "7d0ab46e-1caa-5eee-86be-200b056dac00"
+  },
+  {
+    "asset_id": "ETF-GLD-PROXY",
+    "namespace": "news_source",
+    "symbol": "Synthetic Gold ETF Proxy",
+    "normalized_symbol": "SYNTHETIC GOLD ETF PROXY",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 0.92,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "02d00a31-297e-5f8c-9dad-158a4249d677"
+  },
+  {
+    "asset_id": "ETF-GLD-PROXY",
+    "namespace": "market_data",
+    "symbol": "SGLD",
+    "normalized_symbol": "SGLD",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "5fe16fea-d51c-5dec-bac2-e940cb8e34c2"
+  },
+  {
+    "asset_id": "ETF-GLD-PROXY",
+    "namespace": "mt5_broker_local",
+    "symbol": "DEMO.SGLD",
+    "normalized_symbol": "DEMO.SGLD",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "14848e46-f9ac-5cee-af6b-5fb0352624a7"
+  },
+  {
+    "asset_id": "ETF-OIL-PROXY",
+    "namespace": "canonical",
+    "symbol": "ETF-OIL-PROXY",
+    "normalized_symbol": "ETF-OIL-PROXY",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "8a66c1f1-ce0e-5220-9a3b-597317daf843"
+  },
+  {
+    "asset_id": "ETF-OIL-PROXY",
+    "namespace": "research",
+    "symbol": "R:ETF-OIL-PROXY",
+    "normalized_symbol": "R:ETF-OIL-PROXY",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "fe9cba4c-05f2-56a6-a24e-40b77f52582b"
+  },
+  {
+    "asset_id": "ETF-OIL-PROXY",
+    "namespace": "news_source",
+    "symbol": "Synthetic Energy ETF Proxy",
+    "normalized_symbol": "SYNTHETIC ENERGY ETF PROXY",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 0.92,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "50d40b97-0b22-5bfb-8d8c-42852fdf46d4"
+  },
+  {
+    "asset_id": "ETF-OIL-PROXY",
+    "namespace": "market_data",
+    "symbol": "SOIL",
+    "normalized_symbol": "SOIL",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "57e98eac-2271-5482-8f0f-b2c90a8da0f6"
+  },
+  {
+    "asset_id": "ETF-OIL-PROXY",
+    "namespace": "mt5_broker_local",
+    "symbol": "DEMO.SOIL",
+    "normalized_symbol": "DEMO.SOIL",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "8d8cb249-e763-5d31-afe7-ee23e0aaecbe"
+  },
+  {
+    "asset_id": "IDX-US-LARGE",
+    "namespace": "canonical",
+    "symbol": "IDX-US-LARGE",
+    "normalized_symbol": "IDX-US-LARGE",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "81b4b1de-967d-546c-b93a-fe54e7867ba1"
+  },
+  {
+    "asset_id": "IDX-US-LARGE",
+    "namespace": "research",
+    "symbol": "R:IDX-US-LARGE",
+    "normalized_symbol": "R:IDX-US-LARGE",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "b3deda2e-afda-5ffb-b4f8-ab14237cd9c7"
+  },
+  {
+    "asset_id": "IDX-US-LARGE",
+    "namespace": "news_source",
+    "symbol": "Synthetic US Large-Cap Index",
+    "normalized_symbol": "SYNTHETIC US LARGE-CAP INDEX",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 0.92,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "3d863c86-fa8e-5219-aec1-009d590f20a8"
+  },
+  {
+    "asset_id": "IDX-US-LARGE",
+    "namespace": "market_data",
+    "symbol": "SUSL",
+    "normalized_symbol": "SUSL",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "f3dc0fd3-420d-546f-b5b1-561624b1baa6"
+  },
+  {
+    "asset_id": "IDX-US-LARGE",
+    "namespace": "mt5_broker_local",
+    "symbol": "DEMO.SUSL",
+    "normalized_symbol": "DEMO.SUSL",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "94d9bca8-b497-5085-94e3-4ef838c53d66"
+  },
+  {
+    "asset_id": "IDX-US-TECH",
+    "namespace": "canonical",
+    "symbol": "IDX-US-TECH",
+    "normalized_symbol": "IDX-US-TECH",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "b4b56f35-a2c2-5e2a-89b4-177c7db73c39"
+  },
+  {
+    "asset_id": "IDX-US-TECH",
+    "namespace": "research",
+    "symbol": "R:IDX-US-TECH",
+    "normalized_symbol": "R:IDX-US-TECH",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "54f5d848-2b46-5bfb-b6e0-2a1dd091c901"
+  },
+  {
+    "asset_id": "IDX-US-TECH",
+    "namespace": "news_source",
+    "symbol": "Synthetic US Technology Index",
+    "normalized_symbol": "SYNTHETIC US TECHNOLOGY INDEX",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 0.92,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "bd8f885a-891d-5952-88c6-2e5681eefcc3"
+  },
+  {
+    "asset_id": "IDX-US-TECH",
+    "namespace": "market_data",
+    "symbol": "SUST",
+    "normalized_symbol": "SUST",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "438e5b52-0e40-56e1-a212-e14c105b1c79"
+  },
+  {
+    "asset_id": "IDX-US-TECH",
+    "namespace": "mt5_broker_local",
+    "symbol": "DEMO.SUST",
+    "normalized_symbol": "DEMO.SUST",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "335d7485-2172-5426-bc5a-2ec42b960c2f"
+  },
+  {
+    "asset_id": "IDX-US-VOL",
+    "namespace": "canonical",
+    "symbol": "IDX-US-VOL",
+    "normalized_symbol": "IDX-US-VOL",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "af9e1a52-f0f5-5ff0-b7d7-2a5bee633149"
+  },
+  {
+    "asset_id": "IDX-US-VOL",
+    "namespace": "research",
+    "symbol": "R:IDX-US-VOL",
+    "normalized_symbol": "R:IDX-US-VOL",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "d261a418-68ab-5254-9b39-7a6160796ac8"
+  },
+  {
+    "asset_id": "IDX-US-VOL",
+    "namespace": "news_source",
+    "symbol": "Synthetic US Volatility Index",
+    "normalized_symbol": "SYNTHETIC US VOLATILITY INDEX",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 0.92,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "cdb861e0-504c-5004-bcf5-b1caa53a9604"
+  },
+  {
+    "asset_id": "IDX-US-VOL",
+    "namespace": "market_data",
+    "symbol": "SUVX",
+    "normalized_symbol": "SUVX",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "027217f9-c268-5dad-a735-826e2e0800dd"
+  },
+  {
+    "asset_id": "IDX-US-VOL",
+    "namespace": "mt5_broker_local",
+    "symbol": "DEMO.SUVX",
+    "normalized_symbol": "DEMO.SUVX",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "bdf0d998-ebcf-58d2-86e6-ce3a86067b18"
+  },
+  {
+    "asset_id": "FX-EURUSD",
+    "namespace": "canonical",
+    "symbol": "FX-EURUSD",
+    "normalized_symbol": "FX-EURUSD",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "90264855-ca92-5edd-8270-b2bbfc1b5ebe"
+  },
+  {
+    "asset_id": "FX-EURUSD",
+    "namespace": "research",
+    "symbol": "R:FX-EURUSD",
+    "normalized_symbol": "R:FX-EURUSD",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "1e75af03-8865-5373-b2fa-956b56b57bd3"
+  },
+  {
+    "asset_id": "FX-EURUSD",
+    "namespace": "news_source",
+    "symbol": "Synthetic EUR/USD FX Pair",
+    "normalized_symbol": "SYNTHETIC EUR/USD FX PAIR",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 0.92,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "9e9d26a8-931a-5d66-870f-7d3d17699c00"
+  },
+  {
+    "asset_id": "FX-EURUSD",
+    "namespace": "market_data",
+    "symbol": "EURUSD",
+    "normalized_symbol": "EURUSD",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "ebc3f140-f705-5f81-aeb9-8dce9dc6c441"
+  },
+  {
+    "asset_id": "FX-EURUSD",
+    "namespace": "mt5_broker_local",
+    "symbol": "DEMO.EURUSD",
+    "normalized_symbol": "DEMO.EURUSD",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "d22923eb-ef27-52e8-99b9-afda703b275f"
+  },
+  {
+    "asset_id": "FX-USDJPY",
+    "namespace": "canonical",
+    "symbol": "FX-USDJPY",
+    "normalized_symbol": "FX-USDJPY",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "2aa0f4a3-643e-5b55-85a7-0de4bdea7724"
+  },
+  {
+    "asset_id": "FX-USDJPY",
+    "namespace": "research",
+    "symbol": "R:FX-USDJPY",
+    "normalized_symbol": "R:FX-USDJPY",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "15d03d7f-a2bd-5e50-b2df-1e0e0b157800"
+  },
+  {
+    "asset_id": "FX-USDJPY",
+    "namespace": "news_source",
+    "symbol": "Synthetic USD/JPY FX Pair",
+    "normalized_symbol": "SYNTHETIC USD/JPY FX PAIR",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 0.92,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "ea4a3415-9172-506a-9cbf-4f8ba8c3b9e3"
+  },
+  {
+    "asset_id": "FX-USDJPY",
+    "namespace": "market_data",
+    "symbol": "USDJPY",
+    "normalized_symbol": "USDJPY",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "9c10be48-101c-5f83-bee6-9055a9663ec0"
+  },
+  {
+    "asset_id": "FX-USDJPY",
+    "namespace": "mt5_broker_local",
+    "symbol": "DEMO.USDJPY",
+    "normalized_symbol": "DEMO.USDJPY",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "317186d6-e39c-5ffc-b15f-cef19359b7c3"
+  },
+  {
+    "asset_id": "FX-GBPUSD",
+    "namespace": "canonical",
+    "symbol": "FX-GBPUSD",
+    "normalized_symbol": "FX-GBPUSD",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "79dd89de-0ac4-5d19-9c42-3c2045e5a87d"
+  },
+  {
+    "asset_id": "FX-GBPUSD",
+    "namespace": "research",
+    "symbol": "R:FX-GBPUSD",
+    "normalized_symbol": "R:FX-GBPUSD",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "34412ce9-dd01-5979-b53e-6f8eaf08af0e"
+  },
+  {
+    "asset_id": "FX-GBPUSD",
+    "namespace": "news_source",
+    "symbol": "Synthetic GBP/USD FX Pair",
+    "normalized_symbol": "SYNTHETIC GBP/USD FX PAIR",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 0.92,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "848485d7-2df7-537f-879b-9a27bbecf7b4"
+  },
+  {
+    "asset_id": "FX-GBPUSD",
+    "namespace": "market_data",
+    "symbol": "GBPUSD",
+    "normalized_symbol": "GBPUSD",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "5d28f1df-64b7-5d61-a3f7-32ffb1a51f75"
+  },
+  {
+    "asset_id": "FX-GBPUSD",
+    "namespace": "mt5_broker_local",
+    "symbol": "DEMO.GBPUSD",
+    "normalized_symbol": "DEMO.GBPUSD",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "d22b18b9-7fe1-509d-861d-a2fe4d0c37d5"
+  },
+  {
+    "asset_id": "FX-AUDUSD",
+    "namespace": "canonical",
+    "symbol": "FX-AUDUSD",
+    "normalized_symbol": "FX-AUDUSD",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "b91d1871-eb60-55ec-bfca-e8789d15c7a4"
+  },
+  {
+    "asset_id": "FX-AUDUSD",
+    "namespace": "research",
+    "symbol": "R:FX-AUDUSD",
+    "normalized_symbol": "R:FX-AUDUSD",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "66fbc5de-caf3-5138-8c92-8b2bb57212b9"
+  },
+  {
+    "asset_id": "FX-AUDUSD",
+    "namespace": "news_source",
+    "symbol": "Synthetic AUD/USD FX Pair",
+    "normalized_symbol": "SYNTHETIC AUD/USD FX PAIR",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 0.92,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "9c923737-78ef-55eb-be47-a84028fb47c2"
+  },
+  {
+    "asset_id": "FX-AUDUSD",
+    "namespace": "market_data",
+    "symbol": "AUDUSD",
+    "normalized_symbol": "AUDUSD",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "899d44e5-1530-51f6-8d29-f9baf2211fbf"
+  },
+  {
+    "asset_id": "FX-AUDUSD",
+    "namespace": "mt5_broker_local",
+    "symbol": "DEMO.AUDUSD",
+    "normalized_symbol": "DEMO.AUDUSD",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "a8f8e2bd-a4c0-5beb-80f2-479c5e54dd80"
+  },
+  {
+    "asset_id": "FX-USDCAD",
+    "namespace": "canonical",
+    "symbol": "FX-USDCAD",
+    "normalized_symbol": "FX-USDCAD",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "358b0a1a-47cd-5d2e-82a6-7908feb955d3"
+  },
+  {
+    "asset_id": "FX-USDCAD",
+    "namespace": "research",
+    "symbol": "R:FX-USDCAD",
+    "normalized_symbol": "R:FX-USDCAD",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "b8c9efdb-8e5a-5f6a-83bb-5cf7d81a49c6"
+  },
+  {
+    "asset_id": "FX-USDCAD",
+    "namespace": "news_source",
+    "symbol": "Synthetic USD/CAD FX Pair",
+    "normalized_symbol": "SYNTHETIC USD/CAD FX PAIR",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 0.92,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "417ccc26-a0c8-509b-ad5e-351e9eb88ee3"
+  },
+  {
+    "asset_id": "FX-USDCAD",
+    "namespace": "market_data",
+    "symbol": "USDCAD",
+    "normalized_symbol": "USDCAD",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "86da7ae3-2bc1-5e39-a33b-4c88027aac27"
+  },
+  {
+    "asset_id": "FX-USDCAD",
+    "namespace": "mt5_broker_local",
+    "symbol": "DEMO.USDCAD",
+    "normalized_symbol": "DEMO.USDCAD",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "16107e56-b6e1-57a3-9b75-68b1a963ccb0"
+  },
+  {
+    "asset_id": "PM-GOLD",
+    "namespace": "canonical",
+    "symbol": "PM-GOLD",
+    "normalized_symbol": "PM-GOLD",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "1b9b24df-98a9-524d-8f89-609b042ff622"
+  },
+  {
+    "asset_id": "PM-GOLD",
+    "namespace": "research",
+    "symbol": "R:PM-GOLD",
+    "normalized_symbol": "R:PM-GOLD",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "a4780b4b-32e8-5347-ae58-b52b555acb96"
+  },
+  {
+    "asset_id": "PM-GOLD",
+    "namespace": "news_source",
+    "symbol": "Synthetic Gold Spot Proxy",
+    "normalized_symbol": "SYNTHETIC GOLD SPOT PROXY",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 0.92,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "6196ad7c-7416-523e-855a-dba45be7c8fe"
+  },
+  {
+    "asset_id": "PM-GOLD",
+    "namespace": "market_data",
+    "symbol": "XAUUSD",
+    "normalized_symbol": "XAUUSD",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "c4405e07-2b11-5735-95e5-b82c80f78471"
+  },
+  {
+    "asset_id": "PM-GOLD",
+    "namespace": "mt5_broker_local",
+    "symbol": "DEMO.XAUUSD",
+    "normalized_symbol": "DEMO.XAUUSD",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "ddabd2d8-5ad0-5062-bef4-0e522dc4abe0"
+  },
+  {
+    "asset_id": "PM-SILVER",
+    "namespace": "canonical",
+    "symbol": "PM-SILVER",
+    "normalized_symbol": "PM-SILVER",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "aae9c6d2-4249-5725-a811-9db6466d854e"
+  },
+  {
+    "asset_id": "PM-SILVER",
+    "namespace": "research",
+    "symbol": "R:PM-SILVER",
+    "normalized_symbol": "R:PM-SILVER",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "d5d5a641-c178-5af7-b3a9-39b451049c55"
+  },
+  {
+    "asset_id": "PM-SILVER",
+    "namespace": "news_source",
+    "symbol": "Synthetic Silver Spot Proxy",
+    "normalized_symbol": "SYNTHETIC SILVER SPOT PROXY",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 0.92,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "30acb332-40b7-5ab4-ac0c-6ec22e4e222b"
+  },
+  {
+    "asset_id": "PM-SILVER",
+    "namespace": "market_data",
+    "symbol": "XAGUSD",
+    "normalized_symbol": "XAGUSD",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "d3ccdf29-5dde-56d5-a57a-b123d8b7aebd"
+  },
+  {
+    "asset_id": "PM-SILVER",
+    "namespace": "mt5_broker_local",
+    "symbol": "DEMO.XAGUSD",
+    "normalized_symbol": "DEMO.XAGUSD",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "694760bf-ed7c-5d38-b988-cf844cccefb5"
+  },
+  {
+    "asset_id": "PM-PLATINUM",
+    "namespace": "canonical",
+    "symbol": "PM-PLATINUM",
+    "normalized_symbol": "PM-PLATINUM",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "6ee79b61-b368-532c-be17-0f9b1cf529c6"
+  },
+  {
+    "asset_id": "PM-PLATINUM",
+    "namespace": "research",
+    "symbol": "R:PM-PLATINUM",
+    "normalized_symbol": "R:PM-PLATINUM",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "b4699fd4-1b65-55a2-96d1-3e8343af0b7d"
+  },
+  {
+    "asset_id": "PM-PLATINUM",
+    "namespace": "news_source",
+    "symbol": "Synthetic Platinum Spot Proxy",
+    "normalized_symbol": "SYNTHETIC PLATINUM SPOT PROXY",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 0.92,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "f819bb33-46f5-5ec2-9363-001c52aea7a5"
+  },
+  {
+    "asset_id": "PM-PLATINUM",
+    "namespace": "market_data",
+    "symbol": "XPTUSD",
+    "normalized_symbol": "XPTUSD",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "3b567be7-916f-5303-a82f-18e0874aeca9"
+  },
+  {
+    "asset_id": "PM-PLATINUM",
+    "namespace": "mt5_broker_local",
+    "symbol": "DEMO.XPTUSD",
+    "normalized_symbol": "DEMO.XPTUSD",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "4f001cff-d823-5e32-93ea-cf0b22812338"
+  },
+  {
+    "asset_id": "CMD-OIL",
+    "namespace": "canonical",
+    "symbol": "CMD-OIL",
+    "normalized_symbol": "CMD-OIL",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "47d66028-5b4a-545c-9c42-5117345a6d4d"
+  },
+  {
+    "asset_id": "CMD-OIL",
+    "namespace": "research",
+    "symbol": "R:CMD-OIL",
+    "normalized_symbol": "R:CMD-OIL",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "e4934991-fb1d-59a0-84dd-8f7e2e4b03d6"
+  },
+  {
+    "asset_id": "CMD-OIL",
+    "namespace": "news_source",
+    "symbol": "Synthetic Crude Oil Proxy",
+    "normalized_symbol": "SYNTHETIC CRUDE OIL PROXY",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 0.92,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "84c68320-e3f9-539e-8994-3478ff92efb4"
+  },
+  {
+    "asset_id": "CMD-OIL",
+    "namespace": "market_data",
+    "symbol": "SCOIL",
+    "normalized_symbol": "SCOIL",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "13e46e80-13c2-56cc-8f1c-2ee48ea7440e"
+  },
+  {
+    "asset_id": "CMD-OIL",
+    "namespace": "mt5_broker_local",
+    "symbol": "DEMO.SCOIL",
+    "normalized_symbol": "DEMO.SCOIL",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "45ef9142-75a7-5fd1-ab6b-29fa64346343"
+  },
+  {
+    "asset_id": "CMD-GAS",
+    "namespace": "canonical",
+    "symbol": "CMD-GAS",
+    "normalized_symbol": "CMD-GAS",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "59767022-8914-58b0-82c4-5312ce8b1103"
+  },
+  {
+    "asset_id": "CMD-GAS",
+    "namespace": "research",
+    "symbol": "R:CMD-GAS",
+    "normalized_symbol": "R:CMD-GAS",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "196d3767-3095-575c-b83d-5d750748cbda"
+  },
+  {
+    "asset_id": "CMD-GAS",
+    "namespace": "news_source",
+    "symbol": "Synthetic Natural Gas Proxy",
+    "normalized_symbol": "SYNTHETIC NATURAL GAS PROXY",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 0.92,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "5c8b00a0-e404-549a-9d77-ec5fe39b8069"
+  },
+  {
+    "asset_id": "CMD-GAS",
+    "namespace": "market_data",
+    "symbol": "SCGAS",
+    "normalized_symbol": "SCGAS",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "832b465f-1793-583a-90df-8e847339af2f"
+  },
+  {
+    "asset_id": "CMD-GAS",
+    "namespace": "mt5_broker_local",
+    "symbol": "DEMO.SCGAS",
+    "normalized_symbol": "DEMO.SCGAS",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "652f8657-b5b6-5de6-a1ed-325e1541541d"
+  },
+  {
+    "asset_id": "CMD-COPPER",
+    "namespace": "canonical",
+    "symbol": "CMD-COPPER",
+    "normalized_symbol": "CMD-COPPER",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "e6f846fd-12dc-5722-a13f-f9e68a1b9b2e"
+  },
+  {
+    "asset_id": "CMD-COPPER",
+    "namespace": "research",
+    "symbol": "R:CMD-COPPER",
+    "normalized_symbol": "R:CMD-COPPER",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "cd65ebd9-48d5-5a83-9385-058805f8f1ed"
+  },
+  {
+    "asset_id": "CMD-COPPER",
+    "namespace": "news_source",
+    "symbol": "Synthetic Copper Proxy",
+    "normalized_symbol": "SYNTHETIC COPPER PROXY",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 0.92,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "64c592fa-045b-5f06-b8cc-fa7e2025f799"
+  },
+  {
+    "asset_id": "CMD-COPPER",
+    "namespace": "market_data",
+    "symbol": "SCCOP",
+    "normalized_symbol": "SCCOP",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "8551a34e-c764-5b85-97f6-958f80713d9f"
+  },
+  {
+    "asset_id": "CMD-COPPER",
+    "namespace": "mt5_broker_local",
+    "symbol": "DEMO.SCCOP",
+    "normalized_symbol": "DEMO.SCCOP",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "707025ad-149b-5892-9ac7-c83ca9f743eb"
+  },
+  {
+    "asset_id": "FUT-ROOT-OIL",
+    "namespace": "canonical",
+    "symbol": "FUT-ROOT-OIL",
+    "normalized_symbol": "FUT-ROOT-OIL",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "8cdca7a0-a1e6-5aa6-b682-1d89fac8e5f7"
+  },
+  {
+    "asset_id": "FUT-ROOT-OIL",
+    "namespace": "research",
+    "symbol": "R:FUT-ROOT-OIL",
+    "normalized_symbol": "R:FUT-ROOT-OIL",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "41d24704-9d74-5d03-9868-3a58666ee28c"
+  },
+  {
+    "asset_id": "FUT-ROOT-OIL",
+    "namespace": "news_source",
+    "symbol": "Synthetic Oil Futures Root",
+    "normalized_symbol": "SYNTHETIC OIL FUTURES ROOT",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 0.92,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "d379f683-f1b8-5f11-8b75-9981f7c20ac6"
+  },
+  {
+    "asset_id": "FUT-ROOT-OIL",
+    "namespace": "market_data",
+    "symbol": "SO",
+    "normalized_symbol": "SO",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "a1401fd7-b307-57dc-a908-4d72b0344923"
+  },
+  {
+    "asset_id": "FUT-ROOT-OIL",
+    "namespace": "mt5_broker_local",
+    "symbol": "DEMO.SO",
+    "normalized_symbol": "DEMO.SO",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "e3c7d5f9-d624-552a-9680-f57ff3ac6ec6"
+  },
+  {
+    "asset_id": "FUT-CONTRACT-OIL-JUL26",
+    "namespace": "canonical",
+    "symbol": "FUT-CONTRACT-OIL-JUL26",
+    "normalized_symbol": "FUT-CONTRACT-OIL-JUL26",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "a279d6e8-434d-5fe1-a450-27cb39977d0d"
+  },
+  {
+    "asset_id": "FUT-CONTRACT-OIL-JUL26",
+    "namespace": "research",
+    "symbol": "R:FUT-CONTRACT-OIL-JUL26",
+    "normalized_symbol": "R:FUT-CONTRACT-OIL-JUL26",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "b7a32e1b-fdde-5fb7-9d1f-984f0baa3ab6"
+  },
+  {
+    "asset_id": "FUT-CONTRACT-OIL-JUL26",
+    "namespace": "news_source",
+    "symbol": "Synthetic Oil Futures Jul 2026",
+    "normalized_symbol": "SYNTHETIC OIL FUTURES JUL 2026",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 0.92,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "a16be021-e194-5ca6-8d3b-736b672b1710"
+  },
+  {
+    "asset_id": "FUT-CONTRACT-OIL-JUL26",
+    "namespace": "market_data",
+    "symbol": "SON26",
+    "normalized_symbol": "SON26",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "4b8d3cbf-c506-566d-9257-2bc7bff4c50c"
+  },
+  {
+    "asset_id": "FUT-CONTRACT-OIL-JUL26",
+    "namespace": "mt5_broker_local",
+    "symbol": "DEMO.SON26",
+    "normalized_symbol": "DEMO.SON26",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "f09f8a6b-8a68-5215-8663-50232493b9ea"
+  },
+  {
+    "asset_id": "FUT-ROOT-GOLD",
+    "namespace": "canonical",
+    "symbol": "FUT-ROOT-GOLD",
+    "normalized_symbol": "FUT-ROOT-GOLD",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "2981b61f-8c81-53dc-b99b-0e96f9794985"
+  },
+  {
+    "asset_id": "FUT-ROOT-GOLD",
+    "namespace": "research",
+    "symbol": "R:FUT-ROOT-GOLD",
+    "normalized_symbol": "R:FUT-ROOT-GOLD",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "5f2dee99-6848-55b1-b3b6-1a91c3d61671"
+  },
+  {
+    "asset_id": "FUT-ROOT-GOLD",
+    "namespace": "news_source",
+    "symbol": "Synthetic Gold Futures Root",
+    "normalized_symbol": "SYNTHETIC GOLD FUTURES ROOT",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 0.92,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "772e3c39-5c42-57d5-b193-2803e8f100f5"
+  },
+  {
+    "asset_id": "FUT-ROOT-GOLD",
+    "namespace": "market_data",
+    "symbol": "SG",
+    "normalized_symbol": "SG",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "6fa6e2a7-c261-5d5d-a45d-2ba6fc179562"
+  },
+  {
+    "asset_id": "FUT-ROOT-GOLD",
+    "namespace": "mt5_broker_local",
+    "symbol": "DEMO.SG",
+    "normalized_symbol": "DEMO.SG",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "dfdfefaf-416f-5c13-9c3c-f240c41ea3d6"
+  },
+  {
+    "asset_id": "FUT-CONTRACT-GOLD-AUG26",
+    "namespace": "canonical",
+    "symbol": "FUT-CONTRACT-GOLD-AUG26",
+    "normalized_symbol": "FUT-CONTRACT-GOLD-AUG26",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "df6150ad-e4da-5aa0-ad0e-83a68ed19431"
+  },
+  {
+    "asset_id": "FUT-CONTRACT-GOLD-AUG26",
+    "namespace": "research",
+    "symbol": "R:FUT-CONTRACT-GOLD-AUG26",
+    "normalized_symbol": "R:FUT-CONTRACT-GOLD-AUG26",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "ebcf3d2a-02ff-5471-acd0-cff9868a6e86"
+  },
+  {
+    "asset_id": "FUT-CONTRACT-GOLD-AUG26",
+    "namespace": "news_source",
+    "symbol": "Synthetic Gold Futures Aug 2026",
+    "normalized_symbol": "SYNTHETIC GOLD FUTURES AUG 2026",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 0.92,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "5521d8c8-7460-5339-9877-cc70ebe45966"
+  },
+  {
+    "asset_id": "FUT-CONTRACT-GOLD-AUG26",
+    "namespace": "market_data",
+    "symbol": "SGQ26",
+    "normalized_symbol": "SGQ26",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "bd88a882-cc53-5558-8a62-a2031e5e5620"
+  },
+  {
+    "asset_id": "FUT-CONTRACT-GOLD-AUG26",
+    "namespace": "mt5_broker_local",
+    "symbol": "DEMO.SGQ26",
+    "normalized_symbol": "DEMO.SGQ26",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "401aeff9-1cfb-508a-b173-92a59d217edd"
+  },
+  {
+    "asset_id": "CRYPTO-BTC-PROXY",
+    "namespace": "canonical",
+    "symbol": "CRYPTO-BTC-PROXY",
+    "normalized_symbol": "CRYPTO-BTC-PROXY",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "b6ce5265-389c-5df8-b309-5a14bea2a449"
+  },
+  {
+    "asset_id": "CRYPTO-BTC-PROXY",
+    "namespace": "research",
+    "symbol": "R:CRYPTO-BTC-PROXY",
+    "normalized_symbol": "R:CRYPTO-BTC-PROXY",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "1676cb96-d039-5650-b073-aa8b613e4df7"
+  },
+  {
+    "asset_id": "CRYPTO-BTC-PROXY",
+    "namespace": "news_source",
+    "symbol": "Synthetic Bitcoin-like Crypto Proxy",
+    "normalized_symbol": "SYNTHETIC BITCOIN-LIKE CRYPTO PROXY",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 0.92,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "7d8d95e5-a46b-5f64-bea7-d51401a06416"
+  },
+  {
+    "asset_id": "CRYPTO-BTC-PROXY",
+    "namespace": "market_data",
+    "symbol": "SBTC",
+    "normalized_symbol": "SBTC",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "8128ebbc-576e-5183-b0b8-fe036904099f"
+  },
+  {
+    "asset_id": "CRYPTO-BTC-PROXY",
+    "namespace": "mt5_broker_local",
+    "symbol": "DEMO.SBTC",
+    "normalized_symbol": "DEMO.SBTC",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "807232dd-7a42-5689-97c4-84b33b3d8c2a"
+  },
+  {
+    "asset_id": "CRYPTO-ETH-PROXY",
+    "namespace": "canonical",
+    "symbol": "CRYPTO-ETH-PROXY",
+    "normalized_symbol": "CRYPTO-ETH-PROXY",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "f37c3f04-00ba-51fc-a74a-bb01a89e6727"
+  },
+  {
+    "asset_id": "CRYPTO-ETH-PROXY",
+    "namespace": "research",
+    "symbol": "R:CRYPTO-ETH-PROXY",
+    "normalized_symbol": "R:CRYPTO-ETH-PROXY",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "2ffe11e8-836f-5226-bef6-32e696adc7af"
+  },
+  {
+    "asset_id": "CRYPTO-ETH-PROXY",
+    "namespace": "news_source",
+    "symbol": "Synthetic Ether-like Crypto Proxy",
+    "normalized_symbol": "SYNTHETIC ETHER-LIKE CRYPTO PROXY",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 0.92,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "cb045350-70ec-5dce-a181-c314e31514f0"
+  },
+  {
+    "asset_id": "CRYPTO-ETH-PROXY",
+    "namespace": "market_data",
+    "symbol": "SETH",
+    "normalized_symbol": "SETH",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "ed13735e-84c6-5951-a5a8-6c4a72d8872f"
+  },
+  {
+    "asset_id": "CRYPTO-ETH-PROXY",
+    "namespace": "mt5_broker_local",
+    "symbol": "DEMO.SETH",
+    "normalized_symbol": "DEMO.SETH",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "714168ed-3d74-5e10-943c-dcf63fffb8dc"
+  },
+  {
+    "asset_id": "CRYPTO-STABLE-PROXY",
+    "namespace": "canonical",
+    "symbol": "CRYPTO-STABLE-PROXY",
+    "normalized_symbol": "CRYPTO-STABLE-PROXY",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "f10e4c81-e05a-5540-aaf5-9c798826169d"
+  },
+  {
+    "asset_id": "CRYPTO-STABLE-PROXY",
+    "namespace": "research",
+    "symbol": "R:CRYPTO-STABLE-PROXY",
+    "normalized_symbol": "R:CRYPTO-STABLE-PROXY",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "e3990961-a9b7-597c-acc2-214107954fcf"
+  },
+  {
+    "asset_id": "CRYPTO-STABLE-PROXY",
+    "namespace": "news_source",
+    "symbol": "Synthetic Stablecoin Liquidity Proxy",
+    "normalized_symbol": "SYNTHETIC STABLECOIN LIQUIDITY PROXY",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 0.92,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "1f311318-5550-54b6-aca0-fbc1b183d015"
+  },
+  {
+    "asset_id": "CRYPTO-STABLE-PROXY",
+    "namespace": "market_data",
+    "symbol": "SUSD",
+    "normalized_symbol": "SUSD",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "47f030ef-ddfa-5df1-9fc6-fe6585d0b175"
+  },
+  {
+    "asset_id": "CRYPTO-STABLE-PROXY",
+    "namespace": "mt5_broker_local",
+    "symbol": "DEMO.SUSD",
+    "normalized_symbol": "DEMO.SUSD",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "53ae4d0f-6039-590e-aec7-4d84c99c54ba"
+  },
+  {
+    "asset_id": "CRYPTO-EXCH-PROXY",
+    "namespace": "canonical",
+    "symbol": "CRYPTO-EXCH-PROXY",
+    "normalized_symbol": "CRYPTO-EXCH-PROXY",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "e8f10378-6ab8-5401-bca3-9b562a1029aa"
+  },
+  {
+    "asset_id": "CRYPTO-EXCH-PROXY",
+    "namespace": "research",
+    "symbol": "R:CRYPTO-EXCH-PROXY",
+    "normalized_symbol": "R:CRYPTO-EXCH-PROXY",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "10ace5bb-ef5c-56d6-a0af-e19f92e49530"
+  },
+  {
+    "asset_id": "CRYPTO-EXCH-PROXY",
+    "namespace": "news_source",
+    "symbol": "Synthetic Exchange Token Proxy",
+    "normalized_symbol": "SYNTHETIC EXCHANGE TOKEN PROXY",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 0.92,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "005252ad-9c24-54c5-93ce-633fd3ce988c"
+  },
+  {
+    "asset_id": "CRYPTO-EXCH-PROXY",
+    "namespace": "market_data",
+    "symbol": "SXT",
+    "normalized_symbol": "SXT",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "2f155619-ee07-58b2-8a0e-f8eede5b853d"
+  },
+  {
+    "asset_id": "CRYPTO-EXCH-PROXY",
+    "namespace": "mt5_broker_local",
+    "symbol": "DEMO.SXT",
+    "normalized_symbol": "DEMO.SXT",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "cdde6b01-0c5d-5fbc-a905-cc086851ed6c"
+  },
+  {
+    "asset_id": "MACRO-CPI-US",
+    "namespace": "canonical",
+    "symbol": "MACRO-CPI-US",
+    "normalized_symbol": "MACRO-CPI-US",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "f7220a7c-7319-5845-8c22-a045b2dc343e"
+  },
+  {
+    "asset_id": "MACRO-CPI-US",
+    "namespace": "research",
+    "symbol": "R:MACRO-CPI-US",
+    "normalized_symbol": "R:MACRO-CPI-US",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "09e8dcdc-5dcc-5098-b7ca-2d91b27e5a90"
+  },
+  {
+    "asset_id": "MACRO-CPI-US",
+    "namespace": "news_source",
+    "symbol": "Synthetic US CPI Indicator",
+    "normalized_symbol": "SYNTHETIC US CPI INDICATOR",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 0.92,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "be00830f-1506-5de7-8117-aac67abd0187"
+  },
+  {
+    "asset_id": "MACRO-CPI-US",
+    "namespace": "market_data",
+    "symbol": "US_CPI_DEMO",
+    "normalized_symbol": "US_CPI_DEMO",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "2d3f2409-ab1c-58c3-9c5e-edd95cc01a3b"
+  },
+  {
+    "asset_id": "MACRO-CPI-US",
+    "namespace": "mt5_broker_local",
+    "symbol": "DEMO.US_CPI_DEMO",
+    "normalized_symbol": "DEMO.US_CPI_DEMO",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "cdb9c500-9c68-51b4-af79-b6bbbb3ceb47"
+  },
+  {
+    "asset_id": "MACRO-PAYROLLS-US",
+    "namespace": "canonical",
+    "symbol": "MACRO-PAYROLLS-US",
+    "normalized_symbol": "MACRO-PAYROLLS-US",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "f34d4dfc-70bf-50d5-ba4c-2962f743755d"
+  },
+  {
+    "asset_id": "MACRO-PAYROLLS-US",
+    "namespace": "research",
+    "symbol": "R:MACRO-PAYROLLS-US",
+    "normalized_symbol": "R:MACRO-PAYROLLS-US",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "974a3b32-4727-5e05-9cb9-c143d35ec498"
+  },
+  {
+    "asset_id": "MACRO-PAYROLLS-US",
+    "namespace": "news_source",
+    "symbol": "Synthetic US Payrolls Indicator",
+    "normalized_symbol": "SYNTHETIC US PAYROLLS INDICATOR",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 0.92,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "260187b1-f180-53de-8004-838d1c166931"
+  },
+  {
+    "asset_id": "MACRO-PAYROLLS-US",
+    "namespace": "market_data",
+    "symbol": "US_NFP_DEMO",
+    "normalized_symbol": "US_NFP_DEMO",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "00a799e0-50df-5739-94b6-1bf3c1ac6536"
+  },
+  {
+    "asset_id": "MACRO-PAYROLLS-US",
+    "namespace": "mt5_broker_local",
+    "symbol": "DEMO.US_NFP_DEMO",
+    "normalized_symbol": "DEMO.US_NFP_DEMO",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "5bec0f46-8051-5c13-b48c-e3dcaf55f749"
+  },
+  {
+    "asset_id": "MACRO-GDP-US",
+    "namespace": "canonical",
+    "symbol": "MACRO-GDP-US",
+    "normalized_symbol": "MACRO-GDP-US",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "5814691a-34b5-5529-882d-9c89bc83fe92"
+  },
+  {
+    "asset_id": "MACRO-GDP-US",
+    "namespace": "research",
+    "symbol": "R:MACRO-GDP-US",
+    "normalized_symbol": "R:MACRO-GDP-US",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "e4310037-2a7b-537c-a29e-22b258d130e2"
+  },
+  {
+    "asset_id": "MACRO-GDP-US",
+    "namespace": "news_source",
+    "symbol": "Synthetic US GDP Indicator",
+    "normalized_symbol": "SYNTHETIC US GDP INDICATOR",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 0.92,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "4e273b12-9a12-5a33-9fc2-bcee0b438461"
+  },
+  {
+    "asset_id": "MACRO-GDP-US",
+    "namespace": "market_data",
+    "symbol": "US_GDP_DEMO",
+    "normalized_symbol": "US_GDP_DEMO",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "ee6ee111-e51c-5bb6-b35d-aaa979c5826a"
+  },
+  {
+    "asset_id": "MACRO-GDP-US",
+    "namespace": "mt5_broker_local",
+    "symbol": "DEMO.US_GDP_DEMO",
+    "normalized_symbol": "DEMO.US_GDP_DEMO",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "e6b45d1e-6236-5df4-a2c3-f96956539240"
+  },
+  {
+    "asset_id": "RATE-FED-POLICY",
+    "namespace": "canonical",
+    "symbol": "RATE-FED-POLICY",
+    "normalized_symbol": "RATE-FED-POLICY",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "299578d2-a8a9-5879-b164-0beb3ae35c49"
+  },
+  {
+    "asset_id": "RATE-FED-POLICY",
+    "namespace": "research",
+    "symbol": "R:RATE-FED-POLICY",
+    "normalized_symbol": "R:RATE-FED-POLICY",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "4ef7e6d5-6d27-5b14-b06c-2104c07e24ea"
+  },
+  {
+    "asset_id": "RATE-FED-POLICY",
+    "namespace": "news_source",
+    "symbol": "Synthetic Fed Policy Rate",
+    "normalized_symbol": "SYNTHETIC FED POLICY RATE",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 0.92,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "6e7dc905-08d9-5184-9f15-eeee4906caf3"
+  },
+  {
+    "asset_id": "RATE-FED-POLICY",
+    "namespace": "market_data",
+    "symbol": "FED_POLICY_DEMO",
+    "normalized_symbol": "FED_POLICY_DEMO",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "d2a28d89-c20c-5018-9ae9-55fe705b71c2"
+  },
+  {
+    "asset_id": "RATE-FED-POLICY",
+    "namespace": "mt5_broker_local",
+    "symbol": "DEMO.FED_POLICY_DEMO",
+    "normalized_symbol": "DEMO.FED_POLICY_DEMO",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "3c40eea1-a5ad-5939-aac1-a665b02db49b"
+  },
+  {
+    "asset_id": "RATE-US10Y",
+    "namespace": "canonical",
+    "symbol": "RATE-US10Y",
+    "normalized_symbol": "RATE-US10Y",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "f70818fd-6ec7-5916-9e52-e5ff26efeb0d"
+  },
+  {
+    "asset_id": "RATE-US10Y",
+    "namespace": "research",
+    "symbol": "R:RATE-US10Y",
+    "normalized_symbol": "R:RATE-US10Y",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "edb85852-08d8-5454-86ac-6b4a81286ce1"
+  },
+  {
+    "asset_id": "RATE-US10Y",
+    "namespace": "news_source",
+    "symbol": "Synthetic US 10Y Yield",
+    "normalized_symbol": "SYNTHETIC US 10Y YIELD",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 0.92,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "f13077f6-ddd3-560a-a213-7c29404dc239"
+  },
+  {
+    "asset_id": "RATE-US10Y",
+    "namespace": "market_data",
+    "symbol": "US10Y_DEMO",
+    "normalized_symbol": "US10Y_DEMO",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "aa24c0ba-7851-59e2-8902-bc1dee6e11d6"
+  },
+  {
+    "asset_id": "RATE-US10Y",
+    "namespace": "mt5_broker_local",
+    "symbol": "DEMO.US10Y_DEMO",
+    "normalized_symbol": "DEMO.US10Y_DEMO",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 1.0,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1"
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "f5972645-9b09-53fb-a11f-df7fe496fa82"
+  },
+  {
+    "asset_id": "MACRO-CPI-US",
+    "namespace": "news_source",
+    "symbol": "policy pulse",
+    "normalized_symbol": "POLICY PULSE",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 0.55,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1",
+      "ambiguity_demo": true
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "ac86a144-a3a6-5300-b862-f818eb331fab"
+  },
+  {
+    "asset_id": "RATE-FED-POLICY",
+    "namespace": "news_source",
+    "symbol": "policy pulse",
+    "normalized_symbol": "POLICY PULSE",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": true,
+    "confidence": 0.55,
+    "provenance": {
+      "fixture_version": "cross-asset-demo-v1",
+      "ambiguity_demo": true
+    },
+    "valid_from": null,
+    "valid_to": null,
+    "id": "69edcc4a-b90c-5097-a620-96598ac5c2d8"
+  },
+  {
+    "asset_id": "US-EQ-ALPHA",
+    "namespace": "news_source",
+    "symbol": "Alpha Synthetic Old Name",
+    "normalized_symbol": "ALPHA SYNTHETIC OLD NAME",
+    "provider": "synthetic_alias_registry",
+    "provider_version": "1",
+    "active": false,
+    "confidence": 0.4,
+    "provenance": {
+      "inactive_alias_demo": true
+    },
+    "valid_from": null,
+    "valid_to": "2026-01-01",
+    "id": "a9f62f17-e73d-580b-9456-c8eb8221e640"
+  }
+]

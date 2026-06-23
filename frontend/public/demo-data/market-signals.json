@@ -1,0 +1,2722 @@
+[
+  {
+    "signal_id": "SIGNAL-0001",
+    "impact_id": "IMPACT-0001",
+    "event_id": "XAE-001",
+    "asset_id": "RATE-US10Y",
+    "direction": "positive",
+    "horizon": "intraday",
+    "status": "informational",
+    "confidence": null,
+    "score": null,
+    "information_cutoff_at": "2026-06-18T20:00:00+00:00",
+    "generated_at": "2026-06-18T20:03:00+00:00",
+    "expires_at": "2026-07-18T20:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_MONETARY_POLICY",
+      "ASSET_CLASS_INTEREST_RATE"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "6e945cfeeda721232fd90eceba4acce99a0f6e6f63550344ff9afa6c2f2611d2",
+    "idempotency_key": "8210c2979d0cc6b465578f94a5da84ccfe9fc0ff436d3ee1100bca45d70eb6c1",
+    "synthetic": true,
+    "id": "e67f1e17-130b-5a53-beb8-2978525aed1e"
+  },
+  {
+    "signal_id": "SIGNAL-0002",
+    "impact_id": "IMPACT-0002",
+    "event_id": "XAE-001",
+    "asset_id": "FX-USDJPY",
+    "direction": "negative",
+    "horizon": "one_day",
+    "status": "research",
+    "confidence": 0.46,
+    "score": 0.092,
+    "information_cutoff_at": "2026-06-18T20:00:00+00:00",
+    "generated_at": "2026-06-18T20:03:00+00:00",
+    "expires_at": "2026-07-18T20:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_MONETARY_POLICY",
+      "ASSET_CLASS_FX"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "9c83437b48e86e25596703e56d61b23144c6c4af2e69db5970b1001127b98b3d",
+    "idempotency_key": "0d9f67ef46965013f8be577b9bb39eb170b1cd11abe44ec31d5b3f7abf2fc5e0",
+    "synthetic": true,
+    "id": "9273a8a7-f501-5dfb-a6e4-e6bb46e1d42e"
+  },
+  {
+    "signal_id": "SIGNAL-0003",
+    "impact_id": "IMPACT-0003",
+    "event_id": "XAE-001",
+    "asset_id": "PM-SILVER",
+    "direction": "mixed",
+    "horizon": "one_week",
+    "status": "abstained",
+    "confidence": 0.47,
+    "score": 0.141,
+    "information_cutoff_at": "2026-06-18T20:00:00+00:00",
+    "generated_at": "2026-06-18T20:03:00+00:00",
+    "expires_at": "2026-07-18T20:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_MONETARY_POLICY",
+      "ASSET_CLASS_PRECIOUS_METAL"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "267cdcf90aba4c34c0e984a713b70f0beef5f5fcfa22fc6624551bf70fd2e46e",
+    "idempotency_key": "cc7678ba8b404ad9373bb6f41c1a4bb01e2dee990812bccfc9b6eff6061af23b",
+    "synthetic": true,
+    "id": "62b25aa2-f59e-56d2-85e0-36d59bb02a81"
+  },
+  {
+    "signal_id": "SIGNAL-0004",
+    "impact_id": "IMPACT-0004",
+    "event_id": "XAE-002",
+    "asset_id": "RATE-FED-POLICY",
+    "direction": "uncertain",
+    "horizon": "one_month",
+    "status": "rejected",
+    "confidence": 0.48,
+    "score": 0.192,
+    "information_cutoff_at": "2026-06-18T21:00:00+00:00",
+    "generated_at": "2026-06-18T21:03:00+00:00",
+    "expires_at": "2026-07-18T21:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_INFLATION",
+      "ASSET_CLASS_INTEREST_RATE"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "45aa9524d2c7c486f80b040dab3bea623af92a57ed202420ad1065a82c648e04",
+    "idempotency_key": "a6a8a64a9ca7862665b44d080b8ac863ec3cc59d4dba50abc0380c36e1bcdbb5",
+    "synthetic": true,
+    "id": "269fc54b-7cb9-5ec0-bcc5-75d1f0323756"
+  },
+  {
+    "signal_id": "SIGNAL-0005",
+    "impact_id": "IMPACT-0005",
+    "event_id": "XAE-002",
+    "asset_id": "CMD-COPPER",
+    "direction": "positive",
+    "horizon": "intraday",
+    "status": "expired",
+    "confidence": 0.49,
+    "score": 0.245,
+    "information_cutoff_at": "2026-06-18T21:00:00+00:00",
+    "generated_at": "2026-06-18T21:03:00+00:00",
+    "expires_at": "2026-07-18T21:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_INFLATION",
+      "ASSET_CLASS_COMMODITY"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "1fd2cee76075a6774f14bbc7bd60a8d51abdb9a040b50b3ac9394a14ae8e4d72",
+    "idempotency_key": "52a420afbcb9a9dc0eaac53521d3e80028cc0882410d91edbe022cdad0b66375",
+    "synthetic": true,
+    "id": "22a1c0f6-c865-5cf9-8400-676bdb2d6701"
+  },
+  {
+    "signal_id": "SIGNAL-0006",
+    "impact_id": "IMPACT-0006",
+    "event_id": "XAE-002",
+    "asset_id": "PM-PLATINUM",
+    "direction": "negative",
+    "horizon": "one_day",
+    "status": "informational",
+    "confidence": 0.5,
+    "score": 0.3,
+    "information_cutoff_at": "2026-06-18T21:00:00+00:00",
+    "generated_at": "2026-06-18T21:03:00+00:00",
+    "expires_at": "2026-07-18T21:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_INFLATION",
+      "ASSET_CLASS_PRECIOUS_METAL"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "1a3d031d3bc43f4b7e7de9835c0fa7a62b36307f24e5b1a3faee9d0e36735591",
+    "idempotency_key": "f7c51a25ded987a6c94380b6300792d85c3f917b943f099bdc4926907608760a",
+    "synthetic": true,
+    "id": "b47a1b29-9c46-555b-98a1-614b65135240"
+  },
+  {
+    "signal_id": "SIGNAL-0007",
+    "impact_id": "IMPACT-0007",
+    "event_id": "XAE-003",
+    "asset_id": "FX-AUDUSD",
+    "direction": "mixed",
+    "horizon": "one_week",
+    "status": "research",
+    "confidence": 0.51,
+    "score": 0.357,
+    "information_cutoff_at": "2026-06-18T22:00:00+00:00",
+    "generated_at": "2026-06-18T22:03:00+00:00",
+    "expires_at": "2026-07-18T22:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_LABOR_MARKET",
+      "ASSET_CLASS_FX"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "fe1c4a1fc2443f73afe72dbf83a6bffa56f8e9e6330d168d0f109821b215b998",
+    "idempotency_key": "e8f6b1a991f72ecd95471647a78c96a036e79f54338f04fd6ce47818dc56bacc",
+    "synthetic": true,
+    "id": "e45e231e-88a8-5ddf-acc4-06d8ed173c71"
+  },
+  {
+    "signal_id": "SIGNAL-0008",
+    "impact_id": "IMPACT-0008",
+    "event_id": "XAE-003",
+    "asset_id": "RATE-US10Y",
+    "direction": "uncertain",
+    "horizon": "one_month",
+    "status": "abstained",
+    "confidence": 0.52,
+    "score": 0.416,
+    "information_cutoff_at": "2026-06-18T22:00:00+00:00",
+    "generated_at": "2026-06-18T22:03:00+00:00",
+    "expires_at": "2026-07-18T22:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_LABOR_MARKET",
+      "ASSET_CLASS_INTEREST_RATE"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "bea6c57cfec2ad8358657d55a89d8286dfc5f417e898866ccead10a5ca2220c3",
+    "idempotency_key": "658683886740a5e2e1a87cf2eb374c80aacbe4ebb3a5ef89b717409ef6b0b30f",
+    "synthetic": true,
+    "id": "a552a409-a97f-5dde-97ff-1c731ebc0f0a"
+  },
+  {
+    "signal_id": "SIGNAL-0009",
+    "impact_id": "IMPACT-0009",
+    "event_id": "XAE-003",
+    "asset_id": "IDX-US-LARGE",
+    "direction": "positive",
+    "horizon": "intraday",
+    "status": "rejected",
+    "confidence": 0.53,
+    "score": 0.477,
+    "information_cutoff_at": "2026-06-18T22:00:00+00:00",
+    "generated_at": "2026-06-18T22:03:00+00:00",
+    "expires_at": "2026-07-18T22:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_LABOR_MARKET",
+      "ASSET_CLASS_EQUITY_INDEX"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "79f4eb2240c9c6283f34dd6d60e584f68cf620c3093cd9ee36e54d380bf1967d",
+    "idempotency_key": "99daaf8388ff771d7d2c521f9815add65ab06ad396e3ba060c712c89a47772b2",
+    "synthetic": true,
+    "id": "2565900e-e0fa-5ab3-819e-b50a9e23cd8a"
+  },
+  {
+    "signal_id": "SIGNAL-0010",
+    "impact_id": "IMPACT-0010",
+    "event_id": "XAE-004",
+    "asset_id": "IDX-US-TECH",
+    "direction": "negative",
+    "horizon": "one_day",
+    "status": "expired",
+    "confidence": 0.54,
+    "score": 0.054,
+    "information_cutoff_at": "2026-06-18T23:00:00+00:00",
+    "generated_at": "2026-06-18T23:03:00+00:00",
+    "expires_at": "2026-07-18T23:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_ECONOMIC_GROWTH",
+      "ASSET_CLASS_EQUITY_INDEX"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "7b0ba6ecfc7abd3bcf1447046affb29cb9b0e7b2d25e25f1039e90a35cf4be2d",
+    "idempotency_key": "964aac217408dff613a5534e3f8608eb4d2bfff9aba7a0d07cebf62b3ffff509",
+    "synthetic": true,
+    "id": "39b2d3bb-c6b1-5c9f-8dfb-4da3b23e64e6"
+  },
+  {
+    "signal_id": "SIGNAL-0011",
+    "impact_id": "IMPACT-0011",
+    "event_id": "XAE-004",
+    "asset_id": "US-EQ-EPSILON",
+    "direction": "mixed",
+    "horizon": "one_week",
+    "status": "informational",
+    "confidence": 0.55,
+    "score": 0.11,
+    "information_cutoff_at": "2026-06-18T23:00:00+00:00",
+    "generated_at": "2026-06-18T23:03:00+00:00",
+    "expires_at": "2026-07-18T23:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_ECONOMIC_GROWTH",
+      "ASSET_CLASS_US_EQUITY"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "da31468a59c37442b1b8881dfc79d3b3820b43fe35d9446944c957dccd8d17e9",
+    "idempotency_key": "0dd4acf3cb2bf19206a9d9d14d03100fc70d6a6d4594732ecabb26499f5c8383",
+    "synthetic": true,
+    "id": "2e716a75-3694-5342-bc50-92c18e55d66e"
+  },
+  {
+    "signal_id": "SIGNAL-0012",
+    "impact_id": "IMPACT-0012",
+    "event_id": "XAE-004",
+    "asset_id": "CMD-GAS",
+    "direction": "uncertain",
+    "horizon": "one_month",
+    "status": "research",
+    "confidence": 0.56,
+    "score": 0.168,
+    "information_cutoff_at": "2026-06-18T23:00:00+00:00",
+    "generated_at": "2026-06-18T23:03:00+00:00",
+    "expires_at": "2026-07-18T23:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_ECONOMIC_GROWTH",
+      "ASSET_CLASS_COMMODITY"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "ac8ea7b51dc0b58b02c58ab8e9dfe610b278ea3d9397a1f85cbc6af51ca5aa70",
+    "idempotency_key": "7135538faf36004fa4212fa9318dfa97bf70478a4863cc94d310ede825b74142",
+    "synthetic": true,
+    "id": "63874a43-bf5f-51fc-9cef-7f8de3631c70"
+  },
+  {
+    "signal_id": "SIGNAL-0013",
+    "impact_id": "IMPACT-0013",
+    "event_id": "XAE-005",
+    "asset_id": "RATE-US10Y",
+    "direction": "positive",
+    "horizon": "intraday",
+    "status": "abstained",
+    "confidence": 0.57,
+    "score": 0.228,
+    "information_cutoff_at": "2026-06-19T00:00:00+00:00",
+    "generated_at": "2026-06-19T00:03:00+00:00",
+    "expires_at": "2026-07-19T00:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_LIQUIDITY_FUNDING",
+      "ASSET_CLASS_INTEREST_RATE"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "c449b5e2a3632ae5d82cdf48cfc86b8cc001b9e0019dcff99e4e772eedb28d9a",
+    "idempotency_key": "f001dceba6b9b2b020798887ef22a3b2b4c8120e31b169a0ac291f2412282dc2",
+    "synthetic": true,
+    "id": "538675b6-acfc-5974-b5e4-1e2298c699df"
+  },
+  {
+    "signal_id": "SIGNAL-0014",
+    "impact_id": "IMPACT-0014",
+    "event_id": "XAE-005",
+    "asset_id": "ETF-US-LARGE",
+    "direction": "negative",
+    "horizon": "one_day",
+    "status": "rejected",
+    "confidence": 0.58,
+    "score": 0.29,
+    "information_cutoff_at": "2026-06-19T00:00:00+00:00",
+    "generated_at": "2026-06-19T00:03:00+00:00",
+    "expires_at": "2026-07-19T00:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_LIQUIDITY_FUNDING",
+      "ASSET_CLASS_ETF"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "36fbf13de722fc97d5768feae94a2540dd1544cd23e9110be57ddb68b40ac2c8",
+    "idempotency_key": "5edff3b8e40efb38ef2cace1876390b7b8dba8cfcc3817f1129bd8b2a532b121",
+    "synthetic": true,
+    "id": "d58067dd-9853-5efa-b833-6a59e766b482"
+  },
+  {
+    "signal_id": "SIGNAL-0015",
+    "impact_id": "IMPACT-0015",
+    "event_id": "XAE-005",
+    "asset_id": "CRYPTO-ETH-PROXY",
+    "direction": "mixed",
+    "horizon": "one_week",
+    "status": "expired",
+    "confidence": 0.59,
+    "score": 0.354,
+    "information_cutoff_at": "2026-06-19T00:00:00+00:00",
+    "generated_at": "2026-06-19T00:03:00+00:00",
+    "expires_at": "2026-07-19T00:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_LIQUIDITY_FUNDING",
+      "ASSET_CLASS_CRYPTO_ASSET"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "250a2bfa50ad7b3756b310a6e5ea6f270eccbec66ba90565fca2f33f41c7bde4",
+    "idempotency_key": "4c09520fc4f72ebb5f6222fda728425b92a3fdf1aee55a793f30ceeb1cc6b94d",
+    "synthetic": true,
+    "id": "120dbdda-73dc-59c9-b319-e9d72e83e046"
+  },
+  {
+    "signal_id": "SIGNAL-0016",
+    "impact_id": "IMPACT-0016",
+    "event_id": "XAE-006",
+    "asset_id": "FX-USDJPY",
+    "direction": "uncertain",
+    "horizon": "one_month",
+    "status": "informational",
+    "confidence": 0.6,
+    "score": 0.42,
+    "information_cutoff_at": "2026-06-19T01:00:00+00:00",
+    "generated_at": "2026-06-19T01:03:00+00:00",
+    "expires_at": "2026-07-19T01:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_FISCAL_POLICY",
+      "ASSET_CLASS_FX"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "b3ff317e592bd8ff49acdc9fb15ba77fb930d8a566351546f093eb7b33538521",
+    "idempotency_key": "27827222648893f75a84ed2f7d261447cbf6e838a681a32a76c00281c6158bba",
+    "synthetic": true,
+    "id": "64ca6708-659a-5024-a676-5fe395950b88"
+  },
+  {
+    "signal_id": "SIGNAL-0017",
+    "impact_id": "IMPACT-0017",
+    "event_id": "XAE-006",
+    "asset_id": "RATE-FED-POLICY",
+    "direction": "positive",
+    "horizon": "intraday",
+    "status": "research",
+    "confidence": 0.61,
+    "score": 0.488,
+    "information_cutoff_at": "2026-06-19T01:00:00+00:00",
+    "generated_at": "2026-06-19T01:03:00+00:00",
+    "expires_at": "2026-07-19T01:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_FISCAL_POLICY",
+      "ASSET_CLASS_INTEREST_RATE"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "b3a8c2a19b3e1ebaa6a7f1a97a3ae9d381bbf6b8ba663c5a7e7967cde1874191",
+    "idempotency_key": "f09c6da56639b716abf3e25f5b1607b564d5b2a055900871739c7a244f27ee13",
+    "synthetic": true,
+    "id": "7184353c-763f-5eb9-adfe-cc3836040d4e"
+  },
+  {
+    "signal_id": "SIGNAL-0018",
+    "impact_id": "IMPACT-0018",
+    "event_id": "XAE-006",
+    "asset_id": "IDX-US-LARGE",
+    "direction": "negative",
+    "horizon": "one_day",
+    "status": "expired",
+    "confidence": 0.62,
+    "score": 0.558,
+    "information_cutoff_at": "2026-06-19T01:00:00+00:00",
+    "generated_at": "2026-06-19T01:03:00+00:00",
+    "expires_at": "2026-07-19T01:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_FISCAL_POLICY",
+      "ASSET_CLASS_EQUITY_INDEX"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "f48ac268500ef403af849a5825ed287cae0e8e572853fa9f4d84b4dc3d8c7b99",
+    "idempotency_key": "ad99ce8f25daad2da629ed2013e9a62aab845668813b1a498a5e9d27b92f3dd8",
+    "synthetic": true,
+    "id": "9c1a8646-f922-5141-ba10-8c35508b7292"
+  },
+  {
+    "signal_id": "SIGNAL-0019",
+    "impact_id": "IMPACT-0019",
+    "event_id": "XAE-007",
+    "asset_id": "US-EQ-SIGMA",
+    "direction": "mixed",
+    "horizon": "one_week",
+    "status": "rejected",
+    "confidence": 0.63,
+    "score": 0.063,
+    "information_cutoff_at": "2026-06-19T02:00:00+00:00",
+    "generated_at": "2026-06-19T02:03:00+00:00",
+    "expires_at": "2026-07-19T02:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_REGULATION_ENFORCEMENT",
+      "ASSET_CLASS_US_EQUITY"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "db98e7ee7b6d7fa9822a1bce7c60048f77ce54a27ccbfc91144297cea8b8b046",
+    "idempotency_key": "280976fe3d77ce81b623bba11e79c6349641ab8db81824473c62d218d6536bea",
+    "synthetic": true,
+    "id": "1f0202a8-8bcb-5198-b283-98c74fecb2b4"
+  },
+  {
+    "signal_id": "SIGNAL-0020",
+    "impact_id": "IMPACT-0020",
+    "event_id": "XAE-007",
+    "asset_id": "ETF-US-BOND",
+    "direction": "uncertain",
+    "horizon": "one_month",
+    "status": "expired",
+    "confidence": 0.64,
+    "score": 0.128,
+    "information_cutoff_at": "2026-06-19T02:00:00+00:00",
+    "generated_at": "2026-06-19T02:03:00+00:00",
+    "expires_at": "2026-07-19T02:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_REGULATION_ENFORCEMENT",
+      "ASSET_CLASS_ETF"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "2d5237e17224d98c076658e5db12f9df2f091bc43d747a4c6d5c3b6f0ea5e20a",
+    "idempotency_key": "81cc3ca0333ade728b662329195535cea62f19d7dfe687f3a22b04bf35f5e18f",
+    "synthetic": true,
+    "id": "c33ce609-ff59-57bc-a54b-6db80edeec7d"
+  },
+  {
+    "signal_id": "SIGNAL-0021",
+    "impact_id": "IMPACT-0021",
+    "event_id": "XAE-007",
+    "asset_id": "CRYPTO-EXCH-PROXY",
+    "direction": "positive",
+    "horizon": "intraday",
+    "status": "informational",
+    "confidence": 0.65,
+    "score": 0.195,
+    "information_cutoff_at": "2026-06-19T02:00:00+00:00",
+    "generated_at": "2026-06-19T02:03:00+00:00",
+    "expires_at": "2026-07-19T02:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_REGULATION_ENFORCEMENT",
+      "ASSET_CLASS_CRYPTO_ASSET"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "63bdd7418f80fa980887ee9610ca434735577f3362074d78e5a0937b1eafb42b",
+    "idempotency_key": "947d6c8c2d7030f9ad7d951e606a0c9133b1ece907f74059fa71a4ae8dd50ead",
+    "synthetic": true,
+    "id": "bd5e9169-c0a8-57b2-9c07-152bb8dc33e6"
+  },
+  {
+    "signal_id": "SIGNAL-0022",
+    "impact_id": "IMPACT-0022",
+    "event_id": "XAE-008",
+    "asset_id": "US-EQ-ALPHA",
+    "direction": "negative",
+    "horizon": "one_day",
+    "status": "research",
+    "confidence": 0.66,
+    "score": 0.264,
+    "information_cutoff_at": "2026-06-19T03:00:00+00:00",
+    "generated_at": "2026-06-19T03:03:00+00:00",
+    "expires_at": "2026-07-19T03:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_CORPORATE_EARNINGS_GUIDANCE",
+      "ASSET_CLASS_US_EQUITY"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "d70d1a60b6e1dbe99f847d6c7e49cf96ac001ec7447a679fed08473c3e3187a1",
+    "idempotency_key": "d5ee77cd4498309371df126dcd83fd2f6c5c9ead805525c8637131b3350101cd",
+    "synthetic": true,
+    "id": "e5f20b6e-2671-5df2-a245-25c22e2e4c64"
+  },
+  {
+    "signal_id": "SIGNAL-0023",
+    "impact_id": "IMPACT-0023",
+    "event_id": "XAE-008",
+    "asset_id": "IDX-US-VOL",
+    "direction": "mixed",
+    "horizon": "one_week",
+    "status": "abstained",
+    "confidence": 0.67,
+    "score": 0.335,
+    "information_cutoff_at": "2026-06-19T03:00:00+00:00",
+    "generated_at": "2026-06-19T03:03:00+00:00",
+    "expires_at": "2026-07-19T03:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_CORPORATE_EARNINGS_GUIDANCE",
+      "ASSET_CLASS_EQUITY_INDEX"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "1eacc3d58d4d2627ba839f81fc2938160273047eb2259a0d9baaa4b27a88627a",
+    "idempotency_key": "e3731ec745f851ea14b38856daf3307f5fd2513469580152ab4a86e19b4f03b5",
+    "synthetic": true,
+    "id": "564e37c2-a3a9-518a-afa7-aae8286b3cb2"
+  },
+  {
+    "signal_id": "SIGNAL-0024",
+    "impact_id": "IMPACT-0024",
+    "event_id": "XAE-008",
+    "asset_id": "US-EQ-BETA",
+    "direction": "uncertain",
+    "horizon": "one_month",
+    "status": "rejected",
+    "confidence": 0.68,
+    "score": 0.408,
+    "information_cutoff_at": "2026-06-19T03:00:00+00:00",
+    "generated_at": "2026-06-19T03:03:00+00:00",
+    "expires_at": "2026-07-19T03:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_CORPORATE_EARNINGS_GUIDANCE",
+      "ASSET_CLASS_US_EQUITY"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "8e32846c6fac98b65982b89879c06181358e07c59c28329226a277d7a96c63e4",
+    "idempotency_key": "fb5e53cafd6a8585aab7b6c8c75b09ad89fa6e60e66045dc28b94634ebc9712f",
+    "synthetic": true,
+    "id": "67ebbdaa-877e-59ae-83ba-6405651f7993"
+  },
+  {
+    "signal_id": "SIGNAL-0025",
+    "impact_id": "IMPACT-0025",
+    "event_id": "XAE-009",
+    "asset_id": "US-EQ-BETA",
+    "direction": "positive",
+    "horizon": "intraday",
+    "status": "expired",
+    "confidence": 0.69,
+    "score": 0.483,
+    "information_cutoff_at": "2026-06-19T04:00:00+00:00",
+    "generated_at": "2026-06-19T04:03:00+00:00",
+    "expires_at": "2026-07-19T04:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_MERGERS_CORPORATE_ACTIONS",
+      "ASSET_CLASS_US_EQUITY"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "4600f8c7a16ac7cc24ee0f03962ef7c54d4de634e7845562a5c5de6c0732f5f1",
+    "idempotency_key": "84dcd95d31fc70fde9a5ad292ec4856d303ca08806041819fe240819e00e49f7",
+    "synthetic": true,
+    "id": "9456be76-ca75-5d32-8be0-02f63e7113e3"
+  },
+  {
+    "signal_id": "SIGNAL-0026",
+    "impact_id": "IMPACT-0026",
+    "event_id": "XAE-009",
+    "asset_id": "ETF-OIL-PROXY",
+    "direction": "negative",
+    "horizon": "one_day",
+    "status": "informational",
+    "confidence": 0.7,
+    "score": 0.56,
+    "information_cutoff_at": "2026-06-19T04:00:00+00:00",
+    "generated_at": "2026-06-19T04:03:00+00:00",
+    "expires_at": "2026-07-19T04:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_MERGERS_CORPORATE_ACTIONS",
+      "ASSET_CLASS_ETF"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "1ad32b1a52835bfced1120b0ae653842615a7bb8f8d668eb7d6a79bfd736c553",
+    "idempotency_key": "987018017e82411fe860a492fc697095c69726406b733dd478bcfebd62df4c05",
+    "synthetic": true,
+    "id": "41ac13c3-7773-55e2-a375-33327b562a35"
+  },
+  {
+    "signal_id": "SIGNAL-0027",
+    "impact_id": "IMPACT-0027",
+    "event_id": "XAE-009",
+    "asset_id": "US-EQ-ALPHA",
+    "direction": "mixed",
+    "horizon": "one_week",
+    "status": "research",
+    "confidence": 0.71,
+    "score": 0.639,
+    "information_cutoff_at": "2026-06-19T04:00:00+00:00",
+    "generated_at": "2026-06-19T04:03:00+00:00",
+    "expires_at": "2026-07-19T04:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_MERGERS_CORPORATE_ACTIONS",
+      "ASSET_CLASS_US_EQUITY"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "3447aa8dabbcd2663debb200fb23283909c9876030732727f2458062a5adf509",
+    "idempotency_key": "0416e92532c2e51df1f0d64ff3a0675b20d8a4e39546090eeb70fea2e39782a8",
+    "synthetic": true,
+    "id": "9bbc9555-c2b8-5b30-bc3f-d082448eaf3a"
+  },
+  {
+    "signal_id": "SIGNAL-0028",
+    "impact_id": "IMPACT-0028",
+    "event_id": "XAE-010",
+    "asset_id": "CMD-GAS",
+    "direction": "uncertain",
+    "horizon": "one_month",
+    "status": "abstained",
+    "confidence": 0.72,
+    "score": 0.072,
+    "information_cutoff_at": "2026-06-19T05:00:00+00:00",
+    "generated_at": "2026-06-19T05:03:00+00:00",
+    "expires_at": "2026-07-19T05:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_COMMODITY_SUPPLY",
+      "ASSET_CLASS_COMMODITY"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "a4ac50b08af6a7c84e6820b2e6d8c366c09c7034405f86e8b8faf640f5c99273",
+    "idempotency_key": "811d1c0fd315b7f528e54099b95f76b46a27c67efc1d586920d57ac7fae62e49",
+    "synthetic": true,
+    "id": "4ab561be-0674-59a3-915b-f82ff6a9adb8"
+  },
+  {
+    "signal_id": "SIGNAL-0029",
+    "impact_id": "IMPACT-0029",
+    "event_id": "XAE-010",
+    "asset_id": "FUT-ROOT-OIL",
+    "direction": "positive",
+    "horizon": "intraday",
+    "status": "rejected",
+    "confidence": 0.73,
+    "score": 0.146,
+    "information_cutoff_at": "2026-06-19T05:00:00+00:00",
+    "generated_at": "2026-06-19T05:03:00+00:00",
+    "expires_at": "2026-07-19T05:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_COMMODITY_SUPPLY",
+      "ASSET_CLASS_FUTURES_ROOT"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "602689ddb06430b946c8cbf5dab7d092b4606411ba995af8115984e5e5c536f0",
+    "idempotency_key": "ad5a1d4b4e5dd2799606e1a5b328b668c39f13663cd4dbaf886a822ea9ded879",
+    "synthetic": true,
+    "id": "587f1546-a4d8-5589-9975-e23806c15f9d"
+  },
+  {
+    "signal_id": "SIGNAL-0030",
+    "impact_id": "IMPACT-0030",
+    "event_id": "XAE-010",
+    "asset_id": "FUT-CONTRACT-OIL-JUL26",
+    "direction": "negative",
+    "horizon": "one_day",
+    "status": "expired",
+    "confidence": 0.74,
+    "score": 0.222,
+    "information_cutoff_at": "2026-06-19T05:00:00+00:00",
+    "generated_at": "2026-06-19T05:03:00+00:00",
+    "expires_at": "2026-07-19T05:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_COMMODITY_SUPPLY",
+      "ASSET_CLASS_FUTURES_CONTRACT"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "03d06b0481e2398fd3a5412691e75fc54ae324df689c7058294977241019a642",
+    "idempotency_key": "4d7f71c5264b5c1d4029f3ff0bf92d8bf66abe6f2b175655892196bec55c674c",
+    "synthetic": true,
+    "id": "9fdee992-9e1f-56ae-af81-892d11dce84a"
+  },
+  {
+    "signal_id": "SIGNAL-0031",
+    "impact_id": "IMPACT-0031",
+    "event_id": "XAE-011",
+    "asset_id": "CMD-COPPER",
+    "direction": "mixed",
+    "horizon": "one_week",
+    "status": "informational",
+    "confidence": 0.75,
+    "score": 0.3,
+    "information_cutoff_at": "2026-06-19T06:00:00+00:00",
+    "generated_at": "2026-06-19T06:03:00+00:00",
+    "expires_at": "2026-07-19T06:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_INVENTORY_DEMAND",
+      "ASSET_CLASS_COMMODITY"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "84d4fa125c9fbdcc864b82682c9d03f20721bc8d732f97fcd9da9e27590a25c2",
+    "idempotency_key": "3ea0ff00db35abd86a8d9987084b9b301248a913bc48a726fda210a85d14a9b5",
+    "synthetic": true,
+    "id": "b3bdec52-811a-5340-b0a9-3e6224d5196c"
+  },
+  {
+    "signal_id": "SIGNAL-0032",
+    "impact_id": "IMPACT-0032",
+    "event_id": "XAE-011",
+    "asset_id": "FUT-CONTRACT-GOLD-AUG26",
+    "direction": "uncertain",
+    "horizon": "one_month",
+    "status": "research",
+    "confidence": null,
+    "score": null,
+    "information_cutoff_at": "2026-06-19T06:00:00+00:00",
+    "generated_at": "2026-06-19T06:03:00+00:00",
+    "expires_at": "2026-07-19T06:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_INVENTORY_DEMAND",
+      "ASSET_CLASS_FUTURES_CONTRACT"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "e2764ae59cc21284ea8da609d923214de3829a3c4e0e4db82cf36feedfbd7ab0",
+    "idempotency_key": "938099c5d14671435c95cc9cd0236b130c9648e6054fde6141fd1cc1b59c8880",
+    "synthetic": true,
+    "id": "f271bd65-9837-5008-830c-25226b62adb6"
+  },
+  {
+    "signal_id": "SIGNAL-0033",
+    "impact_id": "IMPACT-0033",
+    "event_id": "XAE-011",
+    "asset_id": "ETF-US-TECH",
+    "direction": "positive",
+    "horizon": "intraday",
+    "status": "abstained",
+    "confidence": 0.77,
+    "score": 0.462,
+    "information_cutoff_at": "2026-06-19T06:00:00+00:00",
+    "generated_at": "2026-06-19T06:03:00+00:00",
+    "expires_at": "2026-07-19T06:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_INVENTORY_DEMAND",
+      "ASSET_CLASS_ETF"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "9b5b787f29d951e9ebd1d52ffe144dc709a4d5d82d867013ae665e5ff1fe877d",
+    "idempotency_key": "874e04ba04478c5d7c800ea6efbefe8b70433717ba049728e1d541764a0e526c",
+    "synthetic": true,
+    "id": "3c1ccff7-bc87-55d4-8758-9c7db01a3d69"
+  },
+  {
+    "signal_id": "SIGNAL-0034",
+    "impact_id": "IMPACT-0034",
+    "event_id": "XAE-012",
+    "asset_id": "PM-GOLD",
+    "direction": "negative",
+    "horizon": "one_day",
+    "status": "rejected",
+    "confidence": 0.78,
+    "score": 0.546,
+    "information_cutoff_at": "2026-06-19T07:00:00+00:00",
+    "generated_at": "2026-06-19T07:03:00+00:00",
+    "expires_at": "2026-07-19T07:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_GEOPOLITICAL_RISK",
+      "ASSET_CLASS_PRECIOUS_METAL"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "3bae827a16dbe4be660eef4ee38adb5019e09e8c27acc5e1152d613d6d2317df",
+    "idempotency_key": "d7acde903f188e3bafa35b3946b46556ffc9fe6eb0c1911712ad198e6f221bed",
+    "synthetic": true,
+    "id": "1426cffc-90fc-55cc-b41e-05892bc542e8"
+  },
+  {
+    "signal_id": "SIGNAL-0035",
+    "impact_id": "IMPACT-0035",
+    "event_id": "XAE-012",
+    "asset_id": "FX-GBPUSD",
+    "direction": "mixed",
+    "horizon": "one_week",
+    "status": "expired",
+    "confidence": 0.79,
+    "score": 0.632,
+    "information_cutoff_at": "2026-06-19T07:00:00+00:00",
+    "generated_at": "2026-06-19T07:03:00+00:00",
+    "expires_at": "2026-07-19T07:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_GEOPOLITICAL_RISK",
+      "ASSET_CLASS_FX"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "a8f40fda464607390c15115c64f6ebdab1cd3138e2d23ba41896a7b1b0076c95",
+    "idempotency_key": "92acb7e99b1532697c93e97310fccf1e4dbc2abd3b1c7755d984863d18de3fad",
+    "synthetic": true,
+    "id": "ba52ebba-281f-5f9a-b651-b02dea51b9ec"
+  },
+  {
+    "signal_id": "SIGNAL-0036",
+    "impact_id": "IMPACT-0036",
+    "event_id": "XAE-012",
+    "asset_id": "CMD-OIL",
+    "direction": "uncertain",
+    "horizon": "one_month",
+    "status": "informational",
+    "confidence": 0.8,
+    "score": 0.72,
+    "information_cutoff_at": "2026-06-19T07:00:00+00:00",
+    "generated_at": "2026-06-19T07:03:00+00:00",
+    "expires_at": "2026-07-19T07:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_GEOPOLITICAL_RISK",
+      "ASSET_CLASS_COMMODITY"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "fdcecb46fd4f4786e25bb9bacc23c34cb930a8679724866fe31b6715abb9ed90",
+    "idempotency_key": "3c60f689fb4bb2fc6d241d3e5dabb6c59a3feb8d34d17a43eb8124ff8bad6d64",
+    "synthetic": true,
+    "id": "5f4ed200-a145-5aea-8c03-9a2cd2d20399"
+  },
+  {
+    "signal_id": "SIGNAL-0037",
+    "impact_id": "IMPACT-0037",
+    "event_id": "XAE-013",
+    "asset_id": "FUT-ROOT-GOLD",
+    "direction": "positive",
+    "horizon": "intraday",
+    "status": "research",
+    "confidence": 0.81,
+    "score": 0.081,
+    "information_cutoff_at": "2026-06-19T08:00:00+00:00",
+    "generated_at": "2026-06-19T08:03:00+00:00",
+    "expires_at": "2026-07-19T08:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_DERIVATIVES_POSITIONING",
+      "ASSET_CLASS_FUTURES_ROOT"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "d69e5474cb22596c4cb48ac72d2db43f2c1022bfff6f494f53cf42614f476517",
+    "idempotency_key": "432ebace522f2c01912fb5b2ac7e0dbc837547c5908de2ba33e70f9d54dcf5c6",
+    "synthetic": true,
+    "id": "0772fb16-ad50-55bc-b8f5-95d51ef1c66d"
+  },
+  {
+    "signal_id": "SIGNAL-0038",
+    "impact_id": "IMPACT-0038",
+    "event_id": "XAE-013",
+    "asset_id": "FUT-CONTRACT-GOLD-AUG26",
+    "direction": "negative",
+    "horizon": "one_day",
+    "status": "rejected",
+    "confidence": 0.82,
+    "score": 0.164,
+    "information_cutoff_at": "2026-06-19T08:00:00+00:00",
+    "generated_at": "2026-06-19T08:03:00+00:00",
+    "expires_at": "2026-07-19T08:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_DERIVATIVES_POSITIONING",
+      "ASSET_CLASS_FUTURES_CONTRACT"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "07c973b90663a48aa717313023cc8ee98fd69dd092eea7cbf465820b6014d244",
+    "idempotency_key": "7858240f22e7bcc2b388e08c56a80f668dad58f3a671df120975fa0eb632bf3f",
+    "synthetic": true,
+    "id": "cbdbd728-b567-5a89-89e3-057528e1b0b6"
+  },
+  {
+    "signal_id": "SIGNAL-0039",
+    "impact_id": "IMPACT-0039",
+    "event_id": "XAE-013",
+    "asset_id": "IDX-US-TECH",
+    "direction": "mixed",
+    "horizon": "one_week",
+    "status": "rejected",
+    "confidence": 0.83,
+    "score": 0.249,
+    "information_cutoff_at": "2026-06-19T08:00:00+00:00",
+    "generated_at": "2026-06-19T08:03:00+00:00",
+    "expires_at": "2026-07-19T08:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_DERIVATIVES_POSITIONING",
+      "ASSET_CLASS_EQUITY_INDEX"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "af39322b3dafba4c66da3773e6389312c8433b12208154348a6ba659916ce623",
+    "idempotency_key": "f58be320fbf422fcbcc94b1675ee8911744464eb3eb18cb313600463282d75fb",
+    "synthetic": true,
+    "id": "b37ca2e0-6766-5183-a491-478635364ccb"
+  },
+  {
+    "signal_id": "SIGNAL-0040",
+    "impact_id": "IMPACT-0040",
+    "event_id": "XAE-014",
+    "asset_id": "IDX-US-VOL",
+    "direction": "uncertain",
+    "horizon": "one_month",
+    "status": "expired",
+    "confidence": 0.84,
+    "score": 0.336,
+    "information_cutoff_at": "2026-06-19T09:00:00+00:00",
+    "generated_at": "2026-06-19T09:03:00+00:00",
+    "expires_at": "2026-07-19T09:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_EXCHANGE_MARKET_INFRASTRUCTURE",
+      "ASSET_CLASS_EQUITY_INDEX"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "92e0ac568408ed4a1b1b81bce0a5fc68bac1557da2f8f24684bb04d1a28627a8",
+    "idempotency_key": "a0fde47e75bd97f24b80e330b17a997f7c7a2b5ebf9ed5acf22300c896004d71",
+    "synthetic": true,
+    "id": "c97284aa-91b0-5dad-b83a-655a9b8603c5"
+  },
+  {
+    "signal_id": "SIGNAL-0041",
+    "impact_id": "IMPACT-0041",
+    "event_id": "XAE-014",
+    "asset_id": "CRYPTO-STABLE-PROXY",
+    "direction": "positive",
+    "horizon": "intraday",
+    "status": "informational",
+    "confidence": 0.85,
+    "score": 0.425,
+    "information_cutoff_at": "2026-06-19T09:00:00+00:00",
+    "generated_at": "2026-06-19T09:03:00+00:00",
+    "expires_at": "2026-07-19T09:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_EXCHANGE_MARKET_INFRASTRUCTURE",
+      "ASSET_CLASS_CRYPTO_ASSET"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "b340cf759cec283e26ba3561dfdaec0e2c503d686014fe52f27c15b4aca88ef8",
+    "idempotency_key": "b3a90572ed225d4c54d594e3850f9dc149ab53979300ca76be26d0ee59804ca6",
+    "synthetic": true,
+    "id": "e74d05e0-6b47-5bb4-94c2-ead65f83fc8d"
+  },
+  {
+    "signal_id": "SIGNAL-0042",
+    "impact_id": "IMPACT-0042",
+    "event_id": "XAE-014",
+    "asset_id": "FX-USDCAD",
+    "direction": "negative",
+    "horizon": "one_day",
+    "status": "research",
+    "confidence": 0.86,
+    "score": 0.516,
+    "information_cutoff_at": "2026-06-19T09:00:00+00:00",
+    "generated_at": "2026-06-19T09:03:00+00:00",
+    "expires_at": "2026-07-19T09:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_EXCHANGE_MARKET_INFRASTRUCTURE",
+      "ASSET_CLASS_FX"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "ffb2d0cedb52aeb9c4213461148712a63e4bd450328b428581755f40e6b5b6be",
+    "idempotency_key": "0428dc04d567d4d56e7936d57a943cdb885c288a0d545ab8c2ee301ec71f6a75",
+    "synthetic": true,
+    "id": "89d53721-24fb-5164-8112-e5bd8020d5f0"
+  },
+  {
+    "signal_id": "SIGNAL-0043",
+    "impact_id": "IMPACT-0043",
+    "event_id": "XAE-015",
+    "asset_id": "CRYPTO-EXCH-PROXY",
+    "direction": "mixed",
+    "horizon": "one_week",
+    "status": "abstained",
+    "confidence": 0.87,
+    "score": 0.609,
+    "information_cutoff_at": "2026-06-19T10:00:00+00:00",
+    "generated_at": "2026-06-19T10:03:00+00:00",
+    "expires_at": "2026-07-19T10:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_CRYPTO_PROTOCOL_ECOSYSTEM",
+      "ASSET_CLASS_CRYPTO_ASSET"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "cf92ac328bc2fe158e9701f9192529efd51c3d5c553f8d893e6372e15a6e357c",
+    "idempotency_key": "7761cfb3b0739903ac15f670c5cbbd5c96e403458b2fe941e92562df3ff9c0e5",
+    "synthetic": true,
+    "id": "afb67cbd-a33c-5c1f-b9c7-46dbcfc5e40c"
+  },
+  {
+    "signal_id": "SIGNAL-0044",
+    "impact_id": "IMPACT-0044",
+    "event_id": "XAE-015",
+    "asset_id": "ETF-US-LARGE",
+    "direction": "uncertain",
+    "horizon": "one_month",
+    "status": "rejected",
+    "confidence": 0.88,
+    "score": 0.704,
+    "information_cutoff_at": "2026-06-19T10:00:00+00:00",
+    "generated_at": "2026-06-19T10:03:00+00:00",
+    "expires_at": "2026-07-19T10:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_CRYPTO_PROTOCOL_ECOSYSTEM",
+      "ASSET_CLASS_ETF"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "c987a3f2de82570fcbf16b5f9bad16847dfa7a02dd004d24a76157733b60da1a",
+    "idempotency_key": "44c5dd4f3de30ee4368c04938f94e759a18c7f86c443439b336083047e78f950",
+    "synthetic": true,
+    "id": "5bf47f0d-a2f4-5bb5-85b0-b9001440162c"
+  },
+  {
+    "signal_id": "SIGNAL-0045",
+    "impact_id": "IMPACT-0045",
+    "event_id": "XAE-015",
+    "asset_id": "US-EQ-ALPHA",
+    "direction": "positive",
+    "horizon": "intraday",
+    "status": "expired",
+    "confidence": 0.89,
+    "score": 0.801,
+    "information_cutoff_at": "2026-06-19T10:00:00+00:00",
+    "generated_at": "2026-06-19T10:03:00+00:00",
+    "expires_at": "2026-07-19T10:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_CRYPTO_PROTOCOL_ECOSYSTEM",
+      "ASSET_CLASS_US_EQUITY"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "584c65246b232e23a39aa34be13d591883f99e4b5c7b0ae4de86c8c89ca51fd3",
+    "idempotency_key": "097c9d79b1e12b310676ded66f831b04c17530d3ad1eacd249518638f08ffdbe",
+    "synthetic": true,
+    "id": "4caaa0fe-49be-54e2-bb9f-3b8a164bd33a"
+  },
+  {
+    "signal_id": "SIGNAL-0046",
+    "impact_id": "IMPACT-0046",
+    "event_id": "XAE-016",
+    "asset_id": "CRYPTO-BTC-PROXY",
+    "direction": "negative",
+    "horizon": "one_day",
+    "status": "informational",
+    "confidence": 0.45,
+    "score": 0.045,
+    "information_cutoff_at": "2026-06-19T11:00:00+00:00",
+    "generated_at": "2026-06-19T11:03:00+00:00",
+    "expires_at": "2026-07-19T11:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_CRYPTO_REGULATION",
+      "ASSET_CLASS_CRYPTO_ASSET"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "d8c1aa54d2ac4e9c71c43ff6cf58a312451d5b99f3be8024ae3f35d9c9aa502a",
+    "idempotency_key": "1a505cb93abb89c81b071ca24447d29f65a0f09fcb20c81ee69c8ddb9e78244b",
+    "synthetic": true,
+    "id": "61d27e67-3a44-5bb8-8c74-f9aa634a9514"
+  },
+  {
+    "signal_id": "SIGNAL-0047",
+    "impact_id": "IMPACT-0047",
+    "event_id": "XAE-016",
+    "asset_id": "US-EQ-ALPHA",
+    "direction": "mixed",
+    "horizon": "one_week",
+    "status": "research",
+    "confidence": 0.46,
+    "score": 0.092,
+    "information_cutoff_at": "2026-06-19T11:00:00+00:00",
+    "generated_at": "2026-06-19T11:03:00+00:00",
+    "expires_at": "2026-07-19T11:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_CRYPTO_REGULATION",
+      "ASSET_CLASS_US_EQUITY"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "c52124d99ce2d469c8cb6bea956c866fe4d6f73cb62de5c21317aca386c90d6c",
+    "idempotency_key": "0f5bf88bf9d20e2c735ea173b20346b01d5720ee5f7d1040f9621c99f970efb4",
+    "synthetic": true,
+    "id": "878a6e10-94f8-5d08-833b-da6f4943dabd"
+  },
+  {
+    "signal_id": "SIGNAL-0048",
+    "impact_id": "IMPACT-0048",
+    "event_id": "XAE-016",
+    "asset_id": "US-EQ-BETA",
+    "direction": "uncertain",
+    "horizon": "one_month",
+    "status": "abstained",
+    "confidence": 0.47,
+    "score": 0.141,
+    "information_cutoff_at": "2026-06-19T11:00:00+00:00",
+    "generated_at": "2026-06-19T11:03:00+00:00",
+    "expires_at": "2026-07-19T11:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_CRYPTO_REGULATION",
+      "ASSET_CLASS_US_EQUITY"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "c0a26462b72fe5e6029a2e4402cede7b6358178656c6dcbd6bfc968f5aba6c42",
+    "idempotency_key": "df91977ccdc4601904ec7a872426eb6980d594d5b9b7cb997ea840735c767571",
+    "synthetic": true,
+    "id": "e0d272a0-7ca7-5191-88d8-d6d6aba3535c"
+  },
+  {
+    "signal_id": "SIGNAL-0049",
+    "impact_id": "IMPACT-0049",
+    "event_id": "XAE-017",
+    "asset_id": "US-EQ-BETA",
+    "direction": "positive",
+    "horizon": "intraday",
+    "status": "rejected",
+    "confidence": 0.48,
+    "score": 0.192,
+    "information_cutoff_at": "2026-06-19T12:00:00+00:00",
+    "generated_at": "2026-06-19T12:03:00+00:00",
+    "expires_at": "2026-07-19T12:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_IDIOSYNCRATIC_COMPANY_EVENT",
+      "ASSET_CLASS_US_EQUITY"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "e3f5bfa109769db68f108c2d65eec67f3e2c7defef9f4b2512fb473566a94768",
+    "idempotency_key": "1190ee9d582ac06b0a72dfcdcee4f8082ffe78c1948d39c307bf26f99c3e617c",
+    "synthetic": true,
+    "id": "6dfa3c39-affc-59f4-abe2-ca7936b19321"
+  },
+  {
+    "signal_id": "SIGNAL-0050",
+    "impact_id": "IMPACT-0050",
+    "event_id": "XAE-017",
+    "asset_id": "ETF-US-BOND",
+    "direction": "negative",
+    "horizon": "one_day",
+    "status": "expired",
+    "confidence": 0.49,
+    "score": 0.245,
+    "information_cutoff_at": "2026-06-19T12:00:00+00:00",
+    "generated_at": "2026-06-19T12:03:00+00:00",
+    "expires_at": "2026-07-19T12:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_IDIOSYNCRATIC_COMPANY_EVENT",
+      "ASSET_CLASS_ETF"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "98e58f5c101a07f0db8b3a9671bcd78684d147e56c10ab1e5e8c9f5d92b2d2dd",
+    "idempotency_key": "80fc9b6cdac6ce5fffa8c5923176e142b8e18d0f00e40c34b2d2fd3a304ce09c",
+    "synthetic": true,
+    "id": "31512de3-f3a4-5d8b-90c2-e3d8d9ab71db"
+  },
+  {
+    "signal_id": "SIGNAL-0051",
+    "impact_id": "IMPACT-0051",
+    "event_id": "XAE-017",
+    "asset_id": "IDX-US-VOL",
+    "direction": "mixed",
+    "horizon": "one_week",
+    "status": "informational",
+    "confidence": 0.5,
+    "score": 0.3,
+    "information_cutoff_at": "2026-06-19T12:00:00+00:00",
+    "generated_at": "2026-06-19T12:03:00+00:00",
+    "expires_at": "2026-07-19T12:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_IDIOSYNCRATIC_COMPANY_EVENT",
+      "ASSET_CLASS_EQUITY_INDEX"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "5ed4e5d229ec3ff3dd49c16ac74f1a7d22d211e40a50f662659ee3698df50f67",
+    "idempotency_key": "31d697f6ef5b9394ca3679bc820538e185739e2f29146093617d7d8140a81b4c",
+    "synthetic": true,
+    "id": "b524ca4f-15fd-57da-b6dc-90e26d3c648c"
+  },
+  {
+    "signal_id": "SIGNAL-0052",
+    "impact_id": "IMPACT-0052",
+    "event_id": "XAE-018",
+    "asset_id": "MACRO-CPI-US",
+    "direction": "uncertain",
+    "horizon": "one_month",
+    "status": "research",
+    "confidence": 0.51,
+    "score": 0.357,
+    "information_cutoff_at": "2026-06-19T13:00:00+00:00",
+    "generated_at": "2026-06-19T13:03:00+00:00",
+    "expires_at": "2026-07-19T13:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_OTHER_UNCERTAIN",
+      "ASSET_CLASS_MACRO_INDICATOR"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "aa28170dc97734e9a838178585eb363da9cdc3530b344ab04d4f265a3a9bd1d2",
+    "idempotency_key": "015f26659ab3a452c586e7984215700d6799fcd68fb555f1a58df091f687b9af",
+    "synthetic": true,
+    "id": "99f33fb3-c7c9-502e-9d92-f940b460ee28"
+  },
+  {
+    "signal_id": "SIGNAL-0053",
+    "impact_id": "IMPACT-0053",
+    "event_id": "XAE-018",
+    "asset_id": "FX-AUDUSD",
+    "direction": "positive",
+    "horizon": "intraday",
+    "status": "abstained",
+    "confidence": 0.52,
+    "score": 0.416,
+    "information_cutoff_at": "2026-06-19T13:00:00+00:00",
+    "generated_at": "2026-06-19T13:03:00+00:00",
+    "expires_at": "2026-07-19T13:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_OTHER_UNCERTAIN",
+      "ASSET_CLASS_FX"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "eebaecff0a52947c7ce7dabd861437a6145f2cf7ac23ea02d53beb5cbb81baf6",
+    "idempotency_key": "3e4f3e59f5622777f91608a1b0dedead72862aa5ea58f6fee8fc69eb68a5373a",
+    "synthetic": true,
+    "id": "553e6c77-bec4-5d8d-9221-6cf386bc0f00"
+  },
+  {
+    "signal_id": "SIGNAL-0054",
+    "impact_id": "IMPACT-0054",
+    "event_id": "XAE-018",
+    "asset_id": "US-EQ-ALPHA",
+    "direction": "negative",
+    "horizon": "one_day",
+    "status": "rejected",
+    "confidence": 0.53,
+    "score": 0.477,
+    "information_cutoff_at": "2026-06-19T13:00:00+00:00",
+    "generated_at": "2026-06-19T13:03:00+00:00",
+    "expires_at": "2026-07-19T13:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_OTHER_UNCERTAIN",
+      "ASSET_CLASS_US_EQUITY"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "85d11fda39f44f68b923fe07cf6159fb8c63e68f46790d3c394524520a7be927",
+    "idempotency_key": "c51a6b994c808de09f4852422001db5b4bebbe3c6919ad5e3777bb5563829a2e",
+    "synthetic": true,
+    "id": "59d93c66-2e4e-5783-81d8-40b581939f77"
+  },
+  {
+    "signal_id": "SIGNAL-0055",
+    "impact_id": "IMPACT-0055",
+    "event_id": "XAE-019",
+    "asset_id": "RATE-US10Y",
+    "direction": "mixed",
+    "horizon": "one_week",
+    "status": "expired",
+    "confidence": 0.54,
+    "score": 0.054,
+    "information_cutoff_at": "2026-06-19T14:00:00+00:00",
+    "generated_at": "2026-06-19T14:03:00+00:00",
+    "expires_at": "2026-07-19T14:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_MONETARY_POLICY",
+      "ASSET_CLASS_INTEREST_RATE"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "fa21b8148544954e619a9a2cf4121a1eb936d67354fdbfebd8fb506bfd13010c",
+    "idempotency_key": "f24a2a68aa8bbfcac117b03f3cd48a1506266c7c0073a9f83f79ad301870cac7",
+    "synthetic": true,
+    "id": "889ddf31-e518-5c0f-bf2e-a7dd3ac51679"
+  },
+  {
+    "signal_id": "SIGNAL-0056",
+    "impact_id": "IMPACT-0056",
+    "event_id": "XAE-019",
+    "asset_id": "FX-USDCAD",
+    "direction": "uncertain",
+    "horizon": "one_month",
+    "status": "informational",
+    "confidence": 0.55,
+    "score": 0.11,
+    "information_cutoff_at": "2026-06-19T14:00:00+00:00",
+    "generated_at": "2026-06-19T14:03:00+00:00",
+    "expires_at": "2026-07-19T14:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_MONETARY_POLICY",
+      "ASSET_CLASS_FX"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "f3b4ceff768ec8ef190a8eeb8af81e9db3e0bd656e56ab26c8c14112ab133e6f",
+    "idempotency_key": "9d5f4c064465bc47098b385295b6c2ca0ff2bbe4e82b1a9e38d429607de90ca8",
+    "synthetic": true,
+    "id": "63cb1402-8e43-5b74-acbb-7218de803a79"
+  },
+  {
+    "signal_id": "SIGNAL-0057",
+    "impact_id": "IMPACT-0057",
+    "event_id": "XAE-019",
+    "asset_id": "PM-SILVER",
+    "direction": "positive",
+    "horizon": "intraday",
+    "status": "research",
+    "confidence": 0.56,
+    "score": 0.168,
+    "information_cutoff_at": "2026-06-19T14:00:00+00:00",
+    "generated_at": "2026-06-19T14:03:00+00:00",
+    "expires_at": "2026-07-19T14:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_MONETARY_POLICY",
+      "ASSET_CLASS_PRECIOUS_METAL"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "374c11a511b2034acfb71fdeb4741492ecbbb6d7469cb4bc1f5470e9b19b2718",
+    "idempotency_key": "23025e028814800aeef5db175e85cca79aa96f7332ed4df29790bb197ac25a8d",
+    "synthetic": true,
+    "id": "1229c160-3df0-50a0-ba90-5b40716a0308"
+  },
+  {
+    "signal_id": "SIGNAL-0058",
+    "impact_id": "IMPACT-0058",
+    "event_id": "XAE-020",
+    "asset_id": "RATE-FED-POLICY",
+    "direction": "negative",
+    "horizon": "one_day",
+    "status": "abstained",
+    "confidence": 0.57,
+    "score": 0.228,
+    "information_cutoff_at": "2026-06-19T15:00:00+00:00",
+    "generated_at": "2026-06-19T15:03:00+00:00",
+    "expires_at": "2026-07-19T15:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_INFLATION",
+      "ASSET_CLASS_INTEREST_RATE"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "16d773568ae71524f44d530815d8b3bb0c77a60247a3a4946599a872dfbebe49",
+    "idempotency_key": "bd554cfb7917f59d9589e4d6892b82532d5e51746e055d7fc516b344ecc3332b",
+    "synthetic": true,
+    "id": "46f68e5c-02b0-517f-8acd-defc78e2222c"
+  },
+  {
+    "signal_id": "SIGNAL-0059",
+    "impact_id": "IMPACT-0059",
+    "event_id": "XAE-020",
+    "asset_id": "CMD-COPPER",
+    "direction": "mixed",
+    "horizon": "one_week",
+    "status": "rejected",
+    "confidence": 0.58,
+    "score": 0.29,
+    "information_cutoff_at": "2026-06-19T15:00:00+00:00",
+    "generated_at": "2026-06-19T15:03:00+00:00",
+    "expires_at": "2026-07-19T15:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_INFLATION",
+      "ASSET_CLASS_COMMODITY"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "410197efd7bf5b88caeeb4e82caff942c97642f83161f674f7e768ed1fac800e",
+    "idempotency_key": "94fa84857039da74090f924544ef5042d40e118d31e715fc1b58548258b9afc4",
+    "synthetic": true,
+    "id": "e0407d1e-6cc1-50e6-aaf6-4ca0fd00f2ff"
+  },
+  {
+    "signal_id": "SIGNAL-0060",
+    "impact_id": "IMPACT-0060",
+    "event_id": "XAE-020",
+    "asset_id": "PM-PLATINUM",
+    "direction": "uncertain",
+    "horizon": "one_month",
+    "status": "expired",
+    "confidence": 0.59,
+    "score": 0.354,
+    "information_cutoff_at": "2026-06-19T15:00:00+00:00",
+    "generated_at": "2026-06-19T15:03:00+00:00",
+    "expires_at": "2026-07-19T15:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_INFLATION",
+      "ASSET_CLASS_PRECIOUS_METAL"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "a0eb07b6cee9a3cf26d46828a3fd8704174cdaf8d25143a5301a91c86d3299cb",
+    "idempotency_key": "63e7b4c19f23025ffd8ffd733af6336fdcdb0a77cca465ba9a5b2dc76b133a94",
+    "synthetic": true,
+    "id": "099fb363-be1b-50b0-a852-880b398c3037"
+  },
+  {
+    "signal_id": "SIGNAL-0061",
+    "impact_id": "IMPACT-0061",
+    "event_id": "XAE-021",
+    "asset_id": "FX-USDJPY",
+    "direction": "positive",
+    "horizon": "intraday",
+    "status": "informational",
+    "confidence": 0.6,
+    "score": 0.42,
+    "information_cutoff_at": "2026-06-19T16:00:00+00:00",
+    "generated_at": "2026-06-19T16:03:00+00:00",
+    "expires_at": "2026-07-19T16:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_LABOR_MARKET",
+      "ASSET_CLASS_FX"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "20cb35460f9080fabf4fb5e53a6beee8c43a2a650659b5155017647444f2c125",
+    "idempotency_key": "fe4c7bd69aac3c8c5170f773e92a770fd0e84892c12cea62cc6db491cd2c3e9c",
+    "synthetic": true,
+    "id": "add75cab-af2b-513e-8da4-409b864657a0"
+  },
+  {
+    "signal_id": "SIGNAL-0062",
+    "impact_id": "IMPACT-0062",
+    "event_id": "XAE-021",
+    "asset_id": "RATE-US10Y",
+    "direction": "negative",
+    "horizon": "one_day",
+    "status": "research",
+    "confidence": 0.61,
+    "score": 0.488,
+    "information_cutoff_at": "2026-06-19T16:00:00+00:00",
+    "generated_at": "2026-06-19T16:03:00+00:00",
+    "expires_at": "2026-07-19T16:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_LABOR_MARKET",
+      "ASSET_CLASS_INTEREST_RATE"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "5839d9a3eb2a7aff8370a766fdd9156d689c5ece22002dac7d1b479ef8a3a87d",
+    "idempotency_key": "264d2475e3a9e4de42d4a8c4bf27e87b66a961bcb03cd982151195d21fe72e76",
+    "synthetic": true,
+    "id": "7f98a76c-581f-5f92-8046-f970c0286795"
+  },
+  {
+    "signal_id": "SIGNAL-0063",
+    "impact_id": "IMPACT-0063",
+    "event_id": "XAE-021",
+    "asset_id": "IDX-US-LARGE",
+    "direction": "mixed",
+    "horizon": "one_week",
+    "status": "abstained",
+    "confidence": null,
+    "score": null,
+    "information_cutoff_at": "2026-06-19T16:00:00+00:00",
+    "generated_at": "2026-06-19T16:03:00+00:00",
+    "expires_at": "2026-07-19T16:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_LABOR_MARKET",
+      "ASSET_CLASS_EQUITY_INDEX"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "2bb0afda45077d57d9d5e00cfdcb6a3271e28cbc4cd4fb24b25f4469c3ebafbe",
+    "idempotency_key": "1c57e6c0e44dd582bbfd04d5df57938c9b1e6be521dcba64d9b71c7d36aa9e79",
+    "synthetic": true,
+    "id": "767a120f-cd1d-51a3-a83d-9830490359a3"
+  },
+  {
+    "signal_id": "SIGNAL-0064",
+    "impact_id": "IMPACT-0064",
+    "event_id": "XAE-022",
+    "asset_id": "IDX-US-TECH",
+    "direction": "uncertain",
+    "horizon": "one_month",
+    "status": "rejected",
+    "confidence": 0.63,
+    "score": 0.063,
+    "information_cutoff_at": "2026-06-19T17:00:00+00:00",
+    "generated_at": "2026-06-19T17:03:00+00:00",
+    "expires_at": "2026-07-19T17:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_ECONOMIC_GROWTH",
+      "ASSET_CLASS_EQUITY_INDEX"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "292e69643d68d42187d82aae52d3572952532da2703c57937c452a1eeac213e4",
+    "idempotency_key": "5b8fee9163ed4b963a9256016cb944bcd6f36129b28e940568c82726c957bf22",
+    "synthetic": true,
+    "id": "a45b876c-8a2d-528e-a1d7-5d55f87d435e"
+  },
+  {
+    "signal_id": "SIGNAL-0065",
+    "impact_id": "IMPACT-0065",
+    "event_id": "XAE-022",
+    "asset_id": "US-EQ-OMEGA",
+    "direction": "positive",
+    "horizon": "intraday",
+    "status": "expired",
+    "confidence": 0.64,
+    "score": 0.128,
+    "information_cutoff_at": "2026-06-19T17:00:00+00:00",
+    "generated_at": "2026-06-19T17:03:00+00:00",
+    "expires_at": "2026-07-19T17:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_ECONOMIC_GROWTH",
+      "ASSET_CLASS_US_EQUITY"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "18dc1f985d81f1bc211f5c1b8cfde4576f60f3026b145beb0a2b2c62b6cf0572",
+    "idempotency_key": "8b00d95513d9b435fa3f82af9813da9d3514dfdf1248352f83d589b1f6852709",
+    "synthetic": true,
+    "id": "5d1cb77f-417f-5e25-a226-4f8927bd8f82"
+  },
+  {
+    "signal_id": "SIGNAL-0066",
+    "impact_id": "IMPACT-0066",
+    "event_id": "XAE-022",
+    "asset_id": "CMD-GAS",
+    "direction": "negative",
+    "horizon": "one_day",
+    "status": "informational",
+    "confidence": 0.65,
+    "score": 0.195,
+    "information_cutoff_at": "2026-06-19T17:00:00+00:00",
+    "generated_at": "2026-06-19T17:03:00+00:00",
+    "expires_at": "2026-07-19T17:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_ECONOMIC_GROWTH",
+      "ASSET_CLASS_COMMODITY"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "9d69300234f610340940b979476e0fcca549ce7546afcaefdd3e3f47e5910f4f",
+    "idempotency_key": "2a335ba01dbea867bd457b2e3f8d3a70589f715e7556afbf1dfd396573a344d1",
+    "synthetic": true,
+    "id": "58f463e7-bf62-5e3e-9aab-ca67cdccda1f"
+  },
+  {
+    "signal_id": "SIGNAL-0067",
+    "impact_id": "IMPACT-0067",
+    "event_id": "XAE-023",
+    "asset_id": "RATE-US10Y",
+    "direction": "mixed",
+    "horizon": "one_week",
+    "status": "research",
+    "confidence": 0.66,
+    "score": 0.264,
+    "information_cutoff_at": "2026-06-19T18:00:00+00:00",
+    "generated_at": "2026-06-19T18:03:00+00:00",
+    "expires_at": "2026-07-19T18:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_LIQUIDITY_FUNDING",
+      "ASSET_CLASS_INTEREST_RATE"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "bbbedc1d6aeb8f9c780831e4aa6b285e6ab3aa86bf88e635e10b16fd94285a99",
+    "idempotency_key": "3b3899c603469a108f2225637f4e666672b25d4752d95d996d4df411420f89b2",
+    "synthetic": true,
+    "id": "2ab4ad9a-284b-5902-8c45-c362e7931ef2"
+  },
+  {
+    "signal_id": "SIGNAL-0068",
+    "impact_id": "IMPACT-0068",
+    "event_id": "XAE-023",
+    "asset_id": "ETF-GLD-PROXY",
+    "direction": "uncertain",
+    "horizon": "one_month",
+    "status": "abstained",
+    "confidence": 0.67,
+    "score": 0.335,
+    "information_cutoff_at": "2026-06-19T18:00:00+00:00",
+    "generated_at": "2026-06-19T18:03:00+00:00",
+    "expires_at": "2026-07-19T18:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_LIQUIDITY_FUNDING",
+      "ASSET_CLASS_ETF"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "3f48ac0b6d3fc58de0abe24925fd7d89be9be7a7e963fa1d8024483d6a272a65",
+    "idempotency_key": "df89ce5d28ad0eb7ef575a30bb5b654107f5d6f8af37d6f7e3801dd2e65481bf",
+    "synthetic": true,
+    "id": "7494484a-bf5b-5d93-b9d4-4767521265c9"
+  },
+  {
+    "signal_id": "SIGNAL-0069",
+    "impact_id": "IMPACT-0069",
+    "event_id": "XAE-023",
+    "asset_id": "CRYPTO-EXCH-PROXY",
+    "direction": "positive",
+    "horizon": "intraday",
+    "status": "rejected",
+    "confidence": 0.68,
+    "score": 0.408,
+    "information_cutoff_at": "2026-06-19T18:00:00+00:00",
+    "generated_at": "2026-06-19T18:03:00+00:00",
+    "expires_at": "2026-07-19T18:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_LIQUIDITY_FUNDING",
+      "ASSET_CLASS_CRYPTO_ASSET"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "1005233c7b75415d1ca3f0c96b4bddc6cc98cbb741656aae4ed19d7ac350d8d0",
+    "idempotency_key": "9a2b464af9f4e7ef4522cd46631d21673feea56df2ffc1c78895007e1a2b168b",
+    "synthetic": true,
+    "id": "f67f1180-179e-516f-9a23-4cd82787bf5e"
+  },
+  {
+    "signal_id": "SIGNAL-0070",
+    "impact_id": "IMPACT-0070",
+    "event_id": "XAE-024",
+    "asset_id": "FX-USDCAD",
+    "direction": "negative",
+    "horizon": "one_day",
+    "status": "expired",
+    "confidence": 0.69,
+    "score": 0.483,
+    "information_cutoff_at": "2026-06-19T19:00:00+00:00",
+    "generated_at": "2026-06-19T19:03:00+00:00",
+    "expires_at": "2026-07-19T19:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_FISCAL_POLICY",
+      "ASSET_CLASS_FX"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "6c704af6074ca1492b8b95e2bf53984d95b75aac6253ee79b7d0f1846efbadf1",
+    "idempotency_key": "e3848831f9d0c701151d30bc7fbde46c54f85fb7840732cb0a2eacc6ff9e97b2",
+    "synthetic": true,
+    "id": "ab99cfba-c251-5653-bae6-30d8efa7280e"
+  },
+  {
+    "signal_id": "SIGNAL-0071",
+    "impact_id": "IMPACT-0071",
+    "event_id": "XAE-024",
+    "asset_id": "RATE-FED-POLICY",
+    "direction": "mixed",
+    "horizon": "one_week",
+    "status": "informational",
+    "confidence": 0.7,
+    "score": 0.56,
+    "information_cutoff_at": "2026-06-19T19:00:00+00:00",
+    "generated_at": "2026-06-19T19:03:00+00:00",
+    "expires_at": "2026-07-19T19:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_FISCAL_POLICY",
+      "ASSET_CLASS_INTEREST_RATE"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "238e7f4f874ea887cdc929ecd4d4a9690f663458afe052dec04d53f289a3ec3e",
+    "idempotency_key": "5f078345b2c8c5d73dd1d1c6eb043b854883bdf5c2e58352e28f1a49a9c52cee",
+    "synthetic": true,
+    "id": "67488764-9a4c-56d9-801c-06a96ce4ae17"
+  },
+  {
+    "signal_id": "SIGNAL-0072",
+    "impact_id": "IMPACT-0072",
+    "event_id": "XAE-024",
+    "asset_id": "IDX-US-LARGE",
+    "direction": "uncertain",
+    "horizon": "one_month",
+    "status": "research",
+    "confidence": 0.71,
+    "score": 0.639,
+    "information_cutoff_at": "2026-06-19T19:00:00+00:00",
+    "generated_at": "2026-06-19T19:03:00+00:00",
+    "expires_at": "2026-07-19T19:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_FISCAL_POLICY",
+      "ASSET_CLASS_EQUITY_INDEX"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "3fb328b9932862d68d2c6fec42dd4d35b0846a7784ecada638559019e64a448b",
+    "idempotency_key": "010d787060e4f9c3ae7eb93b53f74f9f1d844b7f791473531aba751e09fa5fcb",
+    "synthetic": true,
+    "id": "895b7ac7-9bbc-5eb5-bc50-76027bf893d7"
+  },
+  {
+    "signal_id": "SIGNAL-0073",
+    "impact_id": "IMPACT-0073",
+    "event_id": "XAE-025",
+    "asset_id": "US-EQ-BETA",
+    "direction": "positive",
+    "horizon": "intraday",
+    "status": "abstained",
+    "confidence": 0.72,
+    "score": 0.072,
+    "information_cutoff_at": "2026-06-19T20:00:00+00:00",
+    "generated_at": "2026-06-19T20:03:00+00:00",
+    "expires_at": "2026-07-19T20:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_REGULATION_ENFORCEMENT",
+      "ASSET_CLASS_US_EQUITY"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "068fee44acf103a48ab56a8895088d6973963504dfc10d00088569f20d19c32f",
+    "idempotency_key": "f0bc4ea32a2a280668832bcc91d30f7863478bac7fba3c9373ef7f922443ef05",
+    "synthetic": true,
+    "id": "36a6c760-6f8b-5319-8838-a3923e29a058"
+  },
+  {
+    "signal_id": "SIGNAL-0074",
+    "impact_id": "IMPACT-0074",
+    "event_id": "XAE-025",
+    "asset_id": "ETF-US-LARGE",
+    "direction": "negative",
+    "horizon": "one_day",
+    "status": "rejected",
+    "confidence": 0.73,
+    "score": 0.146,
+    "information_cutoff_at": "2026-06-19T20:00:00+00:00",
+    "generated_at": "2026-06-19T20:03:00+00:00",
+    "expires_at": "2026-07-19T20:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_REGULATION_ENFORCEMENT",
+      "ASSET_CLASS_ETF"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "81663862e6f6074050caec7fae89e405e02b906403e18454df33f9992ad571a9",
+    "idempotency_key": "ff712f4f7bd0a48039699d4664086f9acdc091a55c73553ba762bb3e2900c820",
+    "synthetic": true,
+    "id": "f4b1e4ec-1ad6-51aa-b30e-aedea2600ff0"
+  },
+  {
+    "signal_id": "SIGNAL-0075",
+    "impact_id": "IMPACT-0075",
+    "event_id": "XAE-025",
+    "asset_id": "CRYPTO-ETH-PROXY",
+    "direction": "mixed",
+    "horizon": "one_week",
+    "status": "expired",
+    "confidence": 0.74,
+    "score": 0.222,
+    "information_cutoff_at": "2026-06-19T20:00:00+00:00",
+    "generated_at": "2026-06-19T20:03:00+00:00",
+    "expires_at": "2026-07-19T20:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_REGULATION_ENFORCEMENT",
+      "ASSET_CLASS_CRYPTO_ASSET"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "2c104fcfe4afb796dbf99dcfab1fc8900819183e1a933ba23da603d288755100",
+    "idempotency_key": "62cde408312da9433cad96d8ba05109800e4670872741bd14203e839a1e53580",
+    "synthetic": true,
+    "id": "c67cce29-a406-5a15-b873-b814aafb266c"
+  },
+  {
+    "signal_id": "SIGNAL-0076",
+    "impact_id": "IMPACT-0076",
+    "event_id": "XAE-026",
+    "asset_id": "US-EQ-GAMMA",
+    "direction": "uncertain",
+    "horizon": "one_month",
+    "status": "informational",
+    "confidence": 0.75,
+    "score": 0.3,
+    "information_cutoff_at": "2026-06-19T21:00:00+00:00",
+    "generated_at": "2026-06-19T21:03:00+00:00",
+    "expires_at": "2026-07-19T21:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_CORPORATE_EARNINGS_GUIDANCE",
+      "ASSET_CLASS_US_EQUITY"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "9182f0211cdbbcce3d1637472de739164307b38bcfecfc151d3e4e83daf856db",
+    "idempotency_key": "da061a05bba22abf6d9420532086030953ec7d16140bbb6fda9ca348b32cdf97",
+    "synthetic": true,
+    "id": "3b43c02e-da45-5432-924d-71ce364a7f3f"
+  },
+  {
+    "signal_id": "SIGNAL-0077",
+    "impact_id": "IMPACT-0077",
+    "event_id": "XAE-026",
+    "asset_id": "IDX-US-VOL",
+    "direction": "positive",
+    "horizon": "intraday",
+    "status": "research",
+    "confidence": 0.76,
+    "score": 0.38,
+    "information_cutoff_at": "2026-06-19T21:00:00+00:00",
+    "generated_at": "2026-06-19T21:03:00+00:00",
+    "expires_at": "2026-07-19T21:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_CORPORATE_EARNINGS_GUIDANCE",
+      "ASSET_CLASS_EQUITY_INDEX"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "954f0583928969778cb18228cbdb5233b0c662c7aeb6f866c9c5739db785152f",
+    "idempotency_key": "8e9e733864dfefbcf64040084e9deff4676082fb566a9577d519da758c46e483",
+    "synthetic": true,
+    "id": "8995eef0-1d4b-53c5-902a-d72a0173d725"
+  },
+  {
+    "signal_id": "SIGNAL-0078",
+    "impact_id": "IMPACT-0078",
+    "event_id": "XAE-026",
+    "asset_id": "US-EQ-ALPHA",
+    "direction": "negative",
+    "horizon": "one_day",
+    "status": "abstained",
+    "confidence": 0.77,
+    "score": 0.462,
+    "information_cutoff_at": "2026-06-19T21:00:00+00:00",
+    "generated_at": "2026-06-19T21:03:00+00:00",
+    "expires_at": "2026-07-19T21:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_CORPORATE_EARNINGS_GUIDANCE",
+      "ASSET_CLASS_US_EQUITY"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "74e1bf7731f83f8bb4752b61ce7f387f1a0fc644a72afa42fc0dcb5ab1a56677",
+    "idempotency_key": "3d8a3b821164d4668889b4ec312431770459c9759db0538499344c21df5e4105",
+    "synthetic": true,
+    "id": "749411c5-b488-58fe-a21c-3116d0a9cf7e"
+  },
+  {
+    "signal_id": "SIGNAL-0079",
+    "impact_id": "IMPACT-0079",
+    "event_id": "XAE-027",
+    "asset_id": "US-EQ-DELTA",
+    "direction": "mixed",
+    "horizon": "one_week",
+    "status": "rejected",
+    "confidence": 0.78,
+    "score": 0.546,
+    "information_cutoff_at": "2026-06-19T22:00:00+00:00",
+    "generated_at": "2026-06-19T22:03:00+00:00",
+    "expires_at": "2026-07-19T22:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_MERGERS_CORPORATE_ACTIONS",
+      "ASSET_CLASS_US_EQUITY"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "bea28d21aa1398d78af351c8f5898dc76a17e809722f97e520e06ad4844d2995",
+    "idempotency_key": "76e846b42bf34b2137012ccc7e2da6caa1c74decd0a0d86d38b5a77b1599c8c5",
+    "synthetic": true,
+    "id": "2d4e693a-c71d-5f6a-b08f-1dcd02514a24"
+  },
+  {
+    "signal_id": "SIGNAL-0080",
+    "impact_id": "IMPACT-0080",
+    "event_id": "XAE-027",
+    "asset_id": "ETF-US-BOND",
+    "direction": "uncertain",
+    "horizon": "one_month",
+    "status": "rejected",
+    "confidence": 0.79,
+    "score": 0.632,
+    "information_cutoff_at": "2026-06-19T22:00:00+00:00",
+    "generated_at": "2026-06-19T22:03:00+00:00",
+    "expires_at": "2026-07-19T22:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_MERGERS_CORPORATE_ACTIONS",
+      "ASSET_CLASS_ETF"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "a67c56c05524b29f07d0ff559ceaedec5a7bd5422879d63470c47f1bd55a6863",
+    "idempotency_key": "f50e562ccc13cb7b81659bfd3d9351617eb367d4c0b34aae647140bee5e64933",
+    "synthetic": true,
+    "id": "6b2c1ce7-d0ac-5ee1-83f6-fe902ec64931"
+  }
+]

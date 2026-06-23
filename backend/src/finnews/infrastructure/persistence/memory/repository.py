@@ -10,25 +10,34 @@ from finnews.domain.entities import (
     ArticleDuplicate,
     ArticleEvent,
     ArticleSentiment,
+    Asset,
+    AssetImpactHypothesis,
+    AssetRelationship,
+    BrokerSymbolMapping,
     Company,
     CompanyAlias,
+    CrossAssetEvent,
     DailyCompanySignal,
     DailyDigest,
     IngestionRun,
+    MarketSignalCandidate,
     NlpEvaluationRun,
     NlpModelRegistryEntry,
     ObservationDisposition,
     PipelineRun,
+    ProviderSymbol,
     RawArticle,
     ResearchCalendar,
     ResearchExportRun,
     ResearchFeatureRow,
     ResearchLineageRow,
     ResearchSession,
+    SignalPublicationRun,
     Source,
     SourceDefinition,
     SourceFetchAttempt,
     SourceFetchState,
+    SymbolAlias,
 )
 from finnews.infrastructure.normalization import comparison_text
 
@@ -60,6 +69,15 @@ class MemoryNewsRepository:
         self.research_exports: dict[str, ResearchExportRun] = {}
         self.research_feature_rows: dict[str, ResearchFeatureRow] = {}
         self.research_lineage_rows: dict[str, ResearchLineageRow] = {}
+        self.assets: dict[str, Asset] = {}
+        self.asset_aliases: dict[str, SymbolAlias] = {}
+        self.provider_symbols: dict[str, ProviderSymbol] = {}
+        self.broker_symbol_mappings: dict[str, BrokerSymbolMapping] = {}
+        self.asset_relationships: dict[str, AssetRelationship] = {}
+        self.cross_asset_events: dict[str, CrossAssetEvent] = {}
+        self.asset_impacts: dict[str, AssetImpactHypothesis] = {}
+        self.market_signals: dict[str, MarketSignalCandidate] = {}
+        self.signal_publication_runs: dict[str, SignalPublicationRun] = {}
 
     def upsert_source(self, source: Source) -> Source:
         existing = self.sources.get(source.source_key)
@@ -343,3 +361,70 @@ class MemoryNewsRepository:
         if export_id:
             rows = [row for row in rows if row.export_id == export_id]
         return sorted(rows, key=lambda item: item.lineage_row_id)
+
+    def upsert_cross_asset_dataset(
+        self,
+        assets: Sequence[Asset],
+        aliases: Sequence[SymbolAlias],
+        provider_symbols: Sequence[ProviderSymbol],
+        broker_mappings: Sequence[BrokerSymbolMapping],
+        relationships: Sequence[AssetRelationship],
+        events: Sequence[CrossAssetEvent],
+        impacts: Sequence[AssetImpactHypothesis],
+        signals: Sequence[MarketSignalCandidate],
+        publication_run: SignalPublicationRun,
+    ) -> None:
+        self.assets = {row.asset_id: row for row in assets}
+        self.asset_aliases = {str(row.id): row for row in aliases}
+        self.provider_symbols = {str(row.id): row for row in provider_symbols}
+        self.broker_symbol_mappings = {str(row.id): row for row in broker_mappings}
+        self.asset_relationships = {row.relationship_id: row for row in relationships}
+        self.cross_asset_events = {row.event_id: row for row in events}
+        self.asset_impacts = {row.impact_id: row for row in impacts}
+        self.market_signals = {row.signal_id: row for row in signals}
+        self.signal_publication_runs = {publication_run.run_id: publication_run}
+
+    def list_assets(self) -> list[Asset]:
+        return sorted(self.assets.values(), key=lambda item: item.asset_id)
+
+    def get_asset(self, asset_id: str) -> Asset | None:
+        return self.assets.get(asset_id)
+
+    def list_asset_aliases(self, asset_id: str | None = None) -> list[SymbolAlias]:
+        rows = list(self.asset_aliases.values())
+        if asset_id:
+            rows = [row for row in rows if row.asset_id == asset_id]
+        return sorted(rows, key=lambda item: (item.asset_id, item.namespace.value, item.symbol))
+
+    def list_asset_relationships(self, asset_id: str | None = None) -> list[AssetRelationship]:
+        rows = list(self.asset_relationships.values())
+        if asset_id:
+            rows = [
+                row
+                for row in rows
+                if row.source_asset_id == asset_id or row.target_asset_id == asset_id
+            ]
+        return sorted(rows, key=lambda item: item.relationship_id)
+
+    def list_cross_asset_events(self) -> list[CrossAssetEvent]:
+        return sorted(self.cross_asset_events.values(), key=lambda item: item.event_id)
+
+    def list_asset_impact_hypotheses(
+        self, asset_id: str | None = None, event_id: str | None = None
+    ) -> list[AssetImpactHypothesis]:
+        rows = list(self.asset_impacts.values())
+        if asset_id:
+            rows = [row for row in rows if row.asset_id == asset_id]
+        if event_id:
+            rows = [row for row in rows if row.event_id == event_id]
+        return sorted(rows, key=lambda item: item.impact_id)
+
+    def list_market_signal_candidates(
+        self, asset_id: str | None = None, status: str | None = None
+    ) -> list[MarketSignalCandidate]:
+        rows = list(self.market_signals.values())
+        if asset_id:
+            rows = [row for row in rows if row.asset_id == asset_id]
+        if status:
+            rows = [row for row in rows if row.status.value == status]
+        return sorted(rows, key=lambda item: item.signal_id)

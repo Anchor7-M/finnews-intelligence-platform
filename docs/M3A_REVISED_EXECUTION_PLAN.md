@@ -62,7 +62,7 @@ reports. Keep SQLAlchemy, FastAPI, Typer, and settings outside the domain layer.
 
 ## Migration Plan
 
-Add Alembic migration `0005_cross_asset_signal_foundation` with tables for:
+Add Alembic migration `0005_cross_asset_signal` with tables for:
 
 - assets;
 - asset aliases;

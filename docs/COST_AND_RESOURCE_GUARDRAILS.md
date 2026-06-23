@@ -50,3 +50,9 @@ local and untracked.
 
 M2A continues the zero-cost policy. The benchmark is below 5 MB, each generated
 model artifact is below 25 MB, and `.finnews-artifacts/` is ignored.
+
+Revised M3A continues the zero-cost policy. The cross-asset fixture is
+deterministic and synthetic; local market-signal exports are written only under
+ignored `.finnews-market-signals/`; the committed example contract package is
+small; and no live price source, broker terminal, cloud service, model download,
+scheduler, queue, telemetry, or paid API is required.

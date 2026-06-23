@@ -1,0 +1,64 @@
+{
+  "contract_name": "finnews-market-signal-v1",
+  "contract_version": "1.0.0",
+  "signal_schema_version": "market-signal-v1",
+  "example_signal": {
+    "signal_id": "SIGNAL-0001",
+    "impact_id": "IMPACT-0001",
+    "event_id": "XAE-001",
+    "asset_id": "RATE-US10Y",
+    "direction": "positive",
+    "horizon": "intraday",
+    "status": "informational",
+    "confidence": null,
+    "score": null,
+    "information_cutoff_at": "2026-06-18T20:00:00+00:00",
+    "generated_at": "2026-06-18T20:03:00+00:00",
+    "expires_at": "2026-07-18T20:00:00+00:00",
+    "provider": "deterministic_signal_candidate_generator",
+    "provider_version": "1",
+    "evidence_codes": [
+      "RULE_MONETARY_POLICY",
+      "ASSET_CLASS_INTEREST_RATE"
+    ],
+    "quality_tags": [
+      "synthetic",
+      "point_in_time",
+      "metadata_only"
+    ],
+    "risk_tags": [
+      "not_investment_advice",
+      "no_execution",
+      "hypothesis"
+    ],
+    "payload_hash": "6e945cfeeda721232fd90eceba4acce99a0f6e6f63550344ff9afa6c2f2611d2",
+    "idempotency_key": "8210c2979d0cc6b465578f94a5da84ccfe9fc0ff436d3ee1100bca45d70eb6c1",
+    "synthetic": true,
+    "id": "e67f1e17-130b-5a53-beb8-2978525aed1e"
+  },
+  "forbidden_execution_fields": [
+    "account",
+    "account_number",
+    "api_key",
+    "broker_server",
+    "investor_password",
+    "login",
+    "lot",
+    "lot_size",
+    "order",
+    "order_request",
+    "order_type",
+    "password",
+    "position",
+    "position_size",
+    "sl",
+    "stop_loss",
+    "take_profit",
+    "ticket",
+    "tp",
+    "trade_action",
+    "volume"
+  ],
+  "no_execution": true,
+  "not_investment_advice": true
+}

@@ -1,0 +1,18 @@
+# Synthetic disabled examples only. Copy to mt5-symbol-map.local.yaml for future
+# local-only mapping experiments. This file is never used to contact a terminal.
+mappings:
+  - canonical_asset_id: FX-EURUSD
+    broker_profile_id: demo-disabled-profile
+    mt5_symbol: DEMO.EURUSD
+    enabled: false
+    local_note: Synthetic example, not a broker symbol recommendation.
+  - canonical_asset_id: PM-GOLD
+    broker_profile_id: demo-disabled-profile
+    mt5_symbol: DEMO.XAUUSD
+    enabled: false
+    local_note: Synthetic example, disabled.
+  - canonical_asset_id: US-EQ-ALPHA
+    broker_profile_id: demo-disabled-profile
+    mt5_symbol: DEMO.ALPR
+    enabled: false
+    local_note: Synthetic issuer example only.
