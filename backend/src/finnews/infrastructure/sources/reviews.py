@@ -78,8 +78,8 @@ class SourceReview(BaseModel):
     @classmethod
     def validate_methods(cls, value: list[str]) -> list[str]:
         methods = [item.upper() for item in value]
-        if any(item not in {"GET", "HEAD"} for item in methods):
-            raise ValueError("allowed_methods may contain only GET or HEAD")
+        if any(item not in {"GET", "HEAD", "POST"} for item in methods):
+            raise ValueError("allowed_methods may contain only GET, HEAD, or POST")
         return methods
 
     @field_validator("allowed_hostnames")
@@ -170,6 +170,21 @@ def source_config_digest(source: SourceDefinition) -> str:
         "user_agent_template": source.user_agent_template,
         "risk_classification": source.risk_classification,
     }
+    official_data_extensions = {
+        "http_method": source.http_method,
+        "request_body_template": source.request_body_template,
+        "required_local_env_vars": source.required_local_env_vars,
+        "pagination_strategy": source.pagination_strategy,
+        "dataset_profiles": source.dataset_profiles,
+    }
+    if official_data_extensions != {
+        "http_method": "GET",
+        "request_body_template": {},
+        "required_local_env_vars": [],
+        "pagination_strategy": None,
+        "dataset_profiles": {},
+    }:
+        payload.update(official_data_extensions)
     normalized = json.dumps(payload, sort_keys=True, separators=(",", ":"))
     return hashlib.sha256(normalized.encode("utf-8")).hexdigest()
 

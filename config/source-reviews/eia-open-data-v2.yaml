@@ -1,0 +1,49 @@
+source_id: eia-open-data-v2
+review_schema_version: m1b-v1
+review_decision: approved
+review_scope: Engineering usage-policy review for EIA Open Data API v2 non-price energy inventory, storage, production, and supply-demand observations.
+reviewed_at: "2026-06-24"
+reviewer: local-review
+official_owner: U.S. Energy Information Administration
+official_source: EIA Open Data API v2
+documentation_url: https://www.eia.gov/opendata/documentation.php
+terms_or_policy_url: https://www.eia.gov/about/copyrights_reuse.php
+access_cost: free_with_key
+authentication_requirement: A free local FINNEWS_EIA_API_KEY is required for live smoke; the tracked config stores only the env var name.
+allowed_methods: ["GET", "HEAD"]
+allowed_hostnames: ["api.eia.gov"]
+documented_endpoint_patterns:
+  - 'https://api\.eia\.gov/v2/\{route\}/data/'
+rate_limit_evidence: EIA documents Open Data API v2 access. This project uses one disabled, bounded profile and skips live smoke when the local key is absent.
+user_agent_requirement: No project-specific User-Agent requirement was identified; the project sends a clear local research User-Agent.
+content_available:
+  - dataset route metadata
+  - periods
+  - units
+  - numeric values
+  - facets and series identifiers
+content_to_store:
+  - dataset route and series/query profile
+  - period and normalized dimensions
+  - numeric value as Decimal
+  - unit and provenance metadata
+  - revision metadata derived by the project
+content_not_to_store:
+  - API key value
+  - raw response body
+  - live smoke values in committed files
+redistribution_assessment: Numeric official observations are used for local research. This review is not legal advice and does not certify redistribution rights.
+attribution_requirement: Attribute EIA as the official source and keep official documentation links in source metadata.
+robots_or_automated_access_notes: No page scraping or bulk crawling is performed; only documented API endpoints are eligible.
+privacy_notes: FINNEWS_EIA_API_KEY stays local and is never persisted, printed, logged, or committed.
+known_risks:
+  - Live smoke is blocked when the local key is absent.
+  - Route/facet schemas can vary by dataset and require profile-specific validation.
+live_smoke_status: not_run
+live_smoke_checked_at: null
+evidence_checked_at: "2026-06-24"
+evidence_urls:
+  - https://www.eia.gov/opendata/documentation.php
+  - https://www.eia.gov/about/copyrights_reuse.php
+review_notes: Approved for disabled-by-default non-price EIA profiles with synthetic fixtures and mocked automated tests. Not legal advice.
+source_config_sha256: 0c727c2752bf02bf5b60a28ed034dd330b69459804b38671d79d411b02fd0bb7

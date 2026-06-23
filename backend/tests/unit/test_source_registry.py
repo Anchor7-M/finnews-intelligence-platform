@@ -6,6 +6,7 @@ import pytest
 
 from finnews.domain.enums import SourceApprovalStatus, SourceType
 from finnews.infrastructure.sources.registry import SourceConfigError, load_source_definitions
+from finnews.infrastructure.sources.reviews import source_config_digest
 
 
 def write_config(path: Path, body: str) -> Path:
@@ -81,6 +82,37 @@ def test_unknown_field_is_rejected(tmp_path: Path) -> None:
     write_config(tmp_path, VALID_CONFIG.replace("risk_classification: low", "unexpected: nope"))
     with pytest.raises(SourceConfigError, match="unexpected"):
         load_source_definitions(tmp_path)
+
+
+def test_official_data_source_extensions_are_loaded_and_hashed(tmp_path: Path) -> None:
+    extended = VALID_CONFIG.replace(
+        "risk_classification: low",
+        """
+    risk_classification: low
+    http_method: POST
+    request_body_template:
+      seriesid: ["CES0000000001"]
+      startyear: "2025"
+      endyear: "2025"
+    required_local_env_vars:
+      - FINNEWS_BLS_API_KEY
+    pagination_strategy: bounded_year_window
+    dataset_profiles:
+      nonfarm_payrolls:
+        dataset_id: bls-ces
+        series_id: CES0000000001
+        default_asset_links: ["macro-us-labor", "idx-spx"]
+""",
+    )
+    write_config(tmp_path, extended)
+    definition = load_source_definitions(tmp_path)[0]
+    assert definition.http_method == "POST"
+    assert definition.required_local_env_vars == ["FINNEWS_BLS_API_KEY"]
+    assert definition.dataset_profiles["nonfarm_payrolls"]["dataset_id"] == "bls-ces"
+    assert (
+        source_config_digest(definition)
+        != "d2ac863035cc919f9bea3abf59c4a92b3047e46445e206466ba2b2431987e190"
+    )
 
 
 def test_duplicate_source_ids_are_rejected(tmp_path: Path) -> None:

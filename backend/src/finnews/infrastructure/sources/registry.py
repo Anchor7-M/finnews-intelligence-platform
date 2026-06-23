@@ -75,6 +75,11 @@ class SourceDefinitionConfig(BaseModel):
     user_agent_env_var: str | None = Field(default=None, pattern=r"^[A-Z][A-Z0-9_]*$")
     user_agent_template: str | None = None
     max_items_per_smoke: int = Field(default=5, ge=1, le=5)
+    http_method: str = Field(default="GET", pattern=r"^(GET|POST)$")
+    request_body_template: dict[str, object] = Field(default_factory=dict)
+    required_local_env_vars: list[str] = Field(default_factory=list)
+    pagination_strategy: str | None = None
+    dataset_profiles: dict[str, dict[str, object]] = Field(default_factory=dict)
 
     @field_validator("terms_url", "documentation_url", "base_url")
     @classmethod
@@ -102,6 +107,19 @@ class SourceDefinitionConfig(BaseModel):
     @classmethod
     def normalize_hosts(cls, value: list[str]) -> list[str]:
         return [host.strip().lower() for host in value if host.strip()]
+
+    @field_validator("required_local_env_vars")
+    @classmethod
+    def validate_env_var_names(cls, value: list[str]) -> list[str]:
+        normalized: list[str] = []
+        for item in value:
+            name = item.strip()
+            if not name:
+                continue
+            if not name.isupper() or not all(character.isalnum() or character == "_" for character in name):
+                raise ValueError("required_local_env_vars must contain uppercase env var names")
+            normalized.append(name)
+        return normalized
 
     @model_validator(mode="after")
     def validate_source_rules(self) -> SourceDefinitionConfig:
@@ -171,6 +189,13 @@ class SourceDefinitionConfig(BaseModel):
             user_agent_env_var=self.user_agent_env_var,
             user_agent_template=self.user_agent_template,
             max_items_per_smoke=self.max_items_per_smoke,
+            http_method=self.http_method,
+            request_body_template=dict(self.request_body_template),
+            required_local_env_vars=list(self.required_local_env_vars),
+            pagination_strategy=self.pagination_strategy,
+            dataset_profiles={
+                key: dict(value) for key, value in self.dataset_profiles.items()
+            },
         )
 
 

@@ -1,0 +1,51 @@
+sources:
+  - source_id: eia-open-data-v2
+    display_name: EIA Open Data API v2
+    source_type: documented_json_api
+    base_url: https://api.eia.gov/v2/petroleum/stoc/wstk/data/?frequency=weekly&data[0]=value&facets[series][]=WCESTUS1&sort[0][column]=period&sort[0][direction]=desc&length=5
+    endpoint_template: https://api.eia.gov/v2/{route}/data/
+    approved_hostnames: ["api.eia.gov"]
+    terms_url: https://www.eia.gov/about/copyrights_reuse.php
+    documentation_url: https://www.eia.gov/opendata/documentation.php
+    review_status: approved
+    enabled: false
+    reviewed_date: "2026-06-24"
+    reviewer: local-review
+    content_storage_policy: metadata_only
+    provenance_required: true
+    language: en
+    timezone: America/New_York
+    connect_timeout_seconds: 5
+    read_timeout_seconds: 15
+    max_response_bytes: 2000000
+    retry_policy:
+      max_retries: 1
+      base_delay_seconds: 2
+      max_delay_seconds: 30
+    minimum_interval_seconds: 21600
+    cursor_strategy: offset_length
+    field_mapping:
+      results_path: response.data
+      period: period
+      value: value
+      unit: units
+      series: series
+    user_agent: "finnews-intelligence-platform/0.1 (+local research)"
+    notes: Official EIA Open Data API v2 pilot for non-price inventory, storage, production, and supply-demand observations. Disabled by default; key required locally.
+    risk_classification: medium
+    review_evidence_id: eia-open-data-v2
+    source_config_sha256: "0c727c2752bf02bf5b60a28ed034dd330b69459804b38671d79d411b02fd0bb7"
+    max_items_per_smoke: 5
+    http_method: GET
+    request_body_template: {}
+    required_local_env_vars:
+      - FINNEWS_EIA_API_KEY
+    pagination_strategy: bounded_length
+    dataset_profiles:
+      crude_stocks:
+        dataset_id: eia-petroleum-stocks
+        route: petroleum/stoc/wstk
+        series: WCESTUS1
+        measure: commercial_crude_oil_stocks
+        unit: thousand_barrels
+        default_asset_links: ["cmd-wti", "fut-cl", "fx-cad"]
