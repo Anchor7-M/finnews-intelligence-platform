@@ -14,6 +14,7 @@
     "files",
     "package_content_hash",
     "synthetic_data",
+    "official_market_calendar",
     "not_investment_advice"
   ],
   "properties": {
@@ -39,6 +40,7 @@
     },
     "package_content_hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
     "synthetic_data": { "type": "boolean" },
+    "official_market_calendar": { "type": "boolean" },
     "not_investment_advice": { "type": "boolean" }
   },
   "additionalProperties": true

@@ -9,7 +9,7 @@ import tempfile
 from collections import Counter
 from dataclasses import dataclass
 from datetime import UTC, date, datetime, time, timedelta
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 from typing import Any, Literal
 from uuid import NAMESPACE_URL, UUID, uuid5
 from zoneinfo import ZoneInfo
@@ -40,6 +40,12 @@ CALENDAR_TIMEZONE = "Asia/Shanghai"
 DEFAULT_WINDOWS = [1, 3, 5, 10]
 DEFAULT_CUTOFF_POLICY = "pre_open_15m"
 SESSION_COUNT = 60
+DEMO_SYNTHETIC_HOLIDAYS = [
+    date(2026, 5, 12),
+    date(2026, 5, 15),
+    date(2026, 6, 19),
+    date(2026, 7, 6),
+]
 PACKAGE_FILES = [
     "calendar.csv",
     "companies.csv",
@@ -202,12 +208,7 @@ class ResearchExportPackage:
 
 def build_demo_calendar() -> tuple[ResearchCalendar, list[ResearchSession]]:
     zone = ZoneInfo(CALENDAR_TIMEZONE)
-    holidays = {
-        date(2026, 5, 1),
-        date(2026, 5, 15),
-        date(2026, 6, 19),
-        date(2026, 7, 6),
-    }
+    holidays = set(DEMO_SYNTHETIC_HOLIDAYS)
     sessions: list[ResearchSession] = []
     current = date(2026, 5, 11)
     while len(sessions) < SESSION_COUNT:
@@ -238,6 +239,7 @@ def build_demo_calendar() -> tuple[ResearchCalendar, list[ResearchSession]]:
             "source": "deterministic synthetic demo",
             "official_calendar": False,
             "holiday_count": len(holidays),
+            "holiday_dates": [item.isoformat() for item in DEMO_SYNTHETIC_HOLIDAYS],
         },
         synthetic=True,
         id=_stable_uuid("research-calendar", DEMO_CALENDAR_ID, DEMO_CALENDAR_VERSION),
@@ -274,24 +276,34 @@ def load_local_calendar(
     calendar_id = str(metadata.get("calendar_id", "local-user-calendar"))
     calendar_version = str(metadata.get("calendar_version", "local-v1"))
     timezone_name = str(metadata.get("timezone", CALENDAR_TIMEZONE))
-    zone = ZoneInfo(timezone_name)
+    try:
+        zone = ZoneInfo(timezone_name)
+    except Exception as exc:
+        raise ResearchExportError(f"invalid timezone: {timezone_name}") from exc
     sessions: list[ResearchSession] = []
     for index, row in enumerate(rows, start=1):
-        session_date = date.fromisoformat(str(row["session_date"]))
-        sessions.append(
-            ResearchSession(
-                calendar_id=calendar_id,
-                calendar_version=calendar_version,
-                session_date=session_date,
-                open_at=_parse_aware_datetime(str(row["open_at"]), zone),
-                break_start_at=_parse_aware_datetime(str(row["break_start_at"]), zone),
-                break_end_at=_parse_aware_datetime(str(row["break_end_at"]), zone),
-                close_at=_parse_aware_datetime(str(row["close_at"]), zone),
-                sequence=int(row.get("sequence", index)),
-                special_session=_to_bool(row.get("special_session", False)),
-                id=_stable_uuid("research-session", calendar_id, session_date.isoformat()),
+        try:
+            session_date = date.fromisoformat(str(row["session_date"]))
+            sessions.append(
+                ResearchSession(
+                    calendar_id=calendar_id,
+                    calendar_version=calendar_version,
+                    session_date=session_date,
+                    open_at=_parse_aware_datetime(str(row["open_at"]), zone),
+                    break_start_at=_parse_aware_datetime(str(row["break_start_at"]), zone),
+                    break_end_at=_parse_aware_datetime(str(row["break_end_at"]), zone),
+                    close_at=_parse_aware_datetime(str(row["close_at"]), zone),
+                    sequence=int(row.get("sequence", index)),
+                    special_session=_to_bool(row.get("special_session", False)),
+                    id=_stable_uuid("research-session", calendar_id, session_date.isoformat()),
+                )
             )
-        )
+        except KeyError as exc:
+            raise ResearchExportError(f"calendar row {index} missing required field") from exc
+        except ResearchExportError:
+            raise
+        except Exception as exc:
+            raise ResearchExportError(f"calendar row {index} is invalid") from exc
     validation = validate_calendar_sessions(calendar_id, calendar_version, timezone_name, sessions)
     if not validation.valid:
         raise ResearchExportError("; ".join(validation.errors))
@@ -528,9 +540,7 @@ def build_research_export(
         {"path": name, "sha256": file_hashes[name], "size_bytes": len(file_bytes[name])}
         for name in PACKAGE_FILES
     ]
-    manifest["package_content_hash"] = sha256_text(
-        "\n".join(f"{name}:{file_hashes[name]}" for name in PACKAGE_FILES)
-    )
+    manifest["package_content_hash"] = _package_content_hash(file_hashes)
     manifest["export_id"] = DEMO_EXPORT_ID
     manifest_bytes = _json_bytes(manifest)
     file_hashes["manifest.json"] = sha256_bytes(manifest_bytes)
@@ -666,25 +676,123 @@ def write_research_export_package(
         raise
 
 
+def _validate_manifest_contract(manifest: dict[str, Any]) -> None:
+    required_fields = {
+        "contract_name",
+        "contract_version",
+        "encoding",
+        "timestamp_format",
+        "hash_algorithm",
+        "feature_schema_version",
+        "synthetic_data",
+        "official_market_calendar",
+        "not_investment_advice",
+        "calendar_id",
+        "calendar_version",
+        "calendar_timezone",
+        "calendar_hash",
+        "session_count",
+        "company_count",
+        "windows",
+        "cutoff_policy",
+        "files",
+        "package_content_hash",
+        "export_id",
+    }
+    missing = sorted(required_fields - set(manifest))
+    if missing:
+        raise ResearchExportError(f"manifest missing required fields: {', '.join(missing)}")
+    if manifest["contract_name"] != CONTRACT_NAME:
+        raise ResearchExportError("unsupported contract name")
+    if manifest["contract_version"] != CONTRACT_VERSION:
+        raise ResearchExportError("unsupported contract version")
+    if manifest["encoding"] != "utf-8":
+        raise ResearchExportError("unsupported package encoding")
+    if manifest["hash_algorithm"] != "sha256":
+        raise ResearchExportError("unsupported hash algorithm")
+    if manifest["feature_schema_version"] != FEATURE_SCHEMA_VERSION:
+        raise ResearchExportError("unsupported feature schema version")
+    if manifest["synthetic_data"] is not True or manifest["official_market_calendar"] is not False:
+        raise ResearchExportError("research package must be synthetic and non-official")
+    if not isinstance(manifest["files"], list):
+        raise ResearchExportError("manifest files must be a list")
+    file_names: list[str] = []
+    for item in manifest["files"]:
+        if not isinstance(item, dict):
+            raise ResearchExportError("manifest file entries must be objects")
+        for field in ("path", "sha256", "size_bytes"):
+            if field not in item:
+                raise ResearchExportError(f"manifest file entry missing {field}")
+        name = str(item["path"])
+        _validate_package_file_name(name)
+        file_names.append(name)
+        if not isinstance(item["sha256"], str) or len(item["sha256"]) != 64:
+            raise ResearchExportError(f"invalid sha256 for {name}")
+        if int(item["size_bytes"]) < 0:
+            raise ResearchExportError(f"invalid size_bytes for {name}")
+    if file_names != PACKAGE_FILES:
+        raise ResearchExportError("manifest files must match required package file order")
+
+
+def _validate_package_file_name(name: str) -> None:
+    relative = PurePosixPath(name)
+    if relative.is_absolute() or ".." in relative.parts or len(relative.parts) != 1:
+        raise ResearchExportError(f"unsafe package file path: {name}")
+    if name not in PACKAGE_FILES:
+        raise ResearchExportError(f"unexpected package file path: {name}")
+
+
+def _safe_package_file_path(root: Path, name: str) -> Path:
+    _validate_package_file_name(name)
+    target = (root / name).resolve()
+    root_resolved = root.resolve()
+    if target.parent != root_resolved:
+        raise ResearchExportError(f"unsafe package file path: {name}")
+    return target
+
+
+def _package_content_hash(file_hashes: dict[str, str]) -> str:
+    return sha256_text("\n".join(f"{name}:{file_hashes[name]}" for name in PACKAGE_FILES))
+
+
 def load_research_export_package(path: Path) -> ResearchExportPackage:
     manifest = json.loads((path / "manifest.json").read_text(encoding="utf-8"))
+    _validate_manifest_contract(manifest)
     expected_files = {str(item["path"]): str(item["sha256"]) for item in manifest["files"]}
+    declared_sizes = {str(item["path"]): int(item["size_bytes"]) for item in manifest["files"]}
     for name, expected_hash in expected_files.items():
-        actual = sha256_bytes((path / name).read_bytes())
+        target = _safe_package_file_path(path, name)
+        if not target.is_file():
+            raise ResearchExportError(f"missing package file: {name}")
+        data = target.read_bytes()
+        if len(data) != declared_sizes[name]:
+            raise ResearchExportError(f"file size mismatch for {name}")
+        actual = sha256_bytes(data)
         if actual != expected_hash:
             raise ResearchExportError(f"file hash mismatch for {name}")
+    package_hash = _package_content_hash(expected_files)
+    if str(manifest["package_content_hash"]) != package_hash:
+        raise ResearchExportError("package content hash mismatch")
     feature_rows = [
         json.loads(line)
-        for line in (path / "feature_rows.jsonl").read_text(encoding="utf-8").splitlines()
+        for line in _safe_package_file_path(path, "feature_rows.jsonl")
+        .read_text(encoding="utf-8")
+        .splitlines()
         if line
     ]
     lineage_rows = [
         json.loads(line)
-        for line in (path / "lineage.jsonl").read_text(encoding="utf-8").splitlines()
+        for line in _safe_package_file_path(path, "lineage.jsonl")
+        .read_text(encoding="utf-8")
+        .splitlines()
         if line
     ]
-    quality = json.loads((path / "quality_report.json").read_text(encoding="utf-8"))
-    leakage = json.loads((path / "leakage_audit.json").read_text(encoding="utf-8"))
+    quality = json.loads(
+        _safe_package_file_path(path, "quality_report.json").read_text(encoding="utf-8")
+    )
+    leakage = json.loads(
+        _safe_package_file_path(path, "leakage_audit.json").read_text(encoding="utf-8")
+    )
     calendar, sessions = _calendar_from_package(path, manifest)
     return ResearchExportPackage(
         export_id=str(manifest["export_id"]),
@@ -707,7 +815,11 @@ def load_research_export_package(path: Path) -> ResearchExportPackage:
 def validate_research_export_package(path: Path) -> dict[str, Any]:
     package = load_research_export_package(path)
     csv_rows = list(
-        csv.DictReader((path / "feature_rows.csv").read_text(encoding="utf-8").splitlines())
+        csv.DictReader(
+            _safe_package_file_path(path, "feature_rows.csv")
+            .read_text(encoding="utf-8")
+            .splitlines()
+        )
     )
     jsonl_rows = [_expand_feature_row(row) for row in package.feature_rows]
     equivalent = [_normalize_loaded_csv_row(row) for row in csv_rows] == jsonl_rows
@@ -1379,7 +1491,7 @@ def _write_bytes(path: Path, data: bytes) -> None:
 def _parse_aware_datetime(text: str, fallback_zone: ZoneInfo) -> datetime:
     value = datetime.fromisoformat(text)
     if value.tzinfo is None or value.utcoffset() is None:
-        value = value.replace(tzinfo=fallback_zone)
+        raise ResearchExportError("calendar timestamps must be timezone-aware")
     return value
 
 
@@ -1496,7 +1608,11 @@ def _feature_key_from_row(row: dict[str, Any]) -> str:
 def _calendar_from_package(
     path: Path, manifest: dict[str, Any]
 ) -> tuple[ResearchCalendar, list[ResearchSession]]:
-    rows = list(csv.DictReader((path / "calendar.csv").read_text(encoding="utf-8").splitlines()))
+    rows = list(
+        csv.DictReader(
+            _safe_package_file_path(path, "calendar.csv").read_text(encoding="utf-8").splitlines()
+        )
+    )
     zone = ZoneInfo(str(manifest["calendar_timezone"]))
     sessions = [
         ResearchSession(
