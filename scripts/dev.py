@@ -1,16 +1,18 @@
 from __future__ import annotations
 
 import argparse
+from contextlib import contextmanager
 import os
 from pathlib import Path
 import shutil
 import subprocess
 import sys
+import tempfile
 import time
 
 
 ROOT = Path(__file__).resolve().parents[1]
-POSTGRES_PROJECT = "finnews_m2a_verify"
+POSTGRES_PROJECT = "finnews_m3a_verify"
 POSTGRES_SERVICE = "postgres"
 POSTGRES_URL = "postgresql+psycopg://finnews:finnews@127.0.0.1:55432/finnews"
 
@@ -35,6 +37,15 @@ def run(
     if check and completed.returncode != 0:
         raise SystemExit(completed.returncode)
     return completed.returncode
+
+
+@contextmanager
+def tempfile_directory():
+    path = Path(tempfile.mkdtemp(prefix="finnews-research-verify-"))
+    try:
+        yield path
+    finally:
+        shutil.rmtree(path, ignore_errors=True)
 
 
 def doctor(_: argparse.Namespace) -> None:
@@ -99,12 +110,20 @@ def validate_static_export() -> None:
         "source-fetch-attempts.json",
         "source-conditional-examples.json",
         "source-reviews.json",
-            "source-review-examples.json",
-            "nlp-overview.json",
-            "nlp-models.json",
-            "nlp-evaluations.json",
-            "nlp-error-analysis.json",
-            "nlp-dataset-card.json",
+        "source-review-examples.json",
+        "nlp-overview.json",
+        "nlp-models.json",
+        "nlp-evaluations.json",
+        "nlp-error-analysis.json",
+        "nlp-dataset-card.json",
+        "research-overview.json",
+        "research-calendars.json",
+        "research-exports.json",
+        "research-feature-catalog.json",
+        "research-feature-sample.json",
+        "research-lineage-sample.json",
+        "research-quality-report.json",
+        "research-leakage-audit.json",
     ]
     missing = [name for name in required if not (output / name).is_file()]
     if missing:
@@ -155,7 +174,7 @@ def verify_postgres(_: argparse.Namespace) -> None:
         db_down(argparse.Namespace())
     if success:
         print(
-            "verify-postgres passed: project=finnews_m2a_verify service=postgres "
+            "verify-postgres passed: project=finnews_m3a_verify service=postgres "
             "image=postgres:16 port=127.0.0.1:55432"
         )
 
@@ -268,6 +287,99 @@ def verify_ml(_: argparse.Namespace) -> None:
     validate_static_export()
 
 
+def verify_research_export(_: argparse.Namespace) -> None:
+    backend = ROOT / "backend"
+    with tempfile_directory() as temp_root:
+        left = temp_root / "left"
+        right = temp_root / "right"
+        run(
+            [
+                sys.executable,
+                "-m",
+                "finnews.interfaces.cli.app",
+                "research",
+                "calendar",
+                "build-demo",
+            ],
+            backend,
+        )
+        for output in [left, right]:
+            run(
+                [
+                    sys.executable,
+                    "-m",
+                    "finnews.interfaces.cli.app",
+                    "research",
+                    "export",
+                    "build",
+                    "--profile",
+                    "memory",
+                    "--output",
+                    str(output),
+                ],
+                backend,
+            )
+            run(
+                [
+                    sys.executable,
+                    "-m",
+                    "finnews.interfaces.cli.app",
+                    "research",
+                    "export",
+                    "validate",
+                    "--path",
+                    str(output),
+                ],
+                backend,
+            )
+        run(
+            [
+                sys.executable,
+                "-m",
+                "finnews.interfaces.cli.app",
+                "research",
+                "export",
+                "compare",
+                "--left",
+                str(left),
+                "--right",
+                str(right),
+            ],
+            backend,
+        )
+    run(
+        [
+            sys.executable,
+            "-m",
+            "pytest",
+            "tests/unit/test_research_export.py",
+            "tests/contract/test_research_api_cli.py",
+        ],
+        backend,
+    )
+
+
+def build_research_export(_: argparse.Namespace) -> None:
+    output = ROOT / ".finnews-research-exports" / "latest"
+    if output.exists():
+        shutil.rmtree(output)
+    run(
+        [
+            sys.executable,
+            "-m",
+            "finnews.interfaces.cli.app",
+            "research",
+            "export",
+            "build",
+            "--profile",
+            "memory",
+            "--output",
+            str(output),
+        ],
+        ROOT / "backend",
+    )
+
+
 def smoke_source(args: argparse.Namespace) -> None:
     command = [
         sys.executable,
@@ -351,6 +463,7 @@ def cleanup(args: argparse.Namespace) -> None:
         ROOT / "frontend" / "dist",
         ROOT / "frontend" / "coverage",
         ROOT / "data" / "generated",
+        ROOT / ".finnews-research-exports",
     ]
     existing = [path for path in candidates if path.exists()]
     for path in existing:
@@ -378,6 +491,8 @@ def main() -> None:
     sub.add_parser("verify-sources").set_defaults(func=verify_sources)
     sub.add_parser("verify-source-reviews").set_defaults(func=verify_source_reviews)
     sub.add_parser("verify-ml").set_defaults(func=verify_ml)
+    sub.add_parser("verify-research-export").set_defaults(func=verify_research_export)
+    sub.add_parser("build-research-export").set_defaults(func=build_research_export)
     sub.add_parser("build-nlp-benchmark").set_defaults(func=build_nlp_benchmark)
     sub.add_parser("benchmark-nlp").set_defaults(func=benchmark_nlp)
     smoke_parser = sub.add_parser("smoke-source")

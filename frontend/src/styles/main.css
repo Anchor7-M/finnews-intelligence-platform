@@ -262,3 +262,33 @@ td {
   overflow-x: auto;
   white-space: pre;
 }
+
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  background: #eef4ef;
+  border: 1px solid #cbd8d0;
+  border-radius: 6px;
+  color: #243632;
+  font-size: 0.82rem;
+  padding: 5px 8px;
+}
+
+.timeline {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(5, minmax(90px, 1fr));
+  overflow-x: auto;
+}
+
+.timeline span {
+  background: #f6f7f4;
+  border: 1px solid #d8ded6;
+  border-radius: 6px;
+  padding: 10px;
+  text-align: center;
+}

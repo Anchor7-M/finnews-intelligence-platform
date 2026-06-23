@@ -199,3 +199,84 @@ export interface NlpErrorAnalysis {
   errors_by_language: Record<string, number>;
   errors_by_challenge_flag: Record<string, number>;
 }
+
+export interface ResearchOverview {
+  contract_name: string;
+  contract_version: string;
+  export_id: string;
+  calendar_id: string;
+  calendar_version: string;
+  calendar_hash: string;
+  cutoff_policy: string;
+  windows: number[];
+  package_content_hash: string;
+  counts: Record<string, number>;
+  synthetic_data: boolean;
+  official_market_calendar: boolean;
+  not_investment_advice: boolean;
+}
+
+export interface ResearchCalendar {
+  calendar_id: string;
+  calendar_version: string;
+  timezone: string;
+  calendar_hash: string;
+  session_count: number;
+  synthetic_data: boolean;
+  official_market_calendar: boolean;
+}
+
+export interface ResearchExportSummary {
+  export_id: string;
+  contract_version: string;
+  package_content_hash: string;
+  file_hashes: Record<string, string>;
+  counts: Record<string, number>;
+  leakage_status: string;
+}
+
+export interface ResearchFeatureCatalog {
+  contract_name: string;
+  contract_version: string;
+  feature_schema_version: string;
+  windows: number[];
+  null_policy: string;
+  no_market_data: boolean;
+  features: Array<Record<string, unknown>>;
+}
+
+export interface ResearchFeatureRow {
+  contract_version: string;
+  calendar_id: string;
+  calendar_version: string;
+  session_date: string;
+  decision_cutoff_at: string;
+  ticker: string;
+  company_id: string;
+  window_sessions: number;
+  feature_schema_version: string;
+  news_count: number;
+  has_news: boolean;
+  mean_sentiment_score: number | null;
+  event_entropy: number | null;
+  source_diversity_ratio: number | null;
+  hours_since_latest_news: number | null;
+  lineage_row_id: string;
+  [key: string]: string | number | boolean | null;
+}
+
+export interface ResearchLineageRow {
+  lineage_row_id: string;
+  feature_row_key: string;
+  canonical_article_id: string | null;
+  source_id: string | null;
+  company_id: string | null;
+  source_published_at: string | null;
+  first_seen_at: string | null;
+  processed_at: string | null;
+  information_available_at: string | null;
+  decision_cutoff_at: string | null;
+  event_label: string | null;
+  sentiment_label: string | null;
+  inclusion_reason: string;
+}

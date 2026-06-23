@@ -8,6 +8,12 @@ import type {
   NlpModelSummary,
   NlpOverview,
   Overview,
+  ResearchCalendar,
+  ResearchExportSummary,
+  ResearchFeatureCatalog,
+  ResearchFeatureRow,
+  ResearchLineageRow,
+  ResearchOverview,
   Signal,
   SourceFetchAttempt,
   SourceHealth,
@@ -145,4 +151,68 @@ export async function loadNlpErrorAnalysis(
     return data.items;
   }
   return getJson<NlpErrorAnalysis[]>("/demo-data/nlp-error-analysis.json");
+}
+
+export async function loadResearchOverview(
+  mode: DataMode = getDataMode(),
+): Promise<ResearchOverview> {
+  if (mode === "api") {
+    return getJson<ResearchOverview>(`${API_BASE}/api/v1/research/overview`);
+  }
+  return getJson<ResearchOverview>("/demo-data/research-overview.json");
+}
+
+export async function loadResearchCalendars(
+  mode: DataMode = getDataMode(),
+): Promise<ResearchCalendar[]> {
+  if (mode === "api") {
+    return getJson<ResearchCalendar[]>(`${API_BASE}/api/v1/research/calendars`);
+  }
+  return getJson<ResearchCalendar[]>("/demo-data/research-calendars.json");
+}
+
+export async function loadResearchExports(
+  mode: DataMode = getDataMode(),
+): Promise<ResearchExportSummary[]> {
+  if (mode === "api") {
+    const data = await getJson<{ items: ResearchExportSummary[] }>(
+      `${API_BASE}/api/v1/research/exports`,
+    );
+    return data.items;
+  }
+  return getJson<ResearchExportSummary[]>("/demo-data/research-exports.json");
+}
+
+export async function loadResearchFeatureCatalog(
+  mode: DataMode = getDataMode(),
+): Promise<ResearchFeatureCatalog> {
+  if (mode === "api") {
+    return getJson<ResearchFeatureCatalog>(`${API_BASE}/api/v1/research/feature-catalog`);
+  }
+  return getJson<ResearchFeatureCatalog>("/demo-data/research-feature-catalog.json");
+}
+
+export async function loadResearchFeatureSample(
+  mode: DataMode = getDataMode(),
+): Promise<ResearchFeatureRow[]> {
+  if (mode === "api") {
+    const data = await getJson<{ items: ResearchFeatureRow[] }>(
+      `${API_BASE}/api/v1/research/features?limit=50`,
+    );
+    return data.items;
+  }
+  return getJson<ResearchFeatureRow[]>("/demo-data/research-feature-sample.json");
+}
+
+export async function loadResearchLineageSample(
+  mode: DataMode = getDataMode(),
+): Promise<ResearchLineageRow[]> {
+  if (mode === "api") {
+    const rows = await loadResearchFeatureSample(mode);
+    const first = rows.find((row) => row.lineage_row_id)?.lineage_row_id;
+    return first
+      ? [await getJson<ResearchLineageRow>(`${API_BASE}/api/v1/research/lineage/${first}`)]
+      : [];
+  }
+  return getJson<ResearchLineageRow[]>("/demo-data/research-lineage-sample.json");
 }

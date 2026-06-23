@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "rows_checked": 2880,
+  "lineage_links_checked": 874,
+  "violations": [],
+  "boundary_cases": {
+    "exact_cutoff_included": true,
+    "after_cutoff_deferred": true,
+    "session_windows_use_session_counts": true
+  },
+  "future_mutation_test": "passed",
+  "backfill_test": "passed",
+  "generated_at_not_used_as_information_timestamp": true,
+  "audit_hash": "4a21ea29d3478dedfcb723465c656848c25827514dcdac06ff9adaaf252f8dd4"
+}
