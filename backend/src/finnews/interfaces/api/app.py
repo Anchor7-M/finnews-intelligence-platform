@@ -414,6 +414,106 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             "offset": offset,
         }
 
+    @app.get("/api/v1/research/overview")
+    def research_overview() -> dict[str, object]:
+        return cast(dict[str, object], build_static_payload(repository)["research-overview"])
+
+    @app.get("/api/v1/research/calendars")
+    def research_calendars() -> list[dict[str, object]]:
+        return cast(list[dict[str, object]], build_static_payload(repository)["research-calendars"])
+
+    @app.get("/api/v1/research/exports")
+    def research_exports(
+        export_id: str | None = None,
+        calendar_id: str | None = None,
+        limit: int = Query(default=20, ge=1, le=100),
+        offset: int = Query(default=0, ge=0),
+    ) -> dict[str, object]:
+        payload = build_static_payload(repository)
+        overview = cast(dict[str, object], payload["research-overview"])
+        rows = cast(list[dict[str, object]], payload["research-exports"])
+        filtered = [
+            row
+            for row in rows
+            if (not export_id or row["export_id"] == export_id)
+            and (not calendar_id or overview["calendar_id"] == calendar_id)
+        ]
+        return {
+            "items": filtered[offset : offset + limit],
+            "total": len(filtered),
+            "limit": limit,
+            "offset": offset,
+        }
+
+    @app.get("/api/v1/research/exports/{export_id}")
+    def research_export_detail(export_id: str) -> dict[str, object]:
+        rows = cast(list[dict[str, object]], build_static_payload(repository)["research-exports"])
+        for row in rows:
+            if row["export_id"] == export_id:
+                return row
+        raise NotFoundError(f"research export {export_id} not found")
+
+    @app.get("/api/v1/research/features")
+    def research_features(
+        export_id: str | None = None,
+        calendar_id: str | None = None,
+        session_from: date | None = None,
+        session_to: date | None = None,
+        ticker: str | None = None,
+        company_id: str | None = None,
+        window: int | None = Query(default=None, ge=1, le=60),
+        has_news: bool | None = None,
+        feature_schema_version: str | None = None,
+        limit: int = Query(default=50, ge=1, le=200),
+        offset: int = Query(default=0, ge=0),
+    ) -> dict[str, object]:
+        payload = build_static_payload(repository)
+        overview = cast(dict[str, object], payload["research-overview"])
+        rows = cast(list[dict[str, object]], payload["research-feature-sample"])
+        filtered: list[dict[str, object]] = []
+        for row in rows:
+            session_date = date.fromisoformat(str(row["session_date"]))
+            if export_id and overview["export_id"] != export_id:
+                continue
+            if calendar_id and row["calendar_id"] != calendar_id:
+                continue
+            if session_from and session_date < session_from:
+                continue
+            if session_to and session_date > session_to:
+                continue
+            if ticker and row["ticker"] != ticker.upper():
+                continue
+            if company_id and row["company_id"] != company_id:
+                continue
+            if window and row["window_sessions"] != window:
+                continue
+            if has_news is not None and row["has_news"] is not has_news:
+                continue
+            if feature_schema_version and row["feature_schema_version"] != feature_schema_version:
+                continue
+            filtered.append(row)
+        return {
+            "items": filtered[offset : offset + limit],
+            "total": len(filtered),
+            "limit": limit,
+            "offset": offset,
+        }
+
+    @app.get("/api/v1/research/lineage/{lineage_row_id}")
+    def research_lineage(lineage_row_id: str) -> dict[str, object]:
+        rows = cast(
+            list[dict[str, object]],
+            build_static_payload(repository)["research-lineage-sample"],
+        )
+        for row in rows:
+            if row["lineage_row_id"] == lineage_row_id:
+                return row
+        raise NotFoundError(f"research lineage {lineage_row_id} not found")
+
+    @app.get("/api/v1/research/feature-catalog")
+    def research_feature_catalog() -> dict[str, object]:
+        return cast(dict[str, object], build_static_payload(repository)["research-feature-catalog"])
+
     return app
 
 

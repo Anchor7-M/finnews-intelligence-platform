@@ -9,6 +9,7 @@ import CompanyDetail from "../src/pages/CompanyDetail.vue";
 import DailyDigest from "../src/pages/DailyDigest.vue";
 import NlpEvaluation from "../src/pages/NlpEvaluation.vue";
 import OverviewPage from "../src/pages/OverviewPage.vue";
+import ResearchExport from "../src/pages/ResearchExport.vue";
 import SourceHealth from "../src/pages/SourceHealth.vue";
 
 const article = {
@@ -259,6 +260,95 @@ vi.mock("../src/api/client", () => ({
       errors_by_challenge_flag: {},
     },
   ],
+  loadResearchOverview: async () => ({
+    contract_name: "finnews-research-export-v1",
+    contract_version: "1.0.0",
+    export_id: "synthetic-news-factor-demo-v1",
+    calendar_id: "synthetic-ashare-demo-calendar",
+    calendar_version: "2026-demo-v1",
+    calendar_hash: "a".repeat(64),
+    cutoff_policy: "pre_open_15m",
+    windows: [1, 3, 5, 10],
+    package_content_hash: "b".repeat(64),
+    counts: {
+      session_count: 60,
+      company_count: 12,
+      feature_row_count: 2880,
+      rows_with_news: 349,
+      rows_without_news: 2531,
+      lineage_row_count: 874,
+    },
+    synthetic_data: true,
+    official_market_calendar: false,
+    not_investment_advice: true,
+  }),
+  loadResearchCalendars: async () => [
+    {
+      calendar_id: "synthetic-ashare-demo-calendar",
+      calendar_version: "2026-demo-v1",
+      timezone: "Asia/Shanghai",
+      calendar_hash: "a".repeat(64),
+      session_count: 60,
+      synthetic_data: true,
+      official_market_calendar: false,
+    },
+  ],
+  loadResearchExports: async () => [
+    {
+      export_id: "synthetic-news-factor-demo-v1",
+      contract_version: "1.0.0",
+      package_content_hash: "b".repeat(64),
+      file_hashes: {},
+      counts: { feature_row_count: 2880 },
+      leakage_status: "passed",
+    },
+  ],
+  loadResearchFeatureCatalog: async () => ({
+    contract_name: "finnews-research-export-v1",
+    contract_version: "1.0.0",
+    feature_schema_version: "news-factor-v1",
+    windows: [1, 3, 5, 10],
+    null_policy: "null means undefined",
+    no_market_data: true,
+    features: [{ name: "news_count" }, { name: "mean_sentiment_score" }],
+  }),
+  loadResearchFeatureSample: async () => [
+    {
+      contract_version: "1.0.0",
+      calendar_id: "synthetic-ashare-demo-calendar",
+      calendar_version: "2026-demo-v1",
+      session_date: "2026-06-18",
+      decision_cutoff_at: "2026-06-18T09:15:00+08:00",
+      ticker: "ALP",
+      company_id: "company-1",
+      window_sessions: 1,
+      feature_schema_version: "news-factor-v1",
+      news_count: 1,
+      has_news: true,
+      mean_sentiment_score: 0.5,
+      event_entropy: 0,
+      source_diversity_ratio: 1,
+      hours_since_latest_news: 1,
+      lineage_row_id: "lineage-1",
+    },
+  ],
+  loadResearchLineageSample: async () => [
+    {
+      lineage_row_id: "lineage-1",
+      feature_row_key: "key",
+      canonical_article_id: "article-1",
+      source_id: "synthetic-source",
+      company_id: "company-1",
+      source_published_at: "2026-06-18T00:00:00Z",
+      first_seen_at: "2026-06-18T00:10:00Z",
+      processed_at: "2026-06-18T00:11:00Z",
+      information_available_at: "2026-06-18T00:10:00Z",
+      decision_cutoff_at: "2026-06-18T09:15:00+08:00",
+      event_label: "earnings",
+      sentiment_label: "positive",
+      inclusion_reason: "included",
+    },
+  ],
 }));
 
 describe("frontend compliance", () => {
@@ -353,6 +443,18 @@ describe("frontend compliance", () => {
     expect(wrapper.text()).not.toContain("C:\\Users");
   });
 
+  it("renders research export dashboard with safe handoff language", async () => {
+    const wrapper = mount(ResearchExport);
+    await new Promise((resolve) => setTimeout(resolve, 0));
+    expect(wrapper.text()).toContain("Research Export");
+    expect(wrapper.text()).toContain("2880");
+    expect(wrapper.text()).toContain("synthetic calendar");
+    expect(wrapper.text()).toContain("No official");
+    expect(wrapper.text()).toContain("does not calculate returns");
+    expect(wrapper.text()).not.toContain("article title");
+    expect(wrapper.text()).not.toContain("buy signal");
+  });
+
   it("shows persistent synthetic and not-investment-advice notice with routes", async () => {
     const router = createRouter({
       history: createMemoryHistory(),
@@ -363,6 +465,7 @@ describe("frontend compliance", () => {
         { path: "/digest", component: DailyDigest },
         { path: "/sources", component: SourceHealth },
         { path: "/nlp-evaluation", component: NlpEvaluation },
+        { path: "/research-export", component: ResearchExport },
         { path: "/methodology", component: OverviewPage },
       ],
     });

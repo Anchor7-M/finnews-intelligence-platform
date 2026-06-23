@@ -6,6 +6,7 @@ import DailyDigest from "../pages/DailyDigest.vue";
 import Methodology from "../pages/Methodology.vue";
 import NlpEvaluation from "../pages/NlpEvaluation.vue";
 import OverviewPage from "../pages/OverviewPage.vue";
+import ResearchExport from "../pages/ResearchExport.vue";
 import SourceHealth from "../pages/SourceHealth.vue";
 
 export const router = createRouter({
@@ -17,6 +18,7 @@ export const router = createRouter({
     { path: "/digest", name: "digest", component: DailyDigest },
     { path: "/sources", name: "sources", component: SourceHealth },
     { path: "/nlp-evaluation", name: "nlp-evaluation", component: NlpEvaluation },
+    { path: "/research-export", name: "research-export", component: ResearchExport },
     { path: "/methodology", name: "methodology", component: Methodology },
   ],
 });

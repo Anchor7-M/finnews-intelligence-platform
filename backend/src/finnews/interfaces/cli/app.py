@@ -12,7 +12,7 @@ from sqlalchemy.orm import Session
 from alembic import command
 from finnews.application.ports.repositories import NewsRepository
 from finnews.application.services.deduplication_accounting import build_deduplication_accounting
-from finnews.application.services.export_static import export_static
+from finnews.application.services.export_static import build_static_payload, export_static
 from finnews.application.services.nlp_artifacts import ArtifactError, load_trusted_artifact
 from finnews.application.services.nlp_evaluation import run_nlp_benchmark
 from finnews.application.services.nlp_registry import register_nlp_report
@@ -22,6 +22,20 @@ from finnews.application.services.nlp_reporting import (
     nlp_static_payload,
 )
 from finnews.application.services.pipeline import NewsPipeline
+from finnews.application.services.research_export import (
+    DEFAULT_CUTOFF_POLICY,
+    DEFAULT_WINDOWS,
+    ResearchExportError,
+    build_demo_calendar,
+    build_research_export,
+    compare_research_export_packages,
+    feature_catalog,
+    load_local_calendar,
+    load_research_export_package,
+    validate_calendar_path,
+    validate_research_export_package,
+    write_research_export_package,
+)
 from finnews.application.services.source_ingestion import SourceIngestionService
 from finnews.application.services.source_smoke import (
     SMOKE_EXIT_CODES,
@@ -65,12 +79,18 @@ source_app = typer.Typer(help="Source registry and run-once ingestion")
 source_review_app = typer.Typer(help="Source review evidence")
 nlp_app = typer.Typer(help="Synthetic NLP benchmark and evaluation")
 nlp_dataset_app = typer.Typer(help="Synthetic NLP dataset commands")
+research_app = typer.Typer(help="Point-in-time research export commands")
+research_calendar_app = typer.Typer(help="Research calendar commands")
+research_export_app = typer.Typer(help="Research package commands")
 app.add_typer(ingest_app, name="ingest")
 app.add_typer(db_app, name="db")
 app.add_typer(source_app, name="source")
 source_app.add_typer(source_review_app, name="review")
 app.add_typer(nlp_app, name="nlp")
 nlp_app.add_typer(nlp_dataset_app, name="dataset")
+app.add_typer(research_app, name="research")
+research_app.add_typer(research_calendar_app, name="calendar")
+research_app.add_typer(research_export_app, name="export")
 
 
 @app.command()
@@ -533,6 +553,194 @@ def ingest_local_feed(path: Annotated[Path, typer.Option("--path")]) -> None:
     )
     _commit_and_close(session)
     typer.echo(json.dumps(counts, ensure_ascii=False, sort_keys=True))
+
+
+@research_calendar_app.command("build-demo")
+def research_calendar_build_demo() -> None:
+    calendar, sessions = build_demo_calendar()
+    typer.echo(
+        json.dumps(
+            {
+                "calendar_id": calendar.calendar_id,
+                "calendar_version": calendar.calendar_version,
+                "timezone": calendar.timezone,
+                "calendar_hash": calendar.calendar_hash,
+                "session_count": len(sessions),
+                "synthetic_data": calendar.synthetic,
+                "official_market_calendar": False,
+            },
+            sort_keys=True,
+        )
+    )
+
+
+@research_calendar_app.command("validate")
+def research_calendar_validate(path: Annotated[Path, typer.Option("--path")]) -> None:
+    result = validate_calendar_path(path)
+    typer.echo(json.dumps(result.__dict__, sort_keys=True))
+    if not result.valid:
+        raise typer.Exit(4)
+
+
+@research_calendar_app.command("summary")
+def research_calendar_summary(path: Annotated[Path, typer.Option("--path")]) -> None:
+    research_calendar_validate(path)
+
+
+@research_export_app.command("build")
+def research_export_build(
+    profile: Annotated[str, typer.Option("--profile")] = "memory",
+    calendar_path: Annotated[Path | None, typer.Option("--calendar")] = None,
+    cutoff_policy: Annotated[str, typer.Option("--cutoff-policy")] = DEFAULT_CUTOFF_POLICY,
+    windows_text: Annotated[str, typer.Option("--windows")] = ",".join(
+        str(item) for item in DEFAULT_WINDOWS
+    ),
+    output: Annotated[Path, typer.Option("--output")] = Path("../.finnews-research-exports/latest"),
+    persist_metadata: Annotated[
+        bool, typer.Option("--persist-metadata/--no-persist-metadata")
+    ] = False,
+) -> None:
+    try:
+        windows = [int(item.strip()) for item in windows_text.split(",") if item.strip()]
+        settings = Settings(profile=profile)
+        repo, session = _repository(settings)
+        calendar = None
+        sessions = None
+        if calendar_path is not None and str(calendar_path) != "demo":
+            calendar, sessions = load_local_calendar(calendar_path)
+        package = build_research_export(
+            repo,
+            calendar=calendar,
+            sessions=sessions,
+            cutoff_policy=cast(Any, cutoff_policy),
+            windows=windows,
+            persist_metadata=persist_metadata,
+        )
+        written = write_research_export_package(package, output)
+        _commit_and_close(session)
+    except ResearchExportError as exc:
+        typer.echo(f"research_export_error={exc}", err=True)
+        raise typer.Exit(4) from exc
+    typer.echo(
+        json.dumps(
+            {
+                "export_id": written.export_id,
+                "package_content_hash": written.package_hash,
+                "feature_row_count": len(written.feature_rows),
+                "lineage_row_count": len(written.lineage_rows),
+                "output_name": output.name,
+            },
+            sort_keys=True,
+        )
+    )
+
+
+@research_export_app.command("validate")
+def research_export_validate(path: Annotated[Path, typer.Option("--path")]) -> None:
+    try:
+        result = validate_research_export_package(path)
+    except ResearchExportError as exc:
+        typer.echo(f"research_export_error={exc}", err=True)
+        raise typer.Exit(4) from exc
+    typer.echo(json.dumps(result, sort_keys=True))
+
+
+@research_export_app.command("summary")
+def research_export_summary(path: Annotated[Path, typer.Option("--path")]) -> None:
+    try:
+        package = load_research_export_package(path)
+    except ResearchExportError as exc:
+        typer.echo(f"research_export_error={exc}", err=True)
+        raise typer.Exit(4) from exc
+    typer.echo(
+        json.dumps(
+            {
+                "export_id": package.export_id,
+                "package_content_hash": package.package_hash,
+                "counts": package.quality_report["counts"],
+                "leakage_status": package.leakage_audit["status"],
+            },
+            sort_keys=True,
+        )
+    )
+
+
+@research_export_app.command("compare")
+def research_export_compare(
+    left: Annotated[Path, typer.Option("--left")],
+    right: Annotated[Path, typer.Option("--right")],
+) -> None:
+    try:
+        result = compare_research_export_packages(left, right)
+    except ResearchExportError as exc:
+        typer.echo(f"research_export_error={exc}", err=True)
+        raise typer.Exit(4) from exc
+    typer.echo(json.dumps(result, sort_keys=True))
+    if not result["equal"]:
+        raise typer.Exit(2)
+
+
+@research_export_app.command("lineage")
+def research_export_lineage(
+    path: Annotated[Path, typer.Option("--path")],
+    row_id: Annotated[str, typer.Option("--row-id")],
+) -> None:
+    try:
+        package = load_research_export_package(path)
+    except ResearchExportError as exc:
+        typer.echo(f"research_export_error={exc}", err=True)
+        raise typer.Exit(4) from exc
+    rows = [row for row in package.lineage_rows if row["lineage_row_id"] == row_id]
+    if not rows:
+        typer.echo("research_lineage_not_found", err=True)
+        raise typer.Exit(4)
+    safe_rows = [
+        {
+            key: row.get(key)
+            for key in [
+                "lineage_row_id",
+                "feature_row_key",
+                "canonical_article_id",
+                "source_id",
+                "company_id",
+                "source_published_at",
+                "first_seen_at",
+                "information_available_at",
+                "decision_cutoff_at",
+                "event_label",
+                "sentiment_label",
+                "inclusion_reason",
+            ]
+        }
+        for row in rows
+    ]
+    typer.echo(json.dumps(safe_rows, sort_keys=True))
+
+
+@research_export_app.command("feature-catalog")
+def research_export_feature_catalog() -> None:
+    typer.echo(json.dumps(feature_catalog(), sort_keys=True))
+
+
+@research_export_app.command("export-static")
+def research_export_static() -> None:
+    output = _repo_root() / "frontend" / "public" / "demo-data"
+    repo = build_memory_repository()
+    payload = build_static_payload(repo)
+    exported = []
+    for name, value in payload.items():
+        if name.startswith("research-"):
+            (output / f"{name}.json").write_text(
+                json.dumps(value, ensure_ascii=False, indent=2, default=str, sort_keys=True) + "\n",
+                encoding="utf-8",
+            )
+            exported.append(name)
+    typer.echo(json.dumps({"exported": True, "files": sorted(exported)}, sort_keys=True))
+
+
+@research_app.command("export-static")
+def research_static_command() -> None:
+    research_export_static()
 
 
 @app.command()

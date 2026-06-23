@@ -16,6 +16,7 @@ import { RouterLink, RouterView } from "vue-router";
         <RouterLink to="/digest">Digest</RouterLink>
         <RouterLink to="/sources">Sources</RouterLink>
         <RouterLink to="/nlp-evaluation">NLP</RouterLink>
+        <RouterLink to="/research-export">Research Export</RouterLink>
         <RouterLink to="/methodology">Methodology</RouterLink>
       </nav>
     </header>

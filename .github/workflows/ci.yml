@@ -80,6 +80,21 @@ jobs:
       - run: python -m pip install -e backend[dev]
       - run: python scripts/dev.py verify-ml
 
+  research-export:
+    runs-on: ubuntu-latest
+    env:
+      FINNEWS_SOURCE_TEST_MODE: mocked-offline
+      OMP_NUM_THREADS: "1"
+      OPENBLAS_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install -e backend[dev]
+      - run: python scripts/dev.py verify-research-export
+
   postgres:
     runs-on: ubuntu-latest
     env:
