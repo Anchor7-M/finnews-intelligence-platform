@@ -5,11 +5,16 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 import App from "../src/App.vue";
 import StateBlock from "../src/components/StateBlock.vue";
 import ArticleExplorer from "../src/pages/ArticleExplorer.vue";
+import AssetExplorer from "../src/pages/AssetExplorer.vue";
 import CompanyDetail from "../src/pages/CompanyDetail.vue";
+import CrossAssetOverview from "../src/pages/CrossAssetOverview.vue";
 import DailyDigest from "../src/pages/DailyDigest.vue";
+import EventImpact from "../src/pages/EventImpact.vue";
+import IntegrationReadiness from "../src/pages/IntegrationReadiness.vue";
 import NlpEvaluation from "../src/pages/NlpEvaluation.vue";
 import OverviewPage from "../src/pages/OverviewPage.vue";
 import ResearchExport from "../src/pages/ResearchExport.vue";
+import SignalCandidates from "../src/pages/SignalCandidates.vue";
 import SourceHealth from "../src/pages/SourceHealth.vue";
 
 const article = {
@@ -50,6 +55,181 @@ vi.mock("../src/api/client", () => ({
     },
     event_distribution: { earnings: 5 },
     sentiment_distribution: { positive: 8 },
+  }),
+  loadCrossAssetOverview: async () => ({
+    product_positioning:
+      "FinNews Intelligence Platform is a local-first cross-asset financial information and event-intelligence platform.",
+    synthetic_data: true,
+    not_investment_advice: true,
+    no_execution: true,
+    mt5_terminal_connection: "not_implemented",
+    order_execution: "disabled",
+    asset_count: 40,
+    event_count: 100,
+    impact_hypothesis_count: 240,
+    signal_candidate_count: 80,
+    asset_class_counts: { us_equity: 8, fx: 5 },
+    event_family_counts: { monetary_policy: 6 },
+    impact_direction_counts: { positive: 59, negative: 59 },
+    impact_horizon_counts: { intraday: 60, one_day: 60 },
+    signal_status_counts: { research: 16, informational: 16 },
+    active_signal_count: 64,
+    expired_signal_count: 16,
+    contract_name: "finnews-market-signal-v1",
+    contract_version: "1.0.0",
+    fixture_version: "cross-asset-demo-v1",
+    live_prices: false,
+    official_market_data: false,
+    optional_integrations: ["A-share point-in-time feature export"],
+  }),
+  loadAssets: async () => [
+    {
+      id: "a1",
+      asset_id: "US-EQ-ALPHA",
+      display_name: "Alpha Robotics Synthetic Corp",
+      asset_class: "us_equity",
+      canonical_symbol: "ALPR",
+      home_venue: "XNYS",
+      country_region: "US",
+      base_currency: "USD",
+      quote_currency: null,
+      parent_asset_id: null,
+      expiry: null,
+      contract_metadata: {},
+      status: "active",
+      synthetic: true,
+      provenance: {},
+      schema_version: "cross-asset-v1",
+    },
+    {
+      id: "a2",
+      asset_id: "FX-EURUSD",
+      display_name: "EUR/USD Synthetic FX Pair",
+      asset_class: "fx",
+      canonical_symbol: "EURUSD",
+      home_venue: null,
+      country_region: "Global",
+      base_currency: "EUR",
+      quote_currency: "USD",
+      parent_asset_id: null,
+      expiry: null,
+      contract_metadata: {},
+      status: "active",
+      synthetic: true,
+      provenance: {},
+      schema_version: "cross-asset-v1",
+    },
+  ],
+  loadAssetAliases: async () => [
+    {
+      id: "alias-1",
+      asset_id: "US-EQ-ALPHA",
+      namespace: "canonical",
+      symbol: "US-EQ-ALPHA",
+      normalized_symbol: "US-EQ-ALPHA",
+      provider: "synthetic_alias_registry",
+      provider_version: "1",
+      active: true,
+      confidence: 1,
+      provenance: {},
+      valid_from: null,
+      valid_to: null,
+    },
+  ],
+  loadAssetRelationships: async () => [
+    {
+      id: "rel-1",
+      relationship_id: "REL-001",
+      source_asset_id: "US-EQ-ALPHA",
+      target_asset_id: "FX-EURUSD",
+      relationship_type: "macro_proxy",
+      direction: "association",
+      confidence: 0.7,
+      active: true,
+      provenance: {},
+      synthetic: true,
+    },
+  ],
+  loadCrossAssetEvents: async () => [
+    {
+      id: "event-1",
+      event_id: "XAE-001",
+      event_family: "monetary_policy",
+      event_subtype: "demo",
+      description: "Synthetic policy event",
+      information_available_at: "2026-06-18T20:00:00Z",
+      affected_region: "Global",
+      relevant_currency: "USD",
+      source_provenance: {},
+      provider: "ml_demo_event_mapper",
+      provider_version: "1",
+      confidence: null,
+      uncertainty_flags: ["missing_confidence"],
+      duplicate_of_event_id: null,
+      synthetic: true,
+    },
+  ],
+  loadEventImpacts: async () => [
+    {
+      id: "impact-1",
+      impact_id: "IMPACT-0001",
+      event_id: "XAE-001",
+      asset_id: "US-EQ-ALPHA",
+      relationship_type: "direct_issuer",
+      direction: "positive",
+      impact_strength: 0.2,
+      confidence: null,
+      horizon: "intraday",
+      evidence_codes: ["RULE_MONETARY_POLICY"],
+      provider: "ml_demo_impact_ranker",
+      provider_version: "1",
+      information_cutoff_at: "2026-06-18T20:00:00Z",
+      created_at: "2026-06-18T20:02:00Z",
+      expires_at: "2026-07-18T20:00:00Z",
+      status: "active",
+      rejection_reason: null,
+      uncertainty_reason: "ambiguous_or_missing_confidence",
+      synthetic: true,
+    },
+  ],
+  loadMarketSignalCandidates: async () => [
+    {
+      id: "signal-1",
+      signal_id: "SIGNAL-0001",
+      impact_id: "IMPACT-0001",
+      event_id: "XAE-001",
+      asset_id: "US-EQ-ALPHA",
+      direction: "positive",
+      horizon: "intraday",
+      status: "research",
+      confidence: null,
+      score: null,
+      information_cutoff_at: "2026-06-18T20:00:00Z",
+      generated_at: "2026-06-18T20:03:00Z",
+      expires_at: "2026-07-18T20:00:00Z",
+      provider: "deterministic_signal_candidate_generator",
+      provider_version: "1",
+      evidence_codes: ["RULE_MONETARY_POLICY"],
+      quality_tags: ["synthetic"],
+      risk_tags: ["not_investment_advice"],
+      payload_hash: "a".repeat(64),
+      idempotency_key: "b".repeat(64),
+      synthetic: true,
+    },
+  ],
+  loadMt5Readiness: async () => ({
+    signal_contract_status: "ready",
+    symbol_map_schema_status: "ready_offline",
+    canonical_mapping_coverage: { mapped_assets: 0, total_assets: 40 },
+    utc_policy: "required_for_future_tick_bar_normalization",
+    terminal_adapter_status: "not_implemented",
+    mt5_terminal_connection: "not implemented",
+    execution_status: "disabled",
+    order_execution: "disabled",
+    credentials_accepted: false,
+    account_data_access: false,
+    order_routes: false,
+    notes: ["Future bridge must be local and read-only before any demo execution milestone."],
   }),
   loadArticles: async () => [
     article,
@@ -360,12 +540,50 @@ describe("frontend compliance", () => {
     const wrapper = mount(OverviewPage);
     await new Promise((resolve) => setTimeout(resolve, 0));
     expect(wrapper.text()).toContain("Canonical Articles");
+    expect(wrapper.text()).toContain("Cross-Asset Assets");
+    expect(wrapper.text()).toContain("Signal Candidates");
     expect(wrapper.text()).toContain("46");
     expect(wrapper.text()).toContain("Raw Observations");
     expect(wrapper.text()).toContain("68");
     expect(wrapper.text()).toContain("exact 8 / near 10");
     expect(wrapper.text()).toContain("12");
     expect(wrapper.text()).toContain("earnings");
+  });
+
+  it("renders cross-asset overview, assets, impacts, signals, and readiness", async () => {
+    const overview = mount(CrossAssetOverview);
+    await new Promise((resolve) => setTimeout(resolve, 0));
+    expect(overview.text()).toContain("Cross-Asset Overview");
+    expect(overview.text()).toContain("40");
+    expect(overview.text()).toContain("execution disabled");
+
+    const router = createRouter({
+      history: createMemoryHistory(),
+      routes: [{ path: "/assets/:assetId?", component: AssetExplorer }],
+    });
+    router.push("/assets/US-EQ-ALPHA");
+    await router.isReady();
+    const asset = mount(AssetExplorer, { global: { plugins: [router] } });
+    await new Promise((resolve) => setTimeout(resolve, 0));
+    expect(asset.text()).toContain("Alpha Robotics Synthetic Corp");
+    expect(asset.text()).toContain("US-EQ-ALPHA");
+
+    const impacts = mount(EventImpact);
+    await new Promise((resolve) => setTimeout(resolve, 0));
+    expect(impacts.text()).toContain("Event Impact Matrix");
+    expect(impacts.text()).toContain("monetary_policy");
+
+    const signals = mount(SignalCandidates);
+    await new Promise((resolve) => setTimeout(resolve, 0));
+    expect(signals.text()).toContain("Signal Candidates");
+    expect(signals.text()).toContain("SIGNAL-0001");
+    expect(signals.text()).not.toContain("buy signal");
+
+    const readiness = mount(IntegrationReadiness);
+    await new Promise((resolve) => setTimeout(resolve, 0));
+    expect(readiness.text()).toContain("Integration Readiness");
+    expect(readiness.text()).toContain("not_implemented");
+    expect(readiness.text()).toContain("disabled");
   });
 
   it("filters articles by text, event, sentiment, and language", async () => {
@@ -460,12 +678,17 @@ describe("frontend compliance", () => {
       history: createMemoryHistory(),
       routes: [
         { path: "/", component: OverviewPage },
+        { path: "/cross-asset", component: CrossAssetOverview },
+        { path: "/assets/:assetId?", component: AssetExplorer },
+        { path: "/event-impact", component: EventImpact },
+        { path: "/signals", component: SignalCandidates },
+        { path: "/integration-readiness", component: IntegrationReadiness },
         { path: "/articles", component: ArticleExplorer },
         { path: "/companies/:ticker?", component: CompanyDetail },
         { path: "/digest", component: DailyDigest },
         { path: "/sources", component: SourceHealth },
         { path: "/nlp-evaluation", component: NlpEvaluation },
-        { path: "/research-export", component: ResearchExport },
+        { path: "/optional-integrations/research-export", component: ResearchExport },
         { path: "/methodology", component: OverviewPage },
       ],
     });
@@ -473,6 +696,9 @@ describe("frontend compliance", () => {
     await router.isReady();
     const wrapper = mount(App, { global: { plugins: [router] } });
     expect(wrapper.text()).toContain("Synthetic demo data / not investment advice");
+    await router.push("/cross-asset");
+    await wrapper.vm.$nextTick();
+    expect(wrapper.text()).toContain("Cross-Asset Overview");
     await router.push("/articles");
     await wrapper.vm.$nextTick();
     expect(wrapper.text()).toContain("Article Explorer");

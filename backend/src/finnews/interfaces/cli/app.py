@@ -11,6 +11,16 @@ from sqlalchemy.orm import Session
 
 from alembic import command
 from finnews.application.ports.repositories import NewsRepository
+from finnews.application.services.cross_asset import (
+    CrossAssetError,
+    build_cross_asset_demo,
+    cross_asset_overview,
+    mt5_readiness,
+    resolve_asset_alias,
+    validate_mt5_symbol_map,
+    validate_signal_package,
+    write_signal_package,
+)
 from finnews.application.services.deduplication_accounting import build_deduplication_accounting
 from finnews.application.services.export_static import build_static_payload, export_static
 from finnews.application.services.nlp_artifacts import ArtifactError, load_trusted_artifact
@@ -82,6 +92,10 @@ nlp_dataset_app = typer.Typer(help="Synthetic NLP dataset commands")
 research_app = typer.Typer(help="Point-in-time research export commands")
 research_calendar_app = typer.Typer(help="Research calendar commands")
 research_export_app = typer.Typer(help="Research package commands")
+asset_app = typer.Typer(help="Canonical cross-asset registry commands")
+cross_asset_app = typer.Typer(help="Cross-asset event intelligence commands")
+signal_app = typer.Typer(help="Versioned market signal contract commands")
+mt5_app = typer.Typer(help="Offline MT5 readiness and symbol-map validation")
 app.add_typer(ingest_app, name="ingest")
 app.add_typer(db_app, name="db")
 app.add_typer(source_app, name="source")
@@ -91,6 +105,10 @@ nlp_app.add_typer(nlp_dataset_app, name="dataset")
 app.add_typer(research_app, name="research")
 research_app.add_typer(research_calendar_app, name="calendar")
 research_app.add_typer(research_export_app, name="export")
+app.add_typer(asset_app, name="asset")
+app.add_typer(cross_asset_app, name="cross-asset")
+app.add_typer(signal_app, name="signal")
+app.add_typer(mt5_app, name="mt5")
 
 
 @app.command()
@@ -741,6 +759,178 @@ def research_export_static() -> None:
 @research_app.command("export-static")
 def research_static_command() -> None:
     research_export_static()
+
+
+@asset_app.command("list")
+def asset_list() -> None:
+    dataset = build_cross_asset_demo()
+    typer.echo(
+        json.dumps(
+            [
+                {
+                    "asset_id": asset.asset_id,
+                    "display_name": asset.display_name,
+                    "asset_class": asset.asset_class.value,
+                    "canonical_symbol": asset.canonical_symbol,
+                    "region": asset.country_region,
+                    "status": asset.status.value,
+                }
+                for asset in dataset.assets
+            ],
+            sort_keys=True,
+            default=str,
+        )
+    )
+
+
+@asset_app.command("show")
+def asset_show(asset_id: Annotated[str, typer.Option("--asset-id")]) -> None:
+    dataset = build_cross_asset_demo()
+    for asset in dataset.assets:
+        if asset.asset_id == asset_id:
+            typer.echo(json.dumps(asset.__dict__, sort_keys=True, default=str))
+            return
+    typer.echo("asset_not_found", err=True)
+    raise typer.Exit(code=1)
+
+
+@asset_app.command("validate")
+def asset_validate() -> None:
+    dataset = build_cross_asset_demo()
+    counts: dict[str, int] = {}
+    for asset in dataset.assets:
+        counts[asset.asset_class.value] = counts.get(asset.asset_class.value, 0) + 1
+    ids = [asset.asset_id for asset in dataset.assets]
+    result = {
+        "valid": len(dataset.assets) == 40 and len(ids) == len(set(ids)),
+        "asset_count": len(dataset.assets),
+        "asset_class_counts": counts,
+        "alias_count": len(dataset.aliases),
+        "broker_mapping_count": len(dataset.broker_mappings),
+        "synthetic_data": True,
+    }
+    typer.echo(json.dumps(result, sort_keys=True))
+
+
+@asset_app.command("resolve")
+def asset_resolve(
+    namespace: Annotated[str, typer.Option("--namespace")],
+    symbol: Annotated[str, typer.Option("--symbol")],
+) -> None:
+    try:
+        result = resolve_asset_alias(namespace, symbol)
+    except CrossAssetError as exc:
+        typer.echo(f"asset_resolution_error={exc}", err=True)
+        raise typer.Exit(code=2) from exc
+    typer.echo(json.dumps(result.__dict__, sort_keys=True))
+
+
+@cross_asset_app.command("build-demo")
+def cross_asset_build_demo() -> None:
+    dataset = build_cross_asset_demo()
+    typer.echo(
+        json.dumps(
+            {
+                "asset_count": len(dataset.assets),
+                "event_count": len(dataset.events),
+                "impact_hypothesis_count": len(dataset.impacts),
+                "signal_candidate_count": len(dataset.signals),
+                "synthetic_data": True,
+            },
+            sort_keys=True,
+        )
+    )
+
+
+@cross_asset_app.command("impacts")
+def cross_asset_impacts(event_id: Annotated[str, typer.Option("--event-id")]) -> None:
+    dataset = build_cross_asset_demo()
+    rows = [row for row in dataset.impacts if row.event_id == event_id]
+    if not rows:
+        typer.echo("event_impacts_not_found", err=True)
+        raise typer.Exit(code=1)
+    typer.echo(
+        json.dumps(
+            [
+                {
+                    "impact_id": row.impact_id,
+                    "event_id": row.event_id,
+                    "asset_id": row.asset_id,
+                    "direction": row.direction.value,
+                    "horizon": row.horizon.value,
+                    "confidence": row.confidence,
+                    "status": row.status,
+                }
+                for row in rows
+            ],
+            sort_keys=True,
+            default=str,
+        )
+    )
+
+
+@cross_asset_app.command("summary")
+def cross_asset_summary() -> None:
+    typer.echo(json.dumps(cross_asset_overview(), sort_keys=True, default=str))
+
+
+@signal_app.command("generate-demo")
+def signal_generate_demo() -> None:
+    dataset = build_cross_asset_demo()
+    typer.echo(
+        json.dumps(
+            {
+                "contract_name": "finnews-market-signal-v1",
+                "contract_version": "1.0.0",
+                "signal_candidate_count": len(dataset.signals),
+                "synthetic_data": True,
+                "no_execution": True,
+            },
+            sort_keys=True,
+        )
+    )
+
+
+@signal_app.command("validate")
+def signal_validate(path: Annotated[Path, typer.Option("--path")]) -> None:
+    try:
+        result = validate_signal_package(path)
+    except CrossAssetError as exc:
+        typer.echo(f"signal_contract_error={exc}", err=True)
+        raise typer.Exit(code=2) from exc
+    typer.echo(json.dumps(result, sort_keys=True))
+
+
+@signal_app.command("export")
+def signal_export(
+    output: Annotated[Path, typer.Option("--output")] = Path("../.finnews-market-signals/latest"),
+) -> None:
+    try:
+        result = write_signal_package(output, build_cross_asset_demo())
+    except CrossAssetError as exc:
+        typer.echo(f"signal_export_error={exc}", err=True)
+        raise typer.Exit(code=2) from exc
+    typer.echo(json.dumps({"exported": True, "output_name": output.name, **result}, sort_keys=True))
+
+
+@signal_app.command("summary")
+def signal_summary(path: Annotated[Path, typer.Option("--path")]) -> None:
+    signal_validate(path)
+
+
+@mt5_app.command("readiness")
+def mt5_readiness_command() -> None:
+    typer.echo(json.dumps(mt5_readiness(), sort_keys=True, default=str))
+
+
+@mt5_app.command("validate-symbol-map")
+def mt5_validate_symbol_map(path: Annotated[Path, typer.Option("--path")]) -> None:
+    try:
+        result = validate_mt5_symbol_map(path)
+    except CrossAssetError as exc:
+        typer.echo(f"mt5_symbol_map_error={exc}", err=True)
+        raise typer.Exit(code=2) from exc
+    typer.echo(json.dumps(result, sort_keys=True))
 
 
 @app.command()

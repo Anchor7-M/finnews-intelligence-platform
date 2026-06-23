@@ -5,6 +5,10 @@ from pathlib import Path
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session, sessionmaker
 
+from finnews.application.services.cross_asset import (
+    build_cross_asset_demo,
+    persist_cross_asset_demo,
+)
 from finnews.application.services.pipeline import NewsPipeline
 from finnews.domain.entities import SourceRecord
 from finnews.infrastructure.persistence.memory.repository import MemoryNewsRepository
@@ -25,6 +29,7 @@ def build_memory_repository(settings: Settings | None = None) -> MemoryNewsRepos
     records = load_default_records(settings)
     pipeline = NewsPipeline(repository, settings)
     pipeline.run_demo(records, FIXTURE_DIR / "companies.json")
+    persist_cross_asset_demo(repository, build_cross_asset_demo())
     return repository
 
 
@@ -38,6 +43,7 @@ def build_postgres_repository(
     if populate:
         pipeline = NewsPipeline(repository, settings)
         pipeline.run_demo(load_default_records(settings), FIXTURE_DIR / "companies.json")
+        persist_cross_asset_demo(repository, build_cross_asset_demo())
         session.commit()
     return repository
 

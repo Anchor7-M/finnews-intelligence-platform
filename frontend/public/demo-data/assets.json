@@ -1,0 +1,962 @@
+[
+  {
+    "asset_id": "US-EQ-ALPHA",
+    "display_name": "Alpha Robotics Synthetic Corp",
+    "asset_class": "us_equity",
+    "canonical_symbol": "ALPR",
+    "home_venue": "XNYS",
+    "country_region": "US",
+    "base_currency": "USD",
+    "quote_currency": null,
+    "parent_asset_id": null,
+    "expiry": null,
+    "contract_metadata": {
+      "root": null,
+      "continuous_series_alias": null,
+      "contract_metadata_available": false
+    },
+    "status": "active",
+    "synthetic": true,
+    "provenance": {
+      "source": "deterministic synthetic cross-asset fixture"
+    },
+    "schema_version": "cross-asset-v1",
+    "id": "76209314-49c4-508a-beef-a691f825c924"
+  },
+  {
+    "asset_id": "US-EQ-BETA",
+    "display_name": "Beta Cloud Synthetic Inc",
+    "asset_class": "us_equity",
+    "canonical_symbol": "BETC",
+    "home_venue": "XNAS",
+    "country_region": "US",
+    "base_currency": "USD",
+    "quote_currency": null,
+    "parent_asset_id": null,
+    "expiry": null,
+    "contract_metadata": {
+      "root": null,
+      "continuous_series_alias": null,
+      "contract_metadata_available": false
+    },
+    "status": "active",
+    "synthetic": true,
+    "provenance": {
+      "source": "deterministic synthetic cross-asset fixture"
+    },
+    "schema_version": "cross-asset-v1",
+    "id": "8e58debe-16a0-5b7b-bb2c-d2e4f9982b62"
+  },
+  {
+    "asset_id": "US-EQ-GAMMA",
+    "display_name": "Gamma Health Synthetic Co",
+    "asset_class": "us_equity",
+    "canonical_symbol": "GMHL",
+    "home_venue": "XNYS",
+    "country_region": "US",
+    "base_currency": "USD",
+    "quote_currency": null,
+    "parent_asset_id": null,
+    "expiry": null,
+    "contract_metadata": {
+      "root": null,
+      "continuous_series_alias": null,
+      "contract_metadata_available": false
+    },
+    "status": "active",
+    "synthetic": true,
+    "provenance": {
+      "source": "deterministic synthetic cross-asset fixture"
+    },
+    "schema_version": "cross-asset-v1",
+    "id": "3be408fa-4de5-571b-b496-18ecdd00ca87"
+  },
+  {
+    "asset_id": "US-EQ-DELTA",
+    "display_name": "Delta Retail Synthetic Group",
+    "asset_class": "us_equity",
+    "canonical_symbol": "DLRT",
+    "home_venue": "XNAS",
+    "country_region": "US",
+    "base_currency": "USD",
+    "quote_currency": null,
+    "parent_asset_id": null,
+    "expiry": null,
+    "contract_metadata": {
+      "root": null,
+      "continuous_series_alias": null,
+      "contract_metadata_available": false
+    },
+    "status": "active",
+    "synthetic": true,
+    "provenance": {
+      "source": "deterministic synthetic cross-asset fixture"
+    },
+    "schema_version": "cross-asset-v1",
+    "id": "b9b3e3ad-fd42-58b1-8af5-da4a826a8fe1"
+  },
+  {
+    "asset_id": "US-EQ-EPSILON",
+    "display_name": "Epsilon Energy Synthetic Ltd",
+    "asset_class": "us_equity",
+    "canonical_symbol": "EPEN",
+    "home_venue": "XNYS",
+    "country_region": "US",
+    "base_currency": "USD",
+    "quote_currency": null,
+    "parent_asset_id": null,
+    "expiry": null,
+    "contract_metadata": {
+      "root": null,
+      "continuous_series_alias": null,
+      "contract_metadata_available": false
+    },
+    "status": "active",
+    "synthetic": true,
+    "provenance": {
+      "source": "deterministic synthetic cross-asset fixture"
+    },
+    "schema_version": "cross-asset-v1",
+    "id": "14b711ea-4db7-55a2-8ae6-b64dae1ee084"
+  },
+  {
+    "asset_id": "US-EQ-ZETA",
+    "display_name": "Zeta Industrial Synthetic Works",
+    "asset_class": "us_equity",
+    "canonical_symbol": "ZTIN",
+    "home_venue": "XNYS",
+    "country_region": "US",
+    "base_currency": "USD",
+    "quote_currency": null,
+    "parent_asset_id": null,
+    "expiry": null,
+    "contract_metadata": {
+      "root": null,
+      "continuous_series_alias": null,
+      "contract_metadata_available": false
+    },
+    "status": "active",
+    "synthetic": true,
+    "provenance": {
+      "source": "deterministic synthetic cross-asset fixture"
+    },
+    "schema_version": "cross-asset-v1",
+    "id": "634415a0-ff2b-5aae-be97-0c86b70110b2"
+  },
+  {
+    "asset_id": "US-EQ-OMEGA",
+    "display_name": "Omega Payments Synthetic Holdings",
+    "asset_class": "us_equity",
+    "canonical_symbol": "OMPY",
+    "home_venue": "XNAS",
+    "country_region": "US",
+    "base_currency": "USD",
+    "quote_currency": null,
+    "parent_asset_id": null,
+    "expiry": null,
+    "contract_metadata": {
+      "root": null,
+      "continuous_series_alias": null,
+      "contract_metadata_available": false
+    },
+    "status": "active",
+    "synthetic": true,
+    "provenance": {
+      "source": "deterministic synthetic cross-asset fixture"
+    },
+    "schema_version": "cross-asset-v1",
+    "id": "e6e0ec11-6f25-5bfd-95dc-ef5b6216a394"
+  },
+  {
+    "asset_id": "US-EQ-SIGMA",
+    "display_name": "Sigma Chips Synthetic Corp",
+    "asset_class": "us_equity",
+    "canonical_symbol": "SGCH",
+    "home_venue": "XNAS",
+    "country_region": "US",
+    "base_currency": "USD",
+    "quote_currency": null,
+    "parent_asset_id": null,
+    "expiry": null,
+    "contract_metadata": {
+      "root": null,
+      "continuous_series_alias": null,
+      "contract_metadata_available": false
+    },
+    "status": "active",
+    "synthetic": true,
+    "provenance": {
+      "source": "deterministic synthetic cross-asset fixture"
+    },
+    "schema_version": "cross-asset-v1",
+    "id": "9db50fe0-3f4d-5191-9c5c-dcca3d989333"
+  },
+  {
+    "asset_id": "ETF-US-LARGE",
+    "display_name": "Synthetic US Large Equity ETF Proxy",
+    "asset_class": "etf",
+    "canonical_symbol": "SULG",
+    "home_venue": "ARCX",
+    "country_region": "US",
+    "base_currency": "USD",
+    "quote_currency": null,
+    "parent_asset_id": null,
+    "expiry": null,
+    "contract_metadata": {
+      "root": null,
+      "continuous_series_alias": null,
+      "contract_metadata_available": false
+    },
+    "status": "active",
+    "synthetic": true,
+    "provenance": {
+      "source": "deterministic synthetic cross-asset fixture"
+    },
+    "schema_version": "cross-asset-v1",
+    "id": "125c3d8a-7c3a-5b9c-92bd-a3e768842f37"
+  },
+  {
+    "asset_id": "ETF-US-TECH",
+    "display_name": "Synthetic Technology ETF Proxy",
+    "asset_class": "etf",
+    "canonical_symbol": "STEC",
+    "home_venue": "ARCX",
+    "country_region": "US",
+    "base_currency": "USD",
+    "quote_currency": null,
+    "parent_asset_id": null,
+    "expiry": null,
+    "contract_metadata": {
+      "root": null,
+      "continuous_series_alias": null,
+      "contract_metadata_available": false
+    },
+    "status": "active",
+    "synthetic": true,
+    "provenance": {
+      "source": "deterministic synthetic cross-asset fixture"
+    },
+    "schema_version": "cross-asset-v1",
+    "id": "a8598ab4-f1c1-5eb9-ae6d-c14533381fff"
+  },
+  {
+    "asset_id": "ETF-US-BOND",
+    "display_name": "Synthetic Treasury ETF Proxy",
+    "asset_class": "etf",
+    "canonical_symbol": "STSY",
+    "home_venue": "ARCX",
+    "country_region": "US",
+    "base_currency": "USD",
+    "quote_currency": null,
+    "parent_asset_id": null,
+    "expiry": null,
+    "contract_metadata": {
+      "root": null,
+      "continuous_series_alias": null,
+      "contract_metadata_available": false
+    },
+    "status": "active",
+    "synthetic": true,
+    "provenance": {
+      "source": "deterministic synthetic cross-asset fixture"
+    },
+    "schema_version": "cross-asset-v1",
+    "id": "84c7df01-2991-5e54-ad9d-578a8bed5edf"
+  },
+  {
+    "asset_id": "ETF-GLD-PROXY",
+    "display_name": "Synthetic Gold ETF Proxy",
+    "asset_class": "etf",
+    "canonical_symbol": "SGLD",
+    "home_venue": "ARCX",
+    "country_region": "US",
+    "base_currency": "USD",
+    "quote_currency": null,
+    "parent_asset_id": null,
+    "expiry": null,
+    "contract_metadata": {
+      "root": null,
+      "continuous_series_alias": null,
+      "contract_metadata_available": false
+    },
+    "status": "active",
+    "synthetic": true,
+    "provenance": {
+      "source": "deterministic synthetic cross-asset fixture"
+    },
+    "schema_version": "cross-asset-v1",
+    "id": "0f6d2677-8aa6-52fc-9d88-83e08eed962a"
+  },
+  {
+    "asset_id": "ETF-OIL-PROXY",
+    "display_name": "Synthetic Energy ETF Proxy",
+    "asset_class": "etf",
+    "canonical_symbol": "SOIL",
+    "home_venue": "ARCX",
+    "country_region": "US",
+    "base_currency": "USD",
+    "quote_currency": null,
+    "parent_asset_id": null,
+    "expiry": null,
+    "contract_metadata": {
+      "root": null,
+      "continuous_series_alias": null,
+      "contract_metadata_available": false
+    },
+    "status": "active",
+    "synthetic": true,
+    "provenance": {
+      "source": "deterministic synthetic cross-asset fixture"
+    },
+    "schema_version": "cross-asset-v1",
+    "id": "2ffc309b-0c23-5af9-8bd1-ecbc7507c8af"
+  },
+  {
+    "asset_id": "IDX-US-LARGE",
+    "display_name": "Synthetic US Large-Cap Index",
+    "asset_class": "equity_index",
+    "canonical_symbol": "SUSL",
+    "home_venue": "INDEX",
+    "country_region": "US",
+    "base_currency": "USD",
+    "quote_currency": null,
+    "parent_asset_id": null,
+    "expiry": null,
+    "contract_metadata": {
+      "root": null,
+      "continuous_series_alias": null,
+      "contract_metadata_available": false
+    },
+    "status": "active",
+    "synthetic": true,
+    "provenance": {
+      "source": "deterministic synthetic cross-asset fixture"
+    },
+    "schema_version": "cross-asset-v1",
+    "id": "b5ab4968-c719-5e50-a95f-1e27f2b3b7aa"
+  },
+  {
+    "asset_id": "IDX-US-TECH",
+    "display_name": "Synthetic US Technology Index",
+    "asset_class": "equity_index",
+    "canonical_symbol": "SUST",
+    "home_venue": "INDEX",
+    "country_region": "US",
+    "base_currency": "USD",
+    "quote_currency": null,
+    "parent_asset_id": null,
+    "expiry": null,
+    "contract_metadata": {
+      "root": null,
+      "continuous_series_alias": null,
+      "contract_metadata_available": false
+    },
+    "status": "active",
+    "synthetic": true,
+    "provenance": {
+      "source": "deterministic synthetic cross-asset fixture"
+    },
+    "schema_version": "cross-asset-v1",
+    "id": "2f30b32c-3f8a-5e99-86b7-9f2100fb5a9f"
+  },
+  {
+    "asset_id": "IDX-US-VOL",
+    "display_name": "Synthetic US Volatility Index",
+    "asset_class": "equity_index",
+    "canonical_symbol": "SUVX",
+    "home_venue": "INDEX",
+    "country_region": "US",
+    "base_currency": "USD",
+    "quote_currency": null,
+    "parent_asset_id": null,
+    "expiry": null,
+    "contract_metadata": {
+      "root": null,
+      "continuous_series_alias": null,
+      "contract_metadata_available": false
+    },
+    "status": "active",
+    "synthetic": true,
+    "provenance": {
+      "source": "deterministic synthetic cross-asset fixture"
+    },
+    "schema_version": "cross-asset-v1",
+    "id": "1ac744d9-4f59-56d1-8566-9333cbaf76ca"
+  },
+  {
+    "asset_id": "FX-EURUSD",
+    "display_name": "Synthetic EUR/USD FX Pair",
+    "asset_class": "fx",
+    "canonical_symbol": "EURUSD",
+    "home_venue": "FX",
+    "country_region": "Global",
+    "base_currency": "EUR",
+    "quote_currency": "USD",
+    "parent_asset_id": null,
+    "expiry": null,
+    "contract_metadata": {
+      "root": null,
+      "continuous_series_alias": null,
+      "contract_metadata_available": false
+    },
+    "status": "active",
+    "synthetic": true,
+    "provenance": {
+      "source": "deterministic synthetic cross-asset fixture"
+    },
+    "schema_version": "cross-asset-v1",
+    "id": "a35425a3-9e7c-5a16-89b7-748c343c8c54"
+  },
+  {
+    "asset_id": "FX-USDJPY",
+    "display_name": "Synthetic USD/JPY FX Pair",
+    "asset_class": "fx",
+    "canonical_symbol": "USDJPY",
+    "home_venue": "FX",
+    "country_region": "Global",
+    "base_currency": "USD",
+    "quote_currency": "JPY",
+    "parent_asset_id": null,
+    "expiry": null,
+    "contract_metadata": {
+      "root": null,
+      "continuous_series_alias": null,
+      "contract_metadata_available": false
+    },
+    "status": "active",
+    "synthetic": true,
+    "provenance": {
+      "source": "deterministic synthetic cross-asset fixture"
+    },
+    "schema_version": "cross-asset-v1",
+    "id": "69cd2130-2df6-556d-8889-04cd2c08ee3e"
+  },
+  {
+    "asset_id": "FX-GBPUSD",
+    "display_name": "Synthetic GBP/USD FX Pair",
+    "asset_class": "fx",
+    "canonical_symbol": "GBPUSD",
+    "home_venue": "FX",
+    "country_region": "Global",
+    "base_currency": "GBP",
+    "quote_currency": "USD",
+    "parent_asset_id": null,
+    "expiry": null,
+    "contract_metadata": {
+      "root": null,
+      "continuous_series_alias": null,
+      "contract_metadata_available": false
+    },
+    "status": "active",
+    "synthetic": true,
+    "provenance": {
+      "source": "deterministic synthetic cross-asset fixture"
+    },
+    "schema_version": "cross-asset-v1",
+    "id": "07cf5da7-3954-5659-b449-0bdaff518c05"
+  },
+  {
+    "asset_id": "FX-AUDUSD",
+    "display_name": "Synthetic AUD/USD FX Pair",
+    "asset_class": "fx",
+    "canonical_symbol": "AUDUSD",
+    "home_venue": "FX",
+    "country_region": "Global",
+    "base_currency": "AUD",
+    "quote_currency": "USD",
+    "parent_asset_id": null,
+    "expiry": null,
+    "contract_metadata": {
+      "root": null,
+      "continuous_series_alias": null,
+      "contract_metadata_available": false
+    },
+    "status": "active",
+    "synthetic": true,
+    "provenance": {
+      "source": "deterministic synthetic cross-asset fixture"
+    },
+    "schema_version": "cross-asset-v1",
+    "id": "d099e9ec-b0b7-590e-8409-22e271956b15"
+  },
+  {
+    "asset_id": "FX-USDCAD",
+    "display_name": "Synthetic USD/CAD FX Pair",
+    "asset_class": "fx",
+    "canonical_symbol": "USDCAD",
+    "home_venue": "FX",
+    "country_region": "Global",
+    "base_currency": "USD",
+    "quote_currency": "CAD",
+    "parent_asset_id": null,
+    "expiry": null,
+    "contract_metadata": {
+      "root": null,
+      "continuous_series_alias": null,
+      "contract_metadata_available": false
+    },
+    "status": "active",
+    "synthetic": true,
+    "provenance": {
+      "source": "deterministic synthetic cross-asset fixture"
+    },
+    "schema_version": "cross-asset-v1",
+    "id": "385a864a-f03e-51fd-a94b-20066ab64aea"
+  },
+  {
+    "asset_id": "PM-GOLD",
+    "display_name": "Synthetic Gold Spot Proxy",
+    "asset_class": "precious_metal",
+    "canonical_symbol": "XAUUSD",
+    "home_venue": "METAL",
+    "country_region": "Global",
+    "base_currency": "XAU",
+    "quote_currency": "USD",
+    "parent_asset_id": null,
+    "expiry": null,
+    "contract_metadata": {
+      "root": null,
+      "continuous_series_alias": null,
+      "contract_metadata_available": false
+    },
+    "status": "active",
+    "synthetic": true,
+    "provenance": {
+      "source": "deterministic synthetic cross-asset fixture"
+    },
+    "schema_version": "cross-asset-v1",
+    "id": "f5e73479-1fdb-51d5-a6b0-9dd870a3fab4"
+  },
+  {
+    "asset_id": "PM-SILVER",
+    "display_name": "Synthetic Silver Spot Proxy",
+    "asset_class": "precious_metal",
+    "canonical_symbol": "XAGUSD",
+    "home_venue": "METAL",
+    "country_region": "Global",
+    "base_currency": "XAG",
+    "quote_currency": "USD",
+    "parent_asset_id": null,
+    "expiry": null,
+    "contract_metadata": {
+      "root": null,
+      "continuous_series_alias": null,
+      "contract_metadata_available": false
+    },
+    "status": "active",
+    "synthetic": true,
+    "provenance": {
+      "source": "deterministic synthetic cross-asset fixture"
+    },
+    "schema_version": "cross-asset-v1",
+    "id": "54bca85e-f2d8-5752-8dc3-fc9260cd79ae"
+  },
+  {
+    "asset_id": "PM-PLATINUM",
+    "display_name": "Synthetic Platinum Spot Proxy",
+    "asset_class": "precious_metal",
+    "canonical_symbol": "XPTUSD",
+    "home_venue": "METAL",
+    "country_region": "Global",
+    "base_currency": "XPT",
+    "quote_currency": "USD",
+    "parent_asset_id": null,
+    "expiry": null,
+    "contract_metadata": {
+      "root": null,
+      "continuous_series_alias": null,
+      "contract_metadata_available": false
+    },
+    "status": "active",
+    "synthetic": true,
+    "provenance": {
+      "source": "deterministic synthetic cross-asset fixture"
+    },
+    "schema_version": "cross-asset-v1",
+    "id": "223d17f8-6fae-5cd6-a343-db8c2639f35d"
+  },
+  {
+    "asset_id": "CMD-OIL",
+    "display_name": "Synthetic Crude Oil Proxy",
+    "asset_class": "commodity",
+    "canonical_symbol": "SCOIL",
+    "home_venue": "COMMODITY",
+    "country_region": "Global",
+    "base_currency": "USD",
+    "quote_currency": null,
+    "parent_asset_id": null,
+    "expiry": null,
+    "contract_metadata": {
+      "root": null,
+      "continuous_series_alias": null,
+      "contract_metadata_available": false
+    },
+    "status": "active",
+    "synthetic": true,
+    "provenance": {
+      "source": "deterministic synthetic cross-asset fixture"
+    },
+    "schema_version": "cross-asset-v1",
+    "id": "fc3f4187-2da2-58d6-bac1-babc90be4d68"
+  },
+  {
+    "asset_id": "CMD-GAS",
+    "display_name": "Synthetic Natural Gas Proxy",
+    "asset_class": "commodity",
+    "canonical_symbol": "SCGAS",
+    "home_venue": "COMMODITY",
+    "country_region": "Global",
+    "base_currency": "USD",
+    "quote_currency": null,
+    "parent_asset_id": null,
+    "expiry": null,
+    "contract_metadata": {
+      "root": null,
+      "continuous_series_alias": null,
+      "contract_metadata_available": false
+    },
+    "status": "active",
+    "synthetic": true,
+    "provenance": {
+      "source": "deterministic synthetic cross-asset fixture"
+    },
+    "schema_version": "cross-asset-v1",
+    "id": "a64803a1-560d-5db2-aa0b-e04039396dde"
+  },
+  {
+    "asset_id": "CMD-COPPER",
+    "display_name": "Synthetic Copper Proxy",
+    "asset_class": "commodity",
+    "canonical_symbol": "SCCOP",
+    "home_venue": "COMMODITY",
+    "country_region": "Global",
+    "base_currency": "USD",
+    "quote_currency": null,
+    "parent_asset_id": null,
+    "expiry": null,
+    "contract_metadata": {
+      "root": null,
+      "continuous_series_alias": null,
+      "contract_metadata_available": false
+    },
+    "status": "active",
+    "synthetic": true,
+    "provenance": {
+      "source": "deterministic synthetic cross-asset fixture"
+    },
+    "schema_version": "cross-asset-v1",
+    "id": "2ebe6ee5-e007-5f81-b6d8-c08833884eca"
+  },
+  {
+    "asset_id": "FUT-ROOT-OIL",
+    "display_name": "Synthetic Oil Futures Root",
+    "asset_class": "futures_root",
+    "canonical_symbol": "SO",
+    "home_venue": "FUTURES",
+    "country_region": "US",
+    "base_currency": "USD",
+    "quote_currency": null,
+    "parent_asset_id": null,
+    "expiry": null,
+    "contract_metadata": {
+      "root": null,
+      "continuous_series_alias": "SO_CONT",
+      "contract_metadata_available": false
+    },
+    "status": "active",
+    "synthetic": true,
+    "provenance": {
+      "source": "deterministic synthetic cross-asset fixture"
+    },
+    "schema_version": "cross-asset-v1",
+    "id": "1450c438-9670-573e-a524-f91a26a46573"
+  },
+  {
+    "asset_id": "FUT-CONTRACT-OIL-JUL26",
+    "display_name": "Synthetic Oil Futures Jul 2026",
+    "asset_class": "futures_contract",
+    "canonical_symbol": "SON26",
+    "home_venue": "FUTURES",
+    "country_region": "US",
+    "base_currency": "USD",
+    "quote_currency": null,
+    "parent_asset_id": "FUT-ROOT-OIL",
+    "expiry": "2026-07-20",
+    "contract_metadata": {
+      "root": "FUT-ROOT-OIL",
+      "continuous_series_alias": null,
+      "contract_metadata_available": true
+    },
+    "status": "active",
+    "synthetic": true,
+    "provenance": {
+      "source": "deterministic synthetic cross-asset fixture"
+    },
+    "schema_version": "cross-asset-v1",
+    "id": "1db930f0-5cdf-5e39-aa85-f06e3697f577"
+  },
+  {
+    "asset_id": "FUT-ROOT-GOLD",
+    "display_name": "Synthetic Gold Futures Root",
+    "asset_class": "futures_root",
+    "canonical_symbol": "SG",
+    "home_venue": "FUTURES",
+    "country_region": "US",
+    "base_currency": "USD",
+    "quote_currency": null,
+    "parent_asset_id": null,
+    "expiry": null,
+    "contract_metadata": {
+      "root": null,
+      "continuous_series_alias": "SG_CONT",
+      "contract_metadata_available": false
+    },
+    "status": "active",
+    "synthetic": true,
+    "provenance": {
+      "source": "deterministic synthetic cross-asset fixture"
+    },
+    "schema_version": "cross-asset-v1",
+    "id": "b6ccd7f3-cbfd-5222-9653-48193bf09178"
+  },
+  {
+    "asset_id": "FUT-CONTRACT-GOLD-AUG26",
+    "display_name": "Synthetic Gold Futures Aug 2026",
+    "asset_class": "futures_contract",
+    "canonical_symbol": "SGQ26",
+    "home_venue": "FUTURES",
+    "country_region": "US",
+    "base_currency": "USD",
+    "quote_currency": null,
+    "parent_asset_id": "FUT-ROOT-GOLD",
+    "expiry": "2026-08-27",
+    "contract_metadata": {
+      "root": "FUT-ROOT-GOLD",
+      "continuous_series_alias": null,
+      "contract_metadata_available": true
+    },
+    "status": "active",
+    "synthetic": true,
+    "provenance": {
+      "source": "deterministic synthetic cross-asset fixture"
+    },
+    "schema_version": "cross-asset-v1",
+    "id": "6f2f59b0-75ca-5fe1-aa8a-3de17e8e9a3b"
+  },
+  {
+    "asset_id": "CRYPTO-BTC-PROXY",
+    "display_name": "Synthetic Bitcoin-like Crypto Proxy",
+    "asset_class": "crypto_asset",
+    "canonical_symbol": "SBTC",
+    "home_venue": "CRYPTO",
+    "country_region": "Global",
+    "base_currency": "SBTC",
+    "quote_currency": "USD",
+    "parent_asset_id": null,
+    "expiry": null,
+    "contract_metadata": {
+      "root": null,
+      "continuous_series_alias": null,
+      "contract_metadata_available": false
+    },
+    "status": "active",
+    "synthetic": true,
+    "provenance": {
+      "source": "deterministic synthetic cross-asset fixture"
+    },
+    "schema_version": "cross-asset-v1",
+    "id": "fbb62bbe-9e9a-5244-b49b-bcb03ad52d1f"
+  },
+  {
+    "asset_id": "CRYPTO-ETH-PROXY",
+    "display_name": "Synthetic Ether-like Crypto Proxy",
+    "asset_class": "crypto_asset",
+    "canonical_symbol": "SETH",
+    "home_venue": "CRYPTO",
+    "country_region": "Global",
+    "base_currency": "SETH",
+    "quote_currency": "USD",
+    "parent_asset_id": null,
+    "expiry": null,
+    "contract_metadata": {
+      "root": null,
+      "continuous_series_alias": null,
+      "contract_metadata_available": false
+    },
+    "status": "active",
+    "synthetic": true,
+    "provenance": {
+      "source": "deterministic synthetic cross-asset fixture"
+    },
+    "schema_version": "cross-asset-v1",
+    "id": "54d1fafc-cd60-5629-abcb-527e7d8bd003"
+  },
+  {
+    "asset_id": "CRYPTO-STABLE-PROXY",
+    "display_name": "Synthetic Stablecoin Liquidity Proxy",
+    "asset_class": "crypto_asset",
+    "canonical_symbol": "SUSD",
+    "home_venue": "CRYPTO",
+    "country_region": "Global",
+    "base_currency": "SUSD",
+    "quote_currency": "USD",
+    "parent_asset_id": null,
+    "expiry": null,
+    "contract_metadata": {
+      "root": null,
+      "continuous_series_alias": null,
+      "contract_metadata_available": false
+    },
+    "status": "active",
+    "synthetic": true,
+    "provenance": {
+      "source": "deterministic synthetic cross-asset fixture"
+    },
+    "schema_version": "cross-asset-v1",
+    "id": "d4de400c-7b6e-5287-9daa-52a419aa6c1c"
+  },
+  {
+    "asset_id": "CRYPTO-EXCH-PROXY",
+    "display_name": "Synthetic Exchange Token Proxy",
+    "asset_class": "crypto_asset",
+    "canonical_symbol": "SXT",
+    "home_venue": "CRYPTO",
+    "country_region": "Global",
+    "base_currency": "SXT",
+    "quote_currency": "USD",
+    "parent_asset_id": null,
+    "expiry": null,
+    "contract_metadata": {
+      "root": null,
+      "continuous_series_alias": null,
+      "contract_metadata_available": false
+    },
+    "status": "active",
+    "synthetic": true,
+    "provenance": {
+      "source": "deterministic synthetic cross-asset fixture"
+    },
+    "schema_version": "cross-asset-v1",
+    "id": "325029d9-5fa0-58bf-8fd5-f8d7a0d45eba"
+  },
+  {
+    "asset_id": "MACRO-CPI-US",
+    "display_name": "Synthetic US CPI Indicator",
+    "asset_class": "macro_indicator",
+    "canonical_symbol": "US_CPI_DEMO",
+    "home_venue": "MACRO",
+    "country_region": "US",
+    "base_currency": "USD",
+    "quote_currency": null,
+    "parent_asset_id": null,
+    "expiry": null,
+    "contract_metadata": {
+      "root": null,
+      "continuous_series_alias": null,
+      "contract_metadata_available": false
+    },
+    "status": "active",
+    "synthetic": true,
+    "provenance": {
+      "source": "deterministic synthetic cross-asset fixture"
+    },
+    "schema_version": "cross-asset-v1",
+    "id": "f09fc846-d9a8-52dd-a2a2-fff71d41f2b9"
+  },
+  {
+    "asset_id": "MACRO-PAYROLLS-US",
+    "display_name": "Synthetic US Payrolls Indicator",
+    "asset_class": "macro_indicator",
+    "canonical_symbol": "US_NFP_DEMO",
+    "home_venue": "MACRO",
+    "country_region": "US",
+    "base_currency": "USD",
+    "quote_currency": null,
+    "parent_asset_id": null,
+    "expiry": null,
+    "contract_metadata": {
+      "root": null,
+      "continuous_series_alias": null,
+      "contract_metadata_available": false
+    },
+    "status": "active",
+    "synthetic": true,
+    "provenance": {
+      "source": "deterministic synthetic cross-asset fixture"
+    },
+    "schema_version": "cross-asset-v1",
+    "id": "e6ee77fa-0b48-5e81-a51d-b0efd4f5fe15"
+  },
+  {
+    "asset_id": "MACRO-GDP-US",
+    "display_name": "Synthetic US GDP Indicator",
+    "asset_class": "macro_indicator",
+    "canonical_symbol": "US_GDP_DEMO",
+    "home_venue": "MACRO",
+    "country_region": "US",
+    "base_currency": "USD",
+    "quote_currency": null,
+    "parent_asset_id": null,
+    "expiry": null,
+    "contract_metadata": {
+      "root": null,
+      "continuous_series_alias": null,
+      "contract_metadata_available": false
+    },
+    "status": "active",
+    "synthetic": true,
+    "provenance": {
+      "source": "deterministic synthetic cross-asset fixture"
+    },
+    "schema_version": "cross-asset-v1",
+    "id": "eda54647-f84e-5c5c-a2ac-3925be013a79"
+  },
+  {
+    "asset_id": "RATE-FED-POLICY",
+    "display_name": "Synthetic Fed Policy Rate",
+    "asset_class": "interest_rate",
+    "canonical_symbol": "FED_POLICY_DEMO",
+    "home_venue": "RATES",
+    "country_region": "US",
+    "base_currency": "USD",
+    "quote_currency": null,
+    "parent_asset_id": null,
+    "expiry": null,
+    "contract_metadata": {
+      "root": null,
+      "continuous_series_alias": null,
+      "contract_metadata_available": false
+    },
+    "status": "active",
+    "synthetic": true,
+    "provenance": {
+      "source": "deterministic synthetic cross-asset fixture"
+    },
+    "schema_version": "cross-asset-v1",
+    "id": "9e0c8feb-c7d9-57ee-93c0-855e8a6dd9a6"
+  },
+  {
+    "asset_id": "RATE-US10Y",
+    "display_name": "Synthetic US 10Y Yield",
+    "asset_class": "interest_rate",
+    "canonical_symbol": "US10Y_DEMO",
+    "home_venue": "RATES",
+    "country_region": "US",
+    "base_currency": "USD",
+    "quote_currency": null,
+    "parent_asset_id": null,
+    "expiry": null,
+    "contract_metadata": {
+      "root": null,
+      "continuous_series_alias": null,
+      "contract_metadata_available": false
+    },
+    "status": "active",
+    "synthetic": true,
+    "provenance": {
+      "source": "deterministic synthetic cross-asset fixture"
+    },
+    "schema_version": "cross-asset-v1",
+    "id": "d1cbccd5-ea63-54ff-948d-a3266f975e0c"
+  }
+]

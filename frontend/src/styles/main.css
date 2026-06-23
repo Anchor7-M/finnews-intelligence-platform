@@ -292,3 +292,47 @@ td {
   padding: 10px;
   text-align: center;
 }
+
+.bar-list {
+  display: grid;
+  gap: 8px;
+}
+
+.bar-list > div {
+  align-items: center;
+  border-bottom: 1px solid #d8ded6;
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+}
+
+.definition-list {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: minmax(140px, 220px) minmax(0, 1fr);
+}
+
+.definition-list dt {
+  color: #53635d;
+  font-weight: 700;
+}
+
+.definition-list dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+tr.selected {
+  background: #eef4ef;
+}
+
+@media (max-width: 720px) {
+  .topbar {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .definition-list {
+    grid-template-columns: 1fr;
+  }
+}

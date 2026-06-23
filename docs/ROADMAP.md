@@ -1,40 +1,53 @@
 # Roadmap
 
-## Milestone 0
+FinNews is a local-first cross-asset financial information and event-intelligence platform. It is not primarily an A-share research-data producer. The previous A-share export remains an optional downstream adapter.
 
-Implemented: deterministic local synthetic data, modular backend, memory profile, PostgreSQL schema and Alembic migration, FastAPI read API, Typer CLI, Vue static/API dashboard, tests, coverage gate, docs, resource-safe scripts.
+## Completed Foundations
 
-## Milestone 3A
+### Milestone 0
 
-Implemented locally: versioned point-in-time research export contract, synthetic 60-session A-share-style calendar, local calendar validation, dense rolling news-factor panel, leakage audit, safe lineage, API/CLI/Vue/static demo, and PostgreSQL metadata. Deferred to the future A-share research repository: market data, returns, factor evaluation, backtesting, portfolios, and recommendations.
+Implemented: deterministic synthetic news ingestion, normalization, deduplication, provenance, fictional company linking, event and sentiment baselines, memory profile, PostgreSQL adapter, FastAPI, Typer CLI, Vue dashboard, static demo, CI files, and verification tooling.
 
-Not verified in the local compliance audit: PostgreSQL integration runtime, because Docker was not started.
+### Milestone 1A
 
-## Milestone 1
+Implemented: safe source registry, bounded HTTP client, disabled-by-default source definitions, mocked source adapters, conditional request state, retries, source health, API/CLI/static/frontend surfaces, and offline verification.
 
-Milestone 1A implemented: safe source registry, disabled-by-default source definitions, bounded HTTP client, mocked RSS/Atom and documented JSON ingestion, user JSON/CSV announcement imports, ETag and Last-Modified state, `304` handling, bounded retries, source health, fetch attempts, API/CLI, static demo, and Vue Source Health page.
+### Milestone 1B
 
-Milestone 1B implemented locally: source-review evidence, disabled official
-Federal Reserve RSS and SEC EDGAR Submissions pilot definitions, local-only
-overrides, guarded no-persist smoke testing, review API/frontend visibility, and
-A-share source boundary documentation. Reviewed sources are not production-ready
-and remain disabled by default.
+Implemented: source-review evidence, disabled Federal Reserve RSS and SEC EDGAR pilot configs, local-only overrides, guarded smoke-test command, review API/frontend visibility, and source-boundary documentation.
 
-## Milestone 2
+### Milestone 2A
 
-Milestone 2A implemented locally: versioned synthetic bilingual NLP benchmark,
-leakage-safe splits, dummy/rule/scikit-learn baselines, validation-only
-selection, probability calibration, confidence/coverage, abstention analysis,
-deterministic error reports, trusted local artifact manifests, model-registry
-metadata, read-only API, CLI, Vue evaluation dashboard, and static demo export.
+Implemented: synthetic bilingual NLP benchmark, leakage-safe splits, deterministic baselines, scikit-learn evaluation, calibration, abstention, error analysis, model registry metadata, API/CLI/static/frontend surfaces, and release audit documentation.
 
-Milestone 2B remains deferred: licensed or user-owned real-world corpus
-acquisition, terms review, and human-reviewed annotation.
+### Milestone 3A
 
-## Milestone 3
+Implemented as an optional integration: point-in-time synthetic A-share-style research export contract, calendar, dense rolling news-factor panel, safe lineage, leakage audit, API/CLI/static/frontend surfaces, and PostgreSQL metadata. It does not include official calendars, prices, returns, backtests, portfolios, or recommendations.
 
-Documented only: A-share research platform export contract, market-calendar alignment, rolling news factors, leakage checks.
+### Revised Milestone 3A
 
-## Milestone 4
+Implemented in this branch: cross-asset product repositioning, canonical asset registry, provider and broker symbol aliases, event-to-asset impact hypotheses, point-in-time research signal candidates, versioned local market-signal contract, MT5 readiness checks, API/CLI/static/frontend surfaces, and PostgreSQL metadata.
 
-Documented only: optional provider-based LLM extraction evaluation, disabled by default with cost controls and citations.
+This milestone does not connect to MT5, accept credentials, read account data, or execute trades.
+
+## Revised Future Roadmap
+
+### Milestone 3B
+
+Cross-asset official-source expansion for macroeconomic releases, energy and commodity information, derivatives and positioning metadata, crypto regulation and exchange-status information, issuer communications, and central-bank communications. Every source remains subject to terms review, rate limits, provenance controls, copyright policy, and disabled-by-default configuration.
+
+### Milestone 3C
+
+Signal research and validation: event-study methodology, market-reaction labels from user-owned or properly licensed data, walk-forward evaluation, false-positive analysis, asset-class slices, regime slices, confidence, and coverage. No automatic execution.
+
+### Milestone 4A
+
+MT5 read-only local bridge, as a separate future milestone: local terminal connection, terminal/account/symbol metadata reads, canonical asset to local broker-symbol mapping, UTC tick/bar normalization, demo environment first, no credentials stored in FinNews, and no trading commands.
+
+### Milestone 4B
+
+MT5 demo execution, only after read-only validation: demo account, manual approval, strict risk engine, idempotent requests, stale-signal rejection, preflight checks, kill switch, reconciliation, and full audit trail.
+
+### Milestone 4C
+
+Optional live execution is explicitly deferred. It may be considered only after prolonged demo validation, separate security and risk audit, applicable legal/broker/jurisdiction eligibility, and independent opt-in configuration.

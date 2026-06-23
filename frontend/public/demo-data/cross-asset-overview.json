@@ -1,0 +1,74 @@
+{
+  "product_positioning": "FinNews Intelligence Platform is a local-first cross-asset financial information and event-intelligence platform for U.S. equities, ETFs, indices, FX, gold, commodities, futures, crypto assets, and macroeconomic policy.",
+  "synthetic_data": true,
+  "not_investment_advice": true,
+  "no_execution": true,
+  "mt5_terminal_connection": "not_implemented",
+  "order_execution": "disabled",
+  "asset_count": 40,
+  "event_count": 100,
+  "impact_hypothesis_count": 240,
+  "signal_candidate_count": 80,
+  "asset_class_counts": {
+    "commodity": 3,
+    "crypto_asset": 4,
+    "equity_index": 3,
+    "etf": 5,
+    "futures_contract": 2,
+    "futures_root": 2,
+    "fx": 5,
+    "interest_rate": 2,
+    "macro_indicator": 3,
+    "precious_metal": 3,
+    "us_equity": 8
+  },
+  "event_family_counts": {
+    "commodity_supply": 6,
+    "corporate_earnings_guidance": 6,
+    "crypto_protocol_ecosystem": 5,
+    "crypto_regulation": 5,
+    "derivatives_positioning": 5,
+    "economic_growth": 6,
+    "exchange_market_infrastructure": 5,
+    "fiscal_policy": 6,
+    "geopolitical_risk": 5,
+    "idiosyncratic_company_event": 5,
+    "inflation": 6,
+    "inventory_demand": 5,
+    "labor_market": 6,
+    "liquidity_funding": 6,
+    "mergers_corporate_actions": 6,
+    "monetary_policy": 6,
+    "other_uncertain": 5,
+    "regulation_enforcement": 6
+  },
+  "impact_direction_counts": {
+    "mixed": 62,
+    "negative": 59,
+    "positive": 59,
+    "uncertain": 60
+  },
+  "impact_horizon_counts": {
+    "intraday": 60,
+    "one_day": 60,
+    "one_month": 60,
+    "one_week": 60
+  },
+  "signal_status_counts": {
+    "abstained": 14,
+    "expired": 16,
+    "informational": 16,
+    "rejected": 18,
+    "research": 16
+  },
+  "active_signal_count": 64,
+  "expired_signal_count": 16,
+  "contract_name": "finnews-market-signal-v1",
+  "contract_version": "1.0.0",
+  "fixture_version": "cross-asset-demo-v1",
+  "official_market_data": false,
+  "live_prices": false,
+  "optional_integrations": [
+    "A-share point-in-time feature export"
+  ]
+}

@@ -61,3 +61,30 @@ provider, model kind, status, dataset hashes, split hashes, label sets, metrics,
 calibration summaries, slice summaries, artifact hashes, artifact sizes, config
 hashes, and timestamps. They do not store model binaries, sparse matrices,
 feature vocabularies, raw live text, absolute paths, secrets, or user input.
+
+Revised Milestone 3A adds cross-asset metadata tables:
+
+- `assets`
+- `asset_symbol_aliases`
+- `asset_provider_symbols`
+- `broker_symbol_mappings`
+- `asset_relationships`
+- `cross_asset_events`
+- `asset_impact_hypotheses`
+- `market_signal_candidates`
+- `signal_publication_runs`
+
+These tables persist canonical asset identity, aliases, provider symbols,
+offline local broker-symbol mappings, deterministic relationships, event
+metadata, impact hypotheses, signal candidates, package hashes, JSONB metadata,
+arrays of evidence/risk/quality tags, UUID primary keys, and timezone-aware
+timestamps. They do not store broker credentials, account identifiers, market
+prices, positions, package bytes, execution instructions, or investment advice.
+
+Revised Milestone 3A synthetic fixture counts:
+
+- 40 canonical assets.
+- 211 aliases.
+- 100 cross-asset events.
+- 240 impact hypotheses.
+- 80 signal candidates.

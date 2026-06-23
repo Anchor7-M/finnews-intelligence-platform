@@ -13,39 +13,56 @@ from finnews.domain.entities import (
     ArticleDuplicate,
     ArticleEvent,
     ArticleSentiment,
+    Asset,
+    AssetImpactHypothesis,
+    AssetRelationship,
+    BrokerSymbolMapping,
     Company,
     CompanyAlias,
+    CrossAssetEvent,
     DailyCompanySignal,
     DailyDigest,
     IngestionRun,
+    MarketSignalCandidate,
     NlpEvaluationRun,
     NlpModelRegistryEntry,
     ObservationDisposition,
     PipelineRun,
+    ProviderSymbol,
     RawArticle,
     ResearchCalendar,
     ResearchExportRun,
     ResearchFeatureRow,
     ResearchLineageRow,
     ResearchSession,
+    SignalPublicationRun,
     Source,
     SourceDefinition,
     SourceFetchAttempt,
     SourceFetchState,
     SourceRetryPolicy,
+    SymbolAlias,
 )
 from finnews.domain.enums import (
+    AssetClass,
+    AssetStatus,
+    CrossAssetEventFamily,
     DuplicateType,
     EventType,
     FetchOutcome,
+    ImpactDirection,
+    ImpactHorizon,
+    ImpactRelationshipType,
     IngestionPolicy,
     ProcessingState,
+    ResearchSignalStatus,
     RunStatus,
     SentimentLabel,
     SourceApprovalStatus,
     SourceErrorCategory,
     SourceHealthStatus,
     SourceType,
+    SymbolNamespace,
 )
 from finnews.infrastructure.normalization import comparison_text
 from finnews.infrastructure.persistence.postgres.models import (
@@ -54,25 +71,34 @@ from finnews.infrastructure.persistence.postgres.models import (
     ArticleEventModel,
     ArticleModel,
     ArticleSentimentModel,
+    AssetImpactHypothesisModel,
+    AssetModel,
+    AssetRelationshipModel,
+    BrokerSymbolMappingModel,
     CompanyAliasModel,
     CompanyModel,
+    CrossAssetEventModel,
     DailyCompanySignalModel,
     DailyDigestModel,
     IngestionRunModel,
+    MarketSignalCandidateModel,
     NlpEvaluationRunModel,
     NlpModelRegistryModel,
     ObservationDispositionModel,
     PipelineRunModel,
+    ProviderSymbolModel,
     RawArticleModel,
     ResearchCalendarModel,
     ResearchExportRunModel,
     ResearchFeatureRowModel,
     ResearchLineageRowModel,
     ResearchSessionModel,
+    SignalPublicationRunModel,
     SourceDefinitionModel,
     SourceFetchAttemptModel,
     SourceFetchStateModel,
     SourceModel,
+    SymbolAliasModel,
 )
 
 
@@ -847,6 +873,110 @@ class PostgresNewsRepository:
         statement = statement.order_by(ResearchLineageRowModel.lineage_row_id)
         return [_research_lineage_row(row) for row in self.session.scalars(statement)]
 
+    def upsert_cross_asset_dataset(
+        self,
+        assets: Sequence[Asset],
+        aliases: Sequence[SymbolAlias],
+        provider_symbols: Sequence[ProviderSymbol],
+        broker_mappings: Sequence[BrokerSymbolMapping],
+        relationships: Sequence[AssetRelationship],
+        events: Sequence[CrossAssetEvent],
+        impacts: Sequence[AssetImpactHypothesis],
+        signals: Sequence[MarketSignalCandidate],
+        publication_run: SignalPublicationRun,
+    ) -> None:
+        for asset in assets:
+            model = self.session.scalar(
+                select(AssetModel).where(AssetModel.asset_id == asset.asset_id)
+            )
+            if model is None:
+                model = AssetModel(id=asset.id)
+                self.session.add(model)
+            _fill_asset_model(model, asset)
+        self.session.execute(delete(SymbolAliasModel))
+        self.session.execute(delete(ProviderSymbolModel))
+        self.session.execute(delete(BrokerSymbolMappingModel))
+        self.session.execute(delete(AssetRelationshipModel))
+        self.session.execute(delete(CrossAssetEventModel))
+        self.session.execute(delete(AssetImpactHypothesisModel))
+        self.session.execute(delete(MarketSignalCandidateModel))
+        self.session.execute(delete(SignalPublicationRunModel))
+        for alias in aliases:
+            self.session.add(_symbol_alias_model(alias))
+        for provider_symbol in provider_symbols:
+            self.session.add(_provider_symbol_model(provider_symbol))
+        for broker_mapping in broker_mappings:
+            self.session.add(_broker_symbol_mapping_model(broker_mapping))
+        for relationship in relationships:
+            self.session.add(_asset_relationship_model(relationship))
+        for event in events:
+            self.session.add(_cross_asset_event_model(event))
+        for impact in impacts:
+            self.session.add(_asset_impact_model(impact))
+        for signal in signals:
+            self.session.add(_market_signal_model(signal))
+        self.session.add(_signal_publication_run_model(publication_run))
+        self.session.flush()
+
+    def list_assets(self) -> list[Asset]:
+        return [
+            _asset(row)
+            for row in self.session.scalars(select(AssetModel).order_by(AssetModel.asset_id))
+        ]
+
+    def get_asset(self, asset_id: str) -> Asset | None:
+        model = self.session.scalar(select(AssetModel).where(AssetModel.asset_id == asset_id))
+        return _asset(model) if model else None
+
+    def list_asset_aliases(self, asset_id: str | None = None) -> list[SymbolAlias]:
+        statement = select(SymbolAliasModel)
+        if asset_id:
+            statement = statement.where(SymbolAliasModel.asset_id == asset_id)
+        statement = statement.order_by(
+            SymbolAliasModel.asset_id, SymbolAliasModel.namespace, SymbolAliasModel.symbol
+        )
+        return [_symbol_alias(row) for row in self.session.scalars(statement)]
+
+    def list_asset_relationships(self, asset_id: str | None = None) -> list[AssetRelationship]:
+        statement = select(AssetRelationshipModel)
+        if asset_id:
+            statement = statement.where(
+                (AssetRelationshipModel.source_asset_id == asset_id)
+                | (AssetRelationshipModel.target_asset_id == asset_id)
+            )
+        statement = statement.order_by(AssetRelationshipModel.relationship_id)
+        return [_asset_relationship(row) for row in self.session.scalars(statement)]
+
+    def list_cross_asset_events(self) -> list[CrossAssetEvent]:
+        return [
+            _cross_asset_event(row)
+            for row in self.session.scalars(
+                select(CrossAssetEventModel).order_by(CrossAssetEventModel.event_id)
+            )
+        ]
+
+    def list_asset_impact_hypotheses(
+        self, asset_id: str | None = None, event_id: str | None = None
+    ) -> list[AssetImpactHypothesis]:
+        statement = select(AssetImpactHypothesisModel)
+        if asset_id:
+            statement = statement.where(AssetImpactHypothesisModel.asset_id == asset_id)
+        if event_id:
+            statement = statement.where(AssetImpactHypothesisModel.event_id == event_id)
+        statement = statement.order_by(AssetImpactHypothesisModel.impact_id)
+        return [_asset_impact(row) for row in self.session.scalars(statement)]
+
+    def list_market_signal_candidates(
+        self, asset_id: str | None = None, status: str | None = None
+    ) -> list[MarketSignalCandidate]:
+        statement = select(MarketSignalCandidateModel)
+        if asset_id:
+            statement = statement.where(MarketSignalCandidateModel.asset_id == asset_id)
+        if status:
+            statement = statement.where(MarketSignalCandidateModel.status == status)
+        statement = statement.order_by(MarketSignalCandidateModel.signal_id)
+        return [_market_signal(row) for row in self.session.scalars(statement)]
+
 
 def _source(row: SourceModel) -> Source:
     return Source(
@@ -900,6 +1030,289 @@ def _source_definition(row: SourceDefinitionModel) -> SourceDefinition:
         notes=row.notes,
         risk_classification=row.risk_classification,
         adapter_version=row.adapter_version,
+    )
+
+
+def _fill_asset_model(model: AssetModel, asset: Asset) -> None:
+    model.asset_id = asset.asset_id
+    model.display_name = asset.display_name
+    model.asset_class = asset.asset_class.value
+    model.canonical_symbol = asset.canonical_symbol
+    model.home_venue = asset.home_venue
+    model.country_region = asset.country_region
+    model.base_currency = asset.base_currency
+    model.quote_currency = asset.quote_currency
+    model.parent_asset_id = asset.parent_asset_id
+    model.expiry = asset.expiry
+    model.contract_metadata = asset.contract_metadata
+    model.status = asset.status.value
+    model.synthetic = asset.synthetic
+    model.provenance = asset.provenance
+    model.schema_version = asset.schema_version
+
+
+def _asset(row: AssetModel) -> Asset:
+    return Asset(
+        id=row.id,
+        asset_id=row.asset_id,
+        display_name=row.display_name,
+        asset_class=AssetClass(row.asset_class),
+        canonical_symbol=row.canonical_symbol,
+        home_venue=row.home_venue,
+        country_region=row.country_region,
+        base_currency=row.base_currency,
+        quote_currency=row.quote_currency,
+        parent_asset_id=row.parent_asset_id,
+        expiry=row.expiry,
+        contract_metadata=dict(row.contract_metadata),
+        status=AssetStatus(row.status),
+        synthetic=row.synthetic,
+        provenance=dict(row.provenance),
+        schema_version=row.schema_version,
+    )
+
+
+def _symbol_alias_model(row: SymbolAlias) -> SymbolAliasModel:
+    return SymbolAliasModel(
+        id=row.id,
+        asset_id=row.asset_id,
+        namespace=row.namespace.value,
+        symbol=row.symbol,
+        normalized_symbol=row.normalized_symbol,
+        provider=row.provider,
+        provider_version=row.provider_version,
+        active=row.active,
+        confidence=row.confidence,
+        provenance=row.provenance,
+        valid_from=row.valid_from,
+        valid_to=row.valid_to,
+    )
+
+
+def _symbol_alias(row: SymbolAliasModel) -> SymbolAlias:
+    return SymbolAlias(
+        id=row.id,
+        asset_id=row.asset_id,
+        namespace=SymbolNamespace(row.namespace),
+        symbol=row.symbol,
+        normalized_symbol=row.normalized_symbol,
+        provider=row.provider,
+        provider_version=row.provider_version,
+        active=row.active,
+        confidence=row.confidence,
+        provenance=dict(row.provenance),
+        valid_from=row.valid_from,
+        valid_to=row.valid_to,
+    )
+
+
+def _provider_symbol_model(row: ProviderSymbol) -> ProviderSymbolModel:
+    return ProviderSymbolModel(
+        id=row.id,
+        asset_id=row.asset_id,
+        namespace=row.namespace.value,
+        provider=row.provider,
+        symbol=row.symbol,
+        provider_version=row.provider_version,
+        active=row.active,
+        provenance=row.provenance,
+    )
+
+
+def _broker_symbol_mapping_model(row: BrokerSymbolMapping) -> BrokerSymbolMappingModel:
+    return BrokerSymbolMappingModel(
+        id=row.id,
+        asset_id=row.asset_id,
+        broker_profile_id=row.broker_profile_id,
+        mt5_symbol=row.mt5_symbol,
+        enabled=row.enabled,
+        provenance=row.provenance,
+        local_note=row.local_note,
+    )
+
+
+def _asset_relationship_model(row: AssetRelationship) -> AssetRelationshipModel:
+    return AssetRelationshipModel(
+        id=row.id,
+        relationship_id=row.relationship_id,
+        source_asset_id=row.source_asset_id,
+        target_asset_id=row.target_asset_id,
+        relationship_type=row.relationship_type.value,
+        direction=row.direction,
+        confidence=row.confidence,
+        active=row.active,
+        provenance=row.provenance,
+        synthetic=row.synthetic,
+    )
+
+
+def _asset_relationship(row: AssetRelationshipModel) -> AssetRelationship:
+    return AssetRelationship(
+        id=row.id,
+        relationship_id=row.relationship_id,
+        source_asset_id=row.source_asset_id,
+        target_asset_id=row.target_asset_id,
+        relationship_type=ImpactRelationshipType(row.relationship_type),
+        direction=row.direction,
+        confidence=row.confidence,
+        active=row.active,
+        provenance=dict(row.provenance),
+        synthetic=row.synthetic,
+    )
+
+
+def _cross_asset_event_model(row: CrossAssetEvent) -> CrossAssetEventModel:
+    return CrossAssetEventModel(
+        id=row.id,
+        event_id=row.event_id,
+        event_family=row.event_family.value,
+        event_subtype=row.event_subtype,
+        description=row.description,
+        information_available_at=row.information_available_at,
+        affected_region=row.affected_region,
+        relevant_currency=row.relevant_currency,
+        source_provenance=row.source_provenance,
+        provider=row.provider,
+        provider_version=row.provider_version,
+        confidence=row.confidence,
+        uncertainty_flags=row.uncertainty_flags,
+        duplicate_of_event_id=row.duplicate_of_event_id,
+        synthetic=row.synthetic,
+    )
+
+
+def _cross_asset_event(row: CrossAssetEventModel) -> CrossAssetEvent:
+    return CrossAssetEvent(
+        id=row.id,
+        event_id=row.event_id,
+        event_family=CrossAssetEventFamily(row.event_family),
+        event_subtype=row.event_subtype,
+        description=row.description,
+        information_available_at=row.information_available_at,
+        affected_region=row.affected_region,
+        relevant_currency=row.relevant_currency,
+        source_provenance=dict(row.source_provenance),
+        provider=row.provider,
+        provider_version=row.provider_version,
+        confidence=row.confidence,
+        uncertainty_flags=list(row.uncertainty_flags),
+        duplicate_of_event_id=row.duplicate_of_event_id,
+        synthetic=row.synthetic,
+    )
+
+
+def _asset_impact_model(row: AssetImpactHypothesis) -> AssetImpactHypothesisModel:
+    return AssetImpactHypothesisModel(
+        id=row.id,
+        impact_id=row.impact_id,
+        event_id=row.event_id,
+        asset_id=row.asset_id,
+        relationship_type=row.relationship_type.value,
+        direction=row.direction.value,
+        impact_strength=row.impact_strength,
+        confidence=row.confidence,
+        horizon=row.horizon.value,
+        evidence_codes=row.evidence_codes,
+        provider=row.provider,
+        provider_version=row.provider_version,
+        information_cutoff_at=row.information_cutoff_at,
+        created_at=row.created_at,
+        expires_at=row.expires_at,
+        status=row.status,
+        rejection_reason=row.rejection_reason,
+        uncertainty_reason=row.uncertainty_reason,
+        synthetic=row.synthetic,
+    )
+
+
+def _asset_impact(row: AssetImpactHypothesisModel) -> AssetImpactHypothesis:
+    return AssetImpactHypothesis(
+        id=row.id,
+        impact_id=row.impact_id,
+        event_id=row.event_id,
+        asset_id=row.asset_id,
+        relationship_type=ImpactRelationshipType(row.relationship_type),
+        direction=ImpactDirection(row.direction),
+        impact_strength=row.impact_strength,
+        confidence=row.confidence,
+        horizon=ImpactHorizon(row.horizon),
+        evidence_codes=list(row.evidence_codes),
+        provider=row.provider,
+        provider_version=row.provider_version,
+        information_cutoff_at=row.information_cutoff_at,
+        created_at=row.created_at,
+        expires_at=row.expires_at,
+        status=row.status,
+        rejection_reason=row.rejection_reason,
+        uncertainty_reason=row.uncertainty_reason,
+        synthetic=row.synthetic,
+    )
+
+
+def _market_signal_model(row: MarketSignalCandidate) -> MarketSignalCandidateModel:
+    return MarketSignalCandidateModel(
+        id=row.id,
+        signal_id=row.signal_id,
+        impact_id=row.impact_id,
+        event_id=row.event_id,
+        asset_id=row.asset_id,
+        direction=row.direction.value,
+        horizon=row.horizon.value,
+        status=row.status.value,
+        confidence=row.confidence,
+        score=row.score,
+        information_cutoff_at=row.information_cutoff_at,
+        generated_at=row.generated_at,
+        expires_at=row.expires_at,
+        provider=row.provider,
+        provider_version=row.provider_version,
+        evidence_codes=row.evidence_codes,
+        quality_tags=row.quality_tags,
+        risk_tags=row.risk_tags,
+        payload_hash=row.payload_hash,
+        idempotency_key=row.idempotency_key,
+        synthetic=row.synthetic,
+    )
+
+
+def _market_signal(row: MarketSignalCandidateModel) -> MarketSignalCandidate:
+    return MarketSignalCandidate(
+        id=row.id,
+        signal_id=row.signal_id,
+        impact_id=row.impact_id,
+        event_id=row.event_id,
+        asset_id=row.asset_id,
+        direction=ImpactDirection(row.direction),
+        horizon=ImpactHorizon(row.horizon),
+        status=ResearchSignalStatus(row.status),
+        confidence=row.confidence,
+        score=row.score,
+        information_cutoff_at=row.information_cutoff_at,
+        generated_at=row.generated_at,
+        expires_at=row.expires_at,
+        provider=row.provider,
+        provider_version=row.provider_version,
+        evidence_codes=list(row.evidence_codes),
+        quality_tags=list(row.quality_tags),
+        risk_tags=list(row.risk_tags),
+        payload_hash=row.payload_hash,
+        idempotency_key=row.idempotency_key,
+        synthetic=row.synthetic,
+    )
+
+
+def _signal_publication_run_model(row: SignalPublicationRun) -> SignalPublicationRunModel:
+    return SignalPublicationRunModel(
+        id=row.id,
+        run_id=row.run_id,
+        contract_name=row.contract_name,
+        contract_version=row.contract_version,
+        generated_at=row.generated_at,
+        count=row.count,
+        status=row.status,
+        manifest_hash=row.manifest_hash,
+        file_hashes=row.file_hashes,
+        synthetic=row.synthetic,
     )
 
 

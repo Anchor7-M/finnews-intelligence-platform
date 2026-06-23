@@ -11,25 +11,34 @@ from finnews.domain.entities import (
     ArticleDuplicate,
     ArticleEvent,
     ArticleSentiment,
+    Asset,
+    AssetImpactHypothesis,
+    AssetRelationship,
+    BrokerSymbolMapping,
     Company,
     CompanyAlias,
+    CrossAssetEvent,
     DailyCompanySignal,
     DailyDigest,
     IngestionRun,
+    MarketSignalCandidate,
     NlpEvaluationRun,
     NlpModelRegistryEntry,
     ObservationDisposition,
     PipelineRun,
+    ProviderSymbol,
     RawArticle,
     ResearchCalendar,
     ResearchExportRun,
     ResearchFeatureRow,
     ResearchLineageRow,
     ResearchSession,
+    SignalPublicationRun,
     Source,
     SourceDefinition,
     SourceFetchAttempt,
     SourceFetchState,
+    SymbolAlias,
 )
 
 
@@ -109,6 +118,29 @@ class NewsRepository(Protocol):
     def list_research_lineage_rows(
         self, export_id: str | None = None
     ) -> list[ResearchLineageRow]: ...
+    def upsert_cross_asset_dataset(
+        self,
+        assets: Sequence[Asset],
+        aliases: Sequence[SymbolAlias],
+        provider_symbols: Sequence[ProviderSymbol],
+        broker_mappings: Sequence[BrokerSymbolMapping],
+        relationships: Sequence[AssetRelationship],
+        events: Sequence[CrossAssetEvent],
+        impacts: Sequence[AssetImpactHypothesis],
+        signals: Sequence[MarketSignalCandidate],
+        publication_run: SignalPublicationRun,
+    ) -> None: ...
+    def list_assets(self) -> list[Asset]: ...
+    def get_asset(self, asset_id: str) -> Asset | None: ...
+    def list_asset_aliases(self, asset_id: str | None = None) -> list[SymbolAlias]: ...
+    def list_asset_relationships(self, asset_id: str | None = None) -> list[AssetRelationship]: ...
+    def list_cross_asset_events(self) -> list[CrossAssetEvent]: ...
+    def list_asset_impact_hypotheses(
+        self, asset_id: str | None = None, event_id: str | None = None
+    ) -> list[AssetImpactHypothesis]: ...
+    def list_market_signal_candidates(
+        self, asset_id: str | None = None, status: str | None = None
+    ) -> list[MarketSignalCandidate]: ...
 
 
 class SourceAdapter(Protocol):

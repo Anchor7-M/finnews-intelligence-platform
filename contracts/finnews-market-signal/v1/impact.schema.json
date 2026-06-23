@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FinNews asset impact hypothesis row v1",
+  "type": "object",
+  "required": [
+    "impact_id",
+    "event_id",
+    "asset_id",
+    "relationship_type",
+    "direction",
+    "impact_strength",
+    "horizon",
+    "evidence_codes",
+    "provider",
+    "provider_version",
+    "information_cutoff_at",
+    "status",
+    "synthetic"
+  ],
+  "properties": {
+    "direction": { "enum": ["positive", "negative", "mixed", "uncertain"] },
+    "horizon": { "enum": ["intraday", "one_day", "one_week", "one_month"] },
+    "confidence": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+    "impact_strength": { "type": "number", "minimum": 0, "maximum": 1 },
+    "synthetic": { "const": true }
+  },
+  "additionalProperties": true
+}

@@ -13,10 +13,34 @@ Routes are read-only and mounted under `/api/v1` except health checks.
 - `GET /api/v1/signals/daily`
 - `GET /api/v1/pipeline-runs`
 - `GET /api/v1/stats/overview`
+- `GET /api/v1/sources`
+- `GET /api/v1/source-reviews`
+- `GET /api/v1/source-fetch-attempts`
+- `GET /api/v1/nlp/overview`
+- `GET /api/v1/nlp/models`
+- `GET /api/v1/nlp/evaluations`
+- `GET /api/v1/research/overview`
+- `GET /api/v1/research/exports`
+- `GET /api/v1/cross-asset/overview`
+- `GET /api/v1/assets`
+- `GET /api/v1/assets/{asset_id}`
+- `GET /api/v1/assets/{asset_id}/aliases`
+- `GET /api/v1/assets/{asset_id}/events`
+- `GET /api/v1/asset-relationships`
+- `GET /api/v1/cross-asset/events`
+- `GET /api/v1/event-impacts`
+- `GET /api/v1/signals`
+- `GET /api/v1/signals/{signal_id}`
+- `GET /api/v1/integrations/mt5/readiness`
 
 Article filters: `query`, `source`, `ticker`, `event_type`, `sentiment_label`, `language`, `published_from`, `published_to`, `limit`, and `offset`.
 
 Milestone 0 API contract tests verify all required endpoints, success responses, response shapes, filters, bounded pagination, request IDs, error envelopes, readiness behavior, and timezone-aware timestamps in the memory profile.
+
+Revised Milestone 3A cross-asset routes are read-only. Asset, event-impact, and
+signal listings support bounded pagination and deterministic synthetic data.
+The MT5 readiness route reports only offline capability status; it does not
+contact a terminal or expose broker/account fields.
 
 Errors use:
 

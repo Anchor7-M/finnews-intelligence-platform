@@ -25,6 +25,10 @@ Research-export risks include lookahead leakage, backfill leakage, accidental ar
 - Untrusted model artifact loading.
 - Synthetic benchmark leakage into train/validation/test splits.
 - Misrepresenting synthetic NLP metrics as real-world performance.
+- Cross-asset scope creep into live prices, broker credentials, account access,
+  or execution behavior.
+- Provider-symbol confusion causing incorrect downstream mapping assumptions.
+- Accidental commit of local broker-symbol maps.
 
 ## Mitigations
 
@@ -49,3 +53,8 @@ Research-export risks include lookahead leakage, backfill leakage, accidental ar
   only hash-verified local artifacts under that root, commits only synthetic
   benchmark/report data, validates split leakage, and labels every metric as
   synthetic-only.
+- Revised Milestone 3A uses canonical asset IDs, namespace-specific aliases,
+  offline symbol-map validation, read-only API/CLI surfaces, ignored
+  `.finnews-market-signals/`, ignored local symbol maps, readiness checks, and a
+  trading-surface audit. The current codebase contains no terminal adapter, no
+  credentials, no account access, and no execution path.

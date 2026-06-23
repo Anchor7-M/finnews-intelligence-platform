@@ -514,6 +514,205 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     def research_feature_catalog() -> dict[str, object]:
         return cast(dict[str, object], build_static_payload(repository)["research-feature-catalog"])
 
+    @app.get("/api/v1/assets")
+    def assets(
+        asset_class: str | None = None,
+        region: str | None = None,
+        venue: str | None = None,
+        currency: str | None = None,
+        active: bool | None = None,
+        limit: int = Query(default=50, ge=1, le=100),
+        offset: int = Query(default=0, ge=0),
+    ) -> dict[str, object]:
+        rows = cast(list[dict[str, object]], build_static_payload(repository)["assets"])
+        filtered: list[dict[str, object]] = []
+        for row in rows:
+            if asset_class and row["asset_class"] != asset_class:
+                continue
+            if region and row["country_region"] != region:
+                continue
+            if venue and row.get("home_venue") != venue:
+                continue
+            if currency and currency not in {row.get("base_currency"), row.get("quote_currency")}:
+                continue
+            if active is not None and (row["status"] == "active") is not active:
+                continue
+            filtered.append(row)
+        return {
+            "items": filtered[offset : offset + limit],
+            "total": len(filtered),
+            "limit": limit,
+            "offset": offset,
+        }
+
+    @app.get("/api/v1/assets/{asset_id}")
+    def asset_detail(asset_id: str) -> dict[str, object]:
+        rows = cast(list[dict[str, object]], build_static_payload(repository)["assets"])
+        for row in rows:
+            if row["asset_id"] == asset_id:
+                return row
+        raise NotFoundError(f"asset {asset_id} not found")
+
+    @app.get("/api/v1/assets/{asset_id}/aliases")
+    def asset_aliases(asset_id: str) -> list[dict[str, object]]:
+        asset_detail(asset_id)
+        rows = cast(list[dict[str, object]], build_static_payload(repository)["asset-aliases"])
+        return [row for row in rows if row["asset_id"] == asset_id]
+
+    @app.get("/api/v1/assets/{asset_id}/events")
+    def asset_events(asset_id: str) -> dict[str, object]:
+        asset_detail(asset_id)
+        payload = build_static_payload(repository)
+        impacts = [
+            row
+            for row in cast(list[dict[str, object]], payload["event-impacts"])
+            if row["asset_id"] == asset_id
+        ]
+        events_by_id = {
+            str(row["event_id"]): row
+            for row in cast(list[dict[str, object]], payload["cross-asset-events"])
+        }
+        return {
+            "asset_id": asset_id,
+            "items": [
+                {"event": events_by_id.get(str(row["event_id"])), "impact": row} for row in impacts
+            ],
+        }
+
+    @app.get("/api/v1/asset-relationships")
+    def asset_relationships() -> list[dict[str, object]]:
+        return cast(
+            list[dict[str, object]], build_static_payload(repository)["asset-relationships"]
+        )
+
+    @app.get("/api/v1/cross-asset/events")
+    def cross_asset_events() -> list[dict[str, object]]:
+        return cast(list[dict[str, object]], build_static_payload(repository)["cross-asset-events"])
+
+    @app.get("/api/v1/event-impacts")
+    def event_impacts(
+        asset_class: str | None = None,
+        event_family: str | None = None,
+        direction: str | None = None,
+        horizon: str | None = None,
+        provider: str | None = None,
+        status: str | None = None,
+        active: bool | None = None,
+        date_from: date | None = None,
+        date_to: date | None = None,
+        limit: int = Query(default=50, ge=1, le=200),
+        offset: int = Query(default=0, ge=0),
+    ) -> dict[str, object]:
+        payload = build_static_payload(repository)
+        assets_by_id = {
+            str(row["asset_id"]): row for row in cast(list[dict[str, object]], payload["assets"])
+        }
+        events_by_id = {
+            str(row["event_id"]): row
+            for row in cast(list[dict[str, object]], payload["cross-asset-events"])
+        }
+        rows = cast(list[dict[str, object]], payload["event-impacts"])
+        filtered: list[dict[str, object]] = []
+        for row in rows:
+            asset = assets_by_id[str(row["asset_id"])]
+            event = events_by_id[str(row["event_id"])]
+            cutoff_day = date.fromisoformat(str(row["information_cutoff_at"])[:10])
+            is_active = row["status"] == "active"
+            if asset_class and asset["asset_class"] != asset_class:
+                continue
+            if event_family and event["event_family"] != event_family:
+                continue
+            if direction and row["direction"] != direction:
+                continue
+            if horizon and row["horizon"] != horizon:
+                continue
+            if provider and row["provider"] != provider:
+                continue
+            if status and row["status"] != status:
+                continue
+            if active is not None and is_active is not active:
+                continue
+            if date_from and cutoff_day < date_from:
+                continue
+            if date_to and cutoff_day > date_to:
+                continue
+            filtered.append(
+                {
+                    **row,
+                    "asset_class": asset["asset_class"],
+                    "event_family": event["event_family"],
+                }
+            )
+        return {
+            "items": filtered[offset : offset + limit],
+            "total": len(filtered),
+            "limit": limit,
+            "offset": offset,
+        }
+
+    @app.get("/api/v1/signals")
+    def market_signals(
+        asset_class: str | None = None,
+        direction: str | None = None,
+        horizon: str | None = None,
+        provider: str | None = None,
+        status: str | None = None,
+        active: bool | None = None,
+        date_from: date | None = None,
+        date_to: date | None = None,
+        limit: int = Query(default=50, ge=1, le=100),
+        offset: int = Query(default=0, ge=0),
+    ) -> dict[str, object]:
+        payload = build_static_payload(repository)
+        assets_by_id = {
+            str(row["asset_id"]): row for row in cast(list[dict[str, object]], payload["assets"])
+        }
+        rows = cast(list[dict[str, object]], payload["market-signals"])
+        filtered: list[dict[str, object]] = []
+        for row in rows:
+            asset = assets_by_id[str(row["asset_id"])]
+            cutoff_day = date.fromisoformat(str(row["information_cutoff_at"])[:10])
+            is_active = row["status"] not in {"expired", "rejected"}
+            if asset_class and asset["asset_class"] != asset_class:
+                continue
+            if direction and row["direction"] != direction:
+                continue
+            if horizon and row["horizon"] != horizon:
+                continue
+            if provider and row["provider"] != provider:
+                continue
+            if status and row["status"] != status:
+                continue
+            if active is not None and is_active is not active:
+                continue
+            if date_from and cutoff_day < date_from:
+                continue
+            if date_to and cutoff_day > date_to:
+                continue
+            filtered.append({**row, "asset_class": asset["asset_class"]})
+        return {
+            "items": filtered[offset : offset + limit],
+            "total": len(filtered),
+            "limit": limit,
+            "offset": offset,
+        }
+
+    @app.get("/api/v1/signals/{signal_id}")
+    def market_signal_detail(signal_id: str) -> dict[str, object]:
+        rows = cast(list[dict[str, object]], build_static_payload(repository)["market-signals"])
+        for row in rows:
+            if row["signal_id"] == signal_id:
+                return row
+        raise NotFoundError(f"signal {signal_id} not found")
+
+    @app.get("/api/v1/cross-asset/overview")
+    def cross_asset_overview() -> dict[str, object]:
+        return cast(dict[str, object], build_static_payload(repository)["cross-asset-overview"])
+
+    @app.get("/api/v1/integrations/mt5/readiness")
+    def mt5_readiness() -> dict[str, object]:
+        return cast(dict[str, object], build_static_payload(repository)["mt5-readiness"])
+
     return app
 
 
