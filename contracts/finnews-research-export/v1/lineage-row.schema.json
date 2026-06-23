@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FinNews research lineage row v1",
+  "type": "object",
+  "required": [
+    "lineage_row_id",
+    "feature_row_key",
+    "contract_version",
+    "calendar_id",
+    "calendar_version",
+    "canonical_article_id",
+    "source_id",
+    "information_available_at",
+    "inclusion_reason",
+    "synthetic_data"
+  ],
+  "properties": {
+    "lineage_row_id": { "type": "string" },
+    "canonical_article_id": { "type": ["string", "null"] },
+    "source_published_at": { "type": ["string", "null"], "format": "date-time" },
+    "first_seen_at": { "type": ["string", "null"], "format": "date-time" },
+    "information_available_at": { "type": ["string", "null"], "format": "date-time" },
+    "decision_cutoff_at": { "type": ["string", "null"], "format": "date-time" },
+    "inclusion_reason": { "type": "string" }
+  },
+  "additionalProperties": true
+}

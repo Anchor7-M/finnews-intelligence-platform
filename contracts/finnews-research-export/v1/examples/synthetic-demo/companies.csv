@@ -1,0 +1,13 @@
+company_id,ticker,exchange,legal_name,short_name,sector,active,synthetic_data
+19bf6cb4-70d7-570c-bdf8-955fef8fccf6,ALP,SYN,Alpine Robotics Holdings Ltd.,Alpine Robotics,Industrial Automation,true,true
+bf5a21dd-2604-58b9-9425-3ce009b267a4,BRC,SYN,BrightRiver Cloud Systems Inc.,BrightRiver Cloud,Cloud Infrastructure,true,true
+cc2a8ca8-fb5c-5e45-b4ec-3b76efc8ed33,ECO,SYN,EcoMosaic Water Systems,EcoMosaic,Water Technology,true,true
+f51fcd26-e669-52ee-bcf9-1ea4e119b985,HLS,SYN,HelioStorage Energy Group,HelioStorage,Energy Storage,true,true
+21b519c1-7166-5f14-8e4e-1d2f445cf18a,LUM,SYN,LumenBridge Optics Ltd.,LumenBridge,Optical Equipment,true,true
+3e0633d6-dfe7-559b-b544-9136fb54ba72,MTR,SYN,MetroSeed Foods Inc.,MetroSeed Foods,Consumer Staples,true,true
+2eb86261-8fbc-5c3a-89cb-839e282cc979,NVM,SYN,NovaMed Devices Co.,NovaMed,Medical Devices,true,true
+72be6233-aaeb-5412-97a7-2dfa0352a3d1,ORC,SYN,Orchid Circuit Materials Ltd.,Orchid Circuit,Electronic Materials,true,true
+dd660a5e-ff91-5909-99f9-d633d8435085,PRM,SYN,PrimeVale Logistics SA,PrimeVale,Logistics,true,true
+8e77e32a-194f-591f-bb77-c47a82f85dd1,QNT,SYN,QuantHarbor Analytics PLC,QuantHarbor,Research Software,true,true
+5a10eb3b-ede3-535f-ba67-42687fb14362,SKY,SYN,SkyForge Components Co.,SkyForge,Aerospace Components,true,true
+23b5ec2e-ee29-54c2-9dd5-a61c56109d62,VTL,SYN,VectorLoom Textiles Group,VectorLoom,Advanced Textiles,true,true

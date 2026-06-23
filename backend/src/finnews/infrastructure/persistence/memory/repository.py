@@ -20,6 +20,11 @@ from finnews.domain.entities import (
     ObservationDisposition,
     PipelineRun,
     RawArticle,
+    ResearchCalendar,
+    ResearchExportRun,
+    ResearchFeatureRow,
+    ResearchLineageRow,
+    ResearchSession,
     Source,
     SourceDefinition,
     SourceFetchAttempt,
@@ -50,6 +55,11 @@ class MemoryNewsRepository:
         self.digests: dict[date, DailyDigest] = {}
         self.signals: dict[tuple[date, UUID], DailyCompanySignal] = {}
         self.pipeline_runs: list[PipelineRun] = []
+        self.research_calendars: dict[tuple[str, str], ResearchCalendar] = {}
+        self.research_sessions: dict[tuple[str, str], list[ResearchSession]] = {}
+        self.research_exports: dict[str, ResearchExportRun] = {}
+        self.research_feature_rows: dict[str, ResearchFeatureRow] = {}
+        self.research_lineage_rows: dict[str, ResearchLineageRow] = {}
 
     def upsert_source(self, source: Source) -> Source:
         existing = self.sources.get(source.source_key)
@@ -257,3 +267,79 @@ class MemoryNewsRepository:
 
     def get_digest(self, digest_date: date) -> DailyDigest | None:
         return self.digests.get(digest_date)
+
+    def upsert_research_calendar(
+        self, calendar: ResearchCalendar, sessions: Sequence[ResearchSession]
+    ) -> ResearchCalendar:
+        key = (calendar.calendar_id, calendar.calendar_version)
+        self.research_calendars[key] = calendar
+        self.research_sessions[key] = sorted(sessions, key=lambda item: item.sequence)
+        return calendar
+
+    def get_research_calendar(self, calendar_id: str) -> ResearchCalendar | None:
+        matches = [
+            item
+            for (stored_id, _), item in self.research_calendars.items()
+            if stored_id == calendar_id
+        ]
+        return sorted(matches, key=lambda item: item.calendar_version)[-1] if matches else None
+
+    def list_research_calendars(self) -> list[ResearchCalendar]:
+        return sorted(
+            self.research_calendars.values(),
+            key=lambda item: (item.calendar_id, item.calendar_version),
+        )
+
+    def list_research_sessions(
+        self, calendar_id: str, calendar_version: str | None = None
+    ) -> list[ResearchSession]:
+        rows: list[ResearchSession] = []
+        for (stored_id, stored_version), sessions in self.research_sessions.items():
+            if stored_id == calendar_id and (
+                calendar_version is None or stored_version == calendar_version
+            ):
+                rows.extend(sessions)
+        return sorted(rows, key=lambda item: (item.calendar_id, item.sequence))
+
+    def upsert_research_export(
+        self,
+        export_run: ResearchExportRun,
+        feature_rows: Sequence[ResearchFeatureRow],
+        lineage_rows: Sequence[ResearchLineageRow],
+    ) -> ResearchExportRun:
+        self.research_exports[export_run.export_id] = export_run
+        for feature_row in feature_rows:
+            self.research_feature_rows[feature_row.logical_key] = feature_row
+        for lineage_row in lineage_rows:
+            self.research_lineage_rows[lineage_row.lineage_row_id] = lineage_row
+        return export_run
+
+    def get_research_export(self, export_id: str) -> ResearchExportRun | None:
+        return self.research_exports.get(export_id)
+
+    def list_research_exports(self) -> list[ResearchExportRun]:
+        return sorted(self.research_exports.values(), key=lambda item: item.export_id)
+
+    def list_research_feature_rows(
+        self,
+        export_id: str | None = None,
+        ticker: str | None = None,
+        window_sessions: int | None = None,
+    ) -> list[ResearchFeatureRow]:
+        rows = list(self.research_feature_rows.values())
+        if export_id:
+            rows = [row for row in rows if row.export_id == export_id]
+        if ticker:
+            rows = [row for row in rows if row.ticker == ticker.upper()]
+        if window_sessions:
+            rows = [row for row in rows if row.window_sessions == window_sessions]
+        return sorted(rows, key=lambda item: item.logical_key)
+
+    def get_research_lineage_row(self, lineage_row_id: str) -> ResearchLineageRow | None:
+        return self.research_lineage_rows.get(lineage_row_id)
+
+    def list_research_lineage_rows(self, export_id: str | None = None) -> list[ResearchLineageRow]:
+        rows = list(self.research_lineage_rows.values())
+        if export_id:
+            rows = [row for row in rows if row.export_id == export_id]
+        return sorted(rows, key=lambda item: item.lineage_row_id)

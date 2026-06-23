@@ -349,6 +349,89 @@ class NlpEvaluationRun:
 
 
 @dataclass
+class ResearchCalendar:
+    calendar_id: str
+    calendar_version: str
+    timezone: str
+    calendar_hash: str
+    provenance: dict[str, object]
+    synthetic: bool = True
+    id: UUID = field(default_factory=new_id)
+
+
+@dataclass
+class ResearchSession:
+    calendar_id: str
+    calendar_version: str
+    session_date: date
+    open_at: datetime
+    break_start_at: datetime
+    break_end_at: datetime
+    close_at: datetime
+    sequence: int
+    special_session: bool = False
+    id: UUID = field(default_factory=new_id)
+
+
+@dataclass
+class ResearchExportRun:
+    export_id: str
+    contract_version: str
+    config_hash: str
+    calendar_id: str
+    calendar_version: str
+    calendar_hash: str
+    cutoff_policy: str
+    windows: list[int]
+    company_universe_hash: str
+    package_hash: str
+    status: str
+    counts: dict[str, object]
+    quality_summary: dict[str, object]
+    leakage_status: str
+    leakage_hash: str
+    synthetic: bool = True
+    id: UUID = field(default_factory=new_id)
+    created_at: datetime = field(default_factory=utc_now)
+
+
+@dataclass
+class ResearchFeatureRow:
+    export_id: str
+    logical_key: str
+    session_date: date
+    decision_cutoff_at: datetime
+    ticker: str
+    company_id: UUID
+    window_sessions: int
+    feature_schema_version: str
+    features: dict[str, object]
+    lineage_row_id: str
+    synthetic: bool = True
+    id: UUID = field(default_factory=new_id)
+
+
+@dataclass
+class ResearchLineageRow:
+    export_id: str
+    lineage_row_id: str
+    feature_row_key: str
+    canonical_article_id: UUID | None
+    source_id: str | None
+    company_id: UUID | None
+    information_available_at: datetime | None
+    decision_cutoff_at: datetime | None
+    inclusion_reason: str
+    event_provider: str | None = None
+    event_model_version: str | None = None
+    sentiment_provider: str | None = None
+    sentiment_model_version: str | None = None
+    payload: dict[str, object] = field(default_factory=dict)
+    synthetic: bool = True
+    id: UUID = field(default_factory=new_id)
+
+
+@dataclass
 class PipelineRun:
     status: RunStatus
     started_at: datetime

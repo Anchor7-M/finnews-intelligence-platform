@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FinNews research export manifest v1",
+  "type": "object",
+  "required": [
+    "contract_name",
+    "contract_version",
+    "export_id",
+    "calendar_id",
+    "calendar_version",
+    "calendar_hash",
+    "cutoff_policy",
+    "windows",
+    "files",
+    "package_content_hash",
+    "synthetic_data",
+    "not_investment_advice"
+  ],
+  "properties": {
+    "contract_name": { "const": "finnews-research-export-v1" },
+    "contract_version": { "const": "1.0.0" },
+    "export_id": { "type": "string" },
+    "calendar_id": { "type": "string" },
+    "calendar_version": { "type": "string" },
+    "calendar_hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "cutoff_policy": { "enum": ["pre_open_15m", "session_close"] },
+    "windows": { "type": "array", "items": { "type": "integer", "minimum": 1 } },
+    "files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["path", "sha256", "size_bytes"],
+        "properties": {
+          "path": { "type": "string" },
+          "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+          "size_bytes": { "type": "integer", "minimum": 0 }
+        }
+      }
+    },
+    "package_content_hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "synthetic_data": { "type": "boolean" },
+    "not_investment_advice": { "type": "boolean" }
+  },
+  "additionalProperties": true
+}

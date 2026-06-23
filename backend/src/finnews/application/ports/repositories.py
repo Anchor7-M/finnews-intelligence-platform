@@ -21,6 +21,11 @@ from finnews.domain.entities import (
     ObservationDisposition,
     PipelineRun,
     RawArticle,
+    ResearchCalendar,
+    ResearchExportRun,
+    ResearchFeatureRow,
+    ResearchLineageRow,
+    ResearchSession,
     Source,
     SourceDefinition,
     SourceFetchAttempt,
@@ -78,6 +83,32 @@ class NewsRepository(Protocol):
     def get_raw_article_by_id(self, raw_article_id: UUID) -> RawArticle | None: ...
     def get_company_by_ticker(self, ticker: str) -> Company | None: ...
     def get_digest(self, digest_date: date) -> DailyDigest | None: ...
+    def upsert_research_calendar(
+        self, calendar: ResearchCalendar, sessions: Sequence[ResearchSession]
+    ) -> ResearchCalendar: ...
+    def get_research_calendar(self, calendar_id: str) -> ResearchCalendar | None: ...
+    def list_research_calendars(self) -> list[ResearchCalendar]: ...
+    def list_research_sessions(
+        self, calendar_id: str, calendar_version: str | None = None
+    ) -> list[ResearchSession]: ...
+    def upsert_research_export(
+        self,
+        export_run: ResearchExportRun,
+        feature_rows: Sequence[ResearchFeatureRow],
+        lineage_rows: Sequence[ResearchLineageRow],
+    ) -> ResearchExportRun: ...
+    def get_research_export(self, export_id: str) -> ResearchExportRun | None: ...
+    def list_research_exports(self) -> list[ResearchExportRun]: ...
+    def list_research_feature_rows(
+        self,
+        export_id: str | None = None,
+        ticker: str | None = None,
+        window_sessions: int | None = None,
+    ) -> list[ResearchFeatureRow]: ...
+    def get_research_lineage_row(self, lineage_row_id: str) -> ResearchLineageRow | None: ...
+    def list_research_lineage_rows(
+        self, export_id: str | None = None
+    ) -> list[ResearchLineageRow]: ...
 
 
 class SourceAdapter(Protocol):

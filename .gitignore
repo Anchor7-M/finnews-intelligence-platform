@@ -239,6 +239,7 @@ reports/*
 !reports/nlp/**
 smoke-reports/
 .finnews-artifacts/
+.finnews-research-exports/
 tmp/
 *.db
 *.sqlite

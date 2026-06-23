@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FinNews research calendar row v1",
+  "type": "object",
+  "required": [
+    "calendar_id",
+    "calendar_version",
+    "timezone",
+    "session_date",
+    "open_at",
+    "break_start_at",
+    "break_end_at",
+    "close_at",
+    "sequence"
+  ],
+  "properties": {
+    "session_date": { "type": "string", "format": "date" },
+    "open_at": { "type": "string", "format": "date-time" },
+    "break_start_at": { "type": "string", "format": "date-time" },
+    "break_end_at": { "type": "string", "format": "date-time" },
+    "close_at": { "type": "string", "format": "date-time" },
+    "sequence": { "type": "integer", "minimum": 1 },
+    "special_session": { "type": "boolean" }
+  },
+  "additionalProperties": false
+}
