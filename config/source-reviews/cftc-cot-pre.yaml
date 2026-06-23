@@ -1,0 +1,47 @@
+source_id: cftc-cot-pre
+review_schema_version: m1b-v1
+review_decision: approved
+review_scope: Engineering usage-policy review for CFTC Commitments of Traders PRE public reporting observations.
+reviewed_at: "2026-06-24"
+reviewer: local-review
+official_owner: U.S. Commodity Futures Trading Commission
+official_source: CFTC Commitments of Traders public reporting
+documentation_url: https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm
+terms_or_policy_url: https://www.cftc.gov/PrivacyandSecurityPolicy/index.htm
+access_cost: free
+authentication_requirement: No token is stored or required for the configured public COT PRE profile.
+allowed_methods: ["GET", "HEAD"]
+allowed_hostnames: ["publicreporting.cftc.gov"]
+documented_endpoint_patterns:
+  - 'https://publicreporting\.cftc\.gov/resource/6dca-aqww\.json'
+rate_limit_evidence: CFTC publishes public COT reports. This project uses a disabled-by-default profile, a bounded five-row smoke limit, and conservative local-only execution.
+user_agent_requirement: No project-specific User-Agent requirement was identified; the project sends a clear local research User-Agent.
+content_available:
+  - report dates
+  - market/exchange names
+  - CFTC contract market codes
+  - open interest and trader category fields
+content_to_store:
+  - report date and market identifiers
+  - normalized dimensions
+  - numeric positioning values as Decimal
+  - provenance and revision metadata
+content_not_to_store:
+  - raw response body
+  - assumed universal primary keys
+  - live smoke values in committed files
+redistribution_assessment: Public official observations are used for local research. This review is not legal advice and does not certify redistribution rights.
+attribution_requirement: Attribute CFTC as the official source and keep official links in source metadata.
+robots_or_automated_access_notes: No page scraping or bulk crawling is performed; only documented/public reporting endpoints are eligible.
+privacy_notes: No personal data or local credential is required.
+known_risks:
+  - COT datasets lack one universal primary key across all rows and formats.
+  - Market names and code fields can change and require conservative logical keys.
+live_smoke_status: not_run
+live_smoke_checked_at: null
+evidence_checked_at: "2026-06-24"
+evidence_urls:
+  - https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm
+  - https://www.cftc.gov/PrivacyandSecurityPolicy/index.htm
+review_notes: Approved for disabled-by-default COT PRE observations with explicit logical-key construction. Not legal advice.
+source_config_sha256: 8e7834d6a3de575520d69904192e4a9dda18d7c55d5b59ddd56feae7bb2fbb7f

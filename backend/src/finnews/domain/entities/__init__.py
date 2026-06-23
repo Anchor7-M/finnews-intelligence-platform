@@ -121,6 +121,11 @@ class SourceDefinition:
     user_agent_env_var: str | None = None
     user_agent_template: str | None = None
     max_items_per_smoke: int = 5
+    http_method: str = "GET"
+    request_body_template: dict[str, object] = field(default_factory=dict)
+    required_local_env_vars: list[str] = field(default_factory=list)
+    pagination_strategy: str | None = None
+    dataset_profiles: dict[str, dict[str, object]] = field(default_factory=dict)
 
     @property
     def fetch_allowed(self) -> bool:

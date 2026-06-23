@@ -82,6 +82,10 @@ source_config_sha256: {digest}
 """
 
 
+def post_review_yaml(digest: str) -> str:
+    return review_yaml(digest).replace('allowed_methods: ["GET", "HEAD"]', 'allowed_methods: ["POST"]')
+
+
 def write_review(tmp_path: Path, digest: str, *, text: str | None = None) -> Path:
     review_dir = tmp_path / "reviews"
     review_dir.mkdir()
@@ -94,6 +98,15 @@ def test_valid_review_integrity(tmp_path: Path) -> None:
     review_dir = write_review(tmp_path, digest)
     sources = load_source_definitions(source_dir)
     reviews = load_source_reviews(review_dir)
+    assert validate_source_review_integrity(sources, reviews) == ["reviewed-rss"]
+
+
+def test_review_schema_allows_documented_post_method(tmp_path: Path) -> None:
+    source_dir, digest = write_source(tmp_path)
+    review_dir = write_review(tmp_path, digest, text=post_review_yaml(digest))
+    sources = load_source_definitions(source_dir)
+    reviews = load_source_reviews(review_dir)
+    assert reviews[0].allowed_methods == ["POST"]
     assert validate_source_review_integrity(sources, reviews) == ["reviewed-rss"]
 
 

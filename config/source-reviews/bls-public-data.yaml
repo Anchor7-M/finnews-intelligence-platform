@@ -1,0 +1,47 @@
+source_id: bls-public-data
+review_schema_version: m1b-v1
+review_decision: approved
+review_scope: Engineering usage-policy review for BLS Public Data API economic series metadata and observations.
+reviewed_at: "2026-06-24"
+reviewer: local-review
+official_owner: U.S. Bureau of Labor Statistics
+official_source: BLS Public Data API
+documentation_url: https://www.bls.gov/developers/
+terms_or_policy_url: https://www.bls.gov/developers/
+access_cost: free
+authentication_requirement: BLS v1 public data requests require no registration; v2 registration key use is optional and local-only through FINNEWS_BLS_API_KEY.
+allowed_methods: ["GET", "POST", "HEAD"]
+allowed_hostnames: ["api.bls.gov"]
+documented_endpoint_patterns:
+  - 'https://api\.bls\.gov/publicAPI/v2/timeseries/data/'
+rate_limit_evidence: BLS documents public API access and separate v1/v2 behavior. The project uses disabled-by-default configs, bounded local smoke, and a six-hour minimum interval.
+user_agent_requirement: No project-specific BLS User-Agent requirement was identified; the project sends a clear local research User-Agent.
+content_available:
+  - series identifiers
+  - observation periods
+  - numeric values
+  - footnotes
+content_to_store:
+  - series ID and dataset profile
+  - period and normalized dimensions
+  - numeric value as Decimal
+  - footnote/provenance metadata
+  - revision metadata derived by the project
+content_not_to_store:
+  - raw response body
+  - API key value
+  - unrelated series data outside configured profiles
+redistribution_assessment: Metadata and numeric observations are stored for local research. This engineering review is not legal advice and does not certify redistribution rights.
+attribution_requirement: Attribute BLS as the official source and keep official documentation links in source metadata.
+robots_or_automated_access_notes: No page scraping or bulk crawling is performed; only documented API endpoints are eligible.
+privacy_notes: Optional FINNEWS_BLS_API_KEY stays local and is never persisted, printed, logged, or committed.
+known_risks:
+  - API rate rules and registration behavior may change.
+  - Series definitions and seasonal-adjustment metadata must be reviewed before expansion.
+live_smoke_status: not_run
+live_smoke_checked_at: null
+evidence_checked_at: "2026-06-24"
+evidence_urls:
+  - https://www.bls.gov/developers/
+review_notes: Approved for a disabled-by-default official numeric data pilot using synthetic fixtures and mocked automated tests. Not legal advice.
+source_config_sha256: a21bfe8e4cca3749c8ef2a54751f8088e16d8ac6f6694e8825006715e1765c49

@@ -1,0 +1,48 @@
+source_id: federal-register-api
+review_schema_version: m1b-v1
+review_decision: approved
+review_scope: Engineering usage-policy review for FederalRegister.gov API regulatory document metadata and source-provided abstracts.
+reviewed_at: "2026-06-24"
+reviewer: local-review
+official_owner: Office of the Federal Register and U.S. Government Publishing Office
+official_source: FederalRegister.gov API
+documentation_url: https://www.federalregister.gov/developers/documentation/api/v1
+terms_or_policy_url: https://www.federalregister.gov/policy/privacy
+access_cost: free
+authentication_requirement: No API key is required for the configured metadata profile.
+allowed_methods: ["GET", "HEAD"]
+allowed_hostnames: ["www.federalregister.gov"]
+documented_endpoint_patterns:
+  - 'https://www\.federalregister\.gov/api/v1/documents\.json'
+rate_limit_evidence: FederalRegister.gov documents its API. This project uses disabled-by-default bounded metadata requests and does not download PDFs.
+user_agent_requirement: No project-specific User-Agent requirement was identified; the project sends a clear local research User-Agent.
+content_available:
+  - document number
+  - title
+  - source-provided abstract
+  - publication date
+  - agency, CFR, RIN, HTML, and PDF links
+content_to_store:
+  - metadata fields
+  - source-provided abstract
+  - official HTML and PDF URLs
+  - provenance and derived event metadata
+content_not_to_store:
+  - PDF files
+  - full Federal Register document body
+  - raw response body
+redistribution_assessment: Metadata and source-provided abstracts are stored for local research. This review is not legal advice and does not certify redistribution rights.
+attribution_requirement: Attribute FederalRegister.gov and keep official links. FederalRegister.gov is not the official legal edition.
+robots_or_automated_access_notes: No page scraping, PDF download, or document-body harvesting is performed.
+privacy_notes: No personal data or local credential is required.
+known_risks:
+  - FederalRegister.gov is informational and not the official legal edition.
+  - Regulatory metadata can change and must retain point-in-time provenance.
+live_smoke_status: not_run
+live_smoke_checked_at: null
+evidence_checked_at: "2026-06-24"
+evidence_urls:
+  - https://www.federalregister.gov/developers/documentation/api/v1
+  - https://www.federalregister.gov/policy/privacy
+review_notes: Approved for disabled-by-default regulatory metadata and abstract ingestion; no PDF download or full-body storage. Not legal advice.
+source_config_sha256: 38c8b70548279fc2fb843fd42eeaea1e86919f92b8049a5efba48729f881460c
