@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Implemented Milestone 3C market-reaction validation with `finnews-market-bars-v1`, strict local bar-file validation, deterministic synthetic scenarios, event-study labels, signal-quality metrics, leakage diagnostics, API/CLI/Vue/static-demo surfaces, and PostgreSQL metadata tables.
+- Implemented Milestone 3B official cross-asset source expansion with reviewed source metadata, synthetic official observations and revisions, release events, regulatory metadata, source audits, API/CLI/Vue/static-demo surfaces, and PostgreSQL metadata tables.
 - Implemented revised Milestone 3A cross-asset foundation with canonical asset registry, provider/broker alias schema, event-to-asset impact hypotheses, research signal candidates, versioned local signal contract, read-only API/CLI/Vue/static-demo surfaces, PostgreSQL metadata tables, and MT5 readiness boundary checks.
 - Implemented Milestone 3A point-in-time research export contract with synthetic market calendar, dense rolling news-factor package, safe lineage, leakage audit, read-only API/CLI/Vue/static-demo surfaces, and PostgreSQL metadata tables.
 - Implemented Milestone 2A synthetic bilingual NLP evaluation lab with deterministic benchmark generation, leakage checks, scikit-learn baselines, calibration/abstention analysis, trusted local artifact manifests, model-registry metadata, read-only API, CLI, Vue dashboard, and static demo files.

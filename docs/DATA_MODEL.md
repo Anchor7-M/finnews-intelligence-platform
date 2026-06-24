@@ -88,3 +88,32 @@ Revised Milestone 3A synthetic fixture counts:
 - 100 cross-asset events.
 - 240 impact hypotheses.
 - 80 signal candidates.
+
+Milestone 3C adds market-reaction validation metadata tables:
+
+- `market_data_packages`
+- `market_bar_series`
+- `market_bars`
+- `market_bar_revisions`
+- `market_reaction_studies`
+- `market_reaction_labels`
+- `signal_quality_runs`
+- `signal_quality_metrics`
+- `signal_error_cases`
+
+These tables persist package hashes, bar-series identity, point-in-time bar
+timestamps, append-only bar revisions, event-study windows, reaction labels,
+quality metrics, error-analysis cases, JSONB metadata, UUID primary keys, and
+timezone-aware timestamps. They do not store raw imported files, local paths,
+credentials, account identifiers, broker state, order fields, or full market
+data vendor payloads.
+
+Milestone 3C synthetic counts:
+
+- 3 synthetic scenarios.
+- 24 assets per scenario.
+- 90 sessions per scenario.
+- 2,160 bars per scenario and 6,480 total generated bars.
+- 645 event-study records and 645 reaction labels.
+- 132 signal-quality metric rows.
+- 72 deterministic error-analysis cases.

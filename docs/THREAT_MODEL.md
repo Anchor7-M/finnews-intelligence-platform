@@ -29,6 +29,8 @@ Research-export risks include lookahead leakage, backfill leakage, accidental ar
   or execution behavior.
 - Provider-symbol confusion causing incorrect downstream mapping assumptions.
 - Accidental commit of local broker-symbol maps.
+- Lookahead leakage from future bars, future-return sentinel columns, local
+  import path exposure, and overclaiming synthetic market-reaction diagnostics.
 
 ## Mitigations
 
@@ -58,3 +60,8 @@ Research-export risks include lookahead leakage, backfill leakage, accidental ar
   `.finnews-market-signals/`, ignored local symbol maps, readiness checks, and a
   trading-surface audit. The current codebase contains no terminal adapter, no
   credentials, no account access, and no execution path.
+- Milestone 3C validates local market-bar files with strict schemas, UTC
+  timestamps, monotonic/duplicate checks, size bounds, forbidden-field checks,
+  point-in-time `available_at` logic, null/planted/regime synthetic scenarios,
+  leakage diagnostics, read-only API routes, and bounded static bar samples.
+  Local import paths and raw user market-data files are not committed.

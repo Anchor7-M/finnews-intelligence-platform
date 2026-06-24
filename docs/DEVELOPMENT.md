@@ -35,6 +35,30 @@ python -m finnews.interfaces.cli.app mt5 validate-symbol-map --path ../config/in
 package validation, symbol-map validation, API/CLI tests, and trading-surface
 audit.
 
+## Market-Reaction Validation
+
+Validate the local market-bar import contract examples with:
+
+```text
+cd backend
+python -m finnews.interfaces.cli.app market-data contract validate --path ../contracts/finnews-market-bars/v1/examples/synthetic-bars.csv
+python -m finnews.interfaces.cli.app market-data contract validate --path ../contracts/finnews-market-bars/v1/examples/synthetic-bars.jsonl
+```
+
+Build and inspect deterministic synthetic scenarios with:
+
+```text
+cd backend
+python -m finnews.interfaces.cli.app market-data build-demo --scenario synthetic-planted-reaction-v1
+python -m finnews.interfaces.cli.app reaction overview
+python -m finnews.interfaces.cli.app reaction evaluate --scenario synthetic-planted-reaction-v1
+python -m finnews.interfaces.cli.app reaction compare --left synthetic-null-reaction-v1 --right synthetic-planted-reaction-v1
+```
+
+`python scripts/dev.py verify-market-reaction` validates the contract examples,
+runs all three synthetic scenarios, exports static-demo JSON samples, runs M3C
+backend tests, runs frontend Vitest once, and checks the static manifest.
+
 ## Lightweight Path
 
 ```text
@@ -48,6 +72,7 @@ python scripts/dev.py verify-sources
 python scripts/dev.py verify-source-reviews
 python scripts/dev.py verify-ml
 python scripts/dev.py verify-cross-asset
+python scripts/dev.py verify-market-reaction
 ```
 
 `verify-lite` runs backend tests with coverage threshold, Ruff, mypy, frontend ESLint, Prettier, TypeScript, Vitest, production build, memory demo, static export validation, and `git diff --check`.
@@ -76,12 +101,12 @@ python scripts/dev.py verify-postgres
 python scripts/dev.py db-down
 ```
 
-`verify-postgres` uses Compose project `finnews_m3r_verify`, starts only the
+`verify-postgres` uses Compose project `finnews_m3c_verify`, starts only the
 `postgres` service from `postgres:16`, waits for health, runs Alembic migration
 and PostgreSQL-marked tests, and always runs:
 
 ```text
-docker compose -p finnews_m3r_verify down --volumes --remove-orphans
+docker compose -p finnews_m3c_verify down --volumes --remove-orphans
 ```
 
 Do not leave Docker, dev servers, or watch processes running.

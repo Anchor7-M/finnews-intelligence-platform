@@ -8,12 +8,14 @@
 - `backend/src/finnews/interfaces`: FastAPI and Typer entrypoints.
 - `frontend`: Vue 3 TypeScript dashboard.
 - `contracts/finnews-market-signal/v1`: versioned local research signal handoff contract.
+- `contracts/finnews-market-bars/v1`: versioned local market-bar import contract examples.
 - `config/integrations`: example-only local integration schemas. Do not commit personal broker config.
 
 ## Commands
 
 - Lightweight verification: `python scripts/dev.py verify-lite`
 - Cross-asset verification: `python scripts/dev.py verify-cross-asset`
+- Market-reaction verification: `python scripts/dev.py verify-market-reaction`
 - Backend tests: `cd backend && python -m pytest`
 - Backend lint/type checks: `cd backend && ruff check . && ruff format --check . && mypy src tests`
 - Frontend checks: `cd frontend && npm run lint && npm run format:check && npm run typecheck && npm run test:unit -- --run && npm run build`
@@ -31,6 +33,8 @@
 - For revised Milestone 3A cross-asset work, keep FinNews product language cross-asset-first. The A-share research export is optional and must not dominate the homepage, architecture, nav, or roadmap.
 - Do not import MT5 client packages, contact a terminal, accept credentials, query account data, or add execution routes in this repository during this milestone.
 - Write local market-signal packages only under ignored `.finnews-market-signals/`.
+- For Milestone 3C market-reaction work, validate only local user-supplied CSV/JSONL bar files or committed synthetic examples; never fetch live prices, store local import paths in tracked output, accept credentials/account fields, or add position/order workflows.
+- Keep static demo market data bounded. Full synthetic bars are generated locally by backend services and should not be committed as a large static JSON dump.
 - Stop any temporary services before handing work back.
 - Update docs when behavior changes.
 

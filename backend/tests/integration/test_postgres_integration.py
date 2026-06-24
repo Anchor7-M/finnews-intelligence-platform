@@ -3,6 +3,7 @@ from __future__ import annotations
 import os
 from collections.abc import Iterator
 from datetime import date
+from decimal import Decimal
 from typing import Any, cast
 
 import pytest
@@ -49,6 +50,12 @@ from finnews.infrastructure.persistence.postgres.models import (
     AssetImpactHypothesisModel,
     AssetModel,
     CompanyModel,
+    MarketBarModel,
+    MarketBarRevisionModel,
+    MarketBarSeriesModel,
+    MarketDataPackageModel,
+    MarketReactionLabelModel,
+    MarketReactionStudyModel,
     MarketSignalCandidateModel,
     OfficialDataReleaseRunModel,
     OfficialDatasetModel,
@@ -59,6 +66,9 @@ from finnews.infrastructure.persistence.postgres.models import (
     RawArticleModel,
     RegulatoryDocumentModel,
     SeriesAssetAssociationModel,
+    SignalErrorCaseModel,
+    SignalQualityMetricModel,
+    SignalQualityRunModel,
     SourceModel,
 )
 from finnews.infrastructure.persistence.postgres.repository import PostgresNewsRepository
@@ -108,6 +118,15 @@ EXPECTED_TABLES = {
     "regulatory_documents",
     "series_asset_associations",
     "official_release_events",
+    "market_data_packages",
+    "market_bar_series",
+    "market_bars",
+    "market_bar_revisions",
+    "market_reaction_studies",
+    "market_reaction_labels",
+    "signal_quality_runs",
+    "signal_quality_metrics",
+    "signal_error_cases",
 }
 EXPECTED_METRICS = {
     "raw_observation_count": 68,
@@ -193,7 +212,9 @@ def test_alembic_upgrade_downgrade_schema_types_constraints_and_indexes(engine: 
     assert EXPECTED_TABLES.isdisjoint(set(inspector.get_table_names()))
 
     command.upgrade(alembic_config(), "head")
-    assert ScriptDirectory.from_config(alembic_config()).get_current_head() == "0006_official_data"
+    assert (
+        ScriptDirectory.from_config(alembic_config()).get_current_head() == "0007_market_reaction"
+    )
     command.current(alembic_config())
 
     inspector = inspect(engine)
@@ -226,6 +247,12 @@ def test_alembic_upgrade_downgrade_schema_types_constraints_and_indexes(engine: 
     assert "ix_official_revisions_available" in {
         item["name"] for item in inspector.get_indexes("official_observation_revisions")
     }
+    assert "ix_market_bars_asset_time" in {
+        item["name"] for item in inspector.get_indexes("market_bars")
+    }
+    assert "ix_market_reaction_labels_scenario" in {
+        item["name"] for item in inspector.get_indexes("market_reaction_labels")
+    }
     assert inspector.get_foreign_keys("article_company_links")
     assert inspector.get_foreign_keys("source_fetch_states")
 
@@ -250,6 +277,7 @@ def test_alembic_upgrade_downgrade_schema_types_constraints_and_indexes(engine: 
         assert ("dimensions", "jsonb", "jsonb") in by_column
         assert ("quality_flags", "jsonb", "jsonb") in by_column
         assert ("provenance", "jsonb", "jsonb") in by_column
+        assert ("metadata", "jsonb", "jsonb") in by_column
         assert ("published_at", "timestamptz", "timestamp with time zone") in by_column
         assert session.execute(text("show server_encoding")).scalar_one() == "UTF8"
         client_encoding = session.execute(text("select current_setting('client_encoding')"))
@@ -442,6 +470,198 @@ def test_postgres_research_export_metadata_parity(settings: Settings) -> None:
     repo.session.commit()
     assert len(repo.list_research_feature_rows(package.export_id)) == 2880
     repo.session.close()
+
+
+@pytest.mark.postgres
+def test_postgres_market_reaction_metadata_jsonb_timezone_and_constraints(
+    settings: Settings,
+) -> None:
+    reset_schema()
+    session = session_for(settings)
+    now = utc_now()
+    package = MarketDataPackageModel(
+        package_id="synthetic-planted-reaction-v1|package",
+        contract_name="finnews-market-bars-v1",
+        contract_version="1.0.0",
+        scenario_id="synthetic-planted-reaction-v1",
+        provider="finnews-synthetic-market-reaction",
+        provider_version="market-reaction-synthetic-v1",
+        asset_count=1,
+        bar_count=1,
+        session_count=1,
+        content_hash="a" * 64,
+        synthetic=True,
+        user_imported=False,
+        live_data=False,
+        metadata_={"no_live_market_data": True},
+    )
+    series = MarketBarSeriesModel(
+        series_id="series-1",
+        package_id=package.package_id,
+        scenario_id=package.scenario_id,
+        asset_id="US-EQ-ALPHA",
+        provider_symbol="ALPHA.DEMO",
+        granularity="daily",
+        timezone="UTC",
+        synthetic=True,
+        metadata_={"source_profile": "synthetic-test"},
+    )
+    bar = MarketBarModel(
+        bar_id="bar-1",
+        series_id=series.series_id,
+        scenario_id=series.scenario_id,
+        asset_id=series.asset_id,
+        session_date=date(2026, 5, 1),
+        bar_start_at=now,
+        bar_end_at=now,
+        available_at=now,
+        current_revision=1,
+        open=Decimal("100.000000"),
+        high=Decimal("101.000000"),
+        low=Decimal("99.000000"),
+        close=Decimal("100.000000"),
+        volume=Decimal("1000.000000"),
+        quote_volume=Decimal("100000.000000"),
+        market_state="calm",
+        synthetic=True,
+        quality_flags=[],
+    )
+    revision = MarketBarRevisionModel(
+        bar_id=bar.bar_id,
+        revision_number=1,
+        first_seen_at=now,
+        available_at=now,
+        open=Decimal("100.000000"),
+        high=Decimal("101.000000"),
+        low=Decimal("99.000000"),
+        close=Decimal("100.000000"),
+        volume=Decimal("1000.000000"),
+        quote_volume=Decimal("100000.000000"),
+        value_hash="b" * 64,
+        quality_flags=[],
+    )
+    study = MarketReactionStudyModel(
+        study_id="study-1",
+        scenario_id=package.scenario_id,
+        signal_id="SIGNAL-1",
+        impact_id="IMPACT-1",
+        asset_id=series.asset_id,
+        event_family="monetary_policy",
+        decision_time=now,
+        reaction_window="one_day",
+        bar_coverage=1,
+        raw_return=Decimal("0.01000000"),
+        benchmark_return=Decimal("0.00100000"),
+        abnormal_return=Decimal("0.00900000"),
+        excluded_reason=None,
+        quality_flags=[],
+        synthetic=True,
+    )
+    label = MarketReactionLabelModel(
+        label_id="label-1",
+        study_id=study.study_id,
+        scenario_id=study.scenario_id,
+        signal_id=study.signal_id,
+        asset_id=study.asset_id,
+        horizon="one_day",
+        label="consistent_positive",
+        threshold_version="m3c-label-threshold-v1",
+        abnormal_return=Decimal("0.00900000"),
+        coverage=1,
+        quality_flags=[],
+        point_in_time_evidence={"bar_available_after_decision": True},
+        synthetic=True,
+    )
+    quality_run = SignalQualityRunModel(
+        run_id="quality-run-1",
+        scenario_id=package.scenario_id,
+        generated_at=now,
+        metric_count=1,
+        content_hash="c" * 64,
+        synthetic=True,
+        metadata_={"leakage_status": "PASS"},
+    )
+    metric = SignalQualityMetricModel(
+        metric_id="metric-1",
+        scenario_id=package.scenario_id,
+        slice_type="scenario",
+        slice_value="all",
+        evaluated_signal_count=1,
+        coverage=Decimal("1.000000"),
+        directional_consistency_rate=Decimal("1.000000"),
+        opposite_rate=Decimal("0.000000"),
+        muted_rate=Decimal("0.000000"),
+        metrics={"information_coefficient": None},
+        synthetic=True,
+    )
+    error_case = SignalErrorCaseModel(
+        error_case_id="error-1",
+        scenario_id=package.scenario_id,
+        signal_id=study.signal_id,
+        asset_id=study.asset_id,
+        event_family=study.event_family,
+        expected_direction="positive",
+        observed_label="consistent_positive",
+        abnormal_return=Decimal("0.00900000"),
+        horizon="one_day",
+        regime="calm",
+        error_category="diagnostic",
+        metadata_={"overclaim_guardrail": "diagnostic only"},
+        synthetic=True,
+    )
+    session.add_all(
+        [
+            package,
+            series,
+            bar,
+            revision,
+            study,
+            label,
+            quality_run,
+            metric,
+            error_case,
+        ]
+    )
+    session.commit()
+
+    assert model_count(session, MarketDataPackageModel) == 1
+    assert model_count(session, MarketBarSeriesModel) == 1
+    assert model_count(session, MarketBarModel) == 1
+    assert model_count(session, MarketBarRevisionModel) == 1
+    assert model_count(session, MarketReactionStudyModel) == 1
+    assert model_count(session, MarketReactionLabelModel) == 1
+    assert model_count(session, SignalQualityRunModel) == 1
+    assert model_count(session, SignalQualityMetricModel) == 1
+    assert model_count(session, SignalErrorCaseModel) == 1
+    stored_package = session.scalar(select(MarketDataPackageModel))
+    assert stored_package is not None
+    assert stored_package.metadata_["no_live_market_data"] is True
+    stored_label = session.scalar(select(MarketReactionLabelModel))
+    assert stored_label is not None
+    assert stored_label.point_in_time_evidence["bar_available_after_decision"]
+
+    session.add(
+        MarketDataPackageModel(
+            package_id=package.package_id,
+            contract_name=package.contract_name,
+            contract_version=package.contract_version,
+            scenario_id=package.scenario_id,
+            provider=package.provider,
+            provider_version=package.provider_version,
+            asset_count=1,
+            bar_count=1,
+            session_count=1,
+            content_hash="d" * 64,
+            synthetic=True,
+            user_imported=False,
+            live_data=False,
+            metadata_={},
+        )
+    )
+    with pytest.raises(IntegrityError):
+        session.flush()
+    session.rollback()
+    session.close()
 
 
 @pytest.mark.postgres

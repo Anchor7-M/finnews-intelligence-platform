@@ -30,19 +30,35 @@ Implemented in this branch: cross-asset product repositioning, canonical asset r
 
 This milestone does not connect to MT5, accept credentials, read account data, or execute trades.
 
-## Revised Future Roadmap
-
 ### Milestone 3B
 
-Cross-asset official-source expansion for macroeconomic releases, energy and commodity information, derivatives and positioning metadata, crypto regulation and exchange-status information, issuer communications, and central-bank communications. Every source remains subject to terms review, rate limits, provenance controls, copyright policy, and disabled-by-default configuration.
+Implemented: cross-asset official-source expansion for macroeconomic releases,
+energy and commodity information, derivatives and positioning metadata, crypto
+regulation and exchange-status information, issuer communications, and
+central-bank communications. It added source reviews, synthetic point-in-time
+official observations, revisions, release events, regulatory metadata,
+asset-series associations, API/CLI/static/frontend surfaces, and PostgreSQL
+metadata. Every real source remains subject to terms review, rate limits,
+provenance controls, copyright policy, and disabled-by-default configuration.
 
 ### Milestone 3C
 
-Signal research and validation: event-study methodology, market-reaction labels from user-owned or properly licensed data, walk-forward evaluation, false-positive analysis, asset-class slices, regime slices, confidence, and coverage. No automatic execution.
+Implemented: offline signal research and validation with a versioned local
+market-bar import contract, deterministic synthetic market scenarios,
+point-in-time event studies, abnormal-return labels, signal-quality metrics,
+false-positive/false-negative analysis, asset-class slices, regime slices,
+confidence buckets, coverage, leakage diagnostics, API/CLI/static/frontend
+surfaces, and PostgreSQL metadata. No live prices, broker APIs, account access,
+positions, or recommendations are included.
+
+## Revised Future Roadmap
 
 ### Milestone 4A
 
-MT5 read-only local bridge, as a separate future milestone: local terminal connection, terminal/account/symbol metadata reads, canonical asset to local broker-symbol mapping, UTC tick/bar normalization, demo environment first, no credentials stored in FinNews, and no trading commands.
+MT5 read-only local bridge, as a separate future milestone: local terminal
+connection, terminal/account/symbol metadata reads, canonical asset to local
+broker-symbol mapping, UTC tick/bar normalization, demo environment first, no
+credentials stored in FinNews, and no order-entry commands.
 
 ### Milestone 4B
 

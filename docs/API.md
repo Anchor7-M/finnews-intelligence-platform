@@ -32,6 +32,14 @@ Routes are read-only and mounted under `/api/v1` except health checks.
 - `GET /api/v1/signals`
 - `GET /api/v1/signals/{signal_id}`
 - `GET /api/v1/integrations/mt5/readiness`
+- `GET /api/v1/market-reaction/overview`
+- `GET /api/v1/market-reaction/scenarios`
+- `GET /api/v1/market-reaction/studies`
+- `GET /api/v1/market-reaction/labels`
+- `GET /api/v1/market-reaction/metrics`
+- `GET /api/v1/market-reaction/error-analysis`
+- `GET /api/v1/market-data/packages`
+- `GET /api/v1/market-data/bars`
 
 Article filters: `query`, `source`, `ticker`, `event_type`, `sentiment_label`, `language`, `published_from`, `published_to`, `limit`, and `offset`.
 
@@ -41,6 +49,12 @@ Revised Milestone 3A cross-asset routes are read-only. Asset, event-impact, and
 signal listings support bounded pagination and deterministic synthetic data.
 The MT5 readiness route reports only offline capability status; it does not
 contact a terminal or expose broker/account fields.
+
+Milestone 3C market-reaction routes are read-only. Studies, labels, metrics,
+errors, and bars support bounded pagination plus scenario, asset, event-family,
+horizon, label, regime, provider, and date filters where relevant. The bars
+route serves deterministic local synthetic data in the memory profile and does
+not fetch live prices.
 
 Errors use:
 
