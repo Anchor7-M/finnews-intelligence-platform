@@ -1,0 +1,12 @@
+[
+  {
+    "exported_bar_count": 0,
+    "mapped_asset_count": 0,
+    "no_terminal_metadata": true,
+    "not_investment_advice": true,
+    "run_id": "synthetic-m4a-readonly-run",
+    "status": "not_run_static_demo",
+    "synthetic": true,
+    "terminal_access_status": "not_attempted"
+  }
+]

@@ -44,7 +44,7 @@ def test_cross_asset_api_read_only_safe_fields_and_filters() -> None:
     assert "password" not in forbidden_text
 
     readiness = api.get("/api/v1/integrations/mt5/readiness").json()
-    assert readiness["mt5_terminal_connection"] == "not implemented"
+    assert readiness["mt5_terminal_connection"] == "not attempted"
     assert readiness["order_execution"] == "disabled"
     assert api.post("/api/v1/signals").status_code == 405
     assert api.post("/api/v1/integrations/mt5/readiness").status_code == 405
@@ -88,7 +88,7 @@ def test_cross_asset_cli_commands_are_offline_and_deterministic(tmp_path: Path) 
     result = runner.invoke(cli_app, ["mt5", "readiness"])
     assert result.exit_code == 0, result.output
     readiness = json.loads(result.output)
-    assert readiness["mt5_terminal_connection"] == "not implemented"
+    assert readiness["mt5_terminal_connection"] == "not attempted"
     assert readiness["order_execution"] == "disabled"
 
 

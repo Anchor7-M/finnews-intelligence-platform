@@ -127,6 +127,10 @@ EXPECTED_TABLES = {
     "signal_quality_runs",
     "signal_quality_metrics",
     "signal_error_cases",
+    "mt5_readonly_profiles",
+    "mt5_readonly_symbol_mappings",
+    "mt5_readonly_runs",
+    "mt5_bar_export_manifests",
 }
 EXPECTED_METRICS = {
     "raw_observation_count": 68,
@@ -212,9 +216,7 @@ def test_alembic_upgrade_downgrade_schema_types_constraints_and_indexes(engine: 
     assert EXPECTED_TABLES.isdisjoint(set(inspector.get_table_names()))
 
     command.upgrade(alembic_config(), "head")
-    assert (
-        ScriptDirectory.from_config(alembic_config()).get_current_head() == "0007_market_reaction"
-    )
+    assert ScriptDirectory.from_config(alembic_config()).get_current_head() == "0008_mt5_readonly"
     command.current(alembic_config())
 
     inspector = inspect(engine)
@@ -326,7 +328,7 @@ def test_postgres_cross_asset_signal_foundation_idempotency(settings: Settings) 
 
     payload = cross_asset_static_payload()
     assert payload["cross-asset-overview"]["asset_count"] == 40
-    assert payload["mt5-readiness"]["terminal_adapter_status"] == "not_implemented"
+    assert payload["mt5-readiness"]["terminal_adapter_status"] == "optional_readonly_cli_only"
     assert payload["market-signal-contract-example"]["no_execution"] is True
 
     persist_cross_asset_demo(repo, dataset)
@@ -662,6 +664,226 @@ def test_postgres_market_reaction_metadata_jsonb_timezone_and_constraints(
         session.flush()
     session.rollback()
     session.close()
+
+
+@pytest.mark.postgres
+def test_postgres_mt5_readonly_metadata_schema_jsonb_and_idempotency(engine: Engine) -> None:
+    reset_schema()
+    inspector = inspect(engine)
+    tables = {
+        "mt5_readonly_profiles",
+        "mt5_readonly_symbol_mappings",
+        "mt5_readonly_runs",
+        "mt5_bar_export_manifests",
+    }
+    assert tables.issubset(set(inspector.get_table_names()))
+
+    forbidden_column_tokens = {
+        "password",
+        "login",
+        "account",
+        "order",
+        "position",
+        "stop_loss",
+        "take_profit",
+        "margin_required",
+    }
+    for table in tables:
+        columns = {column["name"] for column in inspector.get_columns(table)}
+        assert not columns.intersection(forbidden_column_tokens)
+        assert inspector.get_pk_constraint(table)["constrained_columns"]
+
+    with engine.begin() as connection:
+        connection.execute(
+            text(
+                """
+                insert into mt5_readonly_profiles
+                (id, profile_id, display_name, enabled, created_at, updated_at, safe_metadata)
+                values
+                (
+                    '11111111-1111-4111-8111-111111111111',
+                    'local-demo',
+                    'Local Demo',
+                    true,
+                    now(),
+                    now(),
+                    '{"terminal_access_status": "not_attempted"}'::jsonb
+                )
+                """
+            )
+        )
+        connection.execute(
+            text(
+                """
+                insert into mt5_readonly_symbol_mappings
+                (
+                    id,
+                    profile_id,
+                    canonical_asset_id,
+                    mt5_symbol,
+                    enabled,
+                    display_name,
+                    timezone,
+                    safe_metadata,
+                    created_at,
+                    updated_at
+                )
+                values
+                (
+                    '22222222-2222-4222-8222-222222222222',
+                    'local-demo',
+                    'fx-eurusd-spot',
+                    'SYNTH_EURUSD',
+                    true,
+                    'Synthetic EUR/USD',
+                    'UTC',
+                    '{"source": "test"}'::jsonb,
+                    now(),
+                    now()
+                )
+                on conflict do nothing
+                """
+            )
+        )
+        connection.execute(
+            text(
+                """
+                insert into mt5_readonly_runs
+                (
+                    id,
+                    run_id,
+                    profile_id,
+                    started_at,
+                    finished_at,
+                    status,
+                    terminal_access_status,
+                    mapped_asset_count,
+                    exported_bar_count,
+                    safe_metadata
+                )
+                values
+                (
+                    '33333333-3333-4333-8333-333333333333',
+                    'run-local-demo',
+                    'local-demo',
+                    now(),
+                    now(),
+                    'no_data',
+                    'read_only_ready',
+                    1,
+                    0,
+                    '{"timeframe": "M5"}'::jsonb
+                )
+                on conflict do nothing
+                """
+            )
+        )
+        connection.execute(
+            text(
+                """
+                insert into mt5_bar_export_manifests
+                (
+                    id,
+                    manifest_id,
+                    run_id,
+                    contract_name,
+                    contract_version,
+                    timeframe,
+                    asset_count,
+                    bar_count,
+                    content_hash,
+                    logical_output_ref,
+                    safe_counts,
+                    created_at
+                )
+                values
+                (
+                    '44444444-4444-4444-8444-444444444444',
+                    'manifest-local-demo',
+                    'run-local-demo',
+                    'finnews-market-bars',
+                    '1.0.0',
+                    'M5',
+                    1,
+                    0,
+                    repeat('a', 64),
+                    'mt5-readonly/local-demo',
+                    '{"bars": 0}'::jsonb,
+                    now()
+                )
+                on conflict do nothing
+                """
+            )
+        )
+        duplicate_count = connection.execute(
+            text(
+                """
+                select count(*)
+                from mt5_bar_export_manifests
+                where manifest_id = 'manifest-local-demo'
+                """
+            )
+        ).scalar_one()
+        timezone_is_aware = connection.execute(
+            text(
+                """
+                select pg_typeof(started_at)::text
+                from mt5_readonly_runs
+                where run_id = 'run-local-demo'
+                """
+            )
+        ).scalar_one()
+        jsonb_value = connection.execute(
+            text(
+                """
+                select safe_metadata ->> 'timeframe'
+                from mt5_readonly_runs
+                where run_id = 'run-local-demo'
+                """
+            )
+        ).scalar_one()
+
+    assert duplicate_count == 1
+    assert timezone_is_aware == "timestamp with time zone"
+    assert jsonb_value == "M5"
+
+    with engine.begin() as connection:
+        transaction = connection.begin_nested()
+        connection.execute(
+            text(
+                """
+                insert into mt5_readonly_runs
+                (
+                    id,
+                    run_id,
+                    profile_id,
+                    started_at,
+                    status,
+                    terminal_access_status,
+                    mapped_asset_count,
+                    exported_bar_count,
+                    safe_metadata
+                )
+                values
+                (
+                    '55555555-5555-4555-8555-555555555555',
+                    'rollback-run',
+                    'local-demo',
+                    now(),
+                    'blocked',
+                    'blocked_by_gate',
+                    0,
+                    0,
+                    '{}'::jsonb
+                )
+                """
+            )
+        )
+        transaction.rollback()
+        rollback_count = connection.execute(
+            text("select count(*) from mt5_readonly_runs where run_id = 'rollback-run'")
+        ).scalar_one()
+    assert rollback_count == 0
 
 
 @pytest.mark.postgres

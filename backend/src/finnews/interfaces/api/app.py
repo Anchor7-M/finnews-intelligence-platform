@@ -714,6 +714,25 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     def mt5_readiness() -> dict[str, object]:
         return cast(dict[str, object], build_static_payload(repository)["mt5-readiness"])
 
+    @app.get("/api/v1/integrations/mt5/readonly/overview")
+    def mt5_readonly_overview() -> dict[str, object]:
+        return cast(dict[str, object], build_static_payload(repository)["mt5-readonly-overview"])
+
+    @app.get("/api/v1/integrations/mt5/readonly/readiness")
+    def mt5_readonly_readiness() -> dict[str, object]:
+        return cast(dict[str, object], build_static_payload(repository)["mt5-readonly-readiness"])
+
+    @app.get("/api/v1/integrations/mt5/readonly/symbol-map/schema")
+    def mt5_readonly_symbol_map_schema() -> dict[str, object]:
+        return cast(
+            dict[str, object],
+            build_static_payload(repository)["mt5-readonly-symbol-map-schema"],
+        )
+
+    @app.get("/api/v1/integrations/mt5/readonly/runs")
+    def mt5_readonly_runs() -> list[dict[str, object]]:
+        return cast(list[dict[str, object]], build_static_payload(repository)["mt5-readonly-runs"])
+
     @app.get("/api/v1/market-reaction/overview")
     def market_reaction_overview() -> dict[str, object]:
         return cast(dict[str, object], build_static_payload(repository)["market-reaction-overview"])

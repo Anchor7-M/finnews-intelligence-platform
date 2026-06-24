@@ -12,7 +12,7 @@ from pathlib import Path
 from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
-POSTGRES_PROJECT = "finnews_m3c_verify"
+POSTGRES_PROJECT = "finnews_m4a_verify"
 POSTGRES_SERVICE = "postgres"
 POSTGRES_URL = "postgresql+psycopg://finnews:finnews@127.0.0.1:55432/finnews"
 TIMINGS: list[dict[str, Any]] = []
@@ -260,6 +260,10 @@ def validate_static_export() -> None:
         "event-impacts.json",
         "market-signals.json",
         "mt5-readiness.json",
+        "mt5-readonly-overview.json",
+        "mt5-readonly-readiness.json",
+        "mt5-readonly-symbol-map-schema.json",
+        "mt5-readonly-runs.json",
         "market-signal-contract-example.json",
         "official-data-overview.json",
         "official-datasets.json",
@@ -335,7 +339,7 @@ def verify_postgres(_: argparse.Namespace) -> None:
         db_down(argparse.Namespace())
     if success:
         print(
-            "verify-postgres passed: project=finnews_m3c_verify service=postgres "
+            f"verify-postgres passed: project={POSTGRES_PROJECT} service=postgres "
             "image=postgres:16 port=127.0.0.1:55432"
         )
 
@@ -864,6 +868,56 @@ def verify_market_reaction(_: argparse.Namespace) -> None:
     validate_static_export()
 
 
+def verify_mt5_readonly(_: argparse.Namespace) -> None:
+    backend = ROOT / "backend"
+    frontend = ROOT / "frontend"
+    env = {
+        "FINNEWS_SOURCE_TEST_MODE": "mocked-offline",
+        "FINNEWS_ALLOW_LOCAL_MT5_READONLY": "",
+    }
+    run(
+        [PYTHON, "-m", "finnews.interfaces.cli.app", "mt5", "readonly", "status"],
+        backend,
+        env=env,
+        timeout_seconds=120,
+    )
+    run(
+        [
+            PYTHON,
+            "-m",
+            "finnews.interfaces.cli.app",
+            "mt5",
+            "readonly",
+            "validate-symbol-map",
+            "--path",
+            "../config/integrations/mt5-symbol-map.example.yaml",
+        ],
+        backend,
+        env=env,
+        timeout_seconds=120,
+    )
+    run(
+        [
+            PYTHON,
+            "-m",
+            "pytest",
+            "tests/unit/test_mt5_readonly.py",
+            "tests/contract/test_mt5_readonly_api_cli.py",
+        ],
+        backend,
+        env=env,
+        timeout_seconds=240,
+    )
+    run(
+        [PYTHON, "-m", "finnews.interfaces.cli.app", "cross-asset", "release-audit"],
+        backend,
+        env=env,
+        timeout_seconds=120,
+    )
+    run(["npm", "run", "test:unit", "--", "--run"], frontend, env=env, timeout_seconds=180)
+    validate_static_export()
+
+
 def build_research_export(_: argparse.Namespace) -> None:
     output = ROOT / ".finnews-research-exports" / "latest"
     if output.exists():
@@ -970,6 +1024,7 @@ def cleanup(args: argparse.Namespace) -> None:
         ROOT / "data" / "generated",
         ROOT / ".finnews-research-exports",
         ROOT / ".finnews-market-signals",
+        ROOT / ".finnews-mt5-readonly-exports",
     ]
     existing = [path for path in candidates if path.exists()]
     for path in existing:
@@ -1002,6 +1057,7 @@ def main() -> None:
     sub.add_parser("verify-cross-asset").set_defaults(func=verify_cross_asset)
     sub.add_parser("verify-official-data").set_defaults(func=verify_official_data)
     sub.add_parser("verify-market-reaction").set_defaults(func=verify_market_reaction)
+    sub.add_parser("verify-mt5-readonly").set_defaults(func=verify_mt5_readonly)
     sub.add_parser("build-research-export").set_defaults(func=build_research_export)
     sub.add_parser("build-nlp-benchmark").set_defaults(func=build_nlp_benchmark)
     sub.add_parser("benchmark-nlp").set_defaults(func=benchmark_nlp)

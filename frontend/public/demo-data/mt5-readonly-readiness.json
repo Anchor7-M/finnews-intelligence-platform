@@ -1,0 +1,18 @@
+{
+  "account_access": "not_supported",
+  "bridge_feature_status": "available_optional_local_cli_only",
+  "duplicate_symbol_count": 0,
+  "execution_status": "disabled",
+  "last_local_readonly_run": null,
+  "local_symbol_map_status": "not_supplied",
+  "mapped_asset_count": 0,
+  "mt5_terminal_connection": "not attempted",
+  "not_investment_advice": true,
+  "order_execution": "disabled",
+  "order_support": "not_implemented",
+  "package_available": false,
+  "package_status": "not_checked",
+  "public_api_trigger": "disabled",
+  "terminal_access_status": "not_attempted",
+  "unmapped_asset_count": 40
+}

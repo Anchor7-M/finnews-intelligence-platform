@@ -241,6 +241,7 @@ smoke-reports/
 .finnews-artifacts/
 .finnews-research-exports/
 .finnews-market-signals/
+.finnews-mt5-readonly-exports/
 config/integrations/mt5-symbol-map.local.yaml
 tmp/
 *.db

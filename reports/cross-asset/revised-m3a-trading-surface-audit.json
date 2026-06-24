@@ -9,9 +9,21 @@
   ],
   "forbidden": [],
   "forbidden_count": 0,
-  "match_count": 719,
-  "matched_file_count": 36,
+  "match_count": 805,
+  "matched_file_count": 40,
   "matches": [
+    {
+      "classification": "permitted release guardrail",
+      "count": 1,
+      "path": "AGENTS.md",
+      "pattern": "MetaTrader5"
+    },
+    {
+      "classification": "permitted release guardrail",
+      "count": 1,
+      "path": "README.md",
+      "pattern": "MetaTrader5"
+    },
     {
       "classification": "permitted release guardrail",
       "count": 1,
@@ -32,7 +44,7 @@
     },
     {
       "classification": "permitted release guardrail",
-      "count": 2,
+      "count": 3,
       "path": "backend/src/finnews/application/services/cross_asset.py",
       "pattern": "MetaTrader5"
     },
@@ -62,7 +74,7 @@
     },
     {
       "classification": "permitted release guardrail",
-      "count": 2,
+      "count": 3,
       "path": "backend/src/finnews/application/services/cross_asset.py",
       "pattern": "initialize("
     },
@@ -116,7 +128,7 @@
     },
     {
       "classification": "permitted release guardrail",
-      "count": 2,
+      "count": 3,
       "path": "backend/src/finnews/application/services/cross_asset_release_audit.py",
       "pattern": "MetaTrader5"
     },
@@ -140,13 +152,19 @@
     },
     {
       "classification": "permitted release guardrail",
-      "count": 3,
+      "count": 4,
       "path": "backend/src/finnews/application/services/cross_asset_release_audit.py",
       "pattern": "buy"
     },
     {
       "classification": "permitted release guardrail",
-      "count": 3,
+      "count": 2,
+      "path": "backend/src/finnews/application/services/cross_asset_release_audit.py",
+      "pattern": "copy_rates_range("
+    },
+    {
+      "classification": "permitted release guardrail",
+      "count": 4,
       "path": "backend/src/finnews/application/services/cross_asset_release_audit.py",
       "pattern": "execute"
     },
@@ -160,6 +178,12 @@
       "classification": "permitted release guardrail",
       "count": 1,
       "path": "backend/src/finnews/application/services/cross_asset_release_audit.py",
+      "pattern": "history_orders_get("
+    },
+    {
+      "classification": "permitted release guardrail",
+      "count": 2,
+      "path": "backend/src/finnews/application/services/cross_asset_release_audit.py",
       "pattern": "initialize("
     },
     {
@@ -170,7 +194,7 @@
     },
     {
       "classification": "permitted release guardrail",
-      "count": 3,
+      "count": 4,
       "path": "backend/src/finnews/application/services/cross_asset_release_audit.py",
       "pattern": "lot"
     },
@@ -179,6 +203,18 @@
       "count": 2,
       "path": "backend/src/finnews/application/services/cross_asset_release_audit.py",
       "pattern": "metatrader5"
+    },
+    {
+      "classification": "permitted release guardrail",
+      "count": 1,
+      "path": "backend/src/finnews/application/services/cross_asset_release_audit.py",
+      "pattern": "order_calc_margin("
+    },
+    {
+      "classification": "permitted release guardrail",
+      "count": 1,
+      "path": "backend/src/finnews/application/services/cross_asset_release_audit.py",
+      "pattern": "order_calc_profit("
     },
     {
       "classification": "permitted release guardrail",
@@ -194,7 +230,7 @@
     },
     {
       "classification": "permitted release guardrail",
-      "count": 1,
+      "count": 2,
       "path": "backend/src/finnews/application/services/cross_asset_release_audit.py",
       "pattern": "orders_get("
     },
@@ -206,7 +242,7 @@
     },
     {
       "classification": "permitted release guardrail",
-      "count": 3,
+      "count": 4,
       "path": "backend/src/finnews/application/services/cross_asset_release_audit.py",
       "pattern": "sell"
     },
@@ -218,13 +254,31 @@
     },
     {
       "classification": "permitted release guardrail",
+      "count": 2,
+      "path": "backend/src/finnews/application/services/cross_asset_release_audit.py",
+      "pattern": "symbol_info"
+    },
+    {
+      "classification": "permitted release guardrail",
+      "count": 2,
+      "path": "backend/src/finnews/application/services/cross_asset_release_audit.py",
+      "pattern": "symbols_get"
+    },
+    {
+      "classification": "permitted release guardrail",
       "count": 1,
       "path": "backend/src/finnews/application/services/cross_asset_release_audit.py",
       "pattern": "take_profit"
     },
     {
       "classification": "permitted release guardrail",
-      "count": 5,
+      "count": 2,
+      "path": "backend/src/finnews/application/services/cross_asset_release_audit.py",
+      "pattern": "terminal_info("
+    },
+    {
+      "classification": "permitted release guardrail",
+      "count": 7,
       "path": "backend/src/finnews/application/services/cross_asset_release_audit.py",
       "pattern": "volume"
     },
@@ -290,9 +344,21 @@
     },
     {
       "classification": "permitted test fixture proving rejection",
-      "count": 5,
+      "count": 14,
       "path": "backend/tests/integration/test_postgres_integration.py",
       "pattern": "execute"
+    },
+    {
+      "classification": "permitted test fixture proving rejection",
+      "count": 1,
+      "path": "backend/tests/integration/test_postgres_integration.py",
+      "pattern": "stop_loss"
+    },
+    {
+      "classification": "permitted test fixture proving rejection",
+      "count": 1,
+      "path": "backend/tests/integration/test_postgres_integration.py",
+      "pattern": "take_profit"
     },
     {
       "classification": "permitted test fixture proving rejection",
@@ -302,15 +368,33 @@
     },
     {
       "classification": "permitted test fixture proving rejection",
-      "count": 3,
+      "count": 1,
+      "path": "backend/tests/unit/test_cross_asset.py",
+      "pattern": "MetaTrader5"
+    },
+    {
+      "classification": "permitted test fixture proving rejection",
+      "count": 4,
       "path": "backend/tests/unit/test_cross_asset.py",
       "pattern": "buy"
     },
     {
       "classification": "permitted test fixture proving rejection",
-      "count": 2,
+      "count": 1,
+      "path": "backend/tests/unit/test_cross_asset.py",
+      "pattern": "copy_rates_range("
+    },
+    {
+      "classification": "permitted test fixture proving rejection",
+      "count": 3,
       "path": "backend/tests/unit/test_cross_asset.py",
       "pattern": "execute"
+    },
+    {
+      "classification": "permitted test fixture proving rejection",
+      "count": 1,
+      "path": "backend/tests/unit/test_cross_asset.py",
+      "pattern": "initialize("
     },
     {
       "classification": "permitted test fixture proving rejection",
@@ -320,13 +404,13 @@
     },
     {
       "classification": "permitted test fixture proving rejection",
-      "count": 5,
+      "count": 7,
       "path": "backend/tests/unit/test_cross_asset.py",
       "pattern": "order_send("
     },
     {
       "classification": "permitted test fixture proving rejection",
-      "count": 3,
+      "count": 4,
       "path": "backend/tests/unit/test_cross_asset.py",
       "pattern": "sell"
     },
@@ -338,13 +422,25 @@
     },
     {
       "classification": "permitted test fixture proving rejection",
+      "count": 1,
+      "path": "backend/tests/unit/test_cross_asset.py",
+      "pattern": "symbol_info"
+    },
+    {
+      "classification": "permitted test fixture proving rejection",
       "count": 2,
       "path": "backend/tests/unit/test_cross_asset.py",
       "pattern": "take_profit"
     },
     {
       "classification": "permitted test fixture proving rejection",
-      "count": 13,
+      "count": 1,
+      "path": "backend/tests/unit/test_cross_asset.py",
+      "pattern": "terminal_info("
+    },
+    {
+      "classification": "permitted test fixture proving rejection",
+      "count": 16,
       "path": "backend/tests/unit/test_cross_asset.py",
       "pattern": "volume"
     },
@@ -403,10 +499,22 @@
       "pattern": "volume"
     },
     {
+      "classification": "permitted architecture documentation",
+      "count": 1,
+      "path": "docs/ARCHITECTURE.md",
+      "pattern": "MetaTrader5"
+    },
+    {
       "classification": "permitted market-data bar volume field",
       "count": 1,
       "path": "docs/ASSET_IDENTITY_AND_SYMBOL_MAPPING.md",
       "pattern": "volume"
+    },
+    {
+      "classification": "permitted architecture documentation",
+      "count": 1,
+      "path": "docs/COST_AND_RESOURCE_GUARDRAILS.md",
+      "pattern": "MetaTrader5"
     },
     {
       "classification": "permitted market-data bar volume field",
@@ -487,6 +595,42 @@
       "pattern": "volume"
     },
     {
+      "classification": "permitted architecture documentation",
+      "count": 3,
+      "path": "docs/M4A_EXECUTION_PLAN.md",
+      "pattern": "MetaTrader5"
+    },
+    {
+      "classification": "permitted architecture documentation",
+      "count": 1,
+      "path": "docs/M4A_EXECUTION_PLAN.md",
+      "pattern": "ORDER_TYPE"
+    },
+    {
+      "classification": "permitted architecture documentation",
+      "count": 1,
+      "path": "docs/M4A_EXECUTION_PLAN.md",
+      "pattern": "TRADE_ACTION"
+    },
+    {
+      "classification": "permitted architecture documentation",
+      "count": 2,
+      "path": "docs/M4A_EXECUTION_PLAN.md",
+      "pattern": "symbol_info"
+    },
+    {
+      "classification": "permitted architecture documentation",
+      "count": 1,
+      "path": "docs/M4A_EXECUTION_PLAN.md",
+      "pattern": "symbols_get"
+    },
+    {
+      "classification": "permitted market-data bar volume field",
+      "count": 1,
+      "path": "docs/M4A_EXECUTION_PLAN.md",
+      "pattern": "volume"
+    },
+    {
       "classification": "permitted market-data bar volume field",
       "count": 2,
       "path": "docs/MARKET_DATA_IMPORT_CONTRACT.md",
@@ -494,7 +638,7 @@
     },
     {
       "classification": "permitted architecture documentation",
-      "count": 1,
+      "count": 2,
       "path": "docs/MT5_INTEGRATION_BOUNDARY.md",
       "pattern": "MetaTrader5"
     },
@@ -542,6 +686,12 @@
     },
     {
       "classification": "permitted architecture documentation",
+      "count": 1,
+      "path": "docs/THREAT_MODEL.md",
+      "pattern": "MetaTrader5"
+    },
+    {
+      "classification": "permitted architecture documentation",
       "count": 3,
       "path": "docs/TRADING_SURFACE_AUDIT.md",
       "pattern": "MetaTrader5"
@@ -560,7 +710,7 @@
     },
     {
       "classification": "permitted architecture documentation",
-      "count": 1,
+      "count": 2,
       "path": "docs/TRADING_SURFACE_AUDIT.md",
       "pattern": "account_info("
     },
@@ -574,23 +724,35 @@
       "classification": "permitted architecture documentation",
       "count": 2,
       "path": "docs/TRADING_SURFACE_AUDIT.md",
+      "pattern": "copy_rates_range("
+    },
+    {
+      "classification": "permitted architecture documentation",
+      "count": 2,
+      "path": "docs/TRADING_SURFACE_AUDIT.md",
       "pattern": "execute"
     },
     {
       "classification": "permitted architecture documentation",
-      "count": 1,
+      "count": 2,
       "path": "docs/TRADING_SURFACE_AUDIT.md",
       "pattern": "history_deals_get("
     },
     {
       "classification": "permitted architecture documentation",
-      "count": 1,
+      "count": 2,
+      "path": "docs/TRADING_SURFACE_AUDIT.md",
+      "pattern": "history_orders_get("
+    },
+    {
+      "classification": "permitted architecture documentation",
+      "count": 2,
       "path": "docs/TRADING_SURFACE_AUDIT.md",
       "pattern": "initialize("
     },
     {
       "classification": "permitted architecture documentation",
-      "count": 1,
+      "count": 2,
       "path": "docs/TRADING_SURFACE_AUDIT.md",
       "pattern": "login("
     },
@@ -608,25 +770,37 @@
     },
     {
       "classification": "permitted architecture documentation",
-      "count": 1,
+      "count": 2,
+      "path": "docs/TRADING_SURFACE_AUDIT.md",
+      "pattern": "order_calc_margin("
+    },
+    {
+      "classification": "permitted architecture documentation",
+      "count": 2,
+      "path": "docs/TRADING_SURFACE_AUDIT.md",
+      "pattern": "order_calc_profit("
+    },
+    {
+      "classification": "permitted architecture documentation",
+      "count": 2,
       "path": "docs/TRADING_SURFACE_AUDIT.md",
       "pattern": "order_check("
     },
     {
       "classification": "permitted architecture documentation",
-      "count": 1,
+      "count": 2,
       "path": "docs/TRADING_SURFACE_AUDIT.md",
       "pattern": "order_send("
     },
     {
       "classification": "permitted architecture documentation",
-      "count": 1,
+      "count": 4,
       "path": "docs/TRADING_SURFACE_AUDIT.md",
       "pattern": "orders_get("
     },
     {
       "classification": "permitted architecture documentation",
-      "count": 1,
+      "count": 2,
       "path": "docs/TRADING_SURFACE_AUDIT.md",
       "pattern": "positions_get("
     },
@@ -644,13 +818,31 @@
     },
     {
       "classification": "permitted architecture documentation",
+      "count": 2,
+      "path": "docs/TRADING_SURFACE_AUDIT.md",
+      "pattern": "symbol_info"
+    },
+    {
+      "classification": "permitted architecture documentation",
+      "count": 2,
+      "path": "docs/TRADING_SURFACE_AUDIT.md",
+      "pattern": "symbols_get"
+    },
+    {
+      "classification": "permitted architecture documentation",
       "count": 1,
       "path": "docs/TRADING_SURFACE_AUDIT.md",
       "pattern": "take_profit"
     },
     {
+      "classification": "permitted architecture documentation",
+      "count": 2,
+      "path": "docs/TRADING_SURFACE_AUDIT.md",
+      "pattern": "terminal_info("
+    },
+    {
       "classification": "permitted market-data bar volume field",
-      "count": 1,
+      "count": 2,
       "path": "docs/TRADING_SURFACE_AUDIT.md",
       "pattern": "volume"
     },
@@ -735,6 +927,13 @@
     "positions_get(",
     "orders_get(",
     "history_deals_get(",
+    "history_orders_get(",
+    "order_calc_margin(",
+    "order_calc_profit(",
+    "copy_rates_range(",
+    "symbol_info",
+    "symbols_get",
+    "terminal_info(",
     "lot",
     "volume",
     "stop_loss",
@@ -744,5 +943,5 @@
     "execute"
   ],
   "status": "PASS",
-  "tracked_file_count": 352
+  "tracked_file_count": 353
 }

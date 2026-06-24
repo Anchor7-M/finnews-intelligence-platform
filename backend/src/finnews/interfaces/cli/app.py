@@ -18,7 +18,6 @@ from finnews.application.services.cross_asset import (
     mt5_readiness,
     persist_cross_asset_demo,
     resolve_asset_alias,
-    validate_mt5_symbol_map,
     validate_signal_package,
     write_signal_package,
 )
@@ -39,6 +38,15 @@ from finnews.application.services.market_reaction import (
 )
 from finnews.application.services.market_reaction_release_audit import (
     write_m3c_release_audit_reports,
+)
+from finnews.application.services.mt5_readonly import (
+    Mt5ReadOnlyPolicyViolation,
+    export_mt5_bars_readonly,
+    mt5_readonly_overview,
+    mt5_readonly_readiness,
+    mt5_readonly_symbol_map_schema,
+    parse_cli_utc_datetime,
+    validate_mt5_readonly_symbol_map,
 )
 from finnews.application.services.nlp_artifacts import ArtifactError, load_trusted_artifact
 from finnews.application.services.nlp_evaluation import run_nlp_benchmark
@@ -121,6 +129,7 @@ asset_app = typer.Typer(help="Canonical cross-asset registry commands")
 cross_asset_app = typer.Typer(help="Cross-asset event intelligence commands")
 signal_app = typer.Typer(help="Versioned market signal contract commands")
 mt5_app = typer.Typer(help="Offline MT5 readiness and symbol-map validation")
+mt5_readonly_app = typer.Typer(help="Local MT5 read-only bridge commands")
 official_data_app = typer.Typer(help="Official-data fixtures and point-in-time metadata")
 market_data_app = typer.Typer(help="Local market-bar contract and synthetic scenarios")
 market_data_contract_app = typer.Typer(help="Market-data import contract helpers")
@@ -139,6 +148,7 @@ app.add_typer(asset_app, name="asset")
 app.add_typer(cross_asset_app, name="cross-asset")
 app.add_typer(signal_app, name="signal")
 app.add_typer(mt5_app, name="mt5")
+mt5_app.add_typer(mt5_readonly_app, name="readonly")
 app.add_typer(official_data_app, name="official-data")
 app.add_typer(market_data_app, name="market-data")
 market_data_app.add_typer(market_data_contract_app, name="contract")
@@ -967,11 +977,75 @@ def mt5_readiness_command() -> None:
 @mt5_app.command("validate-symbol-map")
 def mt5_validate_symbol_map(path: Annotated[Path, typer.Option("--path")]) -> None:
     try:
-        result = validate_mt5_symbol_map(path)
-    except CrossAssetError as exc:
+        result = validate_mt5_readonly_symbol_map(_resolve_repo_relative_path(path))
+    except (CrossAssetError, Mt5ReadOnlyPolicyViolation) as exc:
         typer.echo(f"mt5_symbol_map_error={exc}", err=True)
         raise typer.Exit(code=2) from exc
-    typer.echo(json.dumps(result, sort_keys=True))
+    typer.echo(
+        json.dumps(
+            {key: value for key, value in result.items() if key != "entries"},
+            sort_keys=True,
+        )
+    )
+
+
+@mt5_readonly_app.command("status")
+def mt5_readonly_status() -> None:
+    typer.echo(
+        json.dumps(
+            {
+                "overview": mt5_readonly_overview(),
+                "readiness": mt5_readonly_readiness(),
+                "schema": mt5_readonly_symbol_map_schema(),
+            },
+            sort_keys=True,
+            default=str,
+        )
+    )
+
+
+@mt5_readonly_app.command("validate-symbol-map")
+def mt5_readonly_validate_symbol_map(path: Annotated[Path, typer.Option("--path")]) -> None:
+    try:
+        result = validate_mt5_readonly_symbol_map(_resolve_repo_relative_path(path))
+    except Mt5ReadOnlyPolicyViolation as exc:
+        typer.echo(f"mt5_readonly_symbol_map_error={exc}", err=True)
+        raise typer.Exit(code=2) from exc
+    typer.echo(
+        json.dumps(
+            {key: value for key, value in result.items() if key != "entries"},
+            sort_keys=True,
+        )
+    )
+
+
+@mt5_readonly_app.command("export-bars")
+def mt5_readonly_export_bars(
+    symbol_map: Annotated[Path, typer.Option("--symbol-map")],
+    timeframe: Annotated[str, typer.Option("--timeframe")],
+    from_text: Annotated[str, typer.Option("--from")],
+    to_text: Annotated[str, typer.Option("--to")],
+    output: Annotated[Path, typer.Option("--output")],
+    confirm_local_terminal: Annotated[bool, typer.Option("--confirm-local-terminal")] = False,
+) -> None:
+    try:
+        start = parse_cli_utc_datetime(from_text)
+        end = parse_cli_utc_datetime(to_text)
+        result = export_mt5_bars_readonly(
+            symbol_map_path=_resolve_repo_relative_path(symbol_map),
+            timeframe=timeframe,
+            start=start,
+            end=end,
+            output=output,
+            confirm_local_terminal=confirm_local_terminal,
+            repo_root=_repo_root(),
+        )
+    except Mt5ReadOnlyPolicyViolation as exc:
+        typer.echo(f"mt5_readonly_export_error={exc}", err=True)
+        raise typer.Exit(code=2) from exc
+    typer.echo(json.dumps(result, sort_keys=True, default=str))
+    if result.get("status") != "exported":
+        raise typer.Exit(code=4)
 
 
 @market_data_contract_app.command("validate")
@@ -1527,6 +1601,12 @@ def _commit_and_close(session: Session | None) -> None:
 
 def _repo_root() -> Path:
     return Path(__file__).resolve().parents[5]
+
+
+def _resolve_repo_relative_path(path: Path) -> Path:
+    if path.is_absolute() or path.exists():
+        return path
+    return _repo_root() / path
 
 
 if __name__ == "__main__":
