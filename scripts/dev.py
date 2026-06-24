@@ -848,6 +848,7 @@ def verify_market_reaction(_: argparse.Namespace) -> None:
         backend,
     )
     run([PYTHON, "-m", "finnews.interfaces.cli.app", "reaction", "export-static"], backend)
+    run([PYTHON, "-m", "finnews.interfaces.cli.app", "reaction", "release-audit"], backend)
     run(
         [
             PYTHON,

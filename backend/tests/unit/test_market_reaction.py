@@ -20,6 +20,14 @@ from finnews.application.services.market_reaction import (
     scenario_summary,
     validate_market_bar_file,
 )
+from finnews.application.services.market_reaction_release_audit import (
+    build_m3c_point_in_time_audit,
+    build_m3c_release_ledger,
+    build_m3c_scenario_audit,
+    write_m3c_release_audit_reports,
+)
+
+REPO_ROOT = Path(__file__).resolve().parents[3]
 
 
 def _write_csv(path: Path, rows: list[dict[str, object]]) -> None:
@@ -138,3 +146,25 @@ def test_market_reaction_static_payload_contains_full_and_sample_sets() -> None:
     rendered = json.dumps(payload).lower()
     assert "account_id" not in rendered
     assert "order_type" not in rendered
+
+
+def test_m3c_release_audit_reports_are_deterministic() -> None:
+    ledger = build_m3c_release_ledger(REPO_ROOT)
+    scenario = build_m3c_scenario_audit()
+    point_in_time = build_m3c_point_in_time_audit()
+
+    assert ledger["status"] == "PASS"
+    assert ledger["contract"]["name"] == "finnews-market-bars-v1"
+    assert ledger["bar_accounting"]["total_bars"] == 6480
+    assert ledger["static_export"]["full_bar_static_exported"] is False
+    assert scenario["byte_identical_rebuild"] is True
+    assert scenario["total_bar_count"] == 6480
+    assert point_in_time["status"] == "PASS"
+    assert point_in_time["boundary_results"]["current_clock_mutation"] == "PASS"
+
+    first = write_m3c_release_audit_reports(REPO_ROOT)
+    second = write_m3c_release_audit_reports(REPO_ROOT)
+
+    assert first["status"] == "PASS"
+    assert first["byte_identical_rebuild"] == second["byte_identical_rebuild"]
+    assert first["report_hashes"] == second["report_hashes"]
