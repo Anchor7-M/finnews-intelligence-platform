@@ -19,6 +19,7 @@ from finnews.application.services.cross_asset import (
 )
 from finnews.application.services.cross_asset_release_audit import (
     EXCLUDED_GENERATED_EVIDENCE_FILES,
+    GENERATED_M3C_MARKET_REACTION_EVIDENCE_FILES,
     GENERATED_TRADING_SURFACE_AUDIT_OUTPUT_PATH,
     _pattern_count,
     build_lifecycle_audit_report,
@@ -314,8 +315,13 @@ def test_lifecycle_and_trading_surface_release_reports() -> None:
     assert set(surface["excluded_generated_evidence_files"]) == set(
         EXCLUDED_GENERATED_EVIDENCE_FILES
     )
+    assert set(GENERATED_M3C_MARKET_REACTION_EVIDENCE_FILES).issubset(
+        set(surface["excluded_generated_evidence_files"])
+    )
+    assert all((REPO_ROOT / path).exists() for path in GENERATED_M3C_MARKET_REACTION_EVIDENCE_FILES)
     for row in [*surface["matches"], *surface["forbidden"]]:
         assert row["path"] not in EXCLUDED_GENERATED_EVIDENCE_FILES
+    assert not any(row["path"].startswith("reports/market-reaction/") for row in surface["matches"])
 
 
 def test_trading_surface_report_still_classifies_docs_tests_and_forbidden_source(
@@ -339,6 +345,12 @@ def test_trading_surface_report_still_classifies_docs_tests_and_forbidden_source
         "def unsafe_route():\n    order_send({'symbol': 'DEMO'})\n",
         encoding="utf-8",
     )
+    report_file = repo / "reports" / "market-reaction" / "m3c-release-ledger.json"
+    report_file.parent.mkdir(parents=True)
+    report_file.write_text(
+        '{"pattern": "order_send(", "volume": 1, "buy": true, "sell": true}',
+        encoding="utf-8",
+    )
     subprocess.run(["git", "init"], cwd=repo, check=True, capture_output=True)
     subprocess.run(["git", "add", "."], cwd=repo, check=True, capture_output=True)
 
@@ -352,6 +364,10 @@ def test_trading_surface_report_still_classifies_docs_tests_and_forbidden_source
         "count": 1,
         "classification": "forbidden executable production path",
     }
+    assert not any(
+        row["path"] == "reports/market-reaction/m3c-release-ledger.json"
+        for row in [*forbidden_surface["matches"], *forbidden_surface["forbidden"]]
+    )
 
 
 def test_trading_surface_report_allows_market_data_volume_not_order_calls(
@@ -376,6 +392,28 @@ def test_trading_surface_report_allows_market_data_volume_not_order_calls(
         "count": 2,
         "classification": "permitted market-data bar volume field",
     } in allowed_surface["matches"]
+
+    release_audit = (
+        repo
+        / "backend"
+        / "src"
+        / "finnews"
+        / "application"
+        / "services"
+        / "market_reaction_release_audit.py"
+    )
+    release_audit.write_text("def check_bar(row):\n    return row['volume'] >= 0\n")
+    subprocess.run(["git", "add", "."], cwd=repo, check=True, capture_output=True)
+
+    release_audit_surface = build_trading_surface_report(repo)
+
+    assert release_audit_surface["status"] == "PASS"
+    assert {
+        "path": "backend/src/finnews/application/services/market_reaction_release_audit.py",
+        "pattern": "volume",
+        "count": 1,
+        "classification": "permitted market-data bar volume field",
+    } in release_audit_surface["matches"]
 
     market_reaction.write_text(
         "def unsafe_route():\n    volume = 100\n    order_send({'symbol': 'DEMO'})\n",
