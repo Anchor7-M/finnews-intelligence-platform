@@ -10,6 +10,14 @@ import type {
   Digest,
   EventImpact,
   MarketSignalCandidate,
+  MarketDataBar,
+  MarketDataPackage,
+  MarketReactionErrorCase,
+  MarketReactionLabel,
+  MarketReactionMetric,
+  MarketReactionOverview,
+  MarketReactionScenario,
+  MarketReactionStudy,
   Mt5Readiness,
   NlpErrorAnalysis,
   NlpEvaluationSummary,
@@ -307,6 +315,94 @@ export async function loadMt5Readiness(mode: DataMode = getDataMode()): Promise<
     return getJson<Mt5Readiness>(`${API_BASE}/api/v1/integrations/mt5/readiness`);
   }
   return getJson<Mt5Readiness>("/demo-data/mt5-readiness.json");
+}
+
+export async function loadMarketReactionOverview(
+  mode: DataMode = getDataMode(),
+): Promise<MarketReactionOverview> {
+  if (mode === "api") {
+    return getJson<MarketReactionOverview>(`${API_BASE}/api/v1/market-reaction/overview`);
+  }
+  return getJson<MarketReactionOverview>("/demo-data/market-reaction-overview.json");
+}
+
+export async function loadMarketReactionScenarios(
+  mode: DataMode = getDataMode(),
+): Promise<MarketReactionScenario[]> {
+  if (mode === "api") {
+    return getJson<MarketReactionScenario[]>(`${API_BASE}/api/v1/market-reaction/scenarios`);
+  }
+  return getJson<MarketReactionScenario[]>("/demo-data/market-reaction-scenarios.json");
+}
+
+export async function loadMarketReactionStudies(
+  mode: DataMode = getDataMode(),
+): Promise<MarketReactionStudy[]> {
+  if (mode === "api") {
+    const data = await getJson<{ items: MarketReactionStudy[] }>(
+      `${API_BASE}/api/v1/market-reaction/studies?limit=200`,
+    );
+    return data.items;
+  }
+  return getJson<MarketReactionStudy[]>("/demo-data/market-reaction-studies.json");
+}
+
+export async function loadMarketReactionLabels(
+  mode: DataMode = getDataMode(),
+): Promise<MarketReactionLabel[]> {
+  if (mode === "api") {
+    const data = await getJson<{ items: MarketReactionLabel[] }>(
+      `${API_BASE}/api/v1/market-reaction/labels?limit=200`,
+    );
+    return data.items;
+  }
+  return getJson<MarketReactionLabel[]>("/demo-data/market-reaction-labels-sample.json");
+}
+
+export async function loadMarketReactionMetrics(
+  mode: DataMode = getDataMode(),
+): Promise<MarketReactionMetric[]> {
+  if (mode === "api") {
+    const data = await getJson<{ items: MarketReactionMetric[] }>(
+      `${API_BASE}/api/v1/market-reaction/metrics?limit=200`,
+    );
+    return data.items;
+  }
+  return getJson<MarketReactionMetric[]>("/demo-data/market-reaction-metrics.json");
+}
+
+export async function loadMarketReactionErrorAnalysis(
+  mode: DataMode = getDataMode(),
+): Promise<MarketReactionErrorCase[]> {
+  if (mode === "api") {
+    const data = await getJson<{ items: MarketReactionErrorCase[] }>(
+      `${API_BASE}/api/v1/market-reaction/error-analysis?limit=200`,
+    );
+    return data.items;
+  }
+  return getJson<MarketReactionErrorCase[]>("/demo-data/market-reaction-error-analysis.json");
+}
+
+export async function loadMarketDataPackages(
+  mode: DataMode = getDataMode(),
+): Promise<MarketDataPackage[]> {
+  if (mode === "api") {
+    const data = await getJson<{ items: MarketDataPackage[] }>(
+      `${API_BASE}/api/v1/market-data/packages`,
+    );
+    return data.items;
+  }
+  return getJson<MarketDataPackage[]>("/demo-data/market-data-packages.json");
+}
+
+export async function loadMarketDataBars(mode: DataMode = getDataMode()): Promise<MarketDataBar[]> {
+  if (mode === "api") {
+    const data = await getJson<{ items: MarketDataBar[] }>(
+      `${API_BASE}/api/v1/market-data/bars?limit=200`,
+    );
+    return data.items;
+  }
+  return getJson<MarketDataBar[]>("/demo-data/market-data-bars-sample.json");
 }
 
 export async function loadOfficialDataOverview(

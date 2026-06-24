@@ -436,6 +436,194 @@ export interface Mt5Readiness {
   notes: string[];
 }
 
+export interface MarketReactionOverview {
+  synthetic_data: boolean;
+  not_investment_advice: boolean;
+  no_live_market_data: boolean;
+  no_execution: boolean;
+  mt5_connection: string;
+  contract_name: string;
+  contract_version: string;
+  scenario_count: number;
+  scenario_ids: string[];
+  asset_count_per_scenario: number;
+  session_count_per_scenario: number;
+  bar_count_per_scenario: number;
+  total_bar_count: number;
+  study_count: number;
+  label_count: number;
+  evaluated_label_count: number;
+  metric_row_count: number;
+  error_case_count: number;
+  market_state_distribution: Record<string, number>;
+  label_distribution: Record<string, number>;
+  horizon_windows: Record<string, number[]>;
+  benchmark_modes: string[];
+  label_threshold: string;
+  threshold_version: string;
+  disclaimer: string;
+}
+
+export interface MarketReactionScenario {
+  scenario_id: string;
+  scenario_version: string;
+  description: string;
+  asset_count: number;
+  session_count: number;
+  bar_count: number;
+  synthetic_data: boolean;
+  official_calendar: boolean;
+  no_live_market_data: boolean;
+}
+
+export interface MarketReactionStudy {
+  study_id: string;
+  signal_id: string;
+  impact_id: string;
+  asset_id: string;
+  asset_class: string;
+  event_id: string;
+  event_family: string;
+  event_timestamp: string;
+  decision_time: string;
+  reaction_window: string;
+  bar_coverage: number;
+  control_bar_coverage: number;
+  raw_return: string | null;
+  benchmark_return: string | null;
+  scenario_benchmark_return: string | null;
+  pre_event_mean_return: string | null;
+  abnormal_return: string | null;
+  standardized_abnormal_return: string | null;
+  magnitude_bucket: string;
+  quality_flags: string[];
+  excluded_reason: string | null;
+  synthetic_scenario_id: string;
+  provider: string;
+  provider_version: string;
+  synthetic_data: boolean;
+}
+
+export interface MarketReactionLabel {
+  label_id: string;
+  study_id: string;
+  signal_id: string;
+  impact_id: string;
+  asset_id: string;
+  asset_class: string;
+  event_family: string;
+  horizon: string;
+  scenario_id: string;
+  signal_direction: string;
+  signal_status: string;
+  confidence: number | null;
+  strength: number | null;
+  signed_score: string;
+  raw_return: string | null;
+  benchmark_return: string | null;
+  abnormal_return: string | null;
+  label: string;
+  threshold: string;
+  threshold_version: string;
+  coverage: number;
+  quality_flags: string[];
+  unavailable_reason: string | null;
+  point_in_time_evidence: Record<string, unknown>;
+  market_state: string;
+  synthetic_data: boolean;
+  not_investment_advice: boolean;
+}
+
+export interface MarketReactionMetric {
+  metric_id: string;
+  scenario_id: string;
+  slice_type: string;
+  slice_value: string;
+  evaluated_signal_count: number;
+  unavailable_count: number;
+  coverage: string;
+  directional_consistency_rate: string;
+  opposite_rate: string;
+  muted_rate: string;
+  mean_raw_return: string | null;
+  mean_abnormal_return: string | null;
+  median_abnormal_return: string | null;
+  abnormal_return_volatility: string | null;
+  hit_rate_by_direction: Record<string, string | null>;
+  information_coefficient: string | null;
+  spearman_rank_ic: string | null;
+  false_positive_count: number;
+  false_negative_count: number;
+  high_confidence_wrong_count: number;
+  low_confidence_right_count: number;
+  missing_confidence_count: number;
+  synthetic_data: boolean;
+  not_investment_advice: boolean;
+}
+
+export interface MarketReactionErrorCase {
+  error_case_id: string;
+  synthetic_signal_id: string;
+  asset_id: string;
+  asset_class: string;
+  event_family: string;
+  expected_direction: string;
+  observed_label: string;
+  abnormal_return: string | null;
+  confidence: number | null;
+  strength: number | null;
+  horizon: string;
+  regime: string;
+  scenario_id: string;
+  error_category: string;
+  synthetic_data: boolean;
+  overclaim_guardrail: string;
+}
+
+export interface MarketDataPackage {
+  package_id: string;
+  scenario_id: string;
+  provider: string;
+  provider_version: string;
+  contract_name: string;
+  contract_version: string;
+  asset_count: number;
+  bar_count: number;
+  session_count: number;
+  first_session_date: string;
+  last_session_date: string;
+  package_hash: string;
+  generated_at: string;
+  synthetic_data: boolean;
+  no_live_market_data: boolean;
+}
+
+export interface MarketDataBar {
+  bar_id: string;
+  scenario_id: string;
+  asset_id: string;
+  asset_class: string;
+  provider_symbol: string;
+  session_date: string;
+  bar_start_at: string;
+  bar_end_at: string;
+  timezone: string;
+  open: string;
+  high: string;
+  low: string;
+  close: string;
+  volume: string;
+  quote_volume: string;
+  market_state: string;
+  source_profile: string;
+  first_seen_at: string;
+  available_at: string;
+  synthetic_data: boolean;
+  schema_version: string;
+  provider: string;
+  provider_version: string;
+}
+
 export interface OfficialDataOverview {
   synthetic_data: boolean;
   not_investment_advice: boolean;
