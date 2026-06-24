@@ -8515,6 +8515,1990 @@
       "started_offset_seconds": 529.704,
       "step": "git diff --check",
       "timeout_seconds": 120
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "finnews.interfaces.cli.app",
+        "official-data",
+        "validate-fixtures"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 2.781,
+      "ended_offset_seconds": 2.797,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 0.016,
+      "step": ".venv/Scripts/python.exe -m finnews.interfaces.cli.app official-data",
+      "timeout_seconds": 120
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "finnews.interfaces.cli.app",
+        "official-data",
+        "export-static"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 3.594,
+      "ended_offset_seconds": 6.422,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 2.828,
+      "step": ".venv/Scripts/python.exe -m finnews.interfaces.cli.app official-data",
+      "timeout_seconds": 120
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "finnews.interfaces.cli.app",
+        "official-data",
+        "release-audit"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 3.391,
+      "ended_offset_seconds": 9.813,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 6.422,
+      "step": ".venv/Scripts/python.exe -m finnews.interfaces.cli.app official-data",
+      "timeout_seconds": 120
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "pytest",
+        "tests/unit/test_official_data.py",
+        "tests/contract/test_official_data_api_cli.py"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 13.672,
+      "ended_offset_seconds": 23.485,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 9.813,
+      "step": ".venv/Scripts/python.exe -m pytest tests/unit/test_official_data.py",
+      "timeout_seconds": 240
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "test:unit",
+        "--",
+        "--run"
+      ],
+      "cwd": "frontend",
+      "duration_seconds": 34.312,
+      "ended_offset_seconds": 57.828,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 23.516,
+      "step": "npm run test:unit --",
+      "timeout_seconds": 180
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "finnews.interfaces.cli.app",
+        "official-data",
+        "validate-fixtures"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 3.125,
+      "ended_offset_seconds": 3.14,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 0.015,
+      "step": ".venv/Scripts/python.exe -m finnews.interfaces.cli.app official-data",
+      "timeout_seconds": 120
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "finnews.interfaces.cli.app",
+        "official-data",
+        "export-static"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 3.922,
+      "ended_offset_seconds": 7.078,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 3.156,
+      "step": ".venv/Scripts/python.exe -m finnews.interfaces.cli.app official-data",
+      "timeout_seconds": 120
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "finnews.interfaces.cli.app",
+        "official-data",
+        "release-audit"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 3.609,
+      "ended_offset_seconds": 10.703,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 7.094,
+      "step": ".venv/Scripts/python.exe -m finnews.interfaces.cli.app official-data",
+      "timeout_seconds": 120
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "finnews.interfaces.cli.app",
+        "official-data",
+        "source-audit"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 3.093,
+      "ended_offset_seconds": 13.812,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 10.719,
+      "step": ".venv/Scripts/python.exe -m finnews.interfaces.cli.app official-data",
+      "timeout_seconds": 120
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "pytest",
+        "tests/unit/test_official_data.py",
+        "tests/contract/test_official_data_api_cli.py"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 15.0,
+      "ended_offset_seconds": 28.828,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 13.828,
+      "step": ".venv/Scripts/python.exe -m pytest tests/unit/test_official_data.py",
+      "timeout_seconds": 240
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "test:unit",
+        "--",
+        "--run"
+      ],
+      "cwd": "frontend",
+      "duration_seconds": 3.937,
+      "ended_offset_seconds": 32.781,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 28.844,
+      "step": "npm run test:unit --",
+      "timeout_seconds": 180
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "coverage",
+        "erase"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 0.234,
+      "ended_offset_seconds": 0.234,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 0.0,
+      "step": ".venv/Scripts/python.exe -m coverage erase",
+      "timeout_seconds": 60
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "coverage",
+        "run",
+        "--parallel-mode",
+        "-m",
+        "pytest",
+        "tests/unit/test_aggregation_repository.py",
+        "-q"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 14.75,
+      "ended_offset_seconds": 15.015,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 0.265,
+      "step": "backend pytest coverage tests/unit/test_aggregation_repository.py",
+      "timeout_seconds": 240
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "coverage",
+        "run",
+        "--parallel-mode",
+        "-m",
+        "pytest",
+        "tests/unit/test_cross_asset.py",
+        "-q"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 18.938,
+      "ended_offset_seconds": 33.953,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 15.015,
+      "step": "backend pytest coverage tests/unit/test_cross_asset.py",
+      "timeout_seconds": 240
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "coverage",
+        "run",
+        "--parallel-mode",
+        "-m",
+        "pytest",
+        "tests/unit/test_deduplication.py",
+        "-q"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 4.781,
+      "ended_offset_seconds": 38.734,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 33.953,
+      "step": "backend pytest coverage tests/unit/test_deduplication.py",
+      "timeout_seconds": 240
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "coverage",
+        "run",
+        "--parallel-mode",
+        "-m",
+        "pytest",
+        "tests/unit/test_deduplication_accounting.py",
+        "-q"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 31.625,
+      "ended_offset_seconds": 70.375,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 38.75,
+      "step": "backend pytest coverage tests/unit/test_deduplication_accounting.py",
+      "timeout_seconds": 240
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "coverage",
+        "run",
+        "--parallel-mode",
+        "-m",
+        "pytest",
+        "tests/unit/test_fixture_composition.py",
+        "-q"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 6.391,
+      "ended_offset_seconds": 76.781,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 70.39,
+      "step": "backend pytest coverage tests/unit/test_fixture_composition.py",
+      "timeout_seconds": 240
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "coverage",
+        "run",
+        "--parallel-mode",
+        "-m",
+        "pytest",
+        "tests/unit/test_http_safety.py",
+        "-q"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 2.766,
+      "ended_offset_seconds": 79.562,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 76.796,
+      "step": "backend pytest coverage tests/unit/test_http_safety.py",
+      "timeout_seconds": 240
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "coverage",
+        "run",
+        "--parallel-mode",
+        "-m",
+        "pytest",
+        "tests/unit/test_nlp_baselines.py",
+        "-q"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 0.937,
+      "ended_offset_seconds": 80.515,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 79.578,
+      "step": "backend pytest coverage tests/unit/test_nlp_baselines.py",
+      "timeout_seconds": 240
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "coverage",
+        "run",
+        "--parallel-mode",
+        "-m",
+        "pytest",
+        "tests/unit/test_nlp_benchmark.py",
+        "-q"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 10.453,
+      "ended_offset_seconds": 90.984,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 80.531,
+      "step": "backend pytest coverage tests/unit/test_nlp_benchmark.py",
+      "timeout_seconds": 240
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "coverage",
+        "run",
+        "--parallel-mode",
+        "-m",
+        "pytest",
+        "tests/unit/test_nlp_evaluation.py",
+        "-q"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 23.25,
+      "ended_offset_seconds": 114.234,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 90.984,
+      "step": "backend pytest coverage tests/unit/test_nlp_evaluation.py",
+      "timeout_seconds": 240
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "coverage",
+        "run",
+        "--parallel-mode",
+        "-m",
+        "pytest",
+        "tests/unit/test_nlp_registry.py",
+        "-q"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 14.094,
+      "ended_offset_seconds": 128.328,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 114.234,
+      "step": "backend pytest coverage tests/unit/test_nlp_registry.py",
+      "timeout_seconds": 240
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "coverage",
+        "run",
+        "--parallel-mode",
+        "-m",
+        "pytest",
+        "tests/unit/test_nlp_release_audit.py",
+        "-q"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 61.078,
+      "ended_offset_seconds": 189.421,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 128.343,
+      "step": "backend pytest coverage tests/unit/test_nlp_release_audit.py",
+      "timeout_seconds": 240
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "coverage",
+        "run",
+        "--parallel-mode",
+        "-m",
+        "pytest",
+        "tests/unit/test_normalization.py",
+        "-q"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 0.969,
+      "ended_offset_seconds": 190.406,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 189.437,
+      "step": "backend pytest coverage tests/unit/test_normalization.py",
+      "timeout_seconds": 240
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "coverage",
+        "run",
+        "--parallel-mode",
+        "-m",
+        "pytest",
+        "tests/unit/test_official_data.py",
+        "-q"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 1.359,
+      "ended_offset_seconds": 191.765,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 190.406,
+      "step": "backend pytest coverage tests/unit/test_official_data.py",
+      "timeout_seconds": 240
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "coverage",
+        "run",
+        "--parallel-mode",
+        "-m",
+        "pytest",
+        "tests/unit/test_pipeline.py",
+        "-q"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 16.234,
+      "ended_offset_seconds": 208.015,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 191.781,
+      "step": "backend pytest coverage tests/unit/test_pipeline.py",
+      "timeout_seconds": 240
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "coverage",
+        "run",
+        "--parallel-mode",
+        "-m",
+        "pytest",
+        "tests/unit/test_research_export.py",
+        "-q"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 43.531,
+      "ended_offset_seconds": 251.546,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 208.015,
+      "step": "backend pytest coverage tests/unit/test_research_export.py",
+      "timeout_seconds": 240
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "coverage",
+        "run",
+        "--parallel-mode",
+        "-m",
+        "pytest",
+        "tests/unit/test_source_adapters.py",
+        "-q"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 1.031,
+      "ended_offset_seconds": 252.593,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 251.562,
+      "step": "backend pytest coverage tests/unit/test_source_adapters.py",
+      "timeout_seconds": 240
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "coverage",
+        "run",
+        "--parallel-mode",
+        "-m",
+        "pytest",
+        "tests/unit/test_source_ingestion.py",
+        "-q"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 5.828,
+      "ended_offset_seconds": 258.421,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 252.593,
+      "step": "backend pytest coverage tests/unit/test_source_ingestion.py",
+      "timeout_seconds": 240
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "coverage",
+        "run",
+        "--parallel-mode",
+        "-m",
+        "pytest",
+        "tests/unit/test_source_overrides.py",
+        "-q"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 1.313,
+      "ended_offset_seconds": 259.75,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 258.437,
+      "step": "backend pytest coverage tests/unit/test_source_overrides.py",
+      "timeout_seconds": 240
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "coverage",
+        "run",
+        "--parallel-mode",
+        "-m",
+        "pytest",
+        "tests/unit/test_source_registry.py",
+        "-q"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 1.39,
+      "ended_offset_seconds": 261.14,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 259.75,
+      "step": "backend pytest coverage tests/unit/test_source_registry.py",
+      "timeout_seconds": 240
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "coverage",
+        "run",
+        "--parallel-mode",
+        "-m",
+        "pytest",
+        "tests/unit/test_source_reviews.py",
+        "-q"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 1.375,
+      "ended_offset_seconds": 262.531,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 261.156,
+      "step": "backend pytest coverage tests/unit/test_source_reviews.py",
+      "timeout_seconds": 240
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "coverage",
+        "run",
+        "--parallel-mode",
+        "-m",
+        "pytest",
+        "tests/unit/test_source_smoke.py",
+        "-q"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 1.594,
+      "ended_offset_seconds": 264.14,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 262.546,
+      "step": "backend pytest coverage tests/unit/test_source_smoke.py",
+      "timeout_seconds": 240
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "coverage",
+        "run",
+        "--parallel-mode",
+        "-m",
+        "pytest",
+        "tests/unit/test_sources_and_validation.py",
+        "-q"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 5.172,
+      "ended_offset_seconds": 269.312,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 264.14,
+      "step": "backend pytest coverage tests/unit/test_sources_and_validation.py",
+      "timeout_seconds": 240
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "coverage",
+        "run",
+        "--parallel-mode",
+        "-m",
+        "pytest",
+        "tests/contract/test_api.py",
+        "-q"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 31.188,
+      "ended_offset_seconds": 300.5,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 269.312,
+      "step": "backend pytest coverage tests/contract/test_api.py",
+      "timeout_seconds": 240
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "coverage",
+        "run",
+        "--parallel-mode",
+        "-m",
+        "pytest",
+        "tests/contract/test_api_compliance.py",
+        "-q"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 52.219,
+      "ended_offset_seconds": 352.734,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 300.515,
+      "step": "backend pytest coverage tests/contract/test_api_compliance.py",
+      "timeout_seconds": 240
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "coverage",
+        "run",
+        "--parallel-mode",
+        "-m",
+        "pytest",
+        "tests/contract/test_cli.py",
+        "-q"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 24.015,
+      "ended_offset_seconds": 376.765,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 352.75,
+      "step": "backend pytest coverage tests/contract/test_cli.py",
+      "timeout_seconds": 240
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "coverage",
+        "run",
+        "--parallel-mode",
+        "-m",
+        "pytest",
+        "tests/contract/test_cross_asset_api_cli.py",
+        "-q"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 38.875,
+      "ended_offset_seconds": 415.656,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 376.781,
+      "step": "backend pytest coverage tests/contract/test_cross_asset_api_cli.py",
+      "timeout_seconds": 240
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "coverage",
+        "run",
+        "--parallel-mode",
+        "-m",
+        "pytest",
+        "tests/contract/test_nlp_api.py",
+        "-q"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 24.782,
+      "ended_offset_seconds": 440.453,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 415.671,
+      "step": "backend pytest coverage tests/contract/test_nlp_api.py",
+      "timeout_seconds": 240
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "coverage",
+        "run",
+        "--parallel-mode",
+        "-m",
+        "pytest",
+        "tests/contract/test_official_data_api_cli.py",
+        "-q"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 38.469,
+      "ended_offset_seconds": 478.937,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 440.468,
+      "step": "backend pytest coverage tests/contract/test_official_data_api_cli.py",
+      "timeout_seconds": 240
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "coverage",
+        "run",
+        "--parallel-mode",
+        "-m",
+        "pytest",
+        "tests/contract/test_research_api_cli.py",
+        "-q"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 28.203,
+      "ended_offset_seconds": 507.156,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 478.953,
+      "step": "backend pytest coverage tests/contract/test_research_api_cli.py",
+      "timeout_seconds": 240
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "coverage",
+        "run",
+        "--parallel-mode",
+        "-m",
+        "pytest",
+        "tests/contract/test_source_api_cli.py",
+        "-q"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 31.235,
+      "ended_offset_seconds": 538.406,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 507.171,
+      "step": "backend pytest coverage tests/contract/test_source_api_cli.py",
+      "timeout_seconds": 240
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "coverage",
+        "run",
+        "--parallel-mode",
+        "-m",
+        "pytest",
+        "tests/contract/test_source_reviews_api.py",
+        "-q"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 19.297,
+      "ended_offset_seconds": 557.718,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 538.421,
+      "step": "backend pytest coverage tests/contract/test_source_reviews_api.py",
+      "timeout_seconds": 240
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "coverage",
+        "combine"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 0.437,
+      "ended_offset_seconds": 558.171,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 557.734,
+      "step": ".venv/Scripts/python.exe -m coverage combine",
+      "timeout_seconds": 120
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "coverage",
+        "report",
+        "--fail-under=80",
+        "--show-missing"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 0.969,
+      "ended_offset_seconds": 559.156,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 558.187,
+      "step": ".venv/Scripts/python.exe -m coverage report",
+      "timeout_seconds": 180
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "ruff",
+        "check",
+        "."
+      ],
+      "cwd": "backend",
+      "duration_seconds": 0.125,
+      "ended_offset_seconds": 559.281,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 559.156,
+      "step": ".venv/Scripts/python.exe -m ruff check",
+      "timeout_seconds": 120
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "ruff",
+        "format",
+        "--check",
+        "."
+      ],
+      "cwd": "backend",
+      "duration_seconds": 0.094,
+      "ended_offset_seconds": 559.375,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 559.281,
+      "step": ".venv/Scripts/python.exe -m ruff format",
+      "timeout_seconds": 120
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "mypy",
+        "src",
+        "tests"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 0.828,
+      "ended_offset_seconds": 560.218,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 559.39,
+      "step": ".venv/Scripts/python.exe -m mypy src",
+      "timeout_seconds": 240
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "lint"
+      ],
+      "cwd": "frontend",
+      "duration_seconds": 44.687,
+      "ended_offset_seconds": 604.921,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 560.234,
+      "step": "npm run lint",
+      "timeout_seconds": 120
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "format:check"
+      ],
+      "cwd": "frontend",
+      "duration_seconds": 2.781,
+      "ended_offset_seconds": 607.718,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 604.937,
+      "step": "npm run format:check",
+      "timeout_seconds": 120
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "cwd": "frontend",
+      "duration_seconds": 13.016,
+      "ended_offset_seconds": 620.75,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 607.734,
+      "step": "npm run typecheck",
+      "timeout_seconds": 180
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "test:unit",
+        "--",
+        "--run"
+      ],
+      "cwd": "frontend",
+      "duration_seconds": 3.625,
+      "ended_offset_seconds": 624.406,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 620.781,
+      "step": "npm run test:unit --",
+      "timeout_seconds": 180
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "cwd": "frontend",
+      "duration_seconds": 5.344,
+      "ended_offset_seconds": 629.765,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 624.421,
+      "step": "npm run build",
+      "timeout_seconds": 240
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "finnews.interfaces.cli.app",
+        "demo",
+        "--profile",
+        "memory"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 3.844,
+      "ended_offset_seconds": 633.625,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 629.781,
+      "step": ".venv/Scripts/python.exe -m finnews.interfaces.cli.app demo",
+      "timeout_seconds": 180
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "cwd": ".",
+      "duration_seconds": 0.078,
+      "ended_offset_seconds": 633.734,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 633.656,
+      "step": "git diff --check",
+      "timeout_seconds": 120
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "finnews.interfaces.cli.app",
+        "source",
+        "validate-config"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 3.328,
+      "ended_offset_seconds": 3.328,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 0.0,
+      "step": ".venv/Scripts/python.exe -m finnews.interfaces.cli.app source",
+      "timeout_seconds": 600
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "pytest",
+        "tests/unit/test_source_registry.py",
+        "tests/unit/test_http_safety.py",
+        "tests/unit/test_source_adapters.py",
+        "tests/unit/test_source_ingestion.py",
+        "tests/contract/test_source_api_cli.py"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 15.235,
+      "ended_offset_seconds": 18.594,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 3.359,
+      "step": ".venv/Scripts/python.exe -m pytest tests/unit/test_source_registry.py",
+      "timeout_seconds": 600
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "test:unit",
+        "--",
+        "--run"
+      ],
+      "cwd": "frontend",
+      "duration_seconds": 3.594,
+      "ended_offset_seconds": 22.203,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 18.609,
+      "step": "npm run test:unit --",
+      "timeout_seconds": 600
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "finnews.interfaces.cli.app",
+        "source",
+        "review",
+        "validate"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 3.625,
+      "ended_offset_seconds": 3.64,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 0.015,
+      "step": ".venv/Scripts/python.exe -m finnews.interfaces.cli.app source",
+      "timeout_seconds": 600
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "pytest",
+        "tests/unit/test_source_reviews.py",
+        "tests/unit/test_source_overrides.py",
+        "tests/unit/test_source_adapters.py",
+        "tests/unit/test_source_smoke.py",
+        "tests/contract/test_source_reviews_api.py"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 7.391,
+      "ended_offset_seconds": 11.078,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 3.687,
+      "step": ".venv/Scripts/python.exe -m pytest tests/unit/test_source_reviews.py",
+      "timeout_seconds": 600
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "finnews.interfaces.cli.app",
+        "nlp",
+        "dataset",
+        "build"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 3.0,
+      "ended_offset_seconds": 3.0,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 0.0,
+      "step": ".venv/Scripts/python.exe -m finnews.interfaces.cli.app nlp",
+      "timeout_seconds": 600
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "finnews.interfaces.cli.app",
+        "nlp",
+        "dataset",
+        "validate"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 2.922,
+      "ended_offset_seconds": 5.984,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 3.062,
+      "step": ".venv/Scripts/python.exe -m finnews.interfaces.cli.app nlp",
+      "timeout_seconds": 600
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "pytest",
+        "tests/unit/test_nlp_baselines.py",
+        "tests/unit/test_nlp_benchmark.py",
+        "tests/unit/test_nlp_evaluation.py",
+        "tests/unit/test_nlp_registry.py",
+        "tests/unit/test_nlp_release_audit.py",
+        "tests/contract/test_nlp_api.py"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 69.375,
+      "ended_offset_seconds": 75.375,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 6.0,
+      "step": ".venv/Scripts/python.exe -m pytest tests/unit/test_nlp_baselines.py",
+      "timeout_seconds": 600
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "finnews.interfaces.cli.app",
+        "nlp",
+        "benchmark",
+        "--task",
+        "all"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 8.156,
+      "ended_offset_seconds": 83.547,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 75.391,
+      "step": ".venv/Scripts/python.exe -m finnews.interfaces.cli.app nlp",
+      "timeout_seconds": 600
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "finnews.interfaces.cli.app",
+        "nlp",
+        "release-audit"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 33.313,
+      "ended_offset_seconds": 116.875,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 83.562,
+      "step": ".venv/Scripts/python.exe -m finnews.interfaces.cli.app nlp",
+      "timeout_seconds": 600
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "finnews.interfaces.cli.app",
+        "nlp",
+        "export-static"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 2.89,
+      "ended_offset_seconds": 119.781,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 116.891,
+      "step": ".venv/Scripts/python.exe -m finnews.interfaces.cli.app nlp",
+      "timeout_seconds": 600
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "finnews.interfaces.cli.app",
+        "research",
+        "calendar",
+        "build-demo"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 2.766,
+      "ended_offset_seconds": 2.781,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 0.015,
+      "step": ".venv/Scripts/python.exe -m finnews.interfaces.cli.app research",
+      "timeout_seconds": 600
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "finnews.interfaces.cli.app",
+        "research",
+        "export",
+        "build",
+        "--profile",
+        "memory",
+        "--output",
+        "<external-path>"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 3.797,
+      "ended_offset_seconds": 6.609,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 2.812,
+      "step": ".venv/Scripts/python.exe -m finnews.interfaces.cli.app research",
+      "timeout_seconds": 600
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "finnews.interfaces.cli.app",
+        "research",
+        "export",
+        "validate",
+        "--path",
+        "<external-path>"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 3.453,
+      "ended_offset_seconds": 10.078,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 6.625,
+      "step": ".venv/Scripts/python.exe -m finnews.interfaces.cli.app research",
+      "timeout_seconds": 600
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "finnews.interfaces.cli.app",
+        "research",
+        "export",
+        "build",
+        "--profile",
+        "memory",
+        "--output",
+        "<external-path>"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 3.828,
+      "ended_offset_seconds": 13.921,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 10.093,
+      "step": ".venv/Scripts/python.exe -m finnews.interfaces.cli.app research",
+      "timeout_seconds": 600
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "finnews.interfaces.cli.app",
+        "research",
+        "export",
+        "validate",
+        "--path",
+        "<external-path>"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 3.25,
+      "ended_offset_seconds": 17.171,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 13.921,
+      "step": ".venv/Scripts/python.exe -m finnews.interfaces.cli.app research",
+      "timeout_seconds": 600
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "finnews.interfaces.cli.app",
+        "research",
+        "export",
+        "compare",
+        "--left",
+        "<external-path>",
+        "--right",
+        "<external-path>"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 2.891,
+      "ended_offset_seconds": 20.062,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 17.171,
+      "step": ".venv/Scripts/python.exe -m finnews.interfaces.cli.app research",
+      "timeout_seconds": 600
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "pytest",
+        "tests/unit/test_research_export.py",
+        "tests/contract/test_research_api_cli.py"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 25.375,
+      "ended_offset_seconds": 45.453,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 20.078,
+      "step": ".venv/Scripts/python.exe -m pytest tests/unit/test_research_export.py",
+      "timeout_seconds": 600
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "finnews.interfaces.cli.app",
+        "asset",
+        "validate"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 2.907,
+      "ended_offset_seconds": 2.907,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 0.0,
+      "step": ".venv/Scripts/python.exe -m finnews.interfaces.cli.app asset",
+      "timeout_seconds": 120
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "finnews.interfaces.cli.app",
+        "cross-asset",
+        "build-demo"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 2.75,
+      "ended_offset_seconds": 5.672,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 2.922,
+      "step": ".venv/Scripts/python.exe -m finnews.interfaces.cli.app cross-asset",
+      "timeout_seconds": 120
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "finnews.interfaces.cli.app",
+        "cross-asset",
+        "summary"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 2.766,
+      "ended_offset_seconds": 8.454,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 5.688,
+      "step": ".venv/Scripts/python.exe -m finnews.interfaces.cli.app cross-asset",
+      "timeout_seconds": 120
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "finnews.interfaces.cli.app",
+        "cross-asset",
+        "release-audit"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 4.469,
+      "ended_offset_seconds": 12.938,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 8.469,
+      "step": ".venv/Scripts/python.exe -m finnews.interfaces.cli.app cross-asset",
+      "timeout_seconds": 120
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "finnews.interfaces.cli.app",
+        "mt5",
+        "readiness"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 2.843,
+      "ended_offset_seconds": 15.797,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 12.954,
+      "step": ".venv/Scripts/python.exe -m finnews.interfaces.cli.app mt5",
+      "timeout_seconds": 120
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "finnews.interfaces.cli.app",
+        "mt5",
+        "validate-symbol-map",
+        "--path",
+        "../config/integrations/mt5-symbol-map.example.yaml"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 2.859,
+      "ended_offset_seconds": 18.672,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 15.813,
+      "step": ".venv/Scripts/python.exe -m finnews.interfaces.cli.app mt5",
+      "timeout_seconds": 120
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "finnews.interfaces.cli.app",
+        "signal",
+        "export",
+        "--output",
+        ".finnews-market-signals/verify"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 2.812,
+      "ended_offset_seconds": 21.5,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 18.688,
+      "step": ".venv/Scripts/python.exe -m finnews.interfaces.cli.app signal",
+      "timeout_seconds": 120
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "finnews.interfaces.cli.app",
+        "signal",
+        "validate",
+        "--path",
+        ".finnews-market-signals/verify"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 2.859,
+      "ended_offset_seconds": 24.375,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 21.516,
+      "step": ".venv/Scripts/python.exe -m finnews.interfaces.cli.app signal",
+      "timeout_seconds": 120
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "pytest",
+        "tests/unit/test_cross_asset.py",
+        "tests/contract/test_cross_asset_api_cli.py"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 27.797,
+      "ended_offset_seconds": 52.188,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 24.391,
+      "step": ".venv/Scripts/python.exe -m pytest tests/unit/test_cross_asset.py",
+      "timeout_seconds": 240
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "finnews.interfaces.cli.app",
+        "official-data",
+        "validate-fixtures"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 2.812,
+      "ended_offset_seconds": 2.812,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 0.0,
+      "step": ".venv/Scripts/python.exe -m finnews.interfaces.cli.app official-data",
+      "timeout_seconds": 120
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "finnews.interfaces.cli.app",
+        "official-data",
+        "export-static"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 3.234,
+      "ended_offset_seconds": 6.062,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 2.828,
+      "step": ".venv/Scripts/python.exe -m finnews.interfaces.cli.app official-data",
+      "timeout_seconds": 120
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "finnews.interfaces.cli.app",
+        "official-data",
+        "release-audit"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 3.281,
+      "ended_offset_seconds": 9.343,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 6.062,
+      "step": ".venv/Scripts/python.exe -m finnews.interfaces.cli.app official-data",
+      "timeout_seconds": 120
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "finnews.interfaces.cli.app",
+        "official-data",
+        "source-audit"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 2.813,
+      "ended_offset_seconds": 12.156,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 9.343,
+      "step": ".venv/Scripts/python.exe -m finnews.interfaces.cli.app official-data",
+      "timeout_seconds": 120
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "pytest",
+        "tests/unit/test_official_data.py",
+        "tests/contract/test_official_data_api_cli.py"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 14.687,
+      "ended_offset_seconds": 26.843,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 12.156,
+      "step": ".venv/Scripts/python.exe -m pytest tests/unit/test_official_data.py",
+      "timeout_seconds": 240
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "test:unit",
+        "--",
+        "--run"
+      ],
+      "cwd": "frontend",
+      "duration_seconds": 3.641,
+      "ended_offset_seconds": 30.5,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 26.859,
+      "step": "npm run test:unit --",
+      "timeout_seconds": 180
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "-p",
+        "finnews_m3b_verify",
+        "up",
+        "-d",
+        "postgres"
+      ],
+      "cwd": ".",
+      "duration_seconds": 0.735,
+      "ended_offset_seconds": 0.735,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 0.0,
+      "step": "docker compose -p finnews_m3b_verify",
+      "timeout_seconds": 600
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "alembic",
+        "upgrade",
+        "head"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 1.968,
+      "ended_offset_seconds": 9.156,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 7.188,
+      "step": ".venv/Scripts/python.exe -m alembic upgrade",
+      "timeout_seconds": 120
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "pytest",
+        "--collect-only",
+        "-vv",
+        "-m",
+        "postgres"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 4.797,
+      "ended_offset_seconds": 13.969,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 9.172,
+      "step": "postgres pytest collect",
+      "timeout_seconds": 180
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "pytest",
+        "tests/integration/test_postgres_integration.py::test_alembic_upgrade_downgrade_schema_types_constraints_and_indexes",
+        "-s",
+        "-q"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 7.078,
+      "ended_offset_seconds": 21.063,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 13.985,
+      "step": "postgres pytest tests/integration/test_postgres_integration.py::test_alembic_upgrade_downgrade_schema_types_constraints_and_indexes",
+      "timeout_seconds": 300
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "pytest",
+        "tests/integration/test_postgres_integration.py::test_postgres_cross_asset_signal_foundation_idempotency",
+        "-s",
+        "-q"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 6.516,
+      "ended_offset_seconds": 27.594,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 21.078,
+      "step": "postgres pytest tests/integration/test_postgres_integration.py::test_postgres_cross_asset_signal_foundation_idempotency",
+      "timeout_seconds": 300
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "pytest",
+        "tests/integration/test_postgres_integration.py::test_postgres_official_data_foundation_idempotency_and_jsonb",
+        "-s",
+        "-q"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 10.468,
+      "ended_offset_seconds": 38.078,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 27.61,
+      "step": "postgres pytest tests/integration/test_postgres_integration.py::test_postgres_official_data_foundation_idempotency_and_jsonb",
+      "timeout_seconds": 300
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "pytest",
+        "tests/integration/test_postgres_integration.py::test_postgres_repository_pipeline_idempotency_and_memory_parity",
+        "-s",
+        "-q"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 22.922,
+      "ended_offset_seconds": 61.016,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 38.094,
+      "step": "postgres pytest tests/integration/test_postgres_integration.py::test_postgres_repository_pipeline_idempotency_and_memory_parity",
+      "timeout_seconds": 300
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "pytest",
+        "tests/integration/test_postgres_integration.py::test_postgres_research_export_metadata_parity",
+        "-s",
+        "-q"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 19.422,
+      "ended_offset_seconds": 80.453,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 61.031,
+      "step": "postgres pytest tests/integration/test_postgres_integration.py::test_postgres_research_export_metadata_parity",
+      "timeout_seconds": 300
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "pytest",
+        "tests/integration/test_postgres_integration.py::test_repository_contract_constraints_jsonb_timezone_and_rollback",
+        "-s",
+        "-q"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 17.562,
+      "ended_offset_seconds": 98.031,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 80.469,
+      "step": "postgres pytest tests/integration/test_postgres_integration.py::test_repository_contract_constraints_jsonb_timezone_and_rollback",
+      "timeout_seconds": 300
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "pytest",
+        "tests/integration/test_postgres_integration.py::test_source_state_repository_contract_jsonb_and_attempts",
+        "-s",
+        "-q"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 5.859,
+      "ended_offset_seconds": 103.906,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 98.047,
+      "step": "postgres pytest tests/integration/test_postgres_integration.py::test_source_state_repository_contract_jsonb_and_attempts",
+      "timeout_seconds": 300
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "pytest",
+        "tests/integration/test_postgres_integration.py::test_postgres_api_profile_matches_persisted_counts",
+        "-s",
+        "-q"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 32.844,
+      "ended_offset_seconds": 136.766,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 103.922,
+      "step": "postgres pytest tests/integration/test_postgres_integration.py::test_postgres_api_profile_matches_persisted_counts",
+      "timeout_seconds": 300
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "pytest",
+        "tests/integration/test_postgres_integration.py::test_postgres_cli_profile_without_secret_output",
+        "-s",
+        "-q"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 15.5,
+      "ended_offset_seconds": 152.266,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 136.766,
+      "step": "postgres pytest tests/integration/test_postgres_integration.py::test_postgres_cli_profile_without_secret_output",
+      "timeout_seconds": 300
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "pytest",
+        "tests/integration/test_postgres_integration.py::test_postgres_nlp_model_registry_metadata_jsonb_and_rollback",
+        "-s",
+        "-q"
+      ],
+      "cwd": "backend",
+      "duration_seconds": 5.766,
+      "ended_offset_seconds": 158.047,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 152.281,
+      "step": "postgres pytest tests/integration/test_postgres_integration.py::test_postgres_nlp_model_registry_metadata_jsonb_and_rollback",
+      "timeout_seconds": 300
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "-p",
+        "finnews_m3b_verify",
+        "down",
+        "--volumes",
+        "--remove-orphans"
+      ],
+      "cwd": ".",
+      "duration_seconds": 1.406,
+      "ended_offset_seconds": 159.469,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 158.063,
+      "step": "docker compose -p finnews_m3b_verify",
+      "timeout_seconds": 600
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "-p",
+        "finnews_m3b_verify",
+        "up",
+        "-d",
+        "postgres"
+      ],
+      "cwd": ".",
+      "duration_seconds": 0.578,
+      "ended_offset_seconds": 0.594,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 0.016,
+      "step": "docker compose -p finnews_m3b_verify",
+      "timeout_seconds": 600
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "-p",
+        "finnews_m3b_verify",
+        "down",
+        "--volumes",
+        "--remove-orphans"
+      ],
+      "cwd": ".",
+      "duration_seconds": 0.812,
+      "ended_offset_seconds": 0.828,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 0.016,
+      "step": "docker compose -p finnews_m3b_verify",
+      "timeout_seconds": 600
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "-p",
+        "finnews_m3b_verify",
+        "up",
+        "-d",
+        "postgres"
+      ],
+      "cwd": ".",
+      "duration_seconds": 0.562,
+      "ended_offset_seconds": 0.562,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 0.0,
+      "step": "docker compose -p finnews_m3b_verify",
+      "timeout_seconds": 600
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "-p",
+        "finnews_m3b_verify",
+        "down",
+        "--volumes",
+        "--remove-orphans"
+      ],
+      "cwd": ".",
+      "duration_seconds": 0.75,
+      "ended_offset_seconds": 0.765,
+      "exit_code": 0,
+      "outcome": "completed",
+      "started_offset_seconds": 0.015,
+      "step": "docker compose -p finnews_m3b_verify",
+      "timeout_seconds": 600
     }
   ]
 }

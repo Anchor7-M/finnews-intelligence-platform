@@ -26,16 +26,40 @@ def test_official_data_api_contract() -> None:
 
     series = client.get("/api/v1/official-data/series?dataset_id=bls-ces")
     assert series.status_code == 200
-    assert series.json()["total"] == 3
+    assert series.json()["total"] == 4
 
     observations = client.get("/api/v1/official-data/observations?limit=1")
     assert observations.status_code == 200
-    assert observations.json()["total"] == 24
+    assert observations.json()["total"] == 144
     observation_key = observations.json()["items"][0]["observation_key"]
 
     revisions = client.get(f"/api/v1/official-data/observations/{observation_key}/revisions")
     assert revisions.status_code == 200
     assert revisions.json()[0]["observation_key"] == observation_key
+    revised = next(
+        row
+        for row in client.get("/api/v1/official-data/observations", params={"limit": 200}).json()[
+            "items"
+        ]
+        if row["current_revision"] == 2
+    )
+    revised_history = client.get(
+        f"/api/v1/official-data/observations/{revised['observation_key']}/revisions"
+    ).json()
+    as_of_before_revision = client.get(
+        "/api/v1/official-data/observations",
+        params={
+            "profile_id": revised["profile_id"],
+            "as_of": revised_history[0]["information_available_at"],
+            "limit": 200,
+        },
+    ).json()
+    historical = next(
+        row
+        for row in as_of_before_revision["items"]
+        if row["observation_key"] == revised["observation_key"]
+    )
+    assert historical["current_revision"] == 1
 
     documents = client.get("/api/v1/official-data/regulatory-documents?agency=Energy")
     assert documents.status_code == 200
@@ -74,6 +98,37 @@ def test_official_data_cli_contract() -> None:
         )
     )
     assert overview["dataset_count"] == 4
+    assert overview["observation_count"] == 144
+    assert overview["changed_value_revision_count"] == 24
+
+    release_audit = runner.invoke(cli_app, ["official-data", "release-audit"])
+    assert release_audit.exit_code == 0
+    release_payload = json.loads(release_audit.stdout)
+    assert release_payload["status"] == "completed"
+    ledger = json.loads(
+        (REPO_ROOT / "reports" / "official-data" / "m3b-release-ledger.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    assert ledger["definition_count_total"] == 16
+    assert ledger["observation_business_key_count"] == 144
+    assert ledger["changed_value_revision_count"] == 24
+    assert ledger["static_export_record_counts"]["official-observation-revisions"] == 168
+
+    source_audit = runner.invoke(cli_app, ["official-data", "source-audit"])
+    assert source_audit.exit_code == 0
+    source_payload = json.loads(source_audit.stdout)
+    assert source_payload["source_count"] == 4
+    assert source_payload["all_disabled"] is True
+    assert source_payload["all_reviews_current"] is True
+    source_report_text = (
+        REPO_ROOT / "reports" / "official-data" / "m3b-source-review-audit.json"
+    ).read_text(encoding="utf-8")
+    source_report = json.loads(source_report_text)
+    assert source_report["source_count"] == 4
+    assert all(row["enabled"] is False for row in source_report["sources"])
+    assert "FINNEWS_EIA_API_KEY" in source_report_text
+    assert "api_key=" not in source_report_text
 
     blocked = runner.invoke(cli_app, ["official-data", "live-smoke", "--source", "bls-public-data"])
     assert blocked.exit_code == 4

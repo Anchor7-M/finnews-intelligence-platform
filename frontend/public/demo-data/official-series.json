@@ -64,6 +64,49 @@
     "id": "fd000adf-b092-5fad-a41a-b29cac3eaf32"
   },
   {
+    "profile_id": "bls-ces-unemployment-rate",
+    "dataset_id": "bls-ces",
+    "source_id": "bls-public-data",
+    "display_name": "Unemployment rate proxy",
+    "query": {
+      "series_id": "LNS14000000"
+    },
+    "dimensions": {
+      "measure": "unemployment_rate",
+      "seasonal": "sa"
+    },
+    "unit": "percent",
+    "frequency": "monthly",
+    "seasonal_adjustment": "seasonally_adjusted",
+    "synthetic": true,
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "id": "1c287e3c-6b00-52a0-ae6b-7d2cc5d5d55c"
+  },
+  {
+    "profile_id": "cftc-energy-positioning",
+    "dataset_id": "cftc-cot-pre",
+    "source_id": "cftc-cot-pre",
+    "display_name": "Energy futures positioning",
+    "query": {
+      "resource": "6dca-aqww",
+      "market_code": "067651"
+    },
+    "dimensions": {
+      "market": "energy",
+      "report": "pre"
+    },
+    "unit": "contracts",
+    "frequency": "weekly",
+    "seasonal_adjustment": null,
+    "synthetic": true,
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "id": "9aeb70eb-e6ae-5574-9232-c8fe76838871"
+  },
+  {
     "profile_id": "cftc-equity-index-positioning",
     "dataset_id": "cftc-cot-pre",
     "source_id": "cftc-cot-pre",
@@ -84,6 +127,28 @@
       "fixture_version": "official-data-synthetic-v1"
     },
     "id": "94aa2ac6-54fa-5142-9de4-d0072eabbd4d"
+  },
+  {
+    "profile_id": "cftc-metals-positioning",
+    "dataset_id": "cftc-cot-pre",
+    "source_id": "cftc-cot-pre",
+    "display_name": "Precious metals futures positioning",
+    "query": {
+      "resource": "6dca-aqww",
+      "market_code": "088691"
+    },
+    "dimensions": {
+      "market": "precious_metal",
+      "report": "pre"
+    },
+    "unit": "contracts",
+    "frequency": "weekly",
+    "seasonal_adjustment": null,
+    "synthetic": true,
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "id": "05e5ebe2-c002-56d3-aa3f-8a5432f9c740"
   },
   {
     "profile_id": "cftc-rates-positioning",
@@ -130,6 +195,28 @@
     "id": "444b2738-adea-5ec4-8bba-6995656f3961"
   },
   {
+    "profile_id": "eia-distillate-stocks",
+    "dataset_id": "eia-petroleum-stocks",
+    "source_id": "eia-open-data-v2",
+    "display_name": "Distillate fuel oil stocks",
+    "query": {
+      "route": "petroleum/stoc/wstk",
+      "series": "WDISTUS1"
+    },
+    "dimensions": {
+      "commodity": "distillate",
+      "region": "us"
+    },
+    "unit": "thousand_barrels",
+    "frequency": "weekly",
+    "seasonal_adjustment": null,
+    "synthetic": true,
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "id": "cbe10d4f-75f4-59f3-bfed-0326253af261"
+  },
+  {
     "profile_id": "eia-gasoline-stocks",
     "dataset_id": "eia-petroleum-stocks",
     "source_id": "eia-open-data-v2",
@@ -172,6 +259,48 @@
       "fixture_version": "official-data-synthetic-v1"
     },
     "id": "249ef048-0ab8-5db6-ba9f-4bbb067e9553"
+  },
+  {
+    "profile_id": "fr-bank-capital-regulation",
+    "dataset_id": "federal-register-documents",
+    "source_id": "federal-register-api",
+    "display_name": "Bank capital regulatory documents",
+    "query": {
+      "conditions[term]": "bank capital",
+      "per_page": 8
+    },
+    "dimensions": {
+      "topic": "bank_capital"
+    },
+    "unit": null,
+    "frequency": "event",
+    "seasonal_adjustment": null,
+    "synthetic": true,
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "id": "b738f2d3-c3ef-5c33-994c-2af707235679"
+  },
+  {
+    "profile_id": "fr-commodity-reporting-regulation",
+    "dataset_id": "federal-register-documents",
+    "source_id": "federal-register-api",
+    "display_name": "Commodity reporting regulatory documents",
+    "query": {
+      "conditions[term]": "commodity reporting",
+      "per_page": 8
+    },
+    "dimensions": {
+      "topic": "commodity_reporting"
+    },
+    "unit": null,
+    "frequency": "event",
+    "seasonal_adjustment": null,
+    "synthetic": true,
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1"
+    },
+    "id": "4f40c7b0-b3b9-5b62-9c12-bdc309948679"
   },
   {
     "profile_id": "fr-energy-regulation",

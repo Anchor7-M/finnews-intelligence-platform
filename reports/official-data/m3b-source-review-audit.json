@@ -1,0 +1,203 @@
+{
+  "all_disabled": true,
+  "all_reviews_current": true,
+  "live_data_persisted": false,
+  "schema_version": "m3b-source-review-audit-v1",
+  "source_count": 4,
+  "sources": [
+    {
+      "allowed_hostnames": [
+        "api.bls.gov"
+      ],
+      "api_version": null,
+      "approved_hostnames": [
+        "api.bls.gov"
+      ],
+      "authentication_category": "BLS v1 public data requests require no registration; v2 registration key use is optional and local-only through FINNEWS_BLS_API_KEY.",
+      "config_digest": "a21bfe8e4cca3749c8ef2a54751f8088e16d8ac6f6694e8825006715e1765c49",
+      "cost": "free",
+      "documentation_url": "https://www.bls.gov/developers/",
+      "documented_endpoint_patterns": [
+        "https://api\\.bls\\.gov/publicAPI/v2/timeseries/data/"
+      ],
+      "enabled": false,
+      "endpoint_template": "https://api.bls.gov/publicAPI/v2/timeseries/data/",
+      "evidence_checked_at": "2026-06-24",
+      "http_method": "POST",
+      "live_smoke_status": "not_run",
+      "methods": [
+        "GET",
+        "POST",
+        "HEAD"
+      ],
+      "official_owner": "U.S. Bureau of Labor Statistics",
+      "official_source": "BLS Public Data API",
+      "request_limits": {
+        "max_response_bytes": 2000000,
+        "minimum_interval_seconds": 21600,
+        "retry_policy": {
+          "base_delay_seconds": 2.0,
+          "max_delay_seconds": 30.0,
+          "max_retries": 1
+        }
+      },
+      "review_config_sha256": "a21bfe8e4cca3749c8ef2a54751f8088e16d8ac6f6694e8825006715e1765c49",
+      "review_decision": "approved",
+      "revision_behavior": null,
+      "source_id": "bls-public-data",
+      "source_specific_risks": [
+        "API rate rules and registration behavior may change.",
+        "Series definitions and seasonal-adjustment metadata must be reviewed before expansion."
+      ],
+      "stale_review": false,
+      "storage_policy": "metadata_only",
+      "terms_or_policy_url": "https://www.bls.gov/developers/",
+      "validated": true
+    },
+    {
+      "allowed_hostnames": [
+        "publicreporting.cftc.gov"
+      ],
+      "api_version": null,
+      "approved_hostnames": [
+        "publicreporting.cftc.gov"
+      ],
+      "authentication_category": "No token is stored or required for the configured public COT PRE profile.",
+      "config_digest": "8e7834d6a3de575520d69904192e4a9dda18d7c55d5b59ddd56feae7bb2fbb7f",
+      "cost": "free",
+      "documentation_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+      "documented_endpoint_patterns": [
+        "https://publicreporting\\.cftc\\.gov/resource/6dca-aqww\\.json"
+      ],
+      "enabled": false,
+      "endpoint_template": "https://publicreporting.cftc.gov/resource/6dca-aqww.json",
+      "evidence_checked_at": "2026-06-24",
+      "http_method": "GET",
+      "live_smoke_status": "not_run",
+      "methods": [
+        "GET",
+        "HEAD"
+      ],
+      "official_owner": "U.S. Commodity Futures Trading Commission",
+      "official_source": "CFTC Commitments of Traders public reporting",
+      "request_limits": {
+        "max_response_bytes": 2000000,
+        "minimum_interval_seconds": 21600,
+        "retry_policy": {
+          "base_delay_seconds": 2.0,
+          "max_delay_seconds": 30.0,
+          "max_retries": 1
+        }
+      },
+      "review_config_sha256": "8e7834d6a3de575520d69904192e4a9dda18d7c55d5b59ddd56feae7bb2fbb7f",
+      "review_decision": "approved",
+      "revision_behavior": null,
+      "source_id": "cftc-cot-pre",
+      "source_specific_risks": [
+        "COT datasets lack one universal primary key across all rows and formats.",
+        "Market names and code fields can change and require conservative logical keys."
+      ],
+      "stale_review": false,
+      "storage_policy": "metadata_only",
+      "terms_or_policy_url": "https://www.cftc.gov/PrivacyandSecurityPolicy/index.htm",
+      "validated": true
+    },
+    {
+      "allowed_hostnames": [
+        "api.eia.gov"
+      ],
+      "api_version": null,
+      "approved_hostnames": [
+        "api.eia.gov"
+      ],
+      "authentication_category": "A free local FINNEWS_EIA_API_KEY is required for live smoke; the tracked config stores only the env var name.",
+      "config_digest": "0c727c2752bf02bf5b60a28ed034dd330b69459804b38671d79d411b02fd0bb7",
+      "cost": "free_with_key",
+      "documentation_url": "https://www.eia.gov/opendata/documentation.php",
+      "documented_endpoint_patterns": [
+        "https://api\\.eia\\.gov/v2/\\{route\\}/data/"
+      ],
+      "enabled": false,
+      "endpoint_template": "https://api.eia.gov/v2/{route}/data/",
+      "evidence_checked_at": "2026-06-24",
+      "http_method": "GET",
+      "live_smoke_status": "not_run",
+      "methods": [
+        "GET",
+        "HEAD"
+      ],
+      "official_owner": "U.S. Energy Information Administration",
+      "official_source": "EIA Open Data API v2",
+      "request_limits": {
+        "max_response_bytes": 2000000,
+        "minimum_interval_seconds": 21600,
+        "retry_policy": {
+          "base_delay_seconds": 2.0,
+          "max_delay_seconds": 30.0,
+          "max_retries": 1
+        }
+      },
+      "review_config_sha256": "0c727c2752bf02bf5b60a28ed034dd330b69459804b38671d79d411b02fd0bb7",
+      "review_decision": "approved",
+      "revision_behavior": null,
+      "source_id": "eia-open-data-v2",
+      "source_specific_risks": [
+        "Live smoke is blocked when the local key is absent.",
+        "Route/facet schemas can vary by dataset and require profile-specific validation."
+      ],
+      "stale_review": false,
+      "storage_policy": "metadata_only",
+      "terms_or_policy_url": "https://www.eia.gov/about/copyrights_reuse.php",
+      "validated": true
+    },
+    {
+      "allowed_hostnames": [
+        "www.federalregister.gov"
+      ],
+      "api_version": null,
+      "approved_hostnames": [
+        "www.federalregister.gov"
+      ],
+      "authentication_category": "No API key is required for the configured metadata profile.",
+      "config_digest": "38c8b70548279fc2fb843fd42eeaea1e86919f92b8049a5efba48729f881460c",
+      "cost": "free",
+      "documentation_url": "https://www.federalregister.gov/developers/documentation/api/v1",
+      "documented_endpoint_patterns": [
+        "https://www\\.federalregister\\.gov/api/v1/documents\\.json"
+      ],
+      "enabled": false,
+      "endpoint_template": "https://www.federalregister.gov/api/v1/documents.json",
+      "evidence_checked_at": "2026-06-24",
+      "http_method": "GET",
+      "live_smoke_status": "not_run",
+      "methods": [
+        "GET",
+        "HEAD"
+      ],
+      "official_owner": "Office of the Federal Register and U.S. Government Publishing Office",
+      "official_source": "FederalRegister.gov API",
+      "request_limits": {
+        "max_response_bytes": 2000000,
+        "minimum_interval_seconds": 21600,
+        "retry_policy": {
+          "base_delay_seconds": 2.0,
+          "max_delay_seconds": 30.0,
+          "max_retries": 1
+        }
+      },
+      "review_config_sha256": "38c8b70548279fc2fb843fd42eeaea1e86919f92b8049a5efba48729f881460c",
+      "review_decision": "approved",
+      "revision_behavior": null,
+      "source_id": "federal-register-api",
+      "source_specific_risks": [
+        "FederalRegister.gov is informational and not the official legal edition.",
+        "Regulatory metadata can change and must retain point-in-time provenance."
+      ],
+      "stale_review": false,
+      "storage_policy": "metadata_only",
+      "terms_or_policy_url": "https://www.federalregister.gov/policy/privacy",
+      "validated": true
+    }
+  ],
+  "synthetic_data": true
+}

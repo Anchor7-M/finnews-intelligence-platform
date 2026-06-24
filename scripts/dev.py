@@ -719,6 +719,30 @@ def verify_official_data(_: argparse.Namespace) -> None:
         [
             PYTHON,
             "-m",
+            "finnews.interfaces.cli.app",
+            "official-data",
+            "release-audit",
+        ],
+        backend,
+        env=env,
+        timeout_seconds=120,
+    )
+    run(
+        [
+            PYTHON,
+            "-m",
+            "finnews.interfaces.cli.app",
+            "official-data",
+            "source-audit",
+        ],
+        backend,
+        env=env,
+        timeout_seconds=120,
+    )
+    run(
+        [
+            PYTHON,
+            "-m",
             "pytest",
             "tests/unit/test_official_data.py",
             "tests/contract/test_official_data_api_cli.py",
