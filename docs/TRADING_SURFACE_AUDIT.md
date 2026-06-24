@@ -29,7 +29,7 @@ Tracked source, configuration, contracts, workflows, CLI, API, frontend, docs, a
 | Metric | Value |
 | --- | ---: |
 | Matched files | 49 |
-| Matched pattern instances | 870 |
+| Matched pattern instances | 871 |
 | Forbidden production matches | 0 |
 | `MetaTrader5` dependency declarations | 0 |
 | Normal-import `MetaTrader5` usage | 0 |

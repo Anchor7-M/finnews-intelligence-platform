@@ -1,15 +1,19 @@
 from __future__ import annotations
 
 import json
+import subprocess
 from datetime import UTC, datetime
 from decimal import Decimal
 from pathlib import Path
+from typing import Any
 
 import pytest
 
+from finnews.application.services import mt5_readonly_release_audit
 from finnews.application.services.market_reaction import validate_market_bar_file
 from finnews.application.services.mt5_readonly import (
     FIXED_TEST_EXPORT_TIME,
+    LOCAL_EXPORT_ROOT,
     Mt5RateBar,
     OptionalMetaTrader5ReadOnlyAdapter,
     evaluate_mt5_readonly_gates,
@@ -19,6 +23,7 @@ from finnews.application.services.mt5_readonly import (
     validate_mt5_readonly_symbol_map,
 )
 from finnews.application.services.mt5_readonly_release_audit import (
+    build_bar_export_audit,
     build_m4a_release_reports,
     write_m4a_release_audit_reports,
 )
@@ -27,6 +32,8 @@ REPO_ROOT = Path(__file__).resolve().parents[3]
 
 
 class FakeReadOnlyBridge:
+    requires_terminal_access = False
+
     def __init__(self, bars: list[Mt5RateBar] | None = None, init_ready: bool = True) -> None:
         self.bars = bars or [
             Mt5RateBar(
@@ -175,6 +182,54 @@ def test_gates_reject_naive_non_utc_ci_and_excessive_ranges(tmp_path: Path) -> N
     assert "naive_datetime" in result["failures"]
 
 
+def test_gate_allows_ci_for_explicit_terminal_free_fake_adapter(tmp_path: Path) -> None:
+    path = _symbol_map(tmp_path / "map.yaml")
+    output = Path(LOCAL_EXPORT_ROOT) / "relative-ci-fake"
+
+    result = evaluate_mt5_readonly_gates(
+        symbol_map_path=path,
+        output=output,
+        start=datetime(2026, 6, 1, tzinfo=UTC),
+        end=datetime(2026, 6, 2, tzinfo=UTC),
+        timeframe="D1",
+        confirm_local_terminal=True,
+        requires_terminal_access=False,
+        env={"FINNEWS_ALLOW_LOCAL_MT5_READONLY": "1", "CI": "true"},
+        repo_root=REPO_ROOT,
+    )
+
+    assert result["allowed"] is True
+    assert result["requires_terminal_access"] is False
+    assert result["terminal_contacted"] is False
+
+
+def test_gate_rejects_path_traversal_and_outside_output(tmp_path: Path) -> None:
+    path = _symbol_map(tmp_path / "map.yaml")
+
+    def evaluate_output(output: Path) -> dict[str, Any]:
+        return evaluate_mt5_readonly_gates(
+            symbol_map_path=path,
+            output=output,
+            start=datetime(2026, 6, 1, tzinfo=UTC),
+            end=datetime(2026, 6, 2, tzinfo=UTC),
+            timeframe="D1",
+            confirm_local_terminal=True,
+            requires_terminal_access=False,
+            env={"FINNEWS_ALLOW_LOCAL_MT5_READONLY": "1"},
+            repo_root=REPO_ROOT,
+        )
+
+    relative = evaluate_output(Path(LOCAL_EXPORT_ROOT) / "relative-ok")
+    absolute = evaluate_output(REPO_ROOT / LOCAL_EXPORT_ROOT / "absolute-ok")
+    traversal = evaluate_output(REPO_ROOT / LOCAL_EXPORT_ROOT / ".." / "outside")
+    outside = evaluate_output(tmp_path / "outside")
+
+    assert relative["allowed"] is True
+    assert absolute["allowed"] is True
+    assert "output_outside_ignored_root" in traversal["failures"]
+    assert "output_outside_ignored_root" in outside["failures"]
+
+
 def test_fake_adapter_exports_market_bar_contract(
     tmp_path: Path,
     monkeypatch: pytest.MonkeyPatch,
@@ -182,6 +237,7 @@ def test_fake_adapter_exports_market_bar_contract(
     path = _symbol_map(tmp_path / "map.yaml")
     output = REPO_ROOT / ".finnews-mt5-readonly-exports" / "pytest-export"
     monkeypatch.setenv("FINNEWS_ALLOW_LOCAL_MT5_READONLY", "1")
+    monkeypatch.setenv("CI", "true")
     bridge = FakeReadOnlyBridge()
 
     result = export_mt5_bars_readonly(
@@ -207,6 +263,35 @@ def test_fake_adapter_exports_market_bar_contract(
         assert forbidden not in manifest
 
 
+def test_real_adapter_is_blocked_in_ci_before_metatrader5_import(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    path = _symbol_map(tmp_path / "map.yaml")
+    output = REPO_ROOT / LOCAL_EXPORT_ROOT / "pytest-real-ci-blocked"
+    monkeypatch.setenv("FINNEWS_ALLOW_LOCAL_MT5_READONLY", "1")
+    monkeypatch.setenv("CI", "true")
+
+    def fail_import(name: str) -> object:
+        raise AssertionError(f"unexpected import: {name}")
+
+    monkeypatch.setattr("importlib.import_module", fail_import)
+
+    result = export_mt5_bars_readonly(
+        symbol_map_path=path,
+        timeframe="D1",
+        start=datetime(2026, 6, 1, tzinfo=UTC),
+        end=datetime(2026, 6, 2, tzinfo=UTC),
+        output=output,
+        confirm_local_terminal=True,
+        repo_root=REPO_ROOT,
+    )
+
+    assert result["status"] == "blocked_by_gate"
+    assert result["requires_terminal_access"] is True
+    assert "ci_environment_blocked" in result["failures"]
+
+
 def test_fake_adapter_rejects_duplicate_and_invalid_bars(
     tmp_path: Path,
     monkeypatch: pytest.MonkeyPatch,
@@ -214,6 +299,7 @@ def test_fake_adapter_rejects_duplicate_and_invalid_bars(
     path = _symbol_map(tmp_path / "map.yaml")
     output = REPO_ROOT / ".finnews-mt5-readonly-exports" / "pytest-bad-export"
     monkeypatch.setenv("FINNEWS_ALLOW_LOCAL_MT5_READONLY", "1")
+    monkeypatch.setenv("CI", "true")
     duplicate_bar = Mt5RateBar(
         time=datetime(2026, 6, 1, tzinfo=UTC),
         open=Decimal("1"),
@@ -234,6 +320,39 @@ def test_fake_adapter_rejects_duplicate_and_invalid_bars(
     )
 
     assert result["status"] == "invalid_bars"
+
+
+def test_release_audit_reports_fake_export_failure_without_missing_file_error(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    def fake_failed_export(**kwargs: object) -> dict[str, object]:
+        return {"status": "blocked_by_gate", "failures": ["diagnostic_fake_failure"]}
+
+    monkeypatch.setattr(mt5_readonly_release_audit, "export_mt5_bars_readonly", fake_failed_export)
+
+    report = build_bar_export_audit(REPO_ROOT)
+
+    assert report["status"] == "FAIL"
+    assert report["export_failure"]["status"] == "blocked_by_gate"
+    assert report["contract_validation"]["error"] == "fake export failed before validation"
+
+
+def test_mt5_export_root_is_ignored_and_not_tracked() -> None:
+    ignored = subprocess.run(
+        ["git", "check-ignore", "-q", f"{LOCAL_EXPORT_ROOT}/"],
+        cwd=REPO_ROOT,
+        check=False,
+    )
+    tracked = subprocess.run(
+        ["git", "ls-files", f"{LOCAL_EXPORT_ROOT}/**"],
+        cwd=REPO_ROOT,
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+
+    assert ignored.returncode == 0
+    assert tracked.stdout == ""
 
 
 def test_optional_adapter_missing_package_is_safe(monkeypatch: pytest.MonkeyPatch) -> None:

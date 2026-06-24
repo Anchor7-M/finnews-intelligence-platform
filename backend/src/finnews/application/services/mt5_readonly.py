@@ -151,6 +151,8 @@ class Mt5ReadOnlyBridge(Protocol):
 
 
 class DisabledMt5ReadOnlyBridge:
+    requires_terminal_access = False
+
     def package_status(self) -> dict[str, Any]:
         return {"package_available": False, "status": "not_checked"}
 
@@ -180,6 +182,8 @@ class DisabledMt5ReadOnlyBridge:
 
 
 class OptionalMetaTrader5ReadOnlyAdapter:
+    requires_terminal_access = True
+
     def __init__(self) -> None:
         self._module: Any | None = None
 
@@ -425,6 +429,7 @@ def evaluate_mt5_readonly_gates(
     end: datetime | None,
     timeframe: str,
     confirm_local_terminal: bool,
+    requires_terminal_access: bool = True,
     env: dict[str, str] | None = None,
     repo_root: Path | None = None,
 ) -> dict[str, Any]:
@@ -435,7 +440,7 @@ def evaluate_mt5_readonly_gates(
         failures.append("allow_env_missing")
     if not confirm_local_terminal:
         failures.append("confirm_local_terminal_missing")
-    if gate_env.get("CI", "").lower() in {"1", "true", "yes"}:
+    if requires_terminal_access and gate_env.get("CI", "").lower() in {"1", "true", "yes"}:
         failures.append("ci_environment_blocked")
     if symbol_map_path is None:
         failures.append("symbol_map_missing")
@@ -486,6 +491,8 @@ def evaluate_mt5_readonly_gates(
         "symbol_map": _public_symbol_map_result(symbol_map_result),
         "terminal_contacted": False,
         "operation": "read_only_export",
+        "requires_terminal_access": requires_terminal_access,
+        "ci_gate_scope": "real_terminal_access",
     }
 
 
@@ -502,6 +509,9 @@ def export_mt5_bars_readonly(
     export_time: datetime | None = None,
 ) -> dict[str, Any]:
     repo_root = (repo_root or Path.cwd()).resolve()
+    output = _repo_relative_path(output, repo_root)
+    bridge = bridge or OptionalMetaTrader5ReadOnlyAdapter()
+    requires_terminal_access = _bridge_requires_terminal_access(bridge)
     gate = evaluate_mt5_readonly_gates(
         symbol_map_path=symbol_map_path,
         output=output,
@@ -509,11 +519,11 @@ def export_mt5_bars_readonly(
         end=end,
         timeframe=timeframe,
         confirm_local_terminal=confirm_local_terminal,
+        requires_terminal_access=requires_terminal_access,
         repo_root=repo_root,
     )
     if not gate["allowed"]:
         return {"status": "blocked_by_gate", **gate}
-    bridge = bridge or OptionalMetaTrader5ReadOnlyAdapter()
     symbol_map_result = validate_mt5_readonly_symbol_map(symbol_map_path)
     entries = [
         entry
@@ -661,14 +671,27 @@ def _public_symbol_map_result(result: dict[str, Any] | None) -> dict[str, Any] |
 
 
 def _under_local_export_root(path: Path, repo_root: Path) -> bool:
-    resolved = path.resolve()
+    resolved = _repo_relative_path(path, repo_root).resolve()
     root = (repo_root / LOCAL_EXPORT_ROOT).resolve()
     return resolved == root or root in resolved.parents
 
 
+def _repo_relative_path(path: Path, repo_root: Path) -> Path:
+    return path if path.is_absolute() else repo_root / path
+
+
+def _bridge_requires_terminal_access(bridge: Mt5ReadOnlyBridge) -> bool:
+    return bool(getattr(bridge, "requires_terminal_access", True))
+
+
 def _safe_relative_output(path: Path, repo_root: Path) -> str:
     try:
-        return path.resolve().relative_to(repo_root.resolve()).as_posix()
+        return (
+            _repo_relative_path(path, repo_root)
+            .resolve()
+            .relative_to(repo_root.resolve())
+            .as_posix()
+        )
     except ValueError:
         return "<outside-repository>"
 
