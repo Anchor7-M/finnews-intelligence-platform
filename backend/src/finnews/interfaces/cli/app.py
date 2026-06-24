@@ -48,6 +48,9 @@ from finnews.application.services.mt5_readonly import (
     parse_cli_utc_datetime,
     validate_mt5_readonly_symbol_map,
 )
+from finnews.application.services.mt5_readonly_release_audit import (
+    write_m4a_release_audit_reports,
+)
 from finnews.application.services.nlp_artifacts import ArtifactError, load_trusted_artifact
 from finnews.application.services.nlp_evaluation import run_nlp_benchmark
 from finnews.application.services.nlp_registry import register_nlp_report
@@ -1046,6 +1049,14 @@ def mt5_readonly_export_bars(
     typer.echo(json.dumps(result, sort_keys=True, default=str))
     if result.get("status") != "exported":
         raise typer.Exit(code=4)
+
+
+@mt5_readonly_app.command("release-audit")
+def mt5_readonly_release_audit() -> None:
+    result = write_m4a_release_audit_reports(_repo_root())
+    typer.echo(json.dumps(result, sort_keys=True, default=str))
+    if result.get("status") != "PASS" or result.get("execution_surface_status") != "PASS":
+        raise typer.Exit(code=3)
 
 
 @market_data_contract_app.command("validate")

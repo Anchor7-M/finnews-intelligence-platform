@@ -1,0 +1,134 @@
+{
+  "available_at_policy": "bar_end_at_plus_5_minutes",
+  "bar_count": 1,
+  "contract_name": "finnews-market-bars-v1",
+  "contract_validation": {
+    "asset_count": 1,
+    "contract_name": "finnews-market-bars-v1",
+    "contract_version": "1.0.0",
+    "credentials_present": false,
+    "deterministic_hash": "a9143720368ee667b3657165ff00dca1b83f40f70ebf74314da4fea11b1ddbf7",
+    "live_fetch_metadata": false,
+    "row_count": 1,
+    "synthetic_rows": 0,
+    "valid": true
+  },
+  "disabled_mappings_ignored": true,
+  "first_seen_at_policy": "export_time",
+  "gate_matrix": [
+    {
+      "allowed": false,
+      "case": "missing_allow_flag",
+      "failures": [
+        "allow_env_missing"
+      ],
+      "terminal_contacted": false
+    },
+    {
+      "allowed": false,
+      "case": "missing_confirmation",
+      "failures": [
+        "confirm_local_terminal_missing"
+      ],
+      "terminal_contacted": false
+    },
+    {
+      "allowed": false,
+      "case": "ci_blocked",
+      "failures": [
+        "ci_environment_blocked"
+      ],
+      "terminal_contacted": false
+    },
+    {
+      "allowed": false,
+      "case": "missing_symbol_map",
+      "failures": [
+        "symbol_map_missing"
+      ],
+      "terminal_contacted": false
+    },
+    {
+      "allowed": false,
+      "case": "output_outside_root",
+      "failures": [
+        "output_outside_ignored_root"
+      ],
+      "terminal_contacted": false
+    },
+    {
+      "allowed": false,
+      "case": "invalid_timeframe",
+      "failures": [
+        "unsupported_timeframe"
+      ],
+      "terminal_contacted": false
+    },
+    {
+      "allowed": false,
+      "case": "too_long_intraday",
+      "failures": [
+        "intraday_range_too_large"
+      ],
+      "terminal_contacted": false
+    },
+    {
+      "allowed": false,
+      "case": "too_long_daily",
+      "failures": [
+        "daily_range_too_large"
+      ],
+      "terminal_contacted": false
+    },
+    {
+      "allowed": false,
+      "case": "naive_datetime",
+      "failures": [
+        "naive_datetime"
+      ],
+      "terminal_contacted": false
+    },
+    {
+      "allowed": false,
+      "case": "from_gte_to",
+      "failures": [
+        "invalid_datetime_range"
+      ],
+      "terminal_contacted": false
+    },
+    {
+      "allowed": false,
+      "case": "api_frontend_cannot_trigger_terminal_access",
+      "failures": [
+        "no_api_or_frontend_terminal_trigger"
+      ],
+      "terminal_contacted": false
+    },
+    {
+      "allowed": false,
+      "case": "max_bars_per_symbol_policy",
+      "failures": [
+        "max_bars_per_symbol=10000"
+      ],
+      "terminal_contacted": false
+    },
+    {
+      "allowed": false,
+      "case": "max_symbols_policy",
+      "failures": [
+        "max_symbols=40"
+      ],
+      "terminal_contacted": false
+    }
+  ],
+  "manifest_sha256": "3f20f8507cdac5c0a039e01faa701d2bc37b9771e27a86f9f626b41cddb46ea9",
+  "multiple_mapped_symbols_supported": true,
+  "no_persistence_by_default": true,
+  "output_under_ignored_root": true,
+  "public_api_static_exposes_local_path": false,
+  "repeated_fake_export_deterministic": true,
+  "status": "PASS",
+  "timeframe": "D1",
+  "unknown_asset_rejected": true,
+  "unsupported_asset_rejected": true
+}

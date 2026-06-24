@@ -64,10 +64,18 @@ GENERATED_M3C_MARKET_REACTION_EVIDENCE_FILES = (
     "reports/market-reaction/m3c-scenario-audit.json",
     "reports/market-reaction/m3c-point-in-time-audit.json",
 )
+GENERATED_M4A_MT5_READONLY_EVIDENCE_FILES = (
+    "reports/mt5-readonly/m4a-release-ledger.json",
+    "reports/mt5-readonly/m4a-symbol-map-audit.json",
+    "reports/mt5-readonly/m4a-fake-adapter-audit.json",
+    "reports/mt5-readonly/m4a-bar-export-audit.json",
+    "reports/mt5-readonly/m4a-execution-surface-audit.json",
+)
 EXCLUDED_GENERATED_EVIDENCE_FILES = (
     GENERATED_TRADING_SURFACE_AUDIT_OUTPUT_PATH,
     "reports/verification/revised-m3a-timings.json",
     *GENERATED_M3C_MARKET_REACTION_EVIDENCE_FILES,
+    *GENERATED_M4A_MT5_READONLY_EVIDENCE_FILES,
 )
 ALLOWED_TRADING_SURFACE_PREFIXES = (
     "docs/",
@@ -77,6 +85,7 @@ ALLOWED_TRADING_SURFACE_PREFIXES = (
 ALLOWED_TRADING_SURFACE_FILES = {
     "backend/src/finnews/application/services/cross_asset.py",
     "backend/src/finnews/application/services/cross_asset_release_audit.py",
+    "backend/src/finnews/application/services/mt5_readonly_release_audit.py",
     "config/integrations/mt5-symbol-map.example.yaml",
     "README.md",
     "AGENTS.md",
@@ -115,7 +124,15 @@ MT5_READONLY_ADAPTER_ALLOWED_PATTERNS = {
     "terminal_info(",
     "volume",
 }
-MT5_READONLY_REJECTION_GUARDRAIL_PATTERNS = {"lot", "volume", "buy", "sell", "execute"}
+MT5_READONLY_REJECTION_GUARDRAIL_PATTERNS = {
+    "buy",
+    "execute",
+    "lot",
+    "sell",
+    "stop_loss",
+    "take_profit",
+    "volume",
+}
 MT5_READONLY_STATIC_SCHEMA_FILE = "frontend/public/demo-data/mt5-readonly-symbol-map-schema.json"
 
 

@@ -1,0 +1,175 @@
+{
+  "adapter_schema_version": "mt5-readonly-bridge-v1",
+  "allowed_readonly_functions": [
+    "initialize",
+    "shutdown",
+    "version",
+    "last_error",
+    "terminal_info",
+    "symbols_total",
+    "symbols_get",
+    "symbol_info",
+    "symbol_info_tick",
+    "copy_rates_range"
+  ],
+  "allowed_readonly_functions_sha256": "4ea9163222b922f96ae2d719f021696baf1b06ee2ac545a46888e5338492481e",
+  "bar_export_contract_summary": {
+    "not_investment_advice": true,
+    "status": "PASS"
+  },
+  "default_public_readiness": {
+    "Account access": "not supported",
+    "MT5 terminal connection": "not attempted",
+    "Order execution": "disabled"
+  },
+  "execution_surface_summary": {
+    "not_investment_advice": true,
+    "status": "PASS"
+  },
+  "fake_adapter_audit_summary": {
+    "not_investment_advice": true,
+    "status": "PASS"
+  },
+  "forbidden_functions": [
+    "login",
+    "account_info",
+    "orders_total",
+    "orders_get",
+    "positions_total",
+    "positions_get",
+    "history_orders_total",
+    "history_orders_get",
+    "history_deals_total",
+    "history_deals_get",
+    "order_calc_margin",
+    "order_calc_profit",
+    "order_check",
+    "order_send",
+    "TRADE_ACTION",
+    "ORDER_TYPE",
+    "MqlTradeRequest"
+  ],
+  "forbidden_functions_sha256": "d7d4d005d8a5a17b9ec0f6e0913f788aac3227d9681d7747fd8bcc1fd75438c1",
+  "market_bars_contract_name": "finnews-market-bars-v1",
+  "market_bars_contract_version": "1.0.0",
+  "milestone_version": "M4A",
+  "no_account_access": true,
+  "no_credential_storage": true,
+  "no_history_reading": true,
+  "no_live_bars_committed": true,
+  "no_margin_or_order_check": true,
+  "no_order_execution": true,
+  "no_position_reading": true,
+  "no_terminal_path_storage": true,
+  "not_investment_advice": true,
+  "postgres_first_run_mt5_table_counts": {
+    "mt5_bar_export_manifests": 0,
+    "mt5_readonly_profiles": 0,
+    "mt5_readonly_runs": 0,
+    "mt5_readonly_symbol_mappings": 0
+  },
+  "postgres_migration_head": "0008_mt5_readonly",
+  "postgres_second_run_mt5_table_counts": {
+    "mt5_bar_export_manifests": 0,
+    "mt5_readonly_profiles": 0,
+    "mt5_readonly_runs": 0,
+    "mt5_readonly_symbol_mappings": 0
+  },
+  "readiness_payload": {
+    "account_access": "not_supported",
+    "bridge_feature_status": "available_optional_local_cli_only",
+    "duplicate_symbol_count": 0,
+    "execution_status": "disabled",
+    "last_local_readonly_run": null,
+    "local_symbol_map_status": "not_supplied",
+    "mapped_asset_count": 0,
+    "mt5_terminal_connection": "not attempted",
+    "not_investment_advice": true,
+    "order_execution": "disabled",
+    "order_support": "not_implemented",
+    "package_available": false,
+    "package_status": "not_checked",
+    "public_api_trigger": "disabled",
+    "terminal_access_status": "not_attempted",
+    "unmapped_asset_count": 40
+  },
+  "readiness_schema_version": "mt5-readonly-readiness-v1",
+  "report_policy": "contains no local path, credential, account, order, position, broker server, terminal metadata, or live bars",
+  "static_demo_file_hashes": [
+    {
+      "path": "frontend/public/demo-data/mt5-readiness.json",
+      "sha256": "f8ef86f1fe448f5f3a42fda6b860a3a7e841df83f1cc807bdd7c8037d4524efd",
+      "size_bytes": 688
+    },
+    {
+      "path": "frontend/public/demo-data/mt5-readonly-overview.json",
+      "sha256": "86eb8ee24c9a36d86b60d80328d6fa9ede9f6de4b378fa60486cba744de52dcd",
+      "size_bytes": 480
+    },
+    {
+      "path": "frontend/public/demo-data/mt5-readonly-readiness.json",
+      "sha256": "b7ac4204629c9f6f24d11ec6c389e2bc26290ea2e34a790d234d8de2f09028d1",
+      "size_bytes": 602
+    },
+    {
+      "path": "frontend/public/demo-data/mt5-readonly-runs.json",
+      "sha256": "44910bb316874264a00b5b72d90a4e59b25372346f883696205e722ee5b28698",
+      "size_bytes": 289
+    },
+    {
+      "path": "frontend/public/demo-data/mt5-readonly-symbol-map-schema.json",
+      "sha256": "9f3e1757e9ebb678fa133c9edbb7742ae2bba4e6286ac4f006c45ee9128da334",
+      "size_bytes": 1162
+    }
+  ],
+  "symbol_map_allowed_fields": [
+    "canonical_asset_id",
+    "display_name",
+    "enabled",
+    "mt5_symbol",
+    "notes",
+    "profile_id",
+    "timezone"
+  ],
+  "symbol_map_audit_summary": {
+    "not_investment_advice": true,
+    "status": "PASS"
+  },
+  "symbol_map_forbidden_fields": [
+    "account",
+    "account_id",
+    "account_number",
+    "action",
+    "api_key",
+    "broker_password",
+    "broker_server",
+    "buy",
+    "close_position",
+    "entry_price",
+    "execute",
+    "execute_now",
+    "investor_password",
+    "login",
+    "lot",
+    "margin",
+    "margin_required",
+    "order_type",
+    "password",
+    "price",
+    "risk_limit",
+    "secret",
+    "sell",
+    "server",
+    "server_password",
+    "sl",
+    "stop_loss",
+    "take_profit",
+    "terminal_path",
+    "token",
+    "tp",
+    "trade_mode",
+    "trade_mode_override",
+    "volume"
+  ],
+  "symbol_map_schema_version": "mt5-readonly-symbol-map-v1"
+}

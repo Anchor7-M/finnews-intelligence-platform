@@ -19,8 +19,8 @@ Current status:
 
 - Status: PASS
 - Forbidden production matches: 0
-- Matched files: 40
-- Matched pattern instances: 805
+- Matched files: 49
+- Matched pattern instances: 870
 - Dependency matches: 0
 - Required `MetaTrader5` dependency: absent
 

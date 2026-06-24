@@ -700,6 +700,7 @@ def trading_surface_audit(root: Path) -> dict[str, Any]:
                 is_self_audit_pattern = relative in {
                     "backend/src/finnews/application/services/cross_asset.py",
                     "backend/src/finnews/application/services/cross_asset_release_audit.py",
+                    "backend/src/finnews/application/services/mt5_readonly_release_audit.py",
                 } and pattern in {
                     "MetaTrader5",
                     "initialize(",
