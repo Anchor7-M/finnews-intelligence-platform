@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 from datetime import UTC, datetime
 from decimal import Decimal
 from pathlib import Path
@@ -16,6 +17,10 @@ from finnews.application.services.mt5_readonly import (
     mt5_readonly_readiness,
     mt5_readonly_symbol_map_schema,
     validate_mt5_readonly_symbol_map,
+)
+from finnews.application.services.mt5_readonly_release_audit import (
+    build_m4a_release_reports,
+    write_m4a_release_audit_reports,
 )
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
@@ -266,3 +271,31 @@ def test_mt5_metadata_migration_has_no_forbidden_columns() -> None:
     ]
 
     assert all(column not in migration for column in forbidden_columns)
+
+
+def test_m4a_release_audit_reports_are_deterministic_and_safe(tmp_path: Path) -> None:
+    first = build_m4a_release_reports(REPO_ROOT)
+    second = build_m4a_release_reports(REPO_ROOT)
+
+    assert first == second
+    ledger = first["m4a-release-ledger.json"]
+    assert ledger["default_public_readiness"] == {
+        "MT5 terminal connection": "not attempted",
+        "Order execution": "disabled",
+        "Account access": "not supported",
+    }
+    assert ledger["no_credential_storage"] is True
+    assert ledger["no_account_access"] is True
+    assert ledger["no_order_execution"] is True
+    assert first["m4a-execution-surface-audit.json"]["status"] == "PASS"
+    rendered = json.dumps(first, sort_keys=True).lower()
+    for forbidden in ["c:\\", "/users/", "broker.example", "real_terminal", "live_bar_row"]:
+        assert forbidden not in rendered
+
+    result = write_m4a_release_audit_reports(REPO_ROOT)
+    left = (REPO_ROOT / "reports/mt5-readonly/m4a-release-ledger.json").read_bytes()
+    result_again = write_m4a_release_audit_reports(REPO_ROOT)
+    right = (REPO_ROOT / "reports/mt5-readonly/m4a-release-ledger.json").read_bytes()
+    assert result["status"] == "PASS"
+    assert result_again["status"] == "PASS"
+    assert left == right

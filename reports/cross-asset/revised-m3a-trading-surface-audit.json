@@ -5,12 +5,17 @@
     "reports/verification/revised-m3a-timings.json",
     "reports/market-reaction/m3c-release-ledger.json",
     "reports/market-reaction/m3c-scenario-audit.json",
-    "reports/market-reaction/m3c-point-in-time-audit.json"
+    "reports/market-reaction/m3c-point-in-time-audit.json",
+    "reports/mt5-readonly/m4a-release-ledger.json",
+    "reports/mt5-readonly/m4a-symbol-map-audit.json",
+    "reports/mt5-readonly/m4a-fake-adapter-audit.json",
+    "reports/mt5-readonly/m4a-bar-export-audit.json",
+    "reports/mt5-readonly/m4a-execution-surface-audit.json"
   ],
   "forbidden": [],
   "forbidden_count": 0,
-  "match_count": 805,
-  "matched_file_count": 40,
+  "match_count": 870,
+  "matched_file_count": 49,
   "matches": [
     {
       "classification": "permitted release guardrail",
@@ -248,7 +253,7 @@
     },
     {
       "classification": "permitted release guardrail",
-      "count": 1,
+      "count": 2,
       "path": "backend/src/finnews/application/services/cross_asset_release_audit.py",
       "pattern": "stop_loss"
     },
@@ -266,7 +271,7 @@
     },
     {
       "classification": "permitted release guardrail",
-      "count": 1,
+      "count": 2,
       "path": "backend/src/finnews/application/services/cross_asset_release_audit.py",
       "pattern": "take_profit"
     },
@@ -319,6 +324,108 @@
       "pattern": "volume"
     },
     {
+      "classification": "permitted MT5 read-only adapter allowlist",
+      "count": 4,
+      "path": "backend/src/finnews/application/services/mt5_readonly.py",
+      "pattern": "MetaTrader5"
+    },
+    {
+      "classification": "permitted MT5 read-only rejection guardrail",
+      "count": 1,
+      "path": "backend/src/finnews/application/services/mt5_readonly.py",
+      "pattern": "buy"
+    },
+    {
+      "classification": "permitted MT5 read-only adapter allowlist",
+      "count": 5,
+      "path": "backend/src/finnews/application/services/mt5_readonly.py",
+      "pattern": "copy_rates_range("
+    },
+    {
+      "classification": "permitted MT5 read-only rejection guardrail",
+      "count": 1,
+      "path": "backend/src/finnews/application/services/mt5_readonly.py",
+      "pattern": "execute"
+    },
+    {
+      "classification": "permitted MT5 read-only adapter allowlist",
+      "count": 1,
+      "path": "backend/src/finnews/application/services/mt5_readonly.py",
+      "pattern": "initialize("
+    },
+    {
+      "classification": "permitted MT5 read-only rejection guardrail",
+      "count": 1,
+      "path": "backend/src/finnews/application/services/mt5_readonly.py",
+      "pattern": "lot"
+    },
+    {
+      "classification": "permitted MT5 read-only rejection guardrail",
+      "count": 1,
+      "path": "backend/src/finnews/application/services/mt5_readonly.py",
+      "pattern": "sell"
+    },
+    {
+      "classification": "permitted MT5 read-only rejection guardrail",
+      "count": 1,
+      "path": "backend/src/finnews/application/services/mt5_readonly.py",
+      "pattern": "stop_loss"
+    },
+    {
+      "classification": "permitted MT5 read-only adapter allowlist",
+      "count": 3,
+      "path": "backend/src/finnews/application/services/mt5_readonly.py",
+      "pattern": "symbol_info"
+    },
+    {
+      "classification": "permitted MT5 read-only rejection guardrail",
+      "count": 1,
+      "path": "backend/src/finnews/application/services/mt5_readonly.py",
+      "pattern": "take_profit"
+    },
+    {
+      "classification": "permitted MT5 read-only adapter allowlist",
+      "count": 4,
+      "path": "backend/src/finnews/application/services/mt5_readonly.py",
+      "pattern": "volume"
+    },
+    {
+      "classification": "permitted release guardrail",
+      "count": 4,
+      "path": "backend/src/finnews/application/services/mt5_readonly_release_audit.py",
+      "pattern": "MetaTrader5"
+    },
+    {
+      "classification": "permitted release guardrail",
+      "count": 1,
+      "path": "backend/src/finnews/application/services/mt5_readonly_release_audit.py",
+      "pattern": "ORDER_TYPE"
+    },
+    {
+      "classification": "permitted release guardrail",
+      "count": 1,
+      "path": "backend/src/finnews/application/services/mt5_readonly_release_audit.py",
+      "pattern": "TRADE_ACTION"
+    },
+    {
+      "classification": "permitted release guardrail",
+      "count": 3,
+      "path": "backend/src/finnews/application/services/mt5_readonly_release_audit.py",
+      "pattern": "copy_rates_range("
+    },
+    {
+      "classification": "permitted release guardrail",
+      "count": 4,
+      "path": "backend/src/finnews/application/services/mt5_readonly_release_audit.py",
+      "pattern": "symbol_info"
+    },
+    {
+      "classification": "permitted release guardrail",
+      "count": 2,
+      "path": "backend/src/finnews/application/services/mt5_readonly_release_audit.py",
+      "pattern": "symbols_get"
+    },
+    {
       "classification": "permitted market-data bar volume field",
       "count": 2,
       "path": "backend/src/finnews/infrastructure/persistence/postgres/models.py",
@@ -340,6 +447,18 @@
       "classification": "permitted test fixture proving rejection",
       "count": 1,
       "path": "backend/tests/contract/test_cross_asset_api_cli.py",
+      "pattern": "sell"
+    },
+    {
+      "classification": "permitted test fixture proving rejection",
+      "count": 1,
+      "path": "backend/tests/contract/test_mt5_readonly_api_cli.py",
+      "pattern": "buy"
+    },
+    {
+      "classification": "permitted test fixture proving rejection",
+      "count": 1,
+      "path": "backend/tests/contract/test_mt5_readonly_api_cli.py",
       "pattern": "sell"
     },
     {
@@ -455,6 +574,30 @@
       "count": 1,
       "path": "backend/tests/unit/test_market_reaction.py",
       "pattern": "volume"
+    },
+    {
+      "classification": "permitted test fixture proving rejection",
+      "count": 2,
+      "path": "backend/tests/unit/test_mt5_readonly.py",
+      "pattern": "MetaTrader5"
+    },
+    {
+      "classification": "permitted test fixture proving rejection",
+      "count": 1,
+      "path": "backend/tests/unit/test_mt5_readonly.py",
+      "pattern": "copy_rates_range("
+    },
+    {
+      "classification": "permitted test fixture proving rejection",
+      "count": 1,
+      "path": "backend/tests/unit/test_mt5_readonly.py",
+      "pattern": "stop_loss"
+    },
+    {
+      "classification": "permitted test fixture proving rejection",
+      "count": 1,
+      "path": "backend/tests/unit/test_mt5_readonly.py",
+      "pattern": "take_profit"
     },
     {
       "classification": "permitted market-data bar volume field",
@@ -631,6 +774,12 @@
       "pattern": "volume"
     },
     {
+      "classification": "permitted architecture documentation",
+      "count": 1,
+      "path": "docs/M4A_RELEASE_AUDIT.md",
+      "pattern": "MetaTrader5"
+    },
+    {
       "classification": "permitted market-data bar volume field",
       "count": 2,
       "path": "docs/MARKET_DATA_IMPORT_CONTRACT.md",
@@ -664,6 +813,54 @@
       "classification": "permitted architecture documentation",
       "count": 1,
       "path": "docs/MT5_INTEGRATION_BOUNDARY.md",
+      "pattern": "order_send("
+    },
+    {
+      "classification": "permitted architecture documentation",
+      "count": 1,
+      "path": "docs/MT5_READONLY_BRIDGE.md",
+      "pattern": "MetaTrader5"
+    },
+    {
+      "classification": "permitted architecture documentation",
+      "count": 2,
+      "path": "docs/MT5_READONLY_BRIDGE.md",
+      "pattern": "symbol_info"
+    },
+    {
+      "classification": "permitted architecture documentation",
+      "count": 1,
+      "path": "docs/MT5_READONLY_BRIDGE.md",
+      "pattern": "symbols_get"
+    },
+    {
+      "classification": "permitted architecture documentation",
+      "count": 1,
+      "path": "docs/MT5_READONLY_LOCAL_SETUP.md",
+      "pattern": "MetaTrader5"
+    },
+    {
+      "classification": "permitted architecture documentation",
+      "count": 1,
+      "path": "docs/MT5_READONLY_LOCAL_SETUP.md",
+      "pattern": "lot"
+    },
+    {
+      "classification": "permitted market-data bar volume field",
+      "count": 1,
+      "path": "docs/MT5_READONLY_LOCAL_SETUP.md",
+      "pattern": "volume"
+    },
+    {
+      "classification": "permitted architecture documentation",
+      "count": 2,
+      "path": "docs/MT5_READONLY_SURFACE_AUDIT.md",
+      "pattern": "MetaTrader5"
+    },
+    {
+      "classification": "permitted architecture documentation",
+      "count": 1,
+      "path": "docs/MT5_READONLY_SURFACE_AUDIT.md",
       "pattern": "order_send("
     },
     {
@@ -895,6 +1092,48 @@
       "pattern": "volume"
     },
     {
+      "classification": "permitted MT5 read-only static schema guardrail",
+      "count": 1,
+      "path": "frontend/public/demo-data/mt5-readonly-symbol-map-schema.json",
+      "pattern": "buy"
+    },
+    {
+      "classification": "permitted MT5 read-only static schema guardrail",
+      "count": 1,
+      "path": "frontend/public/demo-data/mt5-readonly-symbol-map-schema.json",
+      "pattern": "execute"
+    },
+    {
+      "classification": "permitted MT5 read-only static schema guardrail",
+      "count": 1,
+      "path": "frontend/public/demo-data/mt5-readonly-symbol-map-schema.json",
+      "pattern": "lot"
+    },
+    {
+      "classification": "permitted MT5 read-only static schema guardrail",
+      "count": 1,
+      "path": "frontend/public/demo-data/mt5-readonly-symbol-map-schema.json",
+      "pattern": "sell"
+    },
+    {
+      "classification": "permitted MT5 read-only static schema guardrail",
+      "count": 1,
+      "path": "frontend/public/demo-data/mt5-readonly-symbol-map-schema.json",
+      "pattern": "stop_loss"
+    },
+    {
+      "classification": "permitted MT5 read-only static schema guardrail",
+      "count": 1,
+      "path": "frontend/public/demo-data/mt5-readonly-symbol-map-schema.json",
+      "pattern": "take_profit"
+    },
+    {
+      "classification": "permitted MT5 read-only static schema guardrail",
+      "count": 1,
+      "path": "frontend/public/demo-data/mt5-readonly-symbol-map-schema.json",
+      "pattern": "volume"
+    },
+    {
       "classification": "permitted market-data bar volume field",
       "count": 1,
       "path": "frontend/src/types/models.ts",
@@ -943,5 +1182,5 @@
     "execute"
   ],
   "status": "PASS",
-  "tracked_file_count": 353
+  "tracked_file_count": 366
 }

@@ -914,6 +914,12 @@ def verify_mt5_readonly(_: argparse.Namespace) -> None:
         env=env,
         timeout_seconds=120,
     )
+    run(
+        [PYTHON, "-m", "finnews.interfaces.cli.app", "mt5", "readonly", "release-audit"],
+        backend,
+        env=env,
+        timeout_seconds=120,
+    )
     run(["npm", "run", "test:unit", "--", "--run"], frontend, env=env, timeout_seconds=180)
     validate_static_export()
 

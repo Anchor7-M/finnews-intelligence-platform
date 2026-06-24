@@ -237,6 +237,8 @@ config/sources.local.yaml
 reports/*
 !reports/nlp/
 !reports/nlp/**
+!reports/mt5-readonly/
+!reports/mt5-readonly/**
 smoke-reports/
 .finnews-artifacts/
 .finnews-research-exports/

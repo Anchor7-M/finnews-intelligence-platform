@@ -1,0 +1,21 @@
+{
+  "duplicate_timestamps_rejected": true,
+  "empty_bars_supported": true,
+  "historical_bar_count": 1,
+  "initialize_failure": {
+    "terminal_access_status": "terminal_unavailable"
+  },
+  "invalid_ohlc_rejected": true,
+  "invalid_volume_rejected": true,
+  "last_error_sanitized": true,
+  "package_missing": {
+    "status": "not_installed",
+    "typed": true
+  },
+  "real_mt5_required": false,
+  "shutdown_called_exactly_once": true,
+  "status": "PASS",
+  "symbol_snapshot_count": 1,
+  "terminal_info_redacted": true,
+  "terminal_unavailable": true
+}

@@ -87,3 +87,22 @@ def test_mt5_readonly_forbidden_cli_commands_do_not_exist() -> None:
     for command in ["login", "buy", "sell", "order", "position", "history", "check"]:
         result = runner.invoke(cli_app, ["mt5", "readonly", command])
         assert result.exit_code != 0
+
+
+def test_mt5_readonly_cli_help_and_release_audit() -> None:
+    runner = CliRunner()
+    help_commands = [
+        ["mt5", "readonly", "--help"],
+        ["mt5", "readonly", "status", "--help"],
+        ["mt5", "readonly", "validate-symbol-map", "--help"],
+        ["mt5", "readonly", "export-bars", "--help"],
+    ]
+    for command in help_commands:
+        result = runner.invoke(cli_app, command)
+        assert result.exit_code == 0, result.output
+
+    audit = runner.invoke(cli_app, ["mt5", "readonly", "release-audit"])
+    assert audit.exit_code == 0, audit.output
+    payload = json.loads(audit.output)
+    assert payload["status"] == "PASS"
+    assert payload["execution_surface_status"] == "PASS"
