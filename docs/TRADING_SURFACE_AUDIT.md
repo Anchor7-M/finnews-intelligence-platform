@@ -20,8 +20,8 @@ Tracked source, configuration, contracts, workflows, CLI, API, frontend, docs, a
 
 | Metric | Value |
 | --- | ---: |
-| Matched files | 43 |
-| Matched pattern instances | 202 |
+| Matched files | 36 |
+| Matched pattern instances | 719 |
 | Forbidden production matches | 0 |
 | `MetaTrader5` dependency declarations | 0 |
 | Production `MetaTrader5` imports | 0 |
@@ -29,9 +29,17 @@ Tracked source, configuration, contracts, workflows, CLI, API, frontend, docs, a
 | Account credential models | 0 |
 | Public trading endpoints/commands/UI controls | 0 |
 
-One dependency-file match appears in `frontend/package-lock.json` for the generic token `buy`; it is classified as a permitted release guardrail false positive and is not an MT5 or trading dependency.
+No dependency-file matches are present.
 
-Generated evidence exclusions are exact-path only: `reports/cross-asset/revised-m3a-trading-surface-audit.json` is excluded so the report does not scan its own prior output, and `reports/verification/revised-m3a-timings.json` is excluded because it can contain command text such as Docker volume cleanup flags. The audit does not broadly allow `reports/`.
+Generated evidence exclusions are exact-path only:
+
+- `reports/cross-asset/revised-m3a-trading-surface-audit.json`
+- `reports/verification/revised-m3a-timings.json`
+- `reports/market-reaction/m3c-release-ledger.json`
+- `reports/market-reaction/m3c-scenario-audit.json`
+- `reports/market-reaction/m3c-point-in-time-audit.json`
+
+These files are excluded so generated evidence does not scan its own prior output or other generated evidence artifacts. The audit does not broadly allow `reports/`.
 
 ## Classifications
 

@@ -2,12 +2,15 @@
   "dependency_matches": [],
   "excluded_generated_evidence_files": [
     "reports/cross-asset/revised-m3a-trading-surface-audit.json",
-    "reports/verification/revised-m3a-timings.json"
+    "reports/verification/revised-m3a-timings.json",
+    "reports/market-reaction/m3c-release-ledger.json",
+    "reports/market-reaction/m3c-scenario-audit.json",
+    "reports/market-reaction/m3c-point-in-time-audit.json"
   ],
   "forbidden": [],
   "forbidden_count": 0,
-  "match_count": 163,
-  "matched_file_count": 23,
+  "match_count": 719,
+  "matched_file_count": 36,
   "matches": [
     {
       "classification": "permitted release guardrail",
@@ -17,8 +20,14 @@
     },
     {
       "classification": "permitted release guardrail",
-      "count": 1,
+      "count": 2,
       "path": "README.md",
+      "pattern": "volume"
+    },
+    {
+      "classification": "permitted market-data bar volume field",
+      "count": 2,
+      "path": "backend/alembic/versions/0007_market_reaction_validation.py",
       "pattern": "volume"
     },
     {
@@ -131,13 +140,13 @@
     },
     {
       "classification": "permitted release guardrail",
-      "count": 2,
+      "count": 3,
       "path": "backend/src/finnews/application/services/cross_asset_release_audit.py",
       "pattern": "buy"
     },
     {
       "classification": "permitted release guardrail",
-      "count": 2,
+      "count": 3,
       "path": "backend/src/finnews/application/services/cross_asset_release_audit.py",
       "pattern": "execute"
     },
@@ -161,7 +170,7 @@
     },
     {
       "classification": "permitted release guardrail",
-      "count": 2,
+      "count": 3,
       "path": "backend/src/finnews/application/services/cross_asset_release_audit.py",
       "pattern": "lot"
     },
@@ -197,7 +206,7 @@
     },
     {
       "classification": "permitted release guardrail",
-      "count": 2,
+      "count": 3,
       "path": "backend/src/finnews/application/services/cross_asset_release_audit.py",
       "pattern": "sell"
     },
@@ -215,8 +224,50 @@
     },
     {
       "classification": "permitted release guardrail",
-      "count": 2,
+      "count": 5,
       "path": "backend/src/finnews/application/services/cross_asset_release_audit.py",
+      "pattern": "volume"
+    },
+    {
+      "classification": "permitted market-data import rejection guardrail",
+      "count": 1,
+      "path": "backend/src/finnews/application/services/market_reaction.py",
+      "pattern": "buy"
+    },
+    {
+      "classification": "permitted market-data import rejection guardrail",
+      "count": 1,
+      "path": "backend/src/finnews/application/services/market_reaction.py",
+      "pattern": "execute"
+    },
+    {
+      "classification": "permitted market-data import rejection guardrail",
+      "count": 1,
+      "path": "backend/src/finnews/application/services/market_reaction.py",
+      "pattern": "lot"
+    },
+    {
+      "classification": "permitted market-data import rejection guardrail",
+      "count": 1,
+      "path": "backend/src/finnews/application/services/market_reaction.py",
+      "pattern": "sell"
+    },
+    {
+      "classification": "permitted market-data bar volume field",
+      "count": 12,
+      "path": "backend/src/finnews/application/services/market_reaction.py",
+      "pattern": "volume"
+    },
+    {
+      "classification": "permitted market-data bar volume field",
+      "count": 1,
+      "path": "backend/src/finnews/application/services/market_reaction_release_audit.py",
+      "pattern": "volume"
+    },
+    {
+      "classification": "permitted market-data bar volume field",
+      "count": 2,
+      "path": "backend/src/finnews/infrastructure/persistence/postgres/models.py",
       "pattern": "volume"
     },
     {
@@ -246,6 +297,12 @@
     {
       "classification": "permitted test fixture proving rejection",
       "count": 2,
+      "path": "backend/tests/integration/test_postgres_integration.py",
+      "pattern": "volume"
+    },
+    {
+      "classification": "permitted test fixture proving rejection",
+      "count": 3,
       "path": "backend/tests/unit/test_cross_asset.py",
       "pattern": "buy"
     },
@@ -263,13 +320,13 @@
     },
     {
       "classification": "permitted test fixture proving rejection",
-      "count": 2,
+      "count": 5,
       "path": "backend/tests/unit/test_cross_asset.py",
       "pattern": "order_send("
     },
     {
       "classification": "permitted test fixture proving rejection",
-      "count": 2,
+      "count": 3,
       "path": "backend/tests/unit/test_cross_asset.py",
       "pattern": "sell"
     },
@@ -287,8 +344,38 @@
     },
     {
       "classification": "permitted test fixture proving rejection",
-      "count": 4,
+      "count": 13,
       "path": "backend/tests/unit/test_cross_asset.py",
+      "pattern": "volume"
+    },
+    {
+      "classification": "permitted test fixture proving rejection",
+      "count": 1,
+      "path": "backend/tests/unit/test_market_reaction.py",
+      "pattern": "buy"
+    },
+    {
+      "classification": "permitted test fixture proving rejection",
+      "count": 1,
+      "path": "backend/tests/unit/test_market_reaction.py",
+      "pattern": "volume"
+    },
+    {
+      "classification": "permitted market-data bar volume field",
+      "count": 1,
+      "path": "contracts/finnews-market-bars/v1/README.md",
+      "pattern": "volume"
+    },
+    {
+      "classification": "permitted market-data bar volume field",
+      "count": 2,
+      "path": "contracts/finnews-market-bars/v1/bar.schema.json",
+      "pattern": "volume"
+    },
+    {
+      "classification": "permitted market-data bar volume field",
+      "count": 2,
+      "path": "contracts/finnews-market-bars/v1/examples/synthetic-bars.jsonl",
       "pattern": "volume"
     },
     {
@@ -316,37 +403,37 @@
       "pattern": "volume"
     },
     {
-      "classification": "permitted architecture documentation",
+      "classification": "permitted market-data bar volume field",
       "count": 1,
       "path": "docs/ASSET_IDENTITY_AND_SYMBOL_MAPPING.md",
       "pattern": "volume"
     },
     {
-      "classification": "permitted architecture documentation",
+      "classification": "permitted market-data bar volume field",
       "count": 1,
       "path": "docs/COST_AND_RESOURCE_GUARDRAILS.md",
       "pattern": "volume"
     },
     {
-      "classification": "permitted architecture documentation",
+      "classification": "permitted market-data bar volume field",
       "count": 1,
       "path": "docs/M1B_EXECUTION_PLAN.md",
       "pattern": "volume"
     },
     {
-      "classification": "permitted architecture documentation",
+      "classification": "permitted market-data bar volume field",
       "count": 1,
       "path": "docs/M2A_RELEASE_AUDIT.md",
       "pattern": "volume"
     },
     {
-      "classification": "permitted architecture documentation",
+      "classification": "permitted market-data bar volume field",
       "count": 1,
       "path": "docs/M3A_EXECUTION_PLAN.md",
       "pattern": "volume"
     },
     {
-      "classification": "permitted architecture documentation",
+      "classification": "permitted market-data bar volume field",
       "count": 1,
       "path": "docs/M3A_RELEASE_AUDIT.md",
       "pattern": "volume"
@@ -390,6 +477,24 @@
     {
       "classification": "permitted architecture documentation",
       "count": 1,
+      "path": "docs/M3C_EXECUTION_PLAN.md",
+      "pattern": "MetaTrader5"
+    },
+    {
+      "classification": "permitted market-data bar volume field",
+      "count": 1,
+      "path": "docs/M3C_RELEASE_AUDIT.md",
+      "pattern": "volume"
+    },
+    {
+      "classification": "permitted market-data bar volume field",
+      "count": 2,
+      "path": "docs/MARKET_DATA_IMPORT_CONTRACT.md",
+      "pattern": "volume"
+    },
+    {
+      "classification": "permitted architecture documentation",
+      "count": 1,
       "path": "docs/MT5_INTEGRATION_BOUNDARY.md",
       "pattern": "MetaTrader5"
     },
@@ -418,13 +523,13 @@
       "pattern": "order_send("
     },
     {
-      "classification": "permitted architecture documentation",
+      "classification": "permitted market-data bar volume field",
       "count": 1,
       "path": "docs/NEWS_FACTOR_DEFINITIONS.md",
       "pattern": "volume"
     },
     {
-      "classification": "permitted architecture documentation",
+      "classification": "permitted market-data bar volume field",
       "count": 1,
       "path": "docs/RESEARCH_EXPORT_CONTRACT.md",
       "pattern": "volume"
@@ -461,7 +566,7 @@
     },
     {
       "classification": "permitted architecture documentation",
-      "count": 3,
+      "count": 2,
       "path": "docs/TRADING_SURFACE_AUDIT.md",
       "pattern": "buy"
     },
@@ -544,9 +649,15 @@
       "pattern": "take_profit"
     },
     {
-      "classification": "permitted architecture documentation",
-      "count": 2,
+      "classification": "permitted market-data bar volume field",
+      "count": 1,
       "path": "docs/TRADING_SURFACE_AUDIT.md",
+      "pattern": "volume"
+    },
+    {
+      "classification": "permitted market-data bar volume field",
+      "count": 500,
+      "path": "frontend/public/demo-data/market-data-bars-sample.json",
       "pattern": "volume"
     },
     {
@@ -592,10 +703,22 @@
       "pattern": "volume"
     },
     {
+      "classification": "permitted market-data bar volume field",
+      "count": 1,
+      "path": "frontend/src/types/models.ts",
+      "pattern": "volume"
+    },
+    {
       "classification": "permitted test fixture proving rejection",
       "count": 2,
       "path": "frontend/tests/frontend-compliance.test.ts",
       "pattern": "buy"
+    },
+    {
+      "classification": "permitted test fixture proving rejection",
+      "count": 1,
+      "path": "frontend/tests/frontend-compliance.test.ts",
+      "pattern": "volume"
     }
   ],
   "mt5_dependency_present": false,
@@ -621,5 +744,5 @@
     "execute"
   ],
   "status": "PASS",
-  "tracked_file_count": 319
+  "tracked_file_count": 352
 }

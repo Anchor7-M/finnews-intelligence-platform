@@ -52,9 +52,15 @@ TOKEN_TRADING_SURFACE_PATTERNS = {"lot", "volume", "buy", "sell", "execute"}
 GENERATED_TRADING_SURFACE_AUDIT_OUTPUT_PATH = (
     "reports/cross-asset/revised-m3a-trading-surface-audit.json"
 )
+GENERATED_M3C_MARKET_REACTION_EVIDENCE_FILES = (
+    "reports/market-reaction/m3c-release-ledger.json",
+    "reports/market-reaction/m3c-scenario-audit.json",
+    "reports/market-reaction/m3c-point-in-time-audit.json",
+)
 EXCLUDED_GENERATED_EVIDENCE_FILES = (
     GENERATED_TRADING_SURFACE_AUDIT_OUTPUT_PATH,
     "reports/verification/revised-m3a-timings.json",
+    *GENERATED_M3C_MARKET_REACTION_EVIDENCE_FILES,
 )
 ALLOWED_TRADING_SURFACE_PREFIXES = (
     "docs/",
@@ -82,6 +88,7 @@ ALLOWED_TRADING_SURFACE_FILES = {
 MARKET_DATA_VOLUME_ALLOWED_FILES = {
     "backend/alembic/versions/0007_market_reaction_validation.py",
     "backend/src/finnews/application/services/market_reaction.py",
+    "backend/src/finnews/application/services/market_reaction_release_audit.py",
     "backend/src/finnews/infrastructure/persistence/postgres/models.py",
     "frontend/public/demo-data/market-data-bars-sample.json",
     "frontend/src/types/models.ts",
