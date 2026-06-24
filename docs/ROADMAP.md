@@ -51,14 +51,19 @@ confidence buckets, coverage, leakage diagnostics, API/CLI/static/frontend
 surfaces, and PostgreSQL metadata. No live prices, broker APIs, account access,
 positions, or recommendations are included.
 
-## Revised Future Roadmap
-
 ### Milestone 4A
 
-MT5 read-only local bridge, as a separate future milestone: local terminal
-connection, terminal/account/symbol metadata reads, canonical asset to local
-broker-symbol mapping, UTC tick/bar normalization, demo environment first, no
-credentials stored in FinNews, and no order-entry commands.
+Implemented: optional local MT5 read-only bridge boundary, dynamic package
+import only behind explicit local CLI gates, symbol-map validation, bounded UTC
+historical bar export into `finnews-market-bars-v1`, read-only readiness
+API/CLI/static/frontend surfaces, PostgreSQL metadata tables, and
+execution-surface audit coverage.
+
+This milestone does not read account data, read orders, read positions, read
+trading history, check orders, send orders, store credentials, launch a
+terminal, or provide investment advice.
+
+## Revised Future Roadmap
 
 ### Milestone 4B
 

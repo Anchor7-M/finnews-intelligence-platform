@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Implemented Milestone 4A MT5 read-only bridge foundation with optional dynamic local adapter, strict CLI-only gates, symbol-map validation, read-only bar export to `finnews-market-bars-v1`, API/CLI/Vue/static readiness surfaces, PostgreSQL metadata tables, and execution-surface audit coverage.
 - Implemented Milestone 3C market-reaction validation with `finnews-market-bars-v1`, strict local bar-file validation, deterministic synthetic scenarios, event-study labels, signal-quality metrics, leakage diagnostics, API/CLI/Vue/static-demo surfaces, and PostgreSQL metadata tables.
 - Implemented Milestone 3B official cross-asset source expansion with reviewed source metadata, synthetic official observations and revisions, release events, regulatory metadata, source audits, API/CLI/Vue/static-demo surfaces, and PostgreSQL metadata tables.
 - Implemented revised Milestone 3A cross-asset foundation with canonical asset registry, provider/broker alias schema, event-to-asset impact hypotheses, research signal candidates, versioned local signal contract, read-only API/CLI/Vue/static-demo surfaces, PostgreSQL metadata tables, and MT5 readiness boundary checks.

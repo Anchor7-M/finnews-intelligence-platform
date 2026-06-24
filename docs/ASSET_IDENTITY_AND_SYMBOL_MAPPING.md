@@ -24,12 +24,18 @@ Revised Milestone 3A introduces a canonical asset registry so news, model output
 
 `config/integrations/mt5-symbol-map.example.yaml` documents the offline schema. A real mapping file must remain local and ignored as `config/integrations/mt5-symbol-map.local.yaml`.
 
-The schema accepts only:
+The M4A read-only schema accepts only:
 
-- `broker_profile_id`
+- `profile_id`
 - `canonical_asset_id`
 - `mt5_symbol`
 - `enabled`
-- `local_note`
+- `display_name`
+- `notes`
+- `timezone`
 
-It rejects credentials, account fields, sizing fields, protective levels, and action fields. FinNews does not infer broker-specific names, contract sizes, volume rules, filling modes, or trading permissions.
+Legacy `broker_profile_id` and `local_note` are treated only as compatibility
+aliases during validation. The schema rejects credentials, account fields,
+terminal paths, sizing fields, price/order fields, protective levels, and action
+fields. FinNews does not infer broker-specific names, contract sizes, volume
+rules, filling modes, or trading permissions.

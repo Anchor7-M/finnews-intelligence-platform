@@ -1,5 +1,19 @@
 # Cost And Resource Guardrails
 
+## M4A MT5 Read-Only Guardrails
+
+M4A remains zero-cost and local-first:
+
+- No paid broker API, cloud database, market-data subscription, model download,
+  telemetry, or hosted bridge is added.
+- `MetaTrader5` is optional and not installed by CI or default setup.
+- The platform never launches a terminal executable.
+- Local exports are bounded by symbol count, bar count, timeframe range, and
+  ignored output path.
+- PostgreSQL verification uses one disposable `postgres:16` service under the
+  `finnews_m4a_verify` Compose project, localhost binding, 512 MB memory, 0.50
+  CPU, restart disabled, and cleanup with `down --volumes --remove-orphans`.
+
 ## Milestone 3A Research Export
 
 The default dense panel is exactly 2,880 rows and runs CPU-only in one local process. Research packages stay below 10 MB, individual package files below 5 MB, and local exports under ignored `.finnews-research-exports/`. Do not add live market dependencies, schedulers, queues, model downloads, cloud services, or background daemons.

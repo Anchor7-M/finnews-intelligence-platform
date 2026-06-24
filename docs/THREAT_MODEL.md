@@ -1,5 +1,25 @@
 # Threat Model
 
+## M4A Local MT5 Read-Only Bridge
+
+The MT5 bridge is a local-only optional integration. Primary risks are
+accidental credential capture, accidental account/order/position access,
+terminal metadata leakage, local path leakage, and accidental evolution into an
+execution surface.
+
+Controls:
+
+- `MetaTrader5` is not a required dependency and is dynamically imported only
+  inside gated local CLI execution.
+- API and frontend routes cannot load local symbol maps, initialize terminals,
+  or export bars.
+- Symbol-map validation rejects credentials, account identifiers, terminal
+  paths, order fields, trade sizing, price/order fields, and execution flags.
+- CI is blocked from terminal access.
+- Exports must stay under ignored `.finnews-mt5-readonly-exports/`.
+- Trading-surface audit fails on forbidden account, order, position, history,
+  margin/profit, order-check, and order-send functions in production paths.
+
 ## Research Export
 
 Research-export risks include lookahead leakage, backfill leakage, accidental article-text export, local-path leakage, false official-calendar claims, and market-data scope creep. Mitigations include explicit information-availability timestamps, cutoff timestamps, leakage audit, no-text lineage, synthetic flags, local ignored exports, and a documented boundary with the future A-share research repository.

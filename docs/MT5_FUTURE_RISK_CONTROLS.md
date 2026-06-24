@@ -1,6 +1,6 @@
 # MT5 Future Risk Controls
 
-This document is forward-looking. None of these controls imply execution is implemented now.
+This document is forward-looking. None of these controls imply execution is implemented now. Milestone 4A supplies a read-only bridge foundation only; it cannot be reused as a demo or live execution surface without a separate milestone and audit.
 
 ## Required Before Demo Execution
 

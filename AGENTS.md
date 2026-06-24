@@ -16,6 +16,7 @@
 - Lightweight verification: `python scripts/dev.py verify-lite`
 - Cross-asset verification: `python scripts/dev.py verify-cross-asset`
 - Market-reaction verification: `python scripts/dev.py verify-market-reaction`
+- MT5 read-only verification: `python scripts/dev.py verify-mt5-readonly`
 - Backend tests: `cd backend && python -m pytest`
 - Backend lint/type checks: `cd backend && ruff check . && ruff format --check . && mypy src tests`
 - Frontend checks: `cd frontend && npm run lint && npm run format:check && npm run typecheck && npm run test:unit -- --run && npm run build`
@@ -35,6 +36,8 @@
 - Write local market-signal packages only under ignored `.finnews-market-signals/`.
 - For Milestone 3C market-reaction work, validate only local user-supplied CSV/JSONL bar files or committed synthetic examples; never fetch live prices, store local import paths in tracked output, accept credentials/account fields, or add position/order workflows.
 - Keep static demo market data bounded. Full synthetic bars are generated locally by backend services and should not be committed as a large static JSON dump.
+- For Milestone 4A MT5 read-only work, `MetaTrader5` may be dynamically imported only inside gated local CLI commands. Do not add it as a required dependency, launch terminals, accept terminal paths, store credentials, read account/order/position/history data, check orders, send orders, or expose API/frontend controls that trigger terminal access.
+- Keep `config/integrations/mt5-symbol-map.local.yaml` and `.finnews-mt5-readonly-exports/` ignored and untracked.
 - Stop any temporary services before handing work back.
 - Update docs when behavior changes.
 
