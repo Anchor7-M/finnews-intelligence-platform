@@ -48,9 +48,13 @@ PACKAGE_FILES = ["manifest.json", "assets.json", "event_impacts.jsonl", "signals
 LOCAL_SIGNAL_ROOT = ".finnews-market-signals"
 ALLOWED_SYMBOL_MAP_FIELDS = {
     "canonical_asset_id",
+    "profile_id",
     "broker_profile_id",
     "mt5_symbol",
     "enabled",
+    "display_name",
+    "notes",
+    "timezone",
     "local_note",
 }
 
@@ -398,7 +402,7 @@ def validate_mt5_symbol_map(path: Path) -> dict[str, Any]:
         if forbidden:
             errors.append(f"mapping {index} has forbidden fields: {', '.join(sorted(forbidden))}")
         asset_id = str(row.get("canonical_asset_id", ""))
-        broker_profile_id = str(row.get("broker_profile_id", ""))
+        broker_profile_id = str(row.get("profile_id") or row.get("broker_profile_id", ""))
         mt5_symbol = str(row.get("mt5_symbol", ""))
         if asset_id not in assets:
             errors.append(f"mapping {index} references unknown asset: {asset_id}")
@@ -432,15 +436,15 @@ def mt5_readiness(dataset: CrossAssetDataset | None = None) -> dict[str, Any]:
             "total_assets": len(dataset.assets),
         },
         "utc_policy": "required_for_future_tick_bar_normalization",
-        "terminal_adapter_status": "not_implemented",
-        "mt5_terminal_connection": "not implemented",
+        "terminal_adapter_status": "optional_readonly_cli_only",
+        "mt5_terminal_connection": "not attempted",
         "execution_status": "disabled",
         "order_execution": "disabled",
         "credentials_accepted": False,
-        "account_data_access": False,
+        "account_data_access": "not supported",
         "order_routes": False,
         "notes": [
-            "Future bridge must be local and read-only before any demo execution milestone.",
+            "Read-only bridge access is local CLI-only and disabled by default.",
             "Broker-specific symbols remain local configuration and are never assumed globally.",
         ],
     }
@@ -642,6 +646,11 @@ def trading_surface_audit(root: Path) -> dict[str, Any]:
         "docs/MT5_INTEGRATION_BOUNDARY.md",
         "docs/MT5_FUTURE_RISK_CONTROLS.md",
         "docs/TRADING_SURFACE_AUDIT.md",
+        "docs/MT5_READONLY_BRIDGE.md",
+        "docs/MT5_READONLY_LOCAL_SETUP.md",
+        "docs/MT5_READONLY_SURFACE_AUDIT.md",
+        "docs/M4A_EXECUTION_PLAN.md",
+        "docs/M4A_RELEASE_AUDIT.md",
         "docs/M3A_REVISED_EXECUTION_PLAN.md",
         "contracts/finnews-market-signal/v1/README.md",
         "contracts/finnews-market-signal/v1/signal.schema.json",
@@ -649,7 +658,9 @@ def trading_surface_audit(root: Path) -> dict[str, Any]:
     }
     allowed_tests = {
         "backend/tests/unit/test_cross_asset.py",
+        "backend/tests/unit/test_mt5_readonly.py",
         "backend/tests/contract/test_cross_asset_api_cli.py",
+        "backend/tests/contract/test_mt5_readonly_api_cli.py",
     }
     findings: list[dict[str, object]] = []
     disallowed: list[dict[str, object]] = []
@@ -663,6 +674,7 @@ def trading_surface_audit(root: Path) -> dict[str, Any]:
         ".ruff_cache",
         "dist",
         ".finnews-market-signals",
+        ".finnews-mt5-readonly-exports",
         ".finnews-research-exports",
         ".finnews-artifacts",
     }
@@ -675,6 +687,8 @@ def trading_surface_audit(root: Path) -> dict[str, Any]:
             relative = path.relative_to(repo_root).as_posix()
         except ValueError:
             relative = path.relative_to(scan_root).as_posix()
+        if relative.endswith("_prompt.md"):
+            continue
         try:
             text = path.read_text(encoding="utf-8")
         except UnicodeDecodeError:
@@ -700,10 +714,15 @@ def trading_surface_audit(root: Path) -> dict[str, Any]:
                     "stop loss",
                     "take profit",
                 }
+                is_readonly_adapter_pattern = (
+                    relative == "backend/src/finnews/application/services/mt5_readonly.py"
+                    and pattern in {"MetaTrader5", "initialize("}
+                )
                 if (
                     relative not in allowed_docs
                     and relative not in allowed_tests
                     and not is_self_audit_pattern
+                    and not is_readonly_adapter_pattern
                 ):
                     disallowed.append(record)
     return {

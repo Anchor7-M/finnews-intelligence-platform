@@ -431,9 +431,52 @@ export interface Mt5Readiness {
   execution_status: string;
   order_execution: string;
   credentials_accepted: boolean;
-  account_data_access: boolean;
+  account_data_access: boolean | string;
   order_routes: boolean;
   notes: string[];
+}
+
+export interface Mt5ReadonlyOverview {
+  feature_status: string;
+  bridge_purpose: string;
+  package_required_for_ci: boolean;
+  terminal_connection: string;
+  order_execution: string;
+  account_access: string;
+  public_api_trigger: string;
+  local_cli_only: boolean;
+  not_investment_advice: boolean;
+  deferred: string[];
+}
+
+export interface Mt5ReadonlyReadiness {
+  bridge_feature_status: string;
+  package_available: boolean;
+  package_status: string;
+  terminal_access_status: string;
+  local_symbol_map_status: string;
+  mapped_asset_count: number;
+  unmapped_asset_count: number;
+  duplicate_symbol_count: number;
+  last_local_readonly_run: Record<string, unknown> | null;
+  execution_status: string;
+  order_support: string;
+  account_access: string;
+  public_api_trigger: string;
+  mt5_terminal_connection: string;
+  order_execution: string;
+  not_investment_advice: boolean;
+}
+
+export interface Mt5ReadonlySymbolMapSchema {
+  schema_version: string;
+  allowed_fields: string[];
+  forbidden_fields: string[];
+  ignored_local_path: string;
+  tracked_example_path: string;
+  terminal_contacted_by_validation: boolean;
+  credentials_allowed: boolean;
+  order_fields_allowed: boolean;
 }
 
 export interface MarketReactionOverview {

@@ -427,6 +427,71 @@ def test_trading_surface_report_allows_market_data_volume_not_order_calls(
     assert forbidden_surface["forbidden"][0]["pattern"] == "order_send("
 
 
+def test_trading_surface_report_allows_only_mt5_readonly_adapter_subset(
+    tmp_path: Path,
+) -> None:
+    repo = tmp_path / "repo"
+    adapter = repo / "backend" / "src" / "finnews" / "application" / "services" / "mt5_readonly.py"
+    adapter.parent.mkdir(parents=True)
+    adapter.write_text(
+        "\n".join(
+            [
+                "def readonly(module):",
+                "    importlib.import_module('MetaTrader5')",
+                "    module.initialize()",
+                "    module.terminal_info()",
+                "    module.symbol_info('SYNTH_EURUSD')",
+                "    module.copy_rates_range('SYNTH_EURUSD', 1, start, end)",
+                "    volume = 1",
+                "    return volume",
+            ]
+        ),
+        encoding="utf-8",
+    )
+    static_schema = (
+        repo / "frontend" / "public" / "demo-data" / "mt5-readonly-symbol-map-schema.json"
+    )
+    static_schema.parent.mkdir(parents=True)
+    static_schema.write_text(
+        '{"forbidden_fields": ["login", "password", "buy", "sell", "execute", "volume"]}',
+        encoding="utf-8",
+    )
+    subprocess.run(["git", "init"], cwd=repo, check=True, capture_output=True)
+    subprocess.run(["git", "add", "."], cwd=repo, check=True, capture_output=True)
+
+    allowed_surface = build_trading_surface_report(repo)
+
+    assert allowed_surface["status"] == "PASS"
+    assert allowed_surface["forbidden_count"] == 0
+    classifications = {(row["path"], row["classification"]) for row in allowed_surface["matches"]}
+    assert (
+        "backend/src/finnews/application/services/mt5_readonly.py",
+        "permitted MT5 read-only adapter allowlist",
+    ) in classifications
+    assert (
+        "frontend/public/demo-data/mt5-readonly-symbol-map-schema.json",
+        "permitted MT5 read-only static schema guardrail",
+    ) in classifications
+
+    adapter.write_text(
+        adapter.read_text(encoding="utf-8") + "\n    module.order_send({'symbol': 'DEMO'})\n",
+        encoding="utf-8",
+    )
+    subprocess.run(["git", "add", "."], cwd=repo, check=True, capture_output=True)
+
+    forbidden_surface = build_trading_surface_report(repo)
+
+    assert forbidden_surface["status"] == "FAIL"
+    assert forbidden_surface["forbidden"] == [
+        {
+            "path": "backend/src/finnews/application/services/mt5_readonly.py",
+            "pattern": "order_send(",
+            "count": 1,
+            "classification": "forbidden executable production path",
+        }
+    ]
+
+
 def test_trading_surface_token_patterns_do_not_match_substrings() -> None:
     assert _pattern_count("disabled pilot source", "lot") == 0
     assert _pattern_count("lot = 0.1", "lot") == 1

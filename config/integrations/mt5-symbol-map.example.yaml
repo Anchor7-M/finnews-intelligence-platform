@@ -2,17 +2,23 @@
 # local-only mapping experiments. This file is never used to contact a terminal.
 mappings:
   - canonical_asset_id: FX-EURUSD
-    broker_profile_id: demo-disabled-profile
+    profile_id: demo-disabled-profile
     mt5_symbol: DEMO.EURUSD
     enabled: false
-    local_note: Synthetic example, not a broker symbol recommendation.
+    display_name: Synthetic EUR/USD demo mapping
+    notes: Synthetic example, not a broker symbol recommendation.
+    timezone: UTC
   - canonical_asset_id: PM-GOLD
-    broker_profile_id: demo-disabled-profile
+    profile_id: demo-disabled-profile
     mt5_symbol: DEMO.XAUUSD
     enabled: false
-    local_note: Synthetic example, disabled.
+    display_name: Synthetic gold demo mapping
+    notes: Synthetic example, disabled.
+    timezone: UTC
   - canonical_asset_id: US-EQ-ALPHA
-    broker_profile_id: demo-disabled-profile
+    profile_id: demo-disabled-profile
     mt5_symbol: DEMO.ALPR
     enabled: false
-    local_note: Synthetic issuer example only.
+    display_name: Synthetic issuer demo mapping
+    notes: Synthetic issuer example only.
+    timezone: UTC

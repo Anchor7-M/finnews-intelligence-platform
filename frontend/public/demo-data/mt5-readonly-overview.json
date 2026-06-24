@@ -1,0 +1,15 @@
+{
+  "account_access": "not supported",
+  "bridge_purpose": "read-only terminal readiness, symbol metadata, and historical bar export",
+  "deferred": [
+    "M4B demo execution",
+    "M4C live execution review"
+  ],
+  "feature_status": "implemented_optional_local_cli_only",
+  "local_cli_only": true,
+  "not_investment_advice": true,
+  "order_execution": "disabled",
+  "package_required_for_ci": false,
+  "public_api_trigger": "disabled",
+  "terminal_connection": "not attempted"
+}

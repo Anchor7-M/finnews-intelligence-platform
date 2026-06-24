@@ -1,20 +1,20 @@
 {
-  "signal_contract_status": "ready",
-  "symbol_map_schema_status": "ready_offline",
+  "account_data_access": "not supported",
   "canonical_mapping_coverage": {
     "mapped_assets": 0,
     "total_assets": 40
   },
-  "utc_policy": "required_for_future_tick_bar_normalization",
-  "terminal_adapter_status": "not_implemented",
-  "mt5_terminal_connection": "not implemented",
-  "execution_status": "disabled",
-  "order_execution": "disabled",
   "credentials_accepted": false,
-  "account_data_access": false,
-  "order_routes": false,
+  "execution_status": "disabled",
+  "mt5_terminal_connection": "not attempted",
   "notes": [
-    "Future bridge must be local and read-only before any demo execution milestone.",
+    "Read-only bridge access is local CLI-only and disabled by default.",
     "Broker-specific symbols remain local configuration and are never assumed globally."
-  ]
+  ],
+  "order_execution": "disabled",
+  "order_routes": false,
+  "signal_contract_status": "ready",
+  "symbol_map_schema_status": "ready_offline",
+  "terminal_adapter_status": "optional_readonly_cli_only",
+  "utc_policy": "required_for_future_tick_bar_normalization"
 }

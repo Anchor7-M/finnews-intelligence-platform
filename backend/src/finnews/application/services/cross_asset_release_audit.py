@@ -40,6 +40,13 @@ TRADING_SURFACE_PATTERNS = [
     "positions_get(",
     "orders_get(",
     "history_deals_get(",
+    "history_orders_get(",
+    "order_calc_margin(",
+    "order_calc_profit(",
+    "copy_rates_range(",
+    "symbol_info",
+    "symbols_get",
+    "terminal_info(",
     "lot",
     "volume",
     "stop_loss",
@@ -98,6 +105,18 @@ MARKET_DATA_VOLUME_ALLOWED_PREFIXES = (
     "docs/",
 )
 MARKET_DATA_IMPORT_GUARDRAIL_PATTERNS = {"lot", "volume", "buy", "sell", "execute"}
+MT5_READONLY_ADAPTER_FILE = "backend/src/finnews/application/services/mt5_readonly.py"
+MT5_READONLY_ADAPTER_ALLOWED_PATTERNS = {
+    "MetaTrader5",
+    "initialize(",
+    "copy_rates_range(",
+    "symbol_info",
+    "symbols_get",
+    "terminal_info(",
+    "volume",
+}
+MT5_READONLY_REJECTION_GUARDRAIL_PATTERNS = {"lot", "volume", "buy", "sell", "execute"}
+MT5_READONLY_STATIC_SCHEMA_FILE = "frontend/public/demo-data/mt5-readonly-symbol-map-schema.json"
 
 
 def write_revised_m3a_release_reports(
@@ -498,6 +517,12 @@ def _classify_match(path: str, pattern: str) -> str:
         and pattern in MARKET_DATA_IMPORT_GUARDRAIL_PATTERNS
     ):
         return "permitted market-data import rejection guardrail"
+    if path == MT5_READONLY_ADAPTER_FILE and pattern in MT5_READONLY_ADAPTER_ALLOWED_PATTERNS:
+        return "permitted MT5 read-only adapter allowlist"
+    if path == MT5_READONLY_ADAPTER_FILE and pattern in MT5_READONLY_REJECTION_GUARDRAIL_PATTERNS:
+        return "permitted MT5 read-only rejection guardrail"
+    if path == MT5_READONLY_STATIC_SCHEMA_FILE:
+        return "permitted MT5 read-only static schema guardrail"
     if path.startswith("docs/"):
         return "permitted architecture documentation"
     if path.startswith("contracts/finnews-market-signal/v1/"):

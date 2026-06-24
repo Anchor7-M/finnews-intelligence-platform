@@ -64,7 +64,7 @@ vi.mock("../src/api/client", () => ({
     synthetic_data: true,
     not_investment_advice: true,
     no_execution: true,
-    mt5_terminal_connection: "not_implemented",
+    mt5_terminal_connection: "not attempted",
     order_execution: "disabled",
     asset_count: 40,
     event_count: 100,
@@ -224,14 +224,54 @@ vi.mock("../src/api/client", () => ({
     symbol_map_schema_status: "ready_offline",
     canonical_mapping_coverage: { mapped_assets: 0, total_assets: 40 },
     utc_policy: "required_for_future_tick_bar_normalization",
-    terminal_adapter_status: "not_implemented",
-    mt5_terminal_connection: "not implemented",
+    terminal_adapter_status: "optional_readonly_cli_only",
+    mt5_terminal_connection: "not attempted",
     execution_status: "disabled",
     order_execution: "disabled",
     credentials_accepted: false,
-    account_data_access: false,
+    account_data_access: "not supported",
     order_routes: false,
-    notes: ["Future bridge must be local and read-only before any demo execution milestone."],
+    notes: ["Read-only bridge access is local CLI-only and disabled by default."],
+  }),
+  loadMt5ReadonlyOverview: async () => ({
+    feature_status: "implemented_optional_local_cli_only",
+    bridge_purpose: "read-only terminal readiness, symbol metadata, and historical bar export",
+    package_required_for_ci: false,
+    terminal_connection: "not attempted",
+    order_execution: "disabled",
+    account_access: "not supported",
+    public_api_trigger: "disabled",
+    local_cli_only: true,
+    not_investment_advice: true,
+    deferred: ["M4B demo execution", "M4C live execution review"],
+  }),
+  loadMt5ReadonlyReadiness: async () => ({
+    bridge_feature_status: "available_optional_local_cli_only",
+    package_available: false,
+    package_status: "not_checked",
+    terminal_access_status: "not_attempted",
+    local_symbol_map_status: "not_supplied",
+    mapped_asset_count: 0,
+    unmapped_asset_count: 40,
+    duplicate_symbol_count: 0,
+    last_local_readonly_run: null,
+    execution_status: "disabled",
+    order_support: "not_implemented",
+    account_access: "not_supported",
+    public_api_trigger: "disabled",
+    mt5_terminal_connection: "not attempted",
+    order_execution: "disabled",
+    not_investment_advice: true,
+  }),
+  loadMt5ReadonlySymbolMapSchema: async () => ({
+    schema_version: "mt5-readonly-symbol-map-v1",
+    allowed_fields: ["profile_id", "canonical_asset_id", "mt5_symbol", "enabled"],
+    forbidden_fields: ["password", "order_type"],
+    ignored_local_path: "config/integrations/mt5-symbol-map.local.yaml",
+    tracked_example_path: "config/integrations/mt5-symbol-map.example.yaml",
+    terminal_contacted_by_validation: false,
+    credentials_allowed: false,
+    order_fields_allowed: false,
   }),
   loadMarketReactionOverview: async () => ({
     synthetic_data: true,
@@ -896,8 +936,8 @@ describe("frontend compliance", () => {
 
     const readiness = mount(IntegrationReadiness);
     await new Promise((resolve) => setTimeout(resolve, 0));
-    expect(readiness.text()).toContain("Integration Readiness");
-    expect(readiness.text()).toContain("not_implemented");
+    expect(readiness.text()).toContain("MT5 Read-Only Readiness");
+    expect(readiness.text()).toContain("not attempted");
     expect(readiness.text()).toContain("disabled");
   });
 

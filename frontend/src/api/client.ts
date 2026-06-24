@@ -18,6 +18,9 @@ import type {
   MarketReactionOverview,
   MarketReactionScenario,
   MarketReactionStudy,
+  Mt5ReadonlyOverview,
+  Mt5ReadonlyReadiness,
+  Mt5ReadonlySymbolMapSchema,
   Mt5Readiness,
   NlpErrorAnalysis,
   NlpEvaluationSummary,
@@ -315,6 +318,35 @@ export async function loadMt5Readiness(mode: DataMode = getDataMode()): Promise<
     return getJson<Mt5Readiness>(`${API_BASE}/api/v1/integrations/mt5/readiness`);
   }
   return getJson<Mt5Readiness>("/demo-data/mt5-readiness.json");
+}
+
+export async function loadMt5ReadonlyOverview(
+  mode: DataMode = getDataMode(),
+): Promise<Mt5ReadonlyOverview> {
+  if (mode === "api") {
+    return getJson<Mt5ReadonlyOverview>(`${API_BASE}/api/v1/integrations/mt5/readonly/overview`);
+  }
+  return getJson<Mt5ReadonlyOverview>("/demo-data/mt5-readonly-overview.json");
+}
+
+export async function loadMt5ReadonlyReadiness(
+  mode: DataMode = getDataMode(),
+): Promise<Mt5ReadonlyReadiness> {
+  if (mode === "api") {
+    return getJson<Mt5ReadonlyReadiness>(`${API_BASE}/api/v1/integrations/mt5/readonly/readiness`);
+  }
+  return getJson<Mt5ReadonlyReadiness>("/demo-data/mt5-readonly-readiness.json");
+}
+
+export async function loadMt5ReadonlySymbolMapSchema(
+  mode: DataMode = getDataMode(),
+): Promise<Mt5ReadonlySymbolMapSchema> {
+  if (mode === "api") {
+    return getJson<Mt5ReadonlySymbolMapSchema>(
+      `${API_BASE}/api/v1/integrations/mt5/readonly/symbol-map/schema`,
+    );
+  }
+  return getJson<Mt5ReadonlySymbolMapSchema>("/demo-data/mt5-readonly-symbol-map-schema.json");
 }
 
 export async function loadMarketReactionOverview(
