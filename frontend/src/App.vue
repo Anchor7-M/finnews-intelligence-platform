@@ -14,6 +14,7 @@ import { RouterLink, RouterView } from "vue-router";
         <RouterLink to="/cross-asset">Cross-Asset</RouterLink>
         <RouterLink to="/assets">Assets</RouterLink>
         <RouterLink to="/event-impact">Impacts</RouterLink>
+        <RouterLink to="/market-reaction">Reactions</RouterLink>
         <RouterLink to="/signals">Signals</RouterLink>
         <RouterLink to="/integration-readiness">Readiness</RouterLink>
         <RouterLink to="/articles">Articles</RouterLink>

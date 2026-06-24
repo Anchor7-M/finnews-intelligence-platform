@@ -3,7 +3,10 @@ import { describe, expect, it, vi } from "vitest";
 import {
   loadArticles,
   loadCrossAssetOverview,
+  loadMarketDataBars,
   loadMarketSignalCandidates,
+  loadMarketReactionLabels,
+  loadMarketReactionOverview,
   loadOfficialDataOverview,
   loadOfficialObservations,
   loadOverview,
@@ -60,5 +63,21 @@ describe("data client", () => {
       dataset_count: 4,
     });
     await expect(loadOfficialObservations("api")).resolves.toHaveLength(1);
+  });
+
+  it("loads market reaction static and API envelopes", async () => {
+    const fetchMock = vi.fn(async (url: string) => ({
+      ok: true,
+      json: async () =>
+        url.includes("/api/v1/market-reaction/labels") || url.includes("/api/v1/market-data/bars")
+          ? { items: [{ label_id: "label-1", scenario_id: "synthetic-planted-reaction-v1" }] }
+          : { scenario_count: 3, total_bar_count: 6480, no_live_market_data: true },
+    }));
+    vi.stubGlobal("fetch", fetchMock);
+    await expect(loadMarketReactionOverview("static-demo")).resolves.toMatchObject({
+      scenario_count: 3,
+    });
+    await expect(loadMarketReactionLabels("api")).resolves.toHaveLength(1);
+    await expect(loadMarketDataBars("api")).resolves.toHaveLength(1);
   });
 });

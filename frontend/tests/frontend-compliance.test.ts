@@ -11,6 +11,7 @@ import CrossAssetOverview from "../src/pages/CrossAssetOverview.vue";
 import DailyDigest from "../src/pages/DailyDigest.vue";
 import EventImpact from "../src/pages/EventImpact.vue";
 import IntegrationReadiness from "../src/pages/IntegrationReadiness.vue";
+import MarketReactionLab from "../src/pages/MarketReactionLab.vue";
 import NlpEvaluation from "../src/pages/NlpEvaluation.vue";
 import OfficialDataMonitor from "../src/pages/OfficialDataMonitor.vue";
 import OverviewPage from "../src/pages/OverviewPage.vue";
@@ -232,6 +233,205 @@ vi.mock("../src/api/client", () => ({
     order_routes: false,
     notes: ["Future bridge must be local and read-only before any demo execution milestone."],
   }),
+  loadMarketReactionOverview: async () => ({
+    synthetic_data: true,
+    not_investment_advice: true,
+    no_live_market_data: true,
+    no_execution: true,
+    mt5_connection: "not_implemented",
+    contract_name: "finnews-market-bars-v1",
+    contract_version: "1.0.0",
+    scenario_count: 3,
+    scenario_ids: [
+      "synthetic-null-reaction-v1",
+      "synthetic-planted-reaction-v1",
+      "synthetic-regime-shift-v1",
+    ],
+    asset_count_per_scenario: 24,
+    session_count_per_scenario: 90,
+    bar_count_per_scenario: 2160,
+    total_bar_count: 6480,
+    study_count: 645,
+    label_count: 645,
+    evaluated_label_count: 645,
+    metric_row_count: 132,
+    error_case_count: 72,
+    market_state_distribution: { calm: 1296 },
+    label_distribution: { muted: 314 },
+    horizon_windows: { one_week: [0, 5] },
+    benchmark_modes: ["asset_class_equal_weight"],
+    label_threshold: "0.0015",
+    threshold_version: "m3c-label-threshold-v1",
+    disclaimer:
+      "Synthetic market scenarios are not real prices. Market-reaction labels are research labels, not allocation instructions, and event studies do not prove causality.",
+  }),
+  loadMarketReactionScenarios: async () => [
+    {
+      scenario_id: "synthetic-planted-reaction-v1",
+      scenario_version: "market-reaction-synthetic-v1",
+      description: "Weak synthetic lagged relation after selected research signals.",
+      asset_count: 24,
+      session_count: 90,
+      bar_count: 2160,
+      synthetic_data: true,
+      official_calendar: false,
+      no_live_market_data: true,
+    },
+  ],
+  loadMarketReactionStudies: async () => [
+    {
+      study_id: "study-1",
+      signal_id: "SIGNAL-0001",
+      impact_id: "IMPACT-0001",
+      asset_id: "US-EQ-ALPHA",
+      asset_class: "us_equity",
+      event_id: "XAE-001",
+      event_family: "monetary_policy",
+      event_timestamp: "2026-06-18T20:00:00Z",
+      decision_time: "2026-06-19T00:00:00Z",
+      reaction_window: "one_week",
+      bar_coverage: 6,
+      control_bar_coverage: 5,
+      raw_return: "0.010000",
+      benchmark_return: "0.001000",
+      scenario_benchmark_return: "0.002000",
+      pre_event_mean_return: "0.000200",
+      abnormal_return: "0.009000",
+      standardized_abnormal_return: "1.200000",
+      magnitude_bucket: "medium",
+      quality_flags: [],
+      excluded_reason: null,
+      synthetic_scenario_id: "synthetic-planted-reaction-v1",
+      provider: "finnews-synthetic-market-reaction",
+      provider_version: "market-reaction-synthetic-v1",
+      synthetic_data: true,
+    },
+  ],
+  loadMarketReactionLabels: async () => [
+    {
+      label_id: "label-1",
+      study_id: "study-1",
+      signal_id: "SIGNAL-0001",
+      impact_id: "IMPACT-0001",
+      asset_id: "US-EQ-ALPHA",
+      asset_class: "us_equity",
+      event_family: "monetary_policy",
+      horizon: "one_week",
+      scenario_id: "synthetic-planted-reaction-v1",
+      signal_direction: "positive",
+      signal_status: "research",
+      confidence: null,
+      strength: null,
+      signed_score: "0.300000",
+      raw_return: "0.010000",
+      benchmark_return: "0.001000",
+      abnormal_return: "0.009000",
+      label: "consistent_positive",
+      threshold: "0.0015",
+      threshold_version: "m3c-label-threshold-v1",
+      coverage: 6,
+      quality_flags: [],
+      unavailable_reason: null,
+      point_in_time_evidence: { bar_available_after_decision: true },
+      market_state: "risk_off",
+      synthetic_data: true,
+      not_investment_advice: true,
+    },
+  ],
+  loadMarketReactionMetrics: async () => [
+    {
+      metric_id: "metric-1",
+      scenario_id: "synthetic-planted-reaction-v1",
+      slice_type: "horizon",
+      slice_value: "one_week",
+      evaluated_signal_count: 40,
+      unavailable_count: 0,
+      coverage: "1.000000",
+      directional_consistency_rate: "0.650000",
+      opposite_rate: "0.050000",
+      muted_rate: "0.300000",
+      mean_raw_return: "0.010000",
+      mean_abnormal_return: "0.006000",
+      median_abnormal_return: "0.005000",
+      abnormal_return_volatility: "0.010000",
+      hit_rate_by_direction: { positive: "0.700000" },
+      information_coefficient: "0.120000",
+      spearman_rank_ic: "0.110000",
+      false_positive_count: 2,
+      false_negative_count: 3,
+      high_confidence_wrong_count: 0,
+      low_confidence_right_count: 1,
+      missing_confidence_count: 10,
+      synthetic_data: true,
+      not_investment_advice: true,
+    },
+  ],
+  loadMarketReactionErrorAnalysis: async () => [
+    {
+      error_case_id: "error-1",
+      synthetic_signal_id: "SIGNAL-0001",
+      asset_id: "US-EQ-ALPHA",
+      asset_class: "us_equity",
+      event_family: "monetary_policy",
+      expected_direction: "positive",
+      observed_label: "consistent_positive",
+      abnormal_return: "0.009000",
+      confidence: null,
+      strength: null,
+      horizon: "one_week",
+      regime: "risk_off",
+      scenario_id: "synthetic-planted-reaction-v1",
+      error_category: "diagnostic",
+      synthetic_data: true,
+      overclaim_guardrail: "diagnostic category only; no causal explanation",
+    },
+  ],
+  loadMarketDataPackages: async () => [
+    {
+      package_id: "package-1",
+      scenario_id: "synthetic-planted-reaction-v1",
+      provider: "finnews-synthetic-market-reaction",
+      provider_version: "market-reaction-synthetic-v1",
+      contract_name: "finnews-market-bars-v1",
+      contract_version: "1.0.0",
+      asset_count: 24,
+      bar_count: 2160,
+      session_count: 90,
+      first_session_date: "2026-05-01",
+      last_session_date: "2026-09-03",
+      package_hash: "a".repeat(64),
+      generated_at: "2026-06-24T00:00:00+00:00",
+      synthetic_data: true,
+      no_live_market_data: true,
+    },
+  ],
+  loadMarketDataBars: async () => [
+    {
+      bar_id: "bar-1",
+      scenario_id: "synthetic-planted-reaction-v1",
+      asset_id: "US-EQ-ALPHA",
+      asset_class: "us_equity",
+      provider_symbol: "ALPHA.DEMO",
+      session_date: "2026-05-01",
+      bar_start_at: "2026-05-01T00:00:00+00:00",
+      bar_end_at: "2026-05-01T23:55:00+00:00",
+      timezone: "UTC",
+      open: "100.000000",
+      high: "101.000000",
+      low: "99.000000",
+      close: "100.500000",
+      volume: "100000.000000",
+      quote_volume: "10050000.000000",
+      market_state: "risk_off",
+      source_profile: "synthetic-daily-bars",
+      first_seen_at: "2026-05-02T00:00:00+00:00",
+      available_at: "2026-05-02T00:00:00+00:00",
+      synthetic_data: true,
+      schema_version: "finnews-market-bars-v1",
+      provider: "finnews-synthetic-market-reaction",
+      provider_version: "market-reaction-synthetic-v1",
+    },
+  ],
   loadOfficialDataOverview: async () => ({
     synthetic_data: true,
     not_investment_advice: true,
@@ -791,6 +991,23 @@ describe("frontend compliance", () => {
     expect(wrapper.text()).not.toContain("FINNEWS_EIA_API_KEY");
   });
 
+  it("renders market reaction lab with local synthetic validation language", async () => {
+    const wrapper = mount(MarketReactionLab);
+    await new Promise((resolve) => setTimeout(resolve, 0));
+    expect(wrapper.text()).toContain("Market Reaction Lab");
+    expect(wrapper.text()).toContain("Synthetic market-reaction demo");
+    expect(wrapper.text()).toContain("6480");
+    expect(wrapper.text()).toContain("Signal Quality Snapshot");
+    expect(wrapper.text()).toContain("65.0%");
+    expect(wrapper.text()).toContain("Reaction Labels");
+    expect(wrapper.text()).toContain("consistent_positive");
+    expect(wrapper.text()).toContain("Bar Sample");
+    expect(wrapper.text()).toContain("US-EQ-ALPHA");
+    expect(wrapper.text()).not.toContain("account_id");
+    expect(wrapper.text()).not.toContain("order_type");
+    expect(wrapper.text()).not.toContain("Connect MT5");
+  });
+
   it("renders research export dashboard with safe handoff language", async () => {
     const wrapper = mount(ResearchExport);
     await new Promise((resolve) => setTimeout(resolve, 0));
@@ -811,6 +1028,7 @@ describe("frontend compliance", () => {
         { path: "/cross-asset", component: CrossAssetOverview },
         { path: "/assets/:assetId?", component: AssetExplorer },
         { path: "/event-impact", component: EventImpact },
+        { path: "/market-reaction", component: MarketReactionLab },
         { path: "/signals", component: SignalCandidates },
         { path: "/integration-readiness", component: IntegrationReadiness },
         { path: "/articles", component: ArticleExplorer },
@@ -839,6 +1057,9 @@ describe("frontend compliance", () => {
     await router.push("/official-data");
     await wrapper.vm.$nextTick();
     expect(wrapper.text()).toContain("Official Data Monitor");
+    await router.push("/market-reaction");
+    await wrapper.vm.$nextTick();
+    expect(wrapper.text()).toContain("Market Reaction Lab");
     await router.push("/nlp-evaluation");
     await wrapper.vm.$nextTick();
     expect(wrapper.text()).toContain("NLP Evaluation Lab");

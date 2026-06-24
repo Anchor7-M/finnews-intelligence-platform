@@ -7,6 +7,7 @@ import CrossAssetOverview from "../pages/CrossAssetOverview.vue";
 import DailyDigest from "../pages/DailyDigest.vue";
 import EventImpact from "../pages/EventImpact.vue";
 import IntegrationReadiness from "../pages/IntegrationReadiness.vue";
+import MarketReactionLab from "../pages/MarketReactionLab.vue";
 import Methodology from "../pages/Methodology.vue";
 import NlpEvaluation from "../pages/NlpEvaluation.vue";
 import OfficialDataMonitor from "../pages/OfficialDataMonitor.vue";
@@ -23,6 +24,7 @@ export const router = createRouter({
     { path: "/assets", name: "assets", component: AssetExplorer },
     { path: "/assets/:assetId", name: "asset-detail", component: AssetExplorer },
     { path: "/event-impact", name: "event-impact", component: EventImpact },
+    { path: "/market-reaction", name: "market-reaction", component: MarketReactionLab },
     { path: "/signals", name: "signal-candidates", component: SignalCandidates },
     {
       path: "/integration-readiness",
