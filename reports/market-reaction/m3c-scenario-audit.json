@@ -1,0 +1,124 @@
+{
+  "asset_count_per_scenario": 24,
+  "bar_count_per_scenario": 2160,
+  "bar_hash": "cdc154fefbd19086d58f000e27672f6572b5bcd067df9ab9b4468a3e9e36d190",
+  "byte_identical_rebuild": true,
+  "label_hash": "03eb3e031292460d152fd8689f6393dc0290493304d4a27d0d958fa76e4cedbf",
+  "no_account_order_fields": true,
+  "no_live_source_values": true,
+  "no_mt5_data": true,
+  "scenario_count": 3,
+  "scenario_design": {
+    "null": {
+      "interpretation": "negative control; not alpha",
+      "one_week_consistency_rate": "0.000000"
+    },
+    "planted": {
+      "formula": "direction_sign x 0.0012 x (6 - lag) / 6 over lags 0..5",
+      "one_week_consistency_rate": "0.139535",
+      "recovery_delta_vs_null": "0.139535"
+    },
+    "regime_shift": {
+      "first_half_consistency": "0.157895",
+      "formula": "planted relation reverses at 75 percent magnitude after midpoint",
+      "second_half_consistency": "0.000000"
+    }
+  },
+  "scenario_ids": [
+    "synthetic-null-reaction-v1",
+    "synthetic-planted-reaction-v1",
+    "synthetic-regime-shift-v1"
+  ],
+  "scenario_rows": [
+    {
+      "asset_count": 24,
+      "bar_count": 2160,
+      "generator_version": "market-reaction-synthetic-v1",
+      "label_distribution": {
+        "consistent_negative": 3,
+        "mixed": 52,
+        "muted": 158,
+        "opposite": 2
+      },
+      "market_state_distribution": {
+        "calm": 432,
+        "commodity_shock": 432,
+        "crypto_stress": 432,
+        "high_volatility": 432,
+        "risk_off": 432
+      },
+      "non_negative_volume": true,
+      "one_week_consistency_rate": "0.000000",
+      "one_week_opposite_rate": "0.000000",
+      "positive_prices": true,
+      "scenario_hash": "f94139fe828a0fcec9fd86597b54788459f2f9063dccfad659bd3228172d9016",
+      "scenario_id": "synthetic-null-reaction-v1",
+      "session_count": 90,
+      "synthetic_flag_count": 2160,
+      "utc_timestamps": true,
+      "valid_ohlc": true
+    },
+    {
+      "asset_count": 24,
+      "bar_count": 2160,
+      "generator_version": "market-reaction-synthetic-v1",
+      "label_distribution": {
+        "consistent_negative": 17,
+        "consistent_positive": 11,
+        "mixed": 106,
+        "muted": 78,
+        "opposite": 3
+      },
+      "market_state_distribution": {
+        "calm": 432,
+        "commodity_shock": 432,
+        "crypto_stress": 432,
+        "high_volatility": 432,
+        "risk_off": 432
+      },
+      "non_negative_volume": true,
+      "one_week_consistency_rate": "0.139535",
+      "one_week_opposite_rate": "0.023256",
+      "positive_prices": true,
+      "scenario_hash": "1a666eada90c6aef9de1065a0737917cf8ee1855ceb972dd34e272fe99133acd",
+      "scenario_id": "synthetic-planted-reaction-v1",
+      "session_count": 90,
+      "synthetic_flag_count": 2160,
+      "utc_timestamps": true,
+      "valid_ohlc": true
+    },
+    {
+      "asset_count": 24,
+      "bar_count": 2160,
+      "generator_version": "market-reaction-synthetic-v1",
+      "label_distribution": {
+        "consistent_negative": 17,
+        "consistent_positive": 11,
+        "mixed": 106,
+        "muted": 78,
+        "opposite": 3
+      },
+      "market_state_distribution": {
+        "calm": 432,
+        "commodity_shock": 432,
+        "crypto_stress": 432,
+        "high_volatility": 432,
+        "risk_off": 432
+      },
+      "non_negative_volume": true,
+      "one_week_consistency_rate": "0.139535",
+      "one_week_opposite_rate": "0.023256",
+      "positive_prices": true,
+      "scenario_hash": "e501b5589ad043b1540e8f50773a874aa85fca187816c1a9d6e81209785717d0",
+      "scenario_id": "synthetic-regime-shift-v1",
+      "session_count": 90,
+      "synthetic_flag_count": 2160,
+      "utc_timestamps": true,
+      "valid_ohlc": true
+    }
+  ],
+  "schema_version": "m3c-scenario-audit-v1",
+  "session_count_per_scenario": 90,
+  "status": "PASS",
+  "total_bar_count": 6480
+}

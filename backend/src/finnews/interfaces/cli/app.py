@@ -37,6 +37,9 @@ from finnews.application.services.market_reaction import (
     validate_market_bar_file,
     write_market_reaction_static,
 )
+from finnews.application.services.market_reaction_release_audit import (
+    write_m3c_release_audit_reports,
+)
 from finnews.application.services.nlp_artifacts import ArtifactError, load_trusted_artifact
 from finnews.application.services.nlp_evaluation import run_nlp_benchmark
 from finnews.application.services.nlp_registry import register_nlp_report
@@ -1167,6 +1170,12 @@ def reaction_export_static() -> None:
     output = _repo_root() / "frontend" / "public" / "demo-data"
     files = write_market_reaction_static(output)
     typer.echo(json.dumps({"exported": True, "files": files}, sort_keys=True))
+
+
+@reaction_app.command("release-audit")
+def reaction_release_audit() -> None:
+    result = write_m3c_release_audit_reports(_repo_root())
+    typer.echo(json.dumps(result, sort_keys=True, default=str))
 
 
 @official_data_app.command("summary")

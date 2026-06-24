@@ -1,0 +1,26 @@
+{
+  "append_only_revision_policy": "new market_bar_revisions rows; current_revision pointer changes",
+  "available_at_policy": "daily available_at equals bar_end_at plus 5 minutes",
+  "boundary_results": {
+    "current_clock_mutation": "PASS",
+    "exact_availability": "PASS",
+    "future_bar": "PASS",
+    "input_order_mutation": "PASS",
+    "late_backfill": "PASS",
+    "missing_availability": "PASS",
+    "one_microsecond_after": "PASS",
+    "one_microsecond_before": "PASS",
+    "timezone_conversion": "PASS"
+  },
+  "checked_bar_count_sample": 100,
+  "checked_label_count": 645,
+  "checked_study_count": 645,
+  "current_clock_independent_hash": "03eb3e031292460d152fd8689f6393dc0290493304d4a27d0d958fa76e4cedbf",
+  "file_modified_time_used": false,
+  "input_order_invariance_hash": "8a1082807a674b9b3a573c1000712686dfc58b1c1fc8e82254e78ada56ed2d13",
+  "reaction_windows_after_decision_time": true,
+  "schema_version": "m3c-point-in-time-audit-v1",
+  "signal_cutoff_lte_decision_time": true,
+  "status": "PASS",
+  "violations": []
+}
