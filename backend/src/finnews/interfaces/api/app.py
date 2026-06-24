@@ -11,6 +11,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
 from finnews.application.services.export_static import build_static_payload
+from finnews.application.services.market_reaction import build_market_reaction_demo
 from finnews.bootstrap import build_repository
 from finnews.domain.errors import NotFoundError
 from finnews.infrastructure.observability.logging import configure_logging
@@ -712,6 +713,225 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     @app.get("/api/v1/integrations/mt5/readiness")
     def mt5_readiness() -> dict[str, object]:
         return cast(dict[str, object], build_static_payload(repository)["mt5-readiness"])
+
+    @app.get("/api/v1/market-reaction/overview")
+    def market_reaction_overview() -> dict[str, object]:
+        return cast(dict[str, object], build_static_payload(repository)["market-reaction-overview"])
+
+    @app.get("/api/v1/market-reaction/scenarios")
+    def market_reaction_scenarios() -> list[dict[str, object]]:
+        return cast(
+            list[dict[str, object]], build_static_payload(repository)["market-reaction-scenarios"]
+        )
+
+    @app.get("/api/v1/market-reaction/studies")
+    def market_reaction_studies(
+        scenario: str | None = None,
+        asset_id: str | None = None,
+        asset_class: str | None = None,
+        event_family: str | None = None,
+        horizon: str | None = None,
+        date_from: date | None = None,
+        date_to: date | None = None,
+        limit: int = Query(default=50, ge=1, le=200),
+        offset: int = Query(default=0, ge=0),
+    ) -> dict[str, object]:
+        rows = cast(
+            list[dict[str, object]], build_static_payload(repository)["market-reaction-studies"]
+        )
+        filtered: list[dict[str, object]] = []
+        for row in rows:
+            decision_day = date.fromisoformat(str(row["decision_time"])[:10])
+            if scenario and row["synthetic_scenario_id"] != scenario:
+                continue
+            if asset_id and row["asset_id"] != asset_id:
+                continue
+            if asset_class and row["asset_class"] != asset_class:
+                continue
+            if event_family and row["event_family"] != event_family:
+                continue
+            if horizon and row["reaction_window"] != horizon:
+                continue
+            if date_from and decision_day < date_from:
+                continue
+            if date_to and decision_day > date_to:
+                continue
+            filtered.append(row)
+        return {
+            "items": filtered[offset : offset + limit],
+            "total": len(filtered),
+            "limit": limit,
+            "offset": offset,
+        }
+
+    @app.get("/api/v1/market-reaction/labels")
+    def market_reaction_labels(
+        scenario: str | None = None,
+        asset_id: str | None = None,
+        asset_class: str | None = None,
+        event_family: str | None = None,
+        direction: str | None = None,
+        horizon: str | None = None,
+        label: str | None = None,
+        regime: str | None = None,
+        provider: str | None = None,
+        limit: int = Query(default=50, ge=1, le=200),
+        offset: int = Query(default=0, ge=0),
+    ) -> dict[str, object]:
+        rows = cast(
+            list[dict[str, object]], build_static_payload(repository)["market-reaction-labels"]
+        )
+        filtered = [
+            row
+            for row in rows
+            if (not scenario or row["scenario_id"] == scenario)
+            and (not asset_id or row["asset_id"] == asset_id)
+            and (not asset_class or row["asset_class"] == asset_class)
+            and (not event_family or row["event_family"] == event_family)
+            and (not direction or row["signal_direction"] == direction)
+            and (not horizon or row["horizon"] == horizon)
+            and (not label or row["label"] == label)
+            and (not regime or row["market_state"] == regime)
+            and (not provider or provider == "finnews-synthetic-market-reaction")
+        ]
+        return {
+            "items": filtered[offset : offset + limit],
+            "total": len(filtered),
+            "limit": limit,
+            "offset": offset,
+        }
+
+    @app.get("/api/v1/market-reaction/metrics")
+    def market_reaction_metrics(
+        scenario: str | None = None,
+        horizon: str | None = None,
+        asset_class: str | None = None,
+        event_family: str | None = None,
+        regime: str | None = None,
+        provider: str | None = None,
+        limit: int = Query(default=100, ge=1, le=200),
+        offset: int = Query(default=0, ge=0),
+    ) -> dict[str, object]:
+        rows = cast(
+            list[dict[str, object]], build_static_payload(repository)["market-reaction-metrics"]
+        )
+        filtered = [
+            row
+            for row in rows
+            if (not scenario or row["scenario_id"] == scenario)
+            and (not horizon or (row["slice_type"] == "horizon" and row["slice_value"] == horizon))
+            and (
+                not asset_class
+                or (row["slice_type"] == "asset_class" and row["slice_value"] == asset_class)
+            )
+            and (
+                not event_family
+                or (row["slice_type"] == "event_family" and row["slice_value"] == event_family)
+            )
+            and (not regime or (row["slice_type"] == "regime" and row["slice_value"] == regime))
+            and (
+                not provider
+                or (row["slice_type"] == "source_provider" and row["slice_value"] == provider)
+            )
+        ]
+        return {
+            "items": filtered[offset : offset + limit],
+            "total": len(filtered),
+            "limit": limit,
+            "offset": offset,
+        }
+
+    @app.get("/api/v1/market-reaction/error-analysis")
+    def market_reaction_error_analysis(
+        scenario: str | None = None,
+        asset_id: str | None = None,
+        asset_class: str | None = None,
+        event_family: str | None = None,
+        horizon: str | None = None,
+        regime: str | None = None,
+        label: str | None = None,
+        limit: int = Query(default=50, ge=1, le=200),
+        offset: int = Query(default=0, ge=0),
+    ) -> dict[str, object]:
+        rows = cast(
+            list[dict[str, object]],
+            build_static_payload(repository)["market-reaction-error-analysis"],
+        )
+        filtered = [
+            row
+            for row in rows
+            if (not scenario or row["scenario_id"] == scenario)
+            and (not asset_id or row["asset_id"] == asset_id)
+            and (not asset_class or row["asset_class"] == asset_class)
+            and (not event_family or row["event_family"] == event_family)
+            and (not horizon or row["horizon"] == horizon)
+            and (not regime or row["regime"] == regime)
+            and (not label or row["observed_label"] == label)
+        ]
+        return {
+            "items": filtered[offset : offset + limit],
+            "total": len(filtered),
+            "limit": limit,
+            "offset": offset,
+        }
+
+    @app.get("/api/v1/market-data/packages")
+    def market_data_packages(
+        scenario: str | None = None,
+        provider: str | None = None,
+        limit: int = Query(default=50, ge=1, le=100),
+        offset: int = Query(default=0, ge=0),
+    ) -> dict[str, object]:
+        rows = cast(
+            list[dict[str, object]], build_static_payload(repository)["market-data-packages"]
+        )
+        filtered = [
+            row
+            for row in rows
+            if (not scenario or row["scenario_id"] == scenario)
+            and (not provider or row["provider"] == provider)
+        ]
+        return {
+            "items": filtered[offset : offset + limit],
+            "total": len(filtered),
+            "limit": limit,
+            "offset": offset,
+        }
+
+    @app.get("/api/v1/market-data/bars")
+    def market_data_bars(
+        scenario: str | None = None,
+        asset_id: str | None = None,
+        asset_class: str | None = None,
+        regime: str | None = None,
+        date_from: date | None = None,
+        date_to: date | None = None,
+        limit: int = Query(default=50, ge=1, le=200),
+        offset: int = Query(default=0, ge=0),
+    ) -> dict[str, object]:
+        rows = cast(list[dict[str, object]], build_market_reaction_demo().bars)
+        filtered: list[dict[str, object]] = []
+        for row in rows:
+            session_day = date.fromisoformat(str(row["session_date"]))
+            if scenario and row["scenario_id"] != scenario:
+                continue
+            if asset_id and row["asset_id"] != asset_id:
+                continue
+            if asset_class and row["asset_class"] != asset_class:
+                continue
+            if regime and row["market_state"] != regime:
+                continue
+            if date_from and session_day < date_from:
+                continue
+            if date_to and session_day > date_to:
+                continue
+            filtered.append(row)
+        return {
+            "items": filtered[offset : offset + limit],
+            "total": len(filtered),
+            "limit": limit,
+            "offset": offset,
+        }
 
     @app.get("/api/v1/official-data/overview")
     def official_data_overview() -> dict[str, object]:

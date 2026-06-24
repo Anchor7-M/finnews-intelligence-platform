@@ -79,6 +79,18 @@ ALLOWED_TRADING_SURFACE_FILES = {
     "config/sources/federal-reserve-press-releases.yaml",
     "config/sources/sec-edgar-submissions.yaml",
 }
+MARKET_DATA_VOLUME_ALLOWED_FILES = {
+    "backend/alembic/versions/0007_market_reaction_validation.py",
+    "backend/src/finnews/application/services/market_reaction.py",
+    "backend/src/finnews/infrastructure/persistence/postgres/models.py",
+    "frontend/public/demo-data/market-data-bars-sample.json",
+    "frontend/src/types/models.ts",
+}
+MARKET_DATA_VOLUME_ALLOWED_PREFIXES = (
+    "contracts/finnews-market-bars/v1/",
+    "docs/",
+)
+MARKET_DATA_IMPORT_GUARDRAIL_PATTERNS = {"lot", "volume", "buy", "sell", "execute"}
 
 
 def write_revised_m3a_release_reports(
@@ -367,7 +379,7 @@ def build_trading_surface_report(repo_root: Path) -> dict[str, Any]:
             count = _pattern_count(text, pattern)
             if count == 0:
                 continue
-            classification = _classify_match(rel)
+            classification = _classify_match(rel, pattern)
             row = {
                 "path": rel,
                 "pattern": pattern,
@@ -468,7 +480,17 @@ def _text_file(path: str) -> bool:
     }
 
 
-def _classify_match(path: str) -> str:
+def _classify_match(path: str, pattern: str) -> str:
+    if pattern == "volume" and (
+        path in MARKET_DATA_VOLUME_ALLOWED_FILES
+        or path.startswith(MARKET_DATA_VOLUME_ALLOWED_PREFIXES)
+    ):
+        return "permitted market-data bar volume field"
+    if (
+        path == "backend/src/finnews/application/services/market_reaction.py"
+        and pattern in MARKET_DATA_IMPORT_GUARDRAIL_PATTERNS
+    ):
+        return "permitted market-data import rejection guardrail"
     if path.startswith("docs/"):
         return "permitted architecture documentation"
     if path.startswith("contracts/finnews-market-signal/v1/"):

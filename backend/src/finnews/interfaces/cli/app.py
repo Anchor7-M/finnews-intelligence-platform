@@ -27,6 +27,16 @@ from finnews.application.services.cross_asset_release_audit import (
 )
 from finnews.application.services.deduplication_accounting import build_deduplication_accounting
 from finnews.application.services.export_static import build_static_payload, export_static
+from finnews.application.services.market_reaction import (
+    MarketReactionError,
+    build_market_reaction_demo,
+    compare_scenarios,
+    market_data_contract_example_rows,
+    market_reaction_overview,
+    scenario_summary,
+    validate_market_bar_file,
+    write_market_reaction_static,
+)
 from finnews.application.services.nlp_artifacts import ArtifactError, load_trusted_artifact
 from finnews.application.services.nlp_evaluation import run_nlp_benchmark
 from finnews.application.services.nlp_registry import register_nlp_report
@@ -109,6 +119,10 @@ cross_asset_app = typer.Typer(help="Cross-asset event intelligence commands")
 signal_app = typer.Typer(help="Versioned market signal contract commands")
 mt5_app = typer.Typer(help="Offline MT5 readiness and symbol-map validation")
 official_data_app = typer.Typer(help="Official-data fixtures and point-in-time metadata")
+market_data_app = typer.Typer(help="Local market-bar contract and synthetic scenarios")
+market_data_contract_app = typer.Typer(help="Market-data import contract helpers")
+reaction_app = typer.Typer(help="Market-reaction event studies and signal-quality evaluation")
+reaction_study_app = typer.Typer(help="Market-reaction study helpers")
 app.add_typer(ingest_app, name="ingest")
 app.add_typer(db_app, name="db")
 app.add_typer(source_app, name="source")
@@ -123,6 +137,10 @@ app.add_typer(cross_asset_app, name="cross-asset")
 app.add_typer(signal_app, name="signal")
 app.add_typer(mt5_app, name="mt5")
 app.add_typer(official_data_app, name="official-data")
+app.add_typer(market_data_app, name="market-data")
+market_data_app.add_typer(market_data_contract_app, name="contract")
+app.add_typer(reaction_app, name="reaction")
+reaction_app.add_typer(reaction_study_app, name="study")
 
 
 @app.command()
@@ -951,6 +969,204 @@ def mt5_validate_symbol_map(path: Annotated[Path, typer.Option("--path")]) -> No
         typer.echo(f"mt5_symbol_map_error={exc}", err=True)
         raise typer.Exit(code=2) from exc
     typer.echo(json.dumps(result, sort_keys=True))
+
+
+@market_data_contract_app.command("validate")
+def market_data_contract_validate(path: Annotated[Path, typer.Option("--path")]) -> None:
+    try:
+        result = validate_market_bar_file(path)
+    except MarketReactionError as exc:
+        typer.echo(f"market_data_contract_error={exc}", err=True)
+        raise typer.Exit(code=2) from exc
+    typer.echo(json.dumps(result, sort_keys=True, default=str))
+
+
+@market_data_contract_app.command("example")
+def market_data_contract_example() -> None:
+    typer.echo(json.dumps(market_data_contract_example_rows(), sort_keys=True, default=str))
+
+
+@market_data_app.command("import-local")
+def market_data_import_local(
+    path: Annotated[Path, typer.Option("--path")],
+    dry_run: Annotated[bool, typer.Option("--dry-run")] = True,
+) -> None:
+    try:
+        result = validate_market_bar_file(path)
+    except MarketReactionError as exc:
+        typer.echo(f"market_data_import_error={exc}", err=True)
+        raise typer.Exit(code=2) from exc
+    typer.echo(
+        json.dumps(
+            {
+                **result,
+                "imported": False,
+                "dry_run": dry_run,
+                "local_path_published": False,
+                "local_path_persisted": False,
+                "live_fetch": False,
+            },
+            sort_keys=True,
+            default=str,
+        )
+    )
+
+
+@market_data_app.command("build-demo")
+def market_data_build_demo(
+    scenario: Annotated[str, typer.Option("--scenario")] = "synthetic-planted-reaction-v1",
+) -> None:
+    try:
+        summary = scenario_summary(scenario)
+    except MarketReactionError as exc:
+        typer.echo(f"market_data_demo_error={exc}", err=True)
+        raise typer.Exit(code=2) from exc
+    typer.echo(json.dumps(summary, sort_keys=True, default=str))
+
+
+@market_data_app.command("summary")
+def market_data_summary(
+    scenario: Annotated[str, typer.Option("--scenario")] = "synthetic-planted-reaction-v1",
+) -> None:
+    market_data_build_demo(scenario)
+
+
+@reaction_study_app.command("build")
+def reaction_study_build(
+    scenario: Annotated[str, typer.Option("--scenario")] = "synthetic-planted-reaction-v1",
+) -> None:
+    try:
+        dataset = build_market_reaction_demo()
+        rows = [row for row in dataset.studies if row["synthetic_scenario_id"] == scenario]
+        if not rows:
+            raise MarketReactionError(f"unknown scenario: {scenario}")
+    except MarketReactionError as exc:
+        typer.echo(f"reaction_study_error={exc}", err=True)
+        raise typer.Exit(code=2) from exc
+    typer.echo(
+        json.dumps(
+            {
+                "scenario_id": scenario,
+                "study_count": len(rows),
+                "sample": rows[:3],
+                "synthetic_data": True,
+                "not_investment_advice": True,
+            },
+            sort_keys=True,
+            default=str,
+        )
+    )
+
+
+@reaction_study_app.command("validate")
+def reaction_study_validate(path: Annotated[Path, typer.Option("--path")]) -> None:
+    try:
+        raw = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        typer.echo(f"reaction_study_error={exc}", err=True)
+        raise typer.Exit(code=2) from exc
+    rows = raw.get("items", raw) if isinstance(raw, dict) else raw
+    valid = isinstance(rows, list) and all(
+        "study_id" in row and "abnormal_return" in row for row in rows
+    )
+    typer.echo(
+        json.dumps({"valid": valid, "study_count": len(rows) if isinstance(rows, list) else 0})
+    )
+    if not valid:
+        raise typer.Exit(code=2)
+
+
+@reaction_app.command("labels")
+def reaction_labels(
+    scenario: Annotated[str, typer.Option("--scenario")] = "synthetic-planted-reaction-v1",
+) -> None:
+    dataset = build_market_reaction_demo()
+    rows = [row for row in dataset.labels if row["scenario_id"] == scenario]
+    if not rows:
+        typer.echo("reaction_labels_not_found", err=True)
+        raise typer.Exit(code=2)
+    typer.echo(
+        json.dumps(
+            {
+                "scenario_id": scenario,
+                "label_count": len(rows),
+                "sample": rows[:3],
+                "synthetic_data": True,
+            },
+            sort_keys=True,
+            default=str,
+        )
+    )
+
+
+@reaction_app.command("evaluate")
+def reaction_evaluate(
+    scenario: Annotated[str, typer.Option("--scenario")] = "synthetic-planted-reaction-v1",
+) -> None:
+    dataset = build_market_reaction_demo()
+    rows = [row for row in dataset.metrics if row["scenario_id"] == scenario]
+    if not rows:
+        typer.echo("reaction_metrics_not_found", err=True)
+        raise typer.Exit(code=2)
+    typer.echo(
+        json.dumps(
+            {
+                "scenario_id": scenario,
+                "metric_count": len(rows),
+                "metrics": rows,
+                "synthetic_data": True,
+                "not_investment_advice": True,
+            },
+            sort_keys=True,
+            default=str,
+        )
+    )
+
+
+@reaction_app.command("compare")
+def reaction_compare(
+    left: Annotated[str, typer.Option("--left")],
+    right: Annotated[str, typer.Option("--right")],
+) -> None:
+    try:
+        result = compare_scenarios(left, right)
+    except MarketReactionError as exc:
+        typer.echo(f"reaction_compare_error={exc}", err=True)
+        raise typer.Exit(code=2) from exc
+    typer.echo(json.dumps(result, sort_keys=True, default=str))
+
+
+@reaction_app.command("error-analysis")
+def reaction_error_analysis(
+    scenario: Annotated[str, typer.Option("--scenario")] = "synthetic-planted-reaction-v1",
+) -> None:
+    dataset = build_market_reaction_demo()
+    rows = [row for row in dataset.errors if row["scenario_id"] == scenario]
+    typer.echo(
+        json.dumps(
+            {
+                "scenario_id": scenario,
+                "error_case_count": len(rows),
+                "items": rows,
+                "synthetic_data": True,
+                "not_investment_advice": True,
+            },
+            sort_keys=True,
+            default=str,
+        )
+    )
+
+
+@reaction_app.command("overview")
+def reaction_overview() -> None:
+    typer.echo(json.dumps(market_reaction_overview(), sort_keys=True, default=str))
+
+
+@reaction_app.command("export-static")
+def reaction_export_static() -> None:
+    output = _repo_root() / "frontend" / "public" / "demo-data"
+    files = write_market_reaction_static(output)
+    typer.echo(json.dumps({"exported": True, "files": files}, sort_keys=True))
 
 
 @official_data_app.command("summary")
