@@ -56,3 +56,11 @@ deterministic and synthetic; local market-signal exports are written only under
 ignored `.finnews-market-signals/`; the committed example contract package is
 small; and no live price source, broker terminal, cloud service, model download,
 scheduler, queue, telemetry, or paid API is required.
+
+M3C continues the zero-cost policy. Synthetic market bars are generated
+deterministically in-process; committed static demo files contain bounded bar
+samples rather than the full generated bar set. The market-bar import contract
+accepts only explicit local CSV/JSONL paths, enforces a 5 MB file limit, and
+rejects credentials, account fields, order fields, and future-return sentinel
+columns. No paid market-data provider, browser binary, model download, broker
+terminal, scheduler, queue, telemetry, or cloud service is required.

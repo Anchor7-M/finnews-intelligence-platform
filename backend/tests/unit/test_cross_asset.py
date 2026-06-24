@@ -354,6 +354,41 @@ def test_trading_surface_report_still_classifies_docs_tests_and_forbidden_source
     }
 
 
+def test_trading_surface_report_allows_market_data_volume_not_order_calls(
+    tmp_path: Path,
+) -> None:
+    repo = tmp_path / "repo"
+    market_reaction = (
+        repo / "backend" / "src" / "finnews" / "application" / "services" / "market_reaction.py"
+    )
+    market_reaction.parent.mkdir(parents=True)
+    market_reaction.write_text("def bar_schema():\n    volume = 100\n    return volume\n")
+    subprocess.run(["git", "init"], cwd=repo, check=True, capture_output=True)
+    subprocess.run(["git", "add", "."], cwd=repo, check=True, capture_output=True)
+
+    allowed_surface = build_trading_surface_report(repo)
+
+    assert allowed_surface["status"] == "PASS"
+    assert allowed_surface["forbidden_count"] == 0
+    assert {
+        "path": "backend/src/finnews/application/services/market_reaction.py",
+        "pattern": "volume",
+        "count": 2,
+        "classification": "permitted market-data bar volume field",
+    } in allowed_surface["matches"]
+
+    market_reaction.write_text(
+        "def unsafe_route():\n    volume = 100\n    order_send({'symbol': 'DEMO'})\n",
+        encoding="utf-8",
+    )
+    subprocess.run(["git", "add", "."], cwd=repo, check=True, capture_output=True)
+
+    forbidden_surface = build_trading_surface_report(repo)
+
+    assert forbidden_surface["status"] == "FAIL"
+    assert forbidden_surface["forbidden"][0]["pattern"] == "order_send("
+
+
 def test_trading_surface_token_patterns_do_not_match_substrings() -> None:
     assert _pattern_count("disabled pilot source", "lot") == 0
     assert _pattern_count("lot = 0.1", "lot") == 1

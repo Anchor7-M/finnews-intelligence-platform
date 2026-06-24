@@ -85,6 +85,23 @@ Milestone 3A exports contain no article text, market prices, returns, backtests,
 
 The prior A-share research export remains available as an optional integration under `/optional-integrations/research-export`.
 
+## Implemented In Milestone 3B
+
+- Added reviewed official-source metadata for macro, energy, derivatives, regulatory, issuer, central-bank, and crypto-status research sources.
+- Added synthetic official-data fixtures with point-in-time observation revisions, release events, regulatory metadata, and asset associations.
+- Added official-data API/CLI/static-demo surfaces, Vue Official Data Monitor, PostgreSQL metadata, source audits, and release audit documentation.
+
+Milestone 3B still uses synthetic demo data by default. Real sources remain disabled unless reviewed and explicitly enabled through local configuration.
+
+## Implemented In Milestone 3C
+
+- Added versioned `finnews-market-bars-v1` local CSV/JSONL import contract with strict UTC, OHLC, volume, duplicate, monotonic, and forbidden-field validation.
+- Added three deterministic synthetic market-reaction scenarios with 24 assets, 90 sessions each, and 6,480 total synthetic bars generated locally.
+- Added event-study windows, abnormal returns, reaction labels, signal-quality metrics, deterministic error analysis, and leakage diagnostics.
+- Added read-only market-reaction API endpoints, Typer CLI commands, Vue Market Reaction Lab, static-demo JSON samples, and PostgreSQL metadata tables.
+
+Milestone 3C does not fetch live prices, store local user import paths in tracked output, connect to MT5, accept credentials, access accounts, create positions, or provide investment recommendations.
+
 ## Verified Synthetic Dataset
 
 - 68 raw observations loaded in the memory demo.
@@ -126,8 +143,8 @@ python scripts/dev.py db-down
 
 The database is bound to `127.0.0.1:55432`, uses a local demo password, and is not suitable for production.
 
-PostgreSQL integration was verified locally with the official `postgres:16` image,
-Compose project `finnews_m3r_verify`, service `postgres`, and port
+PostgreSQL integration uses the official `postgres:16` image,
+Compose project `finnews_m3c_verify`, service `postgres`, and port
 `127.0.0.1:55432`. The verification runs Alembic upgrade/downgrade/re-upgrade,
 repository parity, full fixture-pipeline persistence, API and CLI PostgreSQL
 profile checks, then removes the task-owned container, volume, and network.
@@ -164,6 +181,14 @@ GET /api/v1/assets
 GET /api/v1/event-impacts
 GET /api/v1/signals
 GET /api/v1/integrations/mt5/readiness
+GET /api/v1/market-reaction/overview
+GET /api/v1/market-reaction/scenarios
+GET /api/v1/market-reaction/studies
+GET /api/v1/market-reaction/labels
+GET /api/v1/market-reaction/metrics
+GET /api/v1/market-reaction/error-analysis
+GET /api/v1/market-data/packages
+GET /api/v1/market-data/bars
 ```
 
 ## Frontend

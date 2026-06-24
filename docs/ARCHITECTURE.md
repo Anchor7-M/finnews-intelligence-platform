@@ -121,3 +121,23 @@ expose read-only API/CLI surfaces.
 The MT5 boundary is documentation, validation, and readiness metadata only. The
 repository contains no terminal adapter, no credentials, no account access, and
 no execution path.
+
+## Milestone 3C Market-Reaction Validation
+
+```mermaid
+flowchart LR
+  Signals[Research signal candidates] --> Study[Point-in-time event studies]
+  Bars[Synthetic or local validated bars] --> Study
+  Study --> Labels[Reaction labels]
+  Labels --> Metrics[Signal-quality metrics]
+  Metrics --> API[Read-only API and CLI]
+  API --> Vue[Market Reaction Lab]
+```
+
+M3C adds an application service for `finnews-market-bars-v1`, synthetic market
+scenarios, event-study windows, reaction labels, signal-quality metrics, and
+leakage diagnostics. Static demo output contains bounded samples for bars while
+the API can generate the full deterministic in-memory synthetic bar set. The
+new PostgreSQL migration stores metadata, revisions, labels, and metrics; it
+does not store raw user files, credentials, account identifiers, or local import
+paths.
