@@ -100,6 +100,8 @@ POSTGRES_MT5_TABLES = [
 
 @dataclass
 class _AuditFakeBridge:
+    requires_terminal_access = False
+
     bars: list[Mt5RateBar]
     init_ready: bool = True
     shutdown_count: int = 0
@@ -332,6 +334,20 @@ mappings:
             os.environ.pop(READONLY_ALLOW_ENV, None)
         else:
             os.environ[READONLY_ALLOW_ENV] = previous_allow
+    if result["status"] != "exported":
+        shutil.rmtree(audit_root, ignore_errors=True)
+        return {
+            "status": "FAIL",
+            "export_failure": result,
+            "contract_validation": {
+                "valid": False,
+                "error": "fake export failed before validation",
+            },
+            "fake_adapter_requires_terminal_access": False,
+            "output_under_ignored_root": True,
+            "public_api_static_exposes_local_path": False,
+            "gate_matrix": _gate_matrix(repo_root, symbol_map),
+        }
     validation = validate_market_bar_file(audit_root / "export" / "bars.jsonl")
     manifest_hash = result["manifest_sha256"]
     shutil.rmtree(audit_root)

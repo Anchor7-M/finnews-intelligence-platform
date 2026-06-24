@@ -14,7 +14,7 @@
   ],
   "forbidden": [],
   "forbidden_count": 0,
-  "match_count": 870,
+  "match_count": 871,
   "matched_file_count": 49,
   "matches": [
     {
@@ -586,6 +586,12 @@
       "count": 1,
       "path": "backend/tests/unit/test_mt5_readonly.py",
       "pattern": "copy_rates_range("
+    },
+    {
+      "classification": "permitted test fixture proving rejection",
+      "count": 1,
+      "path": "backend/tests/unit/test_mt5_readonly.py",
+      "pattern": "metatrader5"
     },
     {
       "classification": "permitted test fixture proving rejection",
