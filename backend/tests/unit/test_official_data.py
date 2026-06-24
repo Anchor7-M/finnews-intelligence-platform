@@ -10,9 +10,11 @@ from finnews.application.services.official_data import (
     OfficialDataError,
     OfficialObservationRecord,
     build_official_data_demo,
+    build_official_data_release_ledger,
     information_available_at,
     ingest_official_observation_records,
     official_data_overview,
+    official_observation_as_of,
     persist_official_data_demo,
 )
 from finnews.infrastructure.persistence.memory.repository import MemoryNewsRepository
@@ -30,13 +32,46 @@ def test_official_data_fixture_counts_are_deterministic() -> None:
     counts = persist_official_data_demo(repo)
     overview = official_data_overview(repo)
     assert counts["datasets"] == 4
-    assert counts["series_profiles"] == 10
-    assert overview["observation_count"] == 24
-    assert overview["revision_count"] == 28
-    assert overview["revised_observation_count"] == 4
-    assert overview["regulatory_document_count"] == 8
+    assert counts["series_profiles"] == 16
+    assert overview["definition_count_total"] == 16
+    assert overview["observation_count"] == 144
+    assert overview["revision_count"] == 168
+    assert overview["changed_value_revision_count"] == 24
+    assert overview["revised_observation_count"] == 24
+    assert overview["regulatory_document_count"] == 32
     assert overview["series_asset_association_count"] == 80
-    assert overview["official_release_event_count"] == 32
+    assert overview["official_release_event_count"] == 48
+
+
+def test_official_data_release_ledger_matches_acceptance_counts() -> None:
+    repo = MemoryNewsRepository()
+    persist_official_data_demo(repo)
+    ledger = build_official_data_release_ledger(repo)
+
+    assert ledger["dataset_definition_count"] == 4
+    assert ledger["series_definition_count"] == 8
+    assert ledger["query_profile_count"] == 8
+    assert ledger["definition_count_total"] == 16
+    assert ledger["observation_business_key_count"] == 144
+    assert ledger["observation_revision_row_count"] == 168
+    assert ledger["current_observation_count"] == 144
+    assert ledger["changed_value_revision_count"] == 24
+    assert ledger["superseded_revision_count"] == 24
+    assert ledger["regulatory_document_count"] == 32
+    assert ledger["series_asset_association_count"] == 80
+    assert ledger["derived_release_event_count"] == 48
+    assert ledger["observation_distribution"] == {
+        "bls-public-data": 48,
+        "cftc-cot-pre": 48,
+        "eia-open-data-v2": 48,
+    }
+    assert ledger["changed_revision_distribution"] == {
+        "bls-public-data": 8,
+        "cftc-cot-pre": 8,
+        "eia-open-data-v2": 8,
+    }
+    assert len(ledger["ledger_sha256"]) == 64
+    assert ledger == build_official_data_release_ledger(repo)
 
 
 def test_official_data_fixture_replay_is_idempotent_for_revision_history() -> None:
@@ -46,9 +81,9 @@ def test_official_data_fixture_replay_is_idempotent_for_revision_history() -> No
     second_counts = persist_official_data_demo(repo)
     second_overview = official_data_overview(repo)
 
-    assert first_counts["official_observation_revisions"] == 28
+    assert first_counts["official_observation_revisions"] == 168
     assert second_counts["official_observation_revisions"] == 0
-    assert second_counts["official_observation_unchanged"] == 28
+    assert second_counts["official_observation_unchanged"] == 168
     assert first_overview == second_overview
 
 
@@ -96,6 +131,44 @@ def test_observation_ingestion_is_idempotent_and_revision_aware() -> None:
     assert replay_counts["official_observation_unchanged"] == 1
     assert repo.list_official_observations()[0].current_value == Decimal("101.0")
     assert len(repo.list_official_observation_revisions(observation.observation_key)) == 2
+
+
+def test_observation_ingestion_order_does_not_change_point_in_time_history() -> None:
+    first_seen = datetime(2026, 6, 24, tzinfo=UTC)
+    base = OfficialObservationRecord(
+        source_id="bls-public-data",
+        dataset_id="bls-ces",
+        profile_id="bls-ces-total-nonfarm",
+        period_start=date(2026, 1, 1),
+        period_end=date(2026, 1, 1),
+        dimensions={"series_id": "CES0000000001"},
+        value=Decimal("100.0"),
+        first_seen_at=first_seen,
+        source_updated_at=None,
+        provenance={"fixture": True},
+    )
+    changed = OfficialObservationRecord(
+        **{
+            **base.__dict__,
+            "value": Decimal("101.0"),
+            "first_seen_at": first_seen + timedelta(days=2),
+            "provenance": {"fixture": True, "revision_fixture": True},
+        }
+    )
+    repo = MemoryNewsRepository()
+    ingest_official_observation_records(repo, [changed, base])
+    observation = repo.list_official_observations()[0]
+    before_revision = official_observation_as_of(
+        repo, observation.observation_key, first_seen + timedelta(days=1)
+    )
+    after_revision = official_observation_as_of(
+        repo, observation.observation_key, first_seen + timedelta(days=3)
+    )
+    assert before_revision is not None
+    assert before_revision.value == Decimal("100.0")
+    assert after_revision is not None
+    assert after_revision.value == Decimal("101.0")
+    assert repo.list_official_observations()[0].current_value == Decimal("101.0")
 
 
 def test_information_available_at_rejects_naive_timestamps_and_flags_future_source() -> None:

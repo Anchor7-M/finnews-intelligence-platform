@@ -3,6 +3,7 @@ from __future__ import annotations
 import hashlib
 import json
 from collections import Counter
+from collections.abc import Iterable
 from dataclasses import dataclass
 from datetime import UTC, date, datetime, timedelta
 from decimal import Decimal
@@ -24,7 +25,14 @@ from finnews.domain.entities import (
 from finnews.domain.enums import CrossAssetEventFamily
 
 OFFICIAL_DATA_FIXTURE_VERSION = "official-data-synthetic-v1"
+OFFICIAL_DATA_LEDGER_SCHEMA_VERSION = "m3b-release-ledger-v1"
 OFFICIAL_DATA_GENERATED_AT = datetime(2026, 6, 24, 0, 0, tzinfo=UTC)
+OFFICIAL_SOURCE_IDS = {
+    "bls-public-data",
+    "eia-open-data-v2",
+    "cftc-cot-pre",
+    "federal-register-api",
+}
 
 
 class OfficialDataError(ValueError):
@@ -106,7 +114,7 @@ def ingest_official_observation_records(
     new_observations = 0
     new_revisions = 0
     unchanged = 0
-    for record in records:
+    for record in sorted(records, key=_record_order_key):
         _validate_record_time(record)
         key = observation_business_key(
             record.source_id,
@@ -247,8 +255,13 @@ def official_data_overview(repository: NewsRepository) -> dict[str, Any]:
         "generated_at": OFFICIAL_DATA_GENERATED_AT.isoformat(),
         "dataset_count": len(datasets),
         "series_profile_count": len(profiles),
+        "definition_count_total": len(profiles),
         "observation_count": len(observations),
         "revision_count": len(revisions),
+        "changed_value_revision_count": sum(
+            1 for revision in revisions if revision.revision_number > 1
+        ),
+        "physical_revision_row_count": len(revisions),
         "revised_observation_count": sum(
             1 for observation in observations if observation.current_revision > 1
         ),
@@ -385,6 +398,17 @@ def _profiles() -> list[OfficialSeriesProfile]:
             "seasonally_adjusted",
         ),
         (
+            "bls-ces-unemployment-rate",
+            "bls-ces",
+            "bls-public-data",
+            "Unemployment rate proxy",
+            {"series_id": "LNS14000000"},
+            {"measure": "unemployment_rate", "seasonal": "sa"},
+            "percent",
+            "monthly",
+            "seasonally_adjusted",
+        ),
+        (
             "eia-crude-stocks",
             "eia-petroleum-stocks",
             "eia-open-data-v2",
@@ -418,6 +442,17 @@ def _profiles() -> list[OfficialSeriesProfile]:
             None,
         ),
         (
+            "eia-distillate-stocks",
+            "eia-petroleum-stocks",
+            "eia-open-data-v2",
+            "Distillate fuel oil stocks",
+            {"route": "petroleum/stoc/wstk", "series": "WDISTUS1"},
+            {"commodity": "distillate", "region": "us"},
+            "thousand_barrels",
+            "weekly",
+            None,
+        ),
+        (
             "cftc-equity-index-positioning",
             "cftc-cot-pre",
             "cftc-cot-pre",
@@ -440,12 +475,56 @@ def _profiles() -> list[OfficialSeriesProfile]:
             None,
         ),
         (
+            "cftc-metals-positioning",
+            "cftc-cot-pre",
+            "cftc-cot-pre",
+            "Precious metals futures positioning",
+            {"resource": "6dca-aqww", "market_code": "088691"},
+            {"market": "precious_metal", "report": "pre"},
+            "contracts",
+            "weekly",
+            None,
+        ),
+        (
+            "cftc-energy-positioning",
+            "cftc-cot-pre",
+            "cftc-cot-pre",
+            "Energy futures positioning",
+            {"resource": "6dca-aqww", "market_code": "067651"},
+            {"market": "energy", "report": "pre"},
+            "contracts",
+            "weekly",
+            None,
+        ),
+        (
             "fr-energy-regulation",
             "federal-register-documents",
             "federal-register-api",
             "Energy regulatory documents",
             {"conditions[term]": "energy", "per_page": 5},
             {"topic": "energy"},
+            None,
+            "event",
+            None,
+        ),
+        (
+            "fr-bank-capital-regulation",
+            "federal-register-documents",
+            "federal-register-api",
+            "Bank capital regulatory documents",
+            {"conditions[term]": "bank capital", "per_page": 8},
+            {"topic": "bank_capital"},
+            None,
+            "event",
+            None,
+        ),
+        (
+            "fr-commodity-reporting-regulation",
+            "federal-register-documents",
+            "federal-register-api",
+            "Commodity reporting regulatory documents",
+            {"conditions[term]": "commodity reporting", "per_page": 8},
+            {"topic": "commodity_reporting"},
             None,
             "event",
             None,
@@ -498,20 +577,16 @@ def _observation_records(
         profile for profile in profiles if profile.source_id != "federal-register-api"
     ]
     records: list[OfficialObservationRecord] = []
-    revised_profiles = {
-        "bls-ces-total-nonfarm",
-        "eia-crude-stocks",
-        "cftc-equity-index-positioning",
-        "cftc-rates-positioning",
-    }
     for profile_index, profile in enumerate(numeric_profiles):
-        for period_index in range(3):
+        for period_index in range(12):
             period_start = date(2026, 1 + period_index, 1)
             if profile.frequency == "weekly":
-                period_start = date(2026, 2, 6 + period_index * 7)
+                period_start = date(2026, 1, 2) + timedelta(days=period_index * 7)
             period_end = period_start
-            first_seen = OFFICIAL_DATA_GENERATED_AT - timedelta(days=40 - period_index)
-            base_value = Decimal(1000 + profile_index * 37 + period_index * 11)
+            first_seen = OFFICIAL_DATA_GENERATED_AT - timedelta(days=120 - period_index)
+            base_value = Decimal(1000 + profile_index * 37 + period_index * 11).quantize(
+                Decimal("0.1")
+            )
             records.append(
                 OfficialObservationRecord(
                     source_id=profile.source_id,
@@ -529,7 +604,7 @@ def _observation_records(
                     },
                 )
             )
-            if period_index == 1 and profile.profile_id in revised_profiles:
+            if period_index in {4, 9}:
                 revised_seen = first_seen + timedelta(days=7)
                 records.append(
                     OfficialObservationRecord(
@@ -554,51 +629,74 @@ def _observation_records(
 def _regulatory_documents() -> list[RegulatoryDocument]:
     docs: list[RegulatoryDocument] = []
     topics = [
-        ("energy", ["Department of Energy"], ["10 CFR 430"], ["1904-AF01"]),
         (
+            "fr-energy-regulation",
+            "energy",
+            ["Department of Energy"],
+            ["10 CFR 430"],
+            ["1904-AF01"],
+        ),
+        (
+            "fr-market-structure-regulation",
             "market structure",
             ["Securities and Exchange Commission"],
             ["17 CFR 242"],
             ["3235-AM88"],
         ),
-        ("bank capital", ["Federal Reserve System"], ["12 CFR 217"], ["7100-AG77"]),
         (
+            "fr-bank-capital-regulation",
+            "bank capital",
+            ["Federal Reserve System"],
+            ["12 CFR 217"],
+            ["7100-AG77"],
+        ),
+        (
+            "fr-commodity-reporting-regulation",
             "commodity reporting",
             ["Commodity Futures Trading Commission"],
             ["17 CFR 45"],
             ["3038-AF45"],
         ),
     ]
-    for index in range(8):
-        topic, agencies, cfr, rin = topics[index % len(topics)]
-        publication_day = date(2026, 3, 1 + index)
-        available_at = datetime(2026, 3, 1 + index, 12, 0, tzinfo=UTC)
-        document_id = f"FR-SYN-{index + 1:04d}"
-        docs.append(
-            RegulatoryDocument(
-                id=_stable_uuid("reg-doc", document_id),
-                document_id=document_id,
-                source_id="federal-register-api",
-                title=f"Synthetic {topic} regulatory document {index + 1}",
-                abstract=(
-                    f"Source-provided synthetic abstract for {topic} metadata fixture {index + 1}."
-                ),
-                publication_date=publication_day,
-                document_type="Proposed Rule" if index % 2 else "Notice",
-                agencies=agencies,
-                cfr_references=cfr,
-                rin=rin,
-                html_url=(
-                    "https://www.federalregister.gov/documents/"
-                    f"2026/03/{index + 1:02d}/{document_id.lower()}"
-                ),
-                pdf_url=f"https://www.govinfo.gov/content/pkg/{document_id}/pdf/{document_id}.pdf",
-                information_available_at=available_at,
-                source_updated_at=available_at,
-                synthetic=True,
-                provenance={"fixture_version": OFFICIAL_DATA_FIXTURE_VERSION},
+    for topic_index, (profile_id, topic, agencies, cfr, rin) in enumerate(topics):
+        for item_index in range(8):
+            ordinal = topic_index * 8 + item_index + 1
+            publication_day = date(2026, 3, 1) + timedelta(days=ordinal - 1)
+            available_at = datetime(2026, 3, 1, 12, 0, tzinfo=UTC) + timedelta(days=ordinal - 1)
+            document_id = f"FR-SYN-{ordinal:04d}"
+            docs.append(
+                RegulatoryDocument(
+                    id=_stable_uuid("reg-doc", document_id),
+                    document_id=document_id,
+                    source_id="federal-register-api",
+                    title=f"Synthetic {topic} regulatory document {item_index + 1}",
+                    abstract=(
+                        "Source-provided synthetic abstract for "
+                        f"{topic} metadata fixture {item_index + 1}."
+                    ),
+                    publication_date=publication_day,
+                    document_type="Proposed Rule" if item_index % 2 else "Notice",
+                    agencies=agencies,
+                    cfr_references=cfr,
+                    rin=rin,
+                    html_url=(
+                        "https://www.federalregister.gov/documents/"
+                        f"2026/03/{publication_day.day:02d}/{document_id.lower()}"
+                    ),
+                    pdf_url=(
+                        f"https://www.govinfo.gov/content/pkg/{document_id}/pdf/{document_id}.pdf"
+                    ),
+                    information_available_at=available_at,
+                    source_updated_at=available_at,
+                    synthetic=True,
+                    provenance={
+                        "fixture_version": OFFICIAL_DATA_FIXTURE_VERSION,
+                        "profile_id": profile_id,
+                        "full_text_requested": False,
+                        "pdf_downloaded": False,
+                    },
+                )
             )
-        )
     return docs
 
 
@@ -606,7 +704,7 @@ def _associations(profiles: list[OfficialSeriesProfile]) -> list[SeriesAssetAsso
     assets = build_cross_asset_demo().assets
     associations: list[SeriesAssetAssociation] = []
     for profile_index, profile in enumerate(profiles):
-        for target_index in range(8):
+        for target_index in range(5):
             asset = assets[(profile_index * 3 + target_index) % len(assets)]
             associations.append(
                 SeriesAssetAssociation(
@@ -632,23 +730,18 @@ def _events(
     records: list[OfficialObservationRecord], documents: list[RegulatoryDocument]
 ) -> list[OfficialReleaseEvent]:
     events: list[OfficialReleaseEvent] = []
-    latest_by_key: dict[str, OfficialObservationRecord] = {}
-    for record in records:
-        key = observation_business_key(
-            record.source_id,
-            record.dataset_id,
-            record.profile_id,
-            record.period_start,
-            record.period_end,
-            record.dimensions,
-        )
-        latest_by_key[key] = record
     family_by_source = {
         "bls-public-data": CrossAssetEventFamily.LABOR_MARKET,
         "eia-open-data-v2": CrossAssetEventFamily.INVENTORY_DEMAND,
         "cftc-cot-pre": CrossAssetEventFamily.DERIVATIVES_POSITIONING,
     }
-    for index, record in enumerate(latest_by_key.values(), start=1):
+    first_by_profile: dict[str, OfficialObservationRecord] = {}
+    revised_records: list[OfficialObservationRecord] = []
+    for record in records:
+        first_by_profile.setdefault(record.profile_id, record)
+        if record.provenance.get("revision_fixture") is True:
+            revised_records.append(record)
+    for index, record in enumerate(first_by_profile.values(), start=1):
         info_time, _ = information_available_at(record.first_seen_at, record.source_updated_at)
         events.append(
             OfficialReleaseEvent(
@@ -661,27 +754,53 @@ def _events(
                 event_family=family_by_source[record.source_id],
                 description=f"Synthetic official release for {record.profile_id}",
                 information_available_at=info_time,
-                revision_number=None,
-                provenance={"fixture_version": OFFICIAL_DATA_FIXTURE_VERSION},
+                revision_number=1,
+                provenance={
+                    "fixture_version": OFFICIAL_DATA_FIXTURE_VERSION,
+                    "origin": "initial_observation",
+                },
                 synthetic=True,
             )
         )
-    for index, document in enumerate(documents, start=1):
+    for index, record in enumerate(revised_records, start=1):
+        info_time, _ = information_available_at(record.first_seen_at, record.source_updated_at)
+        events.append(
+            OfficialReleaseEvent(
+                id=_stable_uuid("official-event", "revision", index),
+                event_id=f"ODE-REV-{index:03d}",
+                source_id=record.source_id,
+                dataset_id=record.dataset_id,
+                profile_id=record.profile_id,
+                document_id=None,
+                event_family=family_by_source[record.source_id],
+                description=f"Synthetic changed-value revision for {record.profile_id}",
+                information_available_at=info_time,
+                revision_number=2,
+                provenance={
+                    "fixture_version": OFFICIAL_DATA_FIXTURE_VERSION,
+                    "origin": "changed_value_revision",
+                },
+                synthetic=True,
+            )
+        )
+    for index, document in enumerate(documents[:12], start=1):
+        profile_id = str(document.provenance.get("profile_id", "fr-energy-regulation"))
         events.append(
             OfficialReleaseEvent(
                 id=_stable_uuid("official-event", "doc", document.document_id),
                 event_id=f"ODE-DOC-{index:03d}",
                 source_id=document.source_id,
                 dataset_id="federal-register-documents",
-                profile_id="fr-energy-regulation"
-                if index % 2
-                else "fr-market-structure-regulation",
+                profile_id=profile_id,
                 document_id=document.document_id,
                 event_family=CrossAssetEventFamily.REGULATION_ENFORCEMENT,
                 description=f"Synthetic regulatory metadata release for {document.document_id}",
                 information_available_at=document.information_available_at,
                 revision_number=None,
-                provenance={"fixture_version": OFFICIAL_DATA_FIXTURE_VERSION},
+                provenance={
+                    "fixture_version": OFFICIAL_DATA_FIXTURE_VERSION,
+                    "origin": "regulatory_document",
+                },
                 synthetic=True,
             )
         )
@@ -692,7 +811,7 @@ def _release_runs(records: list[OfficialObservationRecord]) -> list[OfficialData
     by_source: dict[tuple[str, str], list[OfficialObservationRecord]] = {}
     for record in records:
         by_source.setdefault((record.source_id, record.dataset_id), []).append(record)
-    return [
+    runs = [
         OfficialDataReleaseRun(
             id=_stable_uuid("official-release-run", source_id, dataset_id),
             release_run_id=f"ODR-{index:03d}",
@@ -709,10 +828,135 @@ def _release_runs(records: list[OfficialObservationRecord]) -> list[OfficialData
         )
         for index, ((source_id, dataset_id), rows) in enumerate(sorted(by_source.items()), start=1)
     ]
+    runs.append(
+        OfficialDataReleaseRun(
+            id=_stable_uuid("official-release-run", "federal-register-api", "documents"),
+            release_run_id="ODR-004",
+            source_id="federal-register-api",
+            dataset_id="federal-register-documents",
+            observed_at=OFFICIAL_DATA_GENERATED_AT + timedelta(minutes=4),
+            profile_count=4,
+            observation_count=32,
+            new_revision_count=0,
+            unchanged_count=0,
+            status="completed",
+            no_persist_live=False,
+            synthetic=True,
+        )
+    )
+    return runs
+
+
+def build_official_data_release_ledger(
+    repository: NewsRepository, postgres_table_counts: dict[str, int] | None = None
+) -> dict[str, Any]:
+    datasets = repository.list_official_datasets()
+    profiles = repository.list_official_series_profiles()
+    observations = repository.list_official_observations()
+    revisions = repository.list_official_observation_revisions()
+    documents = repository.list_regulatory_documents()
+    associations = repository.list_series_asset_associations()
+    events = repository.list_official_release_events()
+    runs = repository.list_official_data_release_runs()
+    static_payload = official_data_static_payload(repository)
+    series_profiles = [
+        row for row in profiles if row.source_id in {"bls-public-data", "eia-open-data-v2"}
+    ]
+    query_profiles = [
+        row for row in profiles if row.source_id in {"cftc-cot-pre", "federal-register-api"}
+    ]
+    changed_revisions = [row for row in revisions if row.revision_number > 1]
+    ledger: dict[str, Any] = {
+        "schema_version": OFFICIAL_DATA_LEDGER_SCHEMA_VERSION,
+        "generator_version": OFFICIAL_DATA_FIXTURE_VERSION,
+        "synthetic_data": True,
+        "not_investment_advice": True,
+        "live_data_persisted": False,
+        "official_source_definition_count": len(
+            [
+                row
+                for row in repository.list_source_definitions()
+                if row.source_id in OFFICIAL_SOURCE_IDS
+            ]
+        ),
+        "physical_dataset_table_count": len(datasets),
+        "dataset_definition_count": len(datasets),
+        "series_definition_count": len(series_profiles),
+        "query_profile_count": len(query_profiles),
+        "definition_count_total": len(profiles),
+        "observation_business_key_count": len(observations),
+        "observation_revision_row_count": len(revisions),
+        "current_observation_count": len(observations),
+        "superseded_revision_count": len(changed_revisions),
+        "changed_value_revision_count": len(changed_revisions),
+        "regulatory_document_count": len(documents),
+        "series_asset_association_count": len(associations),
+        "derived_release_event_count": len(events),
+        "release_run_count": len(runs),
+        "static_export_record_counts": {
+            name: len(value) if isinstance(value, list) else 1
+            for name, value in static_payload.items()
+        },
+        "postgres_table_counts": postgres_table_counts or {},
+        "source_distribution": _count_by(profiles, "source_id"),
+        "observation_distribution": _count_by(observations, "source_id"),
+        "changed_revision_distribution": _count_by_revision_source(changed_revisions, observations),
+        "document_distribution": _count_documents_by_profile(documents),
+        "association_distribution": _count_associations_by_source(associations, profiles),
+        "event_distribution": _count_by(events, "source_id"),
+        "revision_storage_model": (
+            "official_observations stores one current row per business key; "
+            "official_observation_revisions stores revision 1 plus changed-value revisions"
+        ),
+    }
+    ledger["deterministic_hashes"] = {
+        "datasets": _hash_rows(_dataset_row(row) for row in datasets),
+        "profiles": _hash_rows(_profile_row(row) for row in profiles),
+        "observations": _hash_rows(_observation_row(row) for row in observations),
+        "revisions": _hash_rows(_revision_row(row) for row in revisions),
+        "documents": _hash_rows(_document_row(row) for row in documents),
+        "associations": _hash_rows(_association_row(row) for row in associations),
+        "events": _hash_rows(_event_row(row) for row in events),
+    }
+    ledger["ledger_sha256"] = sha256_text(
+        _canonical_json({key: value for key, value in ledger.items() if key != "ledger_sha256"})
+    )
+    return ledger
+
+
+def official_observation_as_of(
+    repository: NewsRepository, observation_key: str, as_of: datetime
+) -> OfficialObservationRevision | None:
+    if as_of.tzinfo is None:
+        raise OfficialDataError("as_of must be timezone-aware")
+    candidates = [
+        revision
+        for revision in repository.list_official_observation_revisions(observation_key)
+        if revision.information_available_at <= as_of
+    ]
+    if not candidates:
+        return None
+    return sorted(
+        candidates,
+        key=lambda item: (item.information_available_at, item.revision_number),
+    )[-1]
 
 
 def _validate_record_time(record: OfficialObservationRecord) -> None:
     information_available_at(record.first_seen_at, record.source_updated_at)
+
+
+def _record_order_key(record: OfficialObservationRecord) -> tuple[str, datetime, Decimal]:
+    key = observation_business_key(
+        record.source_id,
+        record.dataset_id,
+        record.profile_id,
+        record.period_start,
+        record.period_end,
+        record.dimensions,
+    )
+    info_time, _ = information_available_at(record.first_seen_at, record.source_updated_at)
+    return key, info_time, record.value
 
 
 def _dataset_row(row: OfficialDataset) -> dict[str, Any]:
@@ -792,3 +1036,37 @@ def _stable_uuid(*parts: object) -> UUID:
 
 def _canonical_json(data: object) -> str:
     return json.dumps(data, ensure_ascii=False, sort_keys=True, separators=(",", ":"), default=str)
+
+
+def sha256_text(text: str) -> str:
+    return hashlib.sha256(text.encode("utf-8")).hexdigest()
+
+
+def _hash_rows(rows: Iterable[dict[str, Any]]) -> str:
+    return sha256_text(_canonical_json(list(rows)))
+
+
+def _count_by(rows: Iterable[object], attr: str) -> dict[str, int]:
+    return dict(sorted(Counter(str(getattr(row, attr)) for row in rows).items()))
+
+
+def _count_by_revision_source(
+    revisions: list[OfficialObservationRevision], observations: list[OfficialObservation]
+) -> dict[str, int]:
+    source_by_key = {row.observation_key: row.source_id for row in observations}
+    return dict(sorted(Counter(source_by_key[row.observation_key] for row in revisions).items()))
+
+
+def _count_documents_by_profile(documents: list[RegulatoryDocument]) -> dict[str, int]:
+    return dict(
+        sorted(
+            Counter(str(row.provenance.get("profile_id", "unknown")) for row in documents).items()
+        )
+    )
+
+
+def _count_associations_by_source(
+    associations: list[SeriesAssetAssociation], profiles: list[OfficialSeriesProfile]
+) -> dict[str, int]:
+    source_by_profile = {row.profile_id: row.source_id for row in profiles}
+    return dict(sorted(Counter(source_by_profile[row.profile_id] for row in associations).items()))

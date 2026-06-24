@@ -761,16 +761,41 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         limit: int = Query(default=50, ge=1, le=200),
         offset: int = Query(default=0, ge=0),
     ) -> dict[str, object]:
-        rows = cast(
-            list[dict[str, object]], build_static_payload(repository)["official-observations"]
-        )
+        payload = build_static_payload(repository)
+        rows = cast(list[dict[str, object]], payload["official-observations"])
+        revisions = cast(list[dict[str, object]], payload["official-observation-revisions"])
+        revisions_by_key: dict[str, list[dict[str, object]]] = {}
+        for revision in revisions:
+            revisions_by_key.setdefault(str(revision["observation_key"]), []).append(revision)
         filtered: list[dict[str, object]] = []
         for row in rows:
             if dataset_id and row["dataset_id"] != dataset_id:
                 continue
             if profile_id and row["profile_id"] != profile_id:
                 continue
-            if as_of and datetime.fromisoformat(str(row["information_available_at"])) > as_of:
+            if as_of:
+                visible_revisions = [
+                    revision
+                    for revision in revisions_by_key.get(str(row["observation_key"]), [])
+                    if datetime.fromisoformat(str(revision["information_available_at"])) <= as_of
+                ]
+                if not visible_revisions:
+                    continue
+                visible = sorted(
+                    visible_revisions,
+                    key=lambda revision: (
+                        str(revision["information_available_at"]),
+                        int(str(revision["revision_number"])),
+                    ),
+                )[-1]
+                filtered.append(
+                    {
+                        **row,
+                        "current_revision": visible["revision_number"],
+                        "current_value": visible["value"],
+                        "information_available_at": visible["information_available_at"],
+                    }
+                )
                 continue
             filtered.append(row)
         return {

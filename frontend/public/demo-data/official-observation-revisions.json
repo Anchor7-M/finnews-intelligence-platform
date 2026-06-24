@@ -1,11 +1,139 @@
 [
   {
+    "observation_key": "0033099d6dbace55d84bcf3d16e042568b6e3b8c41ba1d88c80968d363837d59",
+    "revision_number": 1,
+    "value": "1196.0",
+    "first_seen_at": "2026-02-25T00:00:00+00:00",
+    "source_updated_at": "2026-02-24T23:50:00+00:00",
+    "information_available_at": "2026-02-25T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "route": "petroleum/stoc/wstk",
+        "series": "WGTSTUS1"
+      }
+    },
+    "quality_flags": [],
+    "id": "7b99da30-cd70-5e1f-af56-b34d33ae633a"
+  },
+  {
+    "observation_key": "07f1f8e39d7bf9ce650f2f312c22e40a193253b956a021b87c159f1cbad097a1",
+    "revision_number": 1,
+    "value": "1162.0",
+    "first_seen_at": "2026-03-04T00:00:00+00:00",
+    "source_updated_at": "2026-03-03T23:50:00+00:00",
+    "information_available_at": "2026-03-04T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "series_id": "CES0500000003"
+      }
+    },
+    "quality_flags": [],
+    "id": "cab93894-5872-5180-855f-e95e8076587d"
+  },
+  {
+    "observation_key": "083a521cdd15212b3cc26f67f3dd502caa9d45dba1a46e08692c8e6614832fed",
+    "revision_number": 1,
+    "value": "1469.0",
+    "first_seen_at": "2026-03-05T00:00:00+00:00",
+    "source_updated_at": "2026-03-04T23:50:00+00:00",
+    "information_available_at": "2026-03-05T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "resource": "6dca-aqww",
+        "market_code": "088691"
+      }
+    },
+    "quality_flags": [],
+    "id": "1f2d21a7-cdca-5a90-a296-fa0d15701814"
+  },
+  {
+    "observation_key": "083a521cdd15212b3cc26f67f3dd502caa9d45dba1a46e08692c8e6614832fed",
+    "revision_number": 2,
+    "value": "1470.5",
+    "first_seen_at": "2026-03-12T00:00:00+00:00",
+    "source_updated_at": "2026-03-11T23:57:00+00:00",
+    "information_available_at": "2026-03-12T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "revision_fixture": true
+    },
+    "quality_flags": [],
+    "id": "f618e481-75fd-55e6-af29-ac2819156b47"
+  },
+  {
+    "observation_key": "08828944a9d89e4ecd5cb691da71bdd9820a5cdfe8d1768e015786fdb91e95b4",
+    "revision_number": 1,
+    "value": "1417.0",
+    "first_seen_at": "2026-03-07T00:00:00+00:00",
+    "source_updated_at": "2026-03-06T23:50:00+00:00",
+    "information_available_at": "2026-03-07T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "resource": "6dca-aqww",
+        "market_code": "13874A"
+      }
+    },
+    "quality_flags": [],
+    "id": "70d7741c-8e5e-5140-92c4-2fad2a8781b6"
+  },
+  {
+    "observation_key": "0aa70c00298a0f82da80a69f1537cdb65d7f192f0c1e894ec648379585ea8507",
+    "revision_number": 1,
+    "value": "1173.0",
+    "first_seen_at": "2026-03-05T00:00:00+00:00",
+    "source_updated_at": "2026-03-04T23:50:00+00:00",
+    "information_available_at": "2026-03-05T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "series_id": "CES0500000003"
+      }
+    },
+    "quality_flags": [],
+    "id": "e56d2beb-bbfb-5c49-b78d-5cd632ad4892"
+  },
+  {
+    "observation_key": "0aa70c00298a0f82da80a69f1537cdb65d7f192f0c1e894ec648379585ea8507",
+    "revision_number": 2,
+    "value": "1174.5",
+    "first_seen_at": "2026-03-12T00:00:00+00:00",
+    "source_updated_at": "2026-03-11T23:57:00+00:00",
+    "information_available_at": "2026-03-12T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "revision_fixture": true
+    },
+    "quality_flags": [],
+    "id": "3da36dcc-ea75-5baf-91f5-77589e941f3a"
+  },
+  {
+    "observation_key": "0c413d06819d121c64dde352fc2291d304e9b6c94cfe5735052700c0db777ffa",
+    "revision_number": 1,
+    "value": "1495.0",
+    "first_seen_at": "2026-03-04T00:00:00+00:00",
+    "source_updated_at": "2026-03-03T23:50:00+00:00",
+    "information_available_at": "2026-03-04T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "resource": "6dca-aqww",
+        "market_code": "067651"
+      }
+    },
+    "quality_flags": [],
+    "id": "9398a3ee-4e6e-58cb-899f-ad45e07eaaef"
+  },
+  {
     "observation_key": "0dbd83f750842f551902125c30ea2e51cbce9466457684d9fced179387cbe294",
     "revision_number": 1,
-    "value": "1000",
-    "first_seen_at": "2026-05-15T00:00:00+00:00",
-    "source_updated_at": "2026-05-14T23:50:00+00:00",
-    "information_available_at": "2026-05-15T00:00:00+00:00",
+    "value": "1000.0",
+    "first_seen_at": "2026-02-24T00:00:00+00:00",
+    "source_updated_at": "2026-02-23T23:50:00+00:00",
+    "information_available_at": "2026-02-24T00:00:00+00:00",
     "provenance": {
       "fixture_version": "official-data-synthetic-v1",
       "profile_query": {
@@ -16,12 +144,89 @@
     "id": "a1bfefe9-8bea-5fc1-92b4-f39524343edf"
   },
   {
+    "observation_key": "0df7ff14dabe4b0b28b6222438b35f497f041bacea1af90bf2332bfb6d71bc52",
+    "revision_number": 1,
+    "value": "1210.0",
+    "first_seen_at": "2026-03-05T00:00:00+00:00",
+    "source_updated_at": "2026-03-04T23:50:00+00:00",
+    "information_available_at": "2026-03-05T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "series_id": "LNS14000000"
+      }
+    },
+    "quality_flags": [],
+    "id": "24499e8e-39e4-551c-9078-b3e6a249f936"
+  },
+  {
+    "observation_key": "0df7ff14dabe4b0b28b6222438b35f497f041bacea1af90bf2332bfb6d71bc52",
+    "revision_number": 2,
+    "value": "1211.5",
+    "first_seen_at": "2026-03-12T00:00:00+00:00",
+    "source_updated_at": "2026-03-11T23:57:00+00:00",
+    "information_available_at": "2026-03-12T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "revision_fixture": true
+    },
+    "quality_flags": [],
+    "id": "9a2df5a9-c374-57ca-868d-03a1e3d0659d"
+  },
+  {
+    "observation_key": "0f2727b5de6f3f14c2ecbe3cbb4449cbdc9a21afa03bb0190272de1cba398676",
+    "revision_number": 1,
+    "value": "1122.0",
+    "first_seen_at": "2026-02-25T00:00:00+00:00",
+    "source_updated_at": "2026-02-24T23:50:00+00:00",
+    "information_available_at": "2026-02-25T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "series_id": "LNS14000000"
+      }
+    },
+    "quality_flags": [],
+    "id": "41604fcd-41bc-5915-9845-75098d7a97b9"
+  },
+  {
+    "observation_key": "11fd2c9529d4537e4486cb518c3d2163cc66396694ccc371e08c2128195588a5",
+    "revision_number": 1,
+    "value": "1247.0",
+    "first_seen_at": "2026-03-05T00:00:00+00:00",
+    "source_updated_at": "2026-03-04T23:50:00+00:00",
+    "information_available_at": "2026-03-05T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "route": "petroleum/stoc/wstk",
+        "series": "WCESTUS1"
+      }
+    },
+    "quality_flags": [],
+    "id": "331c35ca-5c4e-5131-a2e2-157742e26a70"
+  },
+  {
+    "observation_key": "11fd2c9529d4537e4486cb518c3d2163cc66396694ccc371e08c2128195588a5",
+    "revision_number": 2,
+    "value": "1248.5",
+    "first_seen_at": "2026-03-12T00:00:00+00:00",
+    "source_updated_at": "2026-03-11T23:57:00+00:00",
+    "information_available_at": "2026-03-12T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "revision_fixture": true
+    },
+    "quality_flags": [],
+    "id": "5a064c42-e867-560f-8de1-8ab26f83e0b3"
+  },
+  {
     "observation_key": "132fc9bb5c1438326a3032f9fd05936c5181b69ae04d7a9cc14066896656d4e7",
     "revision_number": 1,
-    "value": "1259",
-    "first_seen_at": "2026-05-15T00:00:00+00:00",
-    "source_updated_at": "2026-05-14T23:50:00+00:00",
-    "information_available_at": "2026-05-15T00:00:00+00:00",
+    "value": "1388.0",
+    "first_seen_at": "2026-03-01T00:00:00+00:00",
+    "source_updated_at": "2026-02-28T23:50:00+00:00",
+    "information_available_at": "2026-03-01T00:00:00+00:00",
     "provenance": {
       "fixture_version": "official-data-synthetic-v1",
       "profile_query": {
@@ -33,12 +238,29 @@
     "id": "0cba3197-68cf-598f-9e6b-26077fd9025e"
   },
   {
+    "observation_key": "14de784603005ad28e464ec14a3c33ebeeb473d967dbb07398986801b3546d35",
+    "revision_number": 1,
+    "value": "1528.0",
+    "first_seen_at": "2026-03-07T00:00:00+00:00",
+    "source_updated_at": "2026-03-06T23:50:00+00:00",
+    "information_available_at": "2026-03-07T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "resource": "6dca-aqww",
+        "market_code": "067651"
+      }
+    },
+    "quality_flags": [],
+    "id": "eb357480-4eaf-53c7-bee8-1d409b21f1ca"
+  },
+  {
     "observation_key": "15ed33d2182e07409f3f6d85e5f7911c596327bf92ade9a30133988472e27beb",
     "revision_number": 1,
-    "value": "1222",
-    "first_seen_at": "2026-05-15T00:00:00+00:00",
-    "source_updated_at": "2026-05-14T23:50:00+00:00",
-    "information_available_at": "2026-05-15T00:00:00+00:00",
+    "value": "1351.0",
+    "first_seen_at": "2026-03-01T00:00:00+00:00",
+    "source_updated_at": "2026-02-28T23:50:00+00:00",
+    "information_available_at": "2026-03-01T00:00:00+00:00",
     "provenance": {
       "fixture_version": "official-data-synthetic-v1",
       "profile_query": {
@@ -50,12 +272,225 @@
     "id": "a38c6a0d-1e6e-55d0-9332-28da70c5f430"
   },
   {
+    "observation_key": "1630f0a95fea5e06d1f85a1666a7b32fd5e6fe47c15a7ab9ddac276242ab020d",
+    "revision_number": 1,
+    "value": "1140.0",
+    "first_seen_at": "2026-03-02T00:00:00+00:00",
+    "source_updated_at": "2026-03-01T23:50:00+00:00",
+    "information_available_at": "2026-03-02T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "series_id": "CES0500000003"
+      }
+    },
+    "quality_flags": [],
+    "id": "5196701f-166c-5087-af38-bce6fe1efb24"
+  },
+  {
+    "observation_key": "16886b643bef7377519067ad369d422d55c15104dd84041fcc52d6b62b8f850c",
+    "revision_number": 1,
+    "value": "1418.0",
+    "first_seen_at": "2026-02-25T00:00:00+00:00",
+    "source_updated_at": "2026-02-24T23:50:00+00:00",
+    "information_available_at": "2026-02-25T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "resource": "6dca-aqww",
+        "market_code": "067651"
+      }
+    },
+    "quality_flags": [],
+    "id": "59b7684e-d8b7-5671-98a7-2f5bb0d860a1"
+  },
+  {
+    "observation_key": "1aa1436ecd4be8a7f976cc6515a71438d4fc4b43411ba0c88df862c07d7eef94",
+    "revision_number": 1,
+    "value": "1111.0",
+    "first_seen_at": "2026-02-24T00:00:00+00:00",
+    "source_updated_at": "2026-02-23T23:50:00+00:00",
+    "information_available_at": "2026-02-24T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "series_id": "LNS14000000"
+      }
+    },
+    "quality_flags": [],
+    "id": "d2c2cb32-784a-5d4f-90d2-f84ba8b69928"
+  },
+  {
+    "observation_key": "1aa8e316faa717a7264cd810d8566bfc69d3f10cfffed54cd95a3d3b7dbe4d2b",
+    "revision_number": 1,
+    "value": "1221.0",
+    "first_seen_at": "2026-03-06T00:00:00+00:00",
+    "source_updated_at": "2026-03-05T23:50:00+00:00",
+    "information_available_at": "2026-03-06T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "series_id": "LNS14000000"
+      }
+    },
+    "quality_flags": [],
+    "id": "589eeb27-db33-57b3-9e19-17126f24a269"
+  },
+  {
+    "observation_key": "1b0e423b7b9b2a4eae4fc73f8e953630daa2209b5eb3028449b43e994d66bda8",
+    "revision_number": 1,
+    "value": "1344.0",
+    "first_seen_at": "2026-02-25T00:00:00+00:00",
+    "source_updated_at": "2026-02-24T23:50:00+00:00",
+    "information_available_at": "2026-02-25T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "resource": "6dca-aqww",
+        "market_code": "020601"
+      }
+    },
+    "quality_flags": [],
+    "id": "3a6afe32-163c-5961-8338-3c53e2d65819"
+  },
+  {
+    "observation_key": "1b44fc9b71f0940a1996216c9b1d42ddefbcccb006c3a2f6b036668c4a8fb5cb",
+    "revision_number": 1,
+    "value": "1207.0",
+    "first_seen_at": "2026-02-26T00:00:00+00:00",
+    "source_updated_at": "2026-02-25T23:50:00+00:00",
+    "information_available_at": "2026-02-26T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "route": "petroleum/stoc/wstk",
+        "series": "WGTSTUS1"
+      }
+    },
+    "quality_flags": [],
+    "id": "9f5c8bf2-11c2-5dd1-b410-5fdcb187d6bb"
+  },
+  {
+    "observation_key": "1c6526f47e126c0850bb4b4b67849a380a5a941ea752b562b872924940fccd5e",
+    "revision_number": 1,
+    "value": "1329.0",
+    "first_seen_at": "2026-02-27T00:00:00+00:00",
+    "source_updated_at": "2026-02-26T23:50:00+00:00",
+    "information_available_at": "2026-02-27T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "resource": "6dca-aqww",
+        "market_code": "13874A"
+      }
+    },
+    "quality_flags": [],
+    "id": "fcb2d8d7-fdbf-5dcf-bbe7-c225c04db060"
+  },
+  {
+    "observation_key": "1d06ec49c31054eabe314cecaf1013345859451f2ddb01316e5b22a5bbf5b54d",
+    "revision_number": 1,
+    "value": "1451.0",
+    "first_seen_at": "2026-02-28T00:00:00+00:00",
+    "source_updated_at": "2026-02-27T23:50:00+00:00",
+    "information_available_at": "2026-02-28T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "resource": "6dca-aqww",
+        "market_code": "067651"
+      }
+    },
+    "quality_flags": [],
+    "id": "facdc16f-1973-5256-aa48-3ca65b117557"
+  },
+  {
+    "observation_key": "1d06ec49c31054eabe314cecaf1013345859451f2ddb01316e5b22a5bbf5b54d",
+    "revision_number": 2,
+    "value": "1452.5",
+    "first_seen_at": "2026-03-07T00:00:00+00:00",
+    "source_updated_at": "2026-03-06T23:57:00+00:00",
+    "information_available_at": "2026-03-07T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "revision_fixture": true
+    },
+    "quality_flags": [],
+    "id": "edf9b6cd-d2e0-5099-b9c7-7c2be99c05a5"
+  },
+  {
+    "observation_key": "1e5d9c29476c25def22f0b8af1c1b1017ae3a64a5990df826d14ad060b70cad4",
+    "revision_number": 1,
+    "value": "1255.0",
+    "first_seen_at": "2026-02-27T00:00:00+00:00",
+    "source_updated_at": "2026-02-26T23:50:00+00:00",
+    "information_available_at": "2026-02-27T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "route": "natural-gas/stor/wkly",
+        "series": "WNGSRUS2"
+      }
+    },
+    "quality_flags": [],
+    "id": "def52e3a-1940-51ae-bcef-060846e051e4"
+  },
+  {
+    "observation_key": "2038cbdc2e48ee40b93fd1fad765e5c237441060495479cc1efc800135c14195",
+    "revision_number": 1,
+    "value": "1188.0",
+    "first_seen_at": "2026-03-03T00:00:00+00:00",
+    "source_updated_at": "2026-03-02T23:50:00+00:00",
+    "information_available_at": "2026-03-03T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "series_id": "LNS14000000"
+      }
+    },
+    "quality_flags": [],
+    "id": "4d8d056f-7738-52fb-be9c-2d052c17b086"
+  },
+  {
+    "observation_key": "21f405ff6965a982fca9843c861751ff011ac70b5ddba8f1755a23e5dc2c9abc",
+    "revision_number": 1,
+    "value": "1425.0",
+    "first_seen_at": "2026-03-01T00:00:00+00:00",
+    "source_updated_at": "2026-02-28T23:50:00+00:00",
+    "information_available_at": "2026-03-01T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "resource": "6dca-aqww",
+        "market_code": "088691"
+      }
+    },
+    "quality_flags": [],
+    "id": "3ee6f0d8-ef2d-5a7b-aed7-e390f886d294"
+  },
+  {
+    "observation_key": "244bee80808afdc8877bfb0e9f28b0dd1b3ab48d076fc7e0c786e77e0233185e",
+    "revision_number": 1,
+    "value": "1092.0",
+    "first_seen_at": "2026-03-01T00:00:00+00:00",
+    "source_updated_at": "2026-02-28T23:50:00+00:00",
+    "information_available_at": "2026-03-01T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "series_id": "CES3000000001"
+      }
+    },
+    "quality_flags": [],
+    "id": "4a71e07b-45bd-5b49-8734-e2fd38f11960"
+  },
+  {
     "observation_key": "27dca08a1d02aa40385f2e3fa3425926739f3dc120e67b1b71a52c75bac5ba4f",
     "revision_number": 1,
-    "value": "1011",
-    "first_seen_at": "2026-05-16T00:00:00+00:00",
-    "source_updated_at": "2026-05-15T23:50:00+00:00",
-    "information_available_at": "2026-05-16T00:00:00+00:00",
+    "value": "1011.0",
+    "first_seen_at": "2026-02-25T00:00:00+00:00",
+    "source_updated_at": "2026-02-24T23:50:00+00:00",
+    "information_available_at": "2026-02-25T00:00:00+00:00",
     "provenance": {
       "fixture_version": "official-data-synthetic-v1",
       "profile_query": {
@@ -66,26 +501,60 @@
     "id": "d43ef2c4-9f67-53ee-8661-6b9d4ebd8774"
   },
   {
-    "observation_key": "27dca08a1d02aa40385f2e3fa3425926739f3dc120e67b1b71a52c75bac5ba4f",
+    "observation_key": "288128d94cc64ea3af9ccf4b72370547485b9ba169dfef0d3290a579e3f96f40",
+    "revision_number": 1,
+    "value": "1381.0",
+    "first_seen_at": "2026-02-25T00:00:00+00:00",
+    "source_updated_at": "2026-02-24T23:50:00+00:00",
+    "information_available_at": "2026-02-25T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "resource": "6dca-aqww",
+        "market_code": "088691"
+      }
+    },
+    "quality_flags": [],
+    "id": "2c7d4428-b0ad-5f56-be5c-64abfacf611c"
+  },
+  {
+    "observation_key": "2943570a7c00cdec5686b203df0793eb2bdbf401d090a4ddf71e118fe3c50aa9",
+    "revision_number": 1,
+    "value": "1377.0",
+    "first_seen_at": "2026-02-28T00:00:00+00:00",
+    "source_updated_at": "2026-02-27T23:50:00+00:00",
+    "information_available_at": "2026-02-28T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "resource": "6dca-aqww",
+        "market_code": "020601"
+      }
+    },
+    "quality_flags": [],
+    "id": "1026d249-2c65-54a6-86d3-141bde18c4c4"
+  },
+  {
+    "observation_key": "2943570a7c00cdec5686b203df0793eb2bdbf401d090a4ddf71e118fe3c50aa9",
     "revision_number": 2,
-    "value": "1012.5",
-    "first_seen_at": "2026-05-23T00:00:00+00:00",
-    "source_updated_at": "2026-05-22T23:57:00+00:00",
-    "information_available_at": "2026-05-23T00:00:00+00:00",
+    "value": "1378.5",
+    "first_seen_at": "2026-03-07T00:00:00+00:00",
+    "source_updated_at": "2026-03-06T23:57:00+00:00",
+    "information_available_at": "2026-03-07T00:00:00+00:00",
     "provenance": {
       "fixture_version": "official-data-synthetic-v1",
       "revision_fixture": true
     },
     "quality_flags": [],
-    "id": "39926272-6342-5417-938b-be0ae825b8de"
+    "id": "4ee2e17c-2dd2-5d66-a93f-15875c842f7d"
   },
   {
     "observation_key": "2c5e645de4849fdb6d2578a9cc6f6bd20d0c2be8d2e9b09e62e7486ea0a204cc",
     "revision_number": 1,
-    "value": "1170",
-    "first_seen_at": "2026-05-17T00:00:00+00:00",
-    "source_updated_at": "2026-05-16T23:50:00+00:00",
-    "information_available_at": "2026-05-17T00:00:00+00:00",
+    "value": "1262.0",
+    "first_seen_at": "2026-03-03T00:00:00+00:00",
+    "source_updated_at": "2026-03-02T23:50:00+00:00",
+    "information_available_at": "2026-03-03T00:00:00+00:00",
     "provenance": {
       "fixture_version": "official-data-synthetic-v1",
       "profile_query": {
@@ -97,12 +566,28 @@
     "id": "a12fff88-93c1-5693-927a-d78552f9ce92"
   },
   {
+    "observation_key": "2f3a0e2857b7b9f40cff6eecfacd6c3169c901af8933e6510f98e18207ae42af",
+    "revision_number": 1,
+    "value": "1070.0",
+    "first_seen_at": "2026-02-27T00:00:00+00:00",
+    "source_updated_at": "2026-02-26T23:50:00+00:00",
+    "information_available_at": "2026-02-27T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "series_id": "CES3000000001"
+      }
+    },
+    "quality_flags": [],
+    "id": "9c5b7420-b031-572f-9aac-5629ed80c9a4"
+  },
+  {
     "observation_key": "2fdf465ebe038355e20a1e4d935200e9b004d5ccf01320cda7af0ba6d0fa6458",
     "revision_number": 1,
-    "value": "1133",
-    "first_seen_at": "2026-05-17T00:00:00+00:00",
-    "source_updated_at": "2026-05-16T23:50:00+00:00",
-    "information_available_at": "2026-05-17T00:00:00+00:00",
+    "value": "1225.0",
+    "first_seen_at": "2026-03-03T00:00:00+00:00",
+    "source_updated_at": "2026-03-02T23:50:00+00:00",
+    "information_available_at": "2026-03-03T00:00:00+00:00",
     "provenance": {
       "fixture_version": "official-data-synthetic-v1",
       "profile_query": {
@@ -114,12 +599,258 @@
     "id": "0fe96a20-646e-52d6-b899-dc6341086eb3"
   },
   {
+    "observation_key": "309af6b7b39a514e6d1886dede1be5c74ba6c758c0f84a9893b4971519b19117",
+    "revision_number": 1,
+    "value": "1395.0",
+    "first_seen_at": "2026-03-05T00:00:00+00:00",
+    "source_updated_at": "2026-03-04T23:50:00+00:00",
+    "information_available_at": "2026-03-05T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "resource": "6dca-aqww",
+        "market_code": "13874A"
+      }
+    },
+    "quality_flags": [],
+    "id": "29c733e8-de70-529b-a81f-50d7afd6de0c"
+  },
+  {
+    "observation_key": "309af6b7b39a514e6d1886dede1be5c74ba6c758c0f84a9893b4971519b19117",
+    "revision_number": 2,
+    "value": "1396.5",
+    "first_seen_at": "2026-03-12T00:00:00+00:00",
+    "source_updated_at": "2026-03-11T23:57:00+00:00",
+    "information_available_at": "2026-03-12T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "revision_fixture": true
+    },
+    "quality_flags": [],
+    "id": "5ed889e3-d43f-56ec-bd17-f21c478a6e84"
+  },
+  {
+    "observation_key": "30c7131824953224bc2117c5c343b92f6c8297a2f32144ef9306df40f4e33f3c",
+    "revision_number": 1,
+    "value": "1392.0",
+    "first_seen_at": "2026-02-26T00:00:00+00:00",
+    "source_updated_at": "2026-02-25T23:50:00+00:00",
+    "information_available_at": "2026-02-26T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "resource": "6dca-aqww",
+        "market_code": "088691"
+      }
+    },
+    "quality_flags": [],
+    "id": "fe88c6e8-ba74-5d66-a50a-aa5a9ebfe5fa"
+  },
+  {
+    "observation_key": "31471305d8b3cedebaf90f5d37f62484e3603b470978adde2d9976ddcbae605c",
+    "revision_number": 1,
+    "value": "1491.0",
+    "first_seen_at": "2026-03-07T00:00:00+00:00",
+    "source_updated_at": "2026-03-06T23:50:00+00:00",
+    "information_available_at": "2026-03-07T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "resource": "6dca-aqww",
+        "market_code": "088691"
+      }
+    },
+    "quality_flags": [],
+    "id": "1421eb6a-d385-54a0-ba0d-631a810ccbb4"
+  },
+  {
+    "observation_key": "321e8ec48908a60d3767ec5326bbefa95a382940c9ad8ab9bf30c1228f9c1407",
+    "revision_number": 1,
+    "value": "1366.0",
+    "first_seen_at": "2026-02-27T00:00:00+00:00",
+    "source_updated_at": "2026-02-26T23:50:00+00:00",
+    "information_available_at": "2026-02-27T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "resource": "6dca-aqww",
+        "market_code": "020601"
+      }
+    },
+    "quality_flags": [],
+    "id": "a78f5b07-3911-51a5-a8e9-16da07e8b251"
+  },
+  {
+    "observation_key": "32b5fb3c10fde0adff000c57e6c8de73271e2b4f3500e05f5c2032d3c0f706a3",
+    "revision_number": 1,
+    "value": "1185.0",
+    "first_seen_at": "2026-02-24T00:00:00+00:00",
+    "source_updated_at": "2026-02-23T23:50:00+00:00",
+    "information_available_at": "2026-02-24T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "route": "petroleum/stoc/wstk",
+        "series": "WGTSTUS1"
+      }
+    },
+    "quality_flags": [],
+    "id": "75a44ba5-2344-5fac-a37a-acc891ed5f2e"
+  },
+  {
+    "observation_key": "34751a666ef13a25a093909207040071f5bcc41c6e2edc7cdf39f2aca07d91ef",
+    "revision_number": 1,
+    "value": "1177.0",
+    "first_seen_at": "2026-03-02T00:00:00+00:00",
+    "source_updated_at": "2026-03-01T23:50:00+00:00",
+    "information_available_at": "2026-03-02T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "series_id": "LNS14000000"
+      }
+    },
+    "quality_flags": [],
+    "id": "e923f0a8-3cc6-5a25-af80-2210e062c79a"
+  },
+  {
+    "observation_key": "37041a4a57b8e5c2f8f684885ad892fa526144c51243e890a4272fbbb1966887",
+    "revision_number": 1,
+    "value": "1303.0",
+    "first_seen_at": "2026-02-28T00:00:00+00:00",
+    "source_updated_at": "2026-02-27T23:50:00+00:00",
+    "information_available_at": "2026-02-28T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "route": "petroleum/stoc/wstk",
+        "series": "WDISTUS1"
+      }
+    },
+    "quality_flags": [],
+    "id": "6a3be934-3df6-57d2-a69f-01e1732cbce7"
+  },
+  {
+    "observation_key": "37041a4a57b8e5c2f8f684885ad892fa526144c51243e890a4272fbbb1966887",
+    "revision_number": 2,
+    "value": "1304.5",
+    "first_seen_at": "2026-03-07T00:00:00+00:00",
+    "source_updated_at": "2026-03-06T23:57:00+00:00",
+    "information_available_at": "2026-03-07T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "revision_fixture": true
+    },
+    "quality_flags": [],
+    "id": "ec13d1dd-69a6-5014-9e5d-25d85f083e45"
+  },
+  {
+    "observation_key": "3cb7d40a88c2dab7570440cb88bb9fc3b52d6a70051bc312173bdc1e123505ff",
+    "revision_number": 1,
+    "value": "1222.0",
+    "first_seen_at": "2026-02-24T00:00:00+00:00",
+    "source_updated_at": "2026-02-23T23:50:00+00:00",
+    "information_available_at": "2026-02-24T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "route": "natural-gas/stor/wkly",
+        "series": "WNGSRUS2"
+      }
+    },
+    "quality_flags": [],
+    "id": "5d394aa2-09d7-5d10-81fb-7cbaa65023d2"
+  },
+  {
+    "observation_key": "3dd5f747ff160933767e1812d0534163dd4d7a6385e83234215a5728048ddecd",
+    "revision_number": 1,
+    "value": "1333.0",
+    "first_seen_at": "2026-02-24T00:00:00+00:00",
+    "source_updated_at": "2026-02-23T23:50:00+00:00",
+    "information_available_at": "2026-02-24T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "resource": "6dca-aqww",
+        "market_code": "020601"
+      }
+    },
+    "quality_flags": [],
+    "id": "3d63c62f-2ad8-5951-8c54-564f63f54775"
+  },
+  {
+    "observation_key": "3dd927f5a2a1fe5752f83f49953282ad16615febf0459b70a975b87a37685f88",
+    "revision_number": 1,
+    "value": "1473.0",
+    "first_seen_at": "2026-03-02T00:00:00+00:00",
+    "source_updated_at": "2026-03-01T23:50:00+00:00",
+    "information_available_at": "2026-03-02T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "resource": "6dca-aqww",
+        "market_code": "067651"
+      }
+    },
+    "quality_flags": [],
+    "id": "7e80021c-3a2d-5119-bb79-6f611b1b6c14"
+  },
+  {
+    "observation_key": "3e5f14f4351eb246fd724de72f916396a347e83864e2d0e1b155f0582e620cda",
+    "revision_number": 1,
+    "value": "1199.0",
+    "first_seen_at": "2026-03-04T00:00:00+00:00",
+    "source_updated_at": "2026-03-03T23:50:00+00:00",
+    "information_available_at": "2026-03-04T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "series_id": "LNS14000000"
+      }
+    },
+    "quality_flags": [],
+    "id": "a865fedc-31f8-5d47-9493-de5d73fcdaa4"
+  },
+  {
+    "observation_key": "3ef1ba80a696a71af04e8e7cf29f51d448253f224bbac5d870bf36f509ae1b83",
+    "revision_number": 1,
+    "value": "1480.0",
+    "first_seen_at": "2026-03-06T00:00:00+00:00",
+    "source_updated_at": "2026-03-05T23:50:00+00:00",
+    "information_available_at": "2026-03-06T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "resource": "6dca-aqww",
+        "market_code": "088691"
+      }
+    },
+    "quality_flags": [],
+    "id": "c0ffac9d-893c-5c69-8b77-c7f5e8977f15"
+  },
+  {
+    "observation_key": "400ee7bee5311c9799a1b2a550c68e3d66142abe0af606e4b14de89cb315b1c8",
+    "revision_number": 1,
+    "value": "1232.0",
+    "first_seen_at": "2026-03-07T00:00:00+00:00",
+    "source_updated_at": "2026-03-06T23:50:00+00:00",
+    "information_available_at": "2026-03-07T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "series_id": "LNS14000000"
+      }
+    },
+    "quality_flags": [],
+    "id": "adce5597-03fc-5284-95f1-253efe78c457"
+  },
+  {
     "observation_key": "40f4af0fc7674e2b15b6e3d6e781b852795c141762a49e8f9dfbac99e0861c7e",
     "revision_number": 1,
-    "value": "1022",
-    "first_seen_at": "2026-05-17T00:00:00+00:00",
-    "source_updated_at": "2026-05-16T23:50:00+00:00",
-    "information_available_at": "2026-05-17T00:00:00+00:00",
+    "value": "1022.0",
+    "first_seen_at": "2026-02-26T00:00:00+00:00",
+    "source_updated_at": "2026-02-25T23:50:00+00:00",
+    "information_available_at": "2026-02-26T00:00:00+00:00",
     "provenance": {
       "fixture_version": "official-data-synthetic-v1",
       "profile_query": {
@@ -130,12 +861,62 @@
     "id": "932dc8a1-ab4f-5719-ad2f-33de1e50c9a5"
   },
   {
+    "observation_key": "44c5301179d8d751350f4ad2b8c2d473efd432270bcf0fec79ea526a840378f8",
+    "revision_number": 1,
+    "value": "1429.0",
+    "first_seen_at": "2026-02-26T00:00:00+00:00",
+    "source_updated_at": "2026-02-25T23:50:00+00:00",
+    "information_available_at": "2026-02-26T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "resource": "6dca-aqww",
+        "market_code": "067651"
+      }
+    },
+    "quality_flags": [],
+    "id": "3b444535-d137-530f-ad4b-ebed36daed3f"
+  },
+  {
+    "observation_key": "46321dee15c9d1cf2ec07533355b8faf35124931d7b3883b1b175b661050b85c",
+    "revision_number": 1,
+    "value": "1103.0",
+    "first_seen_at": "2026-03-02T00:00:00+00:00",
+    "source_updated_at": "2026-03-01T23:50:00+00:00",
+    "information_available_at": "2026-03-02T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "series_id": "CES3000000001"
+      }
+    },
+    "quality_flags": [],
+    "id": "8224b258-fe06-5e35-a17f-56d17bf50edf"
+  },
+  {
+    "observation_key": "4672a48ac4ecbbccda8400fdf435cc1a8f445d6696a8a89d72b1a75213f0f11f",
+    "revision_number": 1,
+    "value": "1462.0",
+    "first_seen_at": "2026-03-01T00:00:00+00:00",
+    "source_updated_at": "2026-02-28T23:50:00+00:00",
+    "information_available_at": "2026-03-01T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "resource": "6dca-aqww",
+        "market_code": "067651"
+      }
+    },
+    "quality_flags": [],
+    "id": "ed3f267e-173c-596b-be1d-3a164f7698cf"
+  },
+  {
     "observation_key": "467c1a89e78ef4a415f0406ccf39a6698903b31b3cdfc691ec6ffb9dd7c6c20d",
     "revision_number": 1,
-    "value": "1159",
-    "first_seen_at": "2026-05-16T00:00:00+00:00",
-    "source_updated_at": "2026-05-15T23:50:00+00:00",
-    "information_available_at": "2026-05-16T00:00:00+00:00",
+    "value": "1251.0",
+    "first_seen_at": "2026-03-02T00:00:00+00:00",
+    "source_updated_at": "2026-03-01T23:50:00+00:00",
+    "information_available_at": "2026-03-02T00:00:00+00:00",
     "provenance": {
       "fixture_version": "official-data-synthetic-v1",
       "profile_query": {
@@ -147,12 +928,94 @@
     "id": "0aeaf7c8-37f0-5802-b055-eaae374b23eb"
   },
   {
+    "observation_key": "4737d1e7abf0c2e75a31e886ef008d9091a3fa072a47cdef2d0fb8b6927f6600",
+    "revision_number": 1,
+    "value": "1314.0",
+    "first_seen_at": "2026-03-01T00:00:00+00:00",
+    "source_updated_at": "2026-02-28T23:50:00+00:00",
+    "information_available_at": "2026-03-01T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "route": "petroleum/stoc/wstk",
+        "series": "WDISTUS1"
+      }
+    },
+    "quality_flags": [],
+    "id": "8201756a-7d4e-55ee-8979-d668ce50df54"
+  },
+  {
+    "observation_key": "47a144ab54e8999d052f0170f2d80b39ab3eb788b4d72f74a08f937e82b9f6f5",
+    "revision_number": 1,
+    "value": "1384.0",
+    "first_seen_at": "2026-03-04T00:00:00+00:00",
+    "source_updated_at": "2026-03-03T23:50:00+00:00",
+    "information_available_at": "2026-03-04T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "resource": "6dca-aqww",
+        "market_code": "13874A"
+      }
+    },
+    "quality_flags": [],
+    "id": "3dbc7c3b-45aa-5ccf-bc04-6a1034bae44d"
+  },
+  {
+    "observation_key": "4ad75e76e35446a820924b88b32a7625b9750504960d85a9effd5c78408c8849",
+    "revision_number": 1,
+    "value": "1370.0",
+    "first_seen_at": "2026-02-24T00:00:00+00:00",
+    "source_updated_at": "2026-02-23T23:50:00+00:00",
+    "information_available_at": "2026-02-24T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "resource": "6dca-aqww",
+        "market_code": "088691"
+      }
+    },
+    "quality_flags": [],
+    "id": "5aee13d3-b57a-5531-9863-d055dcf151dc"
+  },
+  {
+    "observation_key": "4c7a28b49a6ddb99f36b13a70b6d4e9aae890fcf5169c63cac93b707659b6a6a",
+    "revision_number": 1,
+    "value": "1340.0",
+    "first_seen_at": "2026-02-28T00:00:00+00:00",
+    "source_updated_at": "2026-02-27T23:50:00+00:00",
+    "information_available_at": "2026-02-28T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "resource": "6dca-aqww",
+        "market_code": "13874A"
+      }
+    },
+    "quality_flags": [],
+    "id": "de9ca011-ae82-544c-8995-4bc53c0bcc8f"
+  },
+  {
+    "observation_key": "4c7a28b49a6ddb99f36b13a70b6d4e9aae890fcf5169c63cac93b707659b6a6a",
+    "revision_number": 2,
+    "value": "1341.5",
+    "first_seen_at": "2026-03-07T00:00:00+00:00",
+    "source_updated_at": "2026-03-06T23:57:00+00:00",
+    "information_available_at": "2026-03-07T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "revision_fixture": true
+    },
+    "quality_flags": [],
+    "id": "edead731-ed91-5074-bdf7-95e8349ee88d"
+  },
+  {
     "observation_key": "50522b386200f24f1a44ff3c0936b34d2ba742dc2898a2245c5f387a40ddf4e8",
     "revision_number": 1,
-    "value": "1048",
-    "first_seen_at": "2026-05-16T00:00:00+00:00",
-    "source_updated_at": "2026-05-15T23:50:00+00:00",
-    "information_available_at": "2026-05-16T00:00:00+00:00",
+    "value": "1048.0",
+    "first_seen_at": "2026-02-25T00:00:00+00:00",
+    "source_updated_at": "2026-02-24T23:50:00+00:00",
+    "information_available_at": "2026-02-25T00:00:00+00:00",
     "provenance": {
       "fixture_version": "official-data-synthetic-v1",
       "profile_query": {
@@ -163,12 +1026,78 @@
     "id": "455ad162-00e5-542e-98ff-1ee77065c4cc"
   },
   {
+    "observation_key": "50c5541acaaf9ac8eec3554c850fb0b3dc40c6abf14002268031f5f6d243e117",
+    "revision_number": 1,
+    "value": "1369.0",
+    "first_seen_at": "2026-03-06T00:00:00+00:00",
+    "source_updated_at": "2026-03-05T23:50:00+00:00",
+    "information_available_at": "2026-03-06T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "route": "petroleum/stoc/wstk",
+        "series": "WDISTUS1"
+      }
+    },
+    "quality_flags": [],
+    "id": "e9b4fe15-5bbf-52f3-9621-a205ffc70523"
+  },
+  {
+    "observation_key": "516eabdd1219838c24d8fcb26b26ae59721e36f126ab9bd1ad3e0026751aa23a",
+    "revision_number": 1,
+    "value": "1218.0",
+    "first_seen_at": "2026-02-27T00:00:00+00:00",
+    "source_updated_at": "2026-02-26T23:50:00+00:00",
+    "information_available_at": "2026-02-27T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "route": "petroleum/stoc/wstk",
+        "series": "WGTSTUS1"
+      }
+    },
+    "quality_flags": [],
+    "id": "34fc5f57-0af4-5c53-960f-75cadb807e34"
+  },
+  {
+    "observation_key": "56befdd0ce4f3f09ff5d5b22d5ecbf7a0df1d12ad6ae8edf66b77b694a3bd5ac",
+    "revision_number": 1,
+    "value": "1114.0",
+    "first_seen_at": "2026-03-03T00:00:00+00:00",
+    "source_updated_at": "2026-03-02T23:50:00+00:00",
+    "information_available_at": "2026-03-03T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "series_id": "CES3000000001"
+      }
+    },
+    "quality_flags": [],
+    "id": "30a86300-06a8-57d6-b1e1-92a640e1706b"
+  },
+  {
+    "observation_key": "56d1e1a95863f1d2a857a40e97a9dbdf2e7f90b031eec6603ef7256c99a25f5b",
+    "revision_number": 1,
+    "value": "1033.0",
+    "first_seen_at": "2026-02-27T00:00:00+00:00",
+    "source_updated_at": "2026-02-26T23:50:00+00:00",
+    "information_available_at": "2026-02-27T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "series_id": "CES0000000001"
+      }
+    },
+    "quality_flags": [],
+    "id": "3defcbda-b919-5446-8ff3-481200b7b015"
+  },
+  {
     "observation_key": "5730f2e21374c902cafbf794faea7b5b1e31bcf85a1aa07ce4f6214ac1d9e46f",
     "revision_number": 1,
-    "value": "1233",
-    "first_seen_at": "2026-05-16T00:00:00+00:00",
-    "source_updated_at": "2026-05-15T23:50:00+00:00",
-    "information_available_at": "2026-05-16T00:00:00+00:00",
+    "value": "1362.0",
+    "first_seen_at": "2026-03-02T00:00:00+00:00",
+    "source_updated_at": "2026-03-01T23:50:00+00:00",
+    "information_available_at": "2026-03-02T00:00:00+00:00",
     "provenance": {
       "fixture_version": "official-data-synthetic-v1",
       "profile_query": {
@@ -180,26 +1109,205 @@
     "id": "5caa0d94-0449-5aad-b95a-bf55134e8af4"
   },
   {
-    "observation_key": "5730f2e21374c902cafbf794faea7b5b1e31bcf85a1aa07ce4f6214ac1d9e46f",
+    "observation_key": "5c77faa54989ee9fdf083899499f9268096bf79c4ef9c90a0d0004270167b58e",
+    "revision_number": 1,
+    "value": "1407.0",
+    "first_seen_at": "2026-02-24T00:00:00+00:00",
+    "source_updated_at": "2026-02-23T23:50:00+00:00",
+    "information_available_at": "2026-02-24T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "resource": "6dca-aqww",
+        "market_code": "067651"
+      }
+    },
+    "quality_flags": [],
+    "id": "49f1db98-c608-592a-b58b-765065359c23"
+  },
+  {
+    "observation_key": "61e817643db7f0355c816b7ff0ef97738b4a0733434e724e8ec28459d7d57172",
+    "revision_number": 1,
+    "value": "1517.0",
+    "first_seen_at": "2026-03-06T00:00:00+00:00",
+    "source_updated_at": "2026-03-05T23:50:00+00:00",
+    "information_available_at": "2026-03-06T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "resource": "6dca-aqww",
+        "market_code": "067651"
+      }
+    },
+    "quality_flags": [],
+    "id": "6c82ceca-7cd0-5969-8f01-d9914ecb87b0"
+  },
+  {
+    "observation_key": "6274b3279513e0ac23121c96ed03b830f1aca3a07b156d9739a87e6bffb0575e",
+    "revision_number": 1,
+    "value": "1099.0",
+    "first_seen_at": "2026-03-05T00:00:00+00:00",
+    "source_updated_at": "2026-03-04T23:50:00+00:00",
+    "information_available_at": "2026-03-05T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "series_id": "CES0000000001"
+      }
+    },
+    "quality_flags": [],
+    "id": "6fe2b98f-70be-57f0-8ecb-d1e5a4ac8b29"
+  },
+  {
+    "observation_key": "6274b3279513e0ac23121c96ed03b830f1aca3a07b156d9739a87e6bffb0575e",
     "revision_number": 2,
-    "value": "1234.5",
-    "first_seen_at": "2026-05-23T00:00:00+00:00",
-    "source_updated_at": "2026-05-22T23:57:00+00:00",
-    "information_available_at": "2026-05-23T00:00:00+00:00",
+    "value": "1100.5",
+    "first_seen_at": "2026-03-12T00:00:00+00:00",
+    "source_updated_at": "2026-03-11T23:57:00+00:00",
+    "information_available_at": "2026-03-12T00:00:00+00:00",
     "provenance": {
       "fixture_version": "official-data-synthetic-v1",
       "revision_fixture": true
     },
     "quality_flags": [],
-    "id": "dfaa1c41-c09d-51be-8b9f-3cb8bc9461d3"
+    "id": "079f678b-d4b1-5314-aec2-f7fc0e8a54cc"
+  },
+  {
+    "observation_key": "630d5ea9f2685745f234d7b6972d1aa9c2ce9246809d58c6592b4a417d3b757a",
+    "revision_number": 1,
+    "value": "1121.0",
+    "first_seen_at": "2026-03-07T00:00:00+00:00",
+    "source_updated_at": "2026-03-06T23:50:00+00:00",
+    "information_available_at": "2026-03-07T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "series_id": "CES0000000001"
+      }
+    },
+    "quality_flags": [],
+    "id": "882a5d4c-c359-5b3c-bf00-d7c6b58f569e"
+  },
+  {
+    "observation_key": "642eeea4b9a17aeef0bdc0aea05c16e5f91cf2a3ad943d67d2a423036e323937",
+    "revision_number": 1,
+    "value": "1306.0",
+    "first_seen_at": "2026-03-07T00:00:00+00:00",
+    "source_updated_at": "2026-03-06T23:50:00+00:00",
+    "information_available_at": "2026-03-07T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "route": "petroleum/stoc/wstk",
+        "series": "WGTSTUS1"
+      }
+    },
+    "quality_flags": [],
+    "id": "b32ef2e5-6b32-5fce-b48f-00c3db930200"
+  },
+  {
+    "observation_key": "6944b4ff543deea2bb580b06ece1ae5506aafcdb1e8a054589036e9070b4a209",
+    "revision_number": 1,
+    "value": "1484.0",
+    "first_seen_at": "2026-03-03T00:00:00+00:00",
+    "source_updated_at": "2026-03-02T23:50:00+00:00",
+    "information_available_at": "2026-03-03T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "resource": "6dca-aqww",
+        "market_code": "067651"
+      }
+    },
+    "quality_flags": [],
+    "id": "050be6e8-9436-5751-b2fc-4323855069ba"
+  },
+  {
+    "observation_key": "69f92b26d6c8f4ff126eff0b44629edd3eb20e11418f83ecb257abe0e7ee09f0",
+    "revision_number": 1,
+    "value": "1166.0",
+    "first_seen_at": "2026-03-01T00:00:00+00:00",
+    "source_updated_at": "2026-02-28T23:50:00+00:00",
+    "information_available_at": "2026-03-01T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "series_id": "LNS14000000"
+      }
+    },
+    "quality_flags": [],
+    "id": "b44c800d-d1b0-5732-a2f4-51293252a06c"
+  },
+  {
+    "observation_key": "6ca7b3c201f4ab6fb25613b9af503d06ae2b9778ad5add340545c4eca69379b9",
+    "revision_number": 1,
+    "value": "1155.0",
+    "first_seen_at": "2026-02-28T00:00:00+00:00",
+    "source_updated_at": "2026-02-27T23:50:00+00:00",
+    "information_available_at": "2026-02-28T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "series_id": "LNS14000000"
+      }
+    },
+    "quality_flags": [],
+    "id": "3fd815af-3bc4-5187-b0fc-e8c7ef98a43a"
+  },
+  {
+    "observation_key": "6ca7b3c201f4ab6fb25613b9af503d06ae2b9778ad5add340545c4eca69379b9",
+    "revision_number": 2,
+    "value": "1156.5",
+    "first_seen_at": "2026-03-07T00:00:00+00:00",
+    "source_updated_at": "2026-03-06T23:57:00+00:00",
+    "information_available_at": "2026-03-07T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "revision_fixture": true
+    },
+    "quality_flags": [],
+    "id": "1f3d38a8-1e2e-5522-aa32-32cda5cc658d"
+  },
+  {
+    "observation_key": "6cf3988e29b0928a4ff2d37cf4d18173350bb4e7d40af35f5ed94574c200f639",
+    "revision_number": 1,
+    "value": "1110.0",
+    "first_seen_at": "2026-03-06T00:00:00+00:00",
+    "source_updated_at": "2026-03-05T23:50:00+00:00",
+    "information_available_at": "2026-03-06T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "series_id": "CES0000000001"
+      }
+    },
+    "quality_flags": [],
+    "id": "d1825b9d-f541-59c3-9dd5-4caae2c153c3"
+  },
+  {
+    "observation_key": "6d57bc6734ed9f0039e0aafc6c6f0f6f396d65de09c0e7fc9659d58a53040943",
+    "revision_number": 1,
+    "value": "1296.0",
+    "first_seen_at": "2026-02-24T00:00:00+00:00",
+    "source_updated_at": "2026-02-23T23:50:00+00:00",
+    "information_available_at": "2026-02-24T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "resource": "6dca-aqww",
+        "market_code": "13874A"
+      }
+    },
+    "quality_flags": [],
+    "id": "f05d9a7c-a0e0-51fe-b594-f991d3bc7219"
   },
   {
     "observation_key": "6f0c8fd8b151f86e087ff72602c6ff50ab726ca2551ae9658dc71ef921fa5041",
     "revision_number": 1,
-    "value": "1196",
-    "first_seen_at": "2026-05-16T00:00:00+00:00",
-    "source_updated_at": "2026-05-15T23:50:00+00:00",
-    "information_available_at": "2026-05-16T00:00:00+00:00",
+    "value": "1288.0",
+    "first_seen_at": "2026-03-02T00:00:00+00:00",
+    "source_updated_at": "2026-03-01T23:50:00+00:00",
+    "information_available_at": "2026-03-02T00:00:00+00:00",
     "provenance": {
       "fixture_version": "official-data-synthetic-v1",
       "profile_query": {
@@ -211,12 +1319,28 @@
     "id": "c0e3d961-72bf-5ff7-a094-2edc37649ed1"
   },
   {
+    "observation_key": "718f27dc7d5554cee89f676a7b8da2490c6f742a62074077c70ef00583db4101",
+    "revision_number": 1,
+    "value": "1129.0",
+    "first_seen_at": "2026-03-01T00:00:00+00:00",
+    "source_updated_at": "2026-02-28T23:50:00+00:00",
+    "information_available_at": "2026-03-01T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "series_id": "CES0500000003"
+      }
+    },
+    "quality_flags": [],
+    "id": "30f07814-65db-5789-bbbc-7d61eb322963"
+  },
+  {
     "observation_key": "74d14b32ad106dd4f7b831f33e4c3e4ec1e92b70f7b0881abcd5c82d15d836d5",
     "revision_number": 1,
-    "value": "1207",
-    "first_seen_at": "2026-05-17T00:00:00+00:00",
-    "source_updated_at": "2026-05-16T23:50:00+00:00",
-    "information_available_at": "2026-05-17T00:00:00+00:00",
+    "value": "1299.0",
+    "first_seen_at": "2026-03-03T00:00:00+00:00",
+    "source_updated_at": "2026-03-02T23:50:00+00:00",
+    "information_available_at": "2026-03-03T00:00:00+00:00",
     "provenance": {
       "fixture_version": "official-data-synthetic-v1",
       "profile_query": {
@@ -228,12 +1352,29 @@
     "id": "33e37d38-6d92-5e26-8e8c-78746e51a69b"
   },
   {
+    "observation_key": "7625b87fb31af5a084790b37248d51076d8598297b3593d608e851fc829a836d",
+    "revision_number": 1,
+    "value": "1380.0",
+    "first_seen_at": "2026-03-07T00:00:00+00:00",
+    "source_updated_at": "2026-03-06T23:50:00+00:00",
+    "information_available_at": "2026-03-07T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "route": "petroleum/stoc/wstk",
+        "series": "WDISTUS1"
+      }
+    },
+    "quality_flags": [],
+    "id": "f4634909-c952-566c-b090-78b2063df765"
+  },
+  {
     "observation_key": "77d5f9a261ae789f4d95fa33b8dbc50686c5604c831ab048bbcc532770fa2f95",
     "revision_number": 1,
-    "value": "1185",
-    "first_seen_at": "2026-05-15T00:00:00+00:00",
-    "source_updated_at": "2026-05-14T23:50:00+00:00",
-    "information_available_at": "2026-05-15T00:00:00+00:00",
+    "value": "1277.0",
+    "first_seen_at": "2026-03-01T00:00:00+00:00",
+    "source_updated_at": "2026-02-28T23:50:00+00:00",
+    "information_available_at": "2026-03-01T00:00:00+00:00",
     "provenance": {
       "fixture_version": "official-data-synthetic-v1",
       "profile_query": {
@@ -247,10 +1388,10 @@
   {
     "observation_key": "796054fe302baf0d52aaf423e52cb94857cc4e0dc274af2d648cbb89d7059984",
     "revision_number": 1,
-    "value": "1074",
-    "first_seen_at": "2026-05-15T00:00:00+00:00",
-    "source_updated_at": "2026-05-14T23:50:00+00:00",
-    "information_available_at": "2026-05-15T00:00:00+00:00",
+    "value": "1074.0",
+    "first_seen_at": "2026-02-24T00:00:00+00:00",
+    "source_updated_at": "2026-02-23T23:50:00+00:00",
+    "information_available_at": "2026-02-24T00:00:00+00:00",
     "provenance": {
       "fixture_version": "official-data-synthetic-v1",
       "profile_query": {
@@ -261,12 +1402,225 @@
     "id": "c1613198-93c4-5648-ac62-eeea0a25c932"
   },
   {
+    "observation_key": "79a726b2b5547788d329fc613959d21b600d3a78537bf860c33f0196f1d3b3d7",
+    "revision_number": 1,
+    "value": "1421.0",
+    "first_seen_at": "2026-03-04T00:00:00+00:00",
+    "source_updated_at": "2026-03-03T23:50:00+00:00",
+    "information_available_at": "2026-03-04T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "resource": "6dca-aqww",
+        "market_code": "020601"
+      }
+    },
+    "quality_flags": [],
+    "id": "2a2ba84f-5f0f-576c-a1da-2862e343b0f4"
+  },
+  {
+    "observation_key": "7dc76cc735a1f3fdd9619a9dec4a150733999c702c37c9d981c44108196df1ed",
+    "revision_number": 1,
+    "value": "1343.0",
+    "first_seen_at": "2026-03-07T00:00:00+00:00",
+    "source_updated_at": "2026-03-06T23:50:00+00:00",
+    "information_available_at": "2026-03-07T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "route": "natural-gas/stor/wkly",
+        "series": "WNGSRUS2"
+      }
+    },
+    "quality_flags": [],
+    "id": "9579ac60-9401-541b-95e4-d8f990b7d57e"
+  },
+  {
+    "observation_key": "802bf884739503011c3892cdb81f066e0a4b2d17852bd9b1366c23b8f794b732",
+    "revision_number": 1,
+    "value": "1181.0",
+    "first_seen_at": "2026-02-27T00:00:00+00:00",
+    "source_updated_at": "2026-02-26T23:50:00+00:00",
+    "information_available_at": "2026-02-27T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "route": "petroleum/stoc/wstk",
+        "series": "WCESTUS1"
+      }
+    },
+    "quality_flags": [],
+    "id": "0c6ad9e4-eb2c-5364-812a-84d78fab2e27"
+  },
+  {
+    "observation_key": "841162685d816c12e8fb3aced02e8fb12876a50ac63b53787680df811b47cd8a",
+    "revision_number": 1,
+    "value": "1292.0",
+    "first_seen_at": "2026-02-27T00:00:00+00:00",
+    "source_updated_at": "2026-02-26T23:50:00+00:00",
+    "information_available_at": "2026-02-27T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "route": "petroleum/stoc/wstk",
+        "series": "WDISTUS1"
+      }
+    },
+    "quality_flags": [],
+    "id": "c8329641-9919-55f8-bdba-aeb07af17f45"
+  },
+  {
+    "observation_key": "8647b8f44e5a12c78ebc6d1c23643b476d458655e0a40bb8a3b3ce1278e9c8e5",
+    "revision_number": 1,
+    "value": "1170.0",
+    "first_seen_at": "2026-02-26T00:00:00+00:00",
+    "source_updated_at": "2026-02-25T23:50:00+00:00",
+    "information_available_at": "2026-02-26T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "route": "petroleum/stoc/wstk",
+        "series": "WCESTUS1"
+      }
+    },
+    "quality_flags": [],
+    "id": "554218c3-366e-5489-b2e1-574fd2e4b655"
+  },
+  {
+    "observation_key": "87effd527aa0bf9be41867b6b199a9764355695a15a4d92fc581ceb446dad987",
+    "revision_number": 1,
+    "value": "1077.0",
+    "first_seen_at": "2026-03-03T00:00:00+00:00",
+    "source_updated_at": "2026-03-02T23:50:00+00:00",
+    "information_available_at": "2026-03-03T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "series_id": "CES0000000001"
+      }
+    },
+    "quality_flags": [],
+    "id": "3558f0de-1da9-599b-9618-4bf8d3a4225d"
+  },
+  {
+    "observation_key": "8c391608207dc36e2fb6d9d38e71ca5991164369f667a746d6a5fc3b612b94fe",
+    "revision_number": 1,
+    "value": "1184.0",
+    "first_seen_at": "2026-03-06T00:00:00+00:00",
+    "source_updated_at": "2026-03-05T23:50:00+00:00",
+    "information_available_at": "2026-03-06T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "series_id": "CES0500000003"
+      }
+    },
+    "quality_flags": [],
+    "id": "21e0b4d0-c26e-557b-9c36-a178eb170e1a"
+  },
+  {
+    "observation_key": "8f90387a1e7f3062d6247dd70152f84fca6169aae977aa621b88f883dcd54d70",
+    "revision_number": 1,
+    "value": "1144.0",
+    "first_seen_at": "2026-02-27T00:00:00+00:00",
+    "source_updated_at": "2026-02-26T23:50:00+00:00",
+    "information_available_at": "2026-02-27T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "series_id": "LNS14000000"
+      }
+    },
+    "quality_flags": [],
+    "id": "47aeaa55-4fc7-5827-a93a-51c500cf18c0"
+  },
+  {
+    "observation_key": "90ff381b6958a8d16583c0ac12c2d372e04789d3d2c73082563ae929d5478066",
+    "revision_number": 1,
+    "value": "1118.0",
+    "first_seen_at": "2026-02-28T00:00:00+00:00",
+    "source_updated_at": "2026-02-27T23:50:00+00:00",
+    "information_available_at": "2026-02-28T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "series_id": "CES0500000003"
+      }
+    },
+    "quality_flags": [],
+    "id": "dc4e5c22-8807-5403-932f-d23ee2618827"
+  },
+  {
+    "observation_key": "90ff381b6958a8d16583c0ac12c2d372e04789d3d2c73082563ae929d5478066",
+    "revision_number": 2,
+    "value": "1119.5",
+    "first_seen_at": "2026-03-07T00:00:00+00:00",
+    "source_updated_at": "2026-03-06T23:57:00+00:00",
+    "information_available_at": "2026-03-07T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "revision_fixture": true
+    },
+    "quality_flags": [],
+    "id": "8168bb54-fb6f-5d91-8ead-db395d4ff1fa"
+  },
+  {
+    "observation_key": "918ae7f33718ce0d9afde318c24110e4a97ed2f20a0674aeb28d543cbe29db22",
+    "revision_number": 1,
+    "value": "1125.0",
+    "first_seen_at": "2026-03-04T00:00:00+00:00",
+    "source_updated_at": "2026-03-03T23:50:00+00:00",
+    "information_available_at": "2026-03-04T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "series_id": "CES3000000001"
+      }
+    },
+    "quality_flags": [],
+    "id": "c5d71ea6-3123-52a3-b25f-714c95068461"
+  },
+  {
+    "observation_key": "91f4de688e7cc821e3325bf1d3ec1097d4a7a2f721d0b861430addc396d708da",
+    "revision_number": 1,
+    "value": "1159.0",
+    "first_seen_at": "2026-02-25T00:00:00+00:00",
+    "source_updated_at": "2026-02-24T23:50:00+00:00",
+    "information_available_at": "2026-02-25T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "route": "petroleum/stoc/wstk",
+        "series": "WCESTUS1"
+      }
+    },
+    "quality_flags": [],
+    "id": "4571fbe5-2c7c-51fc-a3f0-7a945d17bf14"
+  },
+  {
+    "observation_key": "9373c1fc25e9c63b48fffe382228fa2937b31580b090b3dd668a3744ab5663ca",
+    "revision_number": 1,
+    "value": "1318.0",
+    "first_seen_at": "2026-02-26T00:00:00+00:00",
+    "source_updated_at": "2026-02-25T23:50:00+00:00",
+    "information_available_at": "2026-02-26T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "resource": "6dca-aqww",
+        "market_code": "13874A"
+      }
+    },
+    "quality_flags": [],
+    "id": "fac21ade-6a24-5dfd-ab32-3ab441f14d6c"
+  },
+  {
     "observation_key": "9767a055a87eee8b15696905fea34d08fff0849b1b7e5c97b5c3f3a6811ab8a8",
     "revision_number": 1,
-    "value": "1037",
-    "first_seen_at": "2026-05-15T00:00:00+00:00",
-    "source_updated_at": "2026-05-14T23:50:00+00:00",
-    "information_available_at": "2026-05-15T00:00:00+00:00",
+    "value": "1037.0",
+    "first_seen_at": "2026-02-24T00:00:00+00:00",
+    "source_updated_at": "2026-02-23T23:50:00+00:00",
+    "information_available_at": "2026-02-24T00:00:00+00:00",
     "provenance": {
       "fixture_version": "official-data-synthetic-v1",
       "profile_query": {
@@ -277,12 +1631,46 @@
     "id": "60cdf09f-ed75-5615-b63e-cfb9f94e2cb2"
   },
   {
+    "observation_key": "977ad8e0af77fa5cf45a95f07f3b46ee09d1026c7bad166249a7c1486fe9b172",
+    "revision_number": 1,
+    "value": "1281.0",
+    "first_seen_at": "2026-02-26T00:00:00+00:00",
+    "source_updated_at": "2026-02-25T23:50:00+00:00",
+    "information_available_at": "2026-02-26T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "route": "petroleum/stoc/wstk",
+        "series": "WDISTUS1"
+      }
+    },
+    "quality_flags": [],
+    "id": "251e4db0-cb4c-548f-924c-8d9d7a8d9b75"
+  },
+  {
+    "observation_key": "98857ed140afd40a41db115ec3115d691f495d8a2a0de6c0699ef9d853f9c6a8",
+    "revision_number": 1,
+    "value": "1458.0",
+    "first_seen_at": "2026-03-04T00:00:00+00:00",
+    "source_updated_at": "2026-03-03T23:50:00+00:00",
+    "information_available_at": "2026-03-04T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "resource": "6dca-aqww",
+        "market_code": "088691"
+      }
+    },
+    "quality_flags": [],
+    "id": "4d41ad5a-6b6f-50e0-8317-e630cce7dabf"
+  },
+  {
     "observation_key": "9a217ddba52b72148b3a6d2063365c7555c4de78462cb8e511747b9d8bcd1fe2",
     "revision_number": 1,
-    "value": "1096",
-    "first_seen_at": "2026-05-17T00:00:00+00:00",
-    "source_updated_at": "2026-05-16T23:50:00+00:00",
-    "information_available_at": "2026-05-17T00:00:00+00:00",
+    "value": "1096.0",
+    "first_seen_at": "2026-02-26T00:00:00+00:00",
+    "source_updated_at": "2026-02-25T23:50:00+00:00",
+    "information_available_at": "2026-02-26T00:00:00+00:00",
     "provenance": {
       "fixture_version": "official-data-synthetic-v1",
       "profile_query": {
@@ -293,12 +1681,29 @@
     "id": "5bd2c5c4-99c9-5e51-9b17-3aadb5220941"
   },
   {
+    "observation_key": "9eb6cb92c06206735e1990bae9e5271e51a3eabd0ca22fb4223aa8c217379512",
+    "revision_number": 1,
+    "value": "1295.0",
+    "first_seen_at": "2026-03-06T00:00:00+00:00",
+    "source_updated_at": "2026-03-05T23:50:00+00:00",
+    "information_available_at": "2026-03-06T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "route": "petroleum/stoc/wstk",
+        "series": "WGTSTUS1"
+      }
+    },
+    "quality_flags": [],
+    "id": "cca2cd0d-4fbc-58ce-9f5f-55d77331b59f"
+  },
+  {
     "observation_key": "9f9936696cb56fb9e8219a41f7fdb6a3086f272f764102e79299dbbd62238c83",
     "revision_number": 1,
-    "value": "1148",
-    "first_seen_at": "2026-05-15T00:00:00+00:00",
-    "source_updated_at": "2026-05-14T23:50:00+00:00",
-    "information_available_at": "2026-05-15T00:00:00+00:00",
+    "value": "1240.0",
+    "first_seen_at": "2026-03-01T00:00:00+00:00",
+    "source_updated_at": "2026-02-28T23:50:00+00:00",
+    "information_available_at": "2026-03-01T00:00:00+00:00",
     "provenance": {
       "fixture_version": "official-data-synthetic-v1",
       "profile_query": {
@@ -312,10 +1717,10 @@
   {
     "observation_key": "a18a472249198c8f9d5c15e2646548ab49fe9f49a50dd4befce1ae2ca34349f5",
     "revision_number": 1,
-    "value": "1122",
-    "first_seen_at": "2026-05-16T00:00:00+00:00",
-    "source_updated_at": "2026-05-15T23:50:00+00:00",
-    "information_available_at": "2026-05-16T00:00:00+00:00",
+    "value": "1214.0",
+    "first_seen_at": "2026-03-02T00:00:00+00:00",
+    "source_updated_at": "2026-03-01T23:50:00+00:00",
+    "information_available_at": "2026-03-02T00:00:00+00:00",
     "provenance": {
       "fixture_version": "official-data-synthetic-v1",
       "profile_query": {
@@ -327,26 +1732,12 @@
     "id": "a7fa067d-da22-5011-a1c2-27a59ab69319"
   },
   {
-    "observation_key": "a18a472249198c8f9d5c15e2646548ab49fe9f49a50dd4befce1ae2ca34349f5",
-    "revision_number": 2,
-    "value": "1123.5",
-    "first_seen_at": "2026-05-23T00:00:00+00:00",
-    "source_updated_at": "2026-05-22T23:57:00+00:00",
-    "information_available_at": "2026-05-23T00:00:00+00:00",
-    "provenance": {
-      "fixture_version": "official-data-synthetic-v1",
-      "revision_fixture": true
-    },
-    "quality_flags": [],
-    "id": "7a09326d-bb71-5e6a-9b1b-182540d19e27"
-  },
-  {
     "observation_key": "a2e6d44fce8aacef90c2bf82f6228dd2d60129e92b0ce2e646cd6be381b5a041",
     "revision_number": 1,
-    "value": "1085",
-    "first_seen_at": "2026-05-16T00:00:00+00:00",
-    "source_updated_at": "2026-05-15T23:50:00+00:00",
-    "information_available_at": "2026-05-16T00:00:00+00:00",
+    "value": "1085.0",
+    "first_seen_at": "2026-02-25T00:00:00+00:00",
+    "source_updated_at": "2026-02-24T23:50:00+00:00",
+    "information_available_at": "2026-02-25T00:00:00+00:00",
     "provenance": {
       "fixture_version": "official-data-synthetic-v1",
       "profile_query": {
@@ -357,12 +1748,76 @@
     "id": "37612e0e-03ff-5dae-b303-c7b701f9b687"
   },
   {
+    "observation_key": "a3619df94b3e1d484352974c4014ea7ebadd47f08ca7a45ae9c222ea40626184",
+    "revision_number": 1,
+    "value": "1321.0",
+    "first_seen_at": "2026-03-05T00:00:00+00:00",
+    "source_updated_at": "2026-03-04T23:50:00+00:00",
+    "information_available_at": "2026-03-05T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "route": "natural-gas/stor/wkly",
+        "series": "WNGSRUS2"
+      }
+    },
+    "quality_flags": [],
+    "id": "92f74b0d-e0e0-51c3-bf0b-0f26bcd1dcba"
+  },
+  {
+    "observation_key": "a3619df94b3e1d484352974c4014ea7ebadd47f08ca7a45ae9c222ea40626184",
+    "revision_number": 2,
+    "value": "1322.5",
+    "first_seen_at": "2026-03-12T00:00:00+00:00",
+    "source_updated_at": "2026-03-11T23:57:00+00:00",
+    "information_available_at": "2026-03-12T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "revision_fixture": true
+    },
+    "quality_flags": [],
+    "id": "15c5205d-497d-59a0-9ef1-7170538ca24d"
+  },
+  {
+    "observation_key": "a6243be2ca9f7877e2a5d2f02f5abd3d34c93d7bfbcb4c6df864fb1102c1d69c",
+    "revision_number": 1,
+    "value": "1158.0",
+    "first_seen_at": "2026-03-07T00:00:00+00:00",
+    "source_updated_at": "2026-03-06T23:50:00+00:00",
+    "information_available_at": "2026-03-07T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "series_id": "CES3000000001"
+      }
+    },
+    "quality_flags": [],
+    "id": "5ea29b93-3b08-5043-91a4-29edd1dd126f"
+  },
+  {
+    "observation_key": "a636fa714252cfe376fce03899553c5e1976c5d4a3cb3c0855d0a32a5b8ae1b4",
+    "revision_number": 1,
+    "value": "1406.0",
+    "first_seen_at": "2026-03-06T00:00:00+00:00",
+    "source_updated_at": "2026-03-05T23:50:00+00:00",
+    "information_available_at": "2026-03-06T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "resource": "6dca-aqww",
+        "market_code": "13874A"
+      }
+    },
+    "quality_flags": [],
+    "id": "56682e84-3f6a-5f31-8062-ccd81f975127"
+  },
+  {
     "observation_key": "a6e4c78ecf23935662b982471ad7fbd3d2ab1cc889ed6ff845978a960bb24fd7",
     "revision_number": 1,
-    "value": "1244",
-    "first_seen_at": "2026-05-17T00:00:00+00:00",
-    "source_updated_at": "2026-05-16T23:50:00+00:00",
-    "information_available_at": "2026-05-17T00:00:00+00:00",
+    "value": "1373.0",
+    "first_seen_at": "2026-03-03T00:00:00+00:00",
+    "source_updated_at": "2026-03-02T23:50:00+00:00",
+    "information_available_at": "2026-03-03T00:00:00+00:00",
     "provenance": {
       "fixture_version": "official-data-synthetic-v1",
       "profile_query": {
@@ -374,12 +1829,122 @@
     "id": "a020e107-bcde-5847-aa04-0035371fa3bc"
   },
   {
+    "observation_key": "ac640e3af819a36567693034b12e0c74692b5fc417ec3be1b10383ad530419f4",
+    "revision_number": 1,
+    "value": "1332.0",
+    "first_seen_at": "2026-03-06T00:00:00+00:00",
+    "source_updated_at": "2026-03-05T23:50:00+00:00",
+    "information_available_at": "2026-03-06T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "route": "natural-gas/stor/wkly",
+        "series": "WNGSRUS2"
+      }
+    },
+    "quality_flags": [],
+    "id": "718629e6-4f65-5ef7-a0cc-8c8f8ed4f6b2"
+  },
+  {
+    "observation_key": "b1136f26c127df55e38910e58df318eae00f276d1972bbdbd5194414da7e9343",
+    "revision_number": 1,
+    "value": "1107.0",
+    "first_seen_at": "2026-02-27T00:00:00+00:00",
+    "source_updated_at": "2026-02-26T23:50:00+00:00",
+    "information_available_at": "2026-02-27T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "series_id": "CES0500000003"
+      }
+    },
+    "quality_flags": [],
+    "id": "9be0b2da-e87a-5b79-866e-1f5394f7e8ae"
+  },
+  {
+    "observation_key": "b36930fa9e0ceda154848efb2f80754ee5a0519f8c90c29e2914806aef4d77f2",
+    "revision_number": 1,
+    "value": "1358.0",
+    "first_seen_at": "2026-03-05T00:00:00+00:00",
+    "source_updated_at": "2026-03-04T23:50:00+00:00",
+    "information_available_at": "2026-03-05T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "route": "petroleum/stoc/wstk",
+        "series": "WDISTUS1"
+      }
+    },
+    "quality_flags": [],
+    "id": "d707d519-ff75-5e94-80b1-9ff0f738c4d3"
+  },
+  {
+    "observation_key": "b36930fa9e0ceda154848efb2f80754ee5a0519f8c90c29e2914806aef4d77f2",
+    "revision_number": 2,
+    "value": "1359.5",
+    "first_seen_at": "2026-03-12T00:00:00+00:00",
+    "source_updated_at": "2026-03-11T23:57:00+00:00",
+    "information_available_at": "2026-03-12T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "revision_fixture": true
+    },
+    "quality_flags": [],
+    "id": "b054793e-bd41-5470-bfbe-75408c3417db"
+  },
+  {
+    "observation_key": "b59a2e199474d61f559cabe66c9645fa6b7055a7cd85166f29a74f83a2420c96",
+    "revision_number": 1,
+    "value": "1044.0",
+    "first_seen_at": "2026-02-28T00:00:00+00:00",
+    "source_updated_at": "2026-02-27T23:50:00+00:00",
+    "information_available_at": "2026-02-28T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "series_id": "CES0000000001"
+      }
+    },
+    "quality_flags": [],
+    "id": "58a515e7-5357-5b55-a58e-43a4cfdd45da"
+  },
+  {
+    "observation_key": "b59a2e199474d61f559cabe66c9645fa6b7055a7cd85166f29a74f83a2420c96",
+    "revision_number": 2,
+    "value": "1045.5",
+    "first_seen_at": "2026-03-07T00:00:00+00:00",
+    "source_updated_at": "2026-03-06T23:57:00+00:00",
+    "information_available_at": "2026-03-07T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "revision_fixture": true
+    },
+    "quality_flags": [],
+    "id": "50b40276-e231-589d-8483-64e2f7ae3c9f"
+  },
+  {
+    "observation_key": "b5b271b14c42b12e4b46efa31e28d1b87f8c91016a53c9d8691f351dd22e9203",
+    "revision_number": 1,
+    "value": "1088.0",
+    "first_seen_at": "2026-03-04T00:00:00+00:00",
+    "source_updated_at": "2026-03-03T23:50:00+00:00",
+    "information_available_at": "2026-03-04T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "series_id": "CES0000000001"
+      }
+    },
+    "quality_flags": [],
+    "id": "8c167c7b-0376-5719-ba59-eefa5be51e80"
+  },
+  {
     "observation_key": "b66ca11b3291921e8698a668bdc1df04c7777e378dd0c8519be9c688c8fc0f5d",
     "revision_number": 1,
-    "value": "1111",
-    "first_seen_at": "2026-05-15T00:00:00+00:00",
-    "source_updated_at": "2026-05-14T23:50:00+00:00",
-    "information_available_at": "2026-05-15T00:00:00+00:00",
+    "value": "1203.0",
+    "first_seen_at": "2026-03-01T00:00:00+00:00",
+    "source_updated_at": "2026-02-28T23:50:00+00:00",
+    "information_available_at": "2026-03-01T00:00:00+00:00",
     "provenance": {
       "fixture_version": "official-data-synthetic-v1",
       "profile_query": {
@@ -391,12 +1956,111 @@
     "id": "1b693b88-382d-52e3-aa9e-a33ae1ef3fa6"
   },
   {
+    "observation_key": "bc4a788e3f553bdde7bf5307f266337a44bfd089257ecaa981742bafe64c84ae",
+    "revision_number": 1,
+    "value": "1233.0",
+    "first_seen_at": "2026-02-25T00:00:00+00:00",
+    "source_updated_at": "2026-02-24T23:50:00+00:00",
+    "information_available_at": "2026-02-25T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "route": "natural-gas/stor/wkly",
+        "series": "WNGSRUS2"
+      }
+    },
+    "quality_flags": [],
+    "id": "f1e78b57-ad6d-5665-9467-2332c32ed0fb"
+  },
+  {
+    "observation_key": "bd5351bac91192e582c7b83c2495489eeba900942d43412400eeb7e885e6679e",
+    "revision_number": 1,
+    "value": "1355.0",
+    "first_seen_at": "2026-02-26T00:00:00+00:00",
+    "source_updated_at": "2026-02-25T23:50:00+00:00",
+    "information_available_at": "2026-02-26T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "resource": "6dca-aqww",
+        "market_code": "020601"
+      }
+    },
+    "quality_flags": [],
+    "id": "eb3cfda1-f53d-50af-a487-1c5053cf4cd0"
+  },
+  {
+    "observation_key": "be09bf9a567fb94afed01d962cf1da3b83a850ac3006a4f01afe8a2fb81d7029",
+    "revision_number": 1,
+    "value": "1273.0",
+    "first_seen_at": "2026-03-04T00:00:00+00:00",
+    "source_updated_at": "2026-03-03T23:50:00+00:00",
+    "information_available_at": "2026-03-04T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "route": "petroleum/stoc/wstk",
+        "series": "WGTSTUS1"
+      }
+    },
+    "quality_flags": [],
+    "id": "84d8d101-947d-531d-8ceb-4611acc07d73"
+  },
+  {
+    "observation_key": "beb9fe3f80a5d964ceb94c9b9a61072f9eb65ec7428a3f797db224b9a0bfe472",
+    "revision_number": 1,
+    "value": "1432.0",
+    "first_seen_at": "2026-03-05T00:00:00+00:00",
+    "source_updated_at": "2026-03-04T23:50:00+00:00",
+    "information_available_at": "2026-03-05T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "resource": "6dca-aqww",
+        "market_code": "020601"
+      }
+    },
+    "quality_flags": [],
+    "id": "40277b88-6680-56aa-b41b-678a9427794f"
+  },
+  {
+    "observation_key": "beb9fe3f80a5d964ceb94c9b9a61072f9eb65ec7428a3f797db224b9a0bfe472",
+    "revision_number": 2,
+    "value": "1433.5",
+    "first_seen_at": "2026-03-12T00:00:00+00:00",
+    "source_updated_at": "2026-03-11T23:57:00+00:00",
+    "information_available_at": "2026-03-12T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "revision_fixture": true
+    },
+    "quality_flags": [],
+    "id": "9afc7f91-9a69-51c1-9467-550058085399"
+  },
+  {
+    "observation_key": "bf03f2f7aa2a4f935f92ce0c83037f6ad6004b65d937806f1069d6fb102b7130",
+    "revision_number": 1,
+    "value": "1325.0",
+    "first_seen_at": "2026-03-02T00:00:00+00:00",
+    "source_updated_at": "2026-03-01T23:50:00+00:00",
+    "information_available_at": "2026-03-02T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "route": "petroleum/stoc/wstk",
+        "series": "WDISTUS1"
+      }
+    },
+    "quality_flags": [],
+    "id": "36f9d0fe-9964-5739-ad5d-b1433ceaee72"
+  },
+  {
     "observation_key": "bf4620460881b682eb8d9962b1c76f88153eac0d48b31640be3c11bc0cbce9dc",
     "revision_number": 1,
-    "value": "1281",
-    "first_seen_at": "2026-05-17T00:00:00+00:00",
-    "source_updated_at": "2026-05-16T23:50:00+00:00",
-    "information_available_at": "2026-05-17T00:00:00+00:00",
+    "value": "1410.0",
+    "first_seen_at": "2026-03-03T00:00:00+00:00",
+    "source_updated_at": "2026-03-02T23:50:00+00:00",
+    "information_available_at": "2026-03-03T00:00:00+00:00",
     "provenance": {
       "fixture_version": "official-data-synthetic-v1",
       "profile_query": {
@@ -408,12 +2072,97 @@
     "id": "d90fe778-4846-5050-8dac-f7987dab9747"
   },
   {
+    "observation_key": "c1523324cefbdf2d7e2d0a44520c481d10b7e270493d8361f6b3eb2417ca3964",
+    "revision_number": 1,
+    "value": "1269.0",
+    "first_seen_at": "2026-03-07T00:00:00+00:00",
+    "source_updated_at": "2026-03-06T23:50:00+00:00",
+    "information_available_at": "2026-03-07T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "route": "petroleum/stoc/wstk",
+        "series": "WCESTUS1"
+      }
+    },
+    "quality_flags": [],
+    "id": "a9052f87-3992-5ffb-ae8c-b72aedb2fa9d"
+  },
+  {
+    "observation_key": "c33a1360246037df0097e26e568d5034a9c40584b8ba77d4e361a03b874e1296",
+    "revision_number": 1,
+    "value": "1454.0",
+    "first_seen_at": "2026-03-07T00:00:00+00:00",
+    "source_updated_at": "2026-03-06T23:50:00+00:00",
+    "information_available_at": "2026-03-07T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "resource": "6dca-aqww",
+        "market_code": "020601"
+      }
+    },
+    "quality_flags": [],
+    "id": "0b5e9434-d91d-50d8-af02-1fabcd522dd1"
+  },
+  {
+    "observation_key": "c513c59f39c3230c974c99c0f0ce383b8f9562bb88b46ab5d73f6b89f37b2f6c",
+    "revision_number": 1,
+    "value": "1310.0",
+    "first_seen_at": "2026-03-04T00:00:00+00:00",
+    "source_updated_at": "2026-03-03T23:50:00+00:00",
+    "information_available_at": "2026-03-04T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "route": "natural-gas/stor/wkly",
+        "series": "WNGSRUS2"
+      }
+    },
+    "quality_flags": [],
+    "id": "a5857af7-8c84-51cc-9034-f238a38252bb"
+  },
+  {
+    "observation_key": "c6f8ce0701359df97563660fd8a0156c36cf70fb119d52e72505739d8bdffcda",
+    "revision_number": 1,
+    "value": "1436.0",
+    "first_seen_at": "2026-03-02T00:00:00+00:00",
+    "source_updated_at": "2026-03-01T23:50:00+00:00",
+    "information_available_at": "2026-03-02T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "resource": "6dca-aqww",
+        "market_code": "088691"
+      }
+    },
+    "quality_flags": [],
+    "id": "7715d9bf-acfa-5199-8ba2-7c09d54da5a4"
+  },
+  {
+    "observation_key": "c93913e717a44013ce6e6b190bec0e3f92edb4f33a223643179ae83635a2f1a0",
+    "revision_number": 1,
+    "value": "1259.0",
+    "first_seen_at": "2026-02-24T00:00:00+00:00",
+    "source_updated_at": "2026-02-23T23:50:00+00:00",
+    "information_available_at": "2026-02-24T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "route": "petroleum/stoc/wstk",
+        "series": "WDISTUS1"
+      }
+    },
+    "quality_flags": [],
+    "id": "9972e281-a924-5a75-84f4-1409ccdcca04"
+  },
+  {
     "observation_key": "cac704351e7f885f567ebc282b5650d6b9c5e57c8b4338127d73a8a5b87a9466",
     "revision_number": 1,
-    "value": "1270",
-    "first_seen_at": "2026-05-16T00:00:00+00:00",
-    "source_updated_at": "2026-05-15T23:50:00+00:00",
-    "information_available_at": "2026-05-16T00:00:00+00:00",
+    "value": "1399.0",
+    "first_seen_at": "2026-03-02T00:00:00+00:00",
+    "source_updated_at": "2026-03-01T23:50:00+00:00",
+    "information_available_at": "2026-03-02T00:00:00+00:00",
     "provenance": {
       "fixture_version": "official-data-synthetic-v1",
       "profile_query": {
@@ -425,26 +2174,157 @@
     "id": "3d4a8a7a-21bc-5e56-9dca-7c653a09214d"
   },
   {
-    "observation_key": "cac704351e7f885f567ebc282b5650d6b9c5e57c8b4338127d73a8a5b87a9466",
+    "observation_key": "cba276dbe38e82421aad38604879308855642d28bc192dbf6d65fa024adf8897",
+    "revision_number": 1,
+    "value": "1236.0",
+    "first_seen_at": "2026-03-04T00:00:00+00:00",
+    "source_updated_at": "2026-03-03T23:50:00+00:00",
+    "information_available_at": "2026-03-04T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "route": "petroleum/stoc/wstk",
+        "series": "WCESTUS1"
+      }
+    },
+    "quality_flags": [],
+    "id": "909cec78-9e7a-5b41-ac4d-40e564030989"
+  },
+  {
+    "observation_key": "cccb21bc6dcc4c991b388aedda5ccceb51ed322bc07269bee81d46f6f032f86f",
+    "revision_number": 1,
+    "value": "1055.0",
+    "first_seen_at": "2026-03-01T00:00:00+00:00",
+    "source_updated_at": "2026-02-28T23:50:00+00:00",
+    "information_available_at": "2026-03-01T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "series_id": "CES0000000001"
+      }
+    },
+    "quality_flags": [],
+    "id": "69f174a4-3649-56b7-b6d7-c57c9e71ef52"
+  },
+  {
+    "observation_key": "cd8d8d2334acdedc6db48bbcbae4ab313feeedbb2e6b21a86e636d87794396f9",
+    "revision_number": 1,
+    "value": "1258.0",
+    "first_seen_at": "2026-03-06T00:00:00+00:00",
+    "source_updated_at": "2026-03-05T23:50:00+00:00",
+    "information_available_at": "2026-03-06T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "route": "petroleum/stoc/wstk",
+        "series": "WCESTUS1"
+      }
+    },
+    "quality_flags": [],
+    "id": "1057b91b-d73e-5c44-a60b-fbf3b4de9639"
+  },
+  {
+    "observation_key": "d455c06ffb7cf12d7eca6c928120bd685c941d91fbd8f7913f1493c8690ce408",
+    "revision_number": 1,
+    "value": "1081.0",
+    "first_seen_at": "2026-02-28T00:00:00+00:00",
+    "source_updated_at": "2026-02-27T23:50:00+00:00",
+    "information_available_at": "2026-02-28T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "series_id": "CES3000000001"
+      }
+    },
+    "quality_flags": [],
+    "id": "70817e60-b86b-55a9-999d-03698a562a2c"
+  },
+  {
+    "observation_key": "d455c06ffb7cf12d7eca6c928120bd685c941d91fbd8f7913f1493c8690ce408",
     "revision_number": 2,
-    "value": "1271.5",
-    "first_seen_at": "2026-05-23T00:00:00+00:00",
-    "source_updated_at": "2026-05-22T23:57:00+00:00",
-    "information_available_at": "2026-05-23T00:00:00+00:00",
+    "value": "1082.5",
+    "first_seen_at": "2026-03-07T00:00:00+00:00",
+    "source_updated_at": "2026-03-06T23:57:00+00:00",
+    "information_available_at": "2026-03-07T00:00:00+00:00",
     "provenance": {
       "fixture_version": "official-data-synthetic-v1",
       "revision_fixture": true
     },
     "quality_flags": [],
-    "id": "e77d7b54-5cbc-56b7-9e76-46dc33b4bd52"
+    "id": "4d7039d1-3bf5-5910-828b-9a3da9d23d41"
+  },
+  {
+    "observation_key": "d5ff6246cedc0c04a9cf677bbfd18d30aa601be85aba17efd977e758238e9bf9",
+    "revision_number": 1,
+    "value": "1270.0",
+    "first_seen_at": "2026-02-25T00:00:00+00:00",
+    "source_updated_at": "2026-02-24T23:50:00+00:00",
+    "information_available_at": "2026-02-25T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "route": "petroleum/stoc/wstk",
+        "series": "WDISTUS1"
+      }
+    },
+    "quality_flags": [],
+    "id": "43347490-cd94-56af-9ca4-b24fc047c9aa"
+  },
+  {
+    "observation_key": "d650444ebe6567fd13f8df6e361b255715e407e4e4dcfedf79b4382d5ea362c4",
+    "revision_number": 1,
+    "value": "1440.0",
+    "first_seen_at": "2026-02-27T00:00:00+00:00",
+    "source_updated_at": "2026-02-26T23:50:00+00:00",
+    "information_available_at": "2026-02-27T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "resource": "6dca-aqww",
+        "market_code": "067651"
+      }
+    },
+    "quality_flags": [],
+    "id": "0e706242-970f-5b7f-b627-c15f047a66f3"
+  },
+  {
+    "observation_key": "d7623b19e6d2d0ee1715e710f3b83ae9db3b5a9dba59fb333ed7587e8ea42957",
+    "revision_number": 1,
+    "value": "1192.0",
+    "first_seen_at": "2026-02-28T00:00:00+00:00",
+    "source_updated_at": "2026-02-27T23:50:00+00:00",
+    "information_available_at": "2026-02-28T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "route": "petroleum/stoc/wstk",
+        "series": "WCESTUS1"
+      }
+    },
+    "quality_flags": [],
+    "id": "24ed64e4-45ea-5578-a458-62806ddb054b"
+  },
+  {
+    "observation_key": "d7623b19e6d2d0ee1715e710f3b83ae9db3b5a9dba59fb333ed7587e8ea42957",
+    "revision_number": 2,
+    "value": "1193.5",
+    "first_seen_at": "2026-03-07T00:00:00+00:00",
+    "source_updated_at": "2026-03-06T23:57:00+00:00",
+    "information_available_at": "2026-03-07T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "revision_fixture": true
+    },
+    "quality_flags": [],
+    "id": "f80dbf4f-458d-525d-8e2a-e25ffe476872"
   },
   {
     "observation_key": "df2761205579ca999c09dccf368c1c54dadf679ca1a0d0f61db65d39ffc95e7f",
     "revision_number": 1,
-    "value": "1059",
-    "first_seen_at": "2026-05-17T00:00:00+00:00",
-    "source_updated_at": "2026-05-16T23:50:00+00:00",
-    "information_available_at": "2026-05-17T00:00:00+00:00",
+    "value": "1059.0",
+    "first_seen_at": "2026-02-26T00:00:00+00:00",
+    "source_updated_at": "2026-02-25T23:50:00+00:00",
+    "information_available_at": "2026-02-26T00:00:00+00:00",
     "provenance": {
       "fixture_version": "official-data-synthetic-v1",
       "profile_query": {
@@ -453,5 +2333,406 @@
     },
     "quality_flags": [],
     "id": "5cebab95-0f1c-5556-87bd-40800303e340"
+  },
+  {
+    "observation_key": "e372d441730ff92ff886d16f74bc9b6b74093d0c7048243d6b4c58f0764ac4e3",
+    "revision_number": 1,
+    "value": "1347.0",
+    "first_seen_at": "2026-03-04T00:00:00+00:00",
+    "source_updated_at": "2026-03-03T23:50:00+00:00",
+    "information_available_at": "2026-03-04T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "route": "petroleum/stoc/wstk",
+        "series": "WDISTUS1"
+      }
+    },
+    "quality_flags": [],
+    "id": "e1bf9911-7ae6-5736-a60e-c487237f0d14"
+  },
+  {
+    "observation_key": "e3b2ed0bbc789ac6e5f05522f9078bc13c60f1ca24e690b2ae73ac770052715a",
+    "revision_number": 1,
+    "value": "1336.0",
+    "first_seen_at": "2026-03-03T00:00:00+00:00",
+    "source_updated_at": "2026-03-02T23:50:00+00:00",
+    "information_available_at": "2026-03-03T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "route": "petroleum/stoc/wstk",
+        "series": "WDISTUS1"
+      }
+    },
+    "quality_flags": [],
+    "id": "cee0d26a-7540-5461-8693-94aeae71adbe"
+  },
+  {
+    "observation_key": "e50c013f573be4f738572c27878fdc973411d08b9a56c8c3b26aa19ed92af351",
+    "revision_number": 1,
+    "value": "1151.0",
+    "first_seen_at": "2026-03-03T00:00:00+00:00",
+    "source_updated_at": "2026-03-02T23:50:00+00:00",
+    "information_available_at": "2026-03-03T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "series_id": "CES0500000003"
+      }
+    },
+    "quality_flags": [],
+    "id": "3643895c-b43c-57a7-8b68-4c08c6170f4c"
+  },
+  {
+    "observation_key": "e704cffbd53e55e2c935709db6720c9a1345ad8856bc77910b7974fd0322c4ab",
+    "revision_number": 1,
+    "value": "1307.0",
+    "first_seen_at": "2026-02-25T00:00:00+00:00",
+    "source_updated_at": "2026-02-24T23:50:00+00:00",
+    "information_available_at": "2026-02-25T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "resource": "6dca-aqww",
+        "market_code": "13874A"
+      }
+    },
+    "quality_flags": [],
+    "id": "1c386ed7-6505-5cff-8987-93e4dc7f6009"
+  },
+  {
+    "observation_key": "e73480508cb7959d52f24803f91403cc731a4aa93a6399e498bba2c1614ce363",
+    "revision_number": 1,
+    "value": "1147.0",
+    "first_seen_at": "2026-03-06T00:00:00+00:00",
+    "source_updated_at": "2026-03-05T23:50:00+00:00",
+    "information_available_at": "2026-03-06T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "series_id": "CES3000000001"
+      }
+    },
+    "quality_flags": [],
+    "id": "23b2d9e0-6dc5-5c2f-bdc0-fa2a5eb176ed"
+  },
+  {
+    "observation_key": "e8bb681187a908da836d0ba0873b279f844d0914975807daf14f6840549bb9b6",
+    "revision_number": 1,
+    "value": "1066.0",
+    "first_seen_at": "2026-03-02T00:00:00+00:00",
+    "source_updated_at": "2026-03-01T23:50:00+00:00",
+    "information_available_at": "2026-03-02T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "series_id": "CES0000000001"
+      }
+    },
+    "quality_flags": [],
+    "id": "c031ee7f-4288-57dc-b33a-bf5628577102"
+  },
+  {
+    "observation_key": "edf0a914f0f93f00f8bfd8463398797c566510bdc3be08bcfa73bcc5e42878e8",
+    "revision_number": 1,
+    "value": "1266.0",
+    "first_seen_at": "2026-02-28T00:00:00+00:00",
+    "source_updated_at": "2026-02-27T23:50:00+00:00",
+    "information_available_at": "2026-02-28T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "route": "natural-gas/stor/wkly",
+        "series": "WNGSRUS2"
+      }
+    },
+    "quality_flags": [],
+    "id": "94efe385-f843-5e5d-8a05-30f18f050508"
+  },
+  {
+    "observation_key": "edf0a914f0f93f00f8bfd8463398797c566510bdc3be08bcfa73bcc5e42878e8",
+    "revision_number": 2,
+    "value": "1267.5",
+    "first_seen_at": "2026-03-07T00:00:00+00:00",
+    "source_updated_at": "2026-03-06T23:57:00+00:00",
+    "information_available_at": "2026-03-07T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "revision_fixture": true
+    },
+    "quality_flags": [],
+    "id": "6224b9d0-3de1-53fc-bae8-15e73e7ec22c"
+  },
+  {
+    "observation_key": "ee71a3280374bf311eff0ce7562f0953f7e537e32c35425645737691d8b827e4",
+    "revision_number": 1,
+    "value": "1229.0",
+    "first_seen_at": "2026-02-28T00:00:00+00:00",
+    "source_updated_at": "2026-02-27T23:50:00+00:00",
+    "information_available_at": "2026-02-28T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "route": "petroleum/stoc/wstk",
+        "series": "WGTSTUS1"
+      }
+    },
+    "quality_flags": [],
+    "id": "5dacba7d-4058-54a6-ad4e-2325a22e8754"
+  },
+  {
+    "observation_key": "ee71a3280374bf311eff0ce7562f0953f7e537e32c35425645737691d8b827e4",
+    "revision_number": 2,
+    "value": "1230.5",
+    "first_seen_at": "2026-03-07T00:00:00+00:00",
+    "source_updated_at": "2026-03-06T23:57:00+00:00",
+    "information_available_at": "2026-03-07T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "revision_fixture": true
+    },
+    "quality_flags": [],
+    "id": "d9f27f7e-30a8-545a-a067-2f02668c6dd7"
+  },
+  {
+    "observation_key": "ef559e94ed794b94f70c9b0ae42399d7fa4068fc22db07c8a104d5d955fa2c11",
+    "revision_number": 1,
+    "value": "1195.0",
+    "first_seen_at": "2026-03-07T00:00:00+00:00",
+    "source_updated_at": "2026-03-06T23:50:00+00:00",
+    "information_available_at": "2026-03-07T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "series_id": "CES0500000003"
+      }
+    },
+    "quality_flags": [],
+    "id": "8853f3c3-4972-5ce9-a137-5a485ac4b48d"
+  },
+  {
+    "observation_key": "f0c9a1172209b28a9a9b973e80bb78b58dd2511f698a5cb25662a8957083708e",
+    "revision_number": 1,
+    "value": "1403.0",
+    "first_seen_at": "2026-02-27T00:00:00+00:00",
+    "source_updated_at": "2026-02-26T23:50:00+00:00",
+    "information_available_at": "2026-02-27T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "resource": "6dca-aqww",
+        "market_code": "088691"
+      }
+    },
+    "quality_flags": [],
+    "id": "c54ab9ab-ab6a-5d3a-ba13-b46e154d8305"
+  },
+  {
+    "observation_key": "f53e49e2ef039314640dade2907efec943604f8538a8e97ce07b3749be150d35",
+    "revision_number": 1,
+    "value": "1447.0",
+    "first_seen_at": "2026-03-03T00:00:00+00:00",
+    "source_updated_at": "2026-03-02T23:50:00+00:00",
+    "information_available_at": "2026-03-03T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "resource": "6dca-aqww",
+        "market_code": "088691"
+      }
+    },
+    "quality_flags": [],
+    "id": "6d5f96ed-ee34-560f-995b-d33f3c3d9a99"
+  },
+  {
+    "observation_key": "f55220e715509352f159712897daa9df12e7e33659683da641329678eea123f5",
+    "revision_number": 1,
+    "value": "1443.0",
+    "first_seen_at": "2026-03-06T00:00:00+00:00",
+    "source_updated_at": "2026-03-05T23:50:00+00:00",
+    "information_available_at": "2026-03-06T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "resource": "6dca-aqww",
+        "market_code": "020601"
+      }
+    },
+    "quality_flags": [],
+    "id": "257ee335-6745-57f4-96a1-e70bbe120996"
+  },
+  {
+    "observation_key": "f5885fe695910dcf11900bc5be57f55a7b291e105914d69a6899d6e47c4bf613",
+    "revision_number": 1,
+    "value": "1148.0",
+    "first_seen_at": "2026-02-24T00:00:00+00:00",
+    "source_updated_at": "2026-02-23T23:50:00+00:00",
+    "information_available_at": "2026-02-24T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "route": "petroleum/stoc/wstk",
+        "series": "WCESTUS1"
+      }
+    },
+    "quality_flags": [],
+    "id": "67774e5e-a314-5732-9316-085a5fa7b33c"
+  },
+  {
+    "observation_key": "f5b6df82453b239daa5e38376b9cf44e43784422795199814d8fd1276ac41564",
+    "revision_number": 1,
+    "value": "1244.0",
+    "first_seen_at": "2026-02-26T00:00:00+00:00",
+    "source_updated_at": "2026-02-25T23:50:00+00:00",
+    "information_available_at": "2026-02-26T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "route": "natural-gas/stor/wkly",
+        "series": "WNGSRUS2"
+      }
+    },
+    "quality_flags": [],
+    "id": "0803f35e-e9b2-5c15-bb21-7fc46bbd2555"
+  },
+  {
+    "observation_key": "fafbf3154090edc8aff45f84e8bae9000cb0250937708608e5b82498fd15adf6",
+    "revision_number": 1,
+    "value": "1133.0",
+    "first_seen_at": "2026-02-26T00:00:00+00:00",
+    "source_updated_at": "2026-02-25T23:50:00+00:00",
+    "information_available_at": "2026-02-26T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "series_id": "LNS14000000"
+      }
+    },
+    "quality_flags": [],
+    "id": "e0768834-2c42-5cae-8c64-b31137fdfc5f"
+  },
+  {
+    "observation_key": "fc88215c34bca5d4c4d828763615dcbe367e2ea334a89053bc8346d4433b1344",
+    "revision_number": 1,
+    "value": "1136.0",
+    "first_seen_at": "2026-03-05T00:00:00+00:00",
+    "source_updated_at": "2026-03-04T23:50:00+00:00",
+    "information_available_at": "2026-03-05T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "series_id": "CES3000000001"
+      }
+    },
+    "quality_flags": [],
+    "id": "843d5802-da47-57e6-904d-070b9ce56d68"
+  },
+  {
+    "observation_key": "fc88215c34bca5d4c4d828763615dcbe367e2ea334a89053bc8346d4433b1344",
+    "revision_number": 2,
+    "value": "1137.5",
+    "first_seen_at": "2026-03-12T00:00:00+00:00",
+    "source_updated_at": "2026-03-11T23:57:00+00:00",
+    "information_available_at": "2026-03-12T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "revision_fixture": true
+    },
+    "quality_flags": [],
+    "id": "3ec58084-556d-5420-926c-875b037eaf5c"
+  },
+  {
+    "observation_key": "fd010d69a36decf4ff594eb35ddf50a7a523bd7f43e0abfb50c68323ac2cbf9a",
+    "revision_number": 1,
+    "value": "1506.0",
+    "first_seen_at": "2026-03-05T00:00:00+00:00",
+    "source_updated_at": "2026-03-04T23:50:00+00:00",
+    "information_available_at": "2026-03-05T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "resource": "6dca-aqww",
+        "market_code": "067651"
+      }
+    },
+    "quality_flags": [],
+    "id": "2d07b346-9c76-50aa-99e2-62bc1a143e84"
+  },
+  {
+    "observation_key": "fd010d69a36decf4ff594eb35ddf50a7a523bd7f43e0abfb50c68323ac2cbf9a",
+    "revision_number": 2,
+    "value": "1507.5",
+    "first_seen_at": "2026-03-12T00:00:00+00:00",
+    "source_updated_at": "2026-03-11T23:57:00+00:00",
+    "information_available_at": "2026-03-12T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "revision_fixture": true
+    },
+    "quality_flags": [],
+    "id": "fe14415f-fbcd-5100-9bff-731b834f24a9"
+  },
+  {
+    "observation_key": "fdb0e511e3fa051dd2390648a3ba0d798099bf44639e397c4d57ac2b9fec32df",
+    "revision_number": 1,
+    "value": "1284.0",
+    "first_seen_at": "2026-03-05T00:00:00+00:00",
+    "source_updated_at": "2026-03-04T23:50:00+00:00",
+    "information_available_at": "2026-03-05T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "route": "petroleum/stoc/wstk",
+        "series": "WGTSTUS1"
+      }
+    },
+    "quality_flags": [],
+    "id": "69f3b646-b2f7-565f-bbf0-6398f63e49bb"
+  },
+  {
+    "observation_key": "fdb0e511e3fa051dd2390648a3ba0d798099bf44639e397c4d57ac2b9fec32df",
+    "revision_number": 2,
+    "value": "1285.5",
+    "first_seen_at": "2026-03-12T00:00:00+00:00",
+    "source_updated_at": "2026-03-11T23:57:00+00:00",
+    "information_available_at": "2026-03-12T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "revision_fixture": true
+    },
+    "quality_flags": [],
+    "id": "c4a36ed3-200b-5d82-9deb-cc4292fa7773"
+  },
+  {
+    "observation_key": "fe715b30544c9fb0aef4e2ec0fc4ed5446113314d87d6fac4759ee5c73b2a6a1",
+    "revision_number": 1,
+    "value": "1414.0",
+    "first_seen_at": "2026-02-28T00:00:00+00:00",
+    "source_updated_at": "2026-02-27T23:50:00+00:00",
+    "information_available_at": "2026-02-28T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_query": {
+        "resource": "6dca-aqww",
+        "market_code": "088691"
+      }
+    },
+    "quality_flags": [],
+    "id": "8757e5c1-55b5-548c-b4aa-570af56dc920"
+  },
+  {
+    "observation_key": "fe715b30544c9fb0aef4e2ec0fc4ed5446113314d87d6fac4759ee5c73b2a6a1",
+    "revision_number": 2,
+    "value": "1415.5",
+    "first_seen_at": "2026-03-07T00:00:00+00:00",
+    "source_updated_at": "2026-03-06T23:57:00+00:00",
+    "information_available_at": "2026-03-07T00:00:00+00:00",
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "revision_fixture": true
+    },
+    "quality_flags": [],
+    "id": "4e11dc4b-81aa-58c2-ac9f-4158f21e6ff3"
   }
 ]

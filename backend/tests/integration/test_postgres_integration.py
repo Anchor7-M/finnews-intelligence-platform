@@ -25,6 +25,7 @@ from finnews.application.services.cross_asset import (
 from finnews.application.services.deduplication_accounting import build_deduplication_accounting
 from finnews.application.services.export_static import build_static_payload
 from finnews.application.services.official_data import (
+    build_official_data_release_ledger,
     official_data_overview,
     persist_official_data_demo,
 )
@@ -181,6 +182,10 @@ def table_counts(session: Session) -> dict[str, int]:
     }
 
 
+def model_count(session: Session, model: Any) -> int:
+    return int(session.scalar(select(func.count()).select_from(model)) or 0)
+
+
 @pytest.mark.postgres
 def test_alembic_upgrade_downgrade_schema_types_constraints_and_indexes(engine: Engine) -> None:
     drop_schema_objects()
@@ -316,40 +321,40 @@ def test_postgres_official_data_foundation_idempotency_and_jsonb(settings: Setti
 
     overview = official_data_overview(repo)
     assert counts["datasets"] == 4
-    assert counts["series_profiles"] == 10
-    assert counts["official_observation_revisions"] == 28
-    assert overview["observation_count"] == 24
-    assert overview["revision_count"] == 28
-    assert overview["revised_observation_count"] == 4
-    assert overview["regulatory_document_count"] == 8
+    assert counts["series_profiles"] == 16
+    assert counts["official_observation_revisions"] == 168
+    assert overview["definition_count_total"] == 16
+    assert overview["observation_count"] == 144
+    assert overview["revision_count"] == 168
+    assert overview["changed_value_revision_count"] == 24
+    assert overview["revised_observation_count"] == 24
+    assert overview["regulatory_document_count"] == 32
     assert overview["series_asset_association_count"] == 80
-    assert overview["official_release_event_count"] == 32
+    assert overview["official_release_event_count"] == 48
     first_counts = {
-        "datasets": session.scalar(select(func.count()).select_from(OfficialDatasetModel)),
-        "series": session.scalar(select(func.count()).select_from(OfficialSeriesProfileModel)),
-        "observations": session.scalar(select(func.count()).select_from(OfficialObservationModel)),
-        "revisions": session.scalar(
-            select(func.count()).select_from(OfficialObservationRevisionModel)
-        ),
-        "release_runs": session.scalar(
-            select(func.count()).select_from(OfficialDataReleaseRunModel)
-        ),
-        "documents": session.scalar(select(func.count()).select_from(RegulatoryDocumentModel)),
-        "associations": session.scalar(
-            select(func.count()).select_from(SeriesAssetAssociationModel)
-        ),
-        "events": session.scalar(select(func.count()).select_from(OfficialReleaseEventModel)),
+        "datasets": model_count(session, OfficialDatasetModel),
+        "series": model_count(session, OfficialSeriesProfileModel),
+        "observations": model_count(session, OfficialObservationModel),
+        "revisions": model_count(session, OfficialObservationRevisionModel),
+        "release_runs": model_count(session, OfficialDataReleaseRunModel),
+        "documents": model_count(session, RegulatoryDocumentModel),
+        "associations": model_count(session, SeriesAssetAssociationModel),
+        "events": model_count(session, OfficialReleaseEventModel),
     }
     assert first_counts == {
         "datasets": 4,
-        "series": 10,
-        "observations": 24,
-        "revisions": 28,
-        "release_runs": 3,
-        "documents": 8,
+        "series": 16,
+        "observations": 144,
+        "revisions": 168,
+        "release_runs": 4,
+        "documents": 32,
         "associations": 80,
-        "events": 32,
+        "events": 48,
     }
+    ledger = build_official_data_release_ledger(repo, postgres_table_counts=first_counts)
+    assert ledger["observation_business_key_count"] == 144
+    assert ledger["changed_value_revision_count"] == 24
+    assert ledger["postgres_table_counts"] == first_counts
     first_revision = repo.list_official_observation_revisions()[0]
     assert first_revision.information_available_at.tzinfo is not None
     assert isinstance(first_revision.provenance, dict)
@@ -359,22 +364,16 @@ def test_postgres_official_data_foundation_idempotency_and_jsonb(settings: Setti
     second_counts = persist_official_data_demo(repo)
     session.commit()
     assert second_counts["official_observation_revisions"] == 0
-    assert second_counts["official_observation_unchanged"] == 28
+    assert second_counts["official_observation_unchanged"] == 168
     assert {
-        "datasets": session.scalar(select(func.count()).select_from(OfficialDatasetModel)),
-        "series": session.scalar(select(func.count()).select_from(OfficialSeriesProfileModel)),
-        "observations": session.scalar(select(func.count()).select_from(OfficialObservationModel)),
-        "revisions": session.scalar(
-            select(func.count()).select_from(OfficialObservationRevisionModel)
-        ),
-        "release_runs": session.scalar(
-            select(func.count()).select_from(OfficialDataReleaseRunModel)
-        ),
-        "documents": session.scalar(select(func.count()).select_from(RegulatoryDocumentModel)),
-        "associations": session.scalar(
-            select(func.count()).select_from(SeriesAssetAssociationModel)
-        ),
-        "events": session.scalar(select(func.count()).select_from(OfficialReleaseEventModel)),
+        "datasets": model_count(session, OfficialDatasetModel),
+        "series": model_count(session, OfficialSeriesProfileModel),
+        "observations": model_count(session, OfficialObservationModel),
+        "revisions": model_count(session, OfficialObservationRevisionModel),
+        "release_runs": model_count(session, OfficialDataReleaseRunModel),
+        "documents": model_count(session, RegulatoryDocumentModel),
+        "associations": model_count(session, SeriesAssetAssociationModel),
+        "events": model_count(session, OfficialReleaseEventModel),
     } == first_counts
     session.close()
 

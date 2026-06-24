@@ -11,9 +11,9 @@
       "seasonal": "sa"
     },
     "current_revision": 1,
-    "current_value": "1074",
-    "first_seen_at": "2026-05-15T00:00:00+00:00",
-    "information_available_at": "2026-05-15T00:00:00+00:00",
+    "current_value": "1074.0",
+    "first_seen_at": "2026-02-24T00:00:00+00:00",
+    "information_available_at": "2026-02-24T00:00:00+00:00",
     "synthetic": true,
     "id": "9358e6a5-6a07-54be-9b6b-4075e754b078"
   },
@@ -29,9 +29,9 @@
       "seasonal": "sa"
     },
     "current_revision": 1,
-    "current_value": "1085",
-    "first_seen_at": "2026-05-16T00:00:00+00:00",
-    "information_available_at": "2026-05-16T00:00:00+00:00",
+    "current_value": "1085.0",
+    "first_seen_at": "2026-02-25T00:00:00+00:00",
+    "information_available_at": "2026-02-25T00:00:00+00:00",
     "synthetic": true,
     "id": "e591c501-c3b1-589e-bc69-66f1736b96d3"
   },
@@ -47,11 +47,173 @@
       "seasonal": "sa"
     },
     "current_revision": 1,
-    "current_value": "1096",
-    "first_seen_at": "2026-05-17T00:00:00+00:00",
-    "information_available_at": "2026-05-17T00:00:00+00:00",
+    "current_value": "1096.0",
+    "first_seen_at": "2026-02-26T00:00:00+00:00",
+    "information_available_at": "2026-02-26T00:00:00+00:00",
     "synthetic": true,
     "id": "0033d108-2875-5cad-98a2-7516ab82a8bb"
+  },
+  {
+    "observation_key": "b1136f26c127df55e38910e58df318eae00f276d1972bbdbd5194414da7e9343",
+    "source_id": "bls-public-data",
+    "dataset_id": "bls-ces",
+    "profile_id": "bls-ces-avg-hourly-earnings",
+    "period_start": "2026-04-01",
+    "period_end": "2026-04-01",
+    "dimensions": {
+      "measure": "earnings",
+      "seasonal": "sa"
+    },
+    "current_revision": 1,
+    "current_value": "1107.0",
+    "first_seen_at": "2026-02-27T00:00:00+00:00",
+    "information_available_at": "2026-02-27T00:00:00+00:00",
+    "synthetic": true,
+    "id": "ba251e7a-d562-5115-8fad-8a30781c30dd"
+  },
+  {
+    "observation_key": "90ff381b6958a8d16583c0ac12c2d372e04789d3d2c73082563ae929d5478066",
+    "source_id": "bls-public-data",
+    "dataset_id": "bls-ces",
+    "profile_id": "bls-ces-avg-hourly-earnings",
+    "period_start": "2026-05-01",
+    "period_end": "2026-05-01",
+    "dimensions": {
+      "measure": "earnings",
+      "seasonal": "sa"
+    },
+    "current_revision": 2,
+    "current_value": "1119.5",
+    "first_seen_at": "2026-02-28T00:00:00+00:00",
+    "information_available_at": "2026-03-07T00:00:00+00:00",
+    "synthetic": true,
+    "id": "e7fda0e5-d1dd-58a4-9c5d-7f3590b15ee1"
+  },
+  {
+    "observation_key": "718f27dc7d5554cee89f676a7b8da2490c6f742a62074077c70ef00583db4101",
+    "source_id": "bls-public-data",
+    "dataset_id": "bls-ces",
+    "profile_id": "bls-ces-avg-hourly-earnings",
+    "period_start": "2026-06-01",
+    "period_end": "2026-06-01",
+    "dimensions": {
+      "measure": "earnings",
+      "seasonal": "sa"
+    },
+    "current_revision": 1,
+    "current_value": "1129.0",
+    "first_seen_at": "2026-03-01T00:00:00+00:00",
+    "information_available_at": "2026-03-01T00:00:00+00:00",
+    "synthetic": true,
+    "id": "8e7f65ff-3fe2-5c56-aabf-35a7e29876db"
+  },
+  {
+    "observation_key": "1630f0a95fea5e06d1f85a1666a7b32fd5e6fe47c15a7ab9ddac276242ab020d",
+    "source_id": "bls-public-data",
+    "dataset_id": "bls-ces",
+    "profile_id": "bls-ces-avg-hourly-earnings",
+    "period_start": "2026-07-01",
+    "period_end": "2026-07-01",
+    "dimensions": {
+      "measure": "earnings",
+      "seasonal": "sa"
+    },
+    "current_revision": 1,
+    "current_value": "1140.0",
+    "first_seen_at": "2026-03-02T00:00:00+00:00",
+    "information_available_at": "2026-03-02T00:00:00+00:00",
+    "synthetic": true,
+    "id": "5392fffb-8ae9-511b-9341-26c072da25bc"
+  },
+  {
+    "observation_key": "e50c013f573be4f738572c27878fdc973411d08b9a56c8c3b26aa19ed92af351",
+    "source_id": "bls-public-data",
+    "dataset_id": "bls-ces",
+    "profile_id": "bls-ces-avg-hourly-earnings",
+    "period_start": "2026-08-01",
+    "period_end": "2026-08-01",
+    "dimensions": {
+      "measure": "earnings",
+      "seasonal": "sa"
+    },
+    "current_revision": 1,
+    "current_value": "1151.0",
+    "first_seen_at": "2026-03-03T00:00:00+00:00",
+    "information_available_at": "2026-03-03T00:00:00+00:00",
+    "synthetic": true,
+    "id": "79700a90-3689-5506-a85a-e8c4e13966d2"
+  },
+  {
+    "observation_key": "07f1f8e39d7bf9ce650f2f312c22e40a193253b956a021b87c159f1cbad097a1",
+    "source_id": "bls-public-data",
+    "dataset_id": "bls-ces",
+    "profile_id": "bls-ces-avg-hourly-earnings",
+    "period_start": "2026-09-01",
+    "period_end": "2026-09-01",
+    "dimensions": {
+      "measure": "earnings",
+      "seasonal": "sa"
+    },
+    "current_revision": 1,
+    "current_value": "1162.0",
+    "first_seen_at": "2026-03-04T00:00:00+00:00",
+    "information_available_at": "2026-03-04T00:00:00+00:00",
+    "synthetic": true,
+    "id": "b8fc622d-387c-5437-bc49-a1518050358b"
+  },
+  {
+    "observation_key": "0aa70c00298a0f82da80a69f1537cdb65d7f192f0c1e894ec648379585ea8507",
+    "source_id": "bls-public-data",
+    "dataset_id": "bls-ces",
+    "profile_id": "bls-ces-avg-hourly-earnings",
+    "period_start": "2026-10-01",
+    "period_end": "2026-10-01",
+    "dimensions": {
+      "measure": "earnings",
+      "seasonal": "sa"
+    },
+    "current_revision": 2,
+    "current_value": "1174.5",
+    "first_seen_at": "2026-03-05T00:00:00+00:00",
+    "information_available_at": "2026-03-12T00:00:00+00:00",
+    "synthetic": true,
+    "id": "90802c15-07cd-5b94-b5b0-7b4113a92f78"
+  },
+  {
+    "observation_key": "8c391608207dc36e2fb6d9d38e71ca5991164369f667a746d6a5fc3b612b94fe",
+    "source_id": "bls-public-data",
+    "dataset_id": "bls-ces",
+    "profile_id": "bls-ces-avg-hourly-earnings",
+    "period_start": "2026-11-01",
+    "period_end": "2026-11-01",
+    "dimensions": {
+      "measure": "earnings",
+      "seasonal": "sa"
+    },
+    "current_revision": 1,
+    "current_value": "1184.0",
+    "first_seen_at": "2026-03-06T00:00:00+00:00",
+    "information_available_at": "2026-03-06T00:00:00+00:00",
+    "synthetic": true,
+    "id": "0fb7961d-aedf-5cf4-b747-cf5779032650"
+  },
+  {
+    "observation_key": "ef559e94ed794b94f70c9b0ae42399d7fa4068fc22db07c8a104d5d955fa2c11",
+    "source_id": "bls-public-data",
+    "dataset_id": "bls-ces",
+    "profile_id": "bls-ces-avg-hourly-earnings",
+    "period_start": "2026-12-01",
+    "period_end": "2026-12-01",
+    "dimensions": {
+      "measure": "earnings",
+      "seasonal": "sa"
+    },
+    "current_revision": 1,
+    "current_value": "1195.0",
+    "first_seen_at": "2026-03-07T00:00:00+00:00",
+    "information_available_at": "2026-03-07T00:00:00+00:00",
+    "synthetic": true,
+    "id": "e0c80a43-e7c7-585f-99f7-7fe965a7cde2"
   },
   {
     "observation_key": "9767a055a87eee8b15696905fea34d08fff0849b1b7e5c97b5c3f3a6811ab8a8",
@@ -66,9 +228,9 @@
       "seasonal": "sa"
     },
     "current_revision": 1,
-    "current_value": "1037",
-    "first_seen_at": "2026-05-15T00:00:00+00:00",
-    "information_available_at": "2026-05-15T00:00:00+00:00",
+    "current_value": "1037.0",
+    "first_seen_at": "2026-02-24T00:00:00+00:00",
+    "information_available_at": "2026-02-24T00:00:00+00:00",
     "synthetic": true,
     "id": "e26878a6-762c-5625-ae57-ffe5e0a7c5fc"
   },
@@ -85,9 +247,9 @@
       "seasonal": "sa"
     },
     "current_revision": 1,
-    "current_value": "1048",
-    "first_seen_at": "2026-05-16T00:00:00+00:00",
-    "information_available_at": "2026-05-16T00:00:00+00:00",
+    "current_value": "1048.0",
+    "first_seen_at": "2026-02-25T00:00:00+00:00",
+    "information_available_at": "2026-02-25T00:00:00+00:00",
     "synthetic": true,
     "id": "760ec3f4-8b99-56cb-8513-b6ef923b47ba"
   },
@@ -104,11 +266,182 @@
       "seasonal": "sa"
     },
     "current_revision": 1,
-    "current_value": "1059",
-    "first_seen_at": "2026-05-17T00:00:00+00:00",
-    "information_available_at": "2026-05-17T00:00:00+00:00",
+    "current_value": "1059.0",
+    "first_seen_at": "2026-02-26T00:00:00+00:00",
+    "information_available_at": "2026-02-26T00:00:00+00:00",
     "synthetic": true,
     "id": "432b2779-3deb-56c0-a3b6-4fe9ad78c957"
+  },
+  {
+    "observation_key": "2f3a0e2857b7b9f40cff6eecfacd6c3169c901af8933e6510f98e18207ae42af",
+    "source_id": "bls-public-data",
+    "dataset_id": "bls-ces",
+    "profile_id": "bls-ces-manufacturing",
+    "period_start": "2026-04-01",
+    "period_end": "2026-04-01",
+    "dimensions": {
+      "measure": "employment",
+      "sector": "manufacturing",
+      "seasonal": "sa"
+    },
+    "current_revision": 1,
+    "current_value": "1070.0",
+    "first_seen_at": "2026-02-27T00:00:00+00:00",
+    "information_available_at": "2026-02-27T00:00:00+00:00",
+    "synthetic": true,
+    "id": "c110152e-d4de-5a80-8bc8-de1ec0be96c2"
+  },
+  {
+    "observation_key": "d455c06ffb7cf12d7eca6c928120bd685c941d91fbd8f7913f1493c8690ce408",
+    "source_id": "bls-public-data",
+    "dataset_id": "bls-ces",
+    "profile_id": "bls-ces-manufacturing",
+    "period_start": "2026-05-01",
+    "period_end": "2026-05-01",
+    "dimensions": {
+      "measure": "employment",
+      "sector": "manufacturing",
+      "seasonal": "sa"
+    },
+    "current_revision": 2,
+    "current_value": "1082.5",
+    "first_seen_at": "2026-02-28T00:00:00+00:00",
+    "information_available_at": "2026-03-07T00:00:00+00:00",
+    "synthetic": true,
+    "id": "777d23e0-2c9b-5784-bcc9-0281c5c11216"
+  },
+  {
+    "observation_key": "244bee80808afdc8877bfb0e9f28b0dd1b3ab48d076fc7e0c786e77e0233185e",
+    "source_id": "bls-public-data",
+    "dataset_id": "bls-ces",
+    "profile_id": "bls-ces-manufacturing",
+    "period_start": "2026-06-01",
+    "period_end": "2026-06-01",
+    "dimensions": {
+      "measure": "employment",
+      "sector": "manufacturing",
+      "seasonal": "sa"
+    },
+    "current_revision": 1,
+    "current_value": "1092.0",
+    "first_seen_at": "2026-03-01T00:00:00+00:00",
+    "information_available_at": "2026-03-01T00:00:00+00:00",
+    "synthetic": true,
+    "id": "08d858b0-cd07-58bb-aa87-070e10c97ed8"
+  },
+  {
+    "observation_key": "46321dee15c9d1cf2ec07533355b8faf35124931d7b3883b1b175b661050b85c",
+    "source_id": "bls-public-data",
+    "dataset_id": "bls-ces",
+    "profile_id": "bls-ces-manufacturing",
+    "period_start": "2026-07-01",
+    "period_end": "2026-07-01",
+    "dimensions": {
+      "measure": "employment",
+      "sector": "manufacturing",
+      "seasonal": "sa"
+    },
+    "current_revision": 1,
+    "current_value": "1103.0",
+    "first_seen_at": "2026-03-02T00:00:00+00:00",
+    "information_available_at": "2026-03-02T00:00:00+00:00",
+    "synthetic": true,
+    "id": "4f31493b-c947-5ddb-b926-8d61fec570f5"
+  },
+  {
+    "observation_key": "56befdd0ce4f3f09ff5d5b22d5ecbf7a0df1d12ad6ae8edf66b77b694a3bd5ac",
+    "source_id": "bls-public-data",
+    "dataset_id": "bls-ces",
+    "profile_id": "bls-ces-manufacturing",
+    "period_start": "2026-08-01",
+    "period_end": "2026-08-01",
+    "dimensions": {
+      "measure": "employment",
+      "sector": "manufacturing",
+      "seasonal": "sa"
+    },
+    "current_revision": 1,
+    "current_value": "1114.0",
+    "first_seen_at": "2026-03-03T00:00:00+00:00",
+    "information_available_at": "2026-03-03T00:00:00+00:00",
+    "synthetic": true,
+    "id": "b0499745-54be-5428-b674-3a45ea46e389"
+  },
+  {
+    "observation_key": "918ae7f33718ce0d9afde318c24110e4a97ed2f20a0674aeb28d543cbe29db22",
+    "source_id": "bls-public-data",
+    "dataset_id": "bls-ces",
+    "profile_id": "bls-ces-manufacturing",
+    "period_start": "2026-09-01",
+    "period_end": "2026-09-01",
+    "dimensions": {
+      "measure": "employment",
+      "sector": "manufacturing",
+      "seasonal": "sa"
+    },
+    "current_revision": 1,
+    "current_value": "1125.0",
+    "first_seen_at": "2026-03-04T00:00:00+00:00",
+    "information_available_at": "2026-03-04T00:00:00+00:00",
+    "synthetic": true,
+    "id": "56927202-2441-5ec3-a8d0-b8f05b2c1994"
+  },
+  {
+    "observation_key": "fc88215c34bca5d4c4d828763615dcbe367e2ea334a89053bc8346d4433b1344",
+    "source_id": "bls-public-data",
+    "dataset_id": "bls-ces",
+    "profile_id": "bls-ces-manufacturing",
+    "period_start": "2026-10-01",
+    "period_end": "2026-10-01",
+    "dimensions": {
+      "measure": "employment",
+      "sector": "manufacturing",
+      "seasonal": "sa"
+    },
+    "current_revision": 2,
+    "current_value": "1137.5",
+    "first_seen_at": "2026-03-05T00:00:00+00:00",
+    "information_available_at": "2026-03-12T00:00:00+00:00",
+    "synthetic": true,
+    "id": "2524bd35-8e92-5564-985d-751668f9a04e"
+  },
+  {
+    "observation_key": "e73480508cb7959d52f24803f91403cc731a4aa93a6399e498bba2c1614ce363",
+    "source_id": "bls-public-data",
+    "dataset_id": "bls-ces",
+    "profile_id": "bls-ces-manufacturing",
+    "period_start": "2026-11-01",
+    "period_end": "2026-11-01",
+    "dimensions": {
+      "measure": "employment",
+      "sector": "manufacturing",
+      "seasonal": "sa"
+    },
+    "current_revision": 1,
+    "current_value": "1147.0",
+    "first_seen_at": "2026-03-06T00:00:00+00:00",
+    "information_available_at": "2026-03-06T00:00:00+00:00",
+    "synthetic": true,
+    "id": "7b964625-16ed-57dc-b1c4-bb61d1a0bbc4"
+  },
+  {
+    "observation_key": "a6243be2ca9f7877e2a5d2f02f5abd3d34c93d7bfbcb4c6df864fb1102c1d69c",
+    "source_id": "bls-public-data",
+    "dataset_id": "bls-ces",
+    "profile_id": "bls-ces-manufacturing",
+    "period_start": "2026-12-01",
+    "period_end": "2026-12-01",
+    "dimensions": {
+      "measure": "employment",
+      "sector": "manufacturing",
+      "seasonal": "sa"
+    },
+    "current_revision": 1,
+    "current_value": "1158.0",
+    "first_seen_at": "2026-03-07T00:00:00+00:00",
+    "information_available_at": "2026-03-07T00:00:00+00:00",
+    "synthetic": true,
+    "id": "5c177ab5-3222-5ca4-b64b-3cd8bb2dff77"
   },
   {
     "observation_key": "0dbd83f750842f551902125c30ea2e51cbce9466457684d9fced179387cbe294",
@@ -122,9 +455,9 @@
       "seasonal": "sa"
     },
     "current_revision": 1,
-    "current_value": "1000",
-    "first_seen_at": "2026-05-15T00:00:00+00:00",
-    "information_available_at": "2026-05-15T00:00:00+00:00",
+    "current_value": "1000.0",
+    "first_seen_at": "2026-02-24T00:00:00+00:00",
+    "information_available_at": "2026-02-24T00:00:00+00:00",
     "synthetic": true,
     "id": "54537095-4561-5b57-9bbe-95a2062cee91"
   },
@@ -139,10 +472,10 @@
       "measure": "employment",
       "seasonal": "sa"
     },
-    "current_revision": 2,
-    "current_value": "1012.5",
-    "first_seen_at": "2026-05-16T00:00:00+00:00",
-    "information_available_at": "2026-05-23T00:00:00+00:00",
+    "current_revision": 1,
+    "current_value": "1011.0",
+    "first_seen_at": "2026-02-25T00:00:00+00:00",
+    "information_available_at": "2026-02-25T00:00:00+00:00",
     "synthetic": true,
     "id": "60afc604-c039-5126-b51d-ee3e8ad1dc4c"
   },
@@ -158,11 +491,695 @@
       "seasonal": "sa"
     },
     "current_revision": 1,
-    "current_value": "1022",
-    "first_seen_at": "2026-05-17T00:00:00+00:00",
-    "information_available_at": "2026-05-17T00:00:00+00:00",
+    "current_value": "1022.0",
+    "first_seen_at": "2026-02-26T00:00:00+00:00",
+    "information_available_at": "2026-02-26T00:00:00+00:00",
     "synthetic": true,
     "id": "59fe2cb8-58ed-56ae-a398-cf4e574b50b9"
+  },
+  {
+    "observation_key": "56d1e1a95863f1d2a857a40e97a9dbdf2e7f90b031eec6603ef7256c99a25f5b",
+    "source_id": "bls-public-data",
+    "dataset_id": "bls-ces",
+    "profile_id": "bls-ces-total-nonfarm",
+    "period_start": "2026-04-01",
+    "period_end": "2026-04-01",
+    "dimensions": {
+      "measure": "employment",
+      "seasonal": "sa"
+    },
+    "current_revision": 1,
+    "current_value": "1033.0",
+    "first_seen_at": "2026-02-27T00:00:00+00:00",
+    "information_available_at": "2026-02-27T00:00:00+00:00",
+    "synthetic": true,
+    "id": "7203efbe-42f3-5e31-b5a2-8b8d365d50eb"
+  },
+  {
+    "observation_key": "b59a2e199474d61f559cabe66c9645fa6b7055a7cd85166f29a74f83a2420c96",
+    "source_id": "bls-public-data",
+    "dataset_id": "bls-ces",
+    "profile_id": "bls-ces-total-nonfarm",
+    "period_start": "2026-05-01",
+    "period_end": "2026-05-01",
+    "dimensions": {
+      "measure": "employment",
+      "seasonal": "sa"
+    },
+    "current_revision": 2,
+    "current_value": "1045.5",
+    "first_seen_at": "2026-02-28T00:00:00+00:00",
+    "information_available_at": "2026-03-07T00:00:00+00:00",
+    "synthetic": true,
+    "id": "a9715251-3b7b-534c-8cba-52a6f05faacf"
+  },
+  {
+    "observation_key": "cccb21bc6dcc4c991b388aedda5ccceb51ed322bc07269bee81d46f6f032f86f",
+    "source_id": "bls-public-data",
+    "dataset_id": "bls-ces",
+    "profile_id": "bls-ces-total-nonfarm",
+    "period_start": "2026-06-01",
+    "period_end": "2026-06-01",
+    "dimensions": {
+      "measure": "employment",
+      "seasonal": "sa"
+    },
+    "current_revision": 1,
+    "current_value": "1055.0",
+    "first_seen_at": "2026-03-01T00:00:00+00:00",
+    "information_available_at": "2026-03-01T00:00:00+00:00",
+    "synthetic": true,
+    "id": "fe11af98-90c1-5705-bbf0-901a367cbe42"
+  },
+  {
+    "observation_key": "e8bb681187a908da836d0ba0873b279f844d0914975807daf14f6840549bb9b6",
+    "source_id": "bls-public-data",
+    "dataset_id": "bls-ces",
+    "profile_id": "bls-ces-total-nonfarm",
+    "period_start": "2026-07-01",
+    "period_end": "2026-07-01",
+    "dimensions": {
+      "measure": "employment",
+      "seasonal": "sa"
+    },
+    "current_revision": 1,
+    "current_value": "1066.0",
+    "first_seen_at": "2026-03-02T00:00:00+00:00",
+    "information_available_at": "2026-03-02T00:00:00+00:00",
+    "synthetic": true,
+    "id": "30db9fe4-edcd-5070-8021-bb0cdddd316b"
+  },
+  {
+    "observation_key": "87effd527aa0bf9be41867b6b199a9764355695a15a4d92fc581ceb446dad987",
+    "source_id": "bls-public-data",
+    "dataset_id": "bls-ces",
+    "profile_id": "bls-ces-total-nonfarm",
+    "period_start": "2026-08-01",
+    "period_end": "2026-08-01",
+    "dimensions": {
+      "measure": "employment",
+      "seasonal": "sa"
+    },
+    "current_revision": 1,
+    "current_value": "1077.0",
+    "first_seen_at": "2026-03-03T00:00:00+00:00",
+    "information_available_at": "2026-03-03T00:00:00+00:00",
+    "synthetic": true,
+    "id": "4dceffff-ec86-5804-a368-e69b0904620f"
+  },
+  {
+    "observation_key": "b5b271b14c42b12e4b46efa31e28d1b87f8c91016a53c9d8691f351dd22e9203",
+    "source_id": "bls-public-data",
+    "dataset_id": "bls-ces",
+    "profile_id": "bls-ces-total-nonfarm",
+    "period_start": "2026-09-01",
+    "period_end": "2026-09-01",
+    "dimensions": {
+      "measure": "employment",
+      "seasonal": "sa"
+    },
+    "current_revision": 1,
+    "current_value": "1088.0",
+    "first_seen_at": "2026-03-04T00:00:00+00:00",
+    "information_available_at": "2026-03-04T00:00:00+00:00",
+    "synthetic": true,
+    "id": "4b979823-cb14-5e22-8bd3-30e24e5611c4"
+  },
+  {
+    "observation_key": "6274b3279513e0ac23121c96ed03b830f1aca3a07b156d9739a87e6bffb0575e",
+    "source_id": "bls-public-data",
+    "dataset_id": "bls-ces",
+    "profile_id": "bls-ces-total-nonfarm",
+    "period_start": "2026-10-01",
+    "period_end": "2026-10-01",
+    "dimensions": {
+      "measure": "employment",
+      "seasonal": "sa"
+    },
+    "current_revision": 2,
+    "current_value": "1100.5",
+    "first_seen_at": "2026-03-05T00:00:00+00:00",
+    "information_available_at": "2026-03-12T00:00:00+00:00",
+    "synthetic": true,
+    "id": "006ef0e1-7b2e-57fc-a696-8a3705c88c45"
+  },
+  {
+    "observation_key": "6cf3988e29b0928a4ff2d37cf4d18173350bb4e7d40af35f5ed94574c200f639",
+    "source_id": "bls-public-data",
+    "dataset_id": "bls-ces",
+    "profile_id": "bls-ces-total-nonfarm",
+    "period_start": "2026-11-01",
+    "period_end": "2026-11-01",
+    "dimensions": {
+      "measure": "employment",
+      "seasonal": "sa"
+    },
+    "current_revision": 1,
+    "current_value": "1110.0",
+    "first_seen_at": "2026-03-06T00:00:00+00:00",
+    "information_available_at": "2026-03-06T00:00:00+00:00",
+    "synthetic": true,
+    "id": "8e5bc8ab-990d-59d9-b6d3-b64d6c077d6e"
+  },
+  {
+    "observation_key": "630d5ea9f2685745f234d7b6972d1aa9c2ce9246809d58c6592b4a417d3b757a",
+    "source_id": "bls-public-data",
+    "dataset_id": "bls-ces",
+    "profile_id": "bls-ces-total-nonfarm",
+    "period_start": "2026-12-01",
+    "period_end": "2026-12-01",
+    "dimensions": {
+      "measure": "employment",
+      "seasonal": "sa"
+    },
+    "current_revision": 1,
+    "current_value": "1121.0",
+    "first_seen_at": "2026-03-07T00:00:00+00:00",
+    "information_available_at": "2026-03-07T00:00:00+00:00",
+    "synthetic": true,
+    "id": "f308ddad-0ec4-52cb-b889-2eabf47415f7"
+  },
+  {
+    "observation_key": "1aa1436ecd4be8a7f976cc6515a71438d4fc4b43411ba0c88df862c07d7eef94",
+    "source_id": "bls-public-data",
+    "dataset_id": "bls-ces",
+    "profile_id": "bls-ces-unemployment-rate",
+    "period_start": "2026-01-01",
+    "period_end": "2026-01-01",
+    "dimensions": {
+      "measure": "unemployment_rate",
+      "seasonal": "sa"
+    },
+    "current_revision": 1,
+    "current_value": "1111.0",
+    "first_seen_at": "2026-02-24T00:00:00+00:00",
+    "information_available_at": "2026-02-24T00:00:00+00:00",
+    "synthetic": true,
+    "id": "888e2999-dd20-5ae2-b3a9-974bdec6e7b2"
+  },
+  {
+    "observation_key": "0f2727b5de6f3f14c2ecbe3cbb4449cbdc9a21afa03bb0190272de1cba398676",
+    "source_id": "bls-public-data",
+    "dataset_id": "bls-ces",
+    "profile_id": "bls-ces-unemployment-rate",
+    "period_start": "2026-02-01",
+    "period_end": "2026-02-01",
+    "dimensions": {
+      "measure": "unemployment_rate",
+      "seasonal": "sa"
+    },
+    "current_revision": 1,
+    "current_value": "1122.0",
+    "first_seen_at": "2026-02-25T00:00:00+00:00",
+    "information_available_at": "2026-02-25T00:00:00+00:00",
+    "synthetic": true,
+    "id": "61bc9437-cf65-5e86-abdf-7d1f19d23090"
+  },
+  {
+    "observation_key": "fafbf3154090edc8aff45f84e8bae9000cb0250937708608e5b82498fd15adf6",
+    "source_id": "bls-public-data",
+    "dataset_id": "bls-ces",
+    "profile_id": "bls-ces-unemployment-rate",
+    "period_start": "2026-03-01",
+    "period_end": "2026-03-01",
+    "dimensions": {
+      "measure": "unemployment_rate",
+      "seasonal": "sa"
+    },
+    "current_revision": 1,
+    "current_value": "1133.0",
+    "first_seen_at": "2026-02-26T00:00:00+00:00",
+    "information_available_at": "2026-02-26T00:00:00+00:00",
+    "synthetic": true,
+    "id": "c9ec3064-ddd9-5f88-9c10-56db86cf68dc"
+  },
+  {
+    "observation_key": "8f90387a1e7f3062d6247dd70152f84fca6169aae977aa621b88f883dcd54d70",
+    "source_id": "bls-public-data",
+    "dataset_id": "bls-ces",
+    "profile_id": "bls-ces-unemployment-rate",
+    "period_start": "2026-04-01",
+    "period_end": "2026-04-01",
+    "dimensions": {
+      "measure": "unemployment_rate",
+      "seasonal": "sa"
+    },
+    "current_revision": 1,
+    "current_value": "1144.0",
+    "first_seen_at": "2026-02-27T00:00:00+00:00",
+    "information_available_at": "2026-02-27T00:00:00+00:00",
+    "synthetic": true,
+    "id": "3749317e-d1a7-5651-8193-16d31dc0289d"
+  },
+  {
+    "observation_key": "6ca7b3c201f4ab6fb25613b9af503d06ae2b9778ad5add340545c4eca69379b9",
+    "source_id": "bls-public-data",
+    "dataset_id": "bls-ces",
+    "profile_id": "bls-ces-unemployment-rate",
+    "period_start": "2026-05-01",
+    "period_end": "2026-05-01",
+    "dimensions": {
+      "measure": "unemployment_rate",
+      "seasonal": "sa"
+    },
+    "current_revision": 2,
+    "current_value": "1156.5",
+    "first_seen_at": "2026-02-28T00:00:00+00:00",
+    "information_available_at": "2026-03-07T00:00:00+00:00",
+    "synthetic": true,
+    "id": "8a05484d-ebdd-5746-896c-b36333a6703c"
+  },
+  {
+    "observation_key": "69f92b26d6c8f4ff126eff0b44629edd3eb20e11418f83ecb257abe0e7ee09f0",
+    "source_id": "bls-public-data",
+    "dataset_id": "bls-ces",
+    "profile_id": "bls-ces-unemployment-rate",
+    "period_start": "2026-06-01",
+    "period_end": "2026-06-01",
+    "dimensions": {
+      "measure": "unemployment_rate",
+      "seasonal": "sa"
+    },
+    "current_revision": 1,
+    "current_value": "1166.0",
+    "first_seen_at": "2026-03-01T00:00:00+00:00",
+    "information_available_at": "2026-03-01T00:00:00+00:00",
+    "synthetic": true,
+    "id": "a7526ef0-a0f8-5d60-a9e6-9cd6bf8efab2"
+  },
+  {
+    "observation_key": "34751a666ef13a25a093909207040071f5bcc41c6e2edc7cdf39f2aca07d91ef",
+    "source_id": "bls-public-data",
+    "dataset_id": "bls-ces",
+    "profile_id": "bls-ces-unemployment-rate",
+    "period_start": "2026-07-01",
+    "period_end": "2026-07-01",
+    "dimensions": {
+      "measure": "unemployment_rate",
+      "seasonal": "sa"
+    },
+    "current_revision": 1,
+    "current_value": "1177.0",
+    "first_seen_at": "2026-03-02T00:00:00+00:00",
+    "information_available_at": "2026-03-02T00:00:00+00:00",
+    "synthetic": true,
+    "id": "53254f13-7485-58b8-a213-b05538bf3a8f"
+  },
+  {
+    "observation_key": "2038cbdc2e48ee40b93fd1fad765e5c237441060495479cc1efc800135c14195",
+    "source_id": "bls-public-data",
+    "dataset_id": "bls-ces",
+    "profile_id": "bls-ces-unemployment-rate",
+    "period_start": "2026-08-01",
+    "period_end": "2026-08-01",
+    "dimensions": {
+      "measure": "unemployment_rate",
+      "seasonal": "sa"
+    },
+    "current_revision": 1,
+    "current_value": "1188.0",
+    "first_seen_at": "2026-03-03T00:00:00+00:00",
+    "information_available_at": "2026-03-03T00:00:00+00:00",
+    "synthetic": true,
+    "id": "4fb3674c-bb0a-59df-a3a3-944aa17ce0ea"
+  },
+  {
+    "observation_key": "3e5f14f4351eb246fd724de72f916396a347e83864e2d0e1b155f0582e620cda",
+    "source_id": "bls-public-data",
+    "dataset_id": "bls-ces",
+    "profile_id": "bls-ces-unemployment-rate",
+    "period_start": "2026-09-01",
+    "period_end": "2026-09-01",
+    "dimensions": {
+      "measure": "unemployment_rate",
+      "seasonal": "sa"
+    },
+    "current_revision": 1,
+    "current_value": "1199.0",
+    "first_seen_at": "2026-03-04T00:00:00+00:00",
+    "information_available_at": "2026-03-04T00:00:00+00:00",
+    "synthetic": true,
+    "id": "13f00732-03c8-5b58-ad95-58568355d836"
+  },
+  {
+    "observation_key": "0df7ff14dabe4b0b28b6222438b35f497f041bacea1af90bf2332bfb6d71bc52",
+    "source_id": "bls-public-data",
+    "dataset_id": "bls-ces",
+    "profile_id": "bls-ces-unemployment-rate",
+    "period_start": "2026-10-01",
+    "period_end": "2026-10-01",
+    "dimensions": {
+      "measure": "unemployment_rate",
+      "seasonal": "sa"
+    },
+    "current_revision": 2,
+    "current_value": "1211.5",
+    "first_seen_at": "2026-03-05T00:00:00+00:00",
+    "information_available_at": "2026-03-12T00:00:00+00:00",
+    "synthetic": true,
+    "id": "0ace8886-25c4-5893-aaa5-f1143a470108"
+  },
+  {
+    "observation_key": "1aa8e316faa717a7264cd810d8566bfc69d3f10cfffed54cd95a3d3b7dbe4d2b",
+    "source_id": "bls-public-data",
+    "dataset_id": "bls-ces",
+    "profile_id": "bls-ces-unemployment-rate",
+    "period_start": "2026-11-01",
+    "period_end": "2026-11-01",
+    "dimensions": {
+      "measure": "unemployment_rate",
+      "seasonal": "sa"
+    },
+    "current_revision": 1,
+    "current_value": "1221.0",
+    "first_seen_at": "2026-03-06T00:00:00+00:00",
+    "information_available_at": "2026-03-06T00:00:00+00:00",
+    "synthetic": true,
+    "id": "0327c2cc-1aeb-528a-a84b-896910b2e9e1"
+  },
+  {
+    "observation_key": "400ee7bee5311c9799a1b2a550c68e3d66142abe0af606e4b14de89cb315b1c8",
+    "source_id": "bls-public-data",
+    "dataset_id": "bls-ces",
+    "profile_id": "bls-ces-unemployment-rate",
+    "period_start": "2026-12-01",
+    "period_end": "2026-12-01",
+    "dimensions": {
+      "measure": "unemployment_rate",
+      "seasonal": "sa"
+    },
+    "current_revision": 1,
+    "current_value": "1232.0",
+    "first_seen_at": "2026-03-07T00:00:00+00:00",
+    "information_available_at": "2026-03-07T00:00:00+00:00",
+    "synthetic": true,
+    "id": "45ad9fc1-3660-5681-923e-69545a2adde8"
+  },
+  {
+    "observation_key": "5c77faa54989ee9fdf083899499f9268096bf79c4ef9c90a0d0004270167b58e",
+    "source_id": "cftc-cot-pre",
+    "dataset_id": "cftc-cot-pre",
+    "profile_id": "cftc-energy-positioning",
+    "period_start": "2026-01-02",
+    "period_end": "2026-01-02",
+    "dimensions": {
+      "market": "energy",
+      "report": "pre"
+    },
+    "current_revision": 1,
+    "current_value": "1407.0",
+    "first_seen_at": "2026-02-24T00:00:00+00:00",
+    "information_available_at": "2026-02-24T00:00:00+00:00",
+    "synthetic": true,
+    "id": "7ff3f91e-605f-50f9-8717-e2a13d9549e9"
+  },
+  {
+    "observation_key": "16886b643bef7377519067ad369d422d55c15104dd84041fcc52d6b62b8f850c",
+    "source_id": "cftc-cot-pre",
+    "dataset_id": "cftc-cot-pre",
+    "profile_id": "cftc-energy-positioning",
+    "period_start": "2026-01-09",
+    "period_end": "2026-01-09",
+    "dimensions": {
+      "market": "energy",
+      "report": "pre"
+    },
+    "current_revision": 1,
+    "current_value": "1418.0",
+    "first_seen_at": "2026-02-25T00:00:00+00:00",
+    "information_available_at": "2026-02-25T00:00:00+00:00",
+    "synthetic": true,
+    "id": "02758779-a2b6-5ad2-a6ec-56e2d2f48cb0"
+  },
+  {
+    "observation_key": "44c5301179d8d751350f4ad2b8c2d473efd432270bcf0fec79ea526a840378f8",
+    "source_id": "cftc-cot-pre",
+    "dataset_id": "cftc-cot-pre",
+    "profile_id": "cftc-energy-positioning",
+    "period_start": "2026-01-16",
+    "period_end": "2026-01-16",
+    "dimensions": {
+      "market": "energy",
+      "report": "pre"
+    },
+    "current_revision": 1,
+    "current_value": "1429.0",
+    "first_seen_at": "2026-02-26T00:00:00+00:00",
+    "information_available_at": "2026-02-26T00:00:00+00:00",
+    "synthetic": true,
+    "id": "56118b19-5a6a-5e28-be11-8fdc05deaa59"
+  },
+  {
+    "observation_key": "d650444ebe6567fd13f8df6e361b255715e407e4e4dcfedf79b4382d5ea362c4",
+    "source_id": "cftc-cot-pre",
+    "dataset_id": "cftc-cot-pre",
+    "profile_id": "cftc-energy-positioning",
+    "period_start": "2026-01-23",
+    "period_end": "2026-01-23",
+    "dimensions": {
+      "market": "energy",
+      "report": "pre"
+    },
+    "current_revision": 1,
+    "current_value": "1440.0",
+    "first_seen_at": "2026-02-27T00:00:00+00:00",
+    "information_available_at": "2026-02-27T00:00:00+00:00",
+    "synthetic": true,
+    "id": "d05aeb2f-69d4-5988-aeeb-9033be093c1c"
+  },
+  {
+    "observation_key": "1d06ec49c31054eabe314cecaf1013345859451f2ddb01316e5b22a5bbf5b54d",
+    "source_id": "cftc-cot-pre",
+    "dataset_id": "cftc-cot-pre",
+    "profile_id": "cftc-energy-positioning",
+    "period_start": "2026-01-30",
+    "period_end": "2026-01-30",
+    "dimensions": {
+      "market": "energy",
+      "report": "pre"
+    },
+    "current_revision": 2,
+    "current_value": "1452.5",
+    "first_seen_at": "2026-02-28T00:00:00+00:00",
+    "information_available_at": "2026-03-07T00:00:00+00:00",
+    "synthetic": true,
+    "id": "aa5f8812-d576-5987-b086-35539e77f573"
+  },
+  {
+    "observation_key": "4672a48ac4ecbbccda8400fdf435cc1a8f445d6696a8a89d72b1a75213f0f11f",
+    "source_id": "cftc-cot-pre",
+    "dataset_id": "cftc-cot-pre",
+    "profile_id": "cftc-energy-positioning",
+    "period_start": "2026-02-06",
+    "period_end": "2026-02-06",
+    "dimensions": {
+      "market": "energy",
+      "report": "pre"
+    },
+    "current_revision": 1,
+    "current_value": "1462.0",
+    "first_seen_at": "2026-03-01T00:00:00+00:00",
+    "information_available_at": "2026-03-01T00:00:00+00:00",
+    "synthetic": true,
+    "id": "d7a87967-53b2-5981-85b6-6ad5b3fb22d7"
+  },
+  {
+    "observation_key": "3dd927f5a2a1fe5752f83f49953282ad16615febf0459b70a975b87a37685f88",
+    "source_id": "cftc-cot-pre",
+    "dataset_id": "cftc-cot-pre",
+    "profile_id": "cftc-energy-positioning",
+    "period_start": "2026-02-13",
+    "period_end": "2026-02-13",
+    "dimensions": {
+      "market": "energy",
+      "report": "pre"
+    },
+    "current_revision": 1,
+    "current_value": "1473.0",
+    "first_seen_at": "2026-03-02T00:00:00+00:00",
+    "information_available_at": "2026-03-02T00:00:00+00:00",
+    "synthetic": true,
+    "id": "1b79d2a7-3df8-5289-bc0f-0342e9605be0"
+  },
+  {
+    "observation_key": "6944b4ff543deea2bb580b06ece1ae5506aafcdb1e8a054589036e9070b4a209",
+    "source_id": "cftc-cot-pre",
+    "dataset_id": "cftc-cot-pre",
+    "profile_id": "cftc-energy-positioning",
+    "period_start": "2026-02-20",
+    "period_end": "2026-02-20",
+    "dimensions": {
+      "market": "energy",
+      "report": "pre"
+    },
+    "current_revision": 1,
+    "current_value": "1484.0",
+    "first_seen_at": "2026-03-03T00:00:00+00:00",
+    "information_available_at": "2026-03-03T00:00:00+00:00",
+    "synthetic": true,
+    "id": "bb340d88-59b7-55f9-be32-c7472d71a35f"
+  },
+  {
+    "observation_key": "0c413d06819d121c64dde352fc2291d304e9b6c94cfe5735052700c0db777ffa",
+    "source_id": "cftc-cot-pre",
+    "dataset_id": "cftc-cot-pre",
+    "profile_id": "cftc-energy-positioning",
+    "period_start": "2026-02-27",
+    "period_end": "2026-02-27",
+    "dimensions": {
+      "market": "energy",
+      "report": "pre"
+    },
+    "current_revision": 1,
+    "current_value": "1495.0",
+    "first_seen_at": "2026-03-04T00:00:00+00:00",
+    "information_available_at": "2026-03-04T00:00:00+00:00",
+    "synthetic": true,
+    "id": "e0390c00-e495-521b-b333-0fdd4dc488c2"
+  },
+  {
+    "observation_key": "fd010d69a36decf4ff594eb35ddf50a7a523bd7f43e0abfb50c68323ac2cbf9a",
+    "source_id": "cftc-cot-pre",
+    "dataset_id": "cftc-cot-pre",
+    "profile_id": "cftc-energy-positioning",
+    "period_start": "2026-03-06",
+    "period_end": "2026-03-06",
+    "dimensions": {
+      "market": "energy",
+      "report": "pre"
+    },
+    "current_revision": 2,
+    "current_value": "1507.5",
+    "first_seen_at": "2026-03-05T00:00:00+00:00",
+    "information_available_at": "2026-03-12T00:00:00+00:00",
+    "synthetic": true,
+    "id": "c8ec4f64-b5de-5a97-823a-a0e7bb35f233"
+  },
+  {
+    "observation_key": "61e817643db7f0355c816b7ff0ef97738b4a0733434e724e8ec28459d7d57172",
+    "source_id": "cftc-cot-pre",
+    "dataset_id": "cftc-cot-pre",
+    "profile_id": "cftc-energy-positioning",
+    "period_start": "2026-03-13",
+    "period_end": "2026-03-13",
+    "dimensions": {
+      "market": "energy",
+      "report": "pre"
+    },
+    "current_revision": 1,
+    "current_value": "1517.0",
+    "first_seen_at": "2026-03-06T00:00:00+00:00",
+    "information_available_at": "2026-03-06T00:00:00+00:00",
+    "synthetic": true,
+    "id": "2700b415-7bdc-57e3-9466-d2322e0ac54c"
+  },
+  {
+    "observation_key": "14de784603005ad28e464ec14a3c33ebeeb473d967dbb07398986801b3546d35",
+    "source_id": "cftc-cot-pre",
+    "dataset_id": "cftc-cot-pre",
+    "profile_id": "cftc-energy-positioning",
+    "period_start": "2026-03-20",
+    "period_end": "2026-03-20",
+    "dimensions": {
+      "market": "energy",
+      "report": "pre"
+    },
+    "current_revision": 1,
+    "current_value": "1528.0",
+    "first_seen_at": "2026-03-07T00:00:00+00:00",
+    "information_available_at": "2026-03-07T00:00:00+00:00",
+    "synthetic": true,
+    "id": "cb335bed-2033-5cef-8943-82acdba79878"
+  },
+  {
+    "observation_key": "6d57bc6734ed9f0039e0aafc6c6f0f6f396d65de09c0e7fc9659d58a53040943",
+    "source_id": "cftc-cot-pre",
+    "dataset_id": "cftc-cot-pre",
+    "profile_id": "cftc-equity-index-positioning",
+    "period_start": "2026-01-02",
+    "period_end": "2026-01-02",
+    "dimensions": {
+      "market": "equity_index",
+      "report": "pre"
+    },
+    "current_revision": 1,
+    "current_value": "1296.0",
+    "first_seen_at": "2026-02-24T00:00:00+00:00",
+    "information_available_at": "2026-02-24T00:00:00+00:00",
+    "synthetic": true,
+    "id": "c2563beb-72da-5441-bfa0-cebc97178935"
+  },
+  {
+    "observation_key": "e704cffbd53e55e2c935709db6720c9a1345ad8856bc77910b7974fd0322c4ab",
+    "source_id": "cftc-cot-pre",
+    "dataset_id": "cftc-cot-pre",
+    "profile_id": "cftc-equity-index-positioning",
+    "period_start": "2026-01-09",
+    "period_end": "2026-01-09",
+    "dimensions": {
+      "market": "equity_index",
+      "report": "pre"
+    },
+    "current_revision": 1,
+    "current_value": "1307.0",
+    "first_seen_at": "2026-02-25T00:00:00+00:00",
+    "information_available_at": "2026-02-25T00:00:00+00:00",
+    "synthetic": true,
+    "id": "87562718-deee-5d71-a2f8-4c6c16169bb8"
+  },
+  {
+    "observation_key": "9373c1fc25e9c63b48fffe382228fa2937b31580b090b3dd668a3744ab5663ca",
+    "source_id": "cftc-cot-pre",
+    "dataset_id": "cftc-cot-pre",
+    "profile_id": "cftc-equity-index-positioning",
+    "period_start": "2026-01-16",
+    "period_end": "2026-01-16",
+    "dimensions": {
+      "market": "equity_index",
+      "report": "pre"
+    },
+    "current_revision": 1,
+    "current_value": "1318.0",
+    "first_seen_at": "2026-02-26T00:00:00+00:00",
+    "information_available_at": "2026-02-26T00:00:00+00:00",
+    "synthetic": true,
+    "id": "5f5f8b20-80f8-5cf2-b07b-b6a54efa95f3"
+  },
+  {
+    "observation_key": "1c6526f47e126c0850bb4b4b67849a380a5a941ea752b562b872924940fccd5e",
+    "source_id": "cftc-cot-pre",
+    "dataset_id": "cftc-cot-pre",
+    "profile_id": "cftc-equity-index-positioning",
+    "period_start": "2026-01-23",
+    "period_end": "2026-01-23",
+    "dimensions": {
+      "market": "equity_index",
+      "report": "pre"
+    },
+    "current_revision": 1,
+    "current_value": "1329.0",
+    "first_seen_at": "2026-02-27T00:00:00+00:00",
+    "information_available_at": "2026-02-27T00:00:00+00:00",
+    "synthetic": true,
+    "id": "18022d8e-5a9e-5c22-ad63-a0eb90e220a5"
+  },
+  {
+    "observation_key": "4c7a28b49a6ddb99f36b13a70b6d4e9aae890fcf5169c63cac93b707659b6a6a",
+    "source_id": "cftc-cot-pre",
+    "dataset_id": "cftc-cot-pre",
+    "profile_id": "cftc-equity-index-positioning",
+    "period_start": "2026-01-30",
+    "period_end": "2026-01-30",
+    "dimensions": {
+      "market": "equity_index",
+      "report": "pre"
+    },
+    "current_revision": 2,
+    "current_value": "1341.5",
+    "first_seen_at": "2026-02-28T00:00:00+00:00",
+    "information_available_at": "2026-03-07T00:00:00+00:00",
+    "synthetic": true,
+    "id": "28dd86ea-3d27-53a4-8d2d-8d1f5a9078d3"
   },
   {
     "observation_key": "15ed33d2182e07409f3f6d85e5f7911c596327bf92ade9a30133988472e27beb",
@@ -176,9 +1193,9 @@
       "report": "pre"
     },
     "current_revision": 1,
-    "current_value": "1222",
-    "first_seen_at": "2026-05-15T00:00:00+00:00",
-    "information_available_at": "2026-05-15T00:00:00+00:00",
+    "current_value": "1351.0",
+    "first_seen_at": "2026-03-01T00:00:00+00:00",
+    "information_available_at": "2026-03-01T00:00:00+00:00",
     "synthetic": true,
     "id": "c28d72dd-8f85-5cfa-969d-01cb9d214a2b"
   },
@@ -193,10 +1210,10 @@
       "market": "equity_index",
       "report": "pre"
     },
-    "current_revision": 2,
-    "current_value": "1234.5",
-    "first_seen_at": "2026-05-16T00:00:00+00:00",
-    "information_available_at": "2026-05-23T00:00:00+00:00",
+    "current_revision": 1,
+    "current_value": "1362.0",
+    "first_seen_at": "2026-03-02T00:00:00+00:00",
+    "information_available_at": "2026-03-02T00:00:00+00:00",
     "synthetic": true,
     "id": "038bee25-39aa-5902-b039-4071595fe18a"
   },
@@ -212,11 +1229,389 @@
       "report": "pre"
     },
     "current_revision": 1,
-    "current_value": "1244",
-    "first_seen_at": "2026-05-17T00:00:00+00:00",
-    "information_available_at": "2026-05-17T00:00:00+00:00",
+    "current_value": "1373.0",
+    "first_seen_at": "2026-03-03T00:00:00+00:00",
+    "information_available_at": "2026-03-03T00:00:00+00:00",
     "synthetic": true,
     "id": "4b71d37e-ba3a-583c-a300-14602eda432c"
+  },
+  {
+    "observation_key": "47a144ab54e8999d052f0170f2d80b39ab3eb788b4d72f74a08f937e82b9f6f5",
+    "source_id": "cftc-cot-pre",
+    "dataset_id": "cftc-cot-pre",
+    "profile_id": "cftc-equity-index-positioning",
+    "period_start": "2026-02-27",
+    "period_end": "2026-02-27",
+    "dimensions": {
+      "market": "equity_index",
+      "report": "pre"
+    },
+    "current_revision": 1,
+    "current_value": "1384.0",
+    "first_seen_at": "2026-03-04T00:00:00+00:00",
+    "information_available_at": "2026-03-04T00:00:00+00:00",
+    "synthetic": true,
+    "id": "c57595e4-0018-51b9-acbc-bb2f58fab1c9"
+  },
+  {
+    "observation_key": "309af6b7b39a514e6d1886dede1be5c74ba6c758c0f84a9893b4971519b19117",
+    "source_id": "cftc-cot-pre",
+    "dataset_id": "cftc-cot-pre",
+    "profile_id": "cftc-equity-index-positioning",
+    "period_start": "2026-03-06",
+    "period_end": "2026-03-06",
+    "dimensions": {
+      "market": "equity_index",
+      "report": "pre"
+    },
+    "current_revision": 2,
+    "current_value": "1396.5",
+    "first_seen_at": "2026-03-05T00:00:00+00:00",
+    "information_available_at": "2026-03-12T00:00:00+00:00",
+    "synthetic": true,
+    "id": "210e3613-b234-5a3f-8000-f537b75bdf3d"
+  },
+  {
+    "observation_key": "a636fa714252cfe376fce03899553c5e1976c5d4a3cb3c0855d0a32a5b8ae1b4",
+    "source_id": "cftc-cot-pre",
+    "dataset_id": "cftc-cot-pre",
+    "profile_id": "cftc-equity-index-positioning",
+    "period_start": "2026-03-13",
+    "period_end": "2026-03-13",
+    "dimensions": {
+      "market": "equity_index",
+      "report": "pre"
+    },
+    "current_revision": 1,
+    "current_value": "1406.0",
+    "first_seen_at": "2026-03-06T00:00:00+00:00",
+    "information_available_at": "2026-03-06T00:00:00+00:00",
+    "synthetic": true,
+    "id": "fde5eccc-c743-531e-aeb9-06e5087087b9"
+  },
+  {
+    "observation_key": "08828944a9d89e4ecd5cb691da71bdd9820a5cdfe8d1768e015786fdb91e95b4",
+    "source_id": "cftc-cot-pre",
+    "dataset_id": "cftc-cot-pre",
+    "profile_id": "cftc-equity-index-positioning",
+    "period_start": "2026-03-20",
+    "period_end": "2026-03-20",
+    "dimensions": {
+      "market": "equity_index",
+      "report": "pre"
+    },
+    "current_revision": 1,
+    "current_value": "1417.0",
+    "first_seen_at": "2026-03-07T00:00:00+00:00",
+    "information_available_at": "2026-03-07T00:00:00+00:00",
+    "synthetic": true,
+    "id": "fa459847-b985-580f-abdf-56d4995a4153"
+  },
+  {
+    "observation_key": "4ad75e76e35446a820924b88b32a7625b9750504960d85a9effd5c78408c8849",
+    "source_id": "cftc-cot-pre",
+    "dataset_id": "cftc-cot-pre",
+    "profile_id": "cftc-metals-positioning",
+    "period_start": "2026-01-02",
+    "period_end": "2026-01-02",
+    "dimensions": {
+      "market": "precious_metal",
+      "report": "pre"
+    },
+    "current_revision": 1,
+    "current_value": "1370.0",
+    "first_seen_at": "2026-02-24T00:00:00+00:00",
+    "information_available_at": "2026-02-24T00:00:00+00:00",
+    "synthetic": true,
+    "id": "3df2978b-7f7e-5ab9-94f3-b0854b1e09eb"
+  },
+  {
+    "observation_key": "288128d94cc64ea3af9ccf4b72370547485b9ba169dfef0d3290a579e3f96f40",
+    "source_id": "cftc-cot-pre",
+    "dataset_id": "cftc-cot-pre",
+    "profile_id": "cftc-metals-positioning",
+    "period_start": "2026-01-09",
+    "period_end": "2026-01-09",
+    "dimensions": {
+      "market": "precious_metal",
+      "report": "pre"
+    },
+    "current_revision": 1,
+    "current_value": "1381.0",
+    "first_seen_at": "2026-02-25T00:00:00+00:00",
+    "information_available_at": "2026-02-25T00:00:00+00:00",
+    "synthetic": true,
+    "id": "73753efe-ca97-5a75-8686-8181a6f2d8f2"
+  },
+  {
+    "observation_key": "30c7131824953224bc2117c5c343b92f6c8297a2f32144ef9306df40f4e33f3c",
+    "source_id": "cftc-cot-pre",
+    "dataset_id": "cftc-cot-pre",
+    "profile_id": "cftc-metals-positioning",
+    "period_start": "2026-01-16",
+    "period_end": "2026-01-16",
+    "dimensions": {
+      "market": "precious_metal",
+      "report": "pre"
+    },
+    "current_revision": 1,
+    "current_value": "1392.0",
+    "first_seen_at": "2026-02-26T00:00:00+00:00",
+    "information_available_at": "2026-02-26T00:00:00+00:00",
+    "synthetic": true,
+    "id": "339740c1-3e03-5d19-b9b7-e0638fb9950c"
+  },
+  {
+    "observation_key": "f0c9a1172209b28a9a9b973e80bb78b58dd2511f698a5cb25662a8957083708e",
+    "source_id": "cftc-cot-pre",
+    "dataset_id": "cftc-cot-pre",
+    "profile_id": "cftc-metals-positioning",
+    "period_start": "2026-01-23",
+    "period_end": "2026-01-23",
+    "dimensions": {
+      "market": "precious_metal",
+      "report": "pre"
+    },
+    "current_revision": 1,
+    "current_value": "1403.0",
+    "first_seen_at": "2026-02-27T00:00:00+00:00",
+    "information_available_at": "2026-02-27T00:00:00+00:00",
+    "synthetic": true,
+    "id": "8939dd31-c844-5403-be4a-feed0f30b6a1"
+  },
+  {
+    "observation_key": "fe715b30544c9fb0aef4e2ec0fc4ed5446113314d87d6fac4759ee5c73b2a6a1",
+    "source_id": "cftc-cot-pre",
+    "dataset_id": "cftc-cot-pre",
+    "profile_id": "cftc-metals-positioning",
+    "period_start": "2026-01-30",
+    "period_end": "2026-01-30",
+    "dimensions": {
+      "market": "precious_metal",
+      "report": "pre"
+    },
+    "current_revision": 2,
+    "current_value": "1415.5",
+    "first_seen_at": "2026-02-28T00:00:00+00:00",
+    "information_available_at": "2026-03-07T00:00:00+00:00",
+    "synthetic": true,
+    "id": "4c779be8-8f89-5f85-8126-ebb245feb5ef"
+  },
+  {
+    "observation_key": "21f405ff6965a982fca9843c861751ff011ac70b5ddba8f1755a23e5dc2c9abc",
+    "source_id": "cftc-cot-pre",
+    "dataset_id": "cftc-cot-pre",
+    "profile_id": "cftc-metals-positioning",
+    "period_start": "2026-02-06",
+    "period_end": "2026-02-06",
+    "dimensions": {
+      "market": "precious_metal",
+      "report": "pre"
+    },
+    "current_revision": 1,
+    "current_value": "1425.0",
+    "first_seen_at": "2026-03-01T00:00:00+00:00",
+    "information_available_at": "2026-03-01T00:00:00+00:00",
+    "synthetic": true,
+    "id": "18ddbc34-1491-5d95-a300-bdcab8e0670e"
+  },
+  {
+    "observation_key": "c6f8ce0701359df97563660fd8a0156c36cf70fb119d52e72505739d8bdffcda",
+    "source_id": "cftc-cot-pre",
+    "dataset_id": "cftc-cot-pre",
+    "profile_id": "cftc-metals-positioning",
+    "period_start": "2026-02-13",
+    "period_end": "2026-02-13",
+    "dimensions": {
+      "market": "precious_metal",
+      "report": "pre"
+    },
+    "current_revision": 1,
+    "current_value": "1436.0",
+    "first_seen_at": "2026-03-02T00:00:00+00:00",
+    "information_available_at": "2026-03-02T00:00:00+00:00",
+    "synthetic": true,
+    "id": "65a92bec-a896-5459-8e55-e689850f4a10"
+  },
+  {
+    "observation_key": "f53e49e2ef039314640dade2907efec943604f8538a8e97ce07b3749be150d35",
+    "source_id": "cftc-cot-pre",
+    "dataset_id": "cftc-cot-pre",
+    "profile_id": "cftc-metals-positioning",
+    "period_start": "2026-02-20",
+    "period_end": "2026-02-20",
+    "dimensions": {
+      "market": "precious_metal",
+      "report": "pre"
+    },
+    "current_revision": 1,
+    "current_value": "1447.0",
+    "first_seen_at": "2026-03-03T00:00:00+00:00",
+    "information_available_at": "2026-03-03T00:00:00+00:00",
+    "synthetic": true,
+    "id": "f11a4aa6-a103-52be-b911-fa13aea18140"
+  },
+  {
+    "observation_key": "98857ed140afd40a41db115ec3115d691f495d8a2a0de6c0699ef9d853f9c6a8",
+    "source_id": "cftc-cot-pre",
+    "dataset_id": "cftc-cot-pre",
+    "profile_id": "cftc-metals-positioning",
+    "period_start": "2026-02-27",
+    "period_end": "2026-02-27",
+    "dimensions": {
+      "market": "precious_metal",
+      "report": "pre"
+    },
+    "current_revision": 1,
+    "current_value": "1458.0",
+    "first_seen_at": "2026-03-04T00:00:00+00:00",
+    "information_available_at": "2026-03-04T00:00:00+00:00",
+    "synthetic": true,
+    "id": "4ea3ad81-5b8b-56be-89f6-b1176b241ec5"
+  },
+  {
+    "observation_key": "083a521cdd15212b3cc26f67f3dd502caa9d45dba1a46e08692c8e6614832fed",
+    "source_id": "cftc-cot-pre",
+    "dataset_id": "cftc-cot-pre",
+    "profile_id": "cftc-metals-positioning",
+    "period_start": "2026-03-06",
+    "period_end": "2026-03-06",
+    "dimensions": {
+      "market": "precious_metal",
+      "report": "pre"
+    },
+    "current_revision": 2,
+    "current_value": "1470.5",
+    "first_seen_at": "2026-03-05T00:00:00+00:00",
+    "information_available_at": "2026-03-12T00:00:00+00:00",
+    "synthetic": true,
+    "id": "34402646-48f8-5899-bf08-08bc94bd37f9"
+  },
+  {
+    "observation_key": "3ef1ba80a696a71af04e8e7cf29f51d448253f224bbac5d870bf36f509ae1b83",
+    "source_id": "cftc-cot-pre",
+    "dataset_id": "cftc-cot-pre",
+    "profile_id": "cftc-metals-positioning",
+    "period_start": "2026-03-13",
+    "period_end": "2026-03-13",
+    "dimensions": {
+      "market": "precious_metal",
+      "report": "pre"
+    },
+    "current_revision": 1,
+    "current_value": "1480.0",
+    "first_seen_at": "2026-03-06T00:00:00+00:00",
+    "information_available_at": "2026-03-06T00:00:00+00:00",
+    "synthetic": true,
+    "id": "b4af3934-ecfe-52c8-81f2-4a040e22c327"
+  },
+  {
+    "observation_key": "31471305d8b3cedebaf90f5d37f62484e3603b470978adde2d9976ddcbae605c",
+    "source_id": "cftc-cot-pre",
+    "dataset_id": "cftc-cot-pre",
+    "profile_id": "cftc-metals-positioning",
+    "period_start": "2026-03-20",
+    "period_end": "2026-03-20",
+    "dimensions": {
+      "market": "precious_metal",
+      "report": "pre"
+    },
+    "current_revision": 1,
+    "current_value": "1491.0",
+    "first_seen_at": "2026-03-07T00:00:00+00:00",
+    "information_available_at": "2026-03-07T00:00:00+00:00",
+    "synthetic": true,
+    "id": "29c17dc7-b67a-5064-9fb9-1379f00b32b1"
+  },
+  {
+    "observation_key": "3dd5f747ff160933767e1812d0534163dd4d7a6385e83234215a5728048ddecd",
+    "source_id": "cftc-cot-pre",
+    "dataset_id": "cftc-cot-pre",
+    "profile_id": "cftc-rates-positioning",
+    "period_start": "2026-01-02",
+    "period_end": "2026-01-02",
+    "dimensions": {
+      "market": "rates",
+      "report": "pre"
+    },
+    "current_revision": 1,
+    "current_value": "1333.0",
+    "first_seen_at": "2026-02-24T00:00:00+00:00",
+    "information_available_at": "2026-02-24T00:00:00+00:00",
+    "synthetic": true,
+    "id": "347ab2d9-87d8-5f3f-affe-acf1b6f8d430"
+  },
+  {
+    "observation_key": "1b0e423b7b9b2a4eae4fc73f8e953630daa2209b5eb3028449b43e994d66bda8",
+    "source_id": "cftc-cot-pre",
+    "dataset_id": "cftc-cot-pre",
+    "profile_id": "cftc-rates-positioning",
+    "period_start": "2026-01-09",
+    "period_end": "2026-01-09",
+    "dimensions": {
+      "market": "rates",
+      "report": "pre"
+    },
+    "current_revision": 1,
+    "current_value": "1344.0",
+    "first_seen_at": "2026-02-25T00:00:00+00:00",
+    "information_available_at": "2026-02-25T00:00:00+00:00",
+    "synthetic": true,
+    "id": "2d098e06-eb95-5510-902a-85aa0bb2d079"
+  },
+  {
+    "observation_key": "bd5351bac91192e582c7b83c2495489eeba900942d43412400eeb7e885e6679e",
+    "source_id": "cftc-cot-pre",
+    "dataset_id": "cftc-cot-pre",
+    "profile_id": "cftc-rates-positioning",
+    "period_start": "2026-01-16",
+    "period_end": "2026-01-16",
+    "dimensions": {
+      "market": "rates",
+      "report": "pre"
+    },
+    "current_revision": 1,
+    "current_value": "1355.0",
+    "first_seen_at": "2026-02-26T00:00:00+00:00",
+    "information_available_at": "2026-02-26T00:00:00+00:00",
+    "synthetic": true,
+    "id": "5a17cfa9-2a97-556c-aedf-98e55793faac"
+  },
+  {
+    "observation_key": "321e8ec48908a60d3767ec5326bbefa95a382940c9ad8ab9bf30c1228f9c1407",
+    "source_id": "cftc-cot-pre",
+    "dataset_id": "cftc-cot-pre",
+    "profile_id": "cftc-rates-positioning",
+    "period_start": "2026-01-23",
+    "period_end": "2026-01-23",
+    "dimensions": {
+      "market": "rates",
+      "report": "pre"
+    },
+    "current_revision": 1,
+    "current_value": "1366.0",
+    "first_seen_at": "2026-02-27T00:00:00+00:00",
+    "information_available_at": "2026-02-27T00:00:00+00:00",
+    "synthetic": true,
+    "id": "1dd90539-ae04-5010-947f-53153a63cbe8"
+  },
+  {
+    "observation_key": "2943570a7c00cdec5686b203df0793eb2bdbf401d090a4ddf71e118fe3c50aa9",
+    "source_id": "cftc-cot-pre",
+    "dataset_id": "cftc-cot-pre",
+    "profile_id": "cftc-rates-positioning",
+    "period_start": "2026-01-30",
+    "period_end": "2026-01-30",
+    "dimensions": {
+      "market": "rates",
+      "report": "pre"
+    },
+    "current_revision": 2,
+    "current_value": "1378.5",
+    "first_seen_at": "2026-02-28T00:00:00+00:00",
+    "information_available_at": "2026-03-07T00:00:00+00:00",
+    "synthetic": true,
+    "id": "0e298309-688d-549b-9508-eaa3b7a262cd"
   },
   {
     "observation_key": "132fc9bb5c1438326a3032f9fd05936c5181b69ae04d7a9cc14066896656d4e7",
@@ -230,9 +1625,9 @@
       "report": "pre"
     },
     "current_revision": 1,
-    "current_value": "1259",
-    "first_seen_at": "2026-05-15T00:00:00+00:00",
-    "information_available_at": "2026-05-15T00:00:00+00:00",
+    "current_value": "1388.0",
+    "first_seen_at": "2026-03-01T00:00:00+00:00",
+    "information_available_at": "2026-03-01T00:00:00+00:00",
     "synthetic": true,
     "id": "c977b5c6-175d-508c-b6b6-13e150d88ab4"
   },
@@ -247,10 +1642,10 @@
       "market": "rates",
       "report": "pre"
     },
-    "current_revision": 2,
-    "current_value": "1271.5",
-    "first_seen_at": "2026-05-16T00:00:00+00:00",
-    "information_available_at": "2026-05-23T00:00:00+00:00",
+    "current_revision": 1,
+    "current_value": "1399.0",
+    "first_seen_at": "2026-03-02T00:00:00+00:00",
+    "information_available_at": "2026-03-02T00:00:00+00:00",
     "synthetic": true,
     "id": "2a1121f1-4946-54a0-b437-9a261b27159e"
   },
@@ -266,11 +1661,173 @@
       "report": "pre"
     },
     "current_revision": 1,
-    "current_value": "1281",
-    "first_seen_at": "2026-05-17T00:00:00+00:00",
-    "information_available_at": "2026-05-17T00:00:00+00:00",
+    "current_value": "1410.0",
+    "first_seen_at": "2026-03-03T00:00:00+00:00",
+    "information_available_at": "2026-03-03T00:00:00+00:00",
     "synthetic": true,
     "id": "9b28470b-9747-5fdf-8ff4-213ed95e40ef"
+  },
+  {
+    "observation_key": "79a726b2b5547788d329fc613959d21b600d3a78537bf860c33f0196f1d3b3d7",
+    "source_id": "cftc-cot-pre",
+    "dataset_id": "cftc-cot-pre",
+    "profile_id": "cftc-rates-positioning",
+    "period_start": "2026-02-27",
+    "period_end": "2026-02-27",
+    "dimensions": {
+      "market": "rates",
+      "report": "pre"
+    },
+    "current_revision": 1,
+    "current_value": "1421.0",
+    "first_seen_at": "2026-03-04T00:00:00+00:00",
+    "information_available_at": "2026-03-04T00:00:00+00:00",
+    "synthetic": true,
+    "id": "e29f293c-7dc1-58ba-99dc-5c32862f3090"
+  },
+  {
+    "observation_key": "beb9fe3f80a5d964ceb94c9b9a61072f9eb65ec7428a3f797db224b9a0bfe472",
+    "source_id": "cftc-cot-pre",
+    "dataset_id": "cftc-cot-pre",
+    "profile_id": "cftc-rates-positioning",
+    "period_start": "2026-03-06",
+    "period_end": "2026-03-06",
+    "dimensions": {
+      "market": "rates",
+      "report": "pre"
+    },
+    "current_revision": 2,
+    "current_value": "1433.5",
+    "first_seen_at": "2026-03-05T00:00:00+00:00",
+    "information_available_at": "2026-03-12T00:00:00+00:00",
+    "synthetic": true,
+    "id": "2d1810df-e9f6-5143-b4fc-4a2308f3460f"
+  },
+  {
+    "observation_key": "f55220e715509352f159712897daa9df12e7e33659683da641329678eea123f5",
+    "source_id": "cftc-cot-pre",
+    "dataset_id": "cftc-cot-pre",
+    "profile_id": "cftc-rates-positioning",
+    "period_start": "2026-03-13",
+    "period_end": "2026-03-13",
+    "dimensions": {
+      "market": "rates",
+      "report": "pre"
+    },
+    "current_revision": 1,
+    "current_value": "1443.0",
+    "first_seen_at": "2026-03-06T00:00:00+00:00",
+    "information_available_at": "2026-03-06T00:00:00+00:00",
+    "synthetic": true,
+    "id": "5e813378-f4f0-5a9d-82cf-1977a7b3ffe9"
+  },
+  {
+    "observation_key": "c33a1360246037df0097e26e568d5034a9c40584b8ba77d4e361a03b874e1296",
+    "source_id": "cftc-cot-pre",
+    "dataset_id": "cftc-cot-pre",
+    "profile_id": "cftc-rates-positioning",
+    "period_start": "2026-03-20",
+    "period_end": "2026-03-20",
+    "dimensions": {
+      "market": "rates",
+      "report": "pre"
+    },
+    "current_revision": 1,
+    "current_value": "1454.0",
+    "first_seen_at": "2026-03-07T00:00:00+00:00",
+    "information_available_at": "2026-03-07T00:00:00+00:00",
+    "synthetic": true,
+    "id": "7b63293a-64fe-52d3-af00-c24077c0e16c"
+  },
+  {
+    "observation_key": "f5885fe695910dcf11900bc5be57f55a7b291e105914d69a6899d6e47c4bf613",
+    "source_id": "eia-open-data-v2",
+    "dataset_id": "eia-petroleum-stocks",
+    "profile_id": "eia-crude-stocks",
+    "period_start": "2026-01-02",
+    "period_end": "2026-01-02",
+    "dimensions": {
+      "commodity": "crude_oil",
+      "region": "us"
+    },
+    "current_revision": 1,
+    "current_value": "1148.0",
+    "first_seen_at": "2026-02-24T00:00:00+00:00",
+    "information_available_at": "2026-02-24T00:00:00+00:00",
+    "synthetic": true,
+    "id": "95c925a9-41be-53dc-bde5-94b7bf1bf743"
+  },
+  {
+    "observation_key": "91f4de688e7cc821e3325bf1d3ec1097d4a7a2f721d0b861430addc396d708da",
+    "source_id": "eia-open-data-v2",
+    "dataset_id": "eia-petroleum-stocks",
+    "profile_id": "eia-crude-stocks",
+    "period_start": "2026-01-09",
+    "period_end": "2026-01-09",
+    "dimensions": {
+      "commodity": "crude_oil",
+      "region": "us"
+    },
+    "current_revision": 1,
+    "current_value": "1159.0",
+    "first_seen_at": "2026-02-25T00:00:00+00:00",
+    "information_available_at": "2026-02-25T00:00:00+00:00",
+    "synthetic": true,
+    "id": "85ab0818-52bb-5c83-8488-d7072d7166ed"
+  },
+  {
+    "observation_key": "8647b8f44e5a12c78ebc6d1c23643b476d458655e0a40bb8a3b3ce1278e9c8e5",
+    "source_id": "eia-open-data-v2",
+    "dataset_id": "eia-petroleum-stocks",
+    "profile_id": "eia-crude-stocks",
+    "period_start": "2026-01-16",
+    "period_end": "2026-01-16",
+    "dimensions": {
+      "commodity": "crude_oil",
+      "region": "us"
+    },
+    "current_revision": 1,
+    "current_value": "1170.0",
+    "first_seen_at": "2026-02-26T00:00:00+00:00",
+    "information_available_at": "2026-02-26T00:00:00+00:00",
+    "synthetic": true,
+    "id": "04f2cb3b-20fa-5054-bcb5-f41af83a481d"
+  },
+  {
+    "observation_key": "802bf884739503011c3892cdb81f066e0a4b2d17852bd9b1366c23b8f794b732",
+    "source_id": "eia-open-data-v2",
+    "dataset_id": "eia-petroleum-stocks",
+    "profile_id": "eia-crude-stocks",
+    "period_start": "2026-01-23",
+    "period_end": "2026-01-23",
+    "dimensions": {
+      "commodity": "crude_oil",
+      "region": "us"
+    },
+    "current_revision": 1,
+    "current_value": "1181.0",
+    "first_seen_at": "2026-02-27T00:00:00+00:00",
+    "information_available_at": "2026-02-27T00:00:00+00:00",
+    "synthetic": true,
+    "id": "7870ec53-2aab-52d1-afc0-a1dc0cd7c7cc"
+  },
+  {
+    "observation_key": "d7623b19e6d2d0ee1715e710f3b83ae9db3b5a9dba59fb333ed7587e8ea42957",
+    "source_id": "eia-open-data-v2",
+    "dataset_id": "eia-petroleum-stocks",
+    "profile_id": "eia-crude-stocks",
+    "period_start": "2026-01-30",
+    "period_end": "2026-01-30",
+    "dimensions": {
+      "commodity": "crude_oil",
+      "region": "us"
+    },
+    "current_revision": 2,
+    "current_value": "1193.5",
+    "first_seen_at": "2026-02-28T00:00:00+00:00",
+    "information_available_at": "2026-03-07T00:00:00+00:00",
+    "synthetic": true,
+    "id": "2f1b332d-7f88-55c7-8eab-24a451e17f57"
   },
   {
     "observation_key": "b66ca11b3291921e8698a668bdc1df04c7777e378dd0c8519be9c688c8fc0f5d",
@@ -284,9 +1841,9 @@
       "region": "us"
     },
     "current_revision": 1,
-    "current_value": "1111",
-    "first_seen_at": "2026-05-15T00:00:00+00:00",
-    "information_available_at": "2026-05-15T00:00:00+00:00",
+    "current_value": "1203.0",
+    "first_seen_at": "2026-03-01T00:00:00+00:00",
+    "information_available_at": "2026-03-01T00:00:00+00:00",
     "synthetic": true,
     "id": "cbc9130e-2df1-512a-8c64-ad5d22681ed8"
   },
@@ -301,10 +1858,10 @@
       "commodity": "crude_oil",
       "region": "us"
     },
-    "current_revision": 2,
-    "current_value": "1123.5",
-    "first_seen_at": "2026-05-16T00:00:00+00:00",
-    "information_available_at": "2026-05-23T00:00:00+00:00",
+    "current_revision": 1,
+    "current_value": "1214.0",
+    "first_seen_at": "2026-03-02T00:00:00+00:00",
+    "information_available_at": "2026-03-02T00:00:00+00:00",
     "synthetic": true,
     "id": "54f1140f-064d-5225-b450-34d1155f0963"
   },
@@ -320,11 +1877,389 @@
       "region": "us"
     },
     "current_revision": 1,
-    "current_value": "1133",
-    "first_seen_at": "2026-05-17T00:00:00+00:00",
-    "information_available_at": "2026-05-17T00:00:00+00:00",
+    "current_value": "1225.0",
+    "first_seen_at": "2026-03-03T00:00:00+00:00",
+    "information_available_at": "2026-03-03T00:00:00+00:00",
     "synthetic": true,
     "id": "9a727eb2-d4e2-59c2-88a1-1eed73dcd9db"
+  },
+  {
+    "observation_key": "cba276dbe38e82421aad38604879308855642d28bc192dbf6d65fa024adf8897",
+    "source_id": "eia-open-data-v2",
+    "dataset_id": "eia-petroleum-stocks",
+    "profile_id": "eia-crude-stocks",
+    "period_start": "2026-02-27",
+    "period_end": "2026-02-27",
+    "dimensions": {
+      "commodity": "crude_oil",
+      "region": "us"
+    },
+    "current_revision": 1,
+    "current_value": "1236.0",
+    "first_seen_at": "2026-03-04T00:00:00+00:00",
+    "information_available_at": "2026-03-04T00:00:00+00:00",
+    "synthetic": true,
+    "id": "9d7a1931-1623-5ece-be5c-58ce6bf760f6"
+  },
+  {
+    "observation_key": "11fd2c9529d4537e4486cb518c3d2163cc66396694ccc371e08c2128195588a5",
+    "source_id": "eia-open-data-v2",
+    "dataset_id": "eia-petroleum-stocks",
+    "profile_id": "eia-crude-stocks",
+    "period_start": "2026-03-06",
+    "period_end": "2026-03-06",
+    "dimensions": {
+      "commodity": "crude_oil",
+      "region": "us"
+    },
+    "current_revision": 2,
+    "current_value": "1248.5",
+    "first_seen_at": "2026-03-05T00:00:00+00:00",
+    "information_available_at": "2026-03-12T00:00:00+00:00",
+    "synthetic": true,
+    "id": "cc759356-5597-5b32-bb44-9fcee23cc61f"
+  },
+  {
+    "observation_key": "cd8d8d2334acdedc6db48bbcbae4ab313feeedbb2e6b21a86e636d87794396f9",
+    "source_id": "eia-open-data-v2",
+    "dataset_id": "eia-petroleum-stocks",
+    "profile_id": "eia-crude-stocks",
+    "period_start": "2026-03-13",
+    "period_end": "2026-03-13",
+    "dimensions": {
+      "commodity": "crude_oil",
+      "region": "us"
+    },
+    "current_revision": 1,
+    "current_value": "1258.0",
+    "first_seen_at": "2026-03-06T00:00:00+00:00",
+    "information_available_at": "2026-03-06T00:00:00+00:00",
+    "synthetic": true,
+    "id": "e9bf53d9-9826-51de-a201-43080c89c7ed"
+  },
+  {
+    "observation_key": "c1523324cefbdf2d7e2d0a44520c481d10b7e270493d8361f6b3eb2417ca3964",
+    "source_id": "eia-open-data-v2",
+    "dataset_id": "eia-petroleum-stocks",
+    "profile_id": "eia-crude-stocks",
+    "period_start": "2026-03-20",
+    "period_end": "2026-03-20",
+    "dimensions": {
+      "commodity": "crude_oil",
+      "region": "us"
+    },
+    "current_revision": 1,
+    "current_value": "1269.0",
+    "first_seen_at": "2026-03-07T00:00:00+00:00",
+    "information_available_at": "2026-03-07T00:00:00+00:00",
+    "synthetic": true,
+    "id": "909a3bea-1e71-5e6b-93b7-3a29c8ff37e5"
+  },
+  {
+    "observation_key": "c93913e717a44013ce6e6b190bec0e3f92edb4f33a223643179ae83635a2f1a0",
+    "source_id": "eia-open-data-v2",
+    "dataset_id": "eia-petroleum-stocks",
+    "profile_id": "eia-distillate-stocks",
+    "period_start": "2026-01-02",
+    "period_end": "2026-01-02",
+    "dimensions": {
+      "commodity": "distillate",
+      "region": "us"
+    },
+    "current_revision": 1,
+    "current_value": "1259.0",
+    "first_seen_at": "2026-02-24T00:00:00+00:00",
+    "information_available_at": "2026-02-24T00:00:00+00:00",
+    "synthetic": true,
+    "id": "72f4fdf7-8978-5481-b4cc-a9e5f7f8ca1b"
+  },
+  {
+    "observation_key": "d5ff6246cedc0c04a9cf677bbfd18d30aa601be85aba17efd977e758238e9bf9",
+    "source_id": "eia-open-data-v2",
+    "dataset_id": "eia-petroleum-stocks",
+    "profile_id": "eia-distillate-stocks",
+    "period_start": "2026-01-09",
+    "period_end": "2026-01-09",
+    "dimensions": {
+      "commodity": "distillate",
+      "region": "us"
+    },
+    "current_revision": 1,
+    "current_value": "1270.0",
+    "first_seen_at": "2026-02-25T00:00:00+00:00",
+    "information_available_at": "2026-02-25T00:00:00+00:00",
+    "synthetic": true,
+    "id": "3880a364-3011-5be3-a40d-3ddcdfaa78f7"
+  },
+  {
+    "observation_key": "977ad8e0af77fa5cf45a95f07f3b46ee09d1026c7bad166249a7c1486fe9b172",
+    "source_id": "eia-open-data-v2",
+    "dataset_id": "eia-petroleum-stocks",
+    "profile_id": "eia-distillate-stocks",
+    "period_start": "2026-01-16",
+    "period_end": "2026-01-16",
+    "dimensions": {
+      "commodity": "distillate",
+      "region": "us"
+    },
+    "current_revision": 1,
+    "current_value": "1281.0",
+    "first_seen_at": "2026-02-26T00:00:00+00:00",
+    "information_available_at": "2026-02-26T00:00:00+00:00",
+    "synthetic": true,
+    "id": "81828d98-d1ff-518e-880d-6051544501ea"
+  },
+  {
+    "observation_key": "841162685d816c12e8fb3aced02e8fb12876a50ac63b53787680df811b47cd8a",
+    "source_id": "eia-open-data-v2",
+    "dataset_id": "eia-petroleum-stocks",
+    "profile_id": "eia-distillate-stocks",
+    "period_start": "2026-01-23",
+    "period_end": "2026-01-23",
+    "dimensions": {
+      "commodity": "distillate",
+      "region": "us"
+    },
+    "current_revision": 1,
+    "current_value": "1292.0",
+    "first_seen_at": "2026-02-27T00:00:00+00:00",
+    "information_available_at": "2026-02-27T00:00:00+00:00",
+    "synthetic": true,
+    "id": "0dbd0d20-78af-5e2a-bd78-0ee786dca0c7"
+  },
+  {
+    "observation_key": "37041a4a57b8e5c2f8f684885ad892fa526144c51243e890a4272fbbb1966887",
+    "source_id": "eia-open-data-v2",
+    "dataset_id": "eia-petroleum-stocks",
+    "profile_id": "eia-distillate-stocks",
+    "period_start": "2026-01-30",
+    "period_end": "2026-01-30",
+    "dimensions": {
+      "commodity": "distillate",
+      "region": "us"
+    },
+    "current_revision": 2,
+    "current_value": "1304.5",
+    "first_seen_at": "2026-02-28T00:00:00+00:00",
+    "information_available_at": "2026-03-07T00:00:00+00:00",
+    "synthetic": true,
+    "id": "b698fbe4-2f41-5607-a221-2dd4921c41d5"
+  },
+  {
+    "observation_key": "4737d1e7abf0c2e75a31e886ef008d9091a3fa072a47cdef2d0fb8b6927f6600",
+    "source_id": "eia-open-data-v2",
+    "dataset_id": "eia-petroleum-stocks",
+    "profile_id": "eia-distillate-stocks",
+    "period_start": "2026-02-06",
+    "period_end": "2026-02-06",
+    "dimensions": {
+      "commodity": "distillate",
+      "region": "us"
+    },
+    "current_revision": 1,
+    "current_value": "1314.0",
+    "first_seen_at": "2026-03-01T00:00:00+00:00",
+    "information_available_at": "2026-03-01T00:00:00+00:00",
+    "synthetic": true,
+    "id": "900c5bf5-30a7-59ba-ae20-c4295a501b31"
+  },
+  {
+    "observation_key": "bf03f2f7aa2a4f935f92ce0c83037f6ad6004b65d937806f1069d6fb102b7130",
+    "source_id": "eia-open-data-v2",
+    "dataset_id": "eia-petroleum-stocks",
+    "profile_id": "eia-distillate-stocks",
+    "period_start": "2026-02-13",
+    "period_end": "2026-02-13",
+    "dimensions": {
+      "commodity": "distillate",
+      "region": "us"
+    },
+    "current_revision": 1,
+    "current_value": "1325.0",
+    "first_seen_at": "2026-03-02T00:00:00+00:00",
+    "information_available_at": "2026-03-02T00:00:00+00:00",
+    "synthetic": true,
+    "id": "44db45f9-eacd-5dea-8278-e008b5816e0e"
+  },
+  {
+    "observation_key": "e3b2ed0bbc789ac6e5f05522f9078bc13c60f1ca24e690b2ae73ac770052715a",
+    "source_id": "eia-open-data-v2",
+    "dataset_id": "eia-petroleum-stocks",
+    "profile_id": "eia-distillate-stocks",
+    "period_start": "2026-02-20",
+    "period_end": "2026-02-20",
+    "dimensions": {
+      "commodity": "distillate",
+      "region": "us"
+    },
+    "current_revision": 1,
+    "current_value": "1336.0",
+    "first_seen_at": "2026-03-03T00:00:00+00:00",
+    "information_available_at": "2026-03-03T00:00:00+00:00",
+    "synthetic": true,
+    "id": "baa660f1-490d-5d48-9367-a613ca008ec3"
+  },
+  {
+    "observation_key": "e372d441730ff92ff886d16f74bc9b6b74093d0c7048243d6b4c58f0764ac4e3",
+    "source_id": "eia-open-data-v2",
+    "dataset_id": "eia-petroleum-stocks",
+    "profile_id": "eia-distillate-stocks",
+    "period_start": "2026-02-27",
+    "period_end": "2026-02-27",
+    "dimensions": {
+      "commodity": "distillate",
+      "region": "us"
+    },
+    "current_revision": 1,
+    "current_value": "1347.0",
+    "first_seen_at": "2026-03-04T00:00:00+00:00",
+    "information_available_at": "2026-03-04T00:00:00+00:00",
+    "synthetic": true,
+    "id": "51736200-4fe2-57bd-aedd-8501ce86453c"
+  },
+  {
+    "observation_key": "b36930fa9e0ceda154848efb2f80754ee5a0519f8c90c29e2914806aef4d77f2",
+    "source_id": "eia-open-data-v2",
+    "dataset_id": "eia-petroleum-stocks",
+    "profile_id": "eia-distillate-stocks",
+    "period_start": "2026-03-06",
+    "period_end": "2026-03-06",
+    "dimensions": {
+      "commodity": "distillate",
+      "region": "us"
+    },
+    "current_revision": 2,
+    "current_value": "1359.5",
+    "first_seen_at": "2026-03-05T00:00:00+00:00",
+    "information_available_at": "2026-03-12T00:00:00+00:00",
+    "synthetic": true,
+    "id": "89f50f86-a679-538a-a307-61c05f8db71f"
+  },
+  {
+    "observation_key": "50c5541acaaf9ac8eec3554c850fb0b3dc40c6abf14002268031f5f6d243e117",
+    "source_id": "eia-open-data-v2",
+    "dataset_id": "eia-petroleum-stocks",
+    "profile_id": "eia-distillate-stocks",
+    "period_start": "2026-03-13",
+    "period_end": "2026-03-13",
+    "dimensions": {
+      "commodity": "distillate",
+      "region": "us"
+    },
+    "current_revision": 1,
+    "current_value": "1369.0",
+    "first_seen_at": "2026-03-06T00:00:00+00:00",
+    "information_available_at": "2026-03-06T00:00:00+00:00",
+    "synthetic": true,
+    "id": "909bd8ca-56fb-5e12-8a74-0c5c49c6b7a4"
+  },
+  {
+    "observation_key": "7625b87fb31af5a084790b37248d51076d8598297b3593d608e851fc829a836d",
+    "source_id": "eia-open-data-v2",
+    "dataset_id": "eia-petroleum-stocks",
+    "profile_id": "eia-distillate-stocks",
+    "period_start": "2026-03-20",
+    "period_end": "2026-03-20",
+    "dimensions": {
+      "commodity": "distillate",
+      "region": "us"
+    },
+    "current_revision": 1,
+    "current_value": "1380.0",
+    "first_seen_at": "2026-03-07T00:00:00+00:00",
+    "information_available_at": "2026-03-07T00:00:00+00:00",
+    "synthetic": true,
+    "id": "85cf2ff3-93fc-5c17-9292-e558d83c6583"
+  },
+  {
+    "observation_key": "32b5fb3c10fde0adff000c57e6c8de73271e2b4f3500e05f5c2032d3c0f706a3",
+    "source_id": "eia-open-data-v2",
+    "dataset_id": "eia-petroleum-stocks",
+    "profile_id": "eia-gasoline-stocks",
+    "period_start": "2026-01-02",
+    "period_end": "2026-01-02",
+    "dimensions": {
+      "commodity": "gasoline",
+      "region": "us"
+    },
+    "current_revision": 1,
+    "current_value": "1185.0",
+    "first_seen_at": "2026-02-24T00:00:00+00:00",
+    "information_available_at": "2026-02-24T00:00:00+00:00",
+    "synthetic": true,
+    "id": "78432a88-6903-5b82-84c0-b4bcfaf31ac0"
+  },
+  {
+    "observation_key": "0033099d6dbace55d84bcf3d16e042568b6e3b8c41ba1d88c80968d363837d59",
+    "source_id": "eia-open-data-v2",
+    "dataset_id": "eia-petroleum-stocks",
+    "profile_id": "eia-gasoline-stocks",
+    "period_start": "2026-01-09",
+    "period_end": "2026-01-09",
+    "dimensions": {
+      "commodity": "gasoline",
+      "region": "us"
+    },
+    "current_revision": 1,
+    "current_value": "1196.0",
+    "first_seen_at": "2026-02-25T00:00:00+00:00",
+    "information_available_at": "2026-02-25T00:00:00+00:00",
+    "synthetic": true,
+    "id": "002a6805-6b71-5c45-9bd0-3d3025d6731f"
+  },
+  {
+    "observation_key": "1b44fc9b71f0940a1996216c9b1d42ddefbcccb006c3a2f6b036668c4a8fb5cb",
+    "source_id": "eia-open-data-v2",
+    "dataset_id": "eia-petroleum-stocks",
+    "profile_id": "eia-gasoline-stocks",
+    "period_start": "2026-01-16",
+    "period_end": "2026-01-16",
+    "dimensions": {
+      "commodity": "gasoline",
+      "region": "us"
+    },
+    "current_revision": 1,
+    "current_value": "1207.0",
+    "first_seen_at": "2026-02-26T00:00:00+00:00",
+    "information_available_at": "2026-02-26T00:00:00+00:00",
+    "synthetic": true,
+    "id": "83ea7ad5-fcaf-5c00-991e-7b79be792181"
+  },
+  {
+    "observation_key": "516eabdd1219838c24d8fcb26b26ae59721e36f126ab9bd1ad3e0026751aa23a",
+    "source_id": "eia-open-data-v2",
+    "dataset_id": "eia-petroleum-stocks",
+    "profile_id": "eia-gasoline-stocks",
+    "period_start": "2026-01-23",
+    "period_end": "2026-01-23",
+    "dimensions": {
+      "commodity": "gasoline",
+      "region": "us"
+    },
+    "current_revision": 1,
+    "current_value": "1218.0",
+    "first_seen_at": "2026-02-27T00:00:00+00:00",
+    "information_available_at": "2026-02-27T00:00:00+00:00",
+    "synthetic": true,
+    "id": "b7a1168e-bb31-5a29-bd71-55b46c9d3267"
+  },
+  {
+    "observation_key": "ee71a3280374bf311eff0ce7562f0953f7e537e32c35425645737691d8b827e4",
+    "source_id": "eia-open-data-v2",
+    "dataset_id": "eia-petroleum-stocks",
+    "profile_id": "eia-gasoline-stocks",
+    "period_start": "2026-01-30",
+    "period_end": "2026-01-30",
+    "dimensions": {
+      "commodity": "gasoline",
+      "region": "us"
+    },
+    "current_revision": 2,
+    "current_value": "1230.5",
+    "first_seen_at": "2026-02-28T00:00:00+00:00",
+    "information_available_at": "2026-03-07T00:00:00+00:00",
+    "synthetic": true,
+    "id": "93154067-8263-5fd8-a975-c3e5087b91db"
   },
   {
     "observation_key": "9f9936696cb56fb9e8219a41f7fdb6a3086f272f764102e79299dbbd62238c83",
@@ -338,9 +2273,9 @@
       "region": "us"
     },
     "current_revision": 1,
-    "current_value": "1148",
-    "first_seen_at": "2026-05-15T00:00:00+00:00",
-    "information_available_at": "2026-05-15T00:00:00+00:00",
+    "current_value": "1240.0",
+    "first_seen_at": "2026-03-01T00:00:00+00:00",
+    "information_available_at": "2026-03-01T00:00:00+00:00",
     "synthetic": true,
     "id": "5401f59c-51b7-5a87-abf7-e68721533a46"
   },
@@ -356,9 +2291,9 @@
       "region": "us"
     },
     "current_revision": 1,
-    "current_value": "1159",
-    "first_seen_at": "2026-05-16T00:00:00+00:00",
-    "information_available_at": "2026-05-16T00:00:00+00:00",
+    "current_value": "1251.0",
+    "first_seen_at": "2026-03-02T00:00:00+00:00",
+    "information_available_at": "2026-03-02T00:00:00+00:00",
     "synthetic": true,
     "id": "55d76582-2d4b-5ad2-afaf-9882030e9e8e"
   },
@@ -374,11 +2309,173 @@
       "region": "us"
     },
     "current_revision": 1,
-    "current_value": "1170",
-    "first_seen_at": "2026-05-17T00:00:00+00:00",
-    "information_available_at": "2026-05-17T00:00:00+00:00",
+    "current_value": "1262.0",
+    "first_seen_at": "2026-03-03T00:00:00+00:00",
+    "information_available_at": "2026-03-03T00:00:00+00:00",
     "synthetic": true,
     "id": "8f6ad0a4-d174-5e47-acf3-8a317399d4e2"
+  },
+  {
+    "observation_key": "be09bf9a567fb94afed01d962cf1da3b83a850ac3006a4f01afe8a2fb81d7029",
+    "source_id": "eia-open-data-v2",
+    "dataset_id": "eia-petroleum-stocks",
+    "profile_id": "eia-gasoline-stocks",
+    "period_start": "2026-02-27",
+    "period_end": "2026-02-27",
+    "dimensions": {
+      "commodity": "gasoline",
+      "region": "us"
+    },
+    "current_revision": 1,
+    "current_value": "1273.0",
+    "first_seen_at": "2026-03-04T00:00:00+00:00",
+    "information_available_at": "2026-03-04T00:00:00+00:00",
+    "synthetic": true,
+    "id": "763251c2-482a-5a16-9b3a-477ef2be1da1"
+  },
+  {
+    "observation_key": "fdb0e511e3fa051dd2390648a3ba0d798099bf44639e397c4d57ac2b9fec32df",
+    "source_id": "eia-open-data-v2",
+    "dataset_id": "eia-petroleum-stocks",
+    "profile_id": "eia-gasoline-stocks",
+    "period_start": "2026-03-06",
+    "period_end": "2026-03-06",
+    "dimensions": {
+      "commodity": "gasoline",
+      "region": "us"
+    },
+    "current_revision": 2,
+    "current_value": "1285.5",
+    "first_seen_at": "2026-03-05T00:00:00+00:00",
+    "information_available_at": "2026-03-12T00:00:00+00:00",
+    "synthetic": true,
+    "id": "0ab7108a-dc30-5373-9ed9-c8e75374c815"
+  },
+  {
+    "observation_key": "9eb6cb92c06206735e1990bae9e5271e51a3eabd0ca22fb4223aa8c217379512",
+    "source_id": "eia-open-data-v2",
+    "dataset_id": "eia-petroleum-stocks",
+    "profile_id": "eia-gasoline-stocks",
+    "period_start": "2026-03-13",
+    "period_end": "2026-03-13",
+    "dimensions": {
+      "commodity": "gasoline",
+      "region": "us"
+    },
+    "current_revision": 1,
+    "current_value": "1295.0",
+    "first_seen_at": "2026-03-06T00:00:00+00:00",
+    "information_available_at": "2026-03-06T00:00:00+00:00",
+    "synthetic": true,
+    "id": "6dd3435c-c1d8-5238-801d-1f305eed0847"
+  },
+  {
+    "observation_key": "642eeea4b9a17aeef0bdc0aea05c16e5f91cf2a3ad943d67d2a423036e323937",
+    "source_id": "eia-open-data-v2",
+    "dataset_id": "eia-petroleum-stocks",
+    "profile_id": "eia-gasoline-stocks",
+    "period_start": "2026-03-20",
+    "period_end": "2026-03-20",
+    "dimensions": {
+      "commodity": "gasoline",
+      "region": "us"
+    },
+    "current_revision": 1,
+    "current_value": "1306.0",
+    "first_seen_at": "2026-03-07T00:00:00+00:00",
+    "information_available_at": "2026-03-07T00:00:00+00:00",
+    "synthetic": true,
+    "id": "f2ee0086-ed68-5e55-9329-ad95f61159e3"
+  },
+  {
+    "observation_key": "3cb7d40a88c2dab7570440cb88bb9fc3b52d6a70051bc312173bdc1e123505ff",
+    "source_id": "eia-open-data-v2",
+    "dataset_id": "eia-petroleum-stocks",
+    "profile_id": "eia-natural-gas-storage",
+    "period_start": "2026-01-02",
+    "period_end": "2026-01-02",
+    "dimensions": {
+      "commodity": "natural_gas",
+      "region": "us"
+    },
+    "current_revision": 1,
+    "current_value": "1222.0",
+    "first_seen_at": "2026-02-24T00:00:00+00:00",
+    "information_available_at": "2026-02-24T00:00:00+00:00",
+    "synthetic": true,
+    "id": "45a43561-1f21-5bf3-a062-b5027dd4d4ce"
+  },
+  {
+    "observation_key": "bc4a788e3f553bdde7bf5307f266337a44bfd089257ecaa981742bafe64c84ae",
+    "source_id": "eia-open-data-v2",
+    "dataset_id": "eia-petroleum-stocks",
+    "profile_id": "eia-natural-gas-storage",
+    "period_start": "2026-01-09",
+    "period_end": "2026-01-09",
+    "dimensions": {
+      "commodity": "natural_gas",
+      "region": "us"
+    },
+    "current_revision": 1,
+    "current_value": "1233.0",
+    "first_seen_at": "2026-02-25T00:00:00+00:00",
+    "information_available_at": "2026-02-25T00:00:00+00:00",
+    "synthetic": true,
+    "id": "a991f0cd-484e-5cf4-a5b7-88a3baace78b"
+  },
+  {
+    "observation_key": "f5b6df82453b239daa5e38376b9cf44e43784422795199814d8fd1276ac41564",
+    "source_id": "eia-open-data-v2",
+    "dataset_id": "eia-petroleum-stocks",
+    "profile_id": "eia-natural-gas-storage",
+    "period_start": "2026-01-16",
+    "period_end": "2026-01-16",
+    "dimensions": {
+      "commodity": "natural_gas",
+      "region": "us"
+    },
+    "current_revision": 1,
+    "current_value": "1244.0",
+    "first_seen_at": "2026-02-26T00:00:00+00:00",
+    "information_available_at": "2026-02-26T00:00:00+00:00",
+    "synthetic": true,
+    "id": "cb2216f7-643c-5c51-aa91-9f5ab2940c9c"
+  },
+  {
+    "observation_key": "1e5d9c29476c25def22f0b8af1c1b1017ae3a64a5990df826d14ad060b70cad4",
+    "source_id": "eia-open-data-v2",
+    "dataset_id": "eia-petroleum-stocks",
+    "profile_id": "eia-natural-gas-storage",
+    "period_start": "2026-01-23",
+    "period_end": "2026-01-23",
+    "dimensions": {
+      "commodity": "natural_gas",
+      "region": "us"
+    },
+    "current_revision": 1,
+    "current_value": "1255.0",
+    "first_seen_at": "2026-02-27T00:00:00+00:00",
+    "information_available_at": "2026-02-27T00:00:00+00:00",
+    "synthetic": true,
+    "id": "e0b58e1d-a070-5f6e-9b08-6754e9470808"
+  },
+  {
+    "observation_key": "edf0a914f0f93f00f8bfd8463398797c566510bdc3be08bcfa73bcc5e42878e8",
+    "source_id": "eia-open-data-v2",
+    "dataset_id": "eia-petroleum-stocks",
+    "profile_id": "eia-natural-gas-storage",
+    "period_start": "2026-01-30",
+    "period_end": "2026-01-30",
+    "dimensions": {
+      "commodity": "natural_gas",
+      "region": "us"
+    },
+    "current_revision": 2,
+    "current_value": "1267.5",
+    "first_seen_at": "2026-02-28T00:00:00+00:00",
+    "information_available_at": "2026-03-07T00:00:00+00:00",
+    "synthetic": true,
+    "id": "af9a3a32-68b6-585e-9192-eb9de51e4e8b"
   },
   {
     "observation_key": "77d5f9a261ae789f4d95fa33b8dbc50686c5604c831ab048bbcc532770fa2f95",
@@ -392,9 +2489,9 @@
       "region": "us"
     },
     "current_revision": 1,
-    "current_value": "1185",
-    "first_seen_at": "2026-05-15T00:00:00+00:00",
-    "information_available_at": "2026-05-15T00:00:00+00:00",
+    "current_value": "1277.0",
+    "first_seen_at": "2026-03-01T00:00:00+00:00",
+    "information_available_at": "2026-03-01T00:00:00+00:00",
     "synthetic": true,
     "id": "75f2c7d8-a3e0-503e-864b-435b17a1bafc"
   },
@@ -410,9 +2507,9 @@
       "region": "us"
     },
     "current_revision": 1,
-    "current_value": "1196",
-    "first_seen_at": "2026-05-16T00:00:00+00:00",
-    "information_available_at": "2026-05-16T00:00:00+00:00",
+    "current_value": "1288.0",
+    "first_seen_at": "2026-03-02T00:00:00+00:00",
+    "information_available_at": "2026-03-02T00:00:00+00:00",
     "synthetic": true,
     "id": "5ce46828-c2e3-51d4-bf2a-96c83866b09e"
   },
@@ -428,10 +2525,82 @@
       "region": "us"
     },
     "current_revision": 1,
-    "current_value": "1207",
-    "first_seen_at": "2026-05-17T00:00:00+00:00",
-    "information_available_at": "2026-05-17T00:00:00+00:00",
+    "current_value": "1299.0",
+    "first_seen_at": "2026-03-03T00:00:00+00:00",
+    "information_available_at": "2026-03-03T00:00:00+00:00",
     "synthetic": true,
     "id": "7fff53c9-535e-5c68-a4f9-5941e26ff26c"
+  },
+  {
+    "observation_key": "c513c59f39c3230c974c99c0f0ce383b8f9562bb88b46ab5d73f6b89f37b2f6c",
+    "source_id": "eia-open-data-v2",
+    "dataset_id": "eia-petroleum-stocks",
+    "profile_id": "eia-natural-gas-storage",
+    "period_start": "2026-02-27",
+    "period_end": "2026-02-27",
+    "dimensions": {
+      "commodity": "natural_gas",
+      "region": "us"
+    },
+    "current_revision": 1,
+    "current_value": "1310.0",
+    "first_seen_at": "2026-03-04T00:00:00+00:00",
+    "information_available_at": "2026-03-04T00:00:00+00:00",
+    "synthetic": true,
+    "id": "f82b0263-51f8-59e3-ba73-46ab3146992a"
+  },
+  {
+    "observation_key": "a3619df94b3e1d484352974c4014ea7ebadd47f08ca7a45ae9c222ea40626184",
+    "source_id": "eia-open-data-v2",
+    "dataset_id": "eia-petroleum-stocks",
+    "profile_id": "eia-natural-gas-storage",
+    "period_start": "2026-03-06",
+    "period_end": "2026-03-06",
+    "dimensions": {
+      "commodity": "natural_gas",
+      "region": "us"
+    },
+    "current_revision": 2,
+    "current_value": "1322.5",
+    "first_seen_at": "2026-03-05T00:00:00+00:00",
+    "information_available_at": "2026-03-12T00:00:00+00:00",
+    "synthetic": true,
+    "id": "044fd55b-b034-5932-925c-9f6317932fc6"
+  },
+  {
+    "observation_key": "ac640e3af819a36567693034b12e0c74692b5fc417ec3be1b10383ad530419f4",
+    "source_id": "eia-open-data-v2",
+    "dataset_id": "eia-petroleum-stocks",
+    "profile_id": "eia-natural-gas-storage",
+    "period_start": "2026-03-13",
+    "period_end": "2026-03-13",
+    "dimensions": {
+      "commodity": "natural_gas",
+      "region": "us"
+    },
+    "current_revision": 1,
+    "current_value": "1332.0",
+    "first_seen_at": "2026-03-06T00:00:00+00:00",
+    "information_available_at": "2026-03-06T00:00:00+00:00",
+    "synthetic": true,
+    "id": "a072edc6-e856-5f02-8022-d07228f7a5ca"
+  },
+  {
+    "observation_key": "7dc76cc735a1f3fdd9619a9dec4a150733999c702c37c9d981c44108196df1ed",
+    "source_id": "eia-open-data-v2",
+    "dataset_id": "eia-petroleum-stocks",
+    "profile_id": "eia-natural-gas-storage",
+    "period_start": "2026-03-20",
+    "period_end": "2026-03-20",
+    "dimensions": {
+      "commodity": "natural_gas",
+      "region": "us"
+    },
+    "current_revision": 1,
+    "current_value": "1343.0",
+    "first_seen_at": "2026-03-07T00:00:00+00:00",
+    "information_available_at": "2026-03-07T00:00:00+00:00",
+    "synthetic": true,
+    "id": "ddf43ba0-fc39-581d-af60-e2bf589dfa6a"
   }
 ]

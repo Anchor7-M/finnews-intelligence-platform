@@ -239,13 +239,16 @@ vi.mock("../src/api/client", () => ({
     fixture_version: "official-data-synthetic-v1",
     generated_at: "2026-06-24T00:00:00+00:00",
     dataset_count: 4,
-    series_profile_count: 10,
-    observation_count: 24,
-    revision_count: 28,
-    revised_observation_count: 4,
-    regulatory_document_count: 8,
+    series_profile_count: 16,
+    definition_count_total: 16,
+    observation_count: 144,
+    revision_count: 168,
+    physical_revision_row_count: 168,
+    changed_value_revision_count: 24,
+    revised_observation_count: 24,
+    regulatory_document_count: 32,
     series_asset_association_count: 80,
-    official_release_event_count: 32,
+    official_release_event_count: 48,
     source_counts: { "bls-public-data": 1 },
     revision_policy: "append_only_point_in_time",
     body_storage: "metadata_and_source_abstracts_only",
@@ -779,7 +782,7 @@ describe("frontend compliance", () => {
     expect(wrapper.text()).toContain("Official Data Monitor");
     expect(wrapper.text()).toContain("Synthetic official-data demo");
     expect(wrapper.text()).toContain("Datasets");
-    expect(wrapper.text()).toContain("28");
+    expect(wrapper.text()).toContain("168");
     expect(wrapper.text()).toContain("Total nonfarm payrolls");
     expect(wrapper.text()).toContain("155001.500000");
     expect(wrapper.text()).toContain("Regulatory Metadata");

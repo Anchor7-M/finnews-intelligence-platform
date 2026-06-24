@@ -53,7 +53,7 @@ describe("data client", () => {
       json: async () =>
         url.includes("/api/v1/official-data/observations")
           ? { items: [{ observation_key: "obs-1", current_revision: 2 }] }
-          : { dataset_count: 4, revision_count: 28 },
+          : { dataset_count: 4, revision_count: 168, changed_value_revision_count: 24 },
     }));
     vi.stubGlobal("fetch", fetchMock);
     await expect(loadOfficialDataOverview("static-demo")).resolves.toMatchObject({

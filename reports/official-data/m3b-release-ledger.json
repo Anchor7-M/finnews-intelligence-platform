@@ -1,0 +1,79 @@
+{
+  "association_distribution": {
+    "bls-public-data": 20,
+    "cftc-cot-pre": 20,
+    "eia-open-data-v2": 20,
+    "federal-register-api": 20
+  },
+  "changed_revision_distribution": {
+    "bls-public-data": 8,
+    "cftc-cot-pre": 8,
+    "eia-open-data-v2": 8
+  },
+  "changed_value_revision_count": 24,
+  "current_observation_count": 144,
+  "dataset_definition_count": 4,
+  "definition_count_total": 16,
+  "derived_release_event_count": 48,
+  "deterministic_hashes": {
+    "associations": "3690e3f6d8081ace8458ffb47e253b2f7e0d27c50db629e765f359cce823808b",
+    "datasets": "ef226a5b4b12ef21701e5bff37eca9b8c96bb299641dcc724f67a12fcedba1b6",
+    "documents": "07d6b1dddc2808df8aee209d05f1c0b07a05c96367395c9ffbf594854908b7cb",
+    "events": "3f742c586d0377d54ca2054b15980fcae09d0797f644d530d113d449bfa80530",
+    "observations": "482230ab5b5915d69c979f6d75173f6962974821d9b8860ac62f9c95aa3bddf3",
+    "profiles": "f3ab9da69a215117f5a57365c2da200891b7f0e50a47ea30097309ba05cb19d4",
+    "revisions": "01c322401027515691f986c67b32bafd63a4145755908a681f8f32899a097103"
+  },
+  "document_distribution": {
+    "fr-bank-capital-regulation": 8,
+    "fr-commodity-reporting-regulation": 8,
+    "fr-energy-regulation": 8,
+    "fr-market-structure-regulation": 8
+  },
+  "event_distribution": {
+    "bls-public-data": 12,
+    "cftc-cot-pre": 12,
+    "eia-open-data-v2": 12,
+    "federal-register-api": 12
+  },
+  "generator_version": "official-data-synthetic-v1",
+  "ledger_sha256": "dc9d27a571172f38e7e7e56708439844fc81e5818f4d5398f51a7903b80d0bb5",
+  "live_data_persisted": false,
+  "not_investment_advice": true,
+  "observation_business_key_count": 144,
+  "observation_distribution": {
+    "bls-public-data": 48,
+    "cftc-cot-pre": 48,
+    "eia-open-data-v2": 48
+  },
+  "observation_revision_row_count": 168,
+  "official_source_definition_count": 4,
+  "physical_dataset_table_count": 4,
+  "postgres_table_counts": {},
+  "query_profile_count": 8,
+  "regulatory_document_count": 32,
+  "release_run_count": 4,
+  "revision_storage_model": "official_observations stores one current row per business key; official_observation_revisions stores revision 1 plus changed-value revisions",
+  "schema_version": "m3b-release-ledger-v1",
+  "series_asset_association_count": 80,
+  "series_definition_count": 8,
+  "source_distribution": {
+    "bls-public-data": 4,
+    "cftc-cot-pre": 4,
+    "eia-open-data-v2": 4,
+    "federal-register-api": 4
+  },
+  "static_export_record_counts": {
+    "official-data-overview": 1,
+    "official-data-release-runs": 4,
+    "official-datasets": 4,
+    "official-observation-revisions": 168,
+    "official-observations": 144,
+    "official-regulatory-documents": 32,
+    "official-release-events": 48,
+    "official-series": 16,
+    "official-series-asset-associations": 80
+  },
+  "superseded_revision_count": 24,
+  "synthetic_data": true
+}

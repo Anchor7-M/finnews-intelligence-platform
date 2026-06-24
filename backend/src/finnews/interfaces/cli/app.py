@@ -36,6 +36,7 @@ from finnews.application.services.nlp_reporting import (
     nlp_static_payload,
 )
 from finnews.application.services.official_data import (
+    build_official_data_release_ledger,
     official_data_overview,
     official_data_static_payload,
     persist_official_data_demo,
@@ -81,11 +82,13 @@ from finnews.infrastructure.sources.fixtures import JsonlFixtureSource
 from finnews.infrastructure.sources.local_feed import LocalFeedSource
 from finnews.infrastructure.sources.registry import (
     SourceConfigError,
+    load_source_definitions,
     validate_source_definitions,
 )
 from finnews.infrastructure.sources.reviews import (
     SourceReviewError,
     load_source_reviews,
+    source_config_digest,
     validate_source_review_integrity,
     validate_source_reviews,
 )
@@ -964,13 +967,15 @@ def official_data_validate_fixtures() -> None:
     overview = official_data_overview(repo)
     expected = {
         "dataset_count": 4,
-        "series_profile_count": 10,
-        "observation_count": 24,
-        "revision_count": 28,
-        "revised_observation_count": 4,
-        "regulatory_document_count": 8,
+        "series_profile_count": 16,
+        "definition_count_total": 16,
+        "observation_count": 144,
+        "revision_count": 168,
+        "changed_value_revision_count": 24,
+        "revised_observation_count": 24,
+        "regulatory_document_count": 32,
         "series_asset_association_count": 80,
-        "official_release_event_count": 32,
+        "official_release_event_count": 48,
     }
     mismatches = {
         key: {"expected": value, "actual": overview.get(key)}
@@ -986,6 +991,120 @@ def official_data_validate_fixtures() -> None:
     typer.echo(json.dumps(result, sort_keys=True, default=str))
     if mismatches:
         raise typer.Exit(code=4)
+
+
+@official_data_app.command("release-audit")
+def official_data_release_audit() -> None:
+    output = _repo_root() / "reports" / "official-data" / "m3b-release-ledger.json"
+    output.parent.mkdir(parents=True, exist_ok=True)
+    repo = build_memory_repository()
+    ledger = build_official_data_release_ledger(repo)
+    output.write_text(
+        json.dumps(ledger, ensure_ascii=False, indent=2, sort_keys=True, default=str) + "\n",
+        encoding="utf-8",
+    )
+    typer.echo(
+        json.dumps(
+            {
+                "status": "completed",
+                "path": str(output.relative_to(_repo_root())).replace("\\", "/"),
+                "ledger_sha256": ledger["ledger_sha256"],
+            },
+            sort_keys=True,
+        )
+    )
+
+
+@official_data_app.command("source-audit")
+def official_data_source_audit() -> None:
+    output = _repo_root() / "reports" / "official-data" / "m3b-source-review-audit.json"
+    output.parent.mkdir(parents=True, exist_ok=True)
+    official_source_ids = {
+        "bls-public-data",
+        "eia-open-data-v2",
+        "cftc-cot-pre",
+        "federal-register-api",
+    }
+    sources = {
+        source.source_id: source
+        for source in load_source_definitions()
+        if source.source_id in official_source_ids
+    }
+    reviews = {
+        review.source_id: review
+        for review in load_source_reviews()
+        if review.source_id in official_source_ids
+    }
+    validated = set(
+        validate_source_review_integrity(list(sources.values()), list(reviews.values()))
+    )
+    rows: list[dict[str, Any]] = []
+    for source_id in sorted(official_source_ids):
+        source = sources[source_id]
+        review = reviews[source_id]
+        rows.append(
+            {
+                "source_id": source_id,
+                "review_decision": review.review_decision,
+                "enabled": source.enabled,
+                "official_owner": review.official_owner,
+                "official_source": review.official_source,
+                "documentation_url": review.documentation_url,
+                "terms_or_policy_url": review.terms_or_policy_url,
+                "evidence_checked_at": review.evidence_checked_at,
+                "approved_hostnames": sorted(source.approved_hostnames),
+                "allowed_hostnames": sorted(review.allowed_hostnames),
+                "endpoint_template": source.endpoint_template,
+                "documented_endpoint_patterns": review.documented_endpoint_patterns,
+                "methods": review.allowed_methods,
+                "http_method": source.http_method,
+                "api_version": source.dataset_profiles.get("api_version"),
+                "authentication_category": review.authentication_requirement,
+                "cost": review.access_cost,
+                "request_limits": {
+                    "max_response_bytes": source.max_response_bytes,
+                    "minimum_interval_seconds": source.minimum_interval_seconds,
+                    "retry_policy": {
+                        "max_retries": source.retry_policy.max_retries,
+                        "base_delay_seconds": source.retry_policy.base_delay_seconds,
+                        "max_delay_seconds": source.retry_policy.max_delay_seconds,
+                    },
+                },
+                "source_specific_risks": review.known_risks,
+                "storage_policy": source.content_storage_policy.value,
+                "revision_behavior": source.dataset_profiles.get("revision_behavior"),
+                "live_smoke_status": review.live_smoke_status,
+                "config_digest": source_config_digest(source),
+                "review_config_sha256": review.source_config_sha256,
+                "stale_review": source_config_digest(source) != review.source_config_sha256,
+                "validated": source_id in validated,
+            }
+        )
+    payload = {
+        "schema_version": "m3b-source-review-audit-v1",
+        "synthetic_data": True,
+        "live_data_persisted": False,
+        "source_count": len(rows),
+        "all_disabled": all(row["enabled"] is False for row in rows),
+        "all_reviews_current": all(row["stale_review"] is False for row in rows),
+        "sources": rows,
+    }
+    output.write_text(
+        json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True, default=str) + "\n",
+        encoding="utf-8",
+    )
+    typer.echo(
+        json.dumps(
+            {
+                "status": "completed",
+                "path": str(output.relative_to(_repo_root())).replace("\\", "/"),
+                "source_count": payload["source_count"],
+                "all_disabled": payload["all_disabled"],
+                "all_reviews_current": payload["all_reviews_current"],
+            },
+            sort_keys=True,
+        )
+    )
 
 
 @official_data_app.command("export-static")

@@ -1,10 +1,10 @@
 [
   {
-    "document_id": "FR-SYN-0008",
+    "document_id": "FR-SYN-0032",
     "source_id": "federal-register-api",
     "title": "Synthetic commodity reporting regulatory document 8",
     "abstract": "Source-provided synthetic abstract for commodity reporting metadata fixture 8.",
-    "publication_date": "2026-03-08",
+    "publication_date": "2026-04-01",
     "document_type": "Proposed Rule",
     "agencies": [
       "Commodity Futures Trading Commission"
@@ -15,22 +15,257 @@
     "rin": [
       "3038-AF45"
     ],
-    "html_url": "https://www.federalregister.gov/documents/2026/03/08/fr-syn-0008",
-    "pdf_url": "https://www.govinfo.gov/content/pkg/FR-SYN-0008/pdf/FR-SYN-0008.pdf",
-    "information_available_at": "2026-03-08T12:00:00+00:00",
-    "source_updated_at": "2026-03-08T12:00:00+00:00",
+    "html_url": "https://www.federalregister.gov/documents/2026/03/01/fr-syn-0032",
+    "pdf_url": "https://www.govinfo.gov/content/pkg/FR-SYN-0032/pdf/FR-SYN-0032.pdf",
+    "information_available_at": "2026-04-01T12:00:00+00:00",
+    "source_updated_at": "2026-04-01T12:00:00+00:00",
     "synthetic": true,
     "provenance": {
-      "fixture_version": "official-data-synthetic-v1"
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_id": "fr-commodity-reporting-regulation",
+      "full_text_requested": false,
+      "pdf_downloaded": false
     },
-    "id": "fe4b9dbb-0963-5b97-ace2-540953693023"
+    "id": "2c4e872a-bb18-574b-986f-99f69fea3c73"
   },
   {
-    "document_id": "FR-SYN-0007",
+    "document_id": "FR-SYN-0031",
+    "source_id": "federal-register-api",
+    "title": "Synthetic commodity reporting regulatory document 7",
+    "abstract": "Source-provided synthetic abstract for commodity reporting metadata fixture 7.",
+    "publication_date": "2026-03-31",
+    "document_type": "Notice",
+    "agencies": [
+      "Commodity Futures Trading Commission"
+    ],
+    "cfr_references": [
+      "17 CFR 45"
+    ],
+    "rin": [
+      "3038-AF45"
+    ],
+    "html_url": "https://www.federalregister.gov/documents/2026/03/31/fr-syn-0031",
+    "pdf_url": "https://www.govinfo.gov/content/pkg/FR-SYN-0031/pdf/FR-SYN-0031.pdf",
+    "information_available_at": "2026-03-31T12:00:00+00:00",
+    "source_updated_at": "2026-03-31T12:00:00+00:00",
+    "synthetic": true,
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_id": "fr-commodity-reporting-regulation",
+      "full_text_requested": false,
+      "pdf_downloaded": false
+    },
+    "id": "e5e88eac-f711-5175-a98e-7ef2500b3fcf"
+  },
+  {
+    "document_id": "FR-SYN-0030",
+    "source_id": "federal-register-api",
+    "title": "Synthetic commodity reporting regulatory document 6",
+    "abstract": "Source-provided synthetic abstract for commodity reporting metadata fixture 6.",
+    "publication_date": "2026-03-30",
+    "document_type": "Proposed Rule",
+    "agencies": [
+      "Commodity Futures Trading Commission"
+    ],
+    "cfr_references": [
+      "17 CFR 45"
+    ],
+    "rin": [
+      "3038-AF45"
+    ],
+    "html_url": "https://www.federalregister.gov/documents/2026/03/30/fr-syn-0030",
+    "pdf_url": "https://www.govinfo.gov/content/pkg/FR-SYN-0030/pdf/FR-SYN-0030.pdf",
+    "information_available_at": "2026-03-30T12:00:00+00:00",
+    "source_updated_at": "2026-03-30T12:00:00+00:00",
+    "synthetic": true,
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_id": "fr-commodity-reporting-regulation",
+      "full_text_requested": false,
+      "pdf_downloaded": false
+    },
+    "id": "864c8170-3ff2-567c-a66a-5f3cc5da3fcd"
+  },
+  {
+    "document_id": "FR-SYN-0029",
+    "source_id": "federal-register-api",
+    "title": "Synthetic commodity reporting regulatory document 5",
+    "abstract": "Source-provided synthetic abstract for commodity reporting metadata fixture 5.",
+    "publication_date": "2026-03-29",
+    "document_type": "Notice",
+    "agencies": [
+      "Commodity Futures Trading Commission"
+    ],
+    "cfr_references": [
+      "17 CFR 45"
+    ],
+    "rin": [
+      "3038-AF45"
+    ],
+    "html_url": "https://www.federalregister.gov/documents/2026/03/29/fr-syn-0029",
+    "pdf_url": "https://www.govinfo.gov/content/pkg/FR-SYN-0029/pdf/FR-SYN-0029.pdf",
+    "information_available_at": "2026-03-29T12:00:00+00:00",
+    "source_updated_at": "2026-03-29T12:00:00+00:00",
+    "synthetic": true,
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_id": "fr-commodity-reporting-regulation",
+      "full_text_requested": false,
+      "pdf_downloaded": false
+    },
+    "id": "164939d6-56e0-54cf-b0d0-d8916e4a79a2"
+  },
+  {
+    "document_id": "FR-SYN-0028",
+    "source_id": "federal-register-api",
+    "title": "Synthetic commodity reporting regulatory document 4",
+    "abstract": "Source-provided synthetic abstract for commodity reporting metadata fixture 4.",
+    "publication_date": "2026-03-28",
+    "document_type": "Proposed Rule",
+    "agencies": [
+      "Commodity Futures Trading Commission"
+    ],
+    "cfr_references": [
+      "17 CFR 45"
+    ],
+    "rin": [
+      "3038-AF45"
+    ],
+    "html_url": "https://www.federalregister.gov/documents/2026/03/28/fr-syn-0028",
+    "pdf_url": "https://www.govinfo.gov/content/pkg/FR-SYN-0028/pdf/FR-SYN-0028.pdf",
+    "information_available_at": "2026-03-28T12:00:00+00:00",
+    "source_updated_at": "2026-03-28T12:00:00+00:00",
+    "synthetic": true,
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_id": "fr-commodity-reporting-regulation",
+      "full_text_requested": false,
+      "pdf_downloaded": false
+    },
+    "id": "e9081785-1b1b-5175-a944-3d1c96f59a71"
+  },
+  {
+    "document_id": "FR-SYN-0027",
+    "source_id": "federal-register-api",
+    "title": "Synthetic commodity reporting regulatory document 3",
+    "abstract": "Source-provided synthetic abstract for commodity reporting metadata fixture 3.",
+    "publication_date": "2026-03-27",
+    "document_type": "Notice",
+    "agencies": [
+      "Commodity Futures Trading Commission"
+    ],
+    "cfr_references": [
+      "17 CFR 45"
+    ],
+    "rin": [
+      "3038-AF45"
+    ],
+    "html_url": "https://www.federalregister.gov/documents/2026/03/27/fr-syn-0027",
+    "pdf_url": "https://www.govinfo.gov/content/pkg/FR-SYN-0027/pdf/FR-SYN-0027.pdf",
+    "information_available_at": "2026-03-27T12:00:00+00:00",
+    "source_updated_at": "2026-03-27T12:00:00+00:00",
+    "synthetic": true,
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_id": "fr-commodity-reporting-regulation",
+      "full_text_requested": false,
+      "pdf_downloaded": false
+    },
+    "id": "fa5d277d-4b6c-5566-a794-a1aa197fead5"
+  },
+  {
+    "document_id": "FR-SYN-0026",
+    "source_id": "federal-register-api",
+    "title": "Synthetic commodity reporting regulatory document 2",
+    "abstract": "Source-provided synthetic abstract for commodity reporting metadata fixture 2.",
+    "publication_date": "2026-03-26",
+    "document_type": "Proposed Rule",
+    "agencies": [
+      "Commodity Futures Trading Commission"
+    ],
+    "cfr_references": [
+      "17 CFR 45"
+    ],
+    "rin": [
+      "3038-AF45"
+    ],
+    "html_url": "https://www.federalregister.gov/documents/2026/03/26/fr-syn-0026",
+    "pdf_url": "https://www.govinfo.gov/content/pkg/FR-SYN-0026/pdf/FR-SYN-0026.pdf",
+    "information_available_at": "2026-03-26T12:00:00+00:00",
+    "source_updated_at": "2026-03-26T12:00:00+00:00",
+    "synthetic": true,
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_id": "fr-commodity-reporting-regulation",
+      "full_text_requested": false,
+      "pdf_downloaded": false
+    },
+    "id": "cc41daa7-d21b-5103-85e8-507f7906e258"
+  },
+  {
+    "document_id": "FR-SYN-0025",
+    "source_id": "federal-register-api",
+    "title": "Synthetic commodity reporting regulatory document 1",
+    "abstract": "Source-provided synthetic abstract for commodity reporting metadata fixture 1.",
+    "publication_date": "2026-03-25",
+    "document_type": "Notice",
+    "agencies": [
+      "Commodity Futures Trading Commission"
+    ],
+    "cfr_references": [
+      "17 CFR 45"
+    ],
+    "rin": [
+      "3038-AF45"
+    ],
+    "html_url": "https://www.federalregister.gov/documents/2026/03/25/fr-syn-0025",
+    "pdf_url": "https://www.govinfo.gov/content/pkg/FR-SYN-0025/pdf/FR-SYN-0025.pdf",
+    "information_available_at": "2026-03-25T12:00:00+00:00",
+    "source_updated_at": "2026-03-25T12:00:00+00:00",
+    "synthetic": true,
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_id": "fr-commodity-reporting-regulation",
+      "full_text_requested": false,
+      "pdf_downloaded": false
+    },
+    "id": "6d8e47c8-cc90-51ba-9ddf-1dea2f9f4a1b"
+  },
+  {
+    "document_id": "FR-SYN-0024",
+    "source_id": "federal-register-api",
+    "title": "Synthetic bank capital regulatory document 8",
+    "abstract": "Source-provided synthetic abstract for bank capital metadata fixture 8.",
+    "publication_date": "2026-03-24",
+    "document_type": "Proposed Rule",
+    "agencies": [
+      "Federal Reserve System"
+    ],
+    "cfr_references": [
+      "12 CFR 217"
+    ],
+    "rin": [
+      "7100-AG77"
+    ],
+    "html_url": "https://www.federalregister.gov/documents/2026/03/24/fr-syn-0024",
+    "pdf_url": "https://www.govinfo.gov/content/pkg/FR-SYN-0024/pdf/FR-SYN-0024.pdf",
+    "information_available_at": "2026-03-24T12:00:00+00:00",
+    "source_updated_at": "2026-03-24T12:00:00+00:00",
+    "synthetic": true,
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_id": "fr-bank-capital-regulation",
+      "full_text_requested": false,
+      "pdf_downloaded": false
+    },
+    "id": "067899af-076a-5165-9541-bbc237fb2cdc"
+  },
+  {
+    "document_id": "FR-SYN-0023",
     "source_id": "federal-register-api",
     "title": "Synthetic bank capital regulatory document 7",
     "abstract": "Source-provided synthetic abstract for bank capital metadata fixture 7.",
-    "publication_date": "2026-03-07",
+    "publication_date": "2026-03-23",
     "document_type": "Notice",
     "agencies": [
       "Federal Reserve System"
@@ -41,22 +276,199 @@
     "rin": [
       "7100-AG77"
     ],
-    "html_url": "https://www.federalregister.gov/documents/2026/03/07/fr-syn-0007",
-    "pdf_url": "https://www.govinfo.gov/content/pkg/FR-SYN-0007/pdf/FR-SYN-0007.pdf",
-    "information_available_at": "2026-03-07T12:00:00+00:00",
-    "source_updated_at": "2026-03-07T12:00:00+00:00",
+    "html_url": "https://www.federalregister.gov/documents/2026/03/23/fr-syn-0023",
+    "pdf_url": "https://www.govinfo.gov/content/pkg/FR-SYN-0023/pdf/FR-SYN-0023.pdf",
+    "information_available_at": "2026-03-23T12:00:00+00:00",
+    "source_updated_at": "2026-03-23T12:00:00+00:00",
     "synthetic": true,
     "provenance": {
-      "fixture_version": "official-data-synthetic-v1"
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_id": "fr-bank-capital-regulation",
+      "full_text_requested": false,
+      "pdf_downloaded": false
     },
-    "id": "dc2586d1-5a4a-5c16-92ab-1d017f9fb1c0"
+    "id": "436864e9-1bc6-5614-b3aa-7a0918662bc4"
   },
   {
-    "document_id": "FR-SYN-0006",
+    "document_id": "FR-SYN-0022",
     "source_id": "federal-register-api",
-    "title": "Synthetic market structure regulatory document 6",
-    "abstract": "Source-provided synthetic abstract for market structure metadata fixture 6.",
-    "publication_date": "2026-03-06",
+    "title": "Synthetic bank capital regulatory document 6",
+    "abstract": "Source-provided synthetic abstract for bank capital metadata fixture 6.",
+    "publication_date": "2026-03-22",
+    "document_type": "Proposed Rule",
+    "agencies": [
+      "Federal Reserve System"
+    ],
+    "cfr_references": [
+      "12 CFR 217"
+    ],
+    "rin": [
+      "7100-AG77"
+    ],
+    "html_url": "https://www.federalregister.gov/documents/2026/03/22/fr-syn-0022",
+    "pdf_url": "https://www.govinfo.gov/content/pkg/FR-SYN-0022/pdf/FR-SYN-0022.pdf",
+    "information_available_at": "2026-03-22T12:00:00+00:00",
+    "source_updated_at": "2026-03-22T12:00:00+00:00",
+    "synthetic": true,
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_id": "fr-bank-capital-regulation",
+      "full_text_requested": false,
+      "pdf_downloaded": false
+    },
+    "id": "6a0d2115-e61b-56bf-93d1-f9487285f861"
+  },
+  {
+    "document_id": "FR-SYN-0021",
+    "source_id": "federal-register-api",
+    "title": "Synthetic bank capital regulatory document 5",
+    "abstract": "Source-provided synthetic abstract for bank capital metadata fixture 5.",
+    "publication_date": "2026-03-21",
+    "document_type": "Notice",
+    "agencies": [
+      "Federal Reserve System"
+    ],
+    "cfr_references": [
+      "12 CFR 217"
+    ],
+    "rin": [
+      "7100-AG77"
+    ],
+    "html_url": "https://www.federalregister.gov/documents/2026/03/21/fr-syn-0021",
+    "pdf_url": "https://www.govinfo.gov/content/pkg/FR-SYN-0021/pdf/FR-SYN-0021.pdf",
+    "information_available_at": "2026-03-21T12:00:00+00:00",
+    "source_updated_at": "2026-03-21T12:00:00+00:00",
+    "synthetic": true,
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_id": "fr-bank-capital-regulation",
+      "full_text_requested": false,
+      "pdf_downloaded": false
+    },
+    "id": "2ca26b8f-71fa-5e9a-a803-cdcf9f0d55b0"
+  },
+  {
+    "document_id": "FR-SYN-0020",
+    "source_id": "federal-register-api",
+    "title": "Synthetic bank capital regulatory document 4",
+    "abstract": "Source-provided synthetic abstract for bank capital metadata fixture 4.",
+    "publication_date": "2026-03-20",
+    "document_type": "Proposed Rule",
+    "agencies": [
+      "Federal Reserve System"
+    ],
+    "cfr_references": [
+      "12 CFR 217"
+    ],
+    "rin": [
+      "7100-AG77"
+    ],
+    "html_url": "https://www.federalregister.gov/documents/2026/03/20/fr-syn-0020",
+    "pdf_url": "https://www.govinfo.gov/content/pkg/FR-SYN-0020/pdf/FR-SYN-0020.pdf",
+    "information_available_at": "2026-03-20T12:00:00+00:00",
+    "source_updated_at": "2026-03-20T12:00:00+00:00",
+    "synthetic": true,
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_id": "fr-bank-capital-regulation",
+      "full_text_requested": false,
+      "pdf_downloaded": false
+    },
+    "id": "aa44d8bd-64b7-5639-b602-3b07917471bb"
+  },
+  {
+    "document_id": "FR-SYN-0019",
+    "source_id": "federal-register-api",
+    "title": "Synthetic bank capital regulatory document 3",
+    "abstract": "Source-provided synthetic abstract for bank capital metadata fixture 3.",
+    "publication_date": "2026-03-19",
+    "document_type": "Notice",
+    "agencies": [
+      "Federal Reserve System"
+    ],
+    "cfr_references": [
+      "12 CFR 217"
+    ],
+    "rin": [
+      "7100-AG77"
+    ],
+    "html_url": "https://www.federalregister.gov/documents/2026/03/19/fr-syn-0019",
+    "pdf_url": "https://www.govinfo.gov/content/pkg/FR-SYN-0019/pdf/FR-SYN-0019.pdf",
+    "information_available_at": "2026-03-19T12:00:00+00:00",
+    "source_updated_at": "2026-03-19T12:00:00+00:00",
+    "synthetic": true,
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_id": "fr-bank-capital-regulation",
+      "full_text_requested": false,
+      "pdf_downloaded": false
+    },
+    "id": "adbfc0c1-b2f0-5c34-b9f2-2a5dfd8d10dd"
+  },
+  {
+    "document_id": "FR-SYN-0018",
+    "source_id": "federal-register-api",
+    "title": "Synthetic bank capital regulatory document 2",
+    "abstract": "Source-provided synthetic abstract for bank capital metadata fixture 2.",
+    "publication_date": "2026-03-18",
+    "document_type": "Proposed Rule",
+    "agencies": [
+      "Federal Reserve System"
+    ],
+    "cfr_references": [
+      "12 CFR 217"
+    ],
+    "rin": [
+      "7100-AG77"
+    ],
+    "html_url": "https://www.federalregister.gov/documents/2026/03/18/fr-syn-0018",
+    "pdf_url": "https://www.govinfo.gov/content/pkg/FR-SYN-0018/pdf/FR-SYN-0018.pdf",
+    "information_available_at": "2026-03-18T12:00:00+00:00",
+    "source_updated_at": "2026-03-18T12:00:00+00:00",
+    "synthetic": true,
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_id": "fr-bank-capital-regulation",
+      "full_text_requested": false,
+      "pdf_downloaded": false
+    },
+    "id": "f6a7f89d-92c3-59e0-b3d0-45c7721c7201"
+  },
+  {
+    "document_id": "FR-SYN-0017",
+    "source_id": "federal-register-api",
+    "title": "Synthetic bank capital regulatory document 1",
+    "abstract": "Source-provided synthetic abstract for bank capital metadata fixture 1.",
+    "publication_date": "2026-03-17",
+    "document_type": "Notice",
+    "agencies": [
+      "Federal Reserve System"
+    ],
+    "cfr_references": [
+      "12 CFR 217"
+    ],
+    "rin": [
+      "7100-AG77"
+    ],
+    "html_url": "https://www.federalregister.gov/documents/2026/03/17/fr-syn-0017",
+    "pdf_url": "https://www.govinfo.gov/content/pkg/FR-SYN-0017/pdf/FR-SYN-0017.pdf",
+    "information_available_at": "2026-03-17T12:00:00+00:00",
+    "source_updated_at": "2026-03-17T12:00:00+00:00",
+    "synthetic": true,
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_id": "fr-bank-capital-regulation",
+      "full_text_requested": false,
+      "pdf_downloaded": false
+    },
+    "id": "fb179860-5f85-5c18-9a72-e483d5530e1c"
+  },
+  {
+    "document_id": "FR-SYN-0016",
+    "source_id": "federal-register-api",
+    "title": "Synthetic market structure regulatory document 8",
+    "abstract": "Source-provided synthetic abstract for market structure metadata fixture 8.",
+    "publication_date": "2026-03-16",
     "document_type": "Proposed Rule",
     "agencies": [
       "Securities and Exchange Commission"
@@ -67,13 +479,306 @@
     "rin": [
       "3235-AM88"
     ],
+    "html_url": "https://www.federalregister.gov/documents/2026/03/16/fr-syn-0016",
+    "pdf_url": "https://www.govinfo.gov/content/pkg/FR-SYN-0016/pdf/FR-SYN-0016.pdf",
+    "information_available_at": "2026-03-16T12:00:00+00:00",
+    "source_updated_at": "2026-03-16T12:00:00+00:00",
+    "synthetic": true,
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_id": "fr-market-structure-regulation",
+      "full_text_requested": false,
+      "pdf_downloaded": false
+    },
+    "id": "0a73245e-3329-5573-84f0-1640027d3946"
+  },
+  {
+    "document_id": "FR-SYN-0015",
+    "source_id": "federal-register-api",
+    "title": "Synthetic market structure regulatory document 7",
+    "abstract": "Source-provided synthetic abstract for market structure metadata fixture 7.",
+    "publication_date": "2026-03-15",
+    "document_type": "Notice",
+    "agencies": [
+      "Securities and Exchange Commission"
+    ],
+    "cfr_references": [
+      "17 CFR 242"
+    ],
+    "rin": [
+      "3235-AM88"
+    ],
+    "html_url": "https://www.federalregister.gov/documents/2026/03/15/fr-syn-0015",
+    "pdf_url": "https://www.govinfo.gov/content/pkg/FR-SYN-0015/pdf/FR-SYN-0015.pdf",
+    "information_available_at": "2026-03-15T12:00:00+00:00",
+    "source_updated_at": "2026-03-15T12:00:00+00:00",
+    "synthetic": true,
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_id": "fr-market-structure-regulation",
+      "full_text_requested": false,
+      "pdf_downloaded": false
+    },
+    "id": "fcfd71fa-dbd0-54d0-bdd9-fee8c0b04762"
+  },
+  {
+    "document_id": "FR-SYN-0014",
+    "source_id": "federal-register-api",
+    "title": "Synthetic market structure regulatory document 6",
+    "abstract": "Source-provided synthetic abstract for market structure metadata fixture 6.",
+    "publication_date": "2026-03-14",
+    "document_type": "Proposed Rule",
+    "agencies": [
+      "Securities and Exchange Commission"
+    ],
+    "cfr_references": [
+      "17 CFR 242"
+    ],
+    "rin": [
+      "3235-AM88"
+    ],
+    "html_url": "https://www.federalregister.gov/documents/2026/03/14/fr-syn-0014",
+    "pdf_url": "https://www.govinfo.gov/content/pkg/FR-SYN-0014/pdf/FR-SYN-0014.pdf",
+    "information_available_at": "2026-03-14T12:00:00+00:00",
+    "source_updated_at": "2026-03-14T12:00:00+00:00",
+    "synthetic": true,
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_id": "fr-market-structure-regulation",
+      "full_text_requested": false,
+      "pdf_downloaded": false
+    },
+    "id": "14247ef2-a435-5c1a-b4c3-c4a3c0d71f5a"
+  },
+  {
+    "document_id": "FR-SYN-0013",
+    "source_id": "federal-register-api",
+    "title": "Synthetic market structure regulatory document 5",
+    "abstract": "Source-provided synthetic abstract for market structure metadata fixture 5.",
+    "publication_date": "2026-03-13",
+    "document_type": "Notice",
+    "agencies": [
+      "Securities and Exchange Commission"
+    ],
+    "cfr_references": [
+      "17 CFR 242"
+    ],
+    "rin": [
+      "3235-AM88"
+    ],
+    "html_url": "https://www.federalregister.gov/documents/2026/03/13/fr-syn-0013",
+    "pdf_url": "https://www.govinfo.gov/content/pkg/FR-SYN-0013/pdf/FR-SYN-0013.pdf",
+    "information_available_at": "2026-03-13T12:00:00+00:00",
+    "source_updated_at": "2026-03-13T12:00:00+00:00",
+    "synthetic": true,
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_id": "fr-market-structure-regulation",
+      "full_text_requested": false,
+      "pdf_downloaded": false
+    },
+    "id": "972ef7da-7418-51cb-9e9d-9a1ac2fd84b5"
+  },
+  {
+    "document_id": "FR-SYN-0012",
+    "source_id": "federal-register-api",
+    "title": "Synthetic market structure regulatory document 4",
+    "abstract": "Source-provided synthetic abstract for market structure metadata fixture 4.",
+    "publication_date": "2026-03-12",
+    "document_type": "Proposed Rule",
+    "agencies": [
+      "Securities and Exchange Commission"
+    ],
+    "cfr_references": [
+      "17 CFR 242"
+    ],
+    "rin": [
+      "3235-AM88"
+    ],
+    "html_url": "https://www.federalregister.gov/documents/2026/03/12/fr-syn-0012",
+    "pdf_url": "https://www.govinfo.gov/content/pkg/FR-SYN-0012/pdf/FR-SYN-0012.pdf",
+    "information_available_at": "2026-03-12T12:00:00+00:00",
+    "source_updated_at": "2026-03-12T12:00:00+00:00",
+    "synthetic": true,
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_id": "fr-market-structure-regulation",
+      "full_text_requested": false,
+      "pdf_downloaded": false
+    },
+    "id": "79ba1d8d-d043-579e-821e-64247c2c4ca8"
+  },
+  {
+    "document_id": "FR-SYN-0011",
+    "source_id": "federal-register-api",
+    "title": "Synthetic market structure regulatory document 3",
+    "abstract": "Source-provided synthetic abstract for market structure metadata fixture 3.",
+    "publication_date": "2026-03-11",
+    "document_type": "Notice",
+    "agencies": [
+      "Securities and Exchange Commission"
+    ],
+    "cfr_references": [
+      "17 CFR 242"
+    ],
+    "rin": [
+      "3235-AM88"
+    ],
+    "html_url": "https://www.federalregister.gov/documents/2026/03/11/fr-syn-0011",
+    "pdf_url": "https://www.govinfo.gov/content/pkg/FR-SYN-0011/pdf/FR-SYN-0011.pdf",
+    "information_available_at": "2026-03-11T12:00:00+00:00",
+    "source_updated_at": "2026-03-11T12:00:00+00:00",
+    "synthetic": true,
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_id": "fr-market-structure-regulation",
+      "full_text_requested": false,
+      "pdf_downloaded": false
+    },
+    "id": "ee0fda39-3d4d-5dc4-b170-2e1c2055d156"
+  },
+  {
+    "document_id": "FR-SYN-0010",
+    "source_id": "federal-register-api",
+    "title": "Synthetic market structure regulatory document 2",
+    "abstract": "Source-provided synthetic abstract for market structure metadata fixture 2.",
+    "publication_date": "2026-03-10",
+    "document_type": "Proposed Rule",
+    "agencies": [
+      "Securities and Exchange Commission"
+    ],
+    "cfr_references": [
+      "17 CFR 242"
+    ],
+    "rin": [
+      "3235-AM88"
+    ],
+    "html_url": "https://www.federalregister.gov/documents/2026/03/10/fr-syn-0010",
+    "pdf_url": "https://www.govinfo.gov/content/pkg/FR-SYN-0010/pdf/FR-SYN-0010.pdf",
+    "information_available_at": "2026-03-10T12:00:00+00:00",
+    "source_updated_at": "2026-03-10T12:00:00+00:00",
+    "synthetic": true,
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_id": "fr-market-structure-regulation",
+      "full_text_requested": false,
+      "pdf_downloaded": false
+    },
+    "id": "7102ecfb-0497-57a8-9e71-b35d2e505e85"
+  },
+  {
+    "document_id": "FR-SYN-0009",
+    "source_id": "federal-register-api",
+    "title": "Synthetic market structure regulatory document 1",
+    "abstract": "Source-provided synthetic abstract for market structure metadata fixture 1.",
+    "publication_date": "2026-03-09",
+    "document_type": "Notice",
+    "agencies": [
+      "Securities and Exchange Commission"
+    ],
+    "cfr_references": [
+      "17 CFR 242"
+    ],
+    "rin": [
+      "3235-AM88"
+    ],
+    "html_url": "https://www.federalregister.gov/documents/2026/03/09/fr-syn-0009",
+    "pdf_url": "https://www.govinfo.gov/content/pkg/FR-SYN-0009/pdf/FR-SYN-0009.pdf",
+    "information_available_at": "2026-03-09T12:00:00+00:00",
+    "source_updated_at": "2026-03-09T12:00:00+00:00",
+    "synthetic": true,
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_id": "fr-market-structure-regulation",
+      "full_text_requested": false,
+      "pdf_downloaded": false
+    },
+    "id": "e57a5838-690f-521a-9833-000eaf85d459"
+  },
+  {
+    "document_id": "FR-SYN-0008",
+    "source_id": "federal-register-api",
+    "title": "Synthetic energy regulatory document 8",
+    "abstract": "Source-provided synthetic abstract for energy metadata fixture 8.",
+    "publication_date": "2026-03-08",
+    "document_type": "Proposed Rule",
+    "agencies": [
+      "Department of Energy"
+    ],
+    "cfr_references": [
+      "10 CFR 430"
+    ],
+    "rin": [
+      "1904-AF01"
+    ],
+    "html_url": "https://www.federalregister.gov/documents/2026/03/08/fr-syn-0008",
+    "pdf_url": "https://www.govinfo.gov/content/pkg/FR-SYN-0008/pdf/FR-SYN-0008.pdf",
+    "information_available_at": "2026-03-08T12:00:00+00:00",
+    "source_updated_at": "2026-03-08T12:00:00+00:00",
+    "synthetic": true,
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_id": "fr-energy-regulation",
+      "full_text_requested": false,
+      "pdf_downloaded": false
+    },
+    "id": "fe4b9dbb-0963-5b97-ace2-540953693023"
+  },
+  {
+    "document_id": "FR-SYN-0007",
+    "source_id": "federal-register-api",
+    "title": "Synthetic energy regulatory document 7",
+    "abstract": "Source-provided synthetic abstract for energy metadata fixture 7.",
+    "publication_date": "2026-03-07",
+    "document_type": "Notice",
+    "agencies": [
+      "Department of Energy"
+    ],
+    "cfr_references": [
+      "10 CFR 430"
+    ],
+    "rin": [
+      "1904-AF01"
+    ],
+    "html_url": "https://www.federalregister.gov/documents/2026/03/07/fr-syn-0007",
+    "pdf_url": "https://www.govinfo.gov/content/pkg/FR-SYN-0007/pdf/FR-SYN-0007.pdf",
+    "information_available_at": "2026-03-07T12:00:00+00:00",
+    "source_updated_at": "2026-03-07T12:00:00+00:00",
+    "synthetic": true,
+    "provenance": {
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_id": "fr-energy-regulation",
+      "full_text_requested": false,
+      "pdf_downloaded": false
+    },
+    "id": "dc2586d1-5a4a-5c16-92ab-1d017f9fb1c0"
+  },
+  {
+    "document_id": "FR-SYN-0006",
+    "source_id": "federal-register-api",
+    "title": "Synthetic energy regulatory document 6",
+    "abstract": "Source-provided synthetic abstract for energy metadata fixture 6.",
+    "publication_date": "2026-03-06",
+    "document_type": "Proposed Rule",
+    "agencies": [
+      "Department of Energy"
+    ],
+    "cfr_references": [
+      "10 CFR 430"
+    ],
+    "rin": [
+      "1904-AF01"
+    ],
     "html_url": "https://www.federalregister.gov/documents/2026/03/06/fr-syn-0006",
     "pdf_url": "https://www.govinfo.gov/content/pkg/FR-SYN-0006/pdf/FR-SYN-0006.pdf",
     "information_available_at": "2026-03-06T12:00:00+00:00",
     "source_updated_at": "2026-03-06T12:00:00+00:00",
     "synthetic": true,
     "provenance": {
-      "fixture_version": "official-data-synthetic-v1"
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_id": "fr-energy-regulation",
+      "full_text_requested": false,
+      "pdf_downloaded": false
     },
     "id": "7ae369d2-8fbc-518b-8781-cbe14162396c"
   },
@@ -99,25 +804,28 @@
     "source_updated_at": "2026-03-05T12:00:00+00:00",
     "synthetic": true,
     "provenance": {
-      "fixture_version": "official-data-synthetic-v1"
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_id": "fr-energy-regulation",
+      "full_text_requested": false,
+      "pdf_downloaded": false
     },
     "id": "1d7d53b7-aa54-5838-a1b0-967282b4a97b"
   },
   {
     "document_id": "FR-SYN-0004",
     "source_id": "federal-register-api",
-    "title": "Synthetic commodity reporting regulatory document 4",
-    "abstract": "Source-provided synthetic abstract for commodity reporting metadata fixture 4.",
+    "title": "Synthetic energy regulatory document 4",
+    "abstract": "Source-provided synthetic abstract for energy metadata fixture 4.",
     "publication_date": "2026-03-04",
     "document_type": "Proposed Rule",
     "agencies": [
-      "Commodity Futures Trading Commission"
+      "Department of Energy"
     ],
     "cfr_references": [
-      "17 CFR 45"
+      "10 CFR 430"
     ],
     "rin": [
-      "3038-AF45"
+      "1904-AF01"
     ],
     "html_url": "https://www.federalregister.gov/documents/2026/03/04/fr-syn-0004",
     "pdf_url": "https://www.govinfo.gov/content/pkg/FR-SYN-0004/pdf/FR-SYN-0004.pdf",
@@ -125,25 +833,28 @@
     "source_updated_at": "2026-03-04T12:00:00+00:00",
     "synthetic": true,
     "provenance": {
-      "fixture_version": "official-data-synthetic-v1"
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_id": "fr-energy-regulation",
+      "full_text_requested": false,
+      "pdf_downloaded": false
     },
     "id": "a22a29da-451b-54c5-b8a3-8f57f02f4769"
   },
   {
     "document_id": "FR-SYN-0003",
     "source_id": "federal-register-api",
-    "title": "Synthetic bank capital regulatory document 3",
-    "abstract": "Source-provided synthetic abstract for bank capital metadata fixture 3.",
+    "title": "Synthetic energy regulatory document 3",
+    "abstract": "Source-provided synthetic abstract for energy metadata fixture 3.",
     "publication_date": "2026-03-03",
     "document_type": "Notice",
     "agencies": [
-      "Federal Reserve System"
+      "Department of Energy"
     ],
     "cfr_references": [
-      "12 CFR 217"
+      "10 CFR 430"
     ],
     "rin": [
-      "7100-AG77"
+      "1904-AF01"
     ],
     "html_url": "https://www.federalregister.gov/documents/2026/03/03/fr-syn-0003",
     "pdf_url": "https://www.govinfo.gov/content/pkg/FR-SYN-0003/pdf/FR-SYN-0003.pdf",
@@ -151,25 +862,28 @@
     "source_updated_at": "2026-03-03T12:00:00+00:00",
     "synthetic": true,
     "provenance": {
-      "fixture_version": "official-data-synthetic-v1"
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_id": "fr-energy-regulation",
+      "full_text_requested": false,
+      "pdf_downloaded": false
     },
     "id": "3aec9bef-1977-57b2-95df-6d3ccf4db6b5"
   },
   {
     "document_id": "FR-SYN-0002",
     "source_id": "federal-register-api",
-    "title": "Synthetic market structure regulatory document 2",
-    "abstract": "Source-provided synthetic abstract for market structure metadata fixture 2.",
+    "title": "Synthetic energy regulatory document 2",
+    "abstract": "Source-provided synthetic abstract for energy metadata fixture 2.",
     "publication_date": "2026-03-02",
     "document_type": "Proposed Rule",
     "agencies": [
-      "Securities and Exchange Commission"
+      "Department of Energy"
     ],
     "cfr_references": [
-      "17 CFR 242"
+      "10 CFR 430"
     ],
     "rin": [
-      "3235-AM88"
+      "1904-AF01"
     ],
     "html_url": "https://www.federalregister.gov/documents/2026/03/02/fr-syn-0002",
     "pdf_url": "https://www.govinfo.gov/content/pkg/FR-SYN-0002/pdf/FR-SYN-0002.pdf",
@@ -177,7 +891,10 @@
     "source_updated_at": "2026-03-02T12:00:00+00:00",
     "synthetic": true,
     "provenance": {
-      "fixture_version": "official-data-synthetic-v1"
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_id": "fr-energy-regulation",
+      "full_text_requested": false,
+      "pdf_downloaded": false
     },
     "id": "2301f131-05f8-59d1-a713-427c495a89a0"
   },
@@ -203,7 +920,10 @@
     "source_updated_at": "2026-03-01T12:00:00+00:00",
     "synthetic": true,
     "provenance": {
-      "fixture_version": "official-data-synthetic-v1"
+      "fixture_version": "official-data-synthetic-v1",
+      "profile_id": "fr-energy-regulation",
+      "full_text_requested": false,
+      "pdf_downloaded": false
     },
     "id": "5713df72-e7af-5f90-bd8d-8cf44b70d8fe"
   }
