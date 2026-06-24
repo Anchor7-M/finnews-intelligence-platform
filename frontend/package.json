@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "vue": "^3.5.0",
-    "vue-router": "^4.4.0"
+    "vue-router": "^5.1.0"
   },
   "devDependencies": {
     "@eslint/js": "^8.57.0",
