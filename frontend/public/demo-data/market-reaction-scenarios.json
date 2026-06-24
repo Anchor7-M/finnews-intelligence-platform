@@ -1,0 +1,35 @@
+[
+  {
+    "scenario_id": "synthetic-null-reaction-v1",
+    "scenario_version": "market-reaction-synthetic-v1",
+    "description": "Negative-control scenario with no persistent signal-return relation.",
+    "asset_count": 24,
+    "session_count": 90,
+    "bar_count": 2160,
+    "synthetic_data": true,
+    "official_calendar": false,
+    "no_live_market_data": true
+  },
+  {
+    "scenario_id": "synthetic-planted-reaction-v1",
+    "scenario_version": "market-reaction-synthetic-v1",
+    "description": "Weak synthetic lagged relation after selected research signals.",
+    "asset_count": 24,
+    "session_count": 90,
+    "bar_count": 2160,
+    "synthetic_data": true,
+    "official_calendar": false,
+    "no_live_market_data": true
+  },
+  {
+    "scenario_id": "synthetic-regime-shift-v1",
+    "scenario_version": "market-reaction-synthetic-v1",
+    "description": "Synthetic relation weakens or reverses after the midpoint.",
+    "asset_count": 24,
+    "session_count": 90,
+    "bar_count": 2160,
+    "synthetic_data": true,
+    "official_calendar": false,
+    "no_live_market_data": true
+  }
+]

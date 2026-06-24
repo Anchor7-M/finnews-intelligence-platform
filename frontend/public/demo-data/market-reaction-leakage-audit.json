@@ -1,0 +1,65 @@
+{
+  "schema_version": "m3c-market-reaction-leakage-audit-v1",
+  "synthetic_data": true,
+  "not_investment_advice": true,
+  "no_live_market_data": true,
+  "diagnostics": [
+    {
+      "name": "null_scenario_negative_control",
+      "status": "PASS",
+      "detail": "Null scenario is reported as a diagnostic, not alpha.",
+      "one_week_consistency_rate": "0.000000"
+    },
+    {
+      "name": "planted_scenario_recovery",
+      "status": "PASS",
+      "detail": "Planted relation is an engineering sanity check only.",
+      "one_week_consistency_rate": "0.139535"
+    },
+    {
+      "name": "regime_shift_deterioration",
+      "status": "PASS",
+      "detail": "Regime-shift scenario is reported separately.",
+      "one_week_consistency_rate": "0.139535"
+    },
+    {
+      "name": "label_permutation",
+      "status": "PASS",
+      "detail": "Fixed-seed permutation degrades deterministic directional agreement.",
+      "permutation_seed": 7301
+    },
+    {
+      "name": "timestamp_mutation",
+      "status": "PASS",
+      "detail": "Signals moved after decision time are excluded from eligible studies."
+    },
+    {
+      "name": "future_price_mutation",
+      "status": "PASS",
+      "detail": "Changing bars after the reaction window leaves earlier study hashes unchanged."
+    },
+    {
+      "name": "input_order_invariance",
+      "status": "PASS",
+      "detail": "Scenario and label hashes use sorted deterministic business keys."
+    },
+    {
+      "name": "current_clock_invariance",
+      "status": "PASS",
+      "detail": "No current wall-clock timestamp enters labels or metrics."
+    },
+    {
+      "name": "future_return_sentinel",
+      "status": "PASS",
+      "detail": "Import validator rejects future-return sentinel columns."
+    },
+    {
+      "name": "missing_data",
+      "status": "PASS",
+      "detail": "Missing bars produce unavailable labels with typed reasons."
+    }
+  ],
+  "study_hash": "60e7e06b3df501a0f2b3f37f457bfb628f466dba8198215f3013bb2ca2538ea2",
+  "bar_hash": "cdc154fefbd19086d58f000e27672f6572b5bcd067df9ab9b4468a3e9e36d190",
+  "label_hash": "03eb3e031292460d152fd8689f6393dc0290493304d4a27d0d958fa76e4cedbf"
+}

@@ -1,0 +1,22 @@
+{
+  "scenario_count": 3,
+  "asset_count_per_scenario": 24,
+  "session_count_per_scenario": 90,
+  "bar_count_per_scenario": 2160,
+  "total_bar_count": 6480,
+  "scenario_ids": [
+    "synthetic-null-reaction-v1",
+    "synthetic-planted-reaction-v1",
+    "synthetic-regime-shift-v1"
+  ],
+  "market_state_distribution": {
+    "calm": 1296,
+    "commodity_shock": 1296,
+    "crypto_stress": 1296,
+    "high_volatility": 1296,
+    "risk_off": 1296
+  },
+  "synthetic_data": true,
+  "no_live_market_data": true,
+  "content_hash": "cdc154fefbd19086d58f000e27672f6572b5bcd067df9ab9b4468a3e9e36d190"
+}

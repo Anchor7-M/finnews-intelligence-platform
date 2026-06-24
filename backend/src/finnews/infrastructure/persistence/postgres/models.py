@@ -845,3 +845,191 @@ class OfficialReleaseEventModel(Base):
     revision_number: Mapped[int | None] = mapped_column(Integer)
     provenance: Mapped[dict[str, object]] = mapped_column(JSONB, nullable=False)
     synthetic: Mapped[bool] = mapped_column(Boolean, nullable=False)
+
+
+class MarketDataPackageModel(Base):
+    __tablename__ = "market_data_packages"
+    id: Mapped[UUID] = mapped_column(PGUUID(as_uuid=True), primary_key=True, default=uuid4)
+    package_id: Mapped[str] = mapped_column(String(160), unique=True, nullable=False)
+    contract_name: Mapped[str] = mapped_column(String(120), nullable=False)
+    contract_version: Mapped[str] = mapped_column(String(40), nullable=False)
+    scenario_id: Mapped[str] = mapped_column(String(120), nullable=False)
+    provider: Mapped[str] = mapped_column(String(120), nullable=False)
+    provider_version: Mapped[str] = mapped_column(String(80), nullable=False)
+    asset_count: Mapped[int] = mapped_column(Integer, nullable=False)
+    bar_count: Mapped[int] = mapped_column(Integer, nullable=False)
+    session_count: Mapped[int] = mapped_column(Integer, nullable=False)
+    content_hash: Mapped[str] = mapped_column(String(64), nullable=False)
+    synthetic: Mapped[bool] = mapped_column(Boolean, nullable=False)
+    user_imported: Mapped[bool] = mapped_column(Boolean, nullable=False)
+    live_data: Mapped[bool] = mapped_column(Boolean, nullable=False)
+    metadata_: Mapped[dict[str, object]] = mapped_column("metadata", JSONB, nullable=False)
+
+
+class MarketBarSeriesModel(Base):
+    __tablename__ = "market_bar_series"
+    __table_args__ = (
+        UniqueConstraint("series_id"),
+        UniqueConstraint("package_id", "asset_id", "provider_symbol", "granularity"),
+        Index("ix_market_bar_series_asset", "asset_id"),
+    )
+    id: Mapped[UUID] = mapped_column(PGUUID(as_uuid=True), primary_key=True, default=uuid4)
+    series_id: Mapped[str] = mapped_column(String(160), nullable=False)
+    package_id: Mapped[str] = mapped_column(String(160), nullable=False)
+    scenario_id: Mapped[str] = mapped_column(String(120), nullable=False)
+    asset_id: Mapped[str] = mapped_column(String(120), nullable=False)
+    provider_symbol: Mapped[str] = mapped_column(String(160), nullable=False)
+    granularity: Mapped[str] = mapped_column(String(40), nullable=False)
+    timezone: Mapped[str] = mapped_column(String(80), nullable=False)
+    synthetic: Mapped[bool] = mapped_column(Boolean, nullable=False)
+    metadata_: Mapped[dict[str, object]] = mapped_column("metadata", JSONB, nullable=False)
+
+
+class MarketBarModel(Base):
+    __tablename__ = "market_bars"
+    __table_args__ = (
+        Index("ix_market_bars_asset_time", "asset_id", "bar_start_at"),
+        Index("ix_market_bars_scenario", "scenario_id"),
+    )
+    id: Mapped[UUID] = mapped_column(PGUUID(as_uuid=True), primary_key=True, default=uuid4)
+    bar_id: Mapped[str] = mapped_column(String(240), unique=True, nullable=False)
+    series_id: Mapped[str] = mapped_column(String(160), nullable=False)
+    scenario_id: Mapped[str] = mapped_column(String(120), nullable=False)
+    asset_id: Mapped[str] = mapped_column(String(120), nullable=False)
+    session_date: Mapped[date | None] = mapped_column(Date)
+    bar_start_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+    bar_end_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+    available_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+    current_revision: Mapped[int] = mapped_column(Integer, nullable=False)
+    open: Mapped[Decimal] = mapped_column(Numeric(24, 6), nullable=False)
+    high: Mapped[Decimal] = mapped_column(Numeric(24, 6), nullable=False)
+    low: Mapped[Decimal] = mapped_column(Numeric(24, 6), nullable=False)
+    close: Mapped[Decimal] = mapped_column(Numeric(24, 6), nullable=False)
+    volume: Mapped[Decimal] = mapped_column(Numeric(24, 6), nullable=False)
+    quote_volume: Mapped[Decimal | None] = mapped_column(Numeric(24, 6))
+    market_state: Mapped[str] = mapped_column(String(80), nullable=False)
+    synthetic: Mapped[bool] = mapped_column(Boolean, nullable=False)
+    quality_flags: Mapped[list[str]] = mapped_column(JSONB, nullable=False)
+
+
+class MarketBarRevisionModel(Base):
+    __tablename__ = "market_bar_revisions"
+    __table_args__ = (
+        UniqueConstraint("bar_id", "revision_number"),
+        Index("ix_market_bar_revisions_available", "available_at"),
+    )
+    id: Mapped[UUID] = mapped_column(PGUUID(as_uuid=True), primary_key=True, default=uuid4)
+    bar_id: Mapped[str] = mapped_column(String(240), nullable=False)
+    revision_number: Mapped[int] = mapped_column(Integer, nullable=False)
+    first_seen_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+    available_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+    open: Mapped[Decimal] = mapped_column(Numeric(24, 6), nullable=False)
+    high: Mapped[Decimal] = mapped_column(Numeric(24, 6), nullable=False)
+    low: Mapped[Decimal] = mapped_column(Numeric(24, 6), nullable=False)
+    close: Mapped[Decimal] = mapped_column(Numeric(24, 6), nullable=False)
+    volume: Mapped[Decimal] = mapped_column(Numeric(24, 6), nullable=False)
+    quote_volume: Mapped[Decimal | None] = mapped_column(Numeric(24, 6))
+    value_hash: Mapped[str] = mapped_column(String(64), nullable=False)
+    quality_flags: Mapped[list[str]] = mapped_column(JSONB, nullable=False)
+
+
+class MarketReactionStudyModel(Base):
+    __tablename__ = "market_reaction_studies"
+    __table_args__ = (
+        UniqueConstraint("study_id"),
+        Index("ix_market_reaction_studies_scenario", "scenario_id"),
+        Index("ix_market_reaction_studies_asset", "asset_id"),
+    )
+    id: Mapped[UUID] = mapped_column(PGUUID(as_uuid=True), primary_key=True, default=uuid4)
+    study_id: Mapped[str] = mapped_column(String(240), nullable=False)
+    scenario_id: Mapped[str] = mapped_column(String(120), nullable=False)
+    signal_id: Mapped[str] = mapped_column(String(120), nullable=False)
+    impact_id: Mapped[str] = mapped_column(String(120), nullable=False)
+    asset_id: Mapped[str] = mapped_column(String(120), nullable=False)
+    event_family: Mapped[str] = mapped_column(String(100), nullable=False)
+    decision_time: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+    reaction_window: Mapped[str] = mapped_column(String(40), nullable=False)
+    bar_coverage: Mapped[int] = mapped_column(Integer, nullable=False)
+    raw_return: Mapped[Decimal | None] = mapped_column(Numeric(18, 8))
+    benchmark_return: Mapped[Decimal | None] = mapped_column(Numeric(18, 8))
+    abnormal_return: Mapped[Decimal | None] = mapped_column(Numeric(18, 8))
+    excluded_reason: Mapped[str | None] = mapped_column(String(120))
+    quality_flags: Mapped[list[str]] = mapped_column(JSONB, nullable=False)
+    synthetic: Mapped[bool] = mapped_column(Boolean, nullable=False)
+
+
+class MarketReactionLabelModel(Base):
+    __tablename__ = "market_reaction_labels"
+    __table_args__ = (
+        UniqueConstraint("label_id"),
+        Index("ix_market_reaction_labels_scenario", "scenario_id"),
+        Index("ix_market_reaction_labels_label", "label"),
+    )
+    id: Mapped[UUID] = mapped_column(PGUUID(as_uuid=True), primary_key=True, default=uuid4)
+    label_id: Mapped[str] = mapped_column(String(260), nullable=False)
+    study_id: Mapped[str] = mapped_column(String(240), nullable=False)
+    scenario_id: Mapped[str] = mapped_column(String(120), nullable=False)
+    signal_id: Mapped[str] = mapped_column(String(120), nullable=False)
+    asset_id: Mapped[str] = mapped_column(String(120), nullable=False)
+    horizon: Mapped[str] = mapped_column(String(40), nullable=False)
+    label: Mapped[str] = mapped_column(String(80), nullable=False)
+    threshold_version: Mapped[str] = mapped_column(String(80), nullable=False)
+    abnormal_return: Mapped[Decimal | None] = mapped_column(Numeric(18, 8))
+    coverage: Mapped[int] = mapped_column(Integer, nullable=False)
+    quality_flags: Mapped[list[str]] = mapped_column(JSONB, nullable=False)
+    point_in_time_evidence: Mapped[dict[str, object]] = mapped_column(JSONB, nullable=False)
+    synthetic: Mapped[bool] = mapped_column(Boolean, nullable=False)
+
+
+class SignalQualityRunModel(Base):
+    __tablename__ = "signal_quality_runs"
+    id: Mapped[UUID] = mapped_column(PGUUID(as_uuid=True), primary_key=True, default=uuid4)
+    run_id: Mapped[str] = mapped_column(String(160), unique=True, nullable=False)
+    scenario_id: Mapped[str] = mapped_column(String(120), nullable=False)
+    generated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+    metric_count: Mapped[int] = mapped_column(Integer, nullable=False)
+    content_hash: Mapped[str] = mapped_column(String(64), nullable=False)
+    synthetic: Mapped[bool] = mapped_column(Boolean, nullable=False)
+    metadata_: Mapped[dict[str, object]] = mapped_column("metadata", JSONB, nullable=False)
+
+
+class SignalQualityMetricModel(Base):
+    __tablename__ = "signal_quality_metrics"
+    __table_args__ = (
+        UniqueConstraint("metric_id"),
+        Index("ix_signal_quality_metrics_scenario", "scenario_id"),
+    )
+    id: Mapped[UUID] = mapped_column(PGUUID(as_uuid=True), primary_key=True, default=uuid4)
+    metric_id: Mapped[str] = mapped_column(String(240), nullable=False)
+    scenario_id: Mapped[str] = mapped_column(String(120), nullable=False)
+    slice_type: Mapped[str] = mapped_column(String(80), nullable=False)
+    slice_value: Mapped[str] = mapped_column(String(160), nullable=False)
+    evaluated_signal_count: Mapped[int] = mapped_column(Integer, nullable=False)
+    coverage: Mapped[Decimal] = mapped_column(Numeric(12, 6), nullable=False)
+    directional_consistency_rate: Mapped[Decimal] = mapped_column(Numeric(12, 6), nullable=False)
+    opposite_rate: Mapped[Decimal] = mapped_column(Numeric(12, 6), nullable=False)
+    muted_rate: Mapped[Decimal] = mapped_column(Numeric(12, 6), nullable=False)
+    metrics: Mapped[dict[str, object]] = mapped_column(JSONB, nullable=False)
+    synthetic: Mapped[bool] = mapped_column(Boolean, nullable=False)
+
+
+class SignalErrorCaseModel(Base):
+    __tablename__ = "signal_error_cases"
+    __table_args__ = (
+        UniqueConstraint("error_case_id"),
+        Index("ix_signal_error_cases_scenario", "scenario_id"),
+    )
+    id: Mapped[UUID] = mapped_column(PGUUID(as_uuid=True), primary_key=True, default=uuid4)
+    error_case_id: Mapped[str] = mapped_column(String(240), nullable=False)
+    scenario_id: Mapped[str] = mapped_column(String(120), nullable=False)
+    signal_id: Mapped[str] = mapped_column(String(120), nullable=False)
+    asset_id: Mapped[str] = mapped_column(String(120), nullable=False)
+    event_family: Mapped[str] = mapped_column(String(100), nullable=False)
+    expected_direction: Mapped[str] = mapped_column(String(40), nullable=False)
+    observed_label: Mapped[str] = mapped_column(String(80), nullable=False)
+    abnormal_return: Mapped[Decimal | None] = mapped_column(Numeric(18, 8))
+    horizon: Mapped[str] = mapped_column(String(40), nullable=False)
+    regime: Mapped[str] = mapped_column(String(80), nullable=False)
+    error_category: Mapped[str] = mapped_column(String(120), nullable=False)
+    metadata_: Mapped[dict[str, object]] = mapped_column("metadata", JSONB, nullable=False)
+    synthetic: Mapped[bool] = mapped_column(Boolean, nullable=False)

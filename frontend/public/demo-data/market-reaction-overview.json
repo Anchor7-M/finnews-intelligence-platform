@@ -1,0 +1,72 @@
+{
+  "synthetic_data": true,
+  "not_investment_advice": true,
+  "no_live_market_data": true,
+  "no_execution": true,
+  "mt5_connection": "not_implemented",
+  "contract_name": "finnews-market-bars-v1",
+  "contract_version": "1.0.0",
+  "scenario_count": 3,
+  "scenario_ids": [
+    "synthetic-null-reaction-v1",
+    "synthetic-planted-reaction-v1",
+    "synthetic-regime-shift-v1"
+  ],
+  "asset_count_per_scenario": 24,
+  "session_count_per_scenario": 90,
+  "bar_count_per_scenario": 2160,
+  "total_bar_count": 6480,
+  "study_count": 645,
+  "label_count": 645,
+  "evaluated_label_count": 645,
+  "metric_row_count": 132,
+  "error_case_count": 72,
+  "market_state_distribution": {
+    "calm": 1296,
+    "commodity_shock": 1296,
+    "crypto_stress": 1296,
+    "high_volatility": 1296,
+    "risk_off": 1296
+  },
+  "label_distribution": {
+    "consistent_negative": 37,
+    "consistent_positive": 22,
+    "mixed": 264,
+    "muted": 314,
+    "opposite": 8
+  },
+  "horizon_windows": {
+    "intraday": [
+      0,
+      1
+    ],
+    "one_day": [
+      0,
+      1
+    ],
+    "three_day": [
+      0,
+      3
+    ],
+    "one_week": [
+      0,
+      5
+    ],
+    "one_month": [
+      0,
+      20
+    ],
+    "pre_event_control": [
+      -5,
+      -1
+    ]
+  },
+  "benchmark_modes": [
+    "asset_class_equal_weight",
+    "scenario_equal_weight",
+    "asset_pre_event_mean"
+  ],
+  "label_threshold": "0.0015",
+  "threshold_version": "m3c-label-threshold-v1",
+  "disclaimer": "Synthetic market scenarios are not real prices. Market-reaction labels are research labels, not allocation instructions, and event studies do not prove causality."
+}
