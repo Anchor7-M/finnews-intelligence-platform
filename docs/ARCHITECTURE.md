@@ -1,5 +1,20 @@
 # Architecture
 
+## Milestone 4A MT5 Read-Only Boundary
+
+M4A keeps the modular-monolith direction. The MT5 bridge lives in the
+application service layer as an optional read-only boundary. It does not become
+a daemon, scheduler, broker service, or public network bridge.
+
+Default API/frontend/static-demo flows use safe readiness payloads and never
+import `MetaTrader5`. The only real terminal path is the local Typer CLI command
+after explicit environment, flag, symbol-map, range, CI, credential, and output
+path gates pass. Exports are converted to the existing
+`finnews-market-bars-v1` contract and written under ignored local paths.
+
+The architecture still has no account access, order route, position route,
+history route, order check, order send, or investment-advice surface.
+
 Milestone 0 is a modular monolith with ports and adapters.
 
 Milestone 3A adds a research-export application service that reads existing news metadata through repository ports and writes deterministic packages plus safe metadata. FinNews owns news provenance, information availability, event/sentiment metadata, feature lineage, and the export contract. The future `ashare-research-platform` owns prices, returns, backtests, and portfolio logic.

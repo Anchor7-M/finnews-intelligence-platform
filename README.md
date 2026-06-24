@@ -102,6 +102,16 @@ Milestone 3B still uses synthetic demo data by default. Real sources remain disa
 
 Milestone 3C does not fetch live prices, store local user import paths in tracked output, connect to MT5, accept credentials, access accounts, create positions, or provide investment recommendations.
 
+## Implemented In Milestone 4A
+
+- Added an optional local MT5 read-only bridge boundary with dynamic `MetaTrader5` import only inside gated CLI commands.
+- Added `finnews mt5 readonly ...` CLI status, symbol-map validation, and historical bar export into `finnews-market-bars-v1`.
+- Added strict local gates: explicit environment allow flag, explicit terminal confirmation flag, offline CI blocking, bounded UTC date ranges, symbol-map validation, credential scans, and ignored local export paths.
+- Added safe MT5 read-only API endpoints, Vue Integration Readiness updates, static-demo readiness JSON, PostgreSQL metadata tables, and execution-surface audit coverage.
+- Added tests with fake adapters only; CI and default verification do not require the MT5 package or a local terminal.
+
+Milestone 4A is read-only only. It does not accept credentials, store account data, read orders, read positions, read trading history, check orders, send orders, size trades, or provide investment advice.
+
 ## Verified Synthetic Dataset
 
 - 68 raw observations loaded in the memory demo.

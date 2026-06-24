@@ -1,5 +1,23 @@
 # Data Model
 
+## MT5 Read-Only Metadata
+
+M4A adds metadata-only PostgreSQL tables:
+
+- `mt5_readonly_profiles`
+- `mt5_readonly_symbol_mappings`
+- `mt5_readonly_runs`
+- `mt5_bar_export_manifests`
+
+These tables hold safe profile identifiers, canonical asset mappings, run
+statuses, counts, manifest summaries, and JSONB safe metadata. They do not
+store raw bar file bytes, local absolute export paths, terminal paths,
+credentials, account identifiers, account balances, open orders, positions,
+trade history, order requests, stop loss, take profit, or margin-required data.
+
+Historical bars exported from MT5 remain local ignored files unless the user
+separately imports them through the existing market-bars contract workflow.
+
 Implemented Milestone 0 tables in the PostgreSQL schema:
 
 Milestone 3A adds `research_calendars`, `research_sessions`, `research_export_runs`, `research_feature_rows`, and `research_lineage_rows`. These tables store safe metadata, timezone-aware timestamps, JSONB feature values, quality summaries, and lineage IDs. They do not store package bytes, article text, raw source responses, local paths, prices, returns, or recommendations.

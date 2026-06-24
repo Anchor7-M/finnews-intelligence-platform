@@ -2,7 +2,7 @@
 
 `finnews-market-bars-v1` is a local-only contract for user-owned or properly
 licensed OHLCV/tick-derived bar exports. It is not a live market-data connector
-and it does not define an MT5 export format yet.
+and it is not a trading interface.
 
 Required fields are `bar_id` or deterministic business key, `asset_id`,
 `provider_symbol`, optional `session_date`, timezone-aware `bar_start_at` and
@@ -21,5 +21,19 @@ paths automatically. Synthetic tracked examples live under
 `contracts/finnews-market-bars/v1/examples/`.
 
 Market-reaction labels built from this contract are research labels, not trade
-labels. No live market data is downloaded, no MT5 connection is made, no orders
-or position sizing are produced, and this is not investment advice.
+labels. No live market data is downloaded by default, no orders or position
+sizing are produced, and this is not investment advice.
+
+## MT5 Read-Only Export
+
+Milestone 4A can export locally available historical bars from a user-operated
+MetaTrader 5 terminal into this contract through
+`finnews mt5 readonly export-bars`. The command is CLI-only, disabled by
+default, requires `FINNEWS_ALLOW_LOCAL_MT5_READONLY=1`, requires
+`--confirm-local-terminal`, rejects CI, requires a validated local symbol map,
+requires bounded UTC ranges, and writes only under ignored
+`.finnews-mt5-readonly-exports/` paths.
+
+The MT5 read-only bridge does not accept credentials, read account/order/
+position/history data, check orders, send orders, or persist local terminal
+metadata in public API/static-demo output.
