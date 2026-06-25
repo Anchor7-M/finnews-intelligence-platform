@@ -98,28 +98,28 @@
   "static_demo_file_hashes": [
     {
       "path": "frontend/public/demo-data/mt5-readiness.json",
-      "sha256": "f8ef86f1fe448f5f3a42fda6b860a3a7e841df83f1cc807bdd7c8037d4524efd",
-      "size_bytes": 688
+      "sha256": "a1dd01a98a5e0d2f5d02675af80b36e6641bd5a426d5f232bf5ea2c4bbcb4dab",
+      "size_bytes": 706
     },
     {
       "path": "frontend/public/demo-data/mt5-readonly-overview.json",
-      "sha256": "86eb8ee24c9a36d86b60d80328d6fa9ede9f6de4b378fa60486cba744de52dcd",
-      "size_bytes": 480
+      "sha256": "29b7a4d1e6280e3a414a26817d428444809a4d085c1a166e84c1b418ef7ec66f",
+      "size_bytes": 493
     },
     {
       "path": "frontend/public/demo-data/mt5-readonly-readiness.json",
-      "sha256": "b7ac4204629c9f6f24d11ec6c389e2bc26290ea2e34a790d234d8de2f09028d1",
-      "size_bytes": 602
+      "sha256": "07fefa69af2324baf45e5669072dd405896cd7b210a5528fb414b3f66535d220",
+      "size_bytes": 618
     },
     {
       "path": "frontend/public/demo-data/mt5-readonly-runs.json",
-      "sha256": "44910bb316874264a00b5b72d90a4e59b25372346f883696205e722ee5b28698",
-      "size_bytes": 289
+      "sha256": "e4c5a5c96f6428cf66e156ade3052fc340d1592d4e6cb562a903405b6ecd046b",
+      "size_bytes": 299
     },
     {
       "path": "frontend/public/demo-data/mt5-readonly-symbol-map-schema.json",
-      "sha256": "9f3e1757e9ebb678fa133c9edbb7742ae2bba4e6286ac4f006c45ee9128da334",
-      "size_bytes": 1162
+      "sha256": "d2a9c981a41510439f3489efbc118bec3c07ef2acb197733a39749360a5b3e31",
+      "size_bytes": 1217
     }
   ],
   "symbol_map_allowed_fields": [

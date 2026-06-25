@@ -1,8 +1,9 @@
 {
-  "contract_hash": "c310bd3e9f064bc62466caa2f28dcef9f13adbe2bae2247c72d42ed58c143f9f",
+  "contract_hash": "c7660eeaaa359ae58fb2e7409972a3cd32832046dfabf13eb5085ccfcc5c4baf",
   "contract_name": "finnews-paper-execution-v1",
   "contract_version": "1.0.0",
   "filled_count": 8,
+  "generated_at": "2026-06-25T00:00:00+00:00",
   "no_account_data": true,
   "no_mt5_connection": true,
   "no_real_order": true,
@@ -214,19 +215,232 @@
   "scenario_count": 3,
   "status": "PASS",
   "surface_audit": {
-    "allowed_terms": [
+    "allowed_paper_terms": [
       "paper order",
       "paper fill",
       "paper position",
       "paper portfolio",
       "simulated execution"
     ],
+    "excluded_generated_evidence_files": [
+      "reports/cross-asset/revised-m3a-trading-surface-audit.json",
+      "reports/verification/revised-m3a-timings.json",
+      "reports/market-reaction/m3c-release-ledger.json",
+      "reports/market-reaction/m3c-scenario-audit.json",
+      "reports/market-reaction/m3c-point-in-time-audit.json",
+      "reports/mt5-readonly/m4a-release-ledger.json",
+      "reports/mt5-readonly/m4a-symbol-map-audit.json",
+      "reports/mt5-readonly/m4a-fake-adapter-audit.json",
+      "reports/mt5-readonly/m4a-bar-export-audit.json",
+      "reports/mt5-readonly/m4a-execution-surface-audit.json",
+      "reports/paper-execution/m4b0-release-audit.json",
+      "reports/paper-execution/m4b0-release-ledger.json",
+      "reports/paper-execution/m4b0-contract-audit.json",
+      "reports/paper-execution/m4b0-risk-gate-audit.json",
+      "reports/paper-execution/m4b0-manual-approval-audit.json",
+      "reports/paper-execution/m4b0-fill-accounting-audit.json",
+      "reports/paper-execution/m4b0-scenario-audit.json",
+      "reports/paper-execution/m4b0-postgres-audit.json",
+      "reports/paper-execution/m4b0-interface-static-audit.json",
+      "reports/paper-execution/m4b0-execution-surface-audit.json"
+    ],
     "forbidden_count": 0,
-    "forbidden_production_matches": [],
+    "forbidden_matches": [],
+    "forbidden_production_paths": [
+      "real order request",
+      "order_send",
+      "order_check",
+      "account_info",
+      "positions_get",
+      "orders_get",
+      "history orders/deals",
+      "live broker API",
+      "MT5 execution",
+      "credential model",
+      "real account model",
+      "live/real execution UI"
+    ],
+    "m4a_execution_surface_status": "PASS",
     "no_account_data": true,
     "no_mt5_connection": true,
     "no_real_order": true,
-    "not_investment_advice": true,
-    "status": "PASS"
+    "paper_matches": [
+      {
+        "classification": "permitted paper-execution safety guardrail",
+        "count": 1,
+        "path": "backend/src/finnews/application/services/paper_execution.py",
+        "pattern": "ORDER_TYPE"
+      },
+      {
+        "classification": "permitted paper-execution safety guardrail",
+        "count": 1,
+        "path": "backend/src/finnews/application/services/paper_execution.py",
+        "pattern": "TRADE_ACTION"
+      },
+      {
+        "classification": "permitted paper-execution safety guardrail",
+        "count": 1,
+        "path": "backend/src/finnews/application/services/paper_execution.py",
+        "pattern": "buy"
+      },
+      {
+        "classification": "permitted paper-execution safety guardrail",
+        "count": 1,
+        "path": "backend/src/finnews/application/services/paper_execution.py",
+        "pattern": "execute"
+      },
+      {
+        "classification": "permitted paper-execution safety guardrail",
+        "count": 1,
+        "path": "backend/src/finnews/application/services/paper_execution.py",
+        "pattern": "lot"
+      },
+      {
+        "classification": "permitted paper-execution safety guardrail",
+        "count": 1,
+        "path": "backend/src/finnews/application/services/paper_execution.py",
+        "pattern": "sell"
+      },
+      {
+        "classification": "permitted paper-execution safety guardrail",
+        "count": 1,
+        "path": "backend/src/finnews/application/services/paper_execution.py",
+        "pattern": "stop_loss"
+      },
+      {
+        "classification": "permitted paper-execution safety guardrail",
+        "count": 1,
+        "path": "backend/src/finnews/application/services/paper_execution.py",
+        "pattern": "take_profit"
+      },
+      {
+        "classification": "permitted paper-execution safety guardrail",
+        "count": 1,
+        "path": "backend/src/finnews/application/services/paper_execution_release_audit.py",
+        "pattern": "ORDER_TYPE"
+      },
+      {
+        "classification": "permitted paper-execution safety guardrail",
+        "count": 1,
+        "path": "backend/src/finnews/application/services/paper_execution_release_audit.py",
+        "pattern": "TRADE_ACTION"
+      },
+      {
+        "classification": "permitted paper-execution safety guardrail",
+        "count": 1,
+        "path": "backend/src/finnews/application/services/paper_execution_release_audit.py",
+        "pattern": "buy"
+      },
+      {
+        "classification": "permitted paper-execution safety guardrail",
+        "count": 1,
+        "path": "backend/src/finnews/application/services/paper_execution_release_audit.py",
+        "pattern": "execute"
+      },
+      {
+        "classification": "permitted paper-execution safety guardrail",
+        "count": 1,
+        "path": "backend/src/finnews/application/services/paper_execution_release_audit.py",
+        "pattern": "lot"
+      },
+      {
+        "classification": "permitted paper-execution safety guardrail",
+        "count": 1,
+        "path": "backend/src/finnews/application/services/paper_execution_release_audit.py",
+        "pattern": "sell"
+      },
+      {
+        "classification": "permitted paper-execution safety guardrail",
+        "count": 1,
+        "path": "backend/src/finnews/application/services/paper_execution_release_audit.py",
+        "pattern": "stop_loss"
+      },
+      {
+        "classification": "permitted paper-execution safety guardrail",
+        "count": 1,
+        "path": "backend/src/finnews/application/services/paper_execution_release_audit.py",
+        "pattern": "take_profit"
+      },
+      {
+        "classification": "permitted test fixture proving rejection",
+        "count": 1,
+        "path": "backend/tests/contract/test_paper_execution_api_cli.py",
+        "pattern": "MetaTrader5"
+      },
+      {
+        "classification": "permitted paper-execution safety guardrail",
+        "count": 1,
+        "path": "contracts/finnews-paper-execution/v1/README.md",
+        "pattern": "ORDER_TYPE"
+      },
+      {
+        "classification": "permitted paper-execution safety guardrail",
+        "count": 1,
+        "path": "contracts/finnews-paper-execution/v1/README.md",
+        "pattern": "TRADE_ACTION"
+      },
+      {
+        "classification": "permitted paper-execution safety guardrail",
+        "count": 1,
+        "path": "contracts/finnews-paper-execution/v1/README.md",
+        "pattern": "lot"
+      },
+      {
+        "classification": "permitted paper-execution safety guardrail",
+        "count": 1,
+        "path": "contracts/finnews-paper-execution/v1/schema.json",
+        "pattern": "ORDER_TYPE"
+      },
+      {
+        "classification": "permitted paper-execution safety guardrail",
+        "count": 1,
+        "path": "contracts/finnews-paper-execution/v1/schema.json",
+        "pattern": "TRADE_ACTION"
+      },
+      {
+        "classification": "permitted paper-execution safety guardrail",
+        "count": 1,
+        "path": "contracts/finnews-paper-execution/v1/schema.json",
+        "pattern": "buy"
+      },
+      {
+        "classification": "permitted paper-execution safety guardrail",
+        "count": 1,
+        "path": "contracts/finnews-paper-execution/v1/schema.json",
+        "pattern": "execute"
+      },
+      {
+        "classification": "permitted paper-execution safety guardrail",
+        "count": 1,
+        "path": "contracts/finnews-paper-execution/v1/schema.json",
+        "pattern": "lot"
+      },
+      {
+        "classification": "permitted paper-execution safety guardrail",
+        "count": 1,
+        "path": "contracts/finnews-paper-execution/v1/schema.json",
+        "pattern": "sell"
+      },
+      {
+        "classification": "permitted paper-execution safety guardrail",
+        "count": 1,
+        "path": "contracts/finnews-paper-execution/v1/schema.json",
+        "pattern": "stop_loss"
+      },
+      {
+        "classification": "permitted paper-execution safety guardrail",
+        "count": 1,
+        "path": "contracts/finnews-paper-execution/v1/schema.json",
+        "pattern": "take_profit"
+      },
+      {
+        "classification": "permitted architecture documentation",
+        "count": 1,
+        "path": "docs/PAPER_EXECUTION_METHODOLOGY.md",
+        "pattern": "MetaTrader5"
+      }
+    ],
+    "status": "PASS",
+    "trading_surface_status": "PASS"
   }
 }

@@ -21,6 +21,8 @@ Current status:
 
 - Status: PASS
 - Forbidden production matches: 0
+- Machine-readable report:
+  `reports/paper-execution/m4b0-execution-surface-audit.json`
 - Paper safety-guardrail matches are allowed only for the paper service,
   `0009_paper_execution` schema migration, versioned paper contract, docs, and tests
 - MT5 connection: not implemented

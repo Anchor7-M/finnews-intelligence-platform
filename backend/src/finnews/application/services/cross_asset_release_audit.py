@@ -71,11 +71,24 @@ GENERATED_M4A_MT5_READONLY_EVIDENCE_FILES = (
     "reports/mt5-readonly/m4a-bar-export-audit.json",
     "reports/mt5-readonly/m4a-execution-surface-audit.json",
 )
+GENERATED_M4B0_PAPER_EXECUTION_EVIDENCE_FILES = (
+    "reports/paper-execution/m4b0-release-audit.json",
+    "reports/paper-execution/m4b0-release-ledger.json",
+    "reports/paper-execution/m4b0-contract-audit.json",
+    "reports/paper-execution/m4b0-risk-gate-audit.json",
+    "reports/paper-execution/m4b0-manual-approval-audit.json",
+    "reports/paper-execution/m4b0-fill-accounting-audit.json",
+    "reports/paper-execution/m4b0-scenario-audit.json",
+    "reports/paper-execution/m4b0-postgres-audit.json",
+    "reports/paper-execution/m4b0-interface-static-audit.json",
+    "reports/paper-execution/m4b0-execution-surface-audit.json",
+)
 EXCLUDED_GENERATED_EVIDENCE_FILES = (
     GENERATED_TRADING_SURFACE_AUDIT_OUTPUT_PATH,
     "reports/verification/revised-m3a-timings.json",
     *GENERATED_M3C_MARKET_REACTION_EVIDENCE_FILES,
     *GENERATED_M4A_MT5_READONLY_EVIDENCE_FILES,
+    *GENERATED_M4B0_PAPER_EXECUTION_EVIDENCE_FILES,
 )
 ALLOWED_TRADING_SURFACE_PREFIXES = (
     "docs/",
@@ -117,9 +130,13 @@ MARKET_DATA_IMPORT_GUARDRAIL_PATTERNS = {"lot", "volume", "buy", "sell", "execut
 PAPER_EXECUTION_GUARDRAIL_FILES = {
     "backend/alembic/versions/0009_paper_execution.py",
     "backend/src/finnews/application/services/paper_execution.py",
+    "backend/src/finnews/application/services/paper_execution_release_audit.py",
 }
 PAPER_EXECUTION_GUARDRAIL_PREFIXES = ("contracts/finnews-paper-execution/v1/",)
 PAPER_EXECUTION_GUARDRAIL_PATTERNS = {
+    "TRADE_ACTION",
+    "ORDER_TYPE",
+    "lot",
     "stop_loss",
     "take_profit",
     "buy",

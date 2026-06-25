@@ -1,0 +1,407 @@
+{
+  "contract": {
+    "example_canonical_hash": "62877b89c8653ac3a4c2d2506968991cdb0a0c36753390adbcdcb31493073a49",
+    "example_payload_hash": "7f597f1248b14b016bbe8cc556464435a0970b1d0ecc45264170b32d6907fddb",
+    "forbidden_field_list_hash": "3b216fd13d966a3992b91fa21604a18d50bee5cccc0d230d336c9ecbabdaaa85",
+    "logical_schema_hash": "c7660eeaaa359ae58fb2e7409972a3cd32832046dfabf13eb5085ccfcc5c4baf",
+    "name": "finnews-paper-execution-v1",
+    "schema_file_hash": "60e64eb20a6916c266df58a6fce66243c1392487a211430714af79199dccc93d",
+    "version": "1.0.0"
+  },
+  "counts": {
+    "failed_count": 22,
+    "fill_attempt_count": 30,
+    "filled_count": 8,
+    "manual_review_counts": {
+      "approved": 17,
+      "pending_review": 10,
+      "rejected": 3
+    },
+    "nav_path_count": 3,
+    "paper_fill_count": 30,
+    "paper_order_count": 30,
+    "position_count": 8,
+    "risk_decision_counts": {
+      "approved_for_paper": 24,
+      "expired": 24,
+      "rejected": 54,
+      "requires_manual_review": 6
+    },
+    "signal_candidates_considered": 108
+  },
+  "expected_totals_verified": true,
+  "generated_at": "2026-06-25T00:00:00+00:00",
+  "not_investment_advice": true,
+  "paper_only": true,
+  "portfolio": {
+    "average_final_nav": "99996.666579",
+    "cash_by_scenario": {
+      "paper-null-reaction-v1": "97498.750000",
+      "paper-planted-reaction-v1": "89995.000000",
+      "paper-regime-shift-v1": "92496.250000"
+    },
+    "final_nav_by_scenario": {
+      "paper-null-reaction-v1": "99998.749959",
+      "paper-planted-reaction-v1": "99994.999864",
+      "paper-regime-shift-v1": "99996.249913"
+    },
+    "gross_exposure_by_scenario": {
+      "paper-null-reaction-v1": "2499.999959",
+      "paper-planted-reaction-v1": "9999.999864",
+      "paper-regime-shift-v1": "7499.999913"
+    },
+    "max_drawdown_by_scenario": {
+      "paper-null-reaction-v1": "0.000013",
+      "paper-planted-reaction-v1": "0.000050",
+      "paper-regime-shift-v1": "0.000038"
+    },
+    "net_exposure_by_scenario": {
+      "paper-null-reaction-v1": "2499.999959",
+      "paper-planted-reaction-v1": "9999.999864",
+      "paper-regime-shift-v1": "7499.999913"
+    },
+    "positions_by_scenario": {
+      "paper-null-reaction-v1": [
+        {
+          "asset_class": "crypto_asset",
+          "asset_id": "CRYPTO-STABLE-PROXY",
+          "average_cost": "140.631358",
+          "last_price": "140.631356",
+          "market_value": "2499.999959",
+          "not_investment_advice": true,
+          "quantity": "17.776974",
+          "realized_pnl": "0.000000",
+          "scenario_id": "paper-null-reaction-v1",
+          "synthetic_data": true,
+          "transaction_costs": "1.250000",
+          "unrealized_pnl": "-0.000041"
+        }
+      ],
+      "paper-planted-reaction-v1": [
+        {
+          "asset_class": "crypto_asset",
+          "asset_id": "CRYPTO-STABLE-PROXY",
+          "average_cost": "140.673663",
+          "last_price": "140.673660",
+          "market_value": "2499.999955",
+          "not_investment_advice": true,
+          "quantity": "17.771628",
+          "realized_pnl": "0.000000",
+          "scenario_id": "paper-planted-reaction-v1",
+          "synthetic_data": true,
+          "transaction_costs": "1.250000",
+          "unrealized_pnl": "-0.000045"
+        },
+        {
+          "asset_class": "futures_root",
+          "asset_id": "FUT-ROOT-GOLD",
+          "average_cost": "132.181465",
+          "last_price": "132.181462",
+          "market_value": "2499.999938",
+          "not_investment_advice": true,
+          "quantity": "18.913393",
+          "realized_pnl": "0.000000",
+          "scenario_id": "paper-planted-reaction-v1",
+          "synthetic_data": true,
+          "transaction_costs": "1.250000",
+          "unrealized_pnl": "-0.000062"
+        },
+        {
+          "asset_class": "fx",
+          "asset_id": "FX-USDJPY",
+          "average_cost": "111.513158",
+          "last_price": "111.513156",
+          "market_value": "2499.999951",
+          "not_investment_advice": true,
+          "quantity": "22.418879",
+          "realized_pnl": "0.000000",
+          "scenario_id": "paper-planted-reaction-v1",
+          "synthetic_data": true,
+          "transaction_costs": "1.250000",
+          "unrealized_pnl": "-0.000049"
+        },
+        {
+          "asset_class": "precious_metal",
+          "asset_id": "PM-SILVER",
+          "average_cost": "120.684608",
+          "last_price": "120.684609",
+          "market_value": "2500.000019",
+          "not_investment_advice": true,
+          "quantity": "20.715152",
+          "realized_pnl": "0.000000",
+          "scenario_id": "paper-planted-reaction-v1",
+          "synthetic_data": true,
+          "transaction_costs": "1.250000",
+          "unrealized_pnl": "0.000019"
+        }
+      ],
+      "paper-regime-shift-v1": [
+        {
+          "asset_class": "crypto_asset",
+          "asset_id": "CRYPTO-STABLE-PROXY",
+          "average_cost": "140.673663",
+          "last_price": "140.673660",
+          "market_value": "2499.999955",
+          "not_investment_advice": true,
+          "quantity": "17.771628",
+          "realized_pnl": "0.000000",
+          "scenario_id": "paper-regime-shift-v1",
+          "synthetic_data": true,
+          "transaction_costs": "1.250000",
+          "unrealized_pnl": "-0.000045"
+        },
+        {
+          "asset_class": "futures_root",
+          "asset_id": "FUT-ROOT-GOLD",
+          "average_cost": "132.181465",
+          "last_price": "132.181462",
+          "market_value": "2499.999938",
+          "not_investment_advice": true,
+          "quantity": "18.913393",
+          "realized_pnl": "0.000000",
+          "scenario_id": "paper-regime-shift-v1",
+          "synthetic_data": true,
+          "transaction_costs": "1.250000",
+          "unrealized_pnl": "-0.000062"
+        },
+        {
+          "asset_class": "precious_metal",
+          "asset_id": "PM-SILVER",
+          "average_cost": "120.684608",
+          "last_price": "120.684609",
+          "market_value": "2500.000019",
+          "not_investment_advice": true,
+          "quantity": "20.715152",
+          "realized_pnl": "0.000000",
+          "scenario_id": "paper-regime-shift-v1",
+          "synthetic_data": true,
+          "transaction_costs": "1.250000",
+          "unrealized_pnl": "0.000019"
+        }
+      ]
+    },
+    "realized_pnl_by_scenario": {
+      "paper-null-reaction-v1": "0.000000",
+      "paper-planted-reaction-v1": "0.000000",
+      "paper-regime-shift-v1": "0.000000"
+    },
+    "reconciliation_status_by_scenario": {
+      "paper-null-reaction-v1": "passed",
+      "paper-planted-reaction-v1": "passed",
+      "paper-regime-shift-v1": "passed"
+    },
+    "transaction_costs_by_scenario": {
+      "paper-null-reaction-v1": "1.250000",
+      "paper-planted-reaction-v1": "5.000000",
+      "paper-regime-shift-v1": "3.750000"
+    },
+    "turnover_by_scenario": {
+      "paper-null-reaction-v1": "2500.000000",
+      "paper-planted-reaction-v1": "10000.000000",
+      "paper-regime-shift-v1": "7500.000000"
+    },
+    "unrealized_pnl_by_scenario": {
+      "paper-null-reaction-v1": "-0.000041",
+      "paper-planted-reaction-v1": "-0.000137",
+      "paper-regime-shift-v1": "-0.000088"
+    }
+  },
+  "postgres": {
+    "alembic_head": "0009_paper_execution",
+    "first_run_table_counts": {
+      "paper_execution_runs": 3,
+      "paper_fills": 30,
+      "paper_manual_reviews": 30,
+      "paper_nav": 3,
+      "paper_order_intents": 30,
+      "paper_positions": 8,
+      "paper_risk_decisions": 108,
+      "paper_risk_policies": 1
+    },
+    "memory_postgres_parity": true,
+    "second_run_table_counts": {
+      "paper_execution_runs": 3,
+      "paper_fills": 30,
+      "paper_manual_reviews": 30,
+      "paper_nav": 3,
+      "paper_order_intents": 30,
+      "paper_positions": 8,
+      "paper_risk_decisions": 108,
+      "paper_risk_policies": 1
+    }
+  },
+  "rejection_failure_reasons": [
+    {
+      "count": 4,
+      "reason_code": "asset_class_not_allowed_interest_rate",
+      "scenario_id": "paper-null-reaction-v1"
+    },
+    {
+      "count": 5,
+      "reason_code": "manual_review_pending_review",
+      "scenario_id": "paper-null-reaction-v1"
+    },
+    {
+      "count": 1,
+      "reason_code": "max_paper_orders_per_asset_per_day",
+      "scenario_id": "paper-null-reaction-v1"
+    },
+    {
+      "count": 1,
+      "reason_code": "mixed_direction_manual_review",
+      "scenario_id": "paper-null-reaction-v1"
+    },
+    {
+      "count": 26,
+      "reason_code": "not_investment_advice",
+      "scenario_id": "paper-null-reaction-v1"
+    },
+    {
+      "count": 4,
+      "reason_code": "paper_exposure_absent",
+      "scenario_id": "paper-null-reaction-v1"
+    },
+    {
+      "count": 26,
+      "reason_code": "paper_only",
+      "scenario_id": "paper-null-reaction-v1"
+    },
+    {
+      "count": 8,
+      "reason_code": "signal_expired",
+      "scenario_id": "paper-null-reaction-v1"
+    },
+    {
+      "count": 6,
+      "reason_code": "signal_status_abstained",
+      "scenario_id": "paper-null-reaction-v1"
+    },
+    {
+      "count": 7,
+      "reason_code": "signal_status_rejected",
+      "scenario_id": "paper-null-reaction-v1"
+    },
+    {
+      "count": 4,
+      "reason_code": "asset_class_not_allowed_interest_rate",
+      "scenario_id": "paper-planted-reaction-v1"
+    },
+    {
+      "count": 3,
+      "reason_code": "manual_review_pending_review",
+      "scenario_id": "paper-planted-reaction-v1"
+    },
+    {
+      "count": 1,
+      "reason_code": "manual_review_rejected",
+      "scenario_id": "paper-planted-reaction-v1"
+    },
+    {
+      "count": 1,
+      "reason_code": "max_paper_orders_per_asset_per_day",
+      "scenario_id": "paper-planted-reaction-v1"
+    },
+    {
+      "count": 1,
+      "reason_code": "mixed_direction_manual_review",
+      "scenario_id": "paper-planted-reaction-v1"
+    },
+    {
+      "count": 26,
+      "reason_code": "not_investment_advice",
+      "scenario_id": "paper-planted-reaction-v1"
+    },
+    {
+      "count": 2,
+      "reason_code": "paper_exposure_absent",
+      "scenario_id": "paper-planted-reaction-v1"
+    },
+    {
+      "count": 26,
+      "reason_code": "paper_only",
+      "scenario_id": "paper-planted-reaction-v1"
+    },
+    {
+      "count": 8,
+      "reason_code": "signal_expired",
+      "scenario_id": "paper-planted-reaction-v1"
+    },
+    {
+      "count": 6,
+      "reason_code": "signal_status_abstained",
+      "scenario_id": "paper-planted-reaction-v1"
+    },
+    {
+      "count": 7,
+      "reason_code": "signal_status_rejected",
+      "scenario_id": "paper-planted-reaction-v1"
+    },
+    {
+      "count": 4,
+      "reason_code": "asset_class_not_allowed_interest_rate",
+      "scenario_id": "paper-regime-shift-v1"
+    },
+    {
+      "count": 2,
+      "reason_code": "manual_review_pending_review",
+      "scenario_id": "paper-regime-shift-v1"
+    },
+    {
+      "count": 2,
+      "reason_code": "manual_review_rejected",
+      "scenario_id": "paper-regime-shift-v1"
+    },
+    {
+      "count": 1,
+      "reason_code": "max_paper_orders_per_asset_per_day",
+      "scenario_id": "paper-regime-shift-v1"
+    },
+    {
+      "count": 1,
+      "reason_code": "mixed_direction_manual_review",
+      "scenario_id": "paper-regime-shift-v1"
+    },
+    {
+      "count": 26,
+      "reason_code": "not_investment_advice",
+      "scenario_id": "paper-regime-shift-v1"
+    },
+    {
+      "count": 3,
+      "reason_code": "paper_exposure_absent",
+      "scenario_id": "paper-regime-shift-v1"
+    },
+    {
+      "count": 26,
+      "reason_code": "paper_only",
+      "scenario_id": "paper-regime-shift-v1"
+    },
+    {
+      "count": 8,
+      "reason_code": "signal_expired",
+      "scenario_id": "paper-regime-shift-v1"
+    },
+    {
+      "count": 6,
+      "reason_code": "signal_status_abstained",
+      "scenario_id": "paper-regime-shift-v1"
+    },
+    {
+      "count": 7,
+      "reason_code": "signal_status_rejected",
+      "scenario_id": "paper-regime-shift-v1"
+    }
+  ],
+  "risk_policy": {
+    "initial_cash": "100000.00",
+    "risk_policy_hash": "1ffe5673be6385adefd27951193d704fe173c57409356dca5a3ab372718697cf",
+    "risk_policy_id": "paper-risk-m4b0-default-v1"
+  },
+  "scenario_ids": [
+    "paper-null-reaction-v1",
+    "paper-planted-reaction-v1",
+    "paper-regime-shift-v1"
+  ],
+  "status": "PASS",
+  "synthetic_data": true
+}

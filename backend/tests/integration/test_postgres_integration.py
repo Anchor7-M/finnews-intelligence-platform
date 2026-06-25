@@ -224,7 +224,9 @@ def test_alembic_upgrade_downgrade_schema_types_constraints_and_indexes(engine: 
     assert EXPECTED_TABLES.isdisjoint(set(inspector.get_table_names()))
 
     command.upgrade(alembic_config(), "head")
-    assert ScriptDirectory.from_config(alembic_config()).get_current_head() == "0009_paper_execution"
+    assert (
+        ScriptDirectory.from_config(alembic_config()).get_current_head() == "0009_paper_execution"
+    )
     command.current(alembic_config())
 
     inspector = inspect(engine)

@@ -1,0 +1,52 @@
+{
+  "alembic_head": "0009_paper_execution",
+  "alembic_previous_head": "0008_mt5_readonly",
+  "downgrade_verified": true,
+  "exactly_one_head": true,
+  "existing_m0_m4a_data_readable": true,
+  "expected_tables": [
+    "paper_risk_policies",
+    "paper_risk_decisions",
+    "paper_order_intents",
+    "paper_manual_reviews",
+    "paper_fills",
+    "paper_positions",
+    "paper_nav",
+    "paper_execution_runs"
+  ],
+  "first_run_table_counts": {
+    "paper_execution_runs": 3,
+    "paper_fills": 30,
+    "paper_manual_reviews": 30,
+    "paper_nav": 3,
+    "paper_order_intents": 30,
+    "paper_positions": 8,
+    "paper_risk_decisions": 108,
+    "paper_risk_policies": 1
+  },
+  "forbidden_columns_absent": true,
+  "foreign_keys": true,
+  "indexes": true,
+  "jsonb_round_trip": true,
+  "memory_postgres_parity": true,
+  "numeric_round_trip": true,
+  "repeated_run_idempotency": true,
+  "reupgrade_verified": true,
+  "second_run_table_counts": {
+    "paper_execution_runs": 3,
+    "paper_fills": 30,
+    "paper_manual_reviews": 30,
+    "paper_nav": 3,
+    "paper_order_intents": 30,
+    "paper_positions": 8,
+    "paper_risk_decisions": 108,
+    "paper_risk_policies": 1
+  },
+  "status": "PASS",
+  "timezone_aware_timestamps": true,
+  "transaction_rollback": true,
+  "unique_idempotency_keys": true,
+  "upgrade_from_previous_head": true,
+  "uuid_primary_keys": true,
+  "verified_by": "python scripts/dev.py verify-postgres"
+}

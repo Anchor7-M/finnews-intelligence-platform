@@ -1,0 +1,20 @@
+{
+  "approval_cannot_bypass_risk_rejection": true,
+  "audit_trail_exists": true,
+  "default_state": "pending_review",
+  "expired_request_cannot_be_approved": true,
+  "invalid_transition_count": 0,
+  "no_account_data": true,
+  "no_broker_data": true,
+  "no_credentials": true,
+  "no_real_identity": true,
+  "override_attempt_count": 0,
+  "paper_only": true,
+  "state_counts": {
+    "approved": 17,
+    "pending_review": 10,
+    "rejected": 3
+  },
+  "status": "PASS",
+  "synthetic_actor_only": true
+}

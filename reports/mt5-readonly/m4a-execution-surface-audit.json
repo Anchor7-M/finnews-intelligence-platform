@@ -45,7 +45,7 @@
     },
     {
       "classification": "permitted",
-      "line": 107,
+      "line": 112,
       "path": "README.md",
       "pattern": "MetaTrader5"
     },
@@ -57,13 +57,13 @@
     },
     {
       "classification": "permitted",
-      "line": 705,
+      "line": 709,
       "path": "backend/src/finnews/application/services/cross_asset.py",
       "pattern": "MetaTrader5"
     },
     {
       "classification": "permitted",
-      "line": 720,
+      "line": 724,
       "path": "backend/src/finnews/application/services/cross_asset.py",
       "pattern": "MetaTrader5"
     },
@@ -75,13 +75,13 @@
     },
     {
       "classification": "permitted",
-      "line": 119,
+      "line": 148,
       "path": "backend/src/finnews/application/services/cross_asset_release_audit.py",
       "pattern": "MetaTrader5"
     },
     {
       "classification": "permitted",
-      "line": 452,
+      "line": 481,
       "path": "backend/src/finnews/application/services/cross_asset_release_audit.py",
       "pattern": "MetaTrader5"
     },
@@ -129,7 +129,13 @@
     },
     {
       "classification": "permitted",
-      "line": 440,
+      "line": 72,
+      "path": "backend/tests/contract/test_paper_execution_api_cli.py",
+      "pattern": "MetaTrader5"
+    },
+    {
+      "classification": "permitted",
+      "line": 497,
       "path": "backend/tests/unit/test_cross_asset.py",
       "pattern": "MetaTrader5"
     },
@@ -148,6 +154,12 @@
     {
       "classification": "permitted",
       "line": 10,
+      "path": "docs/ARCHITECTURE.md",
+      "pattern": "MetaTrader5"
+    },
+    {
+      "classification": "permitted",
+      "line": 23,
       "path": "docs/ARCHITECTURE.md",
       "pattern": "MetaTrader5"
     },
@@ -195,6 +207,12 @@
     },
     {
       "classification": "permitted",
+      "line": 30,
+      "path": "docs/M4B0_EXECUTION_PLAN.md",
+      "pattern": "MetaTrader5"
+    },
+    {
+      "classification": "permitted",
       "line": 28,
       "path": "docs/MT5_INTEGRATION_BOUNDARY.md",
       "pattern": "MetaTrader5"
@@ -231,6 +249,12 @@
     },
     {
       "classification": "permitted",
+      "line": 21,
+      "path": "docs/PAPER_EXECUTION_METHODOLOGY.md",
+      "pattern": "MetaTrader5"
+    },
+    {
+      "classification": "permitted",
       "line": 12,
       "path": "docs/THREAT_MODEL.md",
       "pattern": "MetaTrader5"
@@ -255,128 +279,170 @@
     },
     {
       "classification": "permitted",
-      "line": 24,
+      "line": 34,
       "path": "reports/cross-asset/revised-m3a-trading-surface-audit.json",
       "pattern": "MetaTrader5"
     },
     {
       "classification": "permitted",
-      "line": 30,
+      "line": 40,
       "path": "reports/cross-asset/revised-m3a-trading-surface-audit.json",
       "pattern": "MetaTrader5"
     },
     {
       "classification": "permitted",
-      "line": 54,
+      "line": 64,
       "path": "reports/cross-asset/revised-m3a-trading-surface-audit.json",
       "pattern": "MetaTrader5"
     },
     {
       "classification": "permitted",
-      "line": 138,
+      "line": 148,
       "path": "reports/cross-asset/revised-m3a-trading-surface-audit.json",
       "pattern": "MetaTrader5"
     },
     {
       "classification": "permitted",
-      "line": 330,
+      "line": 340,
       "path": "reports/cross-asset/revised-m3a-trading-surface-audit.json",
       "pattern": "MetaTrader5"
     },
     {
       "classification": "permitted",
-      "line": 396,
+      "line": 406,
       "path": "reports/cross-asset/revised-m3a-trading-surface-audit.json",
       "pattern": "MetaTrader5"
     },
     {
       "classification": "permitted",
-      "line": 492,
+      "line": 574,
       "path": "reports/cross-asset/revised-m3a-trading-surface-audit.json",
       "pattern": "MetaTrader5"
     },
     {
       "classification": "permitted",
-      "line": 582,
+      "line": 604,
       "path": "reports/cross-asset/revised-m3a-trading-surface-audit.json",
       "pattern": "MetaTrader5"
     },
     {
       "classification": "permitted",
-      "line": 654,
+      "line": 694,
       "path": "reports/cross-asset/revised-m3a-trading-surface-audit.json",
       "pattern": "MetaTrader5"
     },
     {
       "classification": "permitted",
-      "line": 666,
+      "line": 832,
       "path": "reports/cross-asset/revised-m3a-trading-surface-audit.json",
       "pattern": "MetaTrader5"
     },
     {
       "classification": "permitted",
-      "line": 702,
+      "line": 844,
       "path": "reports/cross-asset/revised-m3a-trading-surface-audit.json",
       "pattern": "MetaTrader5"
     },
     {
       "classification": "permitted",
-      "line": 738,
+      "line": 886,
       "path": "reports/cross-asset/revised-m3a-trading-surface-audit.json",
       "pattern": "MetaTrader5"
     },
     {
       "classification": "permitted",
-      "line": 750,
+      "line": 922,
       "path": "reports/cross-asset/revised-m3a-trading-surface-audit.json",
       "pattern": "MetaTrader5"
     },
     {
       "classification": "permitted",
-      "line": 786,
+      "line": 934,
       "path": "reports/cross-asset/revised-m3a-trading-surface-audit.json",
       "pattern": "MetaTrader5"
     },
     {
       "classification": "permitted",
-      "line": 798,
+      "line": 970,
       "path": "reports/cross-asset/revised-m3a-trading-surface-audit.json",
       "pattern": "MetaTrader5"
     },
     {
       "classification": "permitted",
-      "line": 828,
+      "line": 976,
       "path": "reports/cross-asset/revised-m3a-trading-surface-audit.json",
       "pattern": "MetaTrader5"
     },
     {
       "classification": "permitted",
-      "line": 846,
+      "line": 994,
       "path": "reports/cross-asset/revised-m3a-trading-surface-audit.json",
       "pattern": "MetaTrader5"
     },
     {
       "classification": "permitted",
-      "line": 864,
+      "line": 1024,
       "path": "reports/cross-asset/revised-m3a-trading-surface-audit.json",
       "pattern": "MetaTrader5"
     },
     {
       "classification": "permitted",
-      "line": 894,
+      "line": 1042,
       "path": "reports/cross-asset/revised-m3a-trading-surface-audit.json",
       "pattern": "MetaTrader5"
     },
     {
       "classification": "permitted",
-      "line": 900,
+      "line": 1060,
       "path": "reports/cross-asset/revised-m3a-trading-surface-audit.json",
       "pattern": "MetaTrader5"
     },
     {
       "classification": "permitted",
-      "line": 1163,
+      "line": 1078,
       "path": "reports/cross-asset/revised-m3a-trading-surface-audit.json",
+      "pattern": "MetaTrader5"
+    },
+    {
+      "classification": "permitted",
+      "line": 1096,
+      "path": "reports/cross-asset/revised-m3a-trading-surface-audit.json",
+      "pattern": "MetaTrader5"
+    },
+    {
+      "classification": "permitted",
+      "line": 1102,
+      "path": "reports/cross-asset/revised-m3a-trading-surface-audit.json",
+      "pattern": "MetaTrader5"
+    },
+    {
+      "classification": "permitted",
+      "line": 1365,
+      "path": "reports/cross-asset/revised-m3a-trading-surface-audit.json",
+      "pattern": "MetaTrader5"
+    },
+    {
+      "classification": "permitted",
+      "line": 152,
+      "path": "reports/paper-execution/m4b0-execution-surface-audit.json",
+      "pattern": "MetaTrader5"
+    },
+    {
+      "classification": "permitted",
+      "line": 224,
+      "path": "reports/paper-execution/m4b0-execution-surface-audit.json",
+      "pattern": "MetaTrader5"
+    },
+    {
+      "classification": "permitted",
+      "line": 368,
+      "path": "reports/paper-execution/m4b0-release-audit.json",
+      "pattern": "MetaTrader5"
+    },
+    {
+      "classification": "permitted",
+      "line": 440,
+      "path": "reports/paper-execution/m4b0-release-audit.json",
       "pattern": "MetaTrader5"
     },
     {
@@ -405,7 +471,7 @@
     },
     {
       "classification": "permitted",
-      "line": 440,
+      "line": 497,
       "path": "backend/tests/unit/test_cross_asset.py",
       "pattern": "importlib"
     },
@@ -429,7 +495,7 @@
     },
     {
       "classification": "permitted",
-      "line": 499,
+      "line": 528,
       "path": "backend/src/finnews/application/services/cross_asset_release_audit.py",
       "pattern": "subprocess"
     },
@@ -453,13 +519,13 @@
     },
     {
       "classification": "permitted",
-      "line": 606,
+      "line": 609,
       "path": "backend/src/finnews/application/services/mt5_readonly_release_audit.py",
       "pattern": "subprocess"
     },
     {
       "classification": "permitted",
-      "line": 625,
+      "line": 628,
       "path": "backend/src/finnews/application/services/mt5_readonly_release_audit.py",
       "pattern": "subprocess"
     },
@@ -519,19 +585,37 @@
     },
     {
       "classification": "permitted",
-      "line": 459,
+      "line": 449,
       "path": "backend/tests/unit/test_cross_asset.py",
       "pattern": "subprocess"
     },
     {
       "classification": "permitted",
-      "line": 460,
+      "line": 450,
       "path": "backend/tests/unit/test_cross_asset.py",
       "pattern": "subprocess"
     },
     {
       "classification": "permitted",
-      "line": 480,
+      "line": 472,
+      "path": "backend/tests/unit/test_cross_asset.py",
+      "pattern": "subprocess"
+    },
+    {
+      "classification": "permitted",
+      "line": 516,
+      "path": "backend/tests/unit/test_cross_asset.py",
+      "pattern": "subprocess"
+    },
+    {
+      "classification": "permitted",
+      "line": 517,
+      "path": "backend/tests/unit/test_cross_asset.py",
+      "pattern": "subprocess"
+    },
+    {
+      "classification": "permitted",
+      "line": 537,
       "path": "backend/tests/unit/test_cross_asset.py",
       "pattern": "subprocess"
     },
@@ -579,19 +663,19 @@
     },
     {
       "classification": "permitted",
-      "line": 363,
+      "line": 373,
       "path": "scripts/dev.py",
       "pattern": "subprocess"
     },
     {
       "classification": "permitted",
-      "line": 974,
+      "line": 1068,
       "path": "scripts/dev.py",
       "pattern": "subprocess"
     },
     {
       "classification": "permitted",
-      "line": 995,
+      "line": 1089,
       "path": "scripts/dev.py",
       "pattern": "subprocess"
     },
@@ -633,13 +717,37 @@
     },
     {
       "classification": "permitted",
+      "line": 69,
+      "path": "backend/src/finnews/application/services/paper_execution.py",
+      "pattern": "terminal_path"
+    },
+    {
+      "classification": "permitted",
+      "line": 48,
+      "path": "backend/src/finnews/application/services/paper_execution_release_audit.py",
+      "pattern": "terminal_path"
+    },
+    {
+      "classification": "permitted",
+      "line": 1166,
+      "path": "backend/tests/integration/test_postgres_integration.py",
+      "pattern": "terminal_path"
+    },
+    {
+      "classification": "permitted",
       "line": 129,
       "path": "backend/tests/unit/test_cross_asset.py",
       "pattern": "terminal_path"
     },
     {
       "classification": "permitted",
-      "line": 41,
+      "line": 73,
+      "path": "contracts/finnews-paper-execution/v1/schema.json",
+      "pattern": "terminal_path"
+    },
+    {
+      "classification": "permitted",
+      "line": 45,
       "path": "frontend/public/demo-data/mt5-readonly-symbol-map-schema.json",
       "pattern": "terminal_path"
     },
@@ -647,6 +755,24 @@
       "classification": "permitted",
       "line": 25,
       "path": "reports/market-reaction/m3c-release-ledger.json",
+      "pattern": "terminal_path"
+    },
+    {
+      "classification": "permitted",
+      "line": 75,
+      "path": "reports/paper-execution/m4b0-contract-audit.json",
+      "pattern": "terminal_path"
+    },
+    {
+      "classification": "permitted",
+      "line": 76,
+      "path": "reports/paper-execution/m4b0-contract-audit.json",
+      "pattern": "terminal_path"
+    },
+    {
+      "classification": "permitted",
+      "line": 78,
+      "path": "reports/paper-execution/m4b0-contract-audit.json",
       "pattern": "terminal_path"
     },
     {
@@ -687,6 +813,12 @@
     },
     {
       "classification": "permitted",
+      "line": 37,
+      "path": "docs/DATA_MODEL.md",
+      "pattern": "terminal path"
+    },
+    {
+      "classification": "permitted",
       "line": 94,
       "path": "docs/M4A_EXECUTION_PLAN.md",
       "pattern": "terminal path"
@@ -711,6 +843,12 @@
     },
     {
       "classification": "permitted",
+      "line": 102,
+      "path": "docs/M4B0_EXECUTION_PLAN.md",
+      "pattern": "terminal path"
+    },
+    {
+      "classification": "permitted",
       "line": 34,
       "path": "docs/MARKET_SIGNAL_CONTRACT.md",
       "pattern": "terminal path"
@@ -731,6 +869,12 @@
       "classification": "permitted",
       "line": 18,
       "path": "docs/MT5_READONLY_LOCAL_SETUP.md",
+      "pattern": "terminal path"
+    },
+    {
+      "classification": "permitted",
+      "line": 29,
+      "path": "docs/PAPER_RISK_POLICY.md",
       "pattern": "terminal path"
     },
     {
