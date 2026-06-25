@@ -1,0 +1,213 @@
+{
+  "allowed_decision_statuses": [
+    "approved_for_paper",
+    "duplicate",
+    "expired",
+    "kill_switch_active",
+    "rejected",
+    "requires_manual_review"
+  ],
+  "gates": [
+    {
+      "gate": "signal_status",
+      "reason_codes": [
+        "signal_status_abstained",
+        "signal_status_rejected"
+      ],
+      "status": "PASS",
+      "test_evidence": "backend/tests/unit/test_paper_execution.py",
+      "triggered_example_count": 39
+    },
+    {
+      "gate": "ttl_expiry",
+      "reason_codes": [
+        "signal_expired"
+      ],
+      "status": "PASS",
+      "test_evidence": "backend/tests/unit/test_paper_execution.py",
+      "triggered_example_count": 24
+    },
+    {
+      "gate": "confidence_threshold",
+      "reason_codes": [
+        "low_confidence_manual_review",
+        "low_confidence_rejected"
+      ],
+      "status": "PASS",
+      "test_evidence": "backend/tests/unit/test_paper_execution.py",
+      "triggered_example_count": 0
+    },
+    {
+      "gate": "low_confidence_policy",
+      "reason_codes": [
+        "low_confidence_manual_review"
+      ],
+      "status": "PASS",
+      "test_evidence": "backend/tests/unit/test_paper_execution.py",
+      "triggered_example_count": 0
+    },
+    {
+      "gate": "asset_universe",
+      "reason_codes": [],
+      "status": "PASS",
+      "test_evidence": "backend/tests/unit/test_paper_execution.py",
+      "triggered_example_count": 0
+    },
+    {
+      "gate": "asset_class",
+      "reason_codes": [
+        "asset_class_not_allowed_interest_rate"
+      ],
+      "status": "PASS",
+      "test_evidence": "backend/tests/unit/test_paper_execution.py",
+      "triggered_example_count": 12
+    },
+    {
+      "gate": "direction",
+      "reason_codes": [
+        "uncertain_direction",
+        "mixed_direction_manual_review"
+      ],
+      "status": "PASS",
+      "test_evidence": "backend/tests/unit/test_paper_execution.py",
+      "triggered_example_count": 9
+    },
+    {
+      "gate": "stale_data",
+      "reason_codes": [
+        "stale_source_data"
+      ],
+      "status": "PASS",
+      "test_evidence": "backend/tests/unit/test_paper_execution.py",
+      "triggered_example_count": 0
+    },
+    {
+      "gate": "duplicate_idempotency_key",
+      "reason_codes": [
+        "duplicate_idempotency_key"
+      ],
+      "status": "PASS",
+      "test_evidence": "backend/tests/unit/test_paper_execution.py",
+      "triggered_example_count": 1
+    },
+    {
+      "gate": "max_paper_orders_per_day",
+      "reason_codes": [
+        "max_paper_orders_per_day"
+      ],
+      "status": "PASS",
+      "test_evidence": "backend/tests/unit/test_paper_execution.py",
+      "triggered_example_count": 0
+    },
+    {
+      "gate": "max_paper_orders_per_asset_day",
+      "reason_codes": [
+        "max_paper_orders_per_asset_per_day"
+      ],
+      "status": "PASS",
+      "test_evidence": "backend/tests/unit/test_paper_execution.py",
+      "triggered_example_count": 3
+    },
+    {
+      "gate": "max_notional_per_asset",
+      "reason_codes": [
+        "max_paper_notional_per_asset"
+      ],
+      "status": "PASS",
+      "test_evidence": "backend/tests/unit/test_paper_execution.py",
+      "triggered_example_count": 0
+    },
+    {
+      "gate": "max_notional_by_asset_class",
+      "reason_codes": [
+        "max_paper_notional_by_asset_class"
+      ],
+      "status": "PASS",
+      "test_evidence": "backend/tests/unit/test_paper_execution.py",
+      "triggered_example_count": 0
+    },
+    {
+      "gate": "max_total_exposure",
+      "reason_codes": [
+        "max_total_paper_exposure"
+      ],
+      "status": "PASS",
+      "test_evidence": "backend/tests/unit/test_paper_execution.py",
+      "triggered_example_count": 0
+    },
+    {
+      "gate": "max_drawdown_stop",
+      "reason_codes": [
+        "max_drawdown_stop"
+      ],
+      "status": "PASS",
+      "test_evidence": "backend/tests/unit/test_paper_execution.py",
+      "triggered_example_count": 0
+    },
+    {
+      "gate": "missing_data_ratio",
+      "reason_codes": [
+        "missing_data_ratio_exceeded"
+      ],
+      "status": "PASS",
+      "test_evidence": "backend/tests/unit/test_paper_execution.py",
+      "triggered_example_count": 0
+    },
+    {
+      "gate": "market_bar_coverage",
+      "reason_codes": [
+        "market_bar_coverage_required"
+      ],
+      "status": "PASS",
+      "test_evidence": "backend/tests/unit/test_paper_execution.py",
+      "triggered_example_count": 0
+    },
+    {
+      "gate": "quality_flag_check",
+      "reason_codes": [
+        "market_reaction_quality_flag"
+      ],
+      "status": "PASS",
+      "test_evidence": "backend/tests/unit/test_paper_execution.py",
+      "triggered_example_count": 0
+    },
+    {
+      "gate": "manual_approval_requirement",
+      "reason_codes": [
+        "manual_approval_required"
+      ],
+      "status": "PASS",
+      "test_evidence": "backend/tests/unit/test_paper_execution.py",
+      "triggered_example_count": 30
+    },
+    {
+      "gate": "emergency_kill_switch",
+      "reason_codes": [
+        "emergency_kill_switch"
+      ],
+      "status": "PASS",
+      "test_evidence": "backend/tests/unit/test_paper_execution.py",
+      "triggered_example_count": 1
+    }
+  ],
+  "not_investment_advice": true,
+  "paper_only": true,
+  "reason_code_distribution": {
+    "asset_class_not_allowed_interest_rate": 12,
+    "manual_approval_required": 30,
+    "max_paper_orders_per_asset_per_day": 3,
+    "mixed_direction_manual_review": 9,
+    "not_investment_advice": 108,
+    "paper_only": 108,
+    "signal_expired": 24,
+    "signal_status_abstained": 18,
+    "signal_status_rejected": 21
+  },
+  "status": "PASS",
+  "status_distribution": {
+    "approved_for_paper": 24,
+    "expired": 24,
+    "rejected": 54,
+    "requires_manual_review": 6
+  }
+}

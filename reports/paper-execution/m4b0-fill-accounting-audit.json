@@ -1,0 +1,53 @@
+{
+  "failed_reason_counts": {
+    "manual_review_pending_review": 10,
+    "manual_review_rejected": 3,
+    "paper_exposure_absent": 9
+  },
+  "fill_model": {
+    "expired_order_no_fill": true,
+    "failed_fills_have_typed_reasons": true,
+    "flat_reduces_or_closes_only": true,
+    "missing_bar_no_fill": true,
+    "next_available_bar_open_after_decision": true,
+    "no_leverage": true,
+    "no_short_positions_by_default": true,
+    "synthetic_commission_bps": "5",
+    "synthetic_slippage_bps": "2"
+  },
+  "fill_status_counts": {
+    "failed": 22,
+    "filled": 8
+  },
+  "hand_calculations": {
+    "cash_position_reconciliation": {
+      "actual_cash_null_scenario": "97498.750000",
+      "expected_cash_after_first_fill": "97498.750000",
+      "market_value": "2499.999959",
+      "nav": "99998.749959"
+    },
+    "drawdown": {
+      "actual": "0.000013",
+      "expected_unrounded": "0.00001250041"
+    },
+    "expired_order_failure": "manual_review_expired",
+    "missing_bar_failure": "missing_next_bar",
+    "one_fill": {
+      "bar_open": "140.603235",
+      "commission_actual": "1.250000",
+      "commission_expected": "1.250000",
+      "fill_id": "paper-fill|paper-order|paper-null-reaction-v1|SIGNAL-0041",
+      "fill_price": "140.631356",
+      "gross_notional": "2500.000000",
+      "slippage": "0.028121"
+    }
+  },
+  "nav_deterministic": true,
+  "paper_only": true,
+  "reconciliation_statuses": [
+    "passed"
+  ],
+  "repeated_run_idempotent": true,
+  "status": "PASS",
+  "synthetic_data": true
+}

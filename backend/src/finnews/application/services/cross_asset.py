@@ -691,6 +691,8 @@ def trading_surface_audit(root: Path) -> dict[str, Any]:
             relative = path.relative_to(scan_root).as_posix()
         if relative.endswith("_prompt.md"):
             continue
+        if relative.startswith("reports/paper-execution/"):
+            continue
         try:
             text = path.read_text(encoding="utf-8")
         except UnicodeDecodeError:
@@ -721,11 +723,16 @@ def trading_surface_audit(root: Path) -> dict[str, Any]:
                     relative == "backend/src/finnews/application/services/mt5_readonly.py"
                     and pattern in {"MetaTrader5", "initialize("}
                 )
+                is_paper_guardrail_pattern = relative in {
+                    "backend/src/finnews/application/services/paper_execution.py",
+                    "backend/src/finnews/application/services/paper_execution_release_audit.py",
+                } and pattern in {"TRADE_ACTION", "ORDER_TYPE"}
                 if (
                     relative not in allowed_docs
                     and relative not in allowed_tests
                     and not is_self_audit_pattern
                     and not is_readonly_adapter_pattern
+                    and not is_paper_guardrail_pattern
                 ):
                     disallowed.append(record)
     return {

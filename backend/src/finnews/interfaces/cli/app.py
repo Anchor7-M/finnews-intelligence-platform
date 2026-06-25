@@ -72,8 +72,10 @@ from finnews.application.services.paper_execution import (
     paper_order_example,
     paper_risk_policy_dict,
     validate_paper_order_intent,
-    write_m4b0_release_audit,
     write_paper_execution_static,
+)
+from finnews.application.services.paper_execution_release_audit import (
+    write_m4b0_release_audit_reports,
 )
 from finnews.application.services.pipeline import NewsPipeline
 from finnews.application.services.research_export import (
@@ -1227,7 +1229,7 @@ def paper_export_static() -> None:
 
 @paper_app.command("release-audit")
 def paper_release_audit() -> None:
-    result = write_m4b0_release_audit(_repo_root())
+    result = write_m4b0_release_audit_reports(_repo_root())
     typer.echo(json.dumps(result, sort_keys=True, default=str))
     if result.get("status") != "PASS":
         raise typer.Exit(code=3)

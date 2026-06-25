@@ -76,7 +76,9 @@ def stable_command(command: list[str]) -> list[str]:
     stable: list[str] = []
     for item in command:
         if item == PYTHON:
-            stable.append(".venv/Scripts/python.exe" if VENV_PYTHON.exists() else "python")
+            stable.append(
+                ".venv/Scripts/python.exe" if VENV_PYTHON.exists() else "python"
+            )
             continue
         try:
             path = Path(item)
@@ -774,7 +776,12 @@ def verify_official_data(_: argparse.Namespace) -> None:
         env=env,
         timeout_seconds=240,
     )
-    run(["npm", "run", "test:unit", "--", "--run"], frontend, env=env, timeout_seconds=180)
+    run(
+        ["npm", "run", "test:unit", "--", "--run"],
+        frontend,
+        env=env,
+        timeout_seconds=180,
+    )
     validate_static_export()
 
 
@@ -859,8 +866,14 @@ def verify_market_reaction(_: argparse.Namespace) -> None:
         ],
         backend,
     )
-    run([PYTHON, "-m", "finnews.interfaces.cli.app", "reaction", "export-static"], backend)
-    run([PYTHON, "-m", "finnews.interfaces.cli.app", "reaction", "release-audit"], backend)
+    run(
+        [PYTHON, "-m", "finnews.interfaces.cli.app", "reaction", "export-static"],
+        backend,
+    )
+    run(
+        [PYTHON, "-m", "finnews.interfaces.cli.app", "reaction", "release-audit"],
+        backend,
+    )
     run(
         [
             PYTHON,
@@ -923,12 +936,24 @@ def verify_mt5_readonly(_: argparse.Namespace) -> None:
         timeout_seconds=120,
     )
     run(
-        [PYTHON, "-m", "finnews.interfaces.cli.app", "mt5", "readonly", "release-audit"],
+        [
+            PYTHON,
+            "-m",
+            "finnews.interfaces.cli.app",
+            "mt5",
+            "readonly",
+            "release-audit",
+        ],
         backend,
         env=env,
         timeout_seconds=120,
     )
-    run(["npm", "run", "test:unit", "--", "--run"], frontend, env=env, timeout_seconds=180)
+    run(
+        ["npm", "run", "test:unit", "--", "--run"],
+        frontend,
+        env=env,
+        timeout_seconds=180,
+    )
     validate_static_export()
 
 
@@ -936,7 +961,11 @@ def verify_paper_execution(_: argparse.Namespace) -> None:
     backend = ROOT / "backend"
     frontend = ROOT / "frontend"
     env = {"FINNEWS_SOURCE_TEST_MODE": "mocked-offline"}
-    run([PYTHON, "-m", "finnews.interfaces.cli.app", "paper", "risk", "validate"], backend, env=env)
+    run(
+        [PYTHON, "-m", "finnews.interfaces.cli.app", "paper", "risk", "validate"],
+        backend,
+        env=env,
+    )
     for scenario in [
         "paper-null-reaction-v1",
         "paper-planted-reaction-v1",
@@ -957,21 +986,35 @@ def verify_paper_execution(_: argparse.Namespace) -> None:
             env=env,
             timeout_seconds=120,
         )
-    run([PYTHON, "-m", "finnews.interfaces.cli.app", "paper", "export-static"], backend, env=env)
-    run([PYTHON, "-m", "finnews.interfaces.cli.app", "paper", "release-audit"], backend, env=env)
+    run(
+        [PYTHON, "-m", "finnews.interfaces.cli.app", "paper", "export-static"],
+        backend,
+        env=env,
+    )
+    run(
+        [PYTHON, "-m", "finnews.interfaces.cli.app", "paper", "release-audit"],
+        backend,
+        env=env,
+    )
     run(
         [
             PYTHON,
             "-m",
             "pytest",
             "tests/unit/test_paper_execution.py",
+            "tests/unit/test_paper_execution_release_audit.py",
             "tests/contract/test_paper_execution_api_cli.py",
         ],
         backend,
         env=env,
         timeout_seconds=240,
     )
-    run(["npm", "run", "test:unit", "--", "--run"], frontend, env=env, timeout_seconds=180)
+    run(
+        ["npm", "run", "test:unit", "--", "--run"],
+        frontend,
+        env=env,
+        timeout_seconds=180,
+    )
     validate_static_export()
 
 

@@ -1,0 +1,272 @@
+{
+  "contract_name": "finnews-paper-execution-v1",
+  "contract_version": "1.0.0",
+  "created_at_before_expires_at": true,
+  "example_canonical_hash": "62877b89c8653ac3a4c2d2506968991cdb0a0c36753390adbcdcb31493073a49",
+  "example_payload_hash": "7f597f1248b14b016bbe8cc556464435a0970b1d0ecc45264170b32d6907fddb",
+  "example_valid": {
+    "errors": [],
+    "idempotency_key": "example-paper-idempotency-key",
+    "not_investment_advice": true,
+    "paper_only": true,
+    "payload_hash": "7f597f1248b14b016bbe8cc556464435a0970b1d0ecc45264170b32d6907fddb",
+    "valid": true
+  },
+  "expired_order_rejected": true,
+  "forbidden_field_list_hash": "3b216fd13d966a3992b91fa21604a18d50bee5cccc0d230d336c9ecbabdaaa85",
+  "forbidden_field_results": [
+    {
+      "classified_forbidden": true,
+      "errors": [
+        "unknown fields: broker_server",
+        "forbidden fields: broker_server"
+      ],
+      "field": "broker_server",
+      "valid": false
+    },
+    {
+      "classified_forbidden": true,
+      "errors": [
+        "unknown fields: account_id",
+        "forbidden fields: account_id"
+      ],
+      "field": "account_id",
+      "valid": false
+    },
+    {
+      "classified_forbidden": true,
+      "errors": [
+        "unknown fields: account_number",
+        "forbidden fields: account_number"
+      ],
+      "field": "account_number",
+      "valid": false
+    },
+    {
+      "classified_forbidden": true,
+      "errors": [
+        "unknown fields: login",
+        "forbidden fields: login"
+      ],
+      "field": "login",
+      "valid": false
+    },
+    {
+      "classified_forbidden": true,
+      "errors": [
+        "unknown fields: password",
+        "forbidden fields: password"
+      ],
+      "field": "password",
+      "valid": false
+    },
+    {
+      "classified_forbidden": true,
+      "errors": [
+        "unknown fields: investor_password",
+        "forbidden fields: investor_password"
+      ],
+      "field": "investor_password",
+      "valid": false
+    },
+    {
+      "classified_forbidden": true,
+      "errors": [
+        "unknown fields: terminal_path",
+        "forbidden fields: terminal_path"
+      ],
+      "field": "terminal_path",
+      "valid": false
+    },
+    {
+      "classified_forbidden": true,
+      "errors": [
+        "unknown fields: mt5_symbol",
+        "forbidden fields: mt5_symbol"
+      ],
+      "field": "mt5_symbol",
+      "valid": false
+    },
+    {
+      "classified_forbidden": true,
+      "errors": [
+        "unknown fields: order_ticket",
+        "forbidden fields: order_ticket"
+      ],
+      "field": "order_ticket",
+      "valid": false
+    },
+    {
+      "classified_forbidden": true,
+      "errors": [
+        "unknown fields: position_id",
+        "forbidden fields: position_id"
+      ],
+      "field": "position_id",
+      "valid": false
+    },
+    {
+      "classified_forbidden": true,
+      "errors": [
+        "unknown fields: real_lot_size",
+        "forbidden fields: real_lot_size"
+      ],
+      "field": "real_lot_size",
+      "valid": false
+    },
+    {
+      "classified_forbidden": true,
+      "errors": [
+        "unknown fields: lot",
+        "forbidden fields: lot"
+      ],
+      "field": "lot",
+      "valid": false
+    },
+    {
+      "classified_forbidden": true,
+      "errors": [
+        "unknown fields: volume_lot",
+        "forbidden fields: volume_lot"
+      ],
+      "field": "volume_lot",
+      "valid": false
+    },
+    {
+      "classified_forbidden": true,
+      "errors": [
+        "unknown fields: leverage",
+        "forbidden fields: leverage"
+      ],
+      "field": "leverage",
+      "valid": false
+    },
+    {
+      "classified_forbidden": true,
+      "errors": [
+        "unknown fields: margin",
+        "forbidden fields: margin"
+      ],
+      "field": "margin",
+      "valid": false
+    },
+    {
+      "classified_forbidden": true,
+      "errors": [
+        "unknown fields: stop_loss",
+        "forbidden fields: stop_loss"
+      ],
+      "field": "stop_loss",
+      "valid": false
+    },
+    {
+      "classified_forbidden": true,
+      "errors": [
+        "unknown fields: take_profit",
+        "forbidden fields: take_profit"
+      ],
+      "field": "take_profit",
+      "valid": false
+    },
+    {
+      "classified_forbidden": true,
+      "errors": [
+        "unknown fields: order_type",
+        "forbidden fields: order_type"
+      ],
+      "field": "order_type",
+      "valid": false
+    },
+    {
+      "classified_forbidden": true,
+      "errors": [
+        "unknown fields: execution_flag",
+        "forbidden fields: execution_flag"
+      ],
+      "field": "execution_flag",
+      "valid": false
+    },
+    {
+      "classified_forbidden": true,
+      "errors": [
+        "unknown fields: execute",
+        "forbidden fields: execute"
+      ],
+      "field": "execute",
+      "valid": false
+    },
+    {
+      "classified_forbidden": true,
+      "errors": [
+        "unknown fields: buy",
+        "forbidden fields: buy"
+      ],
+      "field": "buy",
+      "valid": false
+    },
+    {
+      "classified_forbidden": true,
+      "errors": [
+        "unknown fields: sell",
+        "forbidden fields: sell"
+      ],
+      "field": "sell",
+      "valid": false
+    },
+    {
+      "classified_forbidden": true,
+      "errors": [
+        "unknown fields: order_check",
+        "forbidden fields: order_check"
+      ],
+      "field": "order_check",
+      "valid": false
+    },
+    {
+      "classified_forbidden": true,
+      "errors": [
+        "unknown fields: order_send",
+        "forbidden fields: order_send"
+      ],
+      "field": "order_send",
+      "valid": false
+    },
+    {
+      "classified_forbidden": true,
+      "errors": [
+        "unknown fields: TRADE_ACTION",
+        "forbidden fields: TRADE_ACTION"
+      ],
+      "field": "TRADE_ACTION",
+      "valid": false
+    },
+    {
+      "classified_forbidden": true,
+      "errors": [
+        "unknown fields: ORDER_TYPE",
+        "forbidden fields: ORDER_TYPE"
+      ],
+      "field": "ORDER_TYPE",
+      "valid": false
+    },
+    {
+      "classified_forbidden": true,
+      "errors": [
+        "unknown fields: MqlTradeRequest",
+        "forbidden fields: MqlTradeRequest"
+      ],
+      "field": "MqlTradeRequest",
+      "valid": false
+    }
+  ],
+  "idempotency_key_stable": true,
+  "not_investment_advice": true,
+  "not_investment_advice_required": true,
+  "paper_only": true,
+  "payload_hash_stable": true,
+  "schema_file_hash": "60e64eb20a6916c266df58a6fce66243c1392487a211430714af79199dccc93d",
+  "schema_hash": "c7660eeaaa359ae58fb2e7409972a3cd32832046dfabf13eb5085ccfcc5c4baf",
+  "status": "PASS",
+  "synthetic_data_required": true,
+  "unknown_field_rejected": true
+}

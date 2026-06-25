@@ -61,22 +61,32 @@ PAPER_ALLOWED_FIELDS = {
 PAPER_FORBIDDEN_FIELDS = {
     "broker_server",
     "account_id",
+    "account_number",
     "account",
     "login",
     "password",
+    "investor_password",
     "terminal_path",
     "mt5_symbol",
     "order_ticket",
     "position_id",
     "real_lot_size",
+    "lot",
+    "volume_lot",
     "leverage",
     "margin",
     "stop_loss",
     "take_profit",
     "order_type",
     "execution_flag",
+    "execute",
+    "buy",
+    "sell",
     "order_check",
     "order_send",
+    "TRADE_ACTION",
+    "ORDER_TYPE",
+    "MqlTradeRequest",
 }
 PAPER_SIDES = {"long", "flat", "reduce"}
 RISK_DECISIONS = {
@@ -228,11 +238,14 @@ def validate_paper_order_intent(payload: dict[str, Any]) -> dict[str, Any]:
     fields = set(payload)
     unknown = fields - PAPER_ALLOWED_FIELDS
     forbidden = fields & PAPER_FORBIDDEN_FIELDS
+    missing = PAPER_ALLOWED_FIELDS - fields
     errors: list[str] = []
     if unknown:
         errors.append(f"unknown fields: {', '.join(sorted(unknown))}")
     if forbidden:
         errors.append(f"forbidden fields: {', '.join(sorted(forbidden))}")
+    if missing:
+        errors.append(f"missing fields: {', '.join(sorted(missing))}")
     if payload.get("contract_name") != PAPER_CONTRACT_NAME:
         errors.append("contract_name mismatch")
     if payload.get("contract_version") != PAPER_CONTRACT_VERSION:
@@ -243,6 +256,22 @@ def validate_paper_order_intent(payload: dict[str, Any]) -> dict[str, Any]:
         errors.append("invalid risk_decision")
     if payload.get("manual_approval_state") not in MANUAL_REVIEW_STATES:
         errors.append("invalid manual_approval_state")
+    if payload.get("synthetic_data") is not True:
+        errors.append("synthetic_data must be true")
+    if payload.get("not_investment_advice") is not True:
+        errors.append("not_investment_advice must be true")
+    try:
+        created_at = datetime.fromisoformat(str(payload.get("created_at")))
+        decision_time = datetime.fromisoformat(str(payload.get("decision_time")))
+        expires_at = datetime.fromisoformat(str(payload.get("expires_at")))
+        if created_at >= expires_at:
+            errors.append("created_at must be before expires_at")
+        if decision_time >= expires_at:
+            errors.append("decision_time must be before expires_at")
+        if expires_at <= PAPER_DECISION_NOW:
+            errors.append("paper order intent is expired")
+    except ValueError:
+        errors.append("timestamps must be ISO-8601 datetimes")
     for marker in FORBIDDEN_TEXT_MARKERS:
         if marker in canonical_json(payload).lower():
             errors.append(f"forbidden text marker: {marker}")

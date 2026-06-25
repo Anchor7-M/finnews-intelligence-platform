@@ -66,20 +66,30 @@
   "x-forbidden-fields": [
     "broker_server",
     "account_id",
+    "account_number",
     "login",
     "password",
+    "investor_password",
     "terminal_path",
     "mt5_symbol",
     "order_ticket",
     "position_id",
     "real_lot_size",
+    "lot",
+    "volume_lot",
     "leverage",
     "margin",
     "stop_loss",
     "take_profit",
     "order_type",
     "execution_flag",
+    "execute",
+    "buy",
+    "sell",
     "order_check",
-    "order_send"
+    "order_send",
+    "TRADE_ACTION",
+    "ORDER_TYPE",
+    "MqlTradeRequest"
   ]
 }

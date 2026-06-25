@@ -1,0 +1,82 @@
+{
+  "expected_summaries_verified": true,
+  "not_investment_advice": true,
+  "scenarios": [
+    {
+      "costs": "1.250000",
+      "duplicates": 0,
+      "expired": 8,
+      "exposure_by_asset_class": {
+        "crypto_asset": "2499.999959"
+      },
+      "failed": 9,
+      "fill_attempts": 10,
+      "filled": 1,
+      "final_cash": "97498.750000",
+      "final_nav": "99998.749959",
+      "kill_switch_decisions": 0,
+      "manual_review": 2,
+      "max_drawdown": "0.000013",
+      "paper_orders": 10,
+      "reconciliation_status": "passed",
+      "rejected": 18,
+      "risk_approved": 8,
+      "scenario_id": "paper-null-reaction-v1",
+      "signals_considered": 36,
+      "turnover": "2500.000000"
+    },
+    {
+      "costs": "5.000000",
+      "duplicates": 0,
+      "expired": 8,
+      "exposure_by_asset_class": {
+        "crypto_asset": "2499.999955",
+        "futures_root": "2499.999938",
+        "fx": "2499.999951",
+        "precious_metal": "2500.000019"
+      },
+      "failed": 6,
+      "fill_attempts": 10,
+      "filled": 4,
+      "final_cash": "89995.000000",
+      "final_nav": "99994.999864",
+      "kill_switch_decisions": 0,
+      "manual_review": 2,
+      "max_drawdown": "0.000050",
+      "paper_orders": 10,
+      "reconciliation_status": "passed",
+      "rejected": 18,
+      "risk_approved": 8,
+      "scenario_id": "paper-planted-reaction-v1",
+      "signals_considered": 36,
+      "turnover": "10000.000000"
+    },
+    {
+      "costs": "3.750000",
+      "duplicates": 0,
+      "expired": 8,
+      "exposure_by_asset_class": {
+        "crypto_asset": "2499.999955",
+        "futures_root": "2499.999938",
+        "precious_metal": "2500.000019"
+      },
+      "failed": 7,
+      "fill_attempts": 10,
+      "filled": 3,
+      "final_cash": "92496.250000",
+      "final_nav": "99996.249913",
+      "kill_switch_decisions": 0,
+      "manual_review": 2,
+      "max_drawdown": "0.000038",
+      "paper_orders": 10,
+      "reconciliation_status": "passed",
+      "rejected": 18,
+      "risk_approved": 8,
+      "scenario_id": "paper-regime-shift-v1",
+      "signals_considered": 36,
+      "turnover": "7500.000000"
+    }
+  ],
+  "status": "PASS",
+  "synthetic_data": true
+}

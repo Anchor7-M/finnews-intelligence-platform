@@ -1,0 +1,87 @@
+{
+  "api_mutation_routes_absent": true,
+  "api_read_only_endpoints": [
+    "GET /api/v1/paper/overview",
+    "GET /api/v1/paper/risk-policies",
+    "GET /api/v1/paper/risk-decisions",
+    "GET /api/v1/paper/orders",
+    "GET /api/v1/paper/fills",
+    "GET /api/v1/paper/positions",
+    "GET /api/v1/paper/nav",
+    "GET /api/v1/paper/runs"
+  ],
+  "cli_commands": [
+    "finnews paper risk validate",
+    "finnews paper risk evaluate --scenario <id>",
+    "finnews paper orders generate --scenario <id>",
+    "finnews paper orders summary --scenario <id>",
+    "finnews paper approvals simulate --scenario <id>",
+    "finnews paper fills simulate --scenario <id>",
+    "finnews paper portfolio run --scenario <id>",
+    "finnews paper portfolio summary --scenario <id>",
+    "finnews paper export-static",
+    "finnews paper release-audit"
+  ],
+  "filled_count": 8,
+  "forbidden_ui_labels_absent": true,
+  "frontend_route": "/paper-execution",
+  "paper_order_count": 30,
+  "static_demo": {
+    "bounded_size": true,
+    "byte_identical_repeated_export": true,
+    "github_pages_subpath_compatible": true,
+    "no_account_data": true,
+    "no_broker_data": true,
+    "no_credentials": true,
+    "no_live_data": true,
+    "no_local_paths": true,
+    "no_mt5_data": true,
+    "no_real_order": true,
+    "synthetic_only": true
+  },
+  "static_files": [
+    {
+      "exists": true,
+      "file": "frontend/public/demo-data/paper-overview.json",
+      "sha256": "a18aee53bf0c0ef52736e89993a31bf58dd01a7be6a338294d53e61baad01e00",
+      "size_bytes": 1087
+    },
+    {
+      "exists": true,
+      "file": "frontend/public/demo-data/paper-risk-decisions.json",
+      "sha256": "112b82b376cde8492930214359e7ca2057c1ccb8b83766815d5b7736ec925798",
+      "size_bytes": 97308
+    },
+    {
+      "exists": true,
+      "file": "frontend/public/demo-data/paper-orders.json",
+      "sha256": "9ee9a233702da423a03b520577e162a983b970e13db244e958194fa8f645b137",
+      "size_bytes": 31811
+    },
+    {
+      "exists": true,
+      "file": "frontend/public/demo-data/paper-fills.json",
+      "sha256": "26f71ab887e40000fa153ae7318e98992993518f29c4d7ee43f9381269963fa3",
+      "size_bytes": 18665
+    },
+    {
+      "exists": true,
+      "file": "frontend/public/demo-data/paper-positions.json",
+      "sha256": "19e73a6296e96bd60541c3182df221bb11c74935f2ae858f05e88244cd9b926a",
+      "size_bytes": 3466
+    },
+    {
+      "exists": true,
+      "file": "frontend/public/demo-data/paper-nav.json",
+      "sha256": "9f32cc44aaec38f6def7a6802c64b0421dcc6b955c413bd4846a5f5085c97b61",
+      "size_bytes": 1319
+    },
+    {
+      "exists": true,
+      "file": "frontend/public/demo-data/paper-runs.json",
+      "sha256": "6f7af0271d06fdfc447f84025dcfa868016adfd419be73dd913a2be2664e5b5c",
+      "size_bytes": 2500
+    }
+  ],
+  "status": "PASS"
+}

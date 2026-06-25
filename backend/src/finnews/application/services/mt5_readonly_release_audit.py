@@ -583,6 +583,7 @@ def _classify_grep_match(pattern: str, row: dict[str, Any]) -> dict[str, Any]:
     permitted = permitted or path.startswith("contracts/")
     permitted = permitted or path.startswith("backend/tests/")
     permitted = permitted or path.startswith("reports/mt5-readonly/")
+    permitted = permitted or path.startswith("reports/paper-execution/")
     permitted = permitted or path in {
         "backend/src/finnews/application/services/cross_asset.py",
         "backend/src/finnews/application/services/cross_asset_release_audit.py",
@@ -590,6 +591,7 @@ def _classify_grep_match(pattern: str, row: dict[str, Any]) -> dict[str, Any]:
         "backend/src/finnews/application/services/mt5_readonly.py",
         "backend/src/finnews/application/services/nlp_release_audit.py",
         "backend/src/finnews/application/services/paper_execution.py",
+        "backend/src/finnews/application/services/paper_execution_release_audit.py",
         "backend/src/finnews/application/services/mt5_readonly_release_audit.py",
         "frontend/public/demo-data/mt5-readonly-symbol-map-schema.json",
         "reports/cross-asset/revised-m3a-trading-surface-audit.json",
