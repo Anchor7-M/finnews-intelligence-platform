@@ -131,6 +131,14 @@ EXPECTED_TABLES = {
     "mt5_readonly_symbol_mappings",
     "mt5_readonly_runs",
     "mt5_bar_export_manifests",
+    "paper_risk_policies",
+    "paper_execution_runs",
+    "paper_risk_decisions",
+    "paper_order_intents",
+    "paper_manual_reviews",
+    "paper_fills",
+    "paper_positions",
+    "paper_nav",
 }
 EXPECTED_METRICS = {
     "raw_observation_count": 68,
@@ -216,7 +224,7 @@ def test_alembic_upgrade_downgrade_schema_types_constraints_and_indexes(engine: 
     assert EXPECTED_TABLES.isdisjoint(set(inspector.get_table_names()))
 
     command.upgrade(alembic_config(), "head")
-    assert ScriptDirectory.from_config(alembic_config()).get_current_head() == "0008_mt5_readonly"
+    assert ScriptDirectory.from_config(alembic_config()).get_current_head() == "0009_paper_execution"
     command.current(alembic_config())
 
     inspector = inspect(engine)
@@ -1128,4 +1136,56 @@ def test_postgres_nlp_model_registry_metadata_jsonb_and_rollback(settings: Setti
     assert repo.get_nlp_model("m2a-rollback") is None
     assert repo.get_nlp_model(model.model_id) is not None
     session.close()
+    engine.dispose()
+
+
+@pytest.mark.postgres
+def test_postgres_paper_execution_migration_tables_are_safe(settings: Settings) -> None:
+    reset_schema()
+    engine = create_engine(settings.database_url, future=True)
+    inspector = inspect(engine)
+    expected_tables = {
+        "paper_risk_policies",
+        "paper_risk_decisions",
+        "paper_order_intents",
+        "paper_manual_reviews",
+        "paper_fills",
+        "paper_positions",
+        "paper_nav",
+        "paper_execution_runs",
+    }
+    assert expected_tables.issubset(set(inspector.get_table_names()))
+    forbidden_columns = {
+        "broker_server",
+        "account_id",
+        "account",
+        "login",
+        "password",
+        "terminal_path",
+        "mt5_symbol",
+        "order_ticket",
+        "position_id",
+        "real_lot_size",
+        "leverage",
+        "margin",
+        "stop_loss",
+        "take_profit",
+        "order_type",
+        "execution_flag",
+        "order_check",
+        "order_send",
+    }
+    for table in expected_tables:
+        columns = {column["name"] for column in inspector.get_columns(table)}
+        assert columns.isdisjoint(forbidden_columns)
+    order_columns = {column["name"] for column in inspector.get_columns("paper_order_intents")}
+    assert {"paper_order_id", "idempotency_key", "paper_notional", "payload_hash"}.issubset(
+        order_columns
+    )
+    unique_names = {
+        constraint["name"] or ""
+        for constraint in inspector.get_unique_constraints("paper_order_intents")
+    }
+    assert any("paper_order_id" in name for name in unique_names)
+    assert any("idempotency_key" in name for name in unique_names)
     engine.dispose()

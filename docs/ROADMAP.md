@@ -63,11 +63,23 @@ This milestone does not read account data, read orders, read positions, read
 trading history, check orders, send orders, store credentials, launch a
 terminal, or provide investment advice.
 
+### Milestone 4B-0
+
+Implemented: paper-only risk-control engine, versioned paper-order intent
+contract, deterministic manual-review simulation, paper fills, portfolio
+accounting, three synthetic paper scenarios, read-only API/CLI/static/frontend
+surfaces, PostgreSQL metadata tables, and execution-surface audit evidence.
+
+This milestone does not connect to MT5, read account data, check orders, send
+orders, store credentials, or provide investment advice.
+
 ## Revised Future Roadmap
 
 ### Milestone 4B
 
-MT5 demo execution, only after read-only validation: demo account, manual approval, strict risk engine, idempotent requests, stale-signal rejection, preflight checks, kill switch, reconciliation, and full audit trail.
+MT5 demo execution remains separate future work after paper-only validation:
+demo account, manual approval, stricter broker preflight review, kill switch,
+reconciliation, and full audit trail.
 
 ### Milestone 4C
 

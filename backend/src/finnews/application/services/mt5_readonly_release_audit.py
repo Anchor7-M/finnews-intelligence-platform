@@ -589,6 +589,7 @@ def _classify_grep_match(pattern: str, row: dict[str, Any]) -> dict[str, Any]:
         "backend/src/finnews/application/services/market_reaction.py",
         "backend/src/finnews/application/services/mt5_readonly.py",
         "backend/src/finnews/application/services/nlp_release_audit.py",
+        "backend/src/finnews/application/services/paper_execution.py",
         "backend/src/finnews/application/services/mt5_readonly_release_audit.py",
         "frontend/public/demo-data/mt5-readonly-symbol-map-schema.json",
         "reports/cross-asset/revised-m3a-trading-surface-audit.json",

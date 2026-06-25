@@ -659,8 +659,10 @@ def trading_surface_audit(root: Path) -> dict[str, Any]:
     allowed_tests = {
         "backend/tests/unit/test_cross_asset.py",
         "backend/tests/unit/test_mt5_readonly.py",
+        "backend/tests/unit/test_paper_execution.py",
         "backend/tests/contract/test_cross_asset_api_cli.py",
         "backend/tests/contract/test_mt5_readonly_api_cli.py",
+        "backend/tests/contract/test_paper_execution_api_cli.py",
     }
     findings: list[dict[str, object]] = []
     disallowed: list[dict[str, object]] = []

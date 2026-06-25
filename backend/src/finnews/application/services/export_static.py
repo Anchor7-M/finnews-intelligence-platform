@@ -14,6 +14,7 @@ from finnews.application.services.market_reaction import market_reaction_static_
 from finnews.application.services.mt5_readonly import mt5_readonly_static_payload
 from finnews.application.services.nlp_reporting import nlp_static_payload
 from finnews.application.services.official_data import official_data_static_payload
+from finnews.application.services.paper_execution import paper_execution_static_payload
 from finnews.application.services.research_export import research_static_payload
 from finnews.domain.entities import SourceDefinition, SourceFetchState
 from finnews.domain.enums import ProcessingState
@@ -213,6 +214,7 @@ def build_static_payload(repository: NewsRepository) -> dict[str, Any]:
     payload.update(research_static_payload(repository))
     payload.update(cross_asset_static_payload())
     payload.update(mt5_readonly_static_payload())
+    payload.update(paper_execution_static_payload())
     payload.update(official_data_static_payload(repository))
     payload.update(market_reaction_static_payload())
     return payload

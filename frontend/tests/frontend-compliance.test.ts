@@ -15,6 +15,7 @@ import MarketReactionLab from "../src/pages/MarketReactionLab.vue";
 import NlpEvaluation from "../src/pages/NlpEvaluation.vue";
 import OfficialDataMonitor from "../src/pages/OfficialDataMonitor.vue";
 import OverviewPage from "../src/pages/OverviewPage.vue";
+import PaperExecutionLab from "../src/pages/PaperExecutionLab.vue";
 import ResearchExport from "../src/pages/ResearchExport.vue";
 import SignalCandidates from "../src/pages/SignalCandidates.vue";
 import SourceHealth from "../src/pages/SourceHealth.vue";
@@ -470,6 +471,150 @@ vi.mock("../src/api/client", () => ({
       schema_version: "finnews-market-bars-v1",
       provider: "finnews-synthetic-market-reaction",
       provider_version: "market-reaction-synthetic-v1",
+    },
+  ],
+  loadPaperOverview: async () => ({
+    contract_name: "finnews-paper-execution-v1",
+    contract_version: "1.0.0",
+    engine_version: "m4b0-paper-simulator-v1",
+    scenario_ids: ["paper-planted-reaction-v1"],
+    scenario_count: 1,
+    signal_candidates_considered: 36,
+    risk_decision_counts: { approved_for_paper: 8, rejected: 18 },
+    paper_order_count: 10,
+    paper_fill_count: 10,
+    filled_count: 4,
+    failed_fill_count: 6,
+    position_count: 4,
+    nav_row_count: 1,
+    average_final_nav: "99994.999864",
+    failed_fill_reasons: { manual_review_pending_review: 2 },
+    paper_only: true,
+    synthetic_data: true,
+    no_mt5_connection: true,
+    no_account_data: true,
+    no_real_order: true,
+    not_investment_advice: true,
+    disclaimer:
+      "Paper execution uses synthetic/local bars only; it is not real-world performance and not investment advice.",
+  }),
+  loadPaperRiskPolicies: async () => [
+    {
+      risk_policy_id: "paper-risk-m4b0-default-v1",
+      policy_version: "m4b0-paper-simulator-v1",
+      confidence_threshold: "0.45",
+      max_orders_per_day: 12,
+      max_total_exposure: "35000",
+      manual_approval_required: true,
+      kill_switch_active: false,
+      default_order_notional: "2500",
+      paper_only: true,
+      no_mt5_connection: true,
+      no_account_data: true,
+      no_real_order: true,
+      not_investment_advice: true,
+    },
+  ],
+  loadPaperRiskDecisions: async () => [
+    {
+      risk_decision_id: "paper-planted-reaction-v1|SIGNAL-0001",
+      scenario_id: "paper-planted-reaction-v1",
+      signal_id: "SIGNAL-0001",
+      asset_id: "US-EQ-ALPHA",
+      asset_class: "us_equity",
+      direction: "positive",
+      signal_status: "research",
+      confidence: "0.55",
+      risk_decision: "approved_for_paper",
+      reason_codes: ["paper_only", "manual_approval_required"],
+      bar_coverage: "1",
+      missing_data_ratio: "0",
+      synthetic_data: true,
+      not_investment_advice: true,
+    },
+  ],
+  loadPaperOrders: async () => [
+    {
+      paper_order_id: "paper-order|paper-planted-reaction-v1|SIGNAL-0001",
+      signal_id: "SIGNAL-0001",
+      asset_id: "US-EQ-ALPHA",
+      direction: "positive",
+      paper_side: "long",
+      paper_notional: "2500.000000",
+      risk_decision: "approved_for_paper",
+      manual_approval_state: "pending_review",
+      reason_codes: ["paper_only"],
+      synthetic_data: true,
+      not_investment_advice: true,
+    },
+  ],
+  loadPaperFills: async () => [
+    {
+      fill_id: "paper-fill-1",
+      scenario_id: "paper-planted-reaction-v1",
+      paper_order_id: "paper-order|paper-planted-reaction-v1|SIGNAL-0001",
+      asset_id: "US-EQ-ALPHA",
+      paper_side: "long",
+      fill_status: "filled",
+      failed_reason: null,
+      filled_quantity_units: "25.000000",
+      fill_price: "100.000000",
+      gross_notional: "2500.000000",
+      commission: "1.250000",
+      filled_at: "2026-06-25T00:00:00+00:00",
+      synthetic_data: true,
+      not_investment_advice: true,
+    },
+  ],
+  loadPaperPositions: async () => [
+    {
+      scenario_id: "paper-planted-reaction-v1",
+      asset_id: "US-EQ-ALPHA",
+      asset_class: "us_equity",
+      quantity: "25.000000",
+      average_cost: "100.000000",
+      market_value: "2500.000000",
+      realized_pnl: "0.000000",
+      unrealized_pnl: "0.000000",
+      transaction_costs: "1.250000",
+      synthetic_data: true,
+      not_investment_advice: true,
+    },
+  ],
+  loadPaperNav: async () => [
+    {
+      scenario_id: "paper-planted-reaction-v1",
+      nav_at: "2026-06-25T00:00:00+00:00",
+      cash: "97498.750000",
+      market_value: "2500.000000",
+      nav: "99998.750000",
+      gross_exposure: "2500.000000",
+      drawdown: "0.000013",
+      maximum_drawdown: "0.000013",
+      reconciliation_status: "passed",
+      synthetic_data: true,
+      not_investment_advice: true,
+    },
+  ],
+  loadPaperRuns: async () => [
+    {
+      run_id: "paper-run|paper-planted-reaction-v1",
+      scenario_id: "paper-planted-reaction-v1",
+      signal_candidates_considered: 36,
+      risk_approved: 8,
+      manual_review: 2,
+      rejected: 18,
+      expired: 8,
+      paper_orders_generated: 10,
+      paper_fills: 4,
+      failed_fills: 6,
+      final_nav: "99994.999864",
+      turnover: "10000.000000",
+      costs: "5.000000",
+      maximum_drawdown: "0.000050",
+      reconciliation_status: "passed",
+      synthetic_data: true,
+      not_investment_advice: true,
     },
   ],
   loadOfficialDataOverview: async () => ({
@@ -1048,6 +1193,20 @@ describe("frontend compliance", () => {
     expect(wrapper.text()).not.toContain("Connect MT5");
   });
 
+  it("renders paper execution lab without real execution controls", async () => {
+    const wrapper = mount(PaperExecutionLab);
+    await new Promise((resolve) => setTimeout(resolve, 0));
+    expect(wrapper.text()).toContain("Paper Execution Lab");
+    expect(wrapper.text()).toContain("Paper Orders");
+    expect(wrapper.text()).toContain("Risk Decisions");
+    expect(wrapper.text()).toContain("Paper Orders And Fills");
+    expect(wrapper.text()).toContain("99994.999864");
+    expect(wrapper.text()).toContain("not connected to MT5");
+    expect(wrapper.text()).not.toContain("Send Order");
+    expect(wrapper.text()).not.toContain("Connect MT5");
+    expect(wrapper.text()).not.toContain("Real Account");
+  });
+
   it("renders research export dashboard with safe handoff language", async () => {
     const wrapper = mount(ResearchExport);
     await new Promise((resolve) => setTimeout(resolve, 0));
@@ -1069,6 +1228,7 @@ describe("frontend compliance", () => {
         { path: "/assets/:assetId?", component: AssetExplorer },
         { path: "/event-impact", component: EventImpact },
         { path: "/market-reaction", component: MarketReactionLab },
+        { path: "/paper-execution", component: PaperExecutionLab },
         { path: "/signals", component: SignalCandidates },
         { path: "/integration-readiness", component: IntegrationReadiness },
         { path: "/articles", component: ArticleExplorer },
@@ -1100,6 +1260,9 @@ describe("frontend compliance", () => {
     await router.push("/market-reaction");
     await wrapper.vm.$nextTick();
     expect(wrapper.text()).toContain("Market Reaction Lab");
+    await router.push("/paper-execution");
+    await wrapper.vm.$nextTick();
+    expect(wrapper.text()).toContain("Paper Execution Lab");
     await router.push("/nlp-evaluation");
     await wrapper.vm.$nextTick();
     expect(wrapper.text()).toContain("NLP Evaluation Lab");

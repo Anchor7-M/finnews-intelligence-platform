@@ -1,0 +1,40 @@
+[
+  {
+    "allow_informational": true,
+    "allowed_asset_classes": [
+      "us_equity",
+      "etf",
+      "equity_index",
+      "fx",
+      "precious_metal",
+      "commodity",
+      "futures_root",
+      "futures_contract",
+      "crypto_asset"
+    ],
+    "commission_bps": "5",
+    "confidence_threshold": "0.45",
+    "default_order_notional": "2500",
+    "kill_switch_active": false,
+    "low_confidence_policy": "manual_review",
+    "manual_approval_required": true,
+    "max_drawdown": "0.0800",
+    "max_missing_data_ratio": "0.2500",
+    "max_notional_by_asset_class": "15000",
+    "max_notional_per_asset": "7500",
+    "max_orders_per_asset_per_day": 2,
+    "max_orders_per_day": 12,
+    "max_total_exposure": "35000",
+    "min_bar_coverage": "0.7500",
+    "no_account_data": true,
+    "no_mt5_connection": true,
+    "no_real_order": true,
+    "not_investment_advice": true,
+    "paper_only": true,
+    "policy_version": "m4b0-paper-simulator-v1",
+    "risk_policy_id": "paper-risk-m4b0-default-v1",
+    "slippage_bps": "2",
+    "stale_source_hours": 240,
+    "starting_cash": "100000.00"
+  }
+]

@@ -65,6 +65,16 @@ from finnews.application.services.official_data import (
     official_data_static_payload,
     persist_official_data_demo,
 )
+from finnews.application.services.paper_execution import (
+    PaperExecutionError,
+    build_paper_execution_demo,
+    paper_order_contract_schema,
+    paper_order_example,
+    paper_risk_policy_dict,
+    validate_paper_order_intent,
+    write_m4b0_release_audit,
+    write_paper_execution_static,
+)
 from finnews.application.services.pipeline import NewsPipeline
 from finnews.application.services.research_export import (
     DEFAULT_CUTOFF_POLICY,
@@ -138,6 +148,12 @@ market_data_app = typer.Typer(help="Local market-bar contract and synthetic scen
 market_data_contract_app = typer.Typer(help="Market-data import contract helpers")
 reaction_app = typer.Typer(help="Market-reaction event studies and signal-quality evaluation")
 reaction_study_app = typer.Typer(help="Market-reaction study helpers")
+paper_app = typer.Typer(help="Paper-only execution simulator")
+paper_risk_app = typer.Typer(help="Paper risk policy and decision helpers")
+paper_orders_app = typer.Typer(help="Paper order intent helpers")
+paper_approvals_app = typer.Typer(help="Paper manual-review simulation helpers")
+paper_fills_app = typer.Typer(help="Paper fill simulation helpers")
+paper_portfolio_app = typer.Typer(help="Paper portfolio accounting helpers")
 app.add_typer(ingest_app, name="ingest")
 app.add_typer(db_app, name="db")
 app.add_typer(source_app, name="source")
@@ -157,6 +173,12 @@ app.add_typer(market_data_app, name="market-data")
 market_data_app.add_typer(market_data_contract_app, name="contract")
 app.add_typer(reaction_app, name="reaction")
 reaction_app.add_typer(reaction_study_app, name="study")
+app.add_typer(paper_app, name="paper")
+paper_app.add_typer(paper_risk_app, name="risk")
+paper_app.add_typer(paper_orders_app, name="orders")
+paper_app.add_typer(paper_approvals_app, name="approvals")
+paper_app.add_typer(paper_fills_app, name="fills")
+paper_app.add_typer(paper_portfolio_app, name="portfolio")
 
 
 @app.command()
@@ -1056,6 +1078,158 @@ def mt5_readonly_release_audit() -> None:
     result = write_m4a_release_audit_reports(_repo_root())
     typer.echo(json.dumps(result, sort_keys=True, default=str))
     if result.get("status") != "PASS" or result.get("execution_surface_status") != "PASS":
+        raise typer.Exit(code=3)
+
+
+@paper_risk_app.command("validate")
+def paper_risk_validate() -> None:
+    typer.echo(
+        json.dumps(
+            {
+                "contract": paper_order_contract_schema(),
+                "policy": paper_risk_policy_dict(),
+                "example_validation": validate_paper_order_intent(paper_order_example()),
+            },
+            sort_keys=True,
+            default=str,
+        )
+    )
+
+
+@paper_risk_app.command("evaluate")
+def paper_risk_evaluate(
+    scenario: Annotated[str, typer.Option("--scenario")] = "paper-planted-reaction-v1",
+) -> None:
+    try:
+        dataset = build_paper_execution_demo(scenario)
+    except PaperExecutionError as exc:
+        typer.echo(f"paper_risk_error={exc}", err=True)
+        raise typer.Exit(code=2) from exc
+    typer.echo(
+        json.dumps(
+            {
+                "scenario_id": scenario,
+                "items": dataset.risk_decisions,
+                "total": len(dataset.risk_decisions),
+                "synthetic_data": True,
+                "not_investment_advice": True,
+            },
+            sort_keys=True,
+            default=str,
+        )
+    )
+
+
+@paper_orders_app.command("generate")
+def paper_orders_generate(
+    scenario: Annotated[str, typer.Option("--scenario")] = "paper-planted-reaction-v1",
+) -> None:
+    try:
+        dataset = build_paper_execution_demo(scenario)
+    except PaperExecutionError as exc:
+        typer.echo(f"paper_orders_error={exc}", err=True)
+        raise typer.Exit(code=2) from exc
+    typer.echo(
+        json.dumps(
+            {"scenario_id": scenario, "items": dataset.orders, "total": len(dataset.orders)},
+            sort_keys=True,
+            default=str,
+        )
+    )
+
+
+@paper_orders_app.command("summary")
+def paper_orders_summary(
+    scenario: Annotated[str, typer.Option("--scenario")] = "paper-planted-reaction-v1",
+) -> None:
+    try:
+        dataset = build_paper_execution_demo(scenario)
+    except PaperExecutionError as exc:
+        typer.echo(f"paper_orders_error={exc}", err=True)
+        raise typer.Exit(code=2) from exc
+    typer.echo(json.dumps(dataset.runs[0], sort_keys=True, default=str))
+
+
+@paper_approvals_app.command("simulate")
+def paper_approvals_simulate(
+    scenario: Annotated[str, typer.Option("--scenario")] = "paper-planted-reaction-v1",
+) -> None:
+    try:
+        dataset = build_paper_execution_demo(scenario)
+    except PaperExecutionError as exc:
+        typer.echo(f"paper_approvals_error={exc}", err=True)
+        raise typer.Exit(code=2) from exc
+    typer.echo(
+        json.dumps(
+            {
+                "scenario_id": scenario,
+                "items": dataset.manual_reviews,
+                "total": len(dataset.manual_reviews),
+            },
+            sort_keys=True,
+            default=str,
+        )
+    )
+
+
+@paper_fills_app.command("simulate")
+def paper_fills_simulate(
+    scenario: Annotated[str, typer.Option("--scenario")] = "paper-planted-reaction-v1",
+) -> None:
+    try:
+        dataset = build_paper_execution_demo(scenario)
+    except PaperExecutionError as exc:
+        typer.echo(f"paper_fills_error={exc}", err=True)
+        raise typer.Exit(code=2) from exc
+    typer.echo(
+        json.dumps(
+            {"scenario_id": scenario, "items": dataset.fills, "total": len(dataset.fills)},
+            sort_keys=True,
+            default=str,
+        )
+    )
+
+
+@paper_portfolio_app.command("run")
+def paper_portfolio_run(
+    scenario: Annotated[str, typer.Option("--scenario")] = "paper-planted-reaction-v1",
+) -> None:
+    try:
+        dataset = build_paper_execution_demo(scenario)
+    except PaperExecutionError as exc:
+        typer.echo(f"paper_portfolio_error={exc}", err=True)
+        raise typer.Exit(code=2) from exc
+    typer.echo(
+        json.dumps(
+            {
+                "scenario_id": scenario,
+                "run": dataset.runs[0],
+                "positions": dataset.positions,
+                "nav": dataset.nav,
+            },
+            sort_keys=True,
+            default=str,
+        )
+    )
+
+
+@paper_portfolio_app.command("summary")
+def paper_portfolio_summary(
+    scenario: Annotated[str, typer.Option("--scenario")] = "paper-planted-reaction-v1",
+) -> None:
+    paper_orders_summary(scenario)
+
+
+@paper_app.command("export-static")
+def paper_export_static() -> None:
+    typer.echo(json.dumps(write_paper_execution_static(), sort_keys=True, default=str))
+
+
+@paper_app.command("release-audit")
+def paper_release_audit() -> None:
+    result = write_m4b0_release_audit(_repo_root())
+    typer.echo(json.dumps(result, sort_keys=True, default=str))
+    if result.get("status") != "PASS":
         raise typer.Exit(code=3)
 
 

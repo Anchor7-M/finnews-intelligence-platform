@@ -78,3 +78,9 @@ accepts only explicit local CSV/JSONL paths, enforces a 5 MB file limit, and
 rejects credentials, account fields, order fields, and future-return sentinel
 columns. No paid market-data provider, browser binary, model download, broker
 terminal, scheduler, queue, telemetry, or cloud service is required.
+
+M4B-0 continues the zero-cost policy. Paper execution uses existing synthetic
+signal candidates and synthetic/local market bars, runs in-process, writes only
+static demo JSON and release-audit metadata, and requires no MT5 package, broker
+API, account, credential, paid market data, cloud database, queue, scheduler, or
+background service.

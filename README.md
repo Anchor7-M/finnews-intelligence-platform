@@ -4,6 +4,11 @@ Local-first cross-asset financial information and event-intelligence platform. F
 
 This project is synthetic research tooling. It is not investment advice, does not provide live market intelligence, and does not execute trades.
 
+Milestone 4B-0 adds a paper-only risk-control and portfolio simulation layer.
+It creates paper order intents, simulated manual reviews, paper fills, and
+paper portfolio accounting from synthetic/local bars only. It does not connect
+to MT5, read account data, create real orders, or provide investment advice.
+
 ## Architecture
 
 ```mermaid
