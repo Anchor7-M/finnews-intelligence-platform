@@ -18,6 +18,25 @@ trade history, order requests, stop loss, take profit, or margin-required data.
 Historical bars exported from MT5 remain local ignored files unless the user
 separately imports them through the existing market-bars contract workflow.
 
+## Paper Execution Metadata
+
+M4B-0 adds metadata-only PostgreSQL tables:
+
+- `paper_risk_policies`
+- `paper_risk_decisions`
+- `paper_order_intents`
+- `paper_manual_reviews`
+- `paper_fills`
+- `paper_positions`
+- `paper_nav`
+- `paper_execution_runs`
+
+These tables store paper-only policy metadata, risk decisions, paper intents,
+manual-review states, simulated fills, paper positions, NAV, counts, and JSONB
+safe metadata. They do not store broker servers, account IDs, login/passwords,
+terminal paths, MT5 symbols, tickets, real lot sizes, leverage, margin,
+stop-loss, take-profit, order types, `order_check`, or `order_send`.
+
 Implemented Milestone 0 tables in the PostgreSQL schema:
 
 Milestone 3A adds `research_calendars`, `research_sessions`, `research_export_runs`, `research_feature_rows`, and `research_lineage_rows`. These tables store safe metadata, timezone-aware timestamps, JSONB feature values, quality summaries, and lineage IDs. They do not store package bytes, article text, raw source responses, local paths, prices, returns, or recommendations.

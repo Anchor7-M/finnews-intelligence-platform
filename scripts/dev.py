@@ -285,6 +285,14 @@ def validate_static_export() -> None:
         "market-data-packages.json",
         "market-data-bars-sample.json",
         "market-data-synthetic-summary.json",
+        "paper-overview.json",
+        "paper-risk-policies.json",
+        "paper-risk-decisions.json",
+        "paper-orders.json",
+        "paper-fills.json",
+        "paper-positions.json",
+        "paper-nav.json",
+        "paper-runs.json",
     ]
     missing = [name for name in required if not (output / name).is_file()]
     if missing:
@@ -924,6 +932,49 @@ def verify_mt5_readonly(_: argparse.Namespace) -> None:
     validate_static_export()
 
 
+def verify_paper_execution(_: argparse.Namespace) -> None:
+    backend = ROOT / "backend"
+    frontend = ROOT / "frontend"
+    env = {"FINNEWS_SOURCE_TEST_MODE": "mocked-offline"}
+    run([PYTHON, "-m", "finnews.interfaces.cli.app", "paper", "risk", "validate"], backend, env=env)
+    for scenario in [
+        "paper-null-reaction-v1",
+        "paper-planted-reaction-v1",
+        "paper-regime-shift-v1",
+    ]:
+        run(
+            [
+                PYTHON,
+                "-m",
+                "finnews.interfaces.cli.app",
+                "paper",
+                "portfolio",
+                "run",
+                "--scenario",
+                scenario,
+            ],
+            backend,
+            env=env,
+            timeout_seconds=120,
+        )
+    run([PYTHON, "-m", "finnews.interfaces.cli.app", "paper", "export-static"], backend, env=env)
+    run([PYTHON, "-m", "finnews.interfaces.cli.app", "paper", "release-audit"], backend, env=env)
+    run(
+        [
+            PYTHON,
+            "-m",
+            "pytest",
+            "tests/unit/test_paper_execution.py",
+            "tests/contract/test_paper_execution_api_cli.py",
+        ],
+        backend,
+        env=env,
+        timeout_seconds=240,
+    )
+    run(["npm", "run", "test:unit", "--", "--run"], frontend, env=env, timeout_seconds=180)
+    validate_static_export()
+
+
 def build_research_export(_: argparse.Namespace) -> None:
     output = ROOT / ".finnews-research-exports" / "latest"
     if output.exists():
@@ -1064,6 +1115,7 @@ def main() -> None:
     sub.add_parser("verify-official-data").set_defaults(func=verify_official_data)
     sub.add_parser("verify-market-reaction").set_defaults(func=verify_market_reaction)
     sub.add_parser("verify-mt5-readonly").set_defaults(func=verify_mt5_readonly)
+    sub.add_parser("verify-paper-execution").set_defaults(func=verify_paper_execution)
     sub.add_parser("build-research-export").set_defaults(func=build_research_export)
     sub.add_parser("build-nlp-benchmark").set_defaults(func=build_nlp_benchmark)
     sub.add_parser("benchmark-nlp").set_defaults(func=benchmark_nlp)

@@ -12,6 +12,7 @@ import Methodology from "../pages/Methodology.vue";
 import NlpEvaluation from "../pages/NlpEvaluation.vue";
 import OfficialDataMonitor from "../pages/OfficialDataMonitor.vue";
 import OverviewPage from "../pages/OverviewPage.vue";
+import PaperExecutionLab from "../pages/PaperExecutionLab.vue";
 import ResearchExport from "../pages/ResearchExport.vue";
 import SignalCandidates from "../pages/SignalCandidates.vue";
 import SourceHealth from "../pages/SourceHealth.vue";
@@ -25,6 +26,7 @@ export const router = createRouter({
     { path: "/assets/:assetId", name: "asset-detail", component: AssetExplorer },
     { path: "/event-impact", name: "event-impact", component: EventImpact },
     { path: "/market-reaction", name: "market-reaction", component: MarketReactionLab },
+    { path: "/paper-execution", name: "paper-execution", component: PaperExecutionLab },
     { path: "/signals", name: "signal-candidates", component: SignalCandidates },
     {
       path: "/integration-readiness",

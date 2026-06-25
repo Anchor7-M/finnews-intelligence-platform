@@ -427,6 +427,63 @@ def test_trading_surface_report_allows_market_data_volume_not_order_calls(
     assert forbidden_surface["forbidden"][0]["pattern"] == "order_send("
 
 
+def test_trading_surface_report_allows_paper_execution_guardrails_not_order_calls(
+    tmp_path: Path,
+) -> None:
+    repo = tmp_path / "repo"
+    paper_service = (
+        repo / "backend" / "src" / "finnews" / "application" / "services" / "paper_execution.py"
+    )
+    paper_service.parent.mkdir(parents=True)
+    paper_service.write_text(
+        "FORBIDDEN_FIELDS = {'stop_loss', 'take_profit'}\n"
+        "ALLOWED_WORDING = {'paper order', 'paper fill', 'simulated execution'}\n",
+        encoding="utf-8",
+    )
+    paper_contract = repo / "contracts" / "finnews-paper-execution" / "v1" / "schema.json"
+    paper_contract.parent.mkdir(parents=True)
+    paper_contract.write_text(
+        '{"forbidden_fields": ["stop_loss", "take_profit"], "paper_side": ["long"]}',
+        encoding="utf-8",
+    )
+    subprocess.run(["git", "init"], cwd=repo, check=True, capture_output=True)
+    subprocess.run(["git", "add", "."], cwd=repo, check=True, capture_output=True)
+
+    allowed_surface = build_trading_surface_report(repo)
+
+    assert allowed_surface["status"] == "PASS"
+    assert allowed_surface["forbidden_count"] == 0
+    classifications = {(row["path"], row["classification"]) for row in allowed_surface["matches"]}
+    assert (
+        "backend/src/finnews/application/services/paper_execution.py",
+        "permitted paper-execution safety guardrail",
+    ) in classifications
+    assert (
+        "contracts/finnews-paper-execution/v1/schema.json",
+        "permitted paper-execution safety guardrail",
+    ) in classifications
+
+    unsafe_api = repo / "backend" / "src" / "finnews" / "interfaces" / "api" / "paper_live.py"
+    unsafe_api.parent.mkdir(parents=True)
+    unsafe_api.write_text(
+        "def unsafe(module):\n    module.order_send({'symbol': 'DEMO'})\n",
+        encoding="utf-8",
+    )
+    subprocess.run(["git", "add", "."], cwd=repo, check=True, capture_output=True)
+
+    forbidden_surface = build_trading_surface_report(repo)
+
+    assert forbidden_surface["status"] == "FAIL"
+    assert forbidden_surface["forbidden"] == [
+        {
+            "path": "backend/src/finnews/interfaces/api/paper_live.py",
+            "pattern": "order_send(",
+            "count": 1,
+            "classification": "forbidden executable production path",
+        }
+    ]
+
+
 def test_trading_surface_report_allows_only_mt5_readonly_adapter_subset(
     tmp_path: Path,
 ) -> None:

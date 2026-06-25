@@ -34,6 +34,14 @@ import type {
   OfficialSeriesAssetAssociation,
   OfficialSeriesProfile,
   Overview,
+  PaperFill,
+  PaperNav,
+  PaperOrderIntent,
+  PaperOverview,
+  PaperPosition,
+  PaperRiskDecision,
+  PaperRiskPolicy,
+  PaperRun,
   ResearchCalendar,
   ResearchExportSummary,
   ResearchFeatureCatalog,
@@ -518,4 +526,74 @@ export async function loadOfficialReleaseEvents(
     return data.items;
   }
   return getJson<OfficialReleaseEvent[]>("/demo-data/official-release-events.json");
+}
+
+export async function loadPaperOverview(mode: DataMode = getDataMode()): Promise<PaperOverview> {
+  if (mode === "api") {
+    return getJson<PaperOverview>(`${API_BASE}/api/v1/paper/overview`);
+  }
+  return getJson<PaperOverview>("/demo-data/paper-overview.json");
+}
+
+export async function loadPaperRiskPolicies(
+  mode: DataMode = getDataMode(),
+): Promise<PaperRiskPolicy[]> {
+  if (mode === "api") {
+    return getJson<PaperRiskPolicy[]>(`${API_BASE}/api/v1/paper/risk-policies`);
+  }
+  return getJson<PaperRiskPolicy[]>("/demo-data/paper-risk-policies.json");
+}
+
+export async function loadPaperRiskDecisions(
+  mode: DataMode = getDataMode(),
+): Promise<PaperRiskDecision[]> {
+  if (mode === "api") {
+    const data = await getJson<{ items: PaperRiskDecision[] }>(
+      `${API_BASE}/api/v1/paper/risk-decisions?limit=200`,
+    );
+    return data.items;
+  }
+  return getJson<PaperRiskDecision[]>("/demo-data/paper-risk-decisions.json");
+}
+
+export async function loadPaperOrders(mode: DataMode = getDataMode()): Promise<PaperOrderIntent[]> {
+  if (mode === "api") {
+    const data = await getJson<{ items: PaperOrderIntent[] }>(
+      `${API_BASE}/api/v1/paper/orders?limit=200`,
+    );
+    return data.items;
+  }
+  return getJson<PaperOrderIntent[]>("/demo-data/paper-orders.json");
+}
+
+export async function loadPaperFills(mode: DataMode = getDataMode()): Promise<PaperFill[]> {
+  if (mode === "api") {
+    const data = await getJson<{ items: PaperFill[] }>(`${API_BASE}/api/v1/paper/fills?limit=200`);
+    return data.items;
+  }
+  return getJson<PaperFill[]>("/demo-data/paper-fills.json");
+}
+
+export async function loadPaperPositions(mode: DataMode = getDataMode()): Promise<PaperPosition[]> {
+  if (mode === "api") {
+    const data = await getJson<{ items: PaperPosition[] }>(
+      `${API_BASE}/api/v1/paper/positions?limit=200`,
+    );
+    return data.items;
+  }
+  return getJson<PaperPosition[]>("/demo-data/paper-positions.json");
+}
+
+export async function loadPaperNav(mode: DataMode = getDataMode()): Promise<PaperNav[]> {
+  if (mode === "api") {
+    return getJson<PaperNav[]>(`${API_BASE}/api/v1/paper/nav`);
+  }
+  return getJson<PaperNav[]>("/demo-data/paper-nav.json");
+}
+
+export async function loadPaperRuns(mode: DataMode = getDataMode()): Promise<PaperRun[]> {
+  if (mode === "api") {
+    return getJson<PaperRun[]>(`${API_BASE}/api/v1/paper/runs`);
+  }
+  return getJson<PaperRun[]>("/demo-data/paper-runs.json");
 }

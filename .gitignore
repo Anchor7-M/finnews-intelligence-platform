@@ -239,6 +239,8 @@ reports/*
 !reports/nlp/**
 !reports/mt5-readonly/
 !reports/mt5-readonly/**
+!reports/paper-execution/
+!reports/paper-execution/**
 smoke-reports/
 .finnews-artifacts/
 .finnews-research-exports/

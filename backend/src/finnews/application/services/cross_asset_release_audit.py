@@ -114,6 +114,18 @@ MARKET_DATA_VOLUME_ALLOWED_PREFIXES = (
     "docs/",
 )
 MARKET_DATA_IMPORT_GUARDRAIL_PATTERNS = {"lot", "volume", "buy", "sell", "execute"}
+PAPER_EXECUTION_GUARDRAIL_FILES = {
+    "backend/alembic/versions/0009_paper_execution.py",
+    "backend/src/finnews/application/services/paper_execution.py",
+}
+PAPER_EXECUTION_GUARDRAIL_PREFIXES = ("contracts/finnews-paper-execution/v1/",)
+PAPER_EXECUTION_GUARDRAIL_PATTERNS = {
+    "stop_loss",
+    "take_profit",
+    "buy",
+    "sell",
+    "execute",
+}
 MT5_READONLY_ADAPTER_FILE = "backend/src/finnews/application/services/mt5_readonly.py"
 MT5_READONLY_ADAPTER_ALLOWED_PATTERNS = {
     "MetaTrader5",
@@ -534,6 +546,11 @@ def _classify_match(path: str, pattern: str) -> str:
         and pattern in MARKET_DATA_IMPORT_GUARDRAIL_PATTERNS
     ):
         return "permitted market-data import rejection guardrail"
+    if (
+        path in PAPER_EXECUTION_GUARDRAIL_FILES
+        or path.startswith(PAPER_EXECUTION_GUARDRAIL_PREFIXES)
+    ) and pattern in PAPER_EXECUTION_GUARDRAIL_PATTERNS:
+        return "permitted paper-execution safety guardrail"
     if path == MT5_READONLY_ADAPTER_FILE and pattern in MT5_READONLY_ADAPTER_ALLOWED_PATTERNS:
         return "permitted MT5 read-only adapter allowlist"
     if path == MT5_READONLY_ADAPTER_FILE and pattern in MT5_READONLY_REJECTION_GUARDRAIL_PATTERNS:

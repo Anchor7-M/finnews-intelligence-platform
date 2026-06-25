@@ -1,0 +1,37 @@
+{
+  "average_final_nav": "99996.666579",
+  "contract_name": "finnews-paper-execution-v1",
+  "contract_version": "1.0.0",
+  "disclaimer": "Paper execution uses synthetic/local bars only; it is not real-world performance and not investment advice.",
+  "engine_version": "m4b0-paper-simulator-v1",
+  "failed_fill_count": 22,
+  "failed_fill_reasons": {
+    "manual_review_pending_review": 10,
+    "manual_review_rejected": 3,
+    "paper_exposure_absent": 9
+  },
+  "filled_count": 8,
+  "nav_row_count": 3,
+  "no_account_data": true,
+  "no_mt5_connection": true,
+  "no_real_order": true,
+  "not_investment_advice": true,
+  "paper_fill_count": 30,
+  "paper_only": true,
+  "paper_order_count": 30,
+  "position_count": 8,
+  "risk_decision_counts": {
+    "approved_for_paper": 24,
+    "expired": 24,
+    "rejected": 54,
+    "requires_manual_review": 6
+  },
+  "scenario_count": 3,
+  "scenario_ids": [
+    "paper-null-reaction-v1",
+    "paper-planted-reaction-v1",
+    "paper-regime-shift-v1"
+  ],
+  "signal_candidates_considered": 108,
+  "synthetic_data": true
+}

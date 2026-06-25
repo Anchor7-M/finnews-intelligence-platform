@@ -1,0 +1,44 @@
+[
+  {
+    "cash": "97498.750000",
+    "drawdown": "0.000013",
+    "gross_exposure": "2499.999959",
+    "market_value": "2499.999959",
+    "maximum_drawdown": "0.000013",
+    "nav": "99998.749959",
+    "nav_at": "2026-06-25T00:00:00+00:00",
+    "net_exposure": "2499.999959",
+    "not_investment_advice": true,
+    "reconciliation_status": "passed",
+    "scenario_id": "paper-null-reaction-v1",
+    "synthetic_data": true
+  },
+  {
+    "cash": "89995.000000",
+    "drawdown": "0.000050",
+    "gross_exposure": "9999.999864",
+    "market_value": "9999.999864",
+    "maximum_drawdown": "0.000050",
+    "nav": "99994.999864",
+    "nav_at": "2026-06-25T00:00:00+00:00",
+    "net_exposure": "9999.999864",
+    "not_investment_advice": true,
+    "reconciliation_status": "passed",
+    "scenario_id": "paper-planted-reaction-v1",
+    "synthetic_data": true
+  },
+  {
+    "cash": "92496.250000",
+    "drawdown": "0.000038",
+    "gross_exposure": "7499.999913",
+    "market_value": "7499.999913",
+    "maximum_drawdown": "0.000038",
+    "nav": "99996.249913",
+    "nav_at": "2026-06-25T00:00:00+00:00",
+    "net_exposure": "7499.999913",
+    "not_investment_advice": true,
+    "reconciliation_status": "passed",
+    "scenario_id": "paper-regime-shift-v1",
+    "synthetic_data": true
+  }
+]

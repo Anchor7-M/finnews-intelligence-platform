@@ -85,3 +85,9 @@ Research-export risks include lookahead leakage, backfill leakage, accidental ar
   point-in-time `available_at` logic, null/planted/regime synthetic scenarios,
   leakage diagnostics, read-only API routes, and bounded static bar samples.
   Local import paths and raw user market-data files are not committed.
+- Milestone 4B-0 keeps paper execution independent from MT5 and broker systems.
+  Paper order intents reject broker/account/credential/terminal/order-ticket
+  fields, manual approval is simulated with synthetic local actors only, fills
+  use synthetic/local bars, API routes are read-only, and the surface audit
+  checks that no real order, account, position, `order_check`, or `order_send`
+  path is introduced.

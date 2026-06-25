@@ -952,6 +952,106 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             "offset": offset,
         }
 
+    @app.get("/api/v1/paper/overview")
+    def paper_overview() -> dict[str, object]:
+        return cast(dict[str, object], build_static_payload(repository)["paper-overview"])
+
+    @app.get("/api/v1/paper/risk-policies")
+    def paper_risk_policies() -> list[dict[str, object]]:
+        return cast(
+            list[dict[str, object]],
+            build_static_payload(repository)["paper-risk-policies"],
+        )
+
+    @app.get("/api/v1/paper/risk-decisions")
+    def paper_risk_decisions(
+        scenario: str | None = None,
+        risk_decision: str | None = None,
+        limit: int = Query(default=50, ge=1, le=200),
+        offset: int = Query(default=0, ge=0),
+    ) -> dict[str, object]:
+        rows = cast(
+            list[dict[str, object]],
+            build_static_payload(repository)["paper-risk-decisions"],
+        )
+        filtered = [
+            row
+            for row in rows
+            if (not scenario or row["scenario_id"] == scenario)
+            and (not risk_decision or row["risk_decision"] == risk_decision)
+        ]
+        return {
+            "items": filtered[offset : offset + limit],
+            "total": len(filtered),
+            "limit": limit,
+            "offset": offset,
+        }
+
+    @app.get("/api/v1/paper/orders")
+    def paper_orders(
+        scenario: str | None = None,
+        limit: int = Query(default=50, ge=1, le=200),
+        offset: int = Query(default=0, ge=0),
+    ) -> dict[str, object]:
+        rows = cast(list[dict[str, object]], build_static_payload(repository)["paper-orders"])
+        filtered = [
+            row
+            for row in rows
+            if not scenario or str(row["paper_order_id"]).startswith(f"paper-order|{scenario}|")
+        ]
+        return {
+            "items": filtered[offset : offset + limit],
+            "total": len(filtered),
+            "limit": limit,
+            "offset": offset,
+        }
+
+    @app.get("/api/v1/paper/fills")
+    def paper_fills(
+        scenario: str | None = None,
+        fill_status: str | None = None,
+        limit: int = Query(default=50, ge=1, le=200),
+        offset: int = Query(default=0, ge=0),
+    ) -> dict[str, object]:
+        rows = cast(list[dict[str, object]], build_static_payload(repository)["paper-fills"])
+        filtered = [
+            row
+            for row in rows
+            if (not scenario or row["scenario_id"] == scenario)
+            and (not fill_status or row["fill_status"] == fill_status)
+        ]
+        return {
+            "items": filtered[offset : offset + limit],
+            "total": len(filtered),
+            "limit": limit,
+            "offset": offset,
+        }
+
+    @app.get("/api/v1/paper/positions")
+    def paper_positions(
+        scenario: str | None = None,
+        limit: int = Query(default=50, ge=1, le=200),
+        offset: int = Query(default=0, ge=0),
+    ) -> dict[str, object]:
+        rows = cast(list[dict[str, object]], build_static_payload(repository)["paper-positions"])
+        filtered = [row for row in rows if not scenario or row["scenario_id"] == scenario]
+        return {
+            "items": filtered[offset : offset + limit],
+            "total": len(filtered),
+            "limit": limit,
+            "offset": offset,
+        }
+
+    @app.get("/api/v1/paper/nav")
+    def paper_nav(scenario: str | None = None) -> list[dict[str, object]]:
+        rows = cast(list[dict[str, object]], build_static_payload(repository)["paper-nav"])
+        return [row for row in rows if not scenario or row["scenario_id"] == scenario]
+
+    @app.get("/api/v1/paper/runs")
+    def paper_runs(scenario: str | None = None) -> list[dict[str, object]]:
+        rows = cast(list[dict[str, object]], build_static_payload(repository)["paper-runs"])
+        return [row for row in rows if not scenario or row["scenario_id"] == scenario]
+
     @app.get("/api/v1/official-data/overview")
     def official_data_overview() -> dict[str, object]:
         return cast(dict[str, object], build_static_payload(repository)["official-data-overview"])

@@ -15,6 +15,19 @@ path gates pass. Exports are converted to the existing
 The architecture still has no account access, order route, position route,
 history route, order check, order send, or investment-advice surface.
 
+## Milestone 4B-0 Paper Execution Simulator
+
+M4B-0 adds a paper-only application service for independent risk decisions,
+paper order intents, local manual-review simulation, paper fills, and paper
+portfolio accounting. It consumes existing synthetic signal candidates and
+synthetic/local market bars. It does not import `MetaTrader5`, connect to MT5,
+read account data, or build real broker order requests.
+
+FastAPI routes are read-only. Typer commands run bounded local simulations and
+write static demo JSON. Vue displays a Paper Execution Lab with scenario
+selection, decisions, paper orders, paper fills, positions, NAV, costs,
+drawdown, and synthetic-only disclaimers.
+
 Milestone 0 is a modular monolith with ports and adapters.
 
 Milestone 3A adds a research-export application service that reads existing news metadata through repository ports and writes deterministic packages plus safe metadata. FinNews owns news provenance, information availability, event/sentiment metadata, feature lineage, and the export contract. The future `ashare-research-platform` owns prices, returns, backtests, and portfolio logic.

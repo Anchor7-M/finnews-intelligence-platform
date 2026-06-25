@@ -772,3 +772,140 @@ export interface OfficialReleaseEvent {
   revision_number: number | null;
   synthetic: boolean;
 }
+
+export interface PaperOverview {
+  contract_name: string;
+  contract_version: string;
+  engine_version: string;
+  scenario_ids: string[];
+  scenario_count: number;
+  signal_candidates_considered: number;
+  risk_decision_counts: Record<string, number>;
+  paper_order_count: number;
+  paper_fill_count: number;
+  filled_count: number;
+  failed_fill_count: number;
+  position_count: number;
+  nav_row_count: number;
+  average_final_nav: string;
+  failed_fill_reasons: Record<string, number>;
+  paper_only: boolean;
+  synthetic_data: boolean;
+  no_mt5_connection: boolean;
+  no_account_data: boolean;
+  no_real_order: boolean;
+  not_investment_advice: boolean;
+  disclaimer: string;
+}
+
+export interface PaperRiskPolicy {
+  risk_policy_id: string;
+  policy_version: string;
+  confidence_threshold: string;
+  max_orders_per_day: number;
+  max_total_exposure: string;
+  manual_approval_required: boolean;
+  kill_switch_active: boolean;
+  default_order_notional: string;
+  paper_only: boolean;
+  no_mt5_connection: boolean;
+  no_account_data: boolean;
+  no_real_order: boolean;
+  not_investment_advice: boolean;
+}
+
+export interface PaperRiskDecision {
+  risk_decision_id: string;
+  scenario_id: string;
+  signal_id: string;
+  asset_id: string;
+  asset_class: string;
+  direction: string;
+  signal_status: string;
+  confidence: string;
+  risk_decision: string;
+  reason_codes: string[];
+  bar_coverage: string;
+  missing_data_ratio: string;
+  synthetic_data: boolean;
+  not_investment_advice: boolean;
+}
+
+export interface PaperOrderIntent {
+  paper_order_id: string;
+  signal_id: string;
+  asset_id: string;
+  direction: string;
+  paper_side: string;
+  paper_notional: string;
+  risk_decision: string;
+  manual_approval_state: string;
+  reason_codes: string[];
+  synthetic_data: boolean;
+  not_investment_advice: boolean;
+}
+
+export interface PaperFill {
+  fill_id: string;
+  scenario_id: string;
+  paper_order_id: string;
+  asset_id: string;
+  paper_side: string;
+  fill_status: string;
+  failed_reason: string | null;
+  filled_quantity_units: string;
+  fill_price: string | null;
+  gross_notional: string;
+  commission: string;
+  filled_at: string | null;
+  synthetic_data: boolean;
+  not_investment_advice: boolean;
+}
+
+export interface PaperPosition {
+  scenario_id: string;
+  asset_id: string;
+  asset_class: string;
+  quantity: string;
+  average_cost: string;
+  market_value: string;
+  realized_pnl: string;
+  unrealized_pnl: string;
+  transaction_costs: string;
+  synthetic_data: boolean;
+  not_investment_advice: boolean;
+}
+
+export interface PaperNav {
+  scenario_id: string;
+  nav_at: string;
+  cash: string;
+  market_value: string;
+  nav: string;
+  gross_exposure: string;
+  drawdown: string;
+  maximum_drawdown: string;
+  reconciliation_status: string;
+  synthetic_data: boolean;
+  not_investment_advice: boolean;
+}
+
+export interface PaperRun {
+  run_id: string;
+  scenario_id: string;
+  signal_candidates_considered: number;
+  risk_approved: number;
+  manual_review: number;
+  rejected: number;
+  expired: number;
+  paper_orders_generated: number;
+  paper_fills: number;
+  failed_fills: number;
+  final_nav: string;
+  turnover: string;
+  costs: string;
+  maximum_drawdown: string;
+  reconciliation_status: string;
+  synthetic_data: boolean;
+  not_investment_advice: boolean;
+}

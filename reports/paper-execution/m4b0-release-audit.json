@@ -1,0 +1,232 @@
+{
+  "contract_hash": "c310bd3e9f064bc62466caa2f28dcef9f13adbe2bae2247c72d42ed58c143f9f",
+  "contract_name": "finnews-paper-execution-v1",
+  "contract_version": "1.0.0",
+  "filled_count": 8,
+  "no_account_data": true,
+  "no_mt5_connection": true,
+  "no_real_order": true,
+  "not_investment_advice": true,
+  "overview": {
+    "average_final_nav": "99996.666579",
+    "contract_name": "finnews-paper-execution-v1",
+    "contract_version": "1.0.0",
+    "disclaimer": "Paper execution uses synthetic/local bars only; it is not real-world performance and not investment advice.",
+    "engine_version": "m4b0-paper-simulator-v1",
+    "failed_fill_count": 22,
+    "failed_fill_reasons": {
+      "manual_review_pending_review": 10,
+      "manual_review_rejected": 3,
+      "paper_exposure_absent": 9
+    },
+    "filled_count": 8,
+    "nav_row_count": 3,
+    "no_account_data": true,
+    "no_mt5_connection": true,
+    "no_real_order": true,
+    "not_investment_advice": true,
+    "paper_fill_count": 30,
+    "paper_only": true,
+    "paper_order_count": 30,
+    "position_count": 8,
+    "risk_decision_counts": {
+      "approved_for_paper": 24,
+      "expired": 24,
+      "rejected": 54,
+      "requires_manual_review": 6
+    },
+    "scenario_count": 3,
+    "scenario_ids": [
+      "paper-null-reaction-v1",
+      "paper-planted-reaction-v1",
+      "paper-regime-shift-v1"
+    ],
+    "signal_candidates_considered": 108,
+    "synthetic_data": true
+  },
+  "paper_fill_count": 30,
+  "paper_only": true,
+  "paper_order_count": 30,
+  "rejected_or_failed_reasons": [
+    {
+      "count": 4,
+      "reason_code": "asset_class_not_allowed_interest_rate",
+      "scenario_id": "paper-null-reaction-v1"
+    },
+    {
+      "count": 5,
+      "reason_code": "manual_review_pending_review",
+      "scenario_id": "paper-null-reaction-v1"
+    },
+    {
+      "count": 1,
+      "reason_code": "max_paper_orders_per_asset_per_day",
+      "scenario_id": "paper-null-reaction-v1"
+    },
+    {
+      "count": 1,
+      "reason_code": "mixed_direction_manual_review",
+      "scenario_id": "paper-null-reaction-v1"
+    },
+    {
+      "count": 26,
+      "reason_code": "not_investment_advice",
+      "scenario_id": "paper-null-reaction-v1"
+    },
+    {
+      "count": 4,
+      "reason_code": "paper_exposure_absent",
+      "scenario_id": "paper-null-reaction-v1"
+    },
+    {
+      "count": 26,
+      "reason_code": "paper_only",
+      "scenario_id": "paper-null-reaction-v1"
+    },
+    {
+      "count": 8,
+      "reason_code": "signal_expired",
+      "scenario_id": "paper-null-reaction-v1"
+    },
+    {
+      "count": 6,
+      "reason_code": "signal_status_abstained",
+      "scenario_id": "paper-null-reaction-v1"
+    },
+    {
+      "count": 7,
+      "reason_code": "signal_status_rejected",
+      "scenario_id": "paper-null-reaction-v1"
+    },
+    {
+      "count": 4,
+      "reason_code": "asset_class_not_allowed_interest_rate",
+      "scenario_id": "paper-planted-reaction-v1"
+    },
+    {
+      "count": 3,
+      "reason_code": "manual_review_pending_review",
+      "scenario_id": "paper-planted-reaction-v1"
+    },
+    {
+      "count": 1,
+      "reason_code": "manual_review_rejected",
+      "scenario_id": "paper-planted-reaction-v1"
+    },
+    {
+      "count": 1,
+      "reason_code": "max_paper_orders_per_asset_per_day",
+      "scenario_id": "paper-planted-reaction-v1"
+    },
+    {
+      "count": 1,
+      "reason_code": "mixed_direction_manual_review",
+      "scenario_id": "paper-planted-reaction-v1"
+    },
+    {
+      "count": 26,
+      "reason_code": "not_investment_advice",
+      "scenario_id": "paper-planted-reaction-v1"
+    },
+    {
+      "count": 2,
+      "reason_code": "paper_exposure_absent",
+      "scenario_id": "paper-planted-reaction-v1"
+    },
+    {
+      "count": 26,
+      "reason_code": "paper_only",
+      "scenario_id": "paper-planted-reaction-v1"
+    },
+    {
+      "count": 8,
+      "reason_code": "signal_expired",
+      "scenario_id": "paper-planted-reaction-v1"
+    },
+    {
+      "count": 6,
+      "reason_code": "signal_status_abstained",
+      "scenario_id": "paper-planted-reaction-v1"
+    },
+    {
+      "count": 7,
+      "reason_code": "signal_status_rejected",
+      "scenario_id": "paper-planted-reaction-v1"
+    },
+    {
+      "count": 4,
+      "reason_code": "asset_class_not_allowed_interest_rate",
+      "scenario_id": "paper-regime-shift-v1"
+    },
+    {
+      "count": 2,
+      "reason_code": "manual_review_pending_review",
+      "scenario_id": "paper-regime-shift-v1"
+    },
+    {
+      "count": 2,
+      "reason_code": "manual_review_rejected",
+      "scenario_id": "paper-regime-shift-v1"
+    },
+    {
+      "count": 1,
+      "reason_code": "max_paper_orders_per_asset_per_day",
+      "scenario_id": "paper-regime-shift-v1"
+    },
+    {
+      "count": 1,
+      "reason_code": "mixed_direction_manual_review",
+      "scenario_id": "paper-regime-shift-v1"
+    },
+    {
+      "count": 26,
+      "reason_code": "not_investment_advice",
+      "scenario_id": "paper-regime-shift-v1"
+    },
+    {
+      "count": 3,
+      "reason_code": "paper_exposure_absent",
+      "scenario_id": "paper-regime-shift-v1"
+    },
+    {
+      "count": 26,
+      "reason_code": "paper_only",
+      "scenario_id": "paper-regime-shift-v1"
+    },
+    {
+      "count": 8,
+      "reason_code": "signal_expired",
+      "scenario_id": "paper-regime-shift-v1"
+    },
+    {
+      "count": 6,
+      "reason_code": "signal_status_abstained",
+      "scenario_id": "paper-regime-shift-v1"
+    },
+    {
+      "count": 7,
+      "reason_code": "signal_status_rejected",
+      "scenario_id": "paper-regime-shift-v1"
+    }
+  ],
+  "risk_decision_count": 108,
+  "run_count": 3,
+  "scenario_count": 3,
+  "status": "PASS",
+  "surface_audit": {
+    "allowed_terms": [
+      "paper order",
+      "paper fill",
+      "paper position",
+      "paper portfolio",
+      "simulated execution"
+    ],
+    "forbidden_count": 0,
+    "forbidden_production_matches": [],
+    "no_account_data": true,
+    "no_mt5_connection": true,
+    "no_real_order": true,
+    "not_investment_advice": true,
+    "status": "PASS"
+  }
+}
